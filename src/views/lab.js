@@ -1,5 +1,111 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
 
+function buildEmbedCode(sim) {
+  const url = sim.url;
+  return `<iframe\n  src="${url}"\n  title="${sim.title}"\n  width="100%"\n  height="600"\n  frameborder="0"\n  allowfullscreen\n></iframe>`;
+}
+
+function createShareModal(sim) {
+  const shareUrl = buildShareUrl(sim.id);
+  const embedCode = buildEmbedCode(sim);
+
+  const el = document.createElement('div');
+  el.id = 'share-modal';
+  el.setAttribute('role', 'dialog');
+  el.setAttribute('aria-modal', 'true');
+  el.setAttribute('aria-labelledby', 'share-modal-title');
+  el.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
+  el.innerHTML = `
+    <div class="absolute inset-0 bg-[#1e293b]/60 backdrop-blur" id="share-backdrop"></div>
+    <div class="relative w-full max-w-lg rounded-lg border border-[#e2e8f0] bg-white shadow-xl">
+      <div class="flex items-center justify-between border-b border-[#e2e8f0] px-5 py-4">
+        <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">Compartir simulación</h2>
+        <button id="share-close" aria-label="Cerrar" class="rounded-md p-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#1e293b]">
+          <i data-lucide="x" class="h-5 w-5"></i>
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-5 p-5">
+
+        <!-- Bloque 1: enlace directo -->
+        <div>
+          <p class="text-sm font-semibold text-[#1e293b]">Enlace directo</p>
+          <p class="mt-0.5 text-xs text-[#64748b]">Pégalo en el chat de clase, en un correo o en tu plataforma (Moodle, Classroom, Teams…).</p>
+          <div class="mt-2 flex gap-2">
+            <input
+              id="share-url"
+              type="text"
+              readonly
+              value="${shareUrl}"
+              class="min-w-0 flex-1 rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-1.5 text-xs text-[#1e293b] focus:outline-none"
+            />
+            <button
+              data-copy="share-url"
+              class="copy-btn inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#0369a1]"
+            >
+              <i data-lucide="copy" class="h-3.5 w-3.5"></i>
+              <span class="copy-label">Copiar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Bloque 2: código embed -->
+        <div>
+          <p class="text-sm font-semibold text-[#1e293b]">Insertar en tu web o en Moodle</p>
+          <p class="mt-0.5 text-xs text-[#64748b]">Si tu plataforma permite añadir HTML, pega este código. La simulación aparecerá integrada en la página.</p>
+          <div class="mt-2 flex gap-2">
+            <textarea
+              id="share-embed"
+              readonly
+              rows="4"
+              class="min-w-0 flex-1 resize-none rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-1.5 font-mono text-xs text-[#1e293b] focus:outline-none"
+            >${embedCode}</textarea>
+            <button
+              data-copy="share-embed"
+              class="copy-btn inline-flex shrink-0 items-start gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#0369a1]"
+            >
+              <i data-lucide="copy" class="h-3.5 w-3.5 mt-0.5"></i>
+              <span class="copy-label">Copiar</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>`;
+  return el;
+}
+
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+  }
+}
+
+function flashCopied(btn) {
+  const label = btn.querySelector('.copy-label');
+  const icon = btn.querySelector('[data-lucide]');
+  label.textContent = '¡Copiado!';
+  icon.setAttribute('data-lucide', 'check');
+  if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
+  btn.classList.replace('bg-[#0284c7]', 'bg-[#16a34a]');
+  btn.classList.replace('hover:bg-[#0369a1]', 'hover:bg-[#15803d]');
+  setTimeout(() => {
+    label.textContent = 'Copiar';
+    icon.setAttribute('data-lucide', 'copy');
+    if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
+    btn.classList.replace('bg-[#16a34a]', 'bg-[#0284c7]');
+    btn.classList.replace('hover:bg-[#15803d]', 'hover:bg-[#0369a1]');
+  }, 2000);
+}
+
 // Ancho de diseño base de las simulaciones: panel de control (370px) + lienzo
 // p5.js (900px) = 1270px. Por debajo de esto hay que escalar para no recortar.
 const BASE_WIDTH = 1270;
@@ -18,9 +124,9 @@ export function renderLab(root, sim) {
         <i data-lucide="maximize" class="h-4 w-4"></i>
         <span class="hidden sm:inline">Pantalla completa</span>
       </button>
-      <button id="lab-copy" class="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#0369a1]">
-        <i data-lucide="copy" class="h-4 w-4"></i>
-        <span id="lab-copy-label" class="hidden sm:inline">Copiar enlace para clase</span>
+      <button id="lab-share" class="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#0369a1]">
+        <i data-lucide="share-2" class="h-4 w-4"></i>
+        <span class="hidden sm:inline">Compartir</span>
       </button>
     </header>
 
@@ -48,13 +154,8 @@ export function renderLab(root, sim) {
   const stage = root.querySelector('#lab-stage');
   const iframe = root.querySelector('#lab-frame');
 
-  // Fondo negro en el escenario: las franjas laterales (cuando la pantalla es
-  // más ancha que 1270px) y la pantalla completa quedan neutras y disimulan
-  // bien con cualquier tema de la simulación.
   stage.style.backgroundColor = '#000000';
   const loader = root.querySelector('#lab-loader');
-  const copyBtn = root.querySelector('#lab-copy');
-  const copyLabel = root.querySelector('#lab-copy-label');
 
   // --- Ajuste del iframe ---
   // Dos estrategias según el tipo de simulación:
@@ -123,31 +224,35 @@ export function renderLab(root, sim) {
   document.addEventListener('fullscreenchange', onFullscreenChange);
   document.addEventListener('webkitfullscreenchange', onFullscreenChange);
 
-  let resetTimer;
-  copyBtn.addEventListener('click', async () => {
-    const url = buildShareUrl(sim.id);
-    try {
-      await navigator.clipboard.writeText(url);
-    } catch {
-      const ta = document.createElement('textarea');
-      ta.value = url;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      ta.remove();
-    }
-    copyLabel.textContent = '¡Enlace copiado!';
-    copyBtn.classList.remove('bg-[#0284c7]', 'hover:bg-[#0369a1]');
-    copyBtn.classList.add('bg-[#16a34a]');
-    clearTimeout(resetTimer);
-    resetTimer = setTimeout(() => {
-      copyLabel.textContent = 'Copiar enlace para clase';
-      copyBtn.classList.add('bg-[#0284c7]', 'hover:bg-[#0369a1]');
-      copyBtn.classList.remove('bg-[#16a34a]');
-    }, 2000);
-  });
+  // --- Modal de compartir ---
+  let modal = null;
+
+  function openModal() {
+    modal = createShareModal(sim);
+    document.body.appendChild(modal);
+    if (window.lucide) window.lucide.createIcons({ nodes: modal.querySelectorAll('[data-lucide]') });
+
+    modal.querySelector('#share-close').addEventListener('click', closeModal);
+    modal.querySelector('#share-backdrop').addEventListener('click', closeModal);
+    modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+    modal.querySelectorAll('.copy-btn').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const sourceId = btn.dataset.copy;
+        const source = modal.querySelector(`#${sourceId}`);
+        await copyText(source.value);
+        flashCopied(btn);
+      });
+    });
+
+    modal.querySelector('#share-close').focus();
+  }
+
+  function closeModal() {
+    if (modal) { modal.remove(); modal = null; }
+  }
+
+  root.querySelector('#lab-share').addEventListener('click', openModal);
 
   // Ajuste inicial + en cada redimensionado de ventana (proyector, rotación…).
   fit();
@@ -155,12 +260,12 @@ export function renderLab(root, sim) {
   const onResize = () => fit();
   window.addEventListener('resize', onResize);
 
-  // Cleanup: al volver al catálogo, retira los listeners globales y el timer.
+  // Cleanup: al volver al catálogo, retira los listeners globales y el modal.
   return () => {
     window.removeEventListener('resize', onResize);
     document.removeEventListener('fullscreenchange', onFullscreenChange);
     document.removeEventListener('webkitfullscreenchange', onFullscreenChange);
     if (isFullscreen()) exitFullscreen();
-    clearTimeout(resetTimer);
+    closeModal();
   };
 }

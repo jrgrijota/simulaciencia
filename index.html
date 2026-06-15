@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SimuLab — Simulaciones Interactivas para el Aula</title>
+  <meta name="description" content="Simulaciones interactivas de Física y Química para Educación Secundaria y Bachillerato. Gratuitas, sin instalación y listas para incrustar en tu aula virtual." />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-icon">⚗</span>
+        <span>SimuLab</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#simulaciones">Simulaciones</a>
+        <a href="#incrustar">Incrustar</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <button class="nav-burger" aria-label="Menú" onclick="toggleMenu()">&#9776;</button>
+    </div>
+    <nav class="nav-mobile" id="navMobile">
+      <a href="#simulaciones" onclick="toggleMenu()">Simulaciones</a>
+      <a href="#incrustar" onclick="toggleMenu()">Incrustar</a>
+      <a href="#contacto" onclick="toggleMenu()">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">Para docentes de Física y Química</div>
+      <h1 class="hero-title">Simulaciones que hacen<br>visible lo invisible</h1>
+      <p class="hero-sub">Experimentos interactivos listos para usar en clase, sin instalación, sin registro y con código embed para cualquier plataforma educativa.</p>
+      <div class="hero-ctas">
+        <a href="#simulaciones" class="btn btn-primary">Ver simulaciones</a>
+        <a href="#incrustar" class="btn btn-outline">Cómo incrustar</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n">6</span><span class="stat-l">Simulaciones</span></div>
+        <div class="stat"><span class="stat-n">100%</span><span class="stat-l">Gratuitas</span></div>
+        <div class="stat"><span class="stat-n">0</span><span class="stat-l">Instalación</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-orb orb-1"></div>
+      <div class="hero-orb orb-2"></div>
+      <div class="hero-orb orb-3"></div>
+    </div>
+  </section>
+
+  <!-- SIMULACIONES -->
+  <section class="section" id="simulaciones">
+    <div class="container">
+      <div class="section-header">
+        <h2>Simulaciones disponibles</h2>
+        <p>Selecciona una para previsualizarla o accede directamente. Cada simulación incluye controles deslizantes, retroalimentación visual inmediata y modo pantalla completa.</p>
+      </div>
+
+      <!-- Filtros -->
+      <div class="filters" id="filters">
+        <button class="filter-btn active" data-filter="all">Todas</button>
+        <button class="filter-btn" data-filter="fisica">Física</button>
+        <button class="filter-btn" data-filter="quimica">Química</button>
+        <button class="filter-btn" data-filter="eso">ESO</button>
+        <button class="filter-btn" data-filter="bachillerato">Bachillerato</button>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid">
+
+        <article class="sim-card" data-tags="fisica eso bachillerato">
+          <div class="card-thumb" style="background: linear-gradient(135deg,#1a3a5c,#2563eb);">
+            <span class="card-icon">🪣</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag tag-fisica">Física</span>
+              <span class="tag tag-nivel">ESO · Bach.</span>
+            </div>
+            <h3 class="card-title">Principio de Arquímedes</h3>
+            <p class="card-desc">Explora flotación, densidad y empuje. Varía masa, volumen y densidad del líquido para descubrir cuándo un cuerpo flota, se hunde o queda en equilibrio.</p>
+            <div class="card-actions">
+              <a href="simulacion-arquimedes/index.html" class="btn btn-sm btn-primary" target="_blank">Abrir</a>
+              <button class="btn btn-sm btn-ghost" onclick="openEmbed('arquimedes')">⟨/⟩ Embed</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="sim-card" data-tags="fisica quimica eso">
+          <div class="card-thumb" style="background: linear-gradient(135deg,#1a4a2e,#16a34a);">
+            <span class="card-icon">⚖️</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag tag-fisica">Física</span>
+              <span class="tag tag-quimica">Química</span>
+              <span class="tag tag-nivel">ESO</span>
+            </div>
+            <h3 class="card-title">Densidad</h3>
+            <p class="card-desc">Visualiza la relación masa–volumen–densidad con cuerpos de distintos materiales sumergidos en diferentes líquidos.</p>
+            <div class="card-actions">
+              <a href="simulacion-densidad/index.html" class="btn btn-sm btn-primary" target="_blank">Abrir</a>
+              <button class="btn btn-sm btn-ghost" onclick="openEmbed('densidad')">⟨/⟩ Embed</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="sim-card" data-tags="fisica quimica bachillerato">
+          <div class="card-thumb" style="background: linear-gradient(135deg,#3b1a5c,#9333ea);">
+            <span class="card-icon">🌈</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag tag-fisica">Física</span>
+              <span class="tag tag-quimica">Química</span>
+              <span class="tag tag-nivel">Bachillerato</span>
+            </div>
+            <h3 class="card-title">Espectros Atómicos</h3>
+            <p class="card-desc">Observa las líneas espectrales de distintos elementos y relaciona las transiciones electrónicas con la emisión o absorción de fotones.</p>
+            <div class="card-actions">
+              <a href="simulacion-espectros/index.html" class="btn btn-sm btn-primary" target="_blank">Abrir</a>
+              <button class="btn btn-sm btn-ghost" onclick="openEmbed('espectros')">⟨/⟩ Embed</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="sim-card" data-tags="fisica bachillerato">
+          <div class="card-thumb" style="background: linear-gradient(135deg,#1a3a4a,#0891b2);">
+            <span class="card-icon">💨</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag tag-fisica">Física</span>
+              <span class="tag tag-nivel">Bachillerato</span>
+            </div>
+            <h3 class="card-title">Cinética de Gases</h3>
+            <p class="card-desc">Simula el comportamiento de partículas gaseosas. Explora la relación entre presión, temperatura y volumen con la teoría cinética.</p>
+            <div class="card-actions">
+              <a href="simulacion-gases/index.html" class="btn btn-sm btn-primary" target="_blank">Abrir</a>
+              <button class="btn btn-sm btn-ghost" onclick="openEmbed('gases')">⟨/⟩ Embed</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="sim-card" data-tags="fisica quimica bachillerato">
+          <div class="card-thumb" style="background: linear-gradient(135deg,#3a1a1a,#dc2626);">
+            <span class="card-icon">⚛️</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag tag-fisica">Física</span>
+              <span class="tag tag-quimica">Química</span>
+              <span class="tag tag-nivel">Bachillerato</span>
+            </div>
+            <h3 class="card-title">Modelos Atómicos</h3>
+            <p class="card-desc">Compara los modelos de Thomson y Rutherford mediante la dispersión de partículas alfa. Entiende cómo un experimento cambió la concepción del átomo.</p>
+            <div class="card-actions">
+              <a href="simulacion-modelos/index.html" class="btn btn-sm btn-primary" target="_blank">Abrir</a>
+              <button class="btn btn-sm btn-ghost" onclick="openEmbed('modelos')">⟨/⟩ Embed</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="sim-card" data-tags="quimica bachillerato">
+          <div class="card-thumb" style="background: linear-gradient(135deg,#1a3a1a,#ea580c);">
+            <span class="card-icon">🔥</span>
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="tag tag-quimica">Química</span>
+              <span class="tag tag-nivel">Bachillerato</span>
+            </div>
+            <h3 class="card-title">Velocidad de Reacción</h3>
+            <p class="card-desc">Controla temperatura, concentración y catalizadores para observar cómo afectan a la velocidad de reacción. Visualiza colisiones moleculares efectivas.</p>
+            <div class="card-actions">
+              <a href="simulacion-velocidad-reaccion/index.html" class="btn btn-sm btn-primary" target="_blank">Abrir</a>
+              <button class="btn btn-sm btn-ghost" onclick="openEmbed('velocidad-reaccion')">⟨/⟩ Embed</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INCRUSTAR -->
+  <section class="section section-alt" id="incrustar">
+    <div class="container">
+      <div class="section-header">
+        <h2>Incrusta en tu plataforma</h2>
+        <p>Copia el código y pégalo directamente en Moodle, Google Sites, Classroom, Edmodo o cualquier plataforma que acepte HTML. Funciona en cualquier dispositivo.</p>
+      </div>
+
+      <div class="embed-layout">
+        <div class="embed-steps">
+          <div class="embed-step">
+            <span class="step-num">1</span>
+            <div>
+              <strong>Elige la simulación</strong>
+              <p>Selecciona en el desplegable la simulación que quieres incrustar en tu aula virtual.</p>
+            </div>
+          </div>
+          <div class="embed-step">
+            <span class="step-num">2</span>
+            <div>
+              <strong>Ajusta el tamaño</strong>
+              <p>Elige entre tamaño compacto, estándar o pantalla completa según el espacio disponible.</p>
+            </div>
+          </div>
+          <div class="embed-step">
+            <span class="step-num">3</span>
+            <div>
+              <strong>Copia y pega</strong>
+              <p>Haz clic en "Copiar código", ve a tu plataforma y pega el código en el editor HTML.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="embed-builder">
+          <div class="embed-controls">
+            <div class="form-group">
+              <label for="embedSim">Simulación</label>
+              <select id="embedSim" onchange="updateEmbed()">
+                <option value="simulacion-arquimedes">Principio de Arquímedes</option>
+                <option value="simulacion-densidad">Densidad</option>
+                <option value="simulacion-espectros">Espectros Atómicos</option>
+                <option value="simulacion-gases">Cinética de Gases</option>
+                <option value="simulacion-modelos">Modelos Atómicos</option>
+                <option value="simulacion-velocidad-reaccion">Velocidad de Reacción</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="embedSize">Tamaño</label>
+              <select id="embedSize" onchange="updateEmbed()">
+                <option value="compact">Compacto (560×400 px)</option>
+                <option value="standard" selected>Estándar (800×600 px)</option>
+                <option value="wide">Ancho (100% × 650 px)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="embed-preview-label">Vista previa del código</div>
+          <div class="code-block">
+            <pre id="embedCode" class="code-pre"></pre>
+            <button class="copy-btn" id="copyBtn" onclick="copyEmbed()">Copiar código</button>
+          </div>
+
+          <p class="embed-note">⚠ Para incrustar en Moodle activa "Permitir iframe" en la configuración del recurso de texto HTML. En Google Sites usa "Insertar → Insertar código HTML".</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUÉ -->
+  <section class="section" id="porque">
+    <div class="container">
+      <div class="section-header">
+        <h2>Diseñadas para el aula real</h2>
+        <p>Cada simulación parte de los objetivos curriculares de Física y Química de Secundaria y Bachillerato.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">📱</div>
+          <h3>Multidispositivo</h3>
+          <p>Funcionan en ordenador, tablet y móvil sin necesidad de instalar nada.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🎛</div>
+          <h3>Interactivas</h3>
+          <p>Controles deslizantes y retroalimentación visual inmediata para aprendizaje activo.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔓</div>
+          <h3>Código abierto</h3>
+          <p>Todo el código fuente está disponible para adaptarlo a tus necesidades.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🧩</div>
+          <h3>Fácil de incrustar</h3>
+          <p>Un solo fragmento de código para integrarlas en cualquier LMS o web escolar.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Sin dependencias</h3>
+          <p>HTML, CSS y JavaScript puro. Sin frameworks, sin cookies, sin rastreo.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">📐</div>
+          <h3>Rigor científico</h3>
+          <p>Basadas en los modelos físicos y químicos del currículo oficial español.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="section section-alt" id="contacto">
+    <div class="container container-narrow">
+      <div class="section-header">
+        <h2>Contacto</h2>
+        <p>¿Tienes alguna sugerencia, propuesta de nueva simulación o has encontrado un error? Escríbeme.</p>
+      </div>
+      <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cNombre">Nombre</label>
+            <input type="text" id="cNombre" name="nombre" placeholder="Tu nombre" required />
+          </div>
+          <div class="form-group">
+            <label for="cEmail">Correo electrónico</label>
+            <input type="email" id="cEmail" name="email" placeholder="tu@centro.es" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="cAsunto">Asunto</label>
+          <select id="cAsunto" name="asunto">
+            <option value="">— Selecciona un asunto —</option>
+            <option value="error">He encontrado un error</option>
+            <option value="sugerencia">Sugerencia de mejora</option>
+            <option value="nueva">Propuesta de nueva simulación</option>
+            <option value="embed">Ayuda para incrustar</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cMensaje">Mensaje</label>
+          <textarea id="cMensaje" name="mensaje" rows="5" placeholder="Cuéntame..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Enviar mensaje</button>
+        <div class="form-success" id="formSuccess">
+          ✓ Mensaje enviado. Te responderé en cuanto pueda.
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <span class="logo-icon">⚗</span>
+          <strong>SimuLab</strong>
+          <p>Simulaciones interactivas para la enseñanza de Física y Química.</p>
+        </div>
+        <div class="footer-links">
+          <span>Secciones</span>
+          <a href="#simulaciones">Simulaciones</a>
+          <a href="#incrustar">Incrustar</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <div class="footer-links">
+          <span>Simulaciones</span>
+          <a href="simulacion-arquimedes/index.html" target="_blank">Arquímedes</a>
+          <a href="simulacion-densidad/index.html" target="_blank">Densidad</a>
+          <a href="simulacion-gases/index.html" target="_blank">Gases</a>
+          <a href="simulacion-espectros/index.html" target="_blank">Espectros</a>
+          <a href="simulacion-modelos/index.html" target="_blank">Modelos Atómicos</a>
+          <a href="simulacion-velocidad-reaccion/index.html" target="_blank">Velocidad de Reacción</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Hecho con cuidado para docentes. Uso libre para fines educativos.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL EMBED -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 class="modal-title" id="modalTitle">Código embed</h3>
+      <p class="modal-sub">Copia este código y pégalo en el editor HTML de tu plataforma educativa.</p>
+      <div class="code-block">
+        <pre id="modalCode" class="code-pre"></pre>
+        <button class="copy-btn" id="modalCopyBtn" onclick="copyModalEmbed()">Copiar código</button>
+      </div>
+      <div class="modal-sizes">
+        <span>Tamaño:</span>
+        <button class="size-btn active" onclick="setModalSize('compact',this)">Compacto</button>
+        <button class="size-btn" onclick="setModalSize('standard',this)">Estándar</button>
+        <button class="size-btn" onclick="setModalSize('wide',this)">Ancho</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

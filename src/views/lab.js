@@ -56,14 +56,25 @@ export function renderLab(root, sim) {
   const copyBtn = root.querySelector('#lab-copy');
   const copyLabel = root.querySelector('#lab-copy-label');
 
-  // --- Escalado dinámico proporcional ---
-  // El contenido externo es rígido (≈1270px). Si la zona útil es más estrecha,
-  // reducimos con transform: scale() para encuadrarlo sin scroll horizontal ni
-  // recortes. Nunca ampliamos por encima de 1:1 (factor máximo = 1).
+  // --- Ajuste del iframe ---
+  // Dos estrategias según el tipo de simulación:
+  //  · responsive: la simulación adapta su propio layout (panel/lienzo) a
+  //    cualquier ancho. La dejamos ocupar el 100% y NO la escalamos: así su
+  //    diseño móvil/tablet funciona como en su web original.
+  //  · rígida (~1270px): no se adapta, así que la escalamos proporcionalmente
+  //    con transform: scale() para encuadrarla entera, sin scroll horizontal ni
+  //    recortes. Nunca ampliamos por encima de 1:1 (factor máximo = 1).
   function fit() {
     const availW = stage.clientWidth;
     const availH = stage.clientHeight;
     if (!availW || !availH) return;
+
+    if (sim.responsive !== false) {
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.transform = 'none';
+      return;
+    }
 
     const factor = Math.min(1, availW / BASE_WIDTH);
     iframe.style.width = `${BASE_WIDTH}px`;

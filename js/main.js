@@ -1,13 +1,11 @@
 /* ===== CONFIG ===== */
-const BASE_URL = ''; // Set to full URL when hosted, e.g. 'https://username.github.io/simulab'
-
 const SIMULATIONS = {
-  'arquimedes':          { folder: 'simulacion-arquimedes',          name: 'Principio de Arquímedes' },
-  'densidad':            { folder: 'simulacion-densidad',            name: 'Densidad' },
-  'espectros':           { folder: 'simulacion-espectros',           name: 'Espectros Atómicos' },
-  'gases':               { folder: 'simulacion-gases',               name: 'Cinética de Gases' },
-  'modelos':             { folder: 'simulacion-modelos',             name: 'Modelos Atómicos (Rutherford/Thomson)' },
-  'velocidad-reaccion':  { folder: 'simulacion-velocidad-reaccion',  name: 'Velocidad de Reacción' },
+  'arquimedes':         { url: 'https://jrgrijota.github.io/simulacion-arquimedes',         name: 'Principio de Arquímedes' },
+  'densidad':           { url: 'https://jrgrijota.github.io/simulacion-densidad',           name: 'Densidad' },
+  'espectros':          { url: 'https://jrgrijota.github.io/simulacion-espectros',          name: 'Espectros Atómicos' },
+  'gases':              { url: 'https://jrgrijota.github.io/simulacion-gases',              name: 'Cinética de Gases' },
+  'modelos':            { url: 'https://jrgrijota.github.io/simulacion-modelos',            name: 'Modelos Atómicos (Rutherford/Thomson)' },
+  'velocidad-reaccion': { url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion', name: 'Velocidad de Reacción' },
 };
 
 const SIZES = {
@@ -17,19 +15,19 @@ const SIZES = {
 };
 
 /* ===== EMBED BUILDER (section) ===== */
-function buildIframeCode(folder, size) {
-  const base = BASE_URL || window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '');
-  const src  = `${base}/${folder}/index.html`;
+function buildIframeCode(key, size) {
+  const sim  = SIMULATIONS[key];
+  const src  = sim ? sim.url : key;
+  const name = sim ? sim.name : key;
   const { width, height } = SIZES[size];
   const wAttr = width === '100%' ? 'width="100%"' : `width="${width}"`;
-  return `<iframe\n  src="${src}"\n  ${wAttr}\n  height="${height}"\n  frameborder="0"\n  allowfullscreen\n  title="${SIMULATIONS[Object.keys(SIMULATIONS).find(k => SIMULATIONS[k].folder === folder)]?.name || folder}"\n  loading="lazy"\n  style="border-radius:8px; max-width:100%;">\n</iframe>`;
+  return `<iframe\n  src="${src}"\n  ${wAttr}\n  height="${height}"\n  frameborder="0"\n  allowfullscreen\n  title="${name}"\n  loading="lazy"\n  style="border-radius:8px; max-width:100%;">\n</iframe>`;
 }
 
 function updateEmbed() {
-  const sim  = document.getElementById('embedSim').value;
+  const key  = document.getElementById('embedSim').value;
   const size = document.getElementById('embedSize').value;
-  const code = buildIframeCode(sim, size);
-  document.getElementById('embedCode').textContent = code;
+  document.getElementById('embedCode').textContent = buildIframeCode(key, size);
 }
 
 function copyEmbed() {

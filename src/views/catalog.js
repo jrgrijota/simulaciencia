@@ -1,6 +1,6 @@
 import { simulations, allTags } from '../data/simulations.js';
 import { cardMarkup } from '../components/card.js';
-import { navigateToSim } from '../router.js';
+import { navigateToSim, navigateToAbout } from '../router.js';
 
 const FILTER_BASE =
   'filter-btn rounded-md border px-3 py-1.5 text-sm font-medium transition-colors';
@@ -24,6 +24,10 @@ export function renderCatalog(root) {
           <span class="text-[#0284c7]">⚗</span> SimulaCiencia
         </span>
         <span class="hidden text-sm text-[#64748b] sm:inline">· Simulaciones de Física y Química</span>
+        <button id="nav-about" class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
+          <i data-lucide="info" class="h-4 w-4"></i>
+          <span class="hidden sm:inline">Sobre el proyecto</span>
+        </button>
       </div>
     </header>
 
@@ -97,6 +101,8 @@ export function renderCatalog(root) {
     if (!btn) return;
     navigateToSim(btn.dataset.open);
   });
+
+  root.querySelector('#nav-about').addEventListener('click', navigateToAbout);
 
   // El catálogo no instala listeners globales: nada que limpiar.
   return null;

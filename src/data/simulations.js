@@ -61,6 +61,33 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion/',
     responsive: false,
   },
+  {
+    id: 'sim-atomo-real',
+    title: 'El Átomo a Escala',
+    description:
+      'Viaje de zoom ×10 desde el átomo completo hasta su núcleo: hace tangible lo pequeño que es el núcleo frente al tamaño real del átomo.',
+    tags: ['Física', 'Química', 'Bachillerato'],
+    url: 'https://jrgrijota.github.io/simulacion-atomo-real/',
+    responsive: true,
+  },
+  {
+    id: 'sim-enlaces-quimicos',
+    title: 'Enlaces Químicos',
+    description:
+      'Enlace iónico, covalente y metálico sobre el modelo de Bohr: observa cómo los átomos ganan, comparten o deslocalizan electrones al enlazarse.',
+    tags: ['Química', 'ESO', 'Bachillerato'],
+    url: 'https://jrgrijota.github.io/simulacion-enlaces-quimicos/',
+    responsive: true,
+  },
+  {
+    id: 'sim-orbitas',
+    title: 'Órbitas y Gravitación',
+    description:
+      'Mecánica orbital con la bala de cañón de Newton, el Sistema Solar, las leyes de Kepler y las estrellas binarias en un mismo laboratorio.',
+    tags: ['Física', 'Bachillerato'],
+    url: 'https://jrgrijota.github.io/simulacion-orbitas/',
+    responsive: true,
+  },
 ];
 
 // Lista ordenada y única de etiquetas presentes en el catálogo (para los filtros).

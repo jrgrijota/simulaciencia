@@ -88,6 +88,15 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-orbitas/',
     responsive: true,
   },
+  {
+    id: 'sim-cambios-estado',
+    title: 'Cambios de Estado',
+    description:
+      'Calienta y enfría una sustancia y observa a la vez el recipiente, sus partículas y la curva de calentamiento; explora con el diagrama de fases por qué el agua hierve a 70 °C en el Everest.',
+    tags: ['Física', 'Química', 'ESO'],
+    url: 'https://jrgrijota.github.io/simulacion-cambios-estado/',
+    responsive: true,
+  },
 ];
 
 // Lista ordenada y única de etiquetas presentes en el catálogo (para los filtros).

@@ -1,5 +1,6 @@
 import { simulations, allTags } from '../data/simulations.js';
 import { cardMarkup } from '../components/card.js';
+import { footerMarkup } from '../components/footer.js';
 import { navigateToSim } from '../router.js';
 
 const FILTER_BASE =
@@ -51,15 +52,7 @@ export function renderCatalog(root) {
         <p class="text-sm">No hay simulaciones que coincidan con tu búsqueda.</p>
       </div>
     </main>
-
-    <footer data-print-hide class="border-t border-[#e2e8f0]">
-      <div class="mx-auto max-w-6xl px-4 py-6 text-center text-xs text-[#64748b]">
-        © 2026 Juan Ramón Grijota · Código bajo licencia
-        <a href="https://opensource.org/license/mit" target="_blank" rel="noopener" class="underline hover:text-[#0284c7]">MIT</a>
-        · Contenido bajo
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener license" class="underline hover:text-[#0284c7]">CC BY-SA 4.0</a>
-      </div>
-    </footer>
+    ${footerMarkup()}
   </div>`;
 
   const grid = root.querySelector('#grid');

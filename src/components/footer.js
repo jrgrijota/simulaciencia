@@ -8,6 +8,7 @@ export function footerMarkup() {
         <a href="https://opensource.org/license/mit" target="_blank" rel="noopener" class="${LINK}">MIT</a>
         · Contenido bajo
         <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener license" class="${LINK}">CC BY-SA 4.0</a>
+        · <a href="?page=about" class="${LINK}">Sobre el proyecto</a>
         · <a href="?page=legal" class="${LINK}">Aviso legal y privacidad</a>
       </div>
     </footer>`;

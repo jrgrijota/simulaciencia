@@ -1,4 +1,5 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
+import { copyText, flashCopied } from '../components/copy.js';
 
 function buildEmbedCode(sim) {
   const url = sim.url;
@@ -73,37 +74,6 @@ function createShareModal(sim) {
       </div>
     </div>`;
   return el;
-}
-
-async function copyText(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;opacity:0';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    ta.remove();
-  }
-}
-
-function flashCopied(btn) {
-  const label = btn.querySelector('.copy-label');
-  const icon = btn.querySelector('[data-lucide]');
-  label.textContent = '¡Copiado!';
-  icon.setAttribute('data-lucide', 'check');
-  if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
-  btn.classList.replace('bg-[#0284c7]', 'bg-[#16a34a]');
-  btn.classList.replace('hover:bg-[#0369a1]', 'hover:bg-[#15803d]');
-  setTimeout(() => {
-    label.textContent = 'Copiar';
-    icon.setAttribute('data-lucide', 'copy');
-    if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
-    btn.classList.replace('bg-[#16a34a]', 'bg-[#0284c7]');
-    btn.classList.replace('hover:bg-[#15803d]', 'hover:bg-[#0369a1]');
-  }, 2000);
 }
 
 // Ancho de diseño base de las simulaciones: panel de control (370px) + lienzo

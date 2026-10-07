@@ -10,9 +10,14 @@ import {
   SearchX,
   ArrowLeft,
   Copy,
+  Check,
   FlaskConical,
   Maximize,
   Minimize,
+  Share2,
+  Mail,
+  X,
+  Info,
 } from 'lucide';
 
 import { getRoute, onRouteChange } from './router.js';
@@ -20,9 +25,13 @@ import { getSimulationById } from './data/simulations.js';
 import { renderCatalog } from './views/catalog.js';
 import { renderLab } from './views/lab.js';
 import { renderLegal } from './views/legal.js';
+import { renderAbout } from './views/about.js';
 
 const app = document.getElementById('app');
-const ICONS = { Search, SearchX, ArrowLeft, Copy, FlaskConical, Maximize, Minimize };
+const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize, Minimize, Share2, Mail, X, Info };
+
+// Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
+window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };
 
 let cleanup = null;
 
@@ -35,8 +44,9 @@ function render() {
   const { simId, page } = getRoute();
   const sim = simId ? getSimulationById(simId) : null;
 
-  // ?sim inválido => degradamos al catálogo de forma silenciosa.
+  // ?sim o ?page inválidos => degradamos al catálogo de forma silenciosa.
   if (sim) cleanup = renderLab(app, sim);
+  else if (page === 'about') cleanup = renderAbout(app);
   else if (page === 'legal') cleanup = renderLegal(app);
   else cleanup = renderCatalog(app);
 

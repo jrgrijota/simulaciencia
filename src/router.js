@@ -1,7 +1,10 @@
-// Enrutado por query param: ?sim=<id> activa el Modo Laboratorio.
-// Sin parámetro => Catálogo. Permite enlaces profundos compartibles.
+// Enrutado por query param:
+//   ?sim=<id>     => Modo Laboratorio
+//   ?page=about   => Página "Sobre el proyecto"
+//   ?page=legal   => Aviso legal y privacidad
+//   (sin param)   => Catálogo
+// Permite enlaces profundos compartibles.
 const SIM_PARAM = 'sim';
-// ?page=legal => Aviso legal y privacidad.
 const PAGE_PARAM = 'page';
 
 export function getRoute() {
@@ -24,6 +27,13 @@ export function navigateToSim(id) {
 export function navigateToCatalog() {
   const url = new URL(window.location.href);
   url.searchParams.delete(SIM_PARAM);
+  url.searchParams.delete(PAGE_PARAM);
+  pushAndNotify(url);
+}
+
+export function navigateToPage(name) {
+  const url = new URL(window.location.origin + window.location.pathname);
+  url.searchParams.set(PAGE_PARAM, name);
   pushAndNotify(url);
 }
 

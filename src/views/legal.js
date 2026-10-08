@@ -89,7 +89,7 @@ export function renderLegal(root) {
       </p>
       <ul class="mb-3 list-disc space-y-1 pl-5 leading-relaxed">
         <li>El sitio y las simulaciones se alojan en GitHub Pages (GitHub, Inc.). ${ext('https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement', 'Declaración de privacidad de GitHub')}.</li>
-        <li>Las simulaciones cargan la biblioteca p5.js desde cdnjs (Cloudflare, Inc.). ${ext('https://www.cloudflare.com/es-es/privacypolicy/', 'Política de privacidad de Cloudflare')}.</li>
+        <li>El contador de visitas se descarga desde los servidores de GoatCounter, descritos en el párrafo anterior.</li>
       </ul>
       <p class="${P}">
         Si escribes a la dirección de contacto, tu correo se usará solo para responderte y no se

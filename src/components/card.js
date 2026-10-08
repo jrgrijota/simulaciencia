@@ -1,10 +1,22 @@
 // Tarjeta de simulación: todo el contenido visible de un vistazo,
 // sin efectos hover que oculten datos.
+import { hasGuide } from '../data/guides.js';
+
 const TAG_CLASS =
   'inline-flex items-center rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-2 py-0.5 text-xs font-medium text-[#64748b]';
 
 export function cardMarkup(sim) {
   const haystack = `${sim.title} ${sim.description} ${sim.tags.join(' ')}`.toLowerCase();
+  const guideButton = hasGuide(sim.id)
+    ? `
+    <button
+      data-guide="${sim.id}"
+      class="mt-2 inline-flex items-center justify-center gap-2 rounded-md border border-[#e2e8f0] bg-white px-4 py-2 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]"
+    >
+      <i data-lucide="book-open" class="h-4 w-4"></i>
+      Guía docente
+    </button>`
+    : '';
   const tags = sim.tags.map((t) => `<span class="${TAG_CLASS}">${t}</span>`).join('');
 
   return `
@@ -22,6 +34,6 @@ export function cardMarkup(sim) {
     >
       <i data-lucide="flask-conical" class="h-4 w-4"></i>
       Abrir laboratorio
-    </button>
+    </button>${guideButton}
   </article>`;
 }

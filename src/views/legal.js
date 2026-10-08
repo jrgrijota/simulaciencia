@@ -39,17 +39,20 @@ export function renderLegal(root) {
       <h2 class="${H2}">2. Objeto y uso</h2>
       <p class="${P}">
         El sitio ofrece de forma gratuita simulaciones interactivas de Física y Química pensadas
-        para el aula. Su uso no requiere registro. Quien lo utiliza se compromete a hacerlo de
+        para el aula y una guía docente de cada una, que se puede consultar en la web o descargar
+        en PDF, Word y LibreOffice. Su uso no requiere registro. Quien lo utiliza se compromete a hacerlo de
         forma lícita y a no dañar su funcionamiento.
       </p>
 
       <h2 class="${H2}">3. Propiedad intelectual y licencias</h2>
       <p class="${P}">
         El código fuente se distribuye bajo licencia ${ext('https://opensource.org/license/mit', 'MIT')}
-        y el contenido educativo (textos, explicaciones, imágenes y diseño didáctico) bajo
+        y el contenido educativo (textos, explicaciones, imágenes, diseño didáctico y guías docentes,
+        incluidas sus versiones descargables) bajo
         ${ext('https://creativecommons.org/licenses/by-sa/4.0/deed.es', 'Creative Commons Atribución-CompartirIgual 4.0')}.
         Puedes usarlo, adaptarlo y compartirlo, también en clase, citando la autoría
-        (Juan Ramón Grijota · SimulaCiencia) y compartiendo tus versiones con la misma licencia.
+        (Juan Ramón Grijota · SimulaCiencia) y compartiendo tus versiones con la misma licencia. Las
+        versiones editables de las guías están pensadas precisamente para que las adaptes a tu grupo.
       </p>
       <p class="${P}">
         Las bibliotecas de terceros mantienen sus propias licencias, entre ellas
@@ -63,6 +66,11 @@ export function renderLegal(root) {
         Las simulaciones son modelos con fines didácticos: simplifican la realidad y pueden
         contener errores. Se ofrecen «tal cual», sin garantía de ningún tipo. Si detectas un error,
         agradeceré que me lo comuniques en la dirección de contacto.
+      </p>
+      <p class="${P}">
+        Las guías docentes son orientaciones que cada docente puede adaptar a su grupo. Sus
+        referencias curriculares siguen la normativa LOMLOE vigente en la Comunidad de Madrid en el
+        momento de redactarlas y pueden quedar desactualizadas si esta cambia.
       </p>
       <p class="${P}">
         El sitio puede enlazar a páginas externas sobre cuyo contenido no tengo control ni
@@ -81,7 +89,8 @@ export function renderLegal(root) {
         respetuoso con la privacidad. No usa cookies ni guarda nada en tu dispositivo, no almacena
         tu dirección IP y no permite identificarte ni seguirte entre webs: solo registra datos
         agregados, como la página visitada, la web de procedencia, el navegador, el tamaño de
-        pantalla y el país. ${ext('https://www.goatcounter.com/help/privacy', 'Política de privacidad de GoatCounter')}.
+        pantalla y el país. También cuenta, del mismo modo anónimo, las descargas de las guías.
+        ${ext('https://www.goatcounter.com/help/privacy', 'Política de privacidad de GoatCounter')}.
       </p>
       <p class="${P}">
         Como cualquier web, al visitarla tu navegador se conecta a los servidores que la alojan,

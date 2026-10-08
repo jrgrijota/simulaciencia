@@ -82,6 +82,12 @@ export function renderAbout(root) {
             pretenden ser un software de precisión científica ni sustituir al laboratorio, sino ofrecer
             un apoyo visual e intuitivo para el aula.
           </p>
+          <p>
+            Para que puedas usarlas con seguridad, cada simulación tiene su <strong>guía docente</strong>:
+            en qué cursos encaja, qué saberes básicos trabaja, una secuencia para explicarla en clase,
+            las ideas previas que ayuda a corregir y las simplificaciones que conviene conocer. Puedes
+            leerla en la web o descargarla en PDF, Word o LibreOffice para adaptarla a tu grupo.
+          </p>
         </div>
       </section>
 

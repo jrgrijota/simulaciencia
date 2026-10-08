@@ -18,6 +18,8 @@ import {
   Mail,
   X,
   Info,
+  Download,
+  BookOpen,
 } from 'lucide';
 
 import { getRoute, onRouteChange } from './router.js';
@@ -26,9 +28,11 @@ import { renderCatalog } from './views/catalog.js';
 import { renderLab } from './views/lab.js';
 import { renderLegal } from './views/legal.js';
 import { renderAbout } from './views/about.js';
+import { renderGuide } from './views/guide.js';
+import { hasGuide } from './data/guides.js';
 
 const app = document.getElementById('app');
-const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize, Minimize, Share2, Mail, X, Info };
+const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen };
 
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };
@@ -43,7 +47,14 @@ const PAGE_TITLES = {
   legal: `Aviso legal y privacidad · ${SITE}`,
 };
 
-function updateHead(sim, page) {
+function updateHead(sim, guideSim, page) {
+  if (guideSim) {
+    document.title = `Guía docente: ${guideSim.title} · ${SITE}`;
+    metaDescription.content =
+      `Guía para usar en clase la simulación «${guideSim.title}»: cursos y saberes básicos, secuencia de ` +
+      'explicación, concepciones alternativas y simplificaciones. Descarga en PDF, Word y LibreOffice.';
+    return;
+  }
   document.title = sim ? `${sim.title} · Simulación interactiva · ${SITE}` : PAGE_TITLES[page] || DEFAULT_TITLE;
   metaDescription.content = sim ? sim.description : DEFAULT_DESCRIPTION;
 }
@@ -66,16 +77,19 @@ function render() {
     cleanup = null;
   }
 
-  const { simId, page } = getRoute();
+  const { simId, guideId, page } = getRoute();
   const sim = simId ? getSimulationById(simId) : null;
+  const guideSim = !sim && guideId && hasGuide(guideId) ? getSimulationById(guideId) : null;
 
-  // ?sim o ?page inválidos => degradamos al catálogo de forma silenciosa.
+  // ?sim, ?guia o ?page inválidos => degradamos al catálogo de forma silenciosa.
   if (sim) cleanup = renderLab(app, sim);
+  else if (guideSim) cleanup = renderGuide(app, guideSim);
   else if (page === 'about') cleanup = renderAbout(app);
   else if (page === 'legal') cleanup = renderLegal(app);
   else cleanup = renderCatalog(app);
 
-  updateHead(sim, sim ? null : page);
+  updateHead(sim, guideSim, sim || guideSim ? null : page);
+  window.scrollTo(0, 0);
   trackPageview();
 
   // Sustituye los <i data-lucide> por sus SVG tras inyectar el HTML.

@@ -1,11 +1,13 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
+import { readdirSync } from 'node:fs';
 import { simulations } from './src/data/simulations.js';
+import { guideIdFromFile } from './src/guides/shared.js';
 
 const SITE_URL = 'https://simulaciencia.es/';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
-// simulaciones nuevas aparezcan en Google sin mantener el archivo a mano.
+// simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
 function sitemap() {
   return {
     name: 'sitemap',
@@ -13,6 +15,9 @@ function sitemap() {
       const urls = [
         SITE_URL,
         ...simulations.map((s) => `${SITE_URL}?sim=${s.id}`),
+        ...readdirSync('guias')
+          .filter((f) => f.endsWith('.md'))
+          .map((f) => `${SITE_URL}?guia=${guideIdFromFile(f)}`),
         `${SITE_URL}?page=about`,
         `${SITE_URL}?page=legal`,
       ];

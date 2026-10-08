@@ -1,7 +1,7 @@
 import { simulations, allTags } from '../data/simulations.js';
 import { cardMarkup } from '../components/card.js';
 import { footerMarkup } from '../components/footer.js';
-import { navigateToSim, navigateToPage } from '../router.js';
+import { navigateToSim, navigateToGuide, navigateToPage } from '../router.js';
 
 const FILTER_BASE =
   'filter-btn rounded-md border px-3 py-1.5 text-sm font-medium transition-colors';
@@ -99,6 +99,8 @@ export function renderCatalog(root) {
   });
 
   grid.addEventListener('click', (e) => {
+    const guide = e.target.closest('[data-guide]');
+    if (guide) return navigateToGuide(guide.dataset.guide);
     const btn = e.target.closest('[data-open]');
     if (!btn) return;
     navigateToSim(btn.dataset.open);

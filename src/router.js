@@ -6,10 +6,11 @@
 // Permite enlaces profundos compartibles.
 const SIM_PARAM = 'sim';
 const PAGE_PARAM = 'page';
+const GUIDE_PARAM = 'guia';
 
 export function getRoute() {
   const params = new URLSearchParams(window.location.search);
-  return { simId: params.get(SIM_PARAM), page: params.get(PAGE_PARAM) };
+  return { simId: params.get(SIM_PARAM), guideId: params.get(GUIDE_PARAM), page: params.get(PAGE_PARAM) };
 }
 
 function pushAndNotify(url) {
@@ -19,8 +20,14 @@ function pushAndNotify(url) {
 }
 
 export function navigateToSim(id) {
-  const url = new URL(window.location.href);
+  const url = new URL(window.location.origin + window.location.pathname);
   url.searchParams.set(SIM_PARAM, id);
+  pushAndNotify(url);
+}
+
+export function navigateToGuide(id) {
+  const url = new URL(window.location.origin + window.location.pathname);
+  url.searchParams.set(GUIDE_PARAM, id);
   pushAndNotify(url);
 }
 

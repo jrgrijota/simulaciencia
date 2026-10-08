@@ -34,6 +34,10 @@ proyecto en [Sobre el proyecto](https://simulaciencia.es/?page=about).
 - **Insertarla en tu aula virtual:** el botón *Compartir* de cada simulación da el código
   `<iframe>` listo para pegar.
 - **Pantalla completa** para proyectar, y una versión imprimible con `Ctrl + P`.
+- **Guía docente:** cada simulación tiene la suya, con los cursos y saberes básicos que trabaja,
+  una secuencia para explicarla en clase, las concepciones alternativas que ayuda a corregir y
+  sus simplificaciones. Se lee en la web (por ejemplo,
+  `https://simulaciencia.es/?guia=sim-densidad`) o se descarga en PDF, Word o LibreOffice.
 
 Las simulaciones simplifican la física para que se entienda lo importante. No sustituyen al
 laboratorio ni pretenden ser software de precisión científica.
@@ -65,10 +69,19 @@ Pages y el portal la carga en un `<iframe>`.
 ```bash
 npm install
 npm run dev      # servidor de desarrollo
-npm run build    # genera dist/ (incluye sitemap.xml)
+npm run build    # genera dist/ (incluye sitemap.xml y las descargas de las guías)
 ```
+
+Para generar las descargas de las guías en local hacen falta Chrome (o Edge) y
+[Pandoc](https://pandoc.org) 3.12.1. Si no se encuentran, el build avisa y se salta esos formatos;
+sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
 
 - **Catálogo:** [`src/data/simulations.js`](src/data/simulations.js) es la única fuente de verdad.
   Para añadir una simulación basta con añadir una entrada; el sitemap se regenera solo.
-- **Rutas:** `?sim=<id>` abre una simulación, `?page=about` y `?page=legal` las páginas fijas.
+- **Guías docentes:** cada archivo `guias/<nombre>.md` es la guía de la simulación `sim-<nombre>`.
+  Al añadir o sustituir uno, el build crea su página, el botón «Guía docente», la entrada del
+  sitemap y las descargas (`scripts/build-guides.mjs`). Los enlaces a `jrgrijota.github.io` se
+  reescriben solos a simulaciencia.es.
+- **Rutas:** `?sim=<id>` abre una simulación, `?guia=<id>` su guía docente, `?page=about` y
+  `?page=legal` las páginas fijas.
 - **Despliegue:** cada push a `main` publica la web en simulaciencia.es mediante GitHub Actions.

@@ -75,8 +75,9 @@ export function renderLegal(root) {
         <strong>no usa cookies</strong> ni publicidad, y no rastrea a sus visitantes.
       </p>
       <p class="${P}">
-        Para saber qué simulaciones resultan útiles, el portal cuenta las visitas de forma anónima
-        con ${ext('https://www.goatcounter.com', 'GoatCounter')}, un servicio de estadísticas
+        Para saber qué simulaciones resultan útiles, el portal y las propias simulaciones (también
+        cuando están incrustadas en otras webs, como un aula virtual) cuentan las visitas de forma
+        anónima con ${ext('https://www.goatcounter.com', 'GoatCounter')}, un servicio de estadísticas
         respetuoso con la privacidad. No usa cookies ni guarda nada en tu dispositivo, no almacena
         tu dirección IP y no permite identificarte ni seguirte entre webs: solo registra datos
         agregados, como la página visitada, la web de procedencia, el navegador, el tamaño de

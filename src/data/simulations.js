@@ -30,7 +30,7 @@ export const simulations = [
     title: 'Espectros Atómicos',
     description:
       'Visualización e interacción con los espectros de emisión y absorción de diferentes elementos químicos y sus transiciones electrónicas.',
-    tags: ['Química', 'Física Cuántica', 'Bachillerato'],
+    tags: ['Química', 'Física Cuántica', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-espectros/',
     responsive: true,
   },
@@ -39,7 +39,7 @@ export const simulations = [
     title: 'Cinética de Gases',
     description:
       'Modelo de partículas en movimiento que relaciona presión, temperatura y volumen según la teoría cinético-molecular.',
-    tags: ['Física', 'Bachillerato'],
+    tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-gases/',
     responsive: true,
   },
@@ -48,7 +48,7 @@ export const simulations = [
     title: 'Modelos Atómicos',
     description:
       'Experimento de dispersión de Rutherford frente al modelo de Thomson: cómo una observación obligó a reescribir el modelo del átomo.',
-    tags: ['Física', 'Química', 'Bachillerato'],
+    tags: ['Física', 'Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-modelos/',
     responsive: true,
   },
@@ -57,7 +57,7 @@ export const simulations = [
     title: 'Velocidad de Reacción',
     description:
       'Cómo afectan temperatura, concentración y catalizador a las colisiones moleculares y a la rapidez de una reacción química.',
-    tags: ['Química', 'Bachillerato'],
+    tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion/',
     responsive: true,
   },
@@ -66,7 +66,7 @@ export const simulations = [
     title: 'El Átomo a Escala',
     description:
       'Viaje de zoom ×10 desde el átomo completo hasta su núcleo: hace tangible lo pequeño que es el núcleo frente al tamaño real del átomo.',
-    tags: ['Física', 'Química', 'Bachillerato'],
+    tags: ['Física', 'Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-atomo-real/',
     responsive: true,
   },
@@ -84,7 +84,7 @@ export const simulations = [
     title: 'Órbitas y Gravitación',
     description:
       'Mecánica orbital con la bala de cañón de Newton, el Sistema Solar, las leyes de Kepler y las estrellas binarias en un mismo laboratorio.',
-    tags: ['Física', 'Bachillerato'],
+    tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-orbitas/',
     responsive: true,
   },

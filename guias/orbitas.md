@@ -10,7 +10,7 @@ La simulación reúne cuatro escenarios de mecánica orbital: la bala de cañón
 | Cursos | 2.º Bachillerato Física (uso principal), 1.º Bachillerato, 4.º ESO, 3.º ESO |
 | Materia | Física y Química; Física de 2.º Bachillerato |
 | Duración orientativa | 15–20 minutos de explicación con la simulación proyectada |
-| Material | Proyector o pizarra digital; funciona en navegador sin instalar nada. Está pensada para pantalla ancha: el panel lateral mide 296 px fijos |
+| Material | Proyector o pizarra digital; funciona en navegador, también en móvil y tableta, sin instalar nada. En pantallas estrechas el lienzo pasa arriba y los controles debajo; para explicar es mejor una pantalla grande |
 | Conocimientos previos | Velocidad y fuerza; peso como atracción de la Tierra. En Bachillerato, vectores y energía mecánica |
 | Accesibilidad | Solo tema oscuro. En el modo de Newton hay atajos de teclado: Enter dispara, Espacio pausa y R reinicia |
 
@@ -92,7 +92,7 @@ En 3.º ESO la simulación introduce la gravitación universal. En 4.º ESO trab
 1. Bala de Cañón con «Vc» (6,90 km/s). El panel da ε = −23,7 km²/s², casi −GM/2r = −23,8 km²/s². Reiniciar con 8,05 km/s: ε = −15,1 km²/s² y a = −GM/2ε ≈ 13 200 km. Es la media de las distancias al centro en perigeo y apogeo.
 2. Buscar el umbral de escape. Con 9,66 km/s, ε = −0,8 km²/s²: el panel indica «Órbita elíptica» con apogeo de unos 464 000 km. Con 9,78 km/s, ε = +0,3 km²/s² y la bala escapa.
 3. Modo Leyes de Kepler, «1ª Ley». Mover la excentricidad de 0,00 a 0,90. El Sol queda en un foco, el otro foco está vacío. Perihelio a(1 − e) y afelio a(1 + e).
-4. «2ª Ley» con e = 0,90 a 1×. El cuerpo pasa por el perihelio 19 veces más rápido que por el afelio, porque r·v se conserva: (1 + e)/(1 − e) = 19. No usar el sombreado amarillo para esta ley.
+4. «2ª Ley» con e = 0,90 a 1×. El cuerpo pasa por el perihelio 19 veces más rápido que por el afelio, porque r·v se conserva: (1 + e)/(1 − e) = 19. El sector amarillo es el área barrida en el último instante: estrecho y largo en el afelio, ancho y corto en el perihelio, con la misma área.
 5. «3ª Ley» y mover a de 0,40 a 1,30. T pasa de 1,590 a 9,313, pero T²/a³ se queda en 39,48 = 4π²/GM, con GM = 1. Cambiar e: el período no varía.
 6. Estrellas Binarias con los valores iniciales. Las estrellas giran en radios 0,53 y 1,07, en razón inversa a sus masas. Abajo se lee Ec = 0,625, Ep = −1,250 y E = −0,625. En órbita circular Ec = −E = −Ep/2.
 
@@ -115,11 +115,11 @@ La simulación ataca sobre todo la idea de que en órbita no hay gravedad y la i
 La simulación prioriza que se vean las ideas clave y para ello comprime escalas y usa unidades normalizadas. Conviene conocer estas licencias para no reforzar ideas incorrectas sin querer.
 
 1. **Una montaña de 2017 km.** La Tierra mide 120 px a 53,1 km/px y la montaña 38 px. Así la bala sale a 8388 km del centro. No hay atmósfera, rozamiento ni rotación terrestre. Conviene decirlo: un cañón real a ras de suelo necesitaría unos 7,9 km/s.
-2. **La etiqueta del deslizador no siempre acierta.** Antes de disparar, clasifica con márgenes fijos: 0,97·Vc, 1,03·Vc y 0,99·Ve. Entre 6,44 y 6,67 km/s dice «Suborbital», pero la bala orbita. Con 9,66 km/s dice «Vel. de escape», pero la órbita es cerrada. Fiarse del panel «Estado Orbital» durante el vuelo.
+2. **«Órbita circular» con margen.** Antes de disparar, la etiqueta del deslizador dice «Suborbital» por debajo de la velocidad mínima que evita el choque (unos 6,40 km/s), «Vel. de escape» desde la velocidad de escape exacta y «Órbita circular» entre 0,97·Vc y 1,03·Vc, aunque esas órbitas son ligeramente elípticas. El panel «Estado Orbital» da la clasificación exacta durante el vuelo.
 3. **Tiempo acelerado.** A 1× cada segundo real son 1500 s de vuelo. La órbita circular de 127,9 min dura unos 5 s en pantalla.
-4. **Sistema Solar con distancias comprimidas.** Las órbitas son circulares y uniformes. Mercurio, Venus, Tierra y Marte tienen su semieje real. Júpiter, Saturno, Urano y Neptuno están a 3,20, 4,40, 5,50 y 6,50 AU, en vez de 5,20, 9,54, 19,19 y 30,07. Los períodos sí son reales.
-5. **T²/a³ falla en los planetas exteriores.** Por esa compresión, la lista da T²/a³ = 4,2926 para Júpiter y 98,8950 para Neptuno. Solo los cuatro interiores dan cerca de 1. Comprobar la tercera ley solo con ellos, o calcularla en la pizarra con los semiejes reales.
+4. **Sistema Solar con distancias comprimidas en el dibujo.** Las órbitas son circulares y uniformes. Mercurio, Venus, Tierra y Marte se dibujan a su distancia real; Júpiter, Saturno, Urano y Neptuno, a 3,20, 4,40, 5,50 y 6,50 UA en vez de 5,20, 9,54, 19,19 y 30,07, para que quepan. La tarjeta de Kepler lo avisa.
+5. **Los datos sí son reales.** La lista y la etiqueta del planeta usan el semieje y el período reales, así que T²/a³ da entre 0,999 y 1,001 para los ocho planetas. La tercera ley se puede comprobar con todos, pero no midiendo distancias en la pantalla.
 6. **Saltos a velocidades altas.** En el Sistema Solar, a 20× cada fotograma avanza 0,27 años. Mercurio da más de una vuelta por fotograma y parece moverse despacio o al revés. En Kepler con e = 0,90 conviene usar 1×, porque el cuerpo salta en el perihelio.
-7. **Kepler en unidades normalizadas.** GM vale 1, así que T²/a³ sale 39,48 (4π²), no 1 como con años y UA. El Sol está fijo, como si tuviera masa infinita. El sombreado de la «2ª Ley» está mal calculado y no muestra áreas iguales: usar la velocidad del cuerpo.
+7. **Kepler en unidades normalizadas.** GM vale 1, así que T²/a³ sale 39,48 (4π²), no 1 como con años y UA. El Sol está fijo, como si tuviera masa infinita. El sombreado de la «2ª Ley» es el área barrida en los últimos 40 fotogramas, la misma en toda la órbita; no se puede comparar con un sector de otra vuelta porque solo se ve el último.
 8. **Binarias solo circulares y sin unidades reales.** Cada cambio de deslizador reinicia una órbita circular; no hay binarias excéntricas. Las masas dicen M☉, pero G vale 1 y separación y energías no tienen unidades. El tamaño de las estrellas crece con la masa sin escala real.
 9. **La estrella ligera puede salirse.** Con separación 3,0 y masas 5,0 y 0,5 M☉, la ligera gira a 2,73 unidades del centro de masas. La pantalla solo muestra unas 2,27 unidades hacia cada lado. Para proyectar, reducir la separación o acercar las dos masas.

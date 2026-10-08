@@ -16,7 +16,7 @@ La simulación muestra que un átomo solo absorbe y emite fotones de energías c
 
 ## Cómo funciona la simulación
 
-La simulación tiene tres modos, «Fotones», «Colisión» y «Gas Ionizado», que se eligen arriba del panel izquierdo. Debajo, el desplegable «Elemento» ofrece hidrógeno (4 niveles), helio (3), sodio (3) y neón (5). En Fotones y Colisión se ve un átomo con sus órbitas rotuladas con su energía. A la derecha aparece un «Diagrama de niveles» en eV. En los tres modos, abajo está el «Espectro de emisión» de 380 a 780 nm. Debajo, otra barra recoge el UV (200–380 nm) y el IR (780–3000 nm).
+La simulación tiene tres modos, «Fotones», «Colisión» y «Gas Ionizado», que se eligen arriba del panel izquierdo. Debajo, el desplegable «Elemento» ofrece hidrógeno (4 niveles), helio (3), sodio (3) y neón (5). En Fotones y Colisión se ve un átomo con sus órbitas rotuladas con su energía. A la derecha aparece un «Diagrama de niveles» en eV. En los tres modos, abajo está el «Espectro de emisión» de 380 a 780 nm; en Fotones la franja se parte en dos y encima aparece el «Espectro de absorción». Debajo, otra barra recoge el UV (200–380 nm) y el IR (780–3000 nm).
 
 | Modo | Qué controla el docente | Qué muestra |
 | --- | --- | --- |
@@ -29,7 +29,7 @@ Cuatro elementos sostienen la explicación:
 
 - **El diagrama de niveles.** Muestra los niveles con su energía y todas las transiciones posibles. La transición que acaba de ocurrir se resalta, y un punto marca el nivel del electrón.
 - **El rótulo de estado.** Encima del átomo aparece, por ejemplo, «ABSORBE 486 nm» o «EMITE 656 nm» con los niveles de partida y llegada, coloreado con el color de la luz.
-- **El espectro de emisión.** Cada fotón emitido enciende su línea en la barra de 380–780 nm. Las líneas UV e IR van a la barra inferior. Las líneas se apagan poco a poco.
+- **Los espectros.** Cada fotón emitido enciende su línea en la barra de 380–780 nm. Las líneas UV e IR van a la barra inferior. En Fotones, cada fotón absorbido oscurece su raya en el espectro de absorción, un arcoíris situado justo encima, así que las rayas oscuras y las brillantes quedan alineadas. Las líneas se apagan poco a poco, salvo en pausa.
 - **El panel de energía accesible.** En Colisión, «Con 3.0 eV puedes alcanzar:» marca con ✓ o ✗ cada nivel y su energía necesaria.
 
 Los botones «Pausar» y «Limpiar» son comunes a los tres modos; «Limpiar» borra el espectro y los contadores. El desplegable «Transiciones del átomo» lista cada transición con su longitud de onda, su región (visible, UV o IR) y sus niveles. «Conceptos esenciales» resume E = h·f = h·c / λ y ΔE = E_sup − E_inf.
@@ -47,7 +47,7 @@ En 4.º ESO la simulación sirve para dar contenido al modelo de Bohr y a la luz
 **Secuencia de explicación (15–20 min).**
 
 1. Modo Fotones con hidrógeno, «Monocromática» a 550 nm y «Un fotón» (configuración inicial salvo la luz). Disparar con clic en la fuente. El fotón pasa de largo. Preguntar por qué el átomo no lo aprovecha.
-2. Subir la longitud de onda a 656 nm y disparar. El rótulo dice «ABSORBE 656 nm» y el electrón salta a la segunda órbita. En el diagrama, el salto es de 1,89 eV.
+2. Subir la longitud de onda a 656 nm y disparar. El rótulo dice «ABSORBE 656 nm (n=2 → n=3)» y el electrón salta a la órbita siguiente. En el diagrama, el salto es de 1,89 eV.
 3. Esperar unos 3–5 s: el átomo emite un fotón de 656 nm en cualquier dirección. La línea roja aparece en el espectro. Concluir que el átomo devuelve la energía como luz del mismo color.
 4. Repetir con 486 nm (2,55 eV) y 434 nm (2,86 eV). Señalar que la luz más azul o violeta corresponde a saltos mayores. A veces la bajada se hace en dos pasos: un fotón IR de 1879 nm y luego otro de 656 nm.
 5. Pasar a Gas Ionizado a 5,0 eV. Aparecen las tres líneas visibles del hidrógeno. Cambiar el elemento a sodio (línea amarilla de 589 nm, farolas antiguas) y a neón (rojos y naranjas de los letreros). Cada elemento da un espectro distinto.
@@ -64,8 +64,8 @@ En 4.º ESO la simulación sirve para dar contenido al modelo de Bohr y a la luz
 2. Poner 600 nm y disparar: 2,07 eV no corresponde a ningún salto y el fotón no se absorbe. Poner 486 nm: se absorbe y el electrón sube al nivel de 2,55 eV.
 3. Observar la desexcitación desde 2,55 eV. Si baja en dos pasos, emite 1879 nm (0,66 eV) y 656 nm (1,89 eV). Sumar: 0,66 + 1,89 = 2,55 eV. La energía se conserva.
 4. Modo Colisión con hidrógeno y «Disparo único». Con 1,5 eV sale «Colisión elástica — energía insuficiente». Con 2,0 eV el átomo se excita a 1,89 eV y emite 656 nm. Con 3,0 eV llega al nivel de 2,86 eV. Comparar con el fotón, que necesita la energía justa.
-5. Gas Ionizado con sodio a 3,0 eV: solo aparece la línea de 589 nm (2,10 eV). Subir a 3,8 eV: aparecen 343 nm en la zona UV y 819 nm en la IR. Comprobar que 2,10 + 1,52 = 3,62 eV.
-6. Cerrar con el espectro de absorción. Con «Luz blanca», el átomo retira del haz justo los fotones de 434, 486 y 656 nm. Dibujar en la pizarra las rayas oscuras en esas posiciones, porque la simulación no las dibuja.
+5. Gas Ionizado con sodio a 3,0 eV: solo aparece la línea de 589 nm (2,10 eV). Subir a 3,8 eV: los choques llegan al nivel 3d y aparece también 819 nm en la zona IR. Comprobar que 2,10 + 1,52 = 3,62 eV. No hay línea directa 3d → 3s: ese salto está prohibido y el átomo baja siempre por 3p.
+6. Cerrar con el espectro de absorción. Volver a Fotones con hidrógeno, «Luz blanca» y «Emisión continua». El átomo retira del haz justo los fotones de 434, 486 y 656 nm: en el «Espectro de absorción» aparecen rayas oscuras en esas posiciones, encima de las líneas de emisión.
 
 ### 2.º Bachillerato Química: modelo de Bohr y espectro del hidrógeno
 
@@ -75,11 +75,11 @@ En 4.º ESO la simulación sirve para dar contenido al modelo de Bohr y a la luz
 
 **Secuencia de explicación (15–20 min).**
 
-1. Avisar antes de empezar: el nivel inferior del hidrógeno, rotulado «n=1», corresponde en realidad a n = 2. Los niveles de la simulación son n = 2, 3, 4 y 5, medidos desde n = 2.
+1. Señalar los rótulos del hidrógeno: los niveles de la simulación son n = 2, 3, 4 y 5, con energías medidas desde n = 2. El fundamental, n = 1, queda fuera del modelo.
 2. Comprobarlo con E_n = −13,6 / n² eV: E₃ − E₂ = 1,89 eV, E₄ − E₂ = 2,55 eV y E₅ − E₂ = 2,86 eV. Coinciden con el diagrama. Con la fórmula de Balmer salen 656, 486 y 434 nm.
 3. Gas Ionizado con hidrógeno a 2,0 eV: solo aparece la línea de 656 nm. Subir a 2,6 eV: aparece también 486 nm. A 3,0 eV aparece 434 nm. Cada línea tiene un umbral: la energía está cuantizada.
 4. Señalar las líneas IR de 1879 y 1278 nm en la barra inferior. Corresponden a saltos que acaban en n = 3, la serie de Paschen.
-5. Volver a Fotones con «Luz blanca» y «Emisión continua». Las longitudes de onda absorbidas son las mismas que las emitidas. Relacionar los espectros de absorción y de emisión del mismo elemento.
+5. Volver a Fotones con «Luz blanca» y «Emisión continua». Las rayas oscuras del espectro de absorción quedan justo encima de las líneas de emisión: las longitudes de onda absorbidas son las mismas que las emitidas. Relacionar los dos espectros del mismo elemento.
 6. Cambiar a sodio. Las etiquetas 3s y 3p remiten a subniveles que Bohr no explica. Usarlo para presentar las limitaciones del modelo y la necesidad de los números cuánticos.
 
 ### 2.º Bachillerato Física: repaso puntual
@@ -99,18 +99,18 @@ La simulación ataca sobre todo la idea de que la energía de la luz es continua
 | «Un electrón necesita la energía justa, igual que un fotón» | Por choque basta con una energía igual o mayor que el salto | Colisión con hidrógeno a 2,0 eV: excita el nivel de 1,89 eV. A 1,5 eV, «Colisión elástica — energía insuficiente» |
 | «La lámpara brilla porque el gas se calienta o arde» | Los choques de electrones excitan los átomos y estos emiten al desexcitarse | Gas Ionizado con hidrógeno a 1,0 eV: hay electrones pero ningún fotón. Subir a 2,0 eV: aparece la luz de 656 nm |
 | «Todos los gases dan la misma luz» | Cada elemento tiene su espectro, como una huella | Gas Ionizado a 5,0 eV: cambiar entre hidrógeno, helio, sodio y neón y comparar las líneas |
-| «Solo existe la luz que vemos» | Hay emisiones ultravioletas e infrarrojas | Gas Ionizado con sodio a 3,8 eV: aparecen 343 nm (UV) y 819 nm (IR) en la barra inferior |
+| «Solo existe la luz que vemos» | Hay emisiones ultravioletas e infrarrojas | Gas Ionizado con sodio a 3,8 eV: aparece 819 nm (IR) en la barra inferior. Con hidrógeno a 5,0 eV, 1879 y 1278 nm |
 
 ## Simplificaciones que conviene conocer
 
 La simulación prioriza la idea «niveles discretos, saltos con energía concreta» y para ello simplifica los átomos y los tiempos. Conviene conocer estas licencias para no reforzar ideas incorrectas sin querer.
 
-1. **El hidrógeno empieza en n = 2.** Los niveles valen 0; 1,89; 2,55 y 2,86 eV, medidos desde el nivel inferior. Ese nivel se rotula «n=1», pero las líneas son las de Balmer, que acaban en n = 2. En 4.º ESO basta con hablar de «nivel inferior»; en Bachillerato hay que corregir el rótulo.
+1. **El hidrógeno empieza en n = 2.** Los niveles son n = 2 a n = 5 y valen 0; 1,89; 2,55 y 2,86 eV, medidos desde n = 2: las líneas son las de Balmer. El fundamental, n = 1, queda fuera, y el panel llama al nivel n = 2 «el más bajo del modelo». En 4.º ESO basta con hablar de «nivel inferior».
 2. **Energías positivas y pocos niveles.** Todas las energías se miden desde el nivel inferior, con valor 0, y no hay energías negativas ni ionización. Cada átomo tiene entre 3 y 5 niveles. En 2.º Bachillerato conviene recordar que E_n = −13,6 / n² eV.
-3. **El nivel inferior no siempre es el fundamental.** En helio y neón, el nivel E₁ ya es un estado excitado. Desde el fundamental real harían falta unos 20 eV. En sodio, la etiqueta «4d» corresponde en realidad al nivel 3d. Para Bachillerato, presentarlos como modelos de niveles, no como datos exactos.
+3. **El nivel inferior no siempre es el fundamental.** En helio y neón, el nivel E₁ ya es un estado excitado. Desde el fundamental real harían falta unos 20 eV. En sodio los niveles son 3s, 3p y 3d, con energías reales; el salto 3s ↔ 3d está prohibido y no aparece. Para Bachillerato, presentarlos como modelos de niveles, no como datos exactos.
 4. **Absorción con margen de 18 nm.** Se absorbe cualquier fotón a menos de 18 nm de una línea: con hidrógeno, 640 nm también se absorbe como si fuera 656 nm. Las líneas reales son mucho más estrechas. Además, solo se absorben fotones visibles y solo desde el nivel inferior.
-5. **Cascada al azar y tiempos lentos.** El átomo pasa 1,3–2,7 s excitado y luego 2 s en cada nivel antes de emitir. Desde cada nivel baja a cualquiera inferior con igual probabilidad. En la realidad la vida media ronda los nanosegundos y unas transiciones son mucho más probables que otras.
+5. **Cascada al azar y tiempos lentos.** El átomo pasa 1,3–2,7 s excitado y luego 2 s en cada nivel antes de emitir. Desde cada nivel baja a cualquiera inferior con transición permitida, con igual probabilidad (en sodio, desde 3d solo a 3p). En la realidad la vida media ronda los nanosegundos y unas transiciones son mucho más probables que otras.
 6. **Choques simplificados.** El electrón siempre excita el nivel más alto que alcanza y luego desaparece; no se ve la energía que le sobra. En Gas Ionizado cada choque válido excita con una probabilidad del 40 %. El «Voltaje del tubo» se da en eV: es la energía de cada electrón, no la tensión real de una lámpara.
 7. **Órbitas como planetas.** El electrón gira en órbitas circulares dibujadas con radios de 68 a 168 píxeles en hidrógeno, sin escala real. En Bohr los radios crecen con n². En 2.º Bachillerato conviene contrastarlo con la idea de orbital.
-8. **Solo espectro de emisión.** No se dibuja el espectro de absorción con rayas oscuras; hay que hacerlo en la pizarra. Las líneas pierden la mitad de su brillo en unos 14 s, también en pausa.
+8. **Espectros que se borran solos.** El espectro de absorción solo aparece en Fotones y solo recoge rayas visibles. Las líneas de los dos espectros pierden la mitad de su brillo en unos 14 s; en pausa se congelan.
 9. **Barra IR limitada a 3000 nm.** Las líneas de 4003 nm del hidrógeno y de 3444 y 6889 nm del neón se emiten pero no se dibujan. Solo aparecen en «Transiciones del átomo».

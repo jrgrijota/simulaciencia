@@ -48,6 +48,16 @@ function updateHead(sim, page) {
   metaDescription.content = sim ? sim.description : DEFAULT_DESCRIPTION;
 }
 
+// Registra la visita en GoatCounter con la ruta completa (?sim=…), para saber qué
+// simulaciones se abren. El script carga en async: si aún no está, espera a su load.
+// Si un bloqueador o el cortafuegos del centro lo impiden, simplemente no se cuenta.
+function trackPageview() {
+  const hit = { path: location.pathname + location.search, title: document.title };
+  const send = () => window.goatcounter.count(hit);
+  if (window.goatcounter?.count) send();
+  else document.getElementById('goatcounter')?.addEventListener('load', send, { once: true });
+}
+
 let cleanup = null;
 
 function render() {
@@ -66,6 +76,7 @@ function render() {
   else cleanup = renderCatalog(app);
 
   updateHead(sim, sim ? null : page);
+  trackPageview();
 
   // Sustituye los <i data-lucide> por sus SVG tras inyectar el HTML.
   createIcons({ icons: ICONS });

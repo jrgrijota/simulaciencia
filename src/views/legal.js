@@ -1,7 +1,7 @@
 import { footerMarkup } from '../components/footer.js';
 
 const CONTACT = 'contacto@simulaciencia.es';
-const UPDATED = '7 de octubre de 2026';
+const UPDATED = '8 de octubre de 2026';
 
 const H2 = 'mt-8 mb-2 text-lg font-semibold text-[#1e293b]';
 const P = 'mb-3 leading-relaxed';
@@ -72,8 +72,15 @@ export function renderLegal(root) {
       <h2 class="${H2}">5. Privacidad y cookies</h2>
       <p class="${P}">
         SimulaCiencia <strong>no recoge datos personales</strong>: no tiene registro ni formularios,
-        <strong>no usa cookies</strong> ni herramientas de analítica o publicidad, y no rastrea a
-        sus visitantes.
+        <strong>no usa cookies</strong> ni publicidad, y no rastrea a sus visitantes.
+      </p>
+      <p class="${P}">
+        Para saber qué simulaciones resultan útiles, el portal cuenta las visitas de forma anónima
+        con ${ext('https://www.goatcounter.com', 'GoatCounter')}, un servicio de estadísticas
+        respetuoso con la privacidad. No usa cookies ni guarda nada en tu dispositivo, no almacena
+        tu dirección IP y no permite identificarte ni seguirte entre webs: solo registra datos
+        agregados, como la página visitada, la web de procedencia, el navegador, el tamaño de
+        pantalla y el país. ${ext('https://www.goatcounter.com/help/privacy', 'Política de privacidad de GoatCounter')}.
       </p>
       <p class="${P}">
         Como cualquier web, al visitarla tu navegador se conecta a los servidores que la alojan,

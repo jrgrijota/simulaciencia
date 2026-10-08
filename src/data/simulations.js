@@ -41,7 +41,7 @@ export const simulations = [
       'Modelo de partículas en movimiento que relaciona presión, temperatura y volumen según la teoría cinético-molecular.',
     tags: ['Física', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-gases/',
-    responsive: false,
+    responsive: true,
   },
   {
     id: 'sim-modelos',
@@ -59,7 +59,7 @@ export const simulations = [
       'Cómo afectan temperatura, concentración y catalizador a las colisiones moleculares y a la rapidez de una reacción química.',
     tags: ['Química', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion/',
-    responsive: false,
+    responsive: true,
   },
   {
     id: 'sim-atomo-real',

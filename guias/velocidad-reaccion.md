@@ -16,7 +16,7 @@ La simulación muestra la reacción A + B → C como choques entre moléculas co
 
 ## Cómo funciona la simulación
 
-La simulación tiene tres modos que se eligen en la tarjeta «Modo»: «Modo reacción», «Modo comparación» y «Modo choque». En los dos primeros se ve una cámara con moléculas A (azul), B (naranja), producto C (verde) y catalizador K (violeta). Debajo aparece la gráfica «VELOCIDAD DE REACCIÓN (reacciones/s)».
+La simulación tiene tres modos que se eligen en la tarjeta «Modo»: «Modo reacción», «Modo comparación» y «Modo choque». En los dos primeros se ve una cámara con moléculas A (azul), B (naranja), producto C (verde) y catalizador K (violeta). Debajo aparece la gráfica «VELOCIDAD DE REACCIÓN (reacciones/s simulado)».
 
 | Modo | Qué controla el docente | Qué muestra |
 | --- | --- | --- |
@@ -27,8 +27,8 @@ La simulación tiene tres modos que se eligen en la tarjeta «Modo»: «Modo rea
 Cuatro elementos sostienen la explicación:
 
 - **El sitio reactivo.** Cada A y cada B tiene un extremo claro resaltado. La reacción térmica solo ocurre si los dos sitios reactivos se tocan en el choque.
-- **El recuadro de velocidades.** Arriba a la derecha de cada cámara aparece «Velocidades (T = 4)». Dibuja la distribución de velocidades, una línea roja discontinua «Ea» y en verde la parte que la supera.
-- **La gráfica de velocidad de reacción.** Cuenta las reacciones del último segundo y guarda los últimos 90 valores. En comparación superpone las dos cámaras con su color.
+- **El recuadro de velocidades.** Arriba a la derecha de cada cámara aparece «Velocidad relativa de los choques (T = 4)». Dibuja cómo se reparten las velocidades relativas de los pares de moléculas, una línea roja discontinua «Ea» y en verde la parte que la supera: los choques con energía suficiente.
+- **La gráfica de velocidad de reacción.** Cuenta las reacciones del último segundo de simulación (60 pasos) y guarda los últimos 90 valores. En comparación superpone las dos cámaras con su color, y las estadísticas del panel se dan por cámara: «izquierda | derecha».
 - **El porcentaje de conversión.** Abajo a la derecha de cada cámara indica qué parte del reactivo limitante ha reaccionado.
 
 El desplegable «¿Cómo funciona?», cerrado al empezar, resume la vía térmica, la vía catalizada y el modo comparación. La tarjeta «Leyenda» identifica los colores, el sitio reactivo y el destello de reacción.
@@ -68,8 +68,8 @@ No hay un saber de velocidad de reacción. El «Modo choque» puede ilustrar «C
 
 1. Modo choque con los valores iniciales: los dos sitios reactivos se miran de frente. Pulsar «▶ Lanzar»: «✓ CHOQUE EFECTIVO» y aparece C.
 2. Pulsar «↺ Reset» y arrastrar A para que su sitio reactivo apunte hacia arriba (unos 90°). Lanzar: «✗ CHOQUE INEFECTIVO», con «Orientación correcta: No ✗». Definir la condición de orientación.
-3. Para la condición de energía, pasar a Modo reacción y señalar el recuadro «Velocidades (T = 4)». Lo que queda en verde, a la derecha de «Ea», son las moléculas con energía suficiente.
-4. Mover «Temperatura» de 1 a 10: la curva se ensancha hacia la derecha y el área verde crece. Pasa de un 1,5 % de las moléculas a T = 1 a un 66 % a T = 10.
+3. Pulsar «↺ Reset», dejar la orientación inicial y bajar «Energía del choque» a 3. Lanzar: «✗ CHOQUE INEFECTIVO», con «Energía suficiente: No ✗». Subir a 4 y lanzar: efectivo. Definir la condición de energía: Ea equivale al nivel 4.
+4. Pasar a Modo reacción y señalar el recuadro «Velocidad relativa de los choques (T = 4)»: lo que queda en verde, a la derecha de «Ea», son los choques con energía suficiente. Mover «Temperatura» de 1 a 10: la curva se ensancha hacia la derecha y el área verde pasa de un 12 % a T = 1 a un 81 % a T = 10.
 5. Modo comparación con «Presencia de catalizador» (es la variable inicial: 0 frente a 4). La cámara con 4 catalizadores suele agotar el reactivo en 15–25 s. La simulación se pausa y la otra cámara suele quedar por debajo del 50 %.
 6. Señalar que el recuento «K: 4» no cambia: el catalizador no se gasta. Leer la gráfica: cada pico son reacciones por segundo, y la velocidad cae al agotarse los reactivos.
 
@@ -85,8 +85,8 @@ No hay un saber de cinética. La simulación puede apoyar el saber «Reactivo li
 
 **Secuencia de explicación (15–20 min).**
 
-1. Modo reacción, «Temperatura» en 4. En el recuadro, la fracción verde vale e^(−4,2/T): 35 % a T = 4. Compararla con el factor e^(−Ea/RT) de Arrhenius.
-2. Recorrer T = 1, 2, 4 y 10: la fracción vale 1,5 %, 12 %, 35 % y 66 %. La rapidez típica solo se multiplica por 3,2 entre T = 1 y T = 10. Concluir que la temperatura actúa sobre todo por la fracción que supera Ea.
+1. Modo reacción, «Temperatura» en 4. En el recuadro, la fracción verde de choques con energía suficiente vale e^(−2,1/T): 59 % a T = 4. Compararla con el factor e^(−Ea/RT) de Arrhenius.
+2. Recorrer T = 1, 2, 4 y 10: la fracción vale 12 %, 35 %, 59 % y 81 %. La rapidez típica solo se multiplica por 3,2 entre T = 1 y T = 10. Concluir que la temperatura actúa sobre todo por la fracción que supera Ea.
 3. Modo choque: girar A unos 90° y lanzar. El choque es inefectivo aunque haya «Energía suficiente: Sí ✓». Presentar el factor estérico incluido en el factor preexponencial A.
 4. Modo comparación, «Cantidad de moléculas» (8 frente a 24). Con v = k[A][B], triplicar ambas concentraciones multiplica por 9 la velocidad inicial. Comprobar en la gráfica que la curva derecha va muy por encima.
 5. Modo reacción con 30 A, 30 B y 4 catalizadores. La gráfica empieza en 2–4 reacciones/s y cae hacia 0 en unos 20–30 s. La velocidad disminuye al bajar las concentraciones, como predice la ley de velocidad.
@@ -100,8 +100,8 @@ La simulación ataca sobre todo la idea de que basta con que las partículas cho
 | --- | --- | --- |
 | «Siempre que dos reactivos chocan, reaccionan» | Solo reacciona una pequeña fracción de los choques | Modo reacción con valores iniciales: muchos choques y, en un minuto, solo unas 5–8 reacciones en el contador «Térm.» |
 | «Si el choque es muy fuerte, siempre hay reacción» | También hace falta la orientación adecuada | Modo choque, «Energía del choque» en 10 y A girada 180°: «✗ CHOQUE INEFECTIVO» con «Energía suficiente: Sí ✓» |
-| «Al calentar, todas las moléculas van a la misma velocidad, solo que más rápido» | Hay una distribución de velocidades; al calentar se ensancha | Modo reacción: mover «Temperatura» de 1 a 10 y mirar cómo se ensancha la curva del recuadro «Velocidades» |
-| «La temperatura acelera la reacción solo porque hay más choques» | El efecto principal es que más moléculas superan la energía de activación | Recuadro de velocidades: el área verde pasa de 1,5 % (T = 1) a 66 % (T = 10), mucho más que la rapidez |
+| «Al calentar, todas las moléculas van a la misma velocidad, solo que más rápido» | Hay una distribución de velocidades; al calentar se ensancha | Modo reacción: mover «Temperatura» de 1 a 10 y mirar cómo se ensancha la curva del recuadro de velocidades |
+| «La temperatura acelera la reacción solo porque hay más choques» | El efecto principal es que más moléculas superan la energía de activación | Recuadro de velocidades: el área verde pasa de 12 % (T = 1) a 81 % (T = 10), mucho más que la rapidez (×3,2) |
 | «El catalizador se gasta o pasa a formar parte del producto» | El catalizador se recupera intacto y vuelve a actuar | Modo reacción con 4 catalizadores: el recuento «K: 4» no cambia y C solo tiene átomos de A y de B |
 | «Con catalizador se obtiene más producto» | El catalizador solo acelera; el producto lo limita el reactivo limitante | Modo reacción con 16 A, 10 B y 4 catalizadores: C se detiene en 10, en menos de medio minuto; sin catalizador tardaría mucho más, pero el tope sería el mismo |
 | «La velocidad de reacción es constante hasta que se acaba» | La velocidad disminuye a medida que se consumen los reactivos | Modo reacción con 30 A, 30 B y 4 catalizadores: la gráfica empieza en 2–4 reacciones/s y cae hacia 0 en unos 20–30 s |
@@ -111,11 +111,11 @@ La simulación ataca sobre todo la idea de que basta con que las partículas cho
 La simulación prioriza las dos condiciones del choque eficaz y para ello simplifica la energía, el catalizador y la escala. Conviene conocer estas licencias para no reforzar ideas incorrectas sin querer.
 
 1. **La energía de activación es un umbral de velocidad.** Una A y una B reaccionan si su velocidad relativa supera 5,8 px por fotograma. Además, sus sitios reactivos deben quedar a menos de 11 px. No se calcula energía cinética ni se usa la componente a lo largo de la línea de choque. En 2.º Bachillerato conviene decirlo.
-2. **El recuadro no muestra exactamente el criterio de reacción.** Dibuja la velocidad de cada molécula, pero la reacción depende de la velocidad relativa del par. Así, el área verde subestima los pares que superan Ea. A T = 4 marca un 35 %, y la fracción de pares al azar que lo superan es del 59 %.
-3. **La distribución es bidimensional.** Las moléculas se mueven en un plano y la curva es f(v) ∝ v·e^(−v²/2σ²), con σ = 2·√T. No es la distribución de Maxwell-Boltzmann en tres dimensiones. Su forma cualitativa sí es la correcta.
+2. **El recuadro cuenta pares, no choques.** Dibuja la velocidad relativa de un par de moléculas al azar, que es lo que la reacción compara con Ea. Pero los pares rápidos chocan más a menudo, así que entre los choques que de verdad ocurren la fracción con energía suficiente es algo mayor que el área verde.
+3. **La distribución es bidimensional.** Las moléculas se mueven en un plano y la curva es f(v) ∝ v·e^(−v²/2σ²), con σ = 2·√(2T) para la velocidad relativa (2·√T para cada molécula). No es la distribución de Maxwell-Boltzmann en tres dimensiones. Su forma cualitativa sí es la correcta.
 4. **La temperatura es una escala de 1 a 10.** No son kelvin ni grados Celsius. La rapidez crece con √T, coherente con una energía cinética media proporcional a T. No conviene convertir los niveles a temperaturas reales.
 5. **El catalizador elimina la barrera.** Atrae a A y B desde 115 px y las sujeta en sus dos cavidades. A los 28 fotogramas reaccionan, sin requisito de energía ni orientación. Un catalizador real rebaja la energía de activación, no la anula. Por eso la vía catalizada apenas depende de la temperatura.
 6. **La reacción es irreversible y sin intercambio de energía.** C nunca se descompone en A y B y no se libera ni absorbe calor. No sirve para explicar el equilibrio químico ni reacciones exotérmicas.
 7. **La concentración es el número de moléculas en la cámara.** El tamaño de la cámara depende de la pantalla. En comparación cada cámara mide la mitad, así que 16 moléculas equivalen al doble de concentración. Las cifras cambian entre el portátil y el proyector.
-8. **La velocidad se mide en reacciones por cada 60 fotogramas.** La gráfica supone 60 fotogramas por segundo; en un equipo lento, el «segundo» dura más. Con tan pocas moléculas los valores son enteros pequeños y muy irregulares. «Tasa actual» suma las dos cámaras en el modo comparación.
-9. **En el Modo choque la energía siempre basta.** Con «Energía del choque» en 1, la velocidad relativa ya es 8,8, por encima del umbral 5,8. El texto de ayuda dice que Ea equivale al nivel 4, pero no es así. Usar este modo solo para la orientación y el recuadro de velocidades para la energía.
+8. **Segundos de simulación.** La velocidad se mide en reacciones por cada 60 fotogramas, un «segundo de simulación». En un equipo lento la animación va más despacio, pero las cifras son las mismas; la gráfica y la ayuda lo indican. Con tan pocas moléculas los valores son enteros pequeños y muy irregulares.
+9. **En el Modo choque la energía es un escalón.** Cada molécula sale a 1,5·√E, así que la velocidad relativa supera el umbral de 5,8 a partir del nivel 4 (nivel 3: 5,2; nivel 4: 6,0). No hay distribución de velocidades: es un único choque con una energía fija.

@@ -1,5 +1,6 @@
 // Enrutado por query param:
 //   ?sim=<id>     => Modo Laboratorio
+//   ?guia=<id>    => Guía docente de la simulación
 //   ?page=about   => Página "Sobre el proyecto"
 //   ?page=legal   => Aviso legal y privacidad
 //   (sin param)   => Catálogo
@@ -35,6 +36,7 @@ export function navigateToCatalog() {
   const url = new URL(window.location.href);
   url.searchParams.delete(SIM_PARAM);
   url.searchParams.delete(PAGE_PARAM);
+  url.searchParams.delete(GUIDE_PARAM);
   pushAndNotify(url);
 }
 

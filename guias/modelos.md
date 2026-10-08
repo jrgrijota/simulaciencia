@@ -28,7 +28,7 @@ El panel izquierdo tiene dos tarjetas de controles. En «El átomo» se eligen e
 Tres elementos sostienen la explicación:
 
 - **Las trayectorias que quedan dibujadas.** En la vista Átomo se conservan las 6 últimas trayectorias durante unos 5 segundos. Se ve que la α se curva antes de llegar al núcleo, sin tocarlo.
-- **Las marcas en el detector.** Cada α detectada deja un punto en el arco (se guardan las 40 últimas). Con Thomson se agrupan enfrente de la fuente; con Rutherford se reparten por todo el arco.
+- **Las marcas en el detector.** Cada α detectada deja un punto en el arco (se guardan las 40 últimas). Con Thomson se agrupan enfrente de la fuente; con Rutherford se reparten por todo el arco. Las que rebotan hacia la fuente salen por la apertura sin dejar marca, pero sí se cuentan en el gráfico.
 - **El «Gráfico de ángulos».** Es una tarjeta plegable con 18 barras de 10° entre 0° y 180°. La primera barra es verde, las de hasta 90° son ámbar y las de más de 90° son rojas. Arriba indica «n=» con las partículas lanzadas. Al pasar el ratón por una barra, muestra su recuento y su porcentaje.
 
 El botón «Reiniciar» borra partículas y gráfico; cambiar de modelo o de vista también lo reinicia. La tarjeta «Guía rápida» resume qué se ve, los dos modelos, las dos vistas y cómo leer el gráfico.
@@ -46,10 +46,10 @@ En 2.º ESO la simulación sirve para presentar los modelos de Thomson y Rutherf
 **Secuencia de explicación (15–20 min).**
 
 1. Configuración inicial: Thomson, vista Átomo, Z = 14. Describir el dibujo: una esfera de carga positiva con electrones incrustados, el «budín de pasas». Explicar que la fuente lanza partículas α, con carga positiva.
-2. Preguntar qué le pasará a una α lanzada contra este átomo. Hacer varios clics a distintas alturas: todas atraviesan casi rectas, con desviaciones de unos 2° como mucho.
-3. Subir Z a 79 («79 – Oro»), el metal de la lámina original. Repetir los clics: siguen pasando casi rectas, con desviaciones de pocos grados.
+2. Preguntar qué le pasará a una α lanzada contra este átomo. Hacer varios clics a distintas alturas: todas atraviesan casi rectas, con desviaciones de 1° como mucho.
+3. Subir Z a 79 («79 – Oro»), el metal de la lámina original. Repetir los clics: siguen pasando casi rectas, con desviaciones de 1° o 2°.
 4. Cambiar a vista Lámina y «Lluvia continua», activar «Emisión continua» y desplegar «Gráfico de ángulos». Con Thomson todas las partículas caen en la primera barra (0–10°).
-5. Cambiar el modelo a Rutherford sin tocar nada más. Ahora unas 7 de cada 10 siguen en la primera barra, pero aparecen barras rojas: algunas α rebotan hacia la fuente.
+5. Cambiar el modelo a Rutherford sin tocar nada más. Casi 9 de cada 10 siguen en la primera barra, pero aparecen barras rojas: unas pocas α rebotan hacia la fuente.
 6. Volver a vista Átomo y «Una a una (clic)», con Rutherford y Z = 79. Clicar a la altura del núcleo: la α vuelve atrás. Clicar lejos: pasa recta. Concluir que hay un núcleo diminuto y positivo y mucho espacio vacío.
 
 ### 3.º ESO: estructura atómica y fuerza eléctrica
@@ -76,7 +76,7 @@ En 2.º ESO la simulación sirve para presentar los modelos de Thomson y Rutherf
 
 1. Thomson, Z = 79, vista Lámina, «Lluvia continua», «Ritmo» al máximo (60) y «Emisión continua». Plantear la hipótesis: si Thomson tiene razón, todas las α pasarán casi rectas.
 2. Desplegar el «Gráfico de ángulos» y esperar a unas 500 partículas (n=500). Todas caen en la barra de 0–10°. Esa es la predicción del modelo.
-3. Cambiar a Rutherford. Pasar el ratón por las barras: la primera ronda el 69 % y las rojas suman en torno al 11 %. Contar que Geiger y Marsden vieron rebotes que Thomson no podía explicar.
+3. Cambiar a Rutherford. Pasar el ratón por las barras: la primera ronda el 88 % y las rojas suman en torno al 4 %. Contar que Geiger y Marsden vieron rebotes que Thomson no podía explicar, aunque muchos menos: 1 de cada 8000.
 4. Volver a la vista Átomo con Rutherford. Explicar que la desviación depende de lo cerca que pase la α del núcleo. Así se dedujo que el núcleo es diminuto.
 5. Mover «Energía (velocidad α)» de 4 a 16 apuntando cerca del núcleo. La energía cinética crece con v²: es 16 veces mayor y la α se desvía mucho menos.
 6. Señalar que la simulación ya dibuja los electrones en capas de 2, 8, 18… Eso no estaba en el modelo de Rutherford: es la aportación posterior de Bohr y Sommerfeld.
@@ -105,7 +105,7 @@ La simulación ataca sobre todo la idea de átomo macizo y la de que las partíc
 
 | Idea del alumnado | Idea correcta | Cómo mostrarlo |
 | --- | --- | --- |
-| «El átomo es una bolita maciza, llena de materia» | El átomo es casi todo espacio vacío, con un núcleo muy pequeño | Rutherford, Lámina, Z = 79, lluvia continua: unas 7 de cada 10 α atraviesan la lámina sin desviarse más de 10° |
+| «El átomo es una bolita maciza, llena de materia» | El átomo es casi todo espacio vacío, con un núcleo muy pequeño | Rutherford, Lámina, Z = 79, lluvia continua: casi 9 de cada 10 α atraviesan la lámina sin desviarse más de 10° |
 | «La partícula α rebota porque choca con el núcleo, como una bola de billar» | La repulsión eléctrica actúa a distancia y curva la trayectoria antes de llegar | Rutherford, Átomo, Z = 79: lanzar un poco por encima del núcleo y ver que la trayectoria se curva lejos de él |
 | «Las α se desvían al chocar con los electrones» | Los electrones tienen muy poca masa y casi no desvían a la α | Thomson, Átomo, Z = 118: la α atraviesa todos los anillos de electrones y sigue casi recta |
 | «Si se cambia de modelo es porque el anterior era una tontería» | Un modelo se sustituye cuando un experimento contradice su predicción | Thomson, Lámina: todo en la primera barra. Mismo experimento en Rutherford: aparecen barras rojas que Thomson no explica |
@@ -118,11 +118,11 @@ La simulación ataca sobre todo la idea de átomo macizo y la de que las partíc
 La simulación prioriza el contraste cualitativo entre los dos modelos y para ello exagera tamaños y frecuencias. Conviene conocer estas licencias para no reforzar ideas incorrectas sin querer.
 
 1. **El núcleo está muy agrandado.** En la vista Átomo el núcleo mide entre 3 y 15 px de radio. El átomo mide entre 80 y 195 px. La proporción es de 1 a 12 en el oro, frente a 1 a 100 000 en la realidad. Conviene decirlo siempre que se hable de tamaños.
-2. **Los rebotes están muy exagerados.** En la Lámina de Rutherford con Z = 79, una de cada cuatro α se desvía más de 90°. Geiger y Marsden contaron una de cada 8000. La idea cualitativa es correcta, la proporción no.
+2. **Los rebotes están exagerados.** En la Lámina de Rutherford con Z = 79 y velocidad 10, unas 4 de cada 100 α se desvían más de 90°. Geiger y Marsden contaron una de cada 8000; con esa proporción no se vería ningún rebote en clase. La «Guía rápida» lo avisa.
 3. **La lámina tiene solo 3 átomos de espesor.** Cada α interactúa solo con el átomo más cercano, si está a menos de dos radios. Una lámina de oro real tiene miles de capas de átomos.
-4. **Cada modelo usa una constante de fuerza distinta.** Rutherford usa una constante 5 veces mayor que Thomson (40 000 frente a 8000). Thomson tiene además un tope a la fuerza total. En Bachillerato conviene decir que la comparación es cualitativa.
-5. **Thomson puede superar los 5° con poca energía.** La «Guía rápida» dice que las desviaciones son «siempre < 5°». Con velocidad 10 se cumple casi siempre, pero con velocidad 4 y Z alto aparecen desviaciones de 20° o 30° en la vista Átomo. Para la demostración, dejar la velocidad en 10 o más.
-6. **El detector no cuenta los rebotes más fuertes.** El arco deja abierta la zona de la fuente, unos 54° por arriba y por abajo. En la vista Átomo, una α desviada más de unos 125° sale por ahí. No entra en el gráfico, aunque su trayectoria sí se dibuja. Además, «n=» cuenta las lanzadas, no las detectadas.
+4. **Cada modelo usa una constante de fuerza distinta.** Rutherford usa una constante 5 veces mayor que Thomson (40 000 frente a 8000). Thomson tiene además un tope a la fuerza total, que depende de la velocidad de la α y asegura desviaciones menores de 5°. En Bachillerato conviene decir que la comparación es cualitativa.
+5. **El tope de Thomson es artificial.** Las desviaciones son «siempre < 5°» con cualquier Z y velocidad (como mucho 4,3°, con Z = 118 y velocidad 4) porque la fuerza está limitada a propósito. En el modelo de Thomson real las desviaciones por átomo eran aún menores, de una fracción de grado.
+6. **El detector tiene una abertura.** El arco deja abierta la zona de la fuente, unos 54° por arriba y por abajo. Las α desviadas más de unos 125° salen por ahí sin dejar marca, aunque sí se cuentan en el gráfico. En el experimento real no se medía en todas las direcciones a la vez: se movía el detector.
 7. **El núcleo es «blando» y no hay fuerza nuclear.** La fuerza se suaviza cerca del centro y se anula más allá de 1,2 radios atómicos. Con Z = 1 a velocidad 10, o con Z = 14 a velocidad 16, una α lanzada de frente atraviesa el núcleo sin desviarse.
 8. **Neutrones y capas inventados.** El núcleo dibuja tantos neutrones como protones; el oro real tiene 118 neutrones. Los electrones se reparten en capas de 2, 8, 18, 32, 32 y 8, que es una idea de Bohr, no de Rutherford. Desde 4.º ESO conviene señalar el anacronismo.
 9. **Los electrones casi nunca chocan.** La masa de la α es 7350 veces la del electrón, cerca del valor real de unas 7300. Pero su radio de choque es de 0,005 px y los choques prácticamente no ocurren. En el modelo de Rutherford los electrones no ejercen fuerza sobre la α.

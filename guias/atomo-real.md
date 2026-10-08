@@ -20,17 +20,17 @@ La pantalla tiene tres zonas. A la izquierda, el panel con «Guía rápida», «
 
 | Modo | Qué controla el docente | Qué muestra |
 | --- | --- | --- |
-| Escala natural (inicio) | Elemento: Hidrógeno, Helio, Carbono, Oxígeno, Sodio, Hierro, Oro o Uranio | El átomo con sus capas y electrones. La cota da el diámetro real, por ejemplo «D = 106 pm = 1,06 × 10⁻¹⁰ m» para el hidrógeno. Un recuadro avisa: «El núcleo está en el centro, pero es demasiado pequeño para verlo.» |
-| Acercar | Botón «Acercar →», cinco saltos de ×10 | La imagen se amplía ×10 en cada salto. Mientras el núcleo no se ve, la cota mide lo mismo en pantalla pero representa una longitud diez veces menor. El núcleo aparece primero como punto rojo y luego con sus nucleones |
-| Final del viaje | Quinta pulsación de «Acercar →» | Rótulo «¡Núcleo alcanzado! ×100.000» y el recuadro «Estás viendo el núcleo. El átomo completo es 44.167 veces más grande.» (hidrógeno) |
-| Alejar | Botón «← Alejar», hasta cinco saltos desde la escala natural | El átomo encoge y la cota muestra regiones mayores, hasta 10,6 µm para el hidrógeno |
+| Escala natural (inicio) | Elemento: Hidrógeno, Helio, Carbono, Oxígeno, Sodio, Hierro, Oro o Uranio | El átomo con sus capas y electrones. La cota da el diámetro real, por ejemplo «D = 62 pm = 6,20 × 10⁻¹¹ m» para el hidrógeno. Un recuadro avisa: «El núcleo está en el centro, pero es demasiado pequeño para verlo.» |
+| Acercar | Botón «Acercar →», cuatro saltos de ×10 | La imagen se amplía ×10 en cada salto. Mientras el núcleo no se ve, la cota mide lo mismo en pantalla pero representa una longitud diez veces menor. El núcleo aparece primero como punto rojo y luego con sus nucleones |
+| Final del viaje | Cuarta pulsación de «Acercar →» | Rótulo «¡Núcleo alcanzado! ×10.000», el núcleo entero en el centro del lienzo y el recuadro «Estás viendo el núcleo. El átomo completo es 25.833 veces más grande.» (hidrógeno) |
+| Alejar | Botón «← Alejar», hasta cuatro saltos desde la escala natural | El átomo encoge y la cota muestra regiones mayores, hasta 620 nm para el hidrógeno |
 | Franja inferior | Engranaje: «Mostrar líneas de zoom intermedias» y «Mostrar píxeles en las barras» (desactivados al inicio) | Una barra para el átomo y otra para el núcleo, a la misma escala. Con la primera casilla aparecen barras de «1/10 del átomo», «1/100 del átomo», etc. |
 
 Tres elementos sostienen la explicación:
 
-- **La ficha del elemento.** Bajo el selector aparecen «Protones (Z)», «Neutrones (N)», «Diámetro del núcleo», «Diámetro del átomo», «Tasa átomo / núcleo» y «Capas electrónicas». Para el hidrógeno: 2,4 fm, 106 pm y «44.167 : 1».
+- **La ficha del elemento.** Bajo el selector aparecen «Protones (Z)», «Neutrones (N)», «Diámetro del núcleo», «Diámetro del átomo», «Tasa átomo / núcleo» y «Capas electrónicas». Para el hidrógeno: 2,4 fm, 62 pm y «25.833 : 1».
 - **La cota con notación científica.** Cada salto muestra el diámetro en la unidad más cómoda y en metros, por ejemplo «D = 2,4 fm = 2,40 × 10⁻¹⁵ m». Permite contar las potencias de 10 en voz alta.
-- **La regla del núcleo en la franja.** La barra roja del núcleo va sobre una pista tan larga como el átomo. La pista lleva una marca cada 100 diámetros nucleares («100·D», «200·D»...). En el hidrógeno hay 441 marcas.
+- **La regla del núcleo en la franja.** La barra roja del núcleo va sobre una pista tan larga como el átomo. La pista lleva una marca cada 100 diámetros nucleares («100·D», «200·D»...). En el hidrógeno hay 258 marcas; cuando quedan muy juntas solo se rotula una de cada varias.
 
 El desplegable «Guía rápida» resume lo que se ve, el viaje de zoom, la franja inferior y los atajos de teclado.
 
@@ -49,8 +49,8 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 1. Hidrógeno en «Escala natural» (configuración inicial). Preguntar dónde está el núcleo. Leer el recuadro: está en el centro, pero no se ve.
 2. Recordar el modelo de Thomson: carga positiva repartida por todo el átomo. Contraponer el de Rutherford: carga positiva concentrada en un núcleo diminuto.
 3. Pulsar «Acercar →» salto a salto. Tras el primero, el núcleo sigue invisible y el rótulo marca «Tamaño original ×10».
-4. Seguir hasta que aparece un punto rojo, en el segundo o tercer salto según la pantalla. En el cuarto salto ya se ven los nucleones y el rótulo «1p · 0n».
-5. Leer la «Tasa átomo / núcleo»: 44.167 : 1. Traducirlo: si el núcleo fuera una canica de 1 cm, el átomo mediría unos 442 m.
+4. Seguir hasta que aparece un punto rojo, en el segundo o tercer salto según la pantalla. En el cuarto y último salto ya se ven el núcleo entero y el rótulo «1p · 0n».
+5. Leer la «Tasa átomo / núcleo»: 25.833 : 1. Traducirlo: si el núcleo fuera una canica de 1 cm, el átomo mediría unos 258 m.
 6. Cambiar a Carbono y leer «Protones (Z)»: 6. Señalar que Z identifica al elemento y aparece en el selector como «Carbono (Z=6)».
 
 ### 3.º ESO: estructura atómica a escala
@@ -61,10 +61,10 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 
 **Secuencia de explicación (15–20 min).**
 
-1. Hidrógeno en «Escala natural». Escribir la cota en la pizarra: D = 106 pm = 1,06 × 10⁻¹⁰ m. Repasar pm = 10⁻¹² m.
-2. Pulsar «Acercar →» una vez. La cota pasa a «D = 10,6 pm = 1,06 × 10⁻¹¹ m». Preguntar qué ha pasado con el exponente: baja uno en cada salto.
+1. Hidrógeno en «Escala natural». Escribir la cota en la pizarra: D = 62 pm = 6,20 × 10⁻¹¹ m. Repasar pm = 10⁻¹² m.
+2. Pulsar «Acercar →» una vez. La cota pasa a «D = 6,2 pm = 6,20 × 10⁻¹² m». Preguntar qué ha pasado con el exponente: baja uno en cada salto.
 3. Seguir acercando hasta que la cota cambia a «Núcleo de Hidrógeno», con «D = 2,4 fm = 2,40 × 10⁻¹⁵ m». Introducir el femtómetro, 10⁻¹⁵ m.
-4. Dividir en la pizarra: 1,06 × 10⁻¹⁰ m / 2,40 × 10⁻¹⁵ m ≈ 4,4 × 10⁴. Comprobarlo con la «Tasa átomo / núcleo»: 44.167 : 1.
+4. Dividir en la pizarra: 6,20 × 10⁻¹¹ m / 2,40 × 10⁻¹⁵ m ≈ 2,6 × 10⁴. Comprobarlo con la «Tasa átomo / núcleo»: 25.833 : 1.
 5. Cambiar a Sodio. Leer Z = 11 y N = 12, y deducir A = 23. En el cuarto salto, el núcleo muestra «11p · 12n». Contar 2 + 8 + 1 = 11 electrones en «Capas electrónicas»: el átomo es neutro.
 6. Cerrar con el Uranio: 92 protones y 146 neutrones (uranio-238). Explicar que otro isótopo cambiaría N, no Z. La simulación no permite cambiarlo.
 
@@ -77,14 +77,14 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 **Secuencia de explicación (15–20 min).**
 
 1. Oro en «Escala natural». Recordar el experimento de Rutherford con lámina de oro. Preguntar por qué casi todas las partículas alfa atravesaban la lámina.
-2. Acercar hasta el cuarto salto: aparecen los nucleones y el rótulo «79p · 118n». Leer la tasa, 20.623 : 1. Casi todo el átomo es espacio sin materia nuclear.
+2. Acercar hasta el cuarto salto: aparecen los nucleones y el rótulo «79p · 118n». Leer la tasa, 19.478 : 1. Casi todo el átomo es espacio sin materia nuclear.
 3. Volver con «Reiniciar viaje» y leer «Capas electrónicas»: «6 (K:2, L:8, M:18, N:32, O:18, P:1)». Relacionar seis capas con el periodo 6.
 4. Comparar Sodio, «3 (K:2, L:8, M:1)», con Hierro, «4 (K:2, L:8, M:14, N:2)». Señalar que la capa M del hierro no tiene 8 electrones.
 5. Señalar el recuadro azul: «Representamos los electrones como puntos para que puedas ver en qué capa están, no para indicar su tamaño real.» Explicar que el modelo de Bohr-Sommerfeld y el cuántico no tienen órbitas circulares nítidas.
 
 ### 1.º Bachillerato: repaso puntual
 
-No hay un saber específico de tamaño nuclear. La simulación puede servir de repaso al tratar «Propiedades periódicas de los elementos químicos: radio atómico, energía de ionización y afinidad electrónica» (Bloque A). Por ejemplo, el sodio (Z = 11) tiene 380 pm de diámetro y el oro (Z = 79), 288 pm. El tamaño no crece con Z. Conviene advertir que los radios proceden de tablas distintas (ver simplificaciones).
+No hay un saber específico de tamaño nuclear. La simulación puede servir de repaso al tratar «Propiedades periódicas de los elementos químicos: radio atómico, energía de ionización y afinidad electrónica» (Bloque A). Por ejemplo, el sodio (Z = 11) tiene 332 pm de diámetro y el oro (Z = 79), 272 pm. El tamaño no crece con Z. Todos los radios son covalentes y salen de la misma tabla, así que se pueden comparar entre sí (ver simplificaciones).
 
 ### 2.º Bachillerato Física: tamaño del núcleo
 
@@ -96,11 +96,11 @@ La simulación ataca sobre todo la idea de un átomo macizo con un núcleo grand
 
 | Idea del alumnado | Idea correcta | Cómo mostrarlo |
 | --- | --- | --- |
-| «El núcleo ocupa buena parte del átomo, como en los dibujos del libro» | El átomo es entre 16.274 y 55.675 veces mayor que su núcleo | Hidrógeno, «Escala natural»: el núcleo no se ve. Leer la «Tasa átomo / núcleo»: 44.167 : 1 |
+| «El núcleo ocupa buena parte del átomo, como en los dibujos del libro» | El átomo es entre 14.699 y 48.643 veces mayor que su núcleo | Hidrógeno, «Escala natural»: el núcleo no se ve. Leer la «Tasa átomo / núcleo»: 25.833 : 1 |
 | «El átomo es una bolita maciza» | Casi todo el átomo es espacio vacío entre el núcleo y los electrones | Oro, acercar cuatro saltos: se ve el núcleo y alrededor no hay nada; la capa K queda fuera de la pantalla |
 | «Entre el núcleo y los electrones hay aire» | El aire está formado por moléculas, que a su vez son átomos; dentro del átomo hay vacío | Hidrógeno en el primer salto: el lienzo entero es interior del átomo y no contiene partículas |
-| «Con una lupa o un microscopio que aumente un poco ya se ve el núcleo» | Hacen falta cuatro o cinco órdenes de magnitud de aumento sobre el átomo | Pulsar «Acercar →» una vez: con ×10 el recuadro sigue diciendo que el núcleo es demasiado pequeño para verlo |
-| «Los átomos con más protones son mucho más grandes» | El tamaño atómico no crece en proporción a Z | Comparar el «Diámetro del átomo» del Sodio (Z = 11, 380 pm) y del Oro (Z = 79, 288 pm) |
+| «Con una lupa o un microscopio que aumente un poco ya se ve el núcleo» | Hacen falta unos cuatro órdenes de magnitud de aumento sobre el átomo | Pulsar «Acercar →» una vez: con ×10 el recuadro sigue diciendo que el núcleo es demasiado pequeño para verlo |
+| «Los átomos con más protones son mucho más grandes» | El tamaño atómico no crece en proporción a Z | Comparar el «Diámetro del átomo» del Sodio (Z = 11, 332 pm) y del Oro (Z = 79, 272 pm) |
 | «Todos los núcleos son igual de grandes» | El núcleo crece con el número de nucleones | Comparar «Diámetro del núcleo»: 2,4 fm en el Hidrógeno y 14,9 fm en el Uranio |
 | «Los electrones son bolitas del tamaño de los puntos dibujados» | Los electrones no tienen un tamaño medible a esta escala | Leer el recuadro azul del lienzo, que explica que los puntos solo indican la capa |
 
@@ -108,12 +108,12 @@ La simulación ataca sobre todo la idea de un átomo macizo con un núcleo grand
 
 La simulación prioriza la idea «el núcleo es diminuto frente al átomo». Para ello simplifica el dibujo de la corteza y del núcleo. Conviene conocer estas licencias para no reforzar ideas incorrectas sin querer.
 
-1. **El quinto salto se pasa de largo.** El viaje siempre dura cinco saltos, ×100.000. Pero la tasa real va de 16.274 (Helio) a 55.675 (Sodio). En el último salto el núcleo ya no cabe entero en el lienzo. La mejor vista del núcleo es el cuarto salto, ×10.000.
-2. **El «factor de 100.000» es un orden de magnitud.** La «Guía rápida» habla de 100.000, pero la ficha de cada elemento da su tasa exacta. Conviene usar la tasa de la ficha en los cálculos.
+1. **El viaje no llega al tamaño exacto del núcleo.** Son cuatro saltos (×10.000) para todos los elementos, aunque la tasa real va de 14.699 (Helio) a 48.643 (Sodio). Al final el núcleo ocupa entre un quinto y dos tercios del círculo del átomo; el recuadro «Estás viendo el núcleo» da el factor exacto.
+2. **Los saltos son potencias de 10.** La «Guía rápida» da el rango (de 15.000 a 49.000 veces) y la ficha de cada elemento su tasa exacta. Conviene usar la de la ficha en los cálculos.
 3. **El salto en que aparece el núcleo depende de la pantalla.** El punto rojo surge al superar 0,5 píxeles de radio. Los nucleones se dibujan desde 5 píxeles y el rótulo «p · n» desde 20. En una pantalla pequeña puede tardar un salto más.
-4. **Capas como circunferencias equiespaciadas.** El dibujo reparte las capas a la misma distancia y hace girar los electrones en órbitas circulares. Es un modelo tipo Bohr. Desde 4.º ESO conviene recordar que no hay trayectorias definidas.
-5. **Radios atómicos de fuentes distintas.** El hidrógeno usa 53 pm (radio de Bohr) y el helio 31 pm (radio calculado). Oro y hierro usan radios metálicos, 144 pm y 126 pm. El diámetro del átomo es el doble. Sirven como orden de magnitud, no para comparar tendencias finas en 1.º Bachillerato.
+4. **Capas como circunferencias.** Las capas crecen con n², como en el átomo de Bohr: las internas quedan apiñadas cerca del núcleo y se separan al acercar. Los electrones giran en órbitas circulares. Desde 4.º ESO conviene recordar que no hay trayectorias definidas.
+5. **Radios covalentes.** Todos los radios son covalentes y salen de la misma tabla (Cordero et al., 2008): por ejemplo, 31 pm el hidrógeno y 136 pm el oro. El diámetro del átomo es el doble. Otras tablas (radios metálicos, de van der Waals) dan valores distintos: el «tamaño» de un átomo depende de cómo se mida.
 6. **Núcleo con fórmula empírica.** El diámetro nuclear sale de 2 · 1,2 fm · A^(1/3). Para un protón da 2,4 fm, algo mayor que su tamaño medido. En 2.º Bachillerato conviene presentarlo como aproximación.
 7. **Núcleo plano y con borde nítido.** Protones (rojos) y neutrones (grises) se agitan al azar dentro de un círculo. En realidad el núcleo es tridimensional y su superficie es difusa.
 8. **Un único isótopo por elemento.** Cada elemento tiene un número másico fijo: H-1, He-4, C-12, O-16, Na-23, Fe-56, Au-197 y U-238. Para hablar de isótopos hay que hacerlo de palabra.
-9. **Rótulos de la regla muy pequeños.** Las marcas «100·D» de la franja usan letra de 7,5 px y no se leen proyectadas. Conviene señalarlas y decir el número en voz alta.
+9. **Rótulos de la regla espaciados.** Cuando las marcas «100·D» quedan muy juntas, solo se rotula una de cada varias para que se lean; las intermedias siguen marcadas.

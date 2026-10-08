@@ -11,7 +11,7 @@ export const simulations = [
     id: 'sim-arquimedes',
     title: 'Principio de Arquímedes',
     description:
-      'Flotabilidad y empuje: ajusta masa, volumen y densidad del líquido para observar cuándo un cuerpo flota, se hunde o queda en equilibrio.',
+      'Flotabilidad y empuje: con valores libres o con materiales y líquidos reales, observa cuándo un cuerpo flota, se hunde o queda en equilibrio, y sus fuerzas.',
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-arquimedes/',
     responsive: true,
@@ -20,7 +20,7 @@ export const simulations = [
     id: 'sim-densidad',
     title: 'Densidad',
     description:
-      'Relación entre masa, volumen y densidad con distintos materiales y líquidos. Ideal para introducir la magnitud de forma intuitiva.',
+      'Masa, volumen y densidad: compara materiales como el corcho, el agua o el plomo y observa con la lupa cómo se reparten sus partículas.',
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-densidad/',
     responsive: true,
@@ -38,7 +38,7 @@ export const simulations = [
     id: 'sim-gases',
     title: 'Cinética de Gases',
     description:
-      'Modelo de partículas en movimiento que relaciona presión, temperatura y volumen según la teoría cinético-molecular.',
+      'Modelo de partículas que relaciona presión, temperatura y volumen según la teoría cinético-molecular: comprueba las leyes de Boyle y de Gay-Lussac.',
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-gases/',
     responsive: true,
@@ -56,7 +56,7 @@ export const simulations = [
     id: 'sim-velocidad-reaccion',
     title: 'Velocidad de Reacción',
     description:
-      'Cómo afectan temperatura, concentración y catalizador a las colisiones moleculares y a la rapidez de una reacción química.',
+      'Cómo afectan temperatura, concentración y catalizador a la rapidez de una reacción, con un modo choque que muestra por qué hacen falta energía y orientación.',
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion/',
     responsive: true,
@@ -74,7 +74,7 @@ export const simulations = [
     id: 'sim-enlaces-quimicos',
     title: 'Enlaces Químicos',
     description:
-      'Enlace iónico, covalente y metálico sobre el modelo de Bohr: observa cómo los átomos ganan, comparten o deslocalizan electrones al enlazarse.',
+      'Enlace iónico, covalente y metálico: cómo los átomos ganan, comparten o deslocalizan electrones, con redes iónicas, cristales covalentes y metales maleables.',
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-enlaces-quimicos/',
     responsive: true,
@@ -92,7 +92,7 @@ export const simulations = [
     id: 'sim-cambios-estado',
     title: 'Cambios de Estado',
     description:
-      'Calienta y enfría una sustancia y observa a la vez el recipiente, sus partículas y la curva de calentamiento; explora con el diagrama de fases por qué el agua hierve a 70 °C en el Everest.',
+      'Calienta y enfría una sustancia y observa a la vez el recipiente, sus partículas y la curva de calentamiento; explora con el diagrama de fases por qué el agua hierve a unos 72 °C en el Everest.',
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-cambios-estado/',
     responsive: true,

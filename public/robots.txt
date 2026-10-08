@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://simulaciencia.es/sitemap.xml

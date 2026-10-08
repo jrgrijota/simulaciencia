@@ -12,8 +12,6 @@ function ext(href, text) {
 }
 
 export function renderLegal(root) {
-  document.title = 'Aviso legal y privacidad · SimulaCiencia';
-
   root.innerHTML = `
   <div class="min-h-screen">
     <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">

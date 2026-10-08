@@ -33,6 +33,21 @@ const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize,
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };
 
+// Título y descripción por ruta: es lo que muestran Google y la pestaña del navegador.
+const SITE = 'SimulaCiencia';
+const DEFAULT_TITLE = document.title;
+const metaDescription = document.querySelector('meta[name="description"]');
+const DEFAULT_DESCRIPTION = metaDescription.content;
+const PAGE_TITLES = {
+  about: `Sobre el proyecto · ${SITE}`,
+  legal: `Aviso legal y privacidad · ${SITE}`,
+};
+
+function updateHead(sim, page) {
+  document.title = sim ? `${sim.title} · Simulación interactiva · ${SITE}` : PAGE_TITLES[page] || DEFAULT_TITLE;
+  metaDescription.content = sim ? sim.description : DEFAULT_DESCRIPTION;
+}
+
 let cleanup = null;
 
 function render() {
@@ -49,6 +64,8 @@ function render() {
   else if (page === 'about') cleanup = renderAbout(app);
   else if (page === 'legal') cleanup = renderLegal(app);
   else cleanup = renderCatalog(app);
+
+  updateHead(sim, sim ? null : page);
 
   // Sustituye los <i data-lucide> por sus SVG tras inyectar el HTML.
   createIcons({ icons: ICONS });

@@ -2,6 +2,8 @@
 // La web NO descarga ni copia los archivos de las simulaciones: cada `url`
 // apunta directamente a su despliegue independiente en GitHub Pages.
 //
+// `courses`: cursos en los que la guía docente la propone como uso principal o
+//            aplicación (no los de uso o repaso puntual). Alimentan el filtro.
 // `responsive`: true  -> la simulación adapta su propio layout (móvil/tablet);
 //                        el iframe ocupa el 100% y ella se reorganiza sola.
 //               false -> layout rígido (~1270px); el Modo Laboratorio la escala
@@ -15,6 +17,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-arquimedes/',
     responsive: true,
+    courses: ['3ESO', '4ESO'],
   },
   {
     id: 'sim-densidad',
@@ -24,6 +27,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-densidad/',
     responsive: true,
+    courses: ['2ESO', '3ESO', '4ESO'],
   },
   {
     id: 'sim-espectros',
@@ -33,6 +37,7 @@ export const simulations = [
     tags: ['Química', 'Física Cuántica', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-espectros/',
     responsive: true,
+    courses: ['4ESO', '1BACH', '2BACH'],
   },
   {
     id: 'sim-gases',
@@ -42,6 +47,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-gases/',
     responsive: true,
+    courses: ['2ESO', '3ESO', '4ESO'],
   },
   {
     id: 'sim-modelos',
@@ -51,6 +57,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-modelos/',
     responsive: true,
+    courses: ['2ESO', '3ESO', '4ESO', '2BACH'],
   },
   {
     id: 'sim-velocidad-reaccion',
@@ -60,6 +67,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion/',
     responsive: true,
+    courses: ['3ESO', '4ESO', '2BACH'],
   },
   {
     id: 'sim-atomo-real',
@@ -69,6 +77,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-atomo-real/',
     responsive: true,
+    courses: ['2ESO', '3ESO', '4ESO'],
   },
   {
     id: 'sim-enlaces-quimicos',
@@ -78,6 +87,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-enlaces-quimicos/',
     responsive: true,
+    courses: ['3ESO', '4ESO', '1BACH'],
   },
   {
     id: 'sim-orbitas',
@@ -87,6 +97,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-orbitas/',
     responsive: true,
+    courses: ['3ESO', '4ESO', '1BACH', '2BACH'],
   },
   {
     id: 'sim-cambios-estado',
@@ -96,11 +107,32 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-cambios-estado/',
     responsive: true,
+    courses: ['2ESO', '3ESO', '4ESO'],
   },
 ];
 
-// Lista ordenada y única de etiquetas presentes en el catálogo (para los filtros).
-export const allTags = [...new Set(simulations.flatMap((s) => s.tags))];
+// Cursos, en orden, para el filtro y las tarjetas.
+export const COURSES = [
+  { id: '2ESO', label: '2.º ESO' },
+  { id: '3ESO', label: '3.º ESO' },
+  { id: '4ESO', label: '4.º ESO' },
+  { id: '1BACH', label: '1.º Bach.' },
+  { id: '2BACH', label: '2.º Bach.' },
+];
+
+export function courseLabel(id) {
+  return COURSES.find((c) => c.id === id)?.label || id;
+}
+
+// Etapas: ya las cubre el filtro por curso, así que no se repiten como etiqueta.
+const STAGE_TAGS = ['ESO', 'Bachillerato'];
+
+// Lista ordenada y única de etiquetas de materia presentes en el catálogo (para los filtros).
+export const allTags = [...new Set(simulations.flatMap((s) => s.tags))].filter((t) => !STAGE_TAGS.includes(t));
+
+export function subjectTags(sim) {
+  return sim.tags.filter((t) => !STAGE_TAGS.includes(t));
+}
 
 export function getSimulationById(id) {
   return simulations.find((s) => s.id === id) || null;

@@ -1,4 +1,4 @@
-import { simulations, allTags } from '../data/simulations.js';
+import { simulations, allTags, COURSES } from '../data/simulations.js';
 import { cardMarkup } from '../components/card.js';
 import { footerMarkup } from '../components/footer.js';
 import { navigateToSim, navigateToGuide, navigateToPage } from '../router.js';
@@ -16,6 +16,15 @@ export function renderCatalog(root) {
       return `<button data-tag="${value}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${label}</button>`;
     })
     .join('');
+
+  // Un docente busca por el curso que da: filtro propio, combinable con la materia.
+  const courseFilters = [{ id: 'all', label: 'Todos' }, ...COURSES]
+    .map((c, i) => {
+      const state = i === 0 ? FILTER_ON : FILTER_OFF;
+      return `<button data-course="${c.id}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${c.label}</button>`;
+    })
+    .join('');
+  const LABEL = 'w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-[#64748b]';
 
   root.innerHTML = `
   <div class="min-h-screen">
@@ -44,7 +53,14 @@ export function renderCatalog(root) {
             class="w-full rounded-md border border-[#e2e8f0] bg-white py-2.5 pl-11 pr-4 text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:border-[#0284c7] focus:outline-none"
           />
         </div>
-        <div id="filters" class="flex flex-wrap gap-2">${filters}</div>
+        <div class="flex items-center gap-2">
+          <span class="${LABEL}">Materia</span>
+          <div id="filters" role="group" aria-label="Materia" class="flex flex-wrap gap-2">${filters}</div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="${LABEL}">Curso</span>
+          <div id="course-filters" role="group" aria-label="Curso" class="flex flex-wrap gap-2">${courseFilters}</div>
+        </div>
       </div>
 
       <div id="grid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -63,9 +79,11 @@ export function renderCatalog(root) {
   const empty = root.querySelector('#empty');
   const search = root.querySelector('#search');
   const filterBar = root.querySelector('#filters');
+  const courseBar = root.querySelector('#course-filters');
 
   let term = '';
   let activeTag = 'all';
+  let activeCourse = 'all';
 
   function apply() {
     let visible = 0;
@@ -73,7 +91,8 @@ export function renderCatalog(root) {
       const el = grid.querySelector(`[data-sim-id="${sim.id}"]`);
       const matchTerm = !term || el.dataset.search.includes(term);
       const matchTag = activeTag === 'all' || sim.tags.includes(activeTag);
-      const show = matchTerm && matchTag;
+      const matchCourse = activeCourse === 'all' || sim.courses.includes(activeCourse);
+      const show = matchTerm && matchTag && matchCourse;
       el.classList.toggle('hidden', !show);
       if (show) visible += 1;
     });
@@ -91,6 +110,18 @@ export function renderCatalog(root) {
     if (!btn) return;
     activeTag = btn.dataset.tag;
     filterBar.querySelectorAll('[data-tag]').forEach((b) => {
+      const on = b === btn;
+      b.setAttribute('aria-pressed', String(on));
+      b.className = `${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}`;
+    });
+    apply();
+  });
+
+  courseBar.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-course]');
+    if (!btn) return;
+    activeCourse = btn.dataset.course;
+    courseBar.querySelectorAll('[data-course]').forEach((b) => {
       const on = b === btn;
       b.setAttribute('aria-pressed', String(on));
       b.className = `${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}`;

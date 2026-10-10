@@ -2,7 +2,8 @@
 // La web NO descarga ni copia los archivos de las simulaciones: cada `url`
 // apunta directamente a su despliegue independiente en GitHub Pages.
 //
-// `en`: título y descripción en inglés, para /en/ (la simulación se abre con ?lang=en).
+// `en`, `ca`: título y descripción en inglés y en catalán, para /en/ y /ca/ (la
+//            simulación se abre con ?lang=en o ?lang=ca).
 // `courses`: cursos en los que la guía docente la propone como uso principal o
 //            aplicación (no los de uso o repaso puntual). Alimentan el filtro.
 // `responsive`: true  -> la simulación adapta su propio layout (móvil/tablet);
@@ -24,6 +25,11 @@ export const simulations = [
       description:
         'Buoyancy and upthrust: with free values or with real materials and liquids, see when an object floats, sinks or stays in equilibrium, and the forces acting on it.',
     },
+    ca: {
+      title: "Principi d'Arquimedes",
+      description:
+        "Flotabilitat i empenyiment: amb valors lliures o amb materials i líquids reals, observa quan un cos sura, s'enfonsa o queda en equilibri, i les forces que hi actuen.",
+    },
   },
   {
     id: 'sim-densidad',
@@ -38,6 +44,11 @@ export const simulations = [
       title: 'Density',
       description:
         'Mass, volume and density: compare materials such as cork, water or lead, and use the magnifier to see how their particles are arranged.',
+    },
+    ca: {
+      title: 'Densitat',
+      description:
+        "Massa, volum i densitat: compara materials com el suro, l'aigua o el plom i observa amb la lupa com es distribueixen les seves partícules.",
     },
   },
   {
@@ -54,6 +65,11 @@ export const simulations = [
       description:
         'Explore the emission and absorption spectra of different chemical elements and the electron transitions behind them.',
     },
+    ca: {
+      title: 'Espectres Atòmics',
+      description:
+        "Visualització i interacció amb els espectres d'emissió i d'absorció de diferents elements químics i les seves transicions electròniques.",
+    },
   },
   {
     id: 'sim-gases',
@@ -68,6 +84,11 @@ export const simulations = [
       title: 'Kinetic Theory of Gases',
       description:
         "A particle model linking pressure, temperature and volume through kinetic molecular theory: test Boyle's law and Gay-Lussac's law.",
+    },
+    ca: {
+      title: 'Cinètica dels Gasos',
+      description:
+        'Model de partícules que relaciona pressió, temperatura i volum segons la teoria cineticomolecular: comprova les lleis de Boyle i de Gay-Lussac.',
     },
   },
   {
@@ -84,6 +105,11 @@ export const simulations = [
       description:
         "Rutherford's scattering experiment versus Thomson's model: how one observation forced scientists to rewrite the model of the atom.",
     },
+    ca: {
+      title: 'Models Atòmics',
+      description:
+        "Experiment de dispersió de Rutherford davant del model de Thomson: com una observació va obligar a reescriure el model de l'àtom.",
+    },
   },
   {
     id: 'sim-velocidad-reaccion',
@@ -98,6 +124,11 @@ export const simulations = [
       title: 'Reaction Rate',
       description:
         'How temperature, concentration and a catalyst affect the rate of a reaction, with a collision mode that shows why particles need enough energy and the right orientation.',
+    },
+    ca: {
+      title: 'Velocitat de Reacció',
+      description:
+        "Com afecten la temperatura, la concentració i el catalitzador a la rapidesa d'una reacció, amb un mode xoc que mostra per què calen energia i orientació.",
     },
   },
   {
@@ -114,6 +145,11 @@ export const simulations = [
       description:
         'A ×10 zoom journey from the whole atom down to its nucleus: makes it tangible how tiny the nucleus is compared with the real size of the atom.',
     },
+    ca: {
+      title: "L'Àtom a Escala",
+      description:
+        "Viatge de zoom ×10 des de l'àtom sencer fins al seu nucli: fa tangible com n'és de petit el nucli davant de la mida real de l'àtom.",
+    },
   },
   {
     id: 'sim-enlaces-quimicos',
@@ -128,6 +164,11 @@ export const simulations = [
       title: 'Chemical Bonding',
       description:
         'Ionic, covalent and metallic bonding: how atoms gain, share or delocalise electrons, with ionic lattices, covalent crystals and malleable metals.',
+    },
+    ca: {
+      title: 'Enllaços Químics',
+      description:
+        'Enllaç iònic, covalent i metàl·lic: com els àtoms guanyen, comparteixen o deslocalitzen electrons, amb xarxes iòniques, cristalls covalents i metalls mal·leables.',
     },
   },
   {
@@ -144,6 +185,11 @@ export const simulations = [
       description:
         "Orbital mechanics with Newton's cannonball, the Solar System, Kepler's laws and binary stars in a single lab.",
     },
+    ca: {
+      title: 'Òrbites i Gravitació',
+      description:
+        'Mecànica orbital amb la bala de canó de Newton, el Sistema Solar, les lleis de Kepler i les estrelles binàries en un mateix laboratori.',
+    },
   },
   {
     id: 'sim-cambios-estado',
@@ -159,40 +205,48 @@ export const simulations = [
       description:
         'Heat and cool a substance and watch the container, its particles and the heating curve at the same time; use the phase diagram to see why water boils at about 72 °C on Everest.',
     },
+    ca: {
+      title: "Canvis d'Estat",
+      description:
+        "Escalfa i refreda una substància i observa alhora el recipient, les seves partícules i la corba d'escalfament; explora amb el diagrama de fases per què l'aigua bull a uns 72 °C a l'Everest.",
+    },
   },
 ];
 
 // Cursos, en orden, para el filtro y las tarjetas.
 export const COURSES = [
-  { id: '2ESO', label: '2.º ESO', en: 'ESO Year 2' },
-  { id: '3ESO', label: '3.º ESO', en: 'ESO Year 3' },
-  { id: '4ESO', label: '4.º ESO', en: 'ESO Year 4' },
-  { id: '1BACH', label: '1.º Bach.', en: 'Bach. Year 1' },
-  { id: '2BACH', label: '2.º Bach.', en: 'Bach. Year 2' },
+  { id: '2ESO', label: '2.º ESO', en: 'ESO Year 2', ca: '2n ESO' },
+  { id: '3ESO', label: '3.º ESO', en: 'ESO Year 3', ca: '3r ESO' },
+  { id: '4ESO', label: '4.º ESO', en: 'ESO Year 4', ca: '4t ESO' },
+  { id: '1BACH', label: '1.º Bach.', en: 'Bach. Year 1', ca: '1r Batx.' },
+  { id: '2BACH', label: '2.º Bach.', en: 'Bach. Year 2', ca: '2n Batx.' },
 ];
 
 export function courseLabel(id, lang = 'es') {
   const c = COURSES.find((c) => c.id === id);
-  return (lang === 'en' ? c?.en : c?.label) || id;
+  return (lang === 'es' ? c?.label : c?.[lang]) || id;
 }
 
 // Título y descripción en el idioma de la página.
 export function simTitle(sim, lang = 'es') {
-  return (lang === 'en' && sim.en?.title) || sim.title;
+  return sim[lang]?.title || sim.title;
 }
 export function simDescription(sim, lang = 'es') {
-  return (lang === 'en' && sim.en?.description) || sim.description;
+  return sim[lang]?.description || sim.description;
 }
 
 // Dirección de la simulación para el iframe y el código para insertar.
 export function simUrl(sim, lang = 'es') {
-  return lang === 'en' ? `${sim.url}?lang=en` : sim.url;
+  return lang === 'es' ? sim.url : `${sim.url}?lang=${lang}`;
 }
 
 // Las etiquetas se guardan en español (son también el valor de los filtros).
-const TAG_EN = { Física: 'Physics', Química: 'Chemistry', 'Física Cuántica': 'Quantum Physics' };
+const TAGS = {
+  en: { Física: 'Physics', Química: 'Chemistry', 'Física Cuántica': 'Quantum Physics' },
+  ca: { Física: 'Física', Química: 'Química', 'Física Cuántica': 'Física Quàntica' },
+};
 export function tagLabel(tag, lang = 'es') {
-  return (lang === 'en' && TAG_EN[tag]) || tag;
+  return TAGS[lang]?.[tag] || tag;
 }
 
 // Etapas: ya las cubre el filtro por curso, así que no se repiten como etiqueta.

@@ -7,28 +7,36 @@
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
 //
-// En inglés (interfaz y simulaciones; las guías y el aviso legal solo existen en español):
+// En inglés y en catalán (interfaz y simulaciones; las guías y el aviso legal solo
+// existen en español):
 //
-//   /en/                       => Catálogo
-//   /en/simulations/<nombre>/  => Modo Laboratorio
-//   /en/about/                 => Sobre el proyecto
+//   /en/                       /ca/                          => Catálogo
+//   /en/simulations/<nombre>/  /ca/simulacions/<nombre>/     => Modo Laboratorio
+//   /en/about/                 /ca/sobre-el-projecte/        => Sobre el proyecto
 
 export const SITE_URL = 'https://simulaciencia.es/';
-export const LANGS = ['es', 'en'];
+export const LANGS = ['es', 'en', 'ca'];
 
 const slug = (simId) => simId.replace(/^sim-/, '');
 
-const HOME = { es: '/', en: '/en/' };
-const SIM_DIR = { es: '/simulaciones/', en: '/en/simulations/' };
+const HOME = { es: '/', en: '/en/', ca: '/ca/' };
+const SIM_DIR = { es: '/simulaciones/', en: '/en/simulations/', ca: '/ca/simulacions/' };
 
 export const homePath = (lang = 'es') => HOME[lang];
 export const simPath = (simId, lang = 'es') => `${SIM_DIR[lang]}${slug(simId)}/`;
 export const guidePath = (simId) => `/guias/${slug(simId)}/`;
 export const PAGE_PATHS = { about: '/sobre-el-proyecto/', legal: '/aviso-legal/' };
-export const PAGE_PATHS_EN = { about: '/en/about/' };
+const PAGES = {
+  es: PAGE_PATHS,
+  en: { about: '/en/about/' },
+  ca: { about: '/ca/sobre-el-projecte/' },
+};
 
-// Ruta de una página fija en un idioma; null si no existe en él (el aviso legal en inglés).
-export const pagePath = (page, lang = 'es') => (lang === 'en' ? PAGE_PATHS_EN : PAGE_PATHS)[page] || null;
+// Páginas fijas de un idioma (para el sitemap y las páginas pregeneradas).
+export const pagePaths = (lang) => Object.values(PAGES[lang]);
+
+// Ruta de una página fija en un idioma; null si no existe en él (el aviso legal fuera del español).
+export const pagePath = (page, lang = 'es') => PAGES[lang][page] || null;
 
 export const absoluteUrl = (path) => SITE_URL + path.replace(/^\//, '');
 
@@ -36,14 +44,13 @@ export const absoluteUrl = (path) => SITE_URL + path.replace(/^\//, '');
 // de su idioma.
 export function parsePath(pathname) {
   const path = pathname.endsWith('/') ? pathname : pathname + '/';
-  const lang = path.startsWith('/en/') ? 'en' : 'es';
-  if (lang === 'en') {
-    const m = path.match(/^\/en\/simulations\/([a-z0-9-]+)\/$/);
-    const page = Object.keys(PAGE_PATHS_EN).find((k) => PAGE_PATHS_EN[k] === path) || null;
-    return { lang, simId: m ? `sim-${m[1]}` : null, guideId: null, page };
+  const lang = LANGS.find((l) => l !== 'es' && path.startsWith(HOME[l])) || 'es';
+  const page = Object.keys(PAGES[lang]).find((k) => PAGES[lang][k] === path) || null;
+  if (lang !== 'es') {
+    const slug = path.startsWith(SIM_DIR[lang]) ? path.slice(SIM_DIR[lang].length).match(/^([a-z0-9-]+)\/$/) : null;
+    return { lang, simId: slug ? `sim-${slug[1]}` : null, guideId: null, page };
   }
   const m = path.match(/^\/(simulaciones|guias)\/([a-z0-9-]+)\/$/);
-  const page = Object.keys(PAGE_PATHS).find((k) => PAGE_PATHS[k] === path) || null;
   return {
     lang,
     simId: m?.[1] === 'simulaciones' ? `sim-${m[2]}` : null,

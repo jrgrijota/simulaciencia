@@ -85,11 +85,14 @@ sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
 - **Rutas:** `/simulaciones/<nombre>/` abre una simulación, `/guias/<nombre>/` su guía docente,
   y `/sobre-el-proyecto/` y `/aviso-legal/` las páginas fijas ([`src/paths.js`](src/paths.js)).
   Los enlaces antiguos (`?sim=`, `?guia=`, `?page=`) redirigen a la dirección nueva.
-- **Inglés:** `/en/`, `/en/simulations/<nombre>/` y `/en/about/` muestran la web en inglés y cargan
-  cada simulación con `?lang=en`. Las guías docentes y el aviso legal solo están en español. Los
-  textos en inglés de la web están junto a los españoles (`L('…', '…')`, ver
-  [`src/i18n.js`](src/i18n.js)) y los del catálogo en el campo `en` de cada simulación. Las páginas
-  con versión en los dos idiomas se enlazan entre sí con `hreflang` en el `<head>` y en el sitemap.
+- **Inglés y catalán:** `/en/`, `/en/simulations/<nombre>/` y `/en/about/` muestran la web en
+  inglés, y `/ca/`, `/ca/simulacions/<nombre>/` y `/ca/sobre-el-projecte/` en catalán; cada
+  simulación se carga con `?lang=en` o `?lang=ca`. Las guías docentes y el aviso legal solo están en
+  español. Los textos traducidos de la web están junto a los españoles (`L('es', 'en', 'ca')`, ver
+  [`src/i18n.js`](src/i18n.js)) y los del catálogo en los campos `en` y `ca` de cada simulación. Las
+  páginas que existen en los tres idiomas se enlazan entre sí con `hreflang` en el `<head>` y en el
+  sitemap. El selector de idioma ([`src/components/lang-switch.js`](src/components/lang-switch.js))
+  muestra siempre ES · EN · CA con el idioma actual marcado.
 - **Páginas pregeneradas:** tras el build, `scripts/prerender.mjs` abre cada ruta en Chrome sin
   interfaz y guarda su HTML en `dist/<ruta>/index.html`, para que buscadores y vistas previas al
   compartir vean el contenido sin ejecutar JavaScript. Sin Chrome, cada ruta recibe una copia de

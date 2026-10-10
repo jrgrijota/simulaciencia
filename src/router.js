@@ -14,22 +14,19 @@ export function getRoute() {
   return { simId: params.get(SIM_PARAM), guideId: params.get(GUIDE_PARAM), page: params.get(PAGE_PARAM) };
 }
 
+// Rutas relativas para los <a href> (funcionan en local y en simulaciencia.es).
+export const simHref = (id) => `?${SIM_PARAM}=${id}`;
+export const guideHref = (id) => `?${GUIDE_PARAM}=${id}`;
+export const pageHref = (name) => `?${PAGE_PARAM}=${name}`;
+
+export function navigateTo(url) {
+  pushAndNotify(url);
+}
+
 function pushAndNotify(url) {
   window.history.pushState({}, '', url);
   // re-dispara el ciclo de render (mismo canal que el botón atrás del navegador)
   window.dispatchEvent(new PopStateEvent('popstate'));
-}
-
-export function navigateToSim(id) {
-  const url = new URL(window.location.origin + window.location.pathname);
-  url.searchParams.set(SIM_PARAM, id);
-  pushAndNotify(url);
-}
-
-export function navigateToGuide(id) {
-  const url = new URL(window.location.origin + window.location.pathname);
-  url.searchParams.set(GUIDE_PARAM, id);
-  pushAndNotify(url);
 }
 
 export function navigateToCatalog() {
@@ -37,12 +34,6 @@ export function navigateToCatalog() {
   url.searchParams.delete(SIM_PARAM);
   url.searchParams.delete(PAGE_PARAM);
   url.searchParams.delete(GUIDE_PARAM);
-  pushAndNotify(url);
-}
-
-export function navigateToPage(name) {
-  const url = new URL(window.location.origin + window.location.pathname);
-  url.searchParams.set(PAGE_PARAM, name);
   pushAndNotify(url);
 }
 

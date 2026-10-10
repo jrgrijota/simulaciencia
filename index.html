@@ -3,6 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Enlaces antiguos (?sim=sim-x, ?guia=sim-x, ?page=about) => su dirección actual -->
+    <script>
+      (function () {
+        var q = new URLSearchParams(location.search);
+        var sim = q.get('sim'), guia = q.get('guia');
+        var pages = { about: '/sobre-el-proyecto/', legal: '/aviso-legal/' };
+        var to = sim ? '/simulaciones/' + sim.replace(/^sim-/, '') + '/'
+          : guia ? '/guias/' + guia.replace(/^sim-/, '') + '/'
+          : pages[q.get('page')];
+        if (to) location.replace(to);
+      })();
+    </script>
     <title>SimulaCiencia · Simulaciones de Física y Química</title>
     <meta
       name="description"
@@ -50,7 +62,7 @@
     ></script>
   </head>
   <body>
-    <div id="app"><!--catalogo-sin-js--></div>
+    <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

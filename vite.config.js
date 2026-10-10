@@ -3,8 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { readdirSync } from 'node:fs';
 import { simulations } from './src/data/simulations.js';
 import { guideIdFromFile } from './src/guides/shared.js';
-
-const SITE_URL = 'https://simulaciencia.es/';
+import { SITE_URL, simPath, guidePath, PAGE_PATHS, absoluteUrl } from './src/paths.js';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
@@ -14,12 +13,11 @@ function sitemap() {
     generateBundle() {
       const urls = [
         SITE_URL,
-        ...simulations.map((s) => `${SITE_URL}?sim=${s.id}`),
+        ...simulations.map((s) => absoluteUrl(simPath(s.id))),
         ...readdirSync('guias')
           .filter((f) => f.endsWith('.md'))
-          .map((f) => `${SITE_URL}?guia=${guideIdFromFile(f)}`),
-        `${SITE_URL}?page=about`,
-        `${SITE_URL}?page=legal`,
+          .map((f) => absoluteUrl(guidePath(guideIdFromFile(f)))),
+        ...Object.values(PAGE_PATHS).map(absoluteUrl),
       ];
       const body = urls
         .map((loc) => `  <url><loc>${loc}</loc></url>`)
@@ -33,33 +31,9 @@ function sitemap() {
   };
 }
 
-// Catálogo en HTML plano dentro de <noscript>: lo leen los buscadores y las
-// herramientas que no ejecutan JavaScript. Con JavaScript no se muestra.
-function staticCatalog() {
-  return {
-    name: 'static-catalog',
-    transformIndexHtml(html) {
-      const guides = new Set(readdirSync('guias').filter((f) => f.endsWith('.md')).map(guideIdFromFile));
-      const items = simulations
-        .map((s) => {
-          const guide = guides.has(s.id) ? ` · <a href="?guia=${s.id}">Guía docente</a>` : '';
-          return `<li><a href="?sim=${s.id}">${s.title}</a>: ${s.description}${guide}</li>`;
-        })
-        .join('');
-      return html.replace(
-        '<!--catalogo-sin-js-->',
-        `<noscript><h1>SimulaCiencia · Simulaciones de Física y Química</h1>` +
-          `<p>Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato, cada una con su guía docente. ` +
-          `Para usarlas hay que activar JavaScript.</p><ul>${items}</ul>` +
-          `<p><a href="?page=about">Sobre el proyecto</a> · <a href="?page=legal">Aviso legal y privacidad</a></p></noscript>`,
-      );
-    },
-  };
-}
-
 export default defineConfig({
-  // base relativo: funciona tanto en user.github.io como en user.github.io/repo
-  // sin tener que conocer el nombre del repositorio de despliegue.
-  base: './',
-  plugins: [tailwindcss(), sitemap(), staticCatalog()],
+  // base absoluto: las páginas viven en subcarpetas (/guias/densidad/) y la web
+  // se sirve en la raíz de simulaciencia.es.
+  base: '/',
+  plugins: [tailwindcss(), sitemap()],
 });

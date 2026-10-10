@@ -2,7 +2,7 @@
 // sin efectos hover que oculten datos.
 import { hasGuide } from '../data/guides.js';
 import { subjectTags, courseLabel } from '../data/simulations.js';
-import { simHref, guideHref } from '../router.js';
+import { simPath, guidePath } from '../paths.js';
 
 const TAG_CLASS =
   'inline-flex items-center rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-2 py-0.5 text-xs font-medium text-[#64748b]';
@@ -13,7 +13,7 @@ export function cardMarkup(sim) {
   const guideButton = hasGuide(sim.id)
     ? `
     <a
-      href="${guideHref(sim.id)}"
+      href="${guidePath(sim.id)}"
       data-route
       class="mt-2 inline-flex items-center justify-center gap-2 rounded-md border border-[#e2e8f0] bg-white px-4 py-2 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]"
     >
@@ -35,7 +35,7 @@ export function cardMarkup(sim) {
     <div class="mt-3 flex flex-wrap gap-1.5">${tags}</div>
     ${courseLine}
     <a
-      href="${simHref(sim.id)}"
+      href="${simPath(sim.id)}"
       data-route
       class="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-[#0284c7] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0369a1] focus-visible:outline-2 focus-visible:outline-offset-2"
     >

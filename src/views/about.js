@@ -9,7 +9,7 @@ export function renderAbout(root) {
   <div class="min-h-screen">
     <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <a id="about-home" href="#" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0284c7] transition-colors">
+        <a id="about-home" href="/" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0284c7] transition-colors">
           <span class="text-[#0284c7]">⚗</span> SimulaCiencia
         </a>
         <span class="hidden text-sm text-[#64748b] sm:inline">· Sobre el proyecto</span>

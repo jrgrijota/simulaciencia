@@ -38,7 +38,7 @@ const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize,
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };
 
-// Registra la visita en GoatCounter con la ruta completa (?sim=…), para saber qué
+// Registra la visita en GoatCounter con la ruta completa (/simulaciones/…), para saber qué
 // simulaciones se abren. El script carga en async: si aún no está, espera a su load.
 // Si un bloqueador o el cortafuegos del centro lo impiden, simplemente no se cuenta.
 function trackPageview() {
@@ -60,7 +60,7 @@ function render() {
   const sim = simId ? getSimulationById(simId) : null;
   const guideSim = !sim && guideId && hasGuide(guideId) ? getSimulationById(guideId) : null;
 
-  // ?sim, ?guia o ?page inválidos => degradamos al catálogo de forma silenciosa.
+  // Rutas desconocidas => degradamos al catálogo de forma silenciosa.
   if (sim) cleanup = renderLab(app, sim);
   else if (guideSim) cleanup = renderGuide(app, guideSim);
   else if (page === 'about') cleanup = renderAbout(app);
@@ -75,7 +75,7 @@ function render() {
   createIcons({ icons: ICONS });
 }
 
-// Los enlaces internos son <a href="?sim=…"> para que Google pueda seguirlos;
+// Los enlaces internos son <a href="/simulaciones/…"> para que Google pueda seguirlos;
 // con un clic normal se navega sin recargar la página.
 document.addEventListener('click', (e) => {
   const a = e.target.closest('a[data-route]');

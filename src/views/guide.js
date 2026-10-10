@@ -1,4 +1,5 @@
-import { navigateToCatalog, simHref } from '../router.js';
+import { navigateToCatalog } from '../router.js';
+import { simPath } from '../paths.js';
 import { setDescription } from '../head.js';
 import { footerMarkup } from '../components/footer.js';
 import { loadGuide } from '../data/guides.js';
@@ -33,7 +34,7 @@ export function renderGuide(root, sim) {
   const base = downloadBase(sim.id);
   const downloads = DOWNLOADS.map(
     (d) => `
-      <a href="${base}.${d.ext}" download data-download class="${d.ext === 'pdf' ? BTN_PRIMARY : BTN_SECONDARY}">
+      <a href="/${base}.${d.ext}" download data-download class="${d.ext === 'pdf' ? BTN_PRIMARY : BTN_SECONDARY}">
         <i data-lucide="download" class="h-4 w-4"></i>
         ${d.label} <span class="hidden font-normal opacity-75 sm:inline">· ${d.hint}</span>
       </a>`,
@@ -47,7 +48,7 @@ export function renderGuide(root, sim) {
           <i data-lucide="arrow-left" class="h-4 w-4"></i>
           Volver al catálogo
         </button>
-        <a href="${simHref(sim.id)}" data-route class="${BTN_SECONDARY} ml-auto">
+        <a href="${simPath(sim.id)}" data-route class="${BTN_SECONDARY} ml-auto">
           <i data-lucide="flask-conical" class="h-4 w-4"></i>
           <span class="hidden sm:inline">Abrir la simulación</span><span class="sm:hidden">Simulación</span>
         </a>

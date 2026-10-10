@@ -9,7 +9,7 @@
 // rotos. En local solo avisa y se salta ese formato.
 
 import { execFileSync } from 'node:child_process';
-import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -22,6 +22,8 @@ import {
   renderGuideHtml,
   rewriteLinks,
 } from '../src/guides/shared.js';
+import { absoluteUrl, guidePath } from '../src/paths.js';
+import { findTool, findChrome } from './tools.mjs';
 
 // Pandoc deja las tablas sin bordes y con letra con serifa. Se retocan los XML
 // internos (DOCX y ODT son ZIP) para que se parezcan a la web y al PDF.
@@ -87,32 +89,7 @@ function patchOdt(path) {
 const ROOT = resolve(import.meta.dirname, '..');
 const OUT = join(ROOT, 'dist');
 const CI = !!process.env.CI;
-
-function findTool(envVar, candidates) {
-  if (process.env[envVar]) return process.env[envVar];
-  for (const c of candidates) {
-    if (c.includes('/') || c.includes('\\')) {
-      if (existsSync(c)) return c;
-    } else {
-      try {
-        execFileSync(c, ['--version'], { stdio: 'ignore' });
-        return c;
-      } catch {}
-    }
-  }
-  const msg = `No se encuentra ${envVar.replace('_PATH', '').toLowerCase()} (define ${envVar}).`;
-  if (CI) throw new Error(msg);
-  console.warn(`⚠ ${msg} Se omiten esos formatos.`);
-  return null;
-}
-
-const chrome = findTool('CHROME_PATH', [
-  'C:/Program Files/Google/Chrome/Application/chrome.exe',
-  'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
-  '/usr/bin/google-chrome',
-  '/usr/bin/chromium',
-  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-]);
+const chrome = findChrome();
 const pandoc = findTool('PANDOC_PATH', ['pandoc']);
 
 const fontUrl = (w) =>
@@ -151,7 +128,7 @@ function pdfHtml(title, body, simId) {
   <p class="license">© 2026 Juan Ramón Grijota · SimulaCiencia. Guía publicada bajo licencia
   <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>: puedes adaptarla y
   compartirla citando la autoría y con la misma licencia. Versión actualizada y simulación en
-  <a href="https://simulaciencia.es/?guia=${simId}">simulaciencia.es/?guia=${simId}</a>.</p>
+  <a href="${absoluteUrl(guidePath(simId))}">${absoluteUrl(guidePath(simId)).replace('https://', '')}</a>.</p>
 </body></html>`;
 }
 

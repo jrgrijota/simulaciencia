@@ -1,7 +1,7 @@
 import { simulations, allTags, COURSES } from '../data/simulations.js';
 import { cardMarkup } from '../components/card.js';
 import { footerMarkup } from '../components/footer.js';
-import { navigateToSim, navigateToGuide, navigateToPage } from '../router.js';
+import { PAGE_PATHS } from '../paths.js';
 
 const FILTER_BASE =
   'filter-btn rounded-md border px-3 py-1.5 text-sm font-medium transition-colors';
@@ -30,18 +30,24 @@ export function renderCatalog(root) {
   <div class="min-h-screen">
     <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <span class="text-lg font-bold tracking-tight text-[#1e293b]">
-          <span class="text-[#0284c7]">⚗</span> SimulaCiencia
-        </span>
-        <span class="hidden text-sm text-[#64748b] sm:inline">· Simulaciones de Física y Química</span>
-        <button id="nav-about" class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
+        <h1 class="contents">
+          <span class="text-lg font-bold tracking-tight text-[#1e293b]">
+            <span class="text-[#0284c7]">⚗</span> SimulaCiencia
+          </span>
+          <span class="hidden text-sm text-[#64748b] sm:inline">· Simulaciones de Física y Química</span>
+        </h1>
+        <a href="${PAGE_PATHS.about}" data-route class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
           <i data-lucide="info" class="h-4 w-4"></i>
           <span class="hidden sm:inline">Sobre el proyecto</span>
-        </button>
+        </a>
       </div>
     </header>
 
     <main class="mx-auto max-w-6xl px-4 py-6">
+      <p class="mb-4 text-sm leading-relaxed text-[#64748b]">
+        Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato, con su guía docente.
+        Sin instalar nada ni crear una cuenta.
+      </p>
       <div data-print-hide class="mb-6 flex flex-col gap-3">
         <div class="relative">
           <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#64748b]"></i>
@@ -128,16 +134,6 @@ export function renderCatalog(root) {
     });
     apply();
   });
-
-  grid.addEventListener('click', (e) => {
-    const guide = e.target.closest('[data-guide]');
-    if (guide) return navigateToGuide(guide.dataset.guide);
-    const btn = e.target.closest('[data-open]');
-    if (!btn) return;
-    navigateToSim(btn.dataset.open);
-  });
-
-  root.querySelector('#nav-about').addEventListener('click', () => navigateToPage('about'));
 
   // El catálogo no instala listeners globales: nada que limpiar.
   return null;

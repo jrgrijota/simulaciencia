@@ -3,8 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { readdirSync } from 'node:fs';
 import { simulations } from './src/data/simulations.js';
 import { guideIdFromFile } from './src/guides/shared.js';
-
-const SITE_URL = 'https://simulaciencia.es/';
+import { SITE_URL, simPath, guidePath, PAGE_PATHS, absoluteUrl } from './src/paths.js';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
@@ -14,12 +13,11 @@ function sitemap() {
     generateBundle() {
       const urls = [
         SITE_URL,
-        ...simulations.map((s) => `${SITE_URL}?sim=${s.id}`),
+        ...simulations.map((s) => absoluteUrl(simPath(s.id))),
         ...readdirSync('guias')
           .filter((f) => f.endsWith('.md'))
-          .map((f) => `${SITE_URL}?guia=${guideIdFromFile(f)}`),
-        `${SITE_URL}?page=about`,
-        `${SITE_URL}?page=legal`,
+          .map((f) => absoluteUrl(guidePath(guideIdFromFile(f)))),
+        ...Object.values(PAGE_PATHS).map(absoluteUrl),
       ];
       const body = urls
         .map((loc) => `  <url><loc>${loc}</loc></url>`)
@@ -34,8 +32,8 @@ function sitemap() {
 }
 
 export default defineConfig({
-  // base relativo: funciona tanto en user.github.io como en user.github.io/repo
-  // sin tener que conocer el nombre del repositorio de despliegue.
-  base: './',
+  // base absoluto: las páginas viven en subcarpetas (/guias/densidad/) y la web
+  // se sirve en la raíz de simulaciencia.es.
+  base: '/',
   plugins: [tailwindcss(), sitemap()],
 });

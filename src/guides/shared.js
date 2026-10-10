@@ -5,8 +5,9 @@
 // del catálogo. Los archivos se pueden sustituir tal cual al regenerarlos.
 
 import { Marked } from 'marked';
+import { SITE_URL, guidePath, absoluteUrl } from '../paths.js';
 
-export const SITE_URL = 'https://simulaciencia.es/';
+export { SITE_URL };
 
 export function guideIdFromFile(fileName) {
   return 'sim-' + fileName.replace(/^.*[\\/]/, '').replace(/\.md$/, '');
@@ -21,8 +22,8 @@ export function downloadBase(simId) {
 // a su página del portal, que es la dirección pública.
 export function rewriteLinks(md) {
   return md
-    .replace(/https:\/\/jrgrijota\.github\.io\/simulacion-([a-z-]+)\/?/g, `${SITE_URL}?sim=sim-$1`)
-    .replace(/\[jrgrijota\.github\.io\/simulacion-([a-z-]+)\/?\]/g, '[simulaciencia.es/?sim=sim-$1]');
+    .replace(/https:\/\/jrgrijota\.github\.io\/simulacion-([a-z-]+)\/?/g, `${SITE_URL}simulaciones/$1/`)
+    .replace(/\[jrgrijota\.github\.io\/simulacion-([a-z-]+)\/?\]/g, '[simulaciencia.es/simulaciones/$1/]');
 }
 
 export function guideTitle(md) {
@@ -84,6 +85,6 @@ export function licenseNote(simId) {
       `Atribución-CompartirIgual 4.0 (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/deed.es`,
     '',
     `Puedes adaptarla y compartirla citando la autoría y manteniendo la misma licencia. ` +
-      `Versión actualizada y simulación en ${SITE_URL}?guia=${simId}`,
+      `Versión actualizada y simulación en ${absoluteUrl(guidePath(simId))}`,
   ].join('\n');
 }

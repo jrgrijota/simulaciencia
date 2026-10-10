@@ -1,7 +1,9 @@
-import { navigateToSim, navigateToCatalog } from '../router.js';
+import { navigateToCatalog } from '../router.js';
+import { simPath } from '../paths.js';
+import { setDescription } from '../head.js';
 import { footerMarkup } from '../components/footer.js';
 import { loadGuide } from '../data/guides.js';
-import { renderGuideHtml, guideToc, downloadBase } from '../guides/shared.js';
+import { renderGuideHtml, guideToc, guideSummary, downloadBase } from '../guides/shared.js';
 
 const BTN_SECONDARY =
   'inline-flex items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]';
@@ -32,7 +34,7 @@ export function renderGuide(root, sim) {
   const base = downloadBase(sim.id);
   const downloads = DOWNLOADS.map(
     (d) => `
-      <a href="${base}.${d.ext}" download data-download class="${d.ext === 'pdf' ? BTN_PRIMARY : BTN_SECONDARY}">
+      <a href="/${base}.${d.ext}" download data-download class="${d.ext === 'pdf' ? BTN_PRIMARY : BTN_SECONDARY}">
         <i data-lucide="download" class="h-4 w-4"></i>
         ${d.label} <span class="hidden font-normal opacity-75 sm:inline">· ${d.hint}</span>
       </a>`,
@@ -46,10 +48,10 @@ export function renderGuide(root, sim) {
           <i data-lucide="arrow-left" class="h-4 w-4"></i>
           Volver al catálogo
         </button>
-        <button id="guide-open-sim" class="${BTN_SECONDARY} ml-auto">
+        <a href="${simPath(sim.id)}" data-route class="${BTN_SECONDARY} ml-auto">
           <i data-lucide="flask-conical" class="h-4 w-4"></i>
           <span class="hidden sm:inline">Abrir la simulación</span><span class="sm:hidden">Simulación</span>
-        </button>
+        </a>
       </div>
     </header>
 
@@ -65,6 +67,7 @@ export function renderGuide(root, sim) {
   let cancelled = false;
   loadGuide(sim.id).then((markdown) => {
     if (cancelled) return;
+    setDescription(guideSummary(markdown));
     const body = root.querySelector('#guide-body');
     const html = renderGuideHtml(markdown);
     // El h1 va primero; tras él, las descargas y el índice.
@@ -100,7 +103,6 @@ export function renderGuide(root, sim) {
   });
 
   root.querySelector('#guide-back').addEventListener('click', navigateToCatalog);
-  root.querySelector('#guide-open-sim').addEventListener('click', () => navigateToSim(sim.id));
 
   return () => {
     cancelled = true;

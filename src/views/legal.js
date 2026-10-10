@@ -16,7 +16,7 @@ export function renderLegal(root) {
   <div class="min-h-screen">
     <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <a href="./" class="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-[#64748b] hover:text-[#0284c7]">
+        <a href="/" data-route class="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-[#64748b] hover:text-[#0284c7]">
           <i data-lucide="arrow-left" class="h-4 w-4"></i> Catálogo
         </a>
         <span class="text-lg font-bold tracking-tight text-[#1e293b]">

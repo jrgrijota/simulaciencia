@@ -1,4 +1,5 @@
-import { navigateToCatalog, navigateToGuide, buildShareUrl } from '../router.js';
+import { navigateToCatalog, buildShareUrl } from '../router.js';
+import { guidePath } from '../paths.js';
 import { hasGuide } from '../data/guides.js';
 import { copyText, flashCopied } from '../components/copy.js';
 
@@ -84,10 +85,10 @@ const BASE_WIDTH = 1270;
 export function renderLab(root, sim) {
   const withGuide = hasGuide(sim.id);
   const guideButton = withGuide
-    ? `<button id="lab-guide" class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
+    ? `<a href="${guidePath(sim.id)}" data-route class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
         <i data-lucide="book-open" class="h-4 w-4"></i>
         <span class="hidden sm:inline">Guía docente</span>
-      </button>`
+      </a>`
     : '';
   root.innerHTML = `
   <div class="flex h-screen flex-col overflow-hidden">
@@ -171,7 +172,6 @@ export function renderLab(root, sim) {
   });
 
   root.querySelector('#lab-back').addEventListener('click', navigateToCatalog);
-  root.querySelector('#lab-guide')?.addEventListener('click', () => navigateToGuide(sim.id));
 
   // --- Pantalla completa (Fullscreen API) ---
   // Ponemos a pantalla completa solo el escenario: la simulación se ve sin

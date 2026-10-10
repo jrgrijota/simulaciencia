@@ -1,49 +1,19 @@
-// Enrutado por query param:
-//   ?sim=<id>     => Modo Laboratorio
-//   ?guia=<id>    => Guía docente de la simulación
-//   ?page=about   => Página "Sobre el proyecto"
-//   ?page=legal   => Aviso legal y privacidad
-//   (sin param)   => Catálogo
-// Permite enlaces profundos compartibles.
-const SIM_PARAM = 'sim';
-const PAGE_PARAM = 'page';
-const GUIDE_PARAM = 'guia';
+// Enrutado por ruta (ver src/paths.js). Los enlaces antiguos con ?sim=, ?guia= y
+// ?page= los redirige un script al principio de index.html.
+import { parsePath, simPath, absoluteUrl } from './paths.js';
 
 export function getRoute() {
-  const params = new URLSearchParams(window.location.search);
-  return { simId: params.get(SIM_PARAM), guideId: params.get(GUIDE_PARAM), page: params.get(PAGE_PARAM) };
+  return parsePath(window.location.pathname);
 }
 
-function pushAndNotify(url) {
+export function navigateTo(url) {
   window.history.pushState({}, '', url);
   // re-dispara el ciclo de render (mismo canal que el botón atrás del navegador)
   window.dispatchEvent(new PopStateEvent('popstate'));
 }
 
-export function navigateToSim(id) {
-  const url = new URL(window.location.origin + window.location.pathname);
-  url.searchParams.set(SIM_PARAM, id);
-  pushAndNotify(url);
-}
-
-export function navigateToGuide(id) {
-  const url = new URL(window.location.origin + window.location.pathname);
-  url.searchParams.set(GUIDE_PARAM, id);
-  pushAndNotify(url);
-}
-
 export function navigateToCatalog() {
-  const url = new URL(window.location.href);
-  url.searchParams.delete(SIM_PARAM);
-  url.searchParams.delete(PAGE_PARAM);
-  url.searchParams.delete(GUIDE_PARAM);
-  pushAndNotify(url);
-}
-
-export function navigateToPage(name) {
-  const url = new URL(window.location.origin + window.location.pathname);
-  url.searchParams.set(PAGE_PARAM, name);
-  pushAndNotify(url);
+  navigateTo('/');
 }
 
 export function onRouteChange(cb) {
@@ -52,7 +22,5 @@ export function onRouteChange(cb) {
 
 // URL absoluta y limpia para compartir en Moodle, Teams o Classroom.
 export function buildShareUrl(id) {
-  const url = new URL(window.location.origin + window.location.pathname);
-  url.searchParams.set(SIM_PARAM, id);
-  return url.toString();
+  return absoluteUrl(simPath(id));
 }

@@ -353,6 +353,14 @@ ${L(`
             baduzu, ez izan zalantzarik idazteko (gaztelaniaz edo ingelesez).
           </p>`,
           )}
+          <p>
+            ${L(
+              'Las versiones en inglés, catalán y euskera de la web y de las simulaciones se han traducido con inteligencia artificial. Cualquier corrección o mejora de las traducciones será bienvenida.',
+              'The English, Catalan and Basque versions of the website and the simulations were translated with artificial intelligence. Any corrections or improvements to the translations are welcome.',
+              'Les versions en anglès, català i basc del web i de les simulacions s’han traduït amb intel·ligència artificial. Qualsevol correcció o millora de les traduccions serà benvinguda.',
+              'Webgunearen eta simulazioen ingelesezko, katalanezko eta euskarazko bertsioak adimen artifizialarekin itzuli dira. Itzulpenetarako edozein zuzenketa edo hobekuntza ongi etorriko da.',
+            )}
+          </p>
           <p class="flex flex-wrap items-center gap-x-2 gap-y-1">
             ${L('Puedes escribirme a', 'You can write to me at', 'Em pots escriure a', 'Idatz iezadazu helbide honetara:')}
             <a href="mailto:${CONTACT}" class="font-semibold text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">${CONTACT}</a>

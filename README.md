@@ -85,14 +85,15 @@ sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
 - **Rutas:** `/simulaciones/<nombre>/` abre una simulación, `/guias/<nombre>/` su guía docente,
   y `/sobre-el-proyecto/` y `/aviso-legal/` las páginas fijas ([`src/paths.js`](src/paths.js)).
   Los enlaces antiguos (`?sim=`, `?guia=`, `?page=`) redirigen a la dirección nueva.
-- **Inglés y catalán:** `/en/`, `/en/simulations/<nombre>/` y `/en/about/` muestran la web en
-  inglés, y `/ca/`, `/ca/simulacions/<nombre>/` y `/ca/sobre-el-projecte/` en catalán; cada
-  simulación se carga con `?lang=en` o `?lang=ca`. Las guías docentes y el aviso legal solo están en
-  español. Los textos traducidos de la web están junto a los españoles (`L('es', 'en', 'ca')`, ver
-  [`src/i18n.js`](src/i18n.js)) y los del catálogo en los campos `en` y `ca` de cada simulación. Las
-  páginas que existen en los tres idiomas se enlazan entre sí con `hreflang` en el `<head>` y en el
-  sitemap. El selector de idioma ([`src/components/lang-switch.js`](src/components/lang-switch.js))
-  muestra siempre ES · EN · CA con el idioma actual marcado.
+- **Otros idiomas:** inglés (`/en/`, `/en/simulations/<nombre>/`, `/en/about/`), catalán (`/ca/`,
+  `/ca/simulacions/<nombre>/`, `/ca/sobre-el-projecte/`) y euskera (`/eu/`, `/eu/simulazioak/<nombre>/`,
+  `/eu/proiektuari-buruz/`); cada simulación se carga con `?lang=en`, `?lang=ca` o `?lang=eu`. Las guías
+  docentes y el aviso legal solo están en español. Los textos traducidos de la web están junto a los
+  españoles (`L('es', 'en', 'ca', 'eu')`, ver [`src/i18n.js`](src/i18n.js)) y los del catálogo en los
+  campos `en`, `ca` y `eu` de cada simulación. Las páginas que existen en todos los idiomas se enlazan
+  entre sí con `hreflang` en el `<head>` y en el sitemap. El selector de idioma
+  ([`src/components/lang-switch.js`](src/components/lang-switch.js)) es un desplegable accesible
+  (teclado, Esc, lector de pantalla) con la bandera y el nombre de cada idioma en ese idioma.
 - **Páginas pregeneradas:** tras el build, `scripts/prerender.mjs` abre cada ruta en Chrome sin
   interfaz y guarda su HTML en `dist/<ruta>/index.html`, para que buscadores y vistas previas al
   compartir vean el contenido sin ejecutar JavaScript. Sin Chrome, cada ruta recibe una copia de

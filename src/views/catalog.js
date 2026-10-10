@@ -14,14 +14,14 @@ export function renderCatalog(root) {
   const lang = getLang();
   const filters = ['all', ...allTags]
     .map((value, i) => {
-      const label = i === 0 ? L('Todas', 'All', 'Totes') : tagLabel(value, lang);
+      const label = i === 0 ? L('Todas', 'All', 'Totes', 'Guztiak') : tagLabel(value, lang);
       const state = i === 0 ? FILTER_ON : FILTER_OFF;
       return `<button data-tag="${value}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${label}</button>`;
     })
     .join('');
 
   // Un docente busca por el curso que da: filtro propio, combinable con la materia.
-  const courseFilters = [{ id: 'all', label: 'Todos', en: 'All', ca: 'Tots' }, ...COURSES]
+  const courseFilters = [{ id: 'all', label: 'Todos', en: 'All', ca: 'Tots', eu: 'Guztiak' }, ...COURSES]
     .map((c, i) => {
       const state = i === 0 ? FILTER_ON : FILTER_OFF;
       return `<button data-course="${c.id}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${lang === 'es' ? c.label : c[lang]}</button>`;
@@ -37,11 +37,11 @@ export function renderCatalog(root) {
           <span class="text-lg font-bold tracking-tight text-[#1e293b]">
             <span class="text-[#0284c7]">⚗</span> SimulaCiencia
           </span>
-          <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Simulaciones de Física y Química', 'Physics and Chemistry Simulations', 'Simulacions de Física i Química')}</span>
+          <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Simulaciones de Física y Química', 'Physics and Chemistry Simulations', 'Simulacions de Física i Química', 'Fisika eta Kimikako simulazioak')}</span>
         </h1>
         <a href="${pagePath('about', lang)}" data-route class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
           <i data-lucide="info" class="h-4 w-4"></i>
-          <span class="hidden sm:inline">${L('Sobre el proyecto', 'About', 'Sobre el projecte')}</span>
+          <span class="hidden sm:inline">${L('Sobre el proyecto', 'About', 'Sobre el projecte', 'Proiektuari buruz')}</span>
         </a>
         ${langSwitchMarkup()}
       </div>
@@ -56,6 +56,8 @@ export function renderCatalog(root) {
         Nothing to install and no account needed. Teacher guides are available in Spanish.`,
           `Simulacions interactives i gratuïtes de Física i Química per a ESO i Batxillerat.
         Sense instal·lar res ni crear cap compte. Les guies docents estan en castellà.`,
+          `Fisika eta Kimikako simulazio interaktibo eta doakoak DBHrako eta Batxilergorako.
+        Ez da ezer instalatu behar, ezta konturik sortu ere. Irakaslearen gidak gaztelaniaz daude.`,
         )}
       </p>
       <div data-print-hide class="mb-6 flex flex-col gap-3">
@@ -64,18 +66,18 @@ export function renderCatalog(root) {
           <input
             id="search"
             type="search"
-            placeholder="${L('Buscar simulación por nombre, tema o nivel…', 'Search by name, topic or year…', 'Cerca per nom, tema o nivell…')}"
+            placeholder="${L('Buscar simulación por nombre, tema o nivel…', 'Search by name, topic or year…', 'Cerca per nom, tema o nivell…', 'Bilatu izenaren, gaiaren edo mailaren arabera…')}"
             autocomplete="off"
             class="w-full rounded-md border border-[#e2e8f0] bg-white py-2.5 pl-11 pr-4 text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:border-[#0284c7] focus:outline-none"
           />
         </div>
         <div class="flex items-center gap-2">
-          <span class="${LABEL}">${L('Materia', 'Subject', 'Matèria')}</span>
-          <div id="filters" role="group" aria-label="${L('Materia', 'Subject', 'Matèria')}" class="flex flex-wrap gap-2">${filters}</div>
+          <span class="${LABEL}">${L('Materia', 'Subject', 'Matèria', 'Ikasgaia')}</span>
+          <div id="filters" role="group" aria-label="${L('Materia', 'Subject', 'Matèria', 'Ikasgaia')}" class="flex flex-wrap gap-2">${filters}</div>
         </div>
         <div class="flex items-center gap-2">
-          <span class="${LABEL}">${L('Curso', 'Year', 'Curs')}</span>
-          <div id="course-filters" role="group" aria-label="${L('Curso', 'Year', 'Curs')}" class="flex flex-wrap gap-2">${courseFilters}</div>
+          <span class="${LABEL}">${L('Curso', 'Year', 'Curs', 'Maila')}</span>
+          <div id="course-filters" role="group" aria-label="${L('Curso', 'Year', 'Curs', 'Maila')}" class="flex flex-wrap gap-2">${courseFilters}</div>
         </div>
       </div>
 
@@ -85,7 +87,7 @@ export function renderCatalog(root) {
 
       <div id="empty" class="hidden flex-col items-center gap-2 py-20 text-center text-[#64748b]">
         <i data-lucide="search-x" class="h-8 w-8"></i>
-        <p class="text-sm">${L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.', 'No hi ha cap simulació que coincideixi amb la cerca.')}</p>
+        <p class="text-sm">${L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.', 'No hi ha cap simulació que coincideixi amb la cerca.', 'Ez dago bilaketarekin bat datorren simulaziorik.')}</p>
       </div>
     </main>
     ${footerMarkup()}

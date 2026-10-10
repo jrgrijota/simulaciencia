@@ -15,7 +15,7 @@ export function renderAbout(root) {
         <a id="about-home" href="${homePath(getLang())}" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0284c7] transition-colors">
           <span class="text-[#0284c7]">⚗</span> SimulaCiencia
         </a>
-        <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte')}</span>
+        <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz')}</span>
         <div class="ml-auto">${langSwitchMarkup()}</div>
       </div>
     </header>
@@ -24,7 +24,7 @@ export function renderAbout(root) {
 
       <button id="about-back" class="mb-8 inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
         <i data-lucide="arrow-left" class="h-4 w-4"></i>
-        ${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg')}
+        ${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora')}
       </button>
 
 ${L(`
@@ -235,12 +235,82 @@ ${L(`
         </div>
       </section>
 
+`, `
+      <!-- Sección 1 -->
+      <section class="mb-10">
+        <h1 class="mb-4 text-2xl font-bold text-[#1e293b]">Kaixo! Proiektu hau nola sortu zen kontatuko dizut</h1>
+        <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
+          <p>
+            Juanra naiz, Fisika eta Kimikako irakaslea Madrilgo Erkidegoan. Duela urte batzuk
+            programazioan aritu nintzen, baina lanbidez aldatu nuenean kodearekiko trebetasuna galtzen
+            joan nintzen.
+          </p>
+          <p>
+            Denbora luzez erabili ditut klasean
+            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">PhET Colorado</a>
+            proiektuaren simulagailu bikainak. Tresna apartak dira, baina askotan funtzio zehatzen bat
+            falta zitzaidan nire azalpenetarako, edo, alderantziz, ikasleak desbideratzen zituzten
+            aukerak soberan nituen. Nire klaseetara egokitutako zerbait nahi nuen.
+          </p>
+          <p>
+            Eta nola sortu dira simulazio hauek? Gaur egun <em>vibe coding</em> deritzonari esker:
+            adimen artifizialeko tresnek programazioaren zatirik astunena egin dute, eta horri esker
+            gelan behar nuena zehazki diseinatu ahal izan dut. Nire klaseetarako baliabide gisa hasi zen,
+            baina harro egongo nintzateke beste irakasle eta ikasle batzuei ere baliagarri izango
+            balitzaie.
+          </p>
+        </div>
+      </section>
+
+      <hr class="border-[#e2e8f0]" />
+
+      <!-- Sección 2 -->
+      <section class="my-10">
+        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">Helburua (eta jokoaren arauak)</h2>
+        <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
+          <p>
+            Zientziak irakasten ditugunok badakigu ikusten ez dena azaltzea erronka handia dela.
+            Materiaren portaera mikroskopikoa edo uhin-fenomenoak oso kontzeptu abstraktuak dira. Webgune
+            honen helburua da ikasleek prozesu horiek «ukitu» eta ikusi ahal izatea, hobeto ulertzeko.
+          </p>
+          <p>
+            Simulazio bakoitza diseinatzean kontu handia izan dut ideia okerrak ez indartzeko (didaktikan
+            <em>ideia alternatiboak</em> deitzen diegunak) eta beti argitasun handiena bilatzeko. Hala
+            ere, batzuetan «tranpa» txikiak edo lizentzia bisualak erabili behar izan ditut, benetan
+            garrantzitsua denari arreta jartzeko.
+          </p>
+          <div class="rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-4 py-3 text-[#475569]">
+            <p class="mb-1 font-medium text-[#1e293b]">Adibide zehatz bat</p>
+            <p>
+              Erreakzio-abiaduraren simulazioan, katalizatzaile bakoitzak zulo bat du molekula mota
+              bakoitzarentzat, eta inguruan pasatzen direnak erakartzen ditu. Gainera, bi
+              katalizatzailek molekula desberdin bana harrapatu dutenean, elkar bilatzen dute molekulak
+              elkartzeko. Eskala mikroskopikoan kimikak ez du zehazki horrela funtzionatzen, baina
+              gehiegikeria horrek asko laguntzen du katalizatzaileak erreakzioan zer zeregin duen
+              ulertzen.
+            </p>
+          </div>
+          <p>
+            Horregatik, kontuan izan behar da simulazio hauen fisika ez dela perfektua. Ez dute
+            zehaztasun zientifikoko softwarea izan nahi, ezta laborategia ordezkatu ere, gelarako
+            laguntza bisual eta intuitiboa eskaini baizik.
+          </p>
+          <p>
+            Lasai erabili ahal izateko, simulazio bakoitzak bere <strong>irakaslearen gida</strong> du
+            (oraingoz gaztelaniaz bakarrik): zein mailatan sartzen den, zer oinarrizko jakintza lantzen
+            dituen, klasean azaltzeko sekuentzia bat, zuzentzen laguntzen dituen aurretiazko ideiak eta
+            ezagutzea komeni diren sinplifikazioak. Webgunean irakur dezakezu, edo PDF, Word edo
+            LibreOffice formatuan deskargatu zure taldera egokitzeko.
+          </p>
+        </div>
+      </section>
+
 `)}
       <hr class="border-[#e2e8f0]" />
 
       <!-- Sección 3 -->
       <section class="mt-10">
-        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">${L('Ideas, mejoras y comunidad', 'Ideas, improvements and community', 'Idees, millores i comunitat')}</h2>
+        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">${L('Ideas, mejoras y comunidad', 'Ideas, improvements and community', 'Idees, millores i comunitat', 'Ideiak, hobekuntzak eta komunitatea')}</h2>
         <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
           ${L(
             `<p>
@@ -272,18 +342,28 @@ ${L(`
             veus alguna cosa que es pugui millorar o trobes a faltar alguna eina per a les teves
             classes, no dubtis a escriure'm (en català o en castellà).
           </p>`,
+            `<p>
+            Proiektu hau ez dago itxita: bizirik dago eta etengabe aldatzen ari da. Irakaslea, ikaslea
+            edo zientzia eta programazioa gustuko dituen norbait bazara, zure iritzia asko interesatzen
+            zait.
+          </p>
+          <p>
+            Eskertuko dut edozein kritika eraikitzaile, hobekuntza-ideia edo simulazio berrien
+            proposamen. Hobetu daitekeen zerbait ikusten baduzu edo zure klaseetarako tresnaren bat falta
+            baduzu, ez izan zalantzarik idazteko (gaztelaniaz edo ingelesez).
+          </p>`,
           )}
           <p class="flex flex-wrap items-center gap-x-2 gap-y-1">
-            ${L('Puedes escribirme a', 'You can write to me at', 'Em pots escriure a')}
+            ${L('Puedes escribirme a', 'You can write to me at', 'Em pots escriure a', 'Idatz iezadazu helbide honetara:')}
             <a href="mailto:${CONTACT}" class="font-semibold text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">${CONTACT}</a>
             <button
               id="about-copy-email"
               type="button"
-              aria-label="${L('Copiar dirección de correo', 'Copy email address', 'Copia l’adreça de correu')}"
+              aria-label="${L('Copiar dirección de correo', 'Copy email address', 'Copia l’adreça de correu', 'Kopiatu helbide elektronikoa')}"
               class="inline-flex items-center gap-1 rounded-md border border-[#e2e8f0] bg-white px-2 py-0.5 text-xs font-medium text-[#64748b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5"></i>
-              <span class="copy-label">${L('Copiar', 'Copy', 'Copia')}</span>
+              <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu')}</span>
             </button>
           </p>
         </div>
@@ -296,7 +376,7 @@ ${L(`
   const copyBtn = root.querySelector('#about-copy-email');
   copyBtn.addEventListener('click', async () => {
     await copyText(CONTACT);
-    flashCopied(copyBtn, L('¡Copiada!', 'Copied!', 'Copiada!'));
+    flashCopied(copyBtn, L('¡Copiada!', 'Copied!', 'Copiada!', 'Kopiatuta!'));
   });
 
   root.querySelector('#about-back').addEventListener('click', (e) => {

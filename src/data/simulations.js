@@ -2,8 +2,8 @@
 // La web NO descarga ni copia los archivos de las simulaciones: cada `url`
 // apunta directamente a su despliegue independiente en GitHub Pages.
 //
-// `en`, `ca`: título y descripción en inglés y en catalán, para /en/ y /ca/ (la
-//            simulación se abre con ?lang=en o ?lang=ca).
+// `en`, `ca`, `eu`: título y descripción en inglés, catalán y euskera, para /en/,
+//            /ca/ y /eu/ (la simulación se abre con ?lang=en, ?lang=ca o ?lang=eu).
 // `courses`: cursos en los que la guía docente la propone como uso principal o
 //            aplicación (no los de uso o repaso puntual). Alimentan el filtro.
 // `responsive`: true  -> la simulación adapta su propio layout (móvil/tablet);
@@ -30,6 +30,11 @@ export const simulations = [
       description:
         "Flotabilitat i empenyiment: amb valors lliures o amb materials i líquids reals, observa quan un cos sura, s'enfonsa o queda en equilibri, i les forces que hi actuen.",
     },
+    eu: {
+      title: 'Arkimedesen printzipioa',
+      description:
+        'Flotagarritasuna eta bultzada: balio libreekin edo benetako material eta likidoekin, ikusi noiz dagoen gorputz bat flotatzen, noiz hondoratzen den edo noiz geratzen den orekan, eta zer indarrek eragiten dioten.',
+    },
   },
   {
     id: 'sim-densidad',
@@ -49,6 +54,11 @@ export const simulations = [
       title: 'Densitat',
       description:
         "Massa, volum i densitat: compara materials com el suro, l'aigua o el plom i observa amb la lupa com es distribueixen les seves partícules.",
+    },
+    eu: {
+      title: 'Dentsitatea',
+      description:
+        'Masa, bolumena eta dentsitatea: alderatu kortxoa, ura edo beruna bezalako materialak, eta ikusi luparekin nola banatzen diren haien partikulak.',
     },
   },
   {
@@ -70,6 +80,11 @@ export const simulations = [
       description:
         "Visualització i interacció amb els espectres d'emissió i d'absorció de diferents elements químics i les seves transicions electròniques.",
     },
+    eu: {
+      title: 'Espektro atomikoak',
+      description:
+        'Elementu kimiko desberdinen igorpen- eta xurgapen-espektroak eta haien trantsizio elektronikoak ikusi eta haiekin jardun.',
+    },
   },
   {
     id: 'sim-gases',
@@ -89,6 +104,11 @@ export const simulations = [
       title: 'Cinètica dels Gasos',
       description:
         'Model de partícules que relaciona pressió, temperatura i volum segons la teoria cineticomolecular: comprova les lleis de Boyle i de Gay-Lussac.',
+    },
+    eu: {
+      title: 'Gasen zinetika',
+      description:
+        'Presioa, tenperatura eta bolumena teoria zinetiko-molekularraren arabera lotzen dituen partikula-eredua: egiaztatu Boyleren eta Gay-Lussacen legeak.',
     },
   },
   {
@@ -110,6 +130,11 @@ export const simulations = [
       description:
         "Experiment de dispersió de Rutherford davant del model de Thomson: com una observació va obligar a reescriure el model de l'àtom.",
     },
+    eu: {
+      title: 'Eredu atomikoak',
+      description:
+        'Rutherforden sakabanatze-esperimentua Thomsonen ereduaren aurrean: behaketa batek nola behartu zuen atomoaren eredua berridaztera.',
+    },
   },
   {
     id: 'sim-velocidad-reaccion',
@@ -129,6 +154,11 @@ export const simulations = [
       title: 'Velocitat de Reacció',
       description:
         "Com afecten la temperatura, la concentració i el catalitzador a la rapidesa d'una reacció, amb un mode xoc que mostra per què calen energia i orientació.",
+    },
+    eu: {
+      title: 'Erreakzio-abiadura',
+      description:
+        'Nola eragiten dioten tenperaturak, kontzentrazioak eta katalizatzaileak erreakzio baten abiadurari, eta talka-modu batek erakusten du zergatik behar diren energia eta orientazioa.',
     },
   },
   {
@@ -150,6 +180,11 @@ export const simulations = [
       description:
         "Viatge de zoom ×10 des de l'àtom sencer fins al seu nucli: fa tangible com n'és de petit el nucli davant de la mida real de l'àtom.",
     },
+    eu: {
+      title: 'Atomoa eskalan',
+      description:
+        '×10eko zoom-bidaia atomo osotik bere nukleoraino: ukigarri bihurtzen du nukleoa zein txikia den atomoaren benetako tamainaren aldean.',
+    },
   },
   {
     id: 'sim-enlaces-quimicos',
@@ -169,6 +204,11 @@ export const simulations = [
       title: 'Enllaços Químics',
       description:
         'Enllaç iònic, covalent i metàl·lic: com els àtoms guanyen, comparteixen o deslocalitzen electrons, amb xarxes iòniques, cristalls covalents i metalls mal·leables.',
+    },
+    eu: {
+      title: 'Lotura kimikoak',
+      description:
+        'Lotura ionikoa, kobalentea eta metalikoa: nola irabazten, partekatzen edo deslokalizatzen dituzten atomoek elektroiak, sare ionikoekin, kristal kobalenteekin eta metal xaflagarriekin.',
     },
   },
   {
@@ -190,6 +230,11 @@ export const simulations = [
       description:
         'Mecànica orbital amb la bala de canó de Newton, el Sistema Solar, les lleis de Kepler i les estrelles binàries en un mateix laboratori.',
     },
+    eu: {
+      title: 'Orbitak eta grabitazioa',
+      description:
+        'Mekanika orbitala Newtonen kanoi-balarekin, Eguzki-sistemarekin, Keplerren legeekin eta izar bitarrekin, laborategi bakar batean.',
+    },
   },
   {
     id: 'sim-cambios-estado',
@@ -210,16 +255,21 @@ export const simulations = [
       description:
         "Escalfa i refreda una substància i observa alhora el recipient, les seves partícules i la corba d'escalfament; explora amb el diagrama de fases per què l'aigua bull a uns 72 °C a l'Everest.",
     },
+    eu: {
+      title: 'Egoera-aldaketak',
+      description:
+        'Berotu eta hoztu substantzia bat, eta ikusi aldi berean ontzia, haren partikulak eta berotze-kurba; aztertu fase-diagramarekin zergatik irakiten duen urak 72 °C ingurutan Everesten.',
+    },
   },
 ];
 
 // Cursos, en orden, para el filtro y las tarjetas.
 export const COURSES = [
-  { id: '2ESO', label: '2.º ESO', en: 'ESO Year 2', ca: '2n ESO' },
-  { id: '3ESO', label: '3.º ESO', en: 'ESO Year 3', ca: '3r ESO' },
-  { id: '4ESO', label: '4.º ESO', en: 'ESO Year 4', ca: '4t ESO' },
-  { id: '1BACH', label: '1.º Bach.', en: 'Bach. Year 1', ca: '1r Batx.' },
-  { id: '2BACH', label: '2.º Bach.', en: 'Bach. Year 2', ca: '2n Batx.' },
+  { id: '2ESO', label: '2.º ESO', en: 'ESO Year 2', ca: '2n ESO', eu: 'DBH 2.' },
+  { id: '3ESO', label: '3.º ESO', en: 'ESO Year 3', ca: '3r ESO', eu: 'DBH 3.' },
+  { id: '4ESO', label: '4.º ESO', en: 'ESO Year 4', ca: '4t ESO', eu: 'DBH 4.' },
+  { id: '1BACH', label: '1.º Bach.', en: 'Bach. Year 1', ca: '1r Batx.', eu: 'Batx. 1.' },
+  { id: '2BACH', label: '2.º Bach.', en: 'Bach. Year 2', ca: '2n Batx.', eu: 'Batx. 2.' },
 ];
 
 export function courseLabel(id, lang = 'es') {
@@ -244,6 +294,7 @@ export function simUrl(sim, lang = 'es') {
 const TAGS = {
   en: { Física: 'Physics', Química: 'Chemistry', 'Física Cuántica': 'Quantum Physics' },
   ca: { Física: 'Física', Química: 'Química', 'Física Cuántica': 'Física Quàntica' },
+  eu: { Física: 'Fisika', Química: 'Kimika', 'Física Cuántica': 'Fisika kuantikoa' },
 };
 export function tagLabel(tag, lang = 'es') {
   return TAGS[lang]?.[tag] || tag;

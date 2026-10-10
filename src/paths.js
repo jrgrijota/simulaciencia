@@ -7,20 +7,20 @@
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
 //
-// En inglés y en catalán (interfaz y simulaciones; las guías y el aviso legal solo
-// existen en español):
+// En inglés, catalán y euskera (interfaz y simulaciones; las guías y el aviso legal
+// solo existen en español):
 //
-//   /en/                       /ca/                          => Catálogo
-//   /en/simulations/<nombre>/  /ca/simulacions/<nombre>/     => Modo Laboratorio
-//   /en/about/                 /ca/sobre-el-projecte/        => Sobre el proyecto
+//   /en/                       /ca/                       /eu/                        => Catálogo
+//   /en/simulations/<nombre>/  /ca/simulacions/<nombre>/  /eu/simulazioak/<nombre>/   => Modo Laboratorio
+//   /en/about/                 /ca/sobre-el-projecte/     /eu/proiektuari-buruz/      => Sobre el proyecto
 
 export const SITE_URL = 'https://simulaciencia.es/';
-export const LANGS = ['es', 'en', 'ca'];
+export const LANGS = ['es', 'en', 'ca', 'eu'];
 
 const slug = (simId) => simId.replace(/^sim-/, '');
 
-const HOME = { es: '/', en: '/en/', ca: '/ca/' };
-const SIM_DIR = { es: '/simulaciones/', en: '/en/simulations/', ca: '/ca/simulacions/' };
+const HOME = { es: '/', en: '/en/', ca: '/ca/', eu: '/eu/' };
+const SIM_DIR = { es: '/simulaciones/', en: '/en/simulations/', ca: '/ca/simulacions/', eu: '/eu/simulazioak/' };
 
 export const homePath = (lang = 'es') => HOME[lang];
 export const simPath = (simId, lang = 'es') => `${SIM_DIR[lang]}${slug(simId)}/`;
@@ -30,6 +30,7 @@ const PAGES = {
   es: PAGE_PATHS,
   en: { about: '/en/about/' },
   ca: { about: '/ca/sobre-el-projecte/' },
+  eu: { about: '/eu/proiektuari-buruz/' },
 };
 
 // Páginas fijas de un idioma (para el sitemap y las páginas pregeneradas).

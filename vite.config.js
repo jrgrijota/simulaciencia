@@ -3,11 +3,11 @@ import tailwindcss from '@tailwindcss/vite';
 import { readdirSync } from 'node:fs';
 import { simulations } from './src/data/simulations.js';
 import { guideIdFromFile } from './src/guides/shared.js';
-import { simPath, guidePath, homePath, PAGE_PATHS, PAGE_PATHS_EN, LANGS, parsePath, translatedPath, absoluteUrl } from './src/paths.js';
+import { simPath, guidePath, homePath, PAGE_PATHS, pagePaths, LANGS, parsePath, translatedPath, absoluteUrl } from './src/paths.js';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
-// Las páginas que existen en los dos idiomas llevan sus alternativas (hreflang).
+// Las páginas que existen en todos los idiomas llevan sus alternativas (hreflang).
 function sitemap() {
   return {
     name: 'sitemap',
@@ -19,9 +19,7 @@ function sitemap() {
           .filter((f) => f.endsWith('.md'))
           .map((f) => guidePath(guideIdFromFile(f))),
         ...Object.values(PAGE_PATHS),
-        homePath('en'),
-        ...simulations.map((s) => simPath(s.id, 'en')),
-        ...Object.values(PAGE_PATHS_EN),
+        ...LANGS.filter((l) => l !== 'es').flatMap((l) => [homePath(l), ...simulations.map((s) => simPath(s.id, l)), ...pagePaths(l)]),
       ];
       const body = paths
         .map((path) => {

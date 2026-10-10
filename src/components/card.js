@@ -19,15 +19,15 @@ export function cardMarkup(sim) {
     ? `
     <a
       href="${guidePath(sim.id)}"
-      data-route${lang === 'en' ? ' hreflang="es"' : ''}
+      data-route${lang !== 'es' ? ' hreflang="es"' : ''}
       class="mt-2 inline-flex items-center justify-center gap-2 rounded-md border border-[#e2e8f0] bg-white px-4 py-2 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]"
     >
       <i data-lucide="book-open" class="h-4 w-4"></i>
-      ${L('Guía docente', 'Teacher guide (in Spanish)')}
+      ${L('Guía docente', 'Teacher guide (in Spanish)', 'Guia docent (en castellà)')}
     </a>`
     : '';
   const tags = subjectTags(sim).map((t) => `<span class="${TAG_CLASS}">${tagLabel(t, lang)}</span>`).join('');
-  const courseLine = `<p class="mt-2 text-xs text-[#64748b]"><span class="font-medium text-[#1e293b]">${L('Cursos:', 'Years:')}</span> ${courses.join(' · ')}</p>`;
+  const courseLine = `<p class="mt-2 text-xs text-[#64748b]"><span class="font-medium text-[#1e293b]">${L('Cursos:', 'Years:', 'Cursos:')}</span> ${courses.join(' · ')}</p>`;
 
   return `
   <article
@@ -45,7 +45,7 @@ export function cardMarkup(sim) {
       class="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-[#0284c7] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#0369a1] focus-visible:outline-2 focus-visible:outline-offset-2"
     >
       <i data-lucide="flask-conical" class="h-4 w-4"></i>
-      ${L('Abrir laboratorio', 'Open lab')}
+      ${L('Abrir laboratorio', 'Open lab', 'Obre el laboratori')}
     </a>${guideButton}
   </article>`;
 }

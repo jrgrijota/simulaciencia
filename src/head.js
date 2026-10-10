@@ -2,7 +2,7 @@
 // y datos estructurados. Es lo que leen Google, la pestaña del navegador y
 // WhatsApp o Classroom. scripts/prerender.mjs guarda el resultado en el HTML de
 // cada página; al cargarla, este módulo reutiliza esas etiquetas.
-// En inglés, además, el <head> enlaza la versión de cada idioma (hreflang).
+// Además, el <head> enlaza la versión de cada idioma (hreflang).
 import { simPath, guidePath, homePath, pagePath, absoluteUrl, translatedPath, LANGS } from './paths.js';
 import { simulations, courseLabel, simTitle, simDescription, tagLabel } from './data/simulations.js';
 
@@ -11,6 +11,7 @@ const AUTHOR = { '@type': 'Person', name: 'Juan Ramón Grijota' };
 const LICENSE = {
   es: 'https://creativecommons.org/licenses/by-sa/4.0/deed.es',
   en: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',
+  ca: 'https://creativecommons.org/licenses/by-sa/4.0/deed.ca',
 };
 
 // Los del catálogo (en español, iguales que en index.html). No se leen del
@@ -18,16 +19,20 @@ const LICENSE = {
 const DEFAULT_TITLE = {
   es: `${SITE} · Simulaciones de Física y Química`,
   en: `${SITE} · Physics and Chemistry Simulations`,
+  ca: `${SITE} · Simulacions de Física i Química`,
 };
 const DEFAULT_DESCRIPTION = {
   es: 'Catálogo de simulaciones interactivas de Física y Química para el aula. Acceso inmediato, sin instalación.',
   en: 'Interactive Physics and Chemistry simulations for the classroom. Free, instant access, nothing to install.',
+  ca: "Catàleg de simulacions interactives de Física i Química per a l'aula. Accés immediat, sense instal·lació.",
 };
 const DEFAULT_OG_DESCRIPTION = {
   es: 'Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato. Sin instalación ni registro.',
   en: 'Free interactive Physics and Chemistry simulations for secondary school. No installation or sign-up.',
+  ca: 'Simulacions interactives i gratuïtes de Física i Química per a ESO i Batxillerat. Sense instal·lació ni registre.',
 };
-const OG_LOCALE = { es: 'es_ES', en: 'en_GB' };
+const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES' };
+const KIND = { es: 'Simulación interactiva', en: 'Interactive simulation', ca: 'Simulació interactiva' };
 
 const metaDescription = document.querySelector('meta[name="description"]');
 
@@ -44,8 +49,6 @@ function headElement(selector, tag, attrs) {
 
 const canonical = headElement('link[rel="canonical"]', 'link', { rel: 'canonical' });
 const ogLocale = og('locale');
-const ogLocaleAlt = headElement('meta[property="og:locale:alternate"]', 'meta', {});
-ogLocaleAlt.setAttribute('property', 'og:locale:alternate');
 const jsonLd = headElement('#ld-route', 'script', { id: 'ld-route', type: 'application/ld+json' });
 
 const simUrl = (id, lang = 'es') => absoluteUrl(simPath(id, lang));
@@ -62,7 +65,7 @@ function simResource(sim, lang = 'es') {
     name: simTitle(sim, lang),
     description: simDescription(sim, lang),
     url: simUrl(sim.id, lang),
-    learningResourceType: lang === 'en' ? 'Interactive simulation' : 'Simulación interactiva',
+    learningResourceType: KIND[lang],
     educationalLevel: levels(sim, lang),
     about: sim.tags.filter((t) => t !== 'ESO' && t !== 'Bachillerato').map((t) => tagLabel(t, lang)),
     inLanguage: lang,
@@ -73,11 +76,11 @@ function simResource(sim, lang = 'es') {
 }
 
 const PAGES = {
-  about: { es: `Sobre el proyecto · ${SITE}`, en: `About the project · ${SITE}` },
+  about: { es: `Sobre el proyecto · ${SITE}`, en: `About the project · ${SITE}`, ca: `Sobre el projecte · ${SITE}` },
   legal: { es: `Aviso legal y privacidad · ${SITE}` },
 };
 
-// <link rel="alternate" hreflang> de las páginas que existen en los dos idiomas
+// <link rel="alternate" hreflang> de las páginas que existen en todos los idiomas
 // (catálogo, simulaciones y «Sobre el proyecto»); x-default es la española.
 function setAlternates(route) {
   document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((l) => l.remove());
@@ -96,7 +99,13 @@ function set(lang, title, description, url, data) {
   og('title').content = title;
   og('description').content = description === DEFAULT_DESCRIPTION[lang] ? DEFAULT_OG_DESCRIPTION[lang] : description;
   ogLocale.content = OG_LOCALE[lang];
-  ogLocaleAlt.content = OG_LOCALE[lang === 'en' ? 'es' : 'en'];
+  document.head.querySelectorAll('meta[property="og:locale:alternate"]').forEach((m) => m.remove());
+  for (const l of LANGS.filter((l) => l !== lang)) {
+    const m = document.createElement('meta');
+    m.setAttribute('property', 'og:locale:alternate');
+    m.content = OG_LOCALE[l];
+    ogLocale.after(m);
+  }
   jsonLd.textContent = JSON.stringify({ '@context': 'https://schema.org', ...data });
 }
 
@@ -125,8 +134,7 @@ export function updateHead({ sim, guideSim, page, lang = 'es' }) {
     );
   }
   if (sim) {
-    const kind = lang === 'en' ? 'Interactive simulation' : 'Simulación interactiva';
-    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), simResource(sim, lang));
+    return set(lang, `${simTitle(sim, lang)} · ${KIND[lang]} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), simResource(sim, lang));
   }
   if (PAGES[page]) {
     const url = absoluteUrl(pagePath(page, lang));

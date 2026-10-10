@@ -15,7 +15,7 @@ export function renderAbout(root) {
         <a id="about-home" href="${homePath(getLang())}" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0284c7] transition-colors">
           <span class="text-[#0284c7]">⚗</span> SimulaCiencia
         </a>
-        <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project')}</span>
+        <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte')}</span>
         <div class="ml-auto">${langSwitchMarkup()}</div>
       </div>
     </header>
@@ -24,7 +24,7 @@ export function renderAbout(root) {
 
       <button id="about-back" class="mb-8 inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
         <i data-lucide="arrow-left" class="h-4 w-4"></i>
-        ${L('Volver al catálogo', 'Back to catalogue')}
+        ${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg')}
       </button>
 
 ${L(`
@@ -165,12 +165,82 @@ ${L(`
         </div>
       </section>
 
+`, `
+      <!-- Sección 1 -->
+      <section class="mb-10">
+        <h1 class="mb-4 text-2xl font-bold text-[#1e293b]">Hola! T'explico com va néixer aquest projecte</h1>
+        <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
+          <p>
+            Soc en Juanra, professor de Física i Química a la Comunitat de Madrid. Fa anys em vaig
+            dedicar a la programació, però en canviar de rumb professional vaig anar perdent la
+            pràctica amb el codi.
+          </p>
+          <p>
+            Durant molt de temps he fet servir a classe els magnífics simuladors de
+            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">PhET Colorado</a>.
+            Són una eina extraordinària, però sovint trobava a faltar alguna funció concreta per a les
+            meves explicacions o, al contrari, em sobraven opcions que acabaven distraient l'alumnat.
+            Volia alguna cosa feta a la mida de les meves classes.
+          </p>
+          <p>
+            I com han nascut aquestes simulacions? Gràcies al que avui es coneix com a
+            <em>vibe coding</em>: eines d'intel·ligència artificial s'han encarregat de la part més
+            feixuga de la programació, i això m'ha permès dissenyar exactament el que necessitava a
+            l'aula. Va començar com un recurs per a les meves classes, però seria un orgull que també
+            pogués servir a altres docents i estudiants.
+          </p>
+        </div>
+      </section>
+
+      <hr class="border-[#e2e8f0]" />
+
+      <!-- Sección 2 -->
+      <section class="my-10">
+        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">L'objectiu (i les regles del joc)</h2>
+        <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
+          <p>
+            Els qui ensenyem ciències sabem que explicar allò que no es veu és tot un repte. El
+            comportament microscòpic de la matèria o els fenòmens ondulatoris són conceptes molt
+            abstractes. L'objectiu d'aquest web és que l'alumnat pugui «tocar» i veure aquests
+            processos per entendre'ls millor.
+          </p>
+          <p>
+            En dissenyar cada simulació he tingut molta cura de no reforçar idees errònies (el que en
+            didàctica anomenem <em>concepcions alternatives</em>) i de buscar sempre la màxima claredat.
+            Tot i això, de vegades he hagut de recórrer a petits «trucs» o llicències visuals que posen
+            el focus en allò realment important.
+          </p>
+          <div class="rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-4 py-3 text-[#475569]">
+            <p class="mb-1 font-medium text-[#1e293b]">Un exemple concret</p>
+            <p>
+              A la simulació de Velocitat de reacció, cada catalitzador té un forat per a cada tipus de
+              molècula i atrau cap a si les que passen a prop. A més, quan dos catalitzadors han atrapat
+              cadascun una molècula diferent, es busquen per ajuntar-les. A escala microscòpica la
+              química no funciona exactament així, però aquesta exageració ajuda moltíssim a entendre
+              quin paper té el catalitzador en la reacció.
+            </p>
+          </div>
+          <p>
+            Per això cal tenir present que la física d'aquestes simulacions no és perfecta. No volen ser
+            un programari de precisió científica ni substituir el laboratori, sinó oferir un suport
+            visual i intuïtiu per a l'aula.
+          </p>
+          <p>
+            Perquè les puguis fer servir amb seguretat, cada simulació té la seva <strong>guia docent</strong>
+            (de moment només en castellà): en quins cursos encaixa, quins sabers bàsics treballa, una
+            seqüència per explicar-la a classe, les idees prèvies que ajuda a corregir i les
+            simplificacions que convé conèixer. La pots llegir al web o descarregar-la en PDF, Word o
+            LibreOffice per adaptar-la al teu grup.
+          </p>
+        </div>
+      </section>
+
 `)}
       <hr class="border-[#e2e8f0]" />
 
       <!-- Sección 3 -->
       <section class="mt-10">
-        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">${L('Ideas, mejoras y comunidad', 'Ideas, improvements and community')}</h2>
+        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">${L('Ideas, mejoras y comunidad', 'Ideas, improvements and community', 'Idees, millores i comunitat')}</h2>
         <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
           ${L(
             `<p>
@@ -192,18 +262,28 @@ ${L(`
             simulations. If you see something that could be better or miss a tool for your lessons,
             please write to me (in English or Spanish).
           </p>`,
+            `<p>
+            Aquest projecte no està tancat: continua viu i en evolució constant. Si ets docent,
+            estudiant o simplement t'apassionen la ciència i la programació, la teva opinió m'interessa
+            molt.
+          </p>
+          <p>
+            Agrairé qualsevol crítica constructiva, idea de millora o proposta de noves simulacions. Si
+            veus alguna cosa que es pugui millorar o trobes a faltar alguna eina per a les teves
+            classes, no dubtis a escriure'm (en català o en castellà).
+          </p>`,
           )}
           <p class="flex flex-wrap items-center gap-x-2 gap-y-1">
-            ${L('Puedes escribirme a', 'You can write to me at')}
+            ${L('Puedes escribirme a', 'You can write to me at', 'Em pots escriure a')}
             <a href="mailto:${CONTACT}" class="font-semibold text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">${CONTACT}</a>
             <button
               id="about-copy-email"
               type="button"
-              aria-label="${L('Copiar dirección de correo', 'Copy email address')}"
+              aria-label="${L('Copiar dirección de correo', 'Copy email address', 'Copia l’adreça de correu')}"
               class="inline-flex items-center gap-1 rounded-md border border-[#e2e8f0] bg-white px-2 py-0.5 text-xs font-medium text-[#64748b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5"></i>
-              <span class="copy-label">${L('Copiar', 'Copy')}</span>
+              <span class="copy-label">${L('Copiar', 'Copy', 'Copia')}</span>
             </button>
           </p>
         </div>
@@ -216,7 +296,7 @@ ${L(`
   const copyBtn = root.querySelector('#about-copy-email');
   copyBtn.addEventListener('click', async () => {
     await copyText(CONTACT);
-    flashCopied(copyBtn, L('¡Copiada!', 'Copied!'));
+    flashCopied(copyBtn, L('¡Copiada!', 'Copied!', 'Copiada!'));
   });
 
   root.querySelector('#about-back').addEventListener('click', (e) => {

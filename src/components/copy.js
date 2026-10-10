@@ -1,3 +1,5 @@
+import { L } from '../i18n.js';
+
 // Copiar al portapapeles con respaldo para navegadores sin Clipboard API
 // (o contextos no seguros), y feedback visual en el botón que lo dispara.
 
@@ -17,7 +19,7 @@ export async function copyText(text) {
 
 // El botón debe contener un icono [data-lucide] y un <span class="copy-label">.
 // Los botones rellenos azules pasan a verde mientras dura el aviso.
-export function flashCopied(btn, doneText = '¡Copiado!') {
+export function flashCopied(btn, doneText = L('¡Copiado!', 'Copied!')) {
   const label = btn.querySelector('.copy-label');
   const icon = btn.querySelector('[data-lucide]');
   const original = label.textContent;

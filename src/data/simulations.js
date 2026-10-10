@@ -2,6 +2,7 @@
 // La web NO descarga ni copia los archivos de las simulaciones: cada `url`
 // apunta directamente a su despliegue independiente en GitHub Pages.
 //
+// `en`: título y descripción en inglés, para /en/ (la simulación se abre con ?lang=en).
 // `courses`: cursos en los que la guía docente la propone como uso principal o
 //            aplicación (no los de uso o repaso puntual). Alimentan el filtro.
 // `responsive`: true  -> la simulación adapta su propio layout (móvil/tablet);
@@ -18,6 +19,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-arquimedes/',
     responsive: true,
     courses: ['3ESO', '4ESO'],
+    en: {
+      title: "Archimedes' Principle",
+      description:
+        'Buoyancy and upthrust: with free values or with real materials and liquids, see when an object floats, sinks or stays in equilibrium, and the forces acting on it.',
+    },
   },
   {
     id: 'sim-densidad',
@@ -28,6 +34,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-densidad/',
     responsive: true,
     courses: ['2ESO', '3ESO', '4ESO'],
+    en: {
+      title: 'Density',
+      description:
+        'Mass, volume and density: compare materials such as cork, water or lead, and use the magnifier to see how their particles are arranged.',
+    },
   },
   {
     id: 'sim-espectros',
@@ -38,6 +49,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-espectros/',
     responsive: true,
     courses: ['4ESO', '1BACH', '2BACH'],
+    en: {
+      title: 'Atomic Spectra',
+      description:
+        'Explore the emission and absorption spectra of different chemical elements and the electron transitions behind them.',
+    },
   },
   {
     id: 'sim-gases',
@@ -48,6 +64,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-gases/',
     responsive: true,
     courses: ['2ESO', '3ESO', '4ESO'],
+    en: {
+      title: 'Kinetic Theory of Gases',
+      description:
+        "A particle model linking pressure, temperature and volume through kinetic molecular theory: test Boyle's law and Gay-Lussac's law.",
+    },
   },
   {
     id: 'sim-modelos',
@@ -58,6 +79,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-modelos/',
     responsive: true,
     courses: ['2ESO', '3ESO', '4ESO', '2BACH'],
+    en: {
+      title: 'Atomic Models',
+      description:
+        "Rutherford's scattering experiment versus Thomson's model: how one observation forced scientists to rewrite the model of the atom.",
+    },
   },
   {
     id: 'sim-velocidad-reaccion',
@@ -68,6 +94,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion/',
     responsive: true,
     courses: ['3ESO', '4ESO', '2BACH'],
+    en: {
+      title: 'Reaction Rate',
+      description:
+        'How temperature, concentration and a catalyst affect the rate of a reaction, with a collision mode that shows why particles need enough energy and the right orientation.',
+    },
   },
   {
     id: 'sim-atomo-real',
@@ -78,6 +109,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-atomo-real/',
     responsive: true,
     courses: ['2ESO', '3ESO', '4ESO'],
+    en: {
+      title: 'The Atom to Scale',
+      description:
+        'A ×10 zoom journey from the whole atom down to its nucleus: makes it tangible how tiny the nucleus is compared with the real size of the atom.',
+    },
   },
   {
     id: 'sim-enlaces-quimicos',
@@ -88,6 +124,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-enlaces-quimicos/',
     responsive: true,
     courses: ['3ESO', '4ESO', '1BACH'],
+    en: {
+      title: 'Chemical Bonding',
+      description:
+        'Ionic, covalent and metallic bonding: how atoms gain, share or delocalise electrons, with ionic lattices, covalent crystals and malleable metals.',
+    },
   },
   {
     id: 'sim-orbitas',
@@ -98,6 +139,11 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-orbitas/',
     responsive: true,
     courses: ['3ESO', '4ESO', '1BACH', '2BACH'],
+    en: {
+      title: 'Orbits and Gravitation',
+      description:
+        "Orbital mechanics with Newton's cannonball, the Solar System, Kepler's laws and binary stars in a single lab.",
+    },
   },
   {
     id: 'sim-cambios-estado',
@@ -108,20 +154,45 @@ export const simulations = [
     url: 'https://jrgrijota.github.io/simulacion-cambios-estado/',
     responsive: true,
     courses: ['2ESO', '3ESO', '4ESO'],
+    en: {
+      title: 'Changes of State',
+      description:
+        'Heat and cool a substance and watch the container, its particles and the heating curve at the same time; use the phase diagram to see why water boils at about 72 °C on Everest.',
+    },
   },
 ];
 
 // Cursos, en orden, para el filtro y las tarjetas.
 export const COURSES = [
-  { id: '2ESO', label: '2.º ESO' },
-  { id: '3ESO', label: '3.º ESO' },
-  { id: '4ESO', label: '4.º ESO' },
-  { id: '1BACH', label: '1.º Bach.' },
-  { id: '2BACH', label: '2.º Bach.' },
+  { id: '2ESO', label: '2.º ESO', en: 'ESO Year 2' },
+  { id: '3ESO', label: '3.º ESO', en: 'ESO Year 3' },
+  { id: '4ESO', label: '4.º ESO', en: 'ESO Year 4' },
+  { id: '1BACH', label: '1.º Bach.', en: 'Bach. Year 1' },
+  { id: '2BACH', label: '2.º Bach.', en: 'Bach. Year 2' },
 ];
 
-export function courseLabel(id) {
-  return COURSES.find((c) => c.id === id)?.label || id;
+export function courseLabel(id, lang = 'es') {
+  const c = COURSES.find((c) => c.id === id);
+  return (lang === 'en' ? c?.en : c?.label) || id;
+}
+
+// Título y descripción en el idioma de la página.
+export function simTitle(sim, lang = 'es') {
+  return (lang === 'en' && sim.en?.title) || sim.title;
+}
+export function simDescription(sim, lang = 'es') {
+  return (lang === 'en' && sim.en?.description) || sim.description;
+}
+
+// Dirección de la simulación para el iframe y el código para insertar.
+export function simUrl(sim, lang = 'es') {
+  return lang === 'en' ? `${sim.url}?lang=en` : sim.url;
+}
+
+// Las etiquetas se guardan en español (son también el valor de los filtros).
+const TAG_EN = { Física: 'Physics', Química: 'Chemistry', 'Física Cuántica': 'Quantum Physics' };
+export function tagLabel(tag, lang = 'es') {
+  return (lang === 'en' && TAG_EN[tag]) || tag;
 }
 
 // Etapas: ya las cubre el filtro por curso, así que no se repiten como etiqueta.

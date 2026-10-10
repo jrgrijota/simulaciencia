@@ -1,6 +1,7 @@
 // Enrutado por ruta (ver src/paths.js). Los enlaces antiguos con ?sim=, ?guia= y
 // ?page= los redirige un script al principio de index.html.
-import { parsePath, simPath, absoluteUrl } from './paths.js';
+import { parsePath, simPath, homePath, absoluteUrl } from './paths.js';
+import { getLang } from './i18n.js';
 
 export function getRoute() {
   return parsePath(window.location.pathname);
@@ -13,7 +14,7 @@ export function navigateTo(url) {
 }
 
 export function navigateToCatalog() {
-  navigateTo('/');
+  navigateTo(homePath(getLang()));
 }
 
 export function onRouteChange(cb) {
@@ -22,5 +23,5 @@ export function onRouteChange(cb) {
 
 // URL absoluta y limpia para compartir en Moodle, Teams o Classroom.
 export function buildShareUrl(id) {
-  return absoluteUrl(simPath(id));
+  return absoluteUrl(simPath(id, getLang()));
 }

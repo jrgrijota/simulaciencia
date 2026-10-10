@@ -20,10 +20,12 @@ import {
   Info,
   Download,
   BookOpen,
+  Languages,
 } from 'lucide';
 
 import { getRoute, onRouteChange, navigateTo } from './router.js';
 import { updateHead } from './head.js';
+import { setLang } from './i18n.js';
 import { getSimulationById } from './data/simulations.js';
 import { renderCatalog } from './views/catalog.js';
 import { renderLab } from './views/lab.js';
@@ -33,7 +35,7 @@ import { renderGuide } from './views/guide.js';
 import { hasGuide } from './data/guides.js';
 
 const app = document.getElementById('app');
-const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen };
+const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, Languages };
 
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };
@@ -56,7 +58,9 @@ function render() {
     cleanup = null;
   }
 
-  const { simId, guideId, page } = getRoute();
+  const route = getRoute();
+  const { simId, guideId, page } = route;
+  setLang(route.lang);
   const sim = simId ? getSimulationById(simId) : null;
   const guideSim = !sim && guideId && hasGuide(guideId) ? getSimulationById(guideId) : null;
 
@@ -67,7 +71,7 @@ function render() {
   else if (page === 'legal') cleanup = renderLegal(app);
   else cleanup = renderCatalog(app);
 
-  updateHead({ sim, guideSim, page: sim || guideSim ? null : page });
+  updateHead({ sim, guideSim, page: sim || guideSim ? null : page, lang: route.lang });
   window.scrollTo(0, 0);
   trackPageview();
 

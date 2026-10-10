@@ -2,10 +2,14 @@ import { navigateToCatalog, buildShareUrl } from '../router.js';
 import { guidePath } from '../paths.js';
 import { hasGuide } from '../data/guides.js';
 import { copyText, flashCopied } from '../components/copy.js';
+import { langSwitchMarkup } from '../components/lang-switch.js';
+import { simTitle, simUrl } from '../data/simulations.js';
+import { getLang, L } from '../i18n.js';
 
 function buildEmbedCode(sim) {
-  const url = sim.url;
-  return `<iframe\n  src="${url}"\n  title="${sim.title}"\n  width="100%"\n  height="600"\n  frameborder="0"\n  allowfullscreen\n></iframe>`;
+  const lang = getLang();
+  const url = simUrl(sim, lang);
+  return `<iframe\n  src="${url}"\n  title="${simTitle(sim, lang)}"\n  width="100%"\n  height="600"\n  frameborder="0"\n  allowfullscreen\n></iframe>`;
 }
 
 function createShareModal(sim) {
@@ -22,8 +26,8 @@ function createShareModal(sim) {
     <div class="absolute inset-0 bg-[#1e293b]/60 backdrop-blur" id="share-backdrop"></div>
     <div class="relative w-full max-w-lg rounded-lg border border-[#e2e8f0] bg-white shadow-xl">
       <div class="flex items-center justify-between border-b border-[#e2e8f0] px-5 py-4">
-        <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">Compartir simulación</h2>
-        <button id="share-close" aria-label="Cerrar" class="rounded-md p-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#1e293b]">
+        <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">${L('Compartir simulación', 'Share simulation')}</h2>
+        <button id="share-close" aria-label="${L('Cerrar', 'Close')}" class="rounded-md p-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#1e293b]">
           <i data-lucide="x" class="h-5 w-5"></i>
         </button>
       </div>
@@ -32,8 +36,8 @@ function createShareModal(sim) {
 
         <!-- Bloque 1: enlace directo -->
         <div>
-          <p class="text-sm font-semibold text-[#1e293b]">Enlace directo</p>
-          <p class="mt-0.5 text-xs text-[#64748b]">Pégalo en el chat de clase, en un correo o en tu plataforma (Moodle, Classroom, Teams…).</p>
+          <p class="text-sm font-semibold text-[#1e293b]">${L('Enlace directo', 'Direct link')}</p>
+          <p class="mt-0.5 text-xs text-[#64748b]">${L('Pégalo en el chat de clase, en un correo o en tu plataforma (Moodle, Classroom, Teams…).', 'Paste it into your class chat, an email or your platform (Moodle, Classroom, Teams…).')}</p>
           <div class="mt-2 flex gap-2">
             <input
               id="share-url"
@@ -47,15 +51,15 @@ function createShareModal(sim) {
               class="copy-btn inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#0369a1]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5"></i>
-              <span class="copy-label">Copiar</span>
+              <span class="copy-label">${L('Copiar', 'Copy')}</span>
             </button>
           </div>
         </div>
 
         <!-- Bloque 2: código embed -->
         <div>
-          <p class="text-sm font-semibold text-[#1e293b]">Insertar en tu web o en Moodle</p>
-          <p class="mt-0.5 text-xs text-[#64748b]">Si tu plataforma permite añadir HTML, pega este código. La simulación aparecerá integrada en la página.</p>
+          <p class="text-sm font-semibold text-[#1e293b]">${L('Insertar en tu web o en Moodle', 'Embed in your website or Moodle')}</p>
+          <p class="mt-0.5 text-xs text-[#64748b]">${L('Si tu plataforma permite añadir HTML, pega este código. La simulación aparecerá integrada en la página.', 'If your platform lets you add HTML, paste this code. The simulation will appear inside the page.')}</p>
           <div class="mt-2 flex gap-2">
             <textarea
               id="share-embed"
@@ -68,7 +72,7 @@ function createShareModal(sim) {
               class="copy-btn inline-flex shrink-0 items-start gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#0369a1]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5 mt-0.5"></i>
-              <span class="copy-label">Copiar</span>
+              <span class="copy-label">${L('Copiar', 'Copy')}</span>
             </button>
           </div>
         </div>
@@ -83,11 +87,13 @@ function createShareModal(sim) {
 const BASE_WIDTH = 1270;
 
 export function renderLab(root, sim) {
+  const lang = getLang();
+  const title = simTitle(sim, lang);
   const withGuide = hasGuide(sim.id);
   const guideButton = withGuide
-    ? `<a href="${guidePath(sim.id)}" data-route class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
+    ? `<a href="${guidePath(sim.id)}" data-route${lang === 'en' ? ' hreflang="es"' : ''} class=""ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
         <i data-lucide="book-open" class="h-4 w-4"></i>
-        <span class="hidden sm:inline">Guía docente</span>
+        <span class="hidden sm:inline">${L('Guía docente', 'Teacher guide (Spanish)')}</span>
       </a>`
     : '';
   root.innerHTML = `
@@ -95,34 +101,35 @@ export function renderLab(root, sim) {
     <header data-print-hide class="flex h-14 shrink-0 items-center gap-3 border-b border-[#e2e8f0] bg-white px-4">
       <button id="lab-back" class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
         <i data-lucide="arrow-left" class="h-4 w-4"></i>
-        Volver al catálogo
+        ${L('Volver al catálogo', 'Back to catalogue')}
       </button>
       <div class="hidden h-5 w-px bg-[#e2e8f0] sm:block"></div>
-      <h1 class="hidden truncate font-semibold text-[#1e293b] sm:block">${sim.title}</h1>
+      <h1 class="hidden truncate font-semibold text-[#1e293b] sm:block">${title}</h1>
       ${guideButton}
       <button id="lab-fs" class="${withGuide ? '' : 'ml-auto '}inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
         <i data-lucide="maximize" class="h-4 w-4"></i>
-        <span class="hidden sm:inline">Pantalla completa</span>
+        <span class="hidden sm:inline">${L('Pantalla completa', 'Full screen')}</span>
       </button>
       <button id="lab-share" class="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#0369a1]">
         <i data-lucide="share-2" class="h-4 w-4"></i>
-        <span class="hidden sm:inline">Compartir</span>
+        <span class="hidden sm:inline">${L('Compartir', 'Share')}</span>
       </button>
+      ${langSwitchMarkup({ compact: true })}
     </header>
 
     <div id="lab-stage" data-print-main class="relative min-h-0 flex-1 overflow-hidden bg-[#f8fafc]">
       <div id="lab-loader" class="lab-skeleton absolute inset-0 z-10 flex items-center justify-center text-sm text-[#64748b]">
-        Cargando simulación…
+        ${L('Cargando simulación…', 'Loading simulation…')}
       </div>
       <button id="lab-fs-exit" class="absolute right-4 top-4 z-20 hidden items-center gap-1.5 rounded-md bg-[#1e293b]/85 px-3 py-1.5 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-[#1e293b]">
         <i data-lucide="minimize" class="h-4 w-4"></i>
-        Salir de pantalla completa
+        ${L('Salir de pantalla completa', 'Exit full screen')}
       </button>
       <div class="absolute inset-0 flex justify-center">
         <iframe
           id="lab-frame"
-          title="${sim.title}"
-          src="${sim.url}"
+          title="${title}"
+          src="${simUrl(sim, lang)}"
           sandbox="allow-scripts allow-same-origin allow-forms"
           referrerpolicy="no-referrer-when-downgrade"
           class="block border-0 opacity-0 transition-opacity duration-300"

@@ -16,7 +16,7 @@ import { dirname, extname, join, resolve } from 'node:path';
 import { promisify } from 'node:util';
 import { simulations } from '../src/data/simulations.js';
 import { guideIdFromFile } from '../src/guides/shared.js';
-import { simPath, guidePath, PAGE_PATHS } from '../src/paths.js';
+import { simPath, guidePath, homePath, PAGE_PATHS, PAGE_PATHS_EN } from '../src/paths.js';
 import { findChrome } from './tools.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..');
@@ -30,6 +30,10 @@ const routes = [
     .filter((f) => f.endsWith('.md'))
     .map((f) => guidePath(guideIdFromFile(f))),
   ...Object.values(PAGE_PATHS),
+  // Versión inglesa (sin guías ni aviso legal, que solo están en español)
+  homePath('en'),
+  ...simulations.map((s) => simPath(s.id, 'en')),
+  ...Object.values(PAGE_PATHS_EN),
 ];
 
 // GitHub Pages sirve 404.html en las direcciones que no existen; la web las

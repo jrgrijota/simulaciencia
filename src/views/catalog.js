@@ -1,7 +1,9 @@
-import { simulations, allTags, COURSES } from '../data/simulations.js';
+import { simulations, allTags, COURSES, tagLabel } from '../data/simulations.js';
 import { cardMarkup } from '../components/card.js';
 import { footerMarkup } from '../components/footer.js';
-import { PAGE_PATHS } from '../paths.js';
+import { langSwitchMarkup } from '../components/lang-switch.js';
+import { pagePath } from '../paths.js';
+import { getLang, L } from '../i18n.js';
 
 const FILTER_BASE =
   'filter-btn rounded-md border px-3 py-1.5 text-sm font-medium transition-colors';
@@ -9,19 +11,20 @@ const FILTER_ON = 'border-[#0284c7] bg-[#0284c7] text-white';
 const FILTER_OFF = 'border-[#e2e8f0] bg-white text-[#64748b] hover:border-[#0284c7] hover:text-[#0284c7]';
 
 export function renderCatalog(root) {
-  const filters = ['Todas', ...allTags]
-    .map((label, i) => {
-      const value = i === 0 ? 'all' : label;
+  const lang = getLang();
+  const filters = ['all', ...allTags]
+    .map((value, i) => {
+      const label = i === 0 ? L('Todas', 'All') : tagLabel(value, lang);
       const state = i === 0 ? FILTER_ON : FILTER_OFF;
       return `<button data-tag="${value}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${label}</button>`;
     })
     .join('');
 
   // Un docente busca por el curso que da: filtro propio, combinable con la materia.
-  const courseFilters = [{ id: 'all', label: 'Todos' }, ...COURSES]
+  const courseFilters = [{ id: 'all', label: 'Todos', en: 'All' }, ...COURSES]
     .map((c, i) => {
       const state = i === 0 ? FILTER_ON : FILTER_OFF;
-      return `<button data-course="${c.id}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${c.label}</button>`;
+      return `<button data-course="${c.id}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${lang === 'en' ? c.en : c.label}</button>`;
     })
     .join('');
   const LABEL = 'w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-[#64748b]';
@@ -34,19 +37,24 @@ export function renderCatalog(root) {
           <span class="text-lg font-bold tracking-tight text-[#1e293b]">
             <span class="text-[#0284c7]">⚗</span> SimulaCiencia
           </span>
-          <span class="hidden text-sm text-[#64748b] sm:inline">· Simulaciones de Física y Química</span>
+          <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Simulaciones de Física y Química', 'Physics and Chemistry Simulations')}</span>
         </h1>
-        <a href="${PAGE_PATHS.about}" data-route class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
+        <a href="${pagePath('about', lang)}" data-route class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
           <i data-lucide="info" class="h-4 w-4"></i>
-          <span class="hidden sm:inline">Sobre el proyecto</span>
+          <span class="hidden sm:inline">${L('Sobre el proyecto', 'About')}</span>
         </a>
+        ${langSwitchMarkup()}
       </div>
     </header>
 
     <main class="mx-auto max-w-6xl px-4 py-6">
       <p class="mb-4 text-sm leading-relaxed text-[#64748b]">
-        Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato, con su guía docente.
-        Sin instalar nada ni crear una cuenta.
+        ${L(
+          `Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato, con su guía docente.
+        Sin instalar nada ni crear una cuenta.`,
+          `Free interactive Physics and Chemistry simulations for secondary school (ESO and Bachillerato in Spain).
+        Nothing to install and no account needed. Teacher guides are available in Spanish.`,
+        )}
       </p>
       <div data-print-hide class="mb-6 flex flex-col gap-3">
         <div class="relative">
@@ -54,18 +62,18 @@ export function renderCatalog(root) {
           <input
             id="search"
             type="search"
-            placeholder="Buscar simulación por nombre, tema o nivel…"
+            placeholder="${L('Buscar simulación por nombre, tema o nivel…', 'Search by name, topic or year…')}"
             autocomplete="off"
             class="w-full rounded-md border border-[#e2e8f0] bg-white py-2.5 pl-11 pr-4 text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:border-[#0284c7] focus:outline-none"
           />
         </div>
         <div class="flex items-center gap-2">
-          <span class="${LABEL}">Materia</span>
-          <div id="filters" role="group" aria-label="Materia" class="flex flex-wrap gap-2">${filters}</div>
+          <span class="${LABEL}">${L('Materia', 'Subject')}</span>
+          <div id="filters" role="group" aria-label="${L('Materia', 'Subject')}" class="flex flex-wrap gap-2">${filters}</div>
         </div>
         <div class="flex items-center gap-2">
-          <span class="${LABEL}">Curso</span>
-          <div id="course-filters" role="group" aria-label="Curso" class="flex flex-wrap gap-2">${courseFilters}</div>
+          <span class="${LABEL}">${L('Curso', 'Year')}</span>
+          <div id="course-filters" role="group" aria-label="${L('Curso', 'Year')}" class="flex flex-wrap gap-2">${courseFilters}</div>
         </div>
       </div>
 
@@ -75,7 +83,7 @@ export function renderCatalog(root) {
 
       <div id="empty" class="hidden flex-col items-center gap-2 py-20 text-center text-[#64748b]">
         <i data-lucide="search-x" class="h-8 w-8"></i>
-        <p class="text-sm">No hay simulaciones que coincidan con tu búsqueda.</p>
+        <p class="text-sm">${L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.')}</p>
       </div>
     </main>
     ${footerMarkup()}

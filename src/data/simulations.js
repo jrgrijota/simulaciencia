@@ -335,6 +335,11 @@ export const simulations = [
       description:
         'Doitu ekuazio kimikoak atomoak nola berrantolatzen diren ikusiz, egiaztatu balantza batekin Lavoisierren eta Prousten legeak, eta aurkitu erreaktibo mugatzailea eta errendimendua.',
     },
+    gl: {
+      title: 'Axuste de Reaccións',
+      description:
+        'Axusta ecuacións químicas vendo como se reordenan os átomos, comproba cunha balanza a lei de Lavoisier e a de Proust, e descobre o reactivo limitante e o rendemento.',
+    },
   },
 ];
 

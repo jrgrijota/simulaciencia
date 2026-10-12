@@ -371,6 +371,36 @@ export const simulations = [
         'Montaña rusa e péndulo: observa como a enerxía potencial se converte en cinética e, con rozamento, como a enerxía mecánica se degrada en calor.',
     },
   },
+  {
+    id: 'sim-circuitos',
+    title: 'Circuitos Eléctricos',
+    description:
+      'Pila, interruptor y bombillas o resistencias: mide tensión e intensidad, comprueba la ley de Ohm y compara los receptores en serie y en paralelo.',
+    tags: ['Física', 'ESO'],
+    url: 'https://jrgrijota.github.io/simulacion-circuitos/',
+    responsive: true,
+    courses: ['2ESO', '3ESO'],
+    en: {
+      title: 'Electric Circuits',
+      description:
+        "Battery, switch and bulbs or resistors: measure voltage and current, check Ohm's law and compare components in series and in parallel.",
+    },
+    ca: {
+      title: 'Circuits Elèctrics',
+      description:
+        "Pila, interruptor i bombetes o resistències: mesura tensió i intensitat, comprova la llei d'Ohm i compara els receptors en sèrie i en paral·lel.",
+    },
+    eu: {
+      title: 'Zirkuitu elektrikoak',
+      description:
+        'Pila, etengailua eta bonbillak edo erresistentziak: neurtu tentsioa eta intentsitatea, egiaztatu Ohm-en legea eta konparatu hartzaileak seriean eta paraleloan.',
+    },
+    gl: {
+      title: 'Circuítos eléctricos',
+      description:
+        'Pila, interruptor e lámpadas ou resistencias: mide tensión e intensidade, comproba a lei de Ohm e compara os receptores en serie e en paralelo.',
+    },
+  },
 ];
 
 // Cursos, en orden, para el filtro y las tarjetas.

@@ -86,11 +86,12 @@ sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
   y `/sobre-el-proyecto/` y `/aviso-legal/` las páginas fijas ([`src/paths.js`](src/paths.js)).
   Los enlaces antiguos (`?sim=`, `?guia=`, `?page=`) redirigen a la dirección nueva.
 - **Otros idiomas:** inglés (`/en/`, `/en/simulations/<nombre>/`, `/en/about/`), catalán (`/ca/`,
-  `/ca/simulacions/<nombre>/`, `/ca/sobre-el-projecte/`) y euskera (`/eu/`, `/eu/simulazioak/<nombre>/`,
-  `/eu/proiektuari-buruz/`); cada simulación se carga con `?lang=en`, `?lang=ca` o `?lang=eu`. Las guías
+  `/ca/simulacions/<nombre>/`, `/ca/sobre-el-projecte/`), euskera (`/eu/`, `/eu/simulazioak/<nombre>/`,
+  `/eu/proiektuari-buruz/`) y gallego (`/gl/`, `/gl/simulacions/<nombre>/`, `/gl/sobre-o-proxecto/`);
+  cada simulación se carga con `?lang=en`, `?lang=ca`, `?lang=eu` o `?lang=gl`. Las guías
   docentes y el aviso legal solo están en español. Los textos traducidos de la web están junto a los
-  españoles (`L('es', 'en', 'ca', 'eu')`, ver [`src/i18n.js`](src/i18n.js)) y los del catálogo en los
-  campos `en`, `ca` y `eu` de cada simulación. Las páginas que existen en todos los idiomas se enlazan
+  españoles (`L('es', 'en', 'ca', 'eu', 'gl')`, ver [`src/i18n.js`](src/i18n.js)) y los del catálogo en los
+  campos `en`, `ca`, `eu` y `gl` de cada simulación. Las páginas que existen en todos los idiomas se enlazan
   entre sí con `hreflang` en el `<head>` y en el sitemap. El selector de idioma
   ([`src/components/lang-switch.js`](src/components/lang-switch.js)) es un desplegable accesible
   (teclado, Esc, lector de pantalla) con la bandera y el nombre de cada idioma en ese idioma.

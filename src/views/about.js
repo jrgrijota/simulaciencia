@@ -15,7 +15,7 @@ export function renderAbout(root) {
         <a id="about-home" href="${homePath(getLang())}" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0284c7] transition-colors">
           <span class="text-[#0284c7]">⚗</span> SimulaCiencia
         </a>
-        <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz')}</span>
+        <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>
         <div class="ml-auto">${langSwitchMarkup()}</div>
       </div>
     </header>
@@ -24,7 +24,7 @@ export function renderAbout(root) {
 
       <button id="about-back" class="mb-8 inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
         <i data-lucide="arrow-left" class="h-4 w-4"></i>
-        ${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora')}
+        ${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}
       </button>
 
 ${L(`
@@ -305,12 +305,81 @@ ${L(`
         </div>
       </section>
 
+`, `
+      <!-- Sección 1 -->
+      <section class="mb-10">
+        <h1 class="mb-4 text-2xl font-bold text-[#1e293b]">Ola! Cóntoche como naceu este proxecto</h1>
+        <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
+          <p>
+            Son Juanra, profesor de Física e Química na Comunidade de Madrid. Hai anos dediqueime á
+            programación, pero ao cambiar de rumbo profesional fun perdendo a práctica co código.
+          </p>
+          <p>
+            Durante moito tempo usei na aula os magníficos simuladores de
+            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">PhET Colorado</a>.
+            Son unha ferramenta extraordinaria, pero a miúdo botaba en falta algunha función concreta
+            para as miñas explicacións ou, ao contrario, sobrábanme opcións que acababan distraendo o
+            alumnado. Quería algo feito á medida das miñas clases.
+          </p>
+          <p>
+            E como naceron estas simulacións? Grazas ao que hoxe se coñece como
+            <em>vibe coding</em>: ferramentas de intelixencia artificial encargáronse da parte máis
+            pesada da programación, e iso permitiume deseñar exactamente o que necesitaba na aula.
+            Comezou sendo un recurso para as miñas clases, pero sería un orgullo que puidese servir
+            tamén a outros docentes e estudantes.
+          </p>
+        </div>
+      </section>
+
+      <hr class="border-[#e2e8f0]" />
+
+      <!-- Sección 2 -->
+      <section class="my-10">
+        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">O obxectivo (e as regras do xogo)</h2>
+        <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
+          <p>
+            Quen ensinamos ciencias sabemos que explicar o que non se ve é todo un reto. O
+            comportamento microscópico da materia ou os fenómenos ondulatorios son conceptos moi
+            abstractos. O obxectivo desta web é que o alumnado poida «tocar» e ver eses procesos
+            para comprendelos mellor.
+          </p>
+          <p>
+            Ao deseñar cada simulación coidei moito de non reforzar ideas erróneas (o que en didáctica
+            chamamos <em>concepcións alternativas</em>) e de buscar sempre a máxima claridade. Aínda así,
+            ás veces tiven que recorrer a pequenas «trampas» ou licenzas visuais que poñen o foco no
+            verdadeiramente importante.
+          </p>
+          <div class="rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-4 py-3 text-[#475569]">
+            <p class="mb-1 font-medium text-[#1e293b]">Un exemplo concreto</p>
+            <p>
+              Na simulación de Velocidade de reacción, cada catalizador ten un oco para cada tipo de
+              molécula e atrae cara a si as que pasan preto. Ademais, cando dous catalizadores atraparon
+              cadanseu unha molécula distinta, búscanse para xuntalas. A escala microscópica a química
+              non funciona exactamente así, pero esta esaxeración axuda moitísimo a entender que papel
+              cumpre o catalizador na reacción.
+            </p>
+          </div>
+          <p>
+            Por iso convén ter presente que a física destas simulacións non é perfecta. Non pretenden
+            ser un software de precisión científica nin substituír o laboratorio, senón ofrecer un
+            apoio visual e intuitivo para a aula.
+          </p>
+          <p>
+            Para que poidas usalas con seguridade, cada simulación ten a súa <strong>guía docente</strong>
+            (polo de agora só en castelán): en que cursos encaixa, que saberes básicos traballa, unha
+            secuencia para explicala na aula, as ideas previas que axuda a corrixir e as simplificacións
+            que convén coñecer. Podes lela na web ou descargala en PDF, Word ou LibreOffice para
+            adaptala ao teu grupo.
+          </p>
+        </div>
+      </section>
+
 `)}
       <hr class="border-[#e2e8f0]" />
 
       <!-- Sección 3 -->
       <section class="mt-10">
-        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">${L('Ideas, mejoras y comunidad', 'Ideas, improvements and community', 'Idees, millores i comunitat', 'Ideiak, hobekuntzak eta komunitatea')}</h2>
+        <h2 class="mb-4 text-xl font-bold text-[#1e293b]">${L('Ideas, mejoras y comunidad', 'Ideas, improvements and community', 'Idees, millores i comunitat', 'Ideiak, hobekuntzak eta komunitatea', 'Ideas, melloras e comunidade')}</h2>
         <div class="flex flex-col gap-4 text-sm leading-relaxed text-[#475569]">
           ${L(
             `<p>
@@ -352,26 +421,37 @@ ${L(`
             proposamen. Hobetu daitekeen zerbait ikusten baduzu edo zure klaseetarako tresnaren bat falta
             baduzu, ez izan zalantzarik idazteko (gaztelaniaz edo ingelesez).
           </p>`,
+            `<p>
+            Este proxecto non está pechado: segue vivo e en constante evolución. Se es docente,
+            estudante ou simplemente che apaixonan a ciencia e a programación, a túa opinión
+            interésame moito.
+          </p>
+          <p>
+            Agradecerei calquera crítica construtiva, idea de mellora ou proposta de novas
+            simulacións. Se ves algo que se poida mellorar ou botas en falta algunha ferramenta para
+            as túas clases, non dubides en escribirme (en galego ou en castelán).
+          </p>`,
           )}
           <p>
             ${L(
-              'Las versiones en inglés, catalán y euskera de la web y de las simulaciones se han traducido con inteligencia artificial. Cualquier corrección o mejora de las traducciones será bienvenida.',
-              'The English, Catalan and Basque versions of the website and the simulations were translated with artificial intelligence. Any corrections or improvements to the translations are welcome.',
-              'Les versions en anglès, català i basc del web i de les simulacions s’han traduït amb intel·ligència artificial. Qualsevol correcció o millora de les traduccions serà benvinguda.',
-              'Webgunearen eta simulazioen ingelesezko, katalanezko eta euskarazko bertsioak adimen artifizialarekin itzuli dira. Itzulpenetarako edozein zuzenketa edo hobekuntza ongi etorriko da.',
+              'Las versiones en inglés, catalán, euskera y gallego de la web y de las simulaciones se han traducido con inteligencia artificial. Cualquier corrección o mejora de las traducciones será bienvenida.',
+              'The English, Catalan, Basque and Galician versions of the website and the simulations were translated with artificial intelligence. Any corrections or improvements to the translations are welcome.',
+              'Les versions en anglès, català, basc i gallec del web i de les simulacions s’han traduït amb intel·ligència artificial. Qualsevol correcció o millora de les traduccions serà benvinguda.',
+              'Webgunearen eta simulazioen ingelesezko, katalanezko, euskarazko eta galiziarrezko bertsioak adimen artifizialarekin itzuli dira. Itzulpenetarako edozein zuzenketa edo hobekuntza ongi etorriko da.',
+              'As versións en inglés, catalán, éuscaro e galego da web e das simulacións traducíronse con intelixencia artificial. Calquera corrección ou mellora das traducións será benvida.',
             )}
           </p>
           <p class="flex flex-wrap items-center gap-x-2 gap-y-1">
-            ${L('Puedes escribirme a', 'You can write to me at', 'Em pots escriure a', 'Idatz iezadazu helbide honetara:')}
+            ${L('Puedes escribirme a', 'You can write to me at', 'Em pots escriure a', 'Idatz iezadazu helbide honetara:', 'Podes escribirme a')}
             <a href="mailto:${CONTACT}" class="font-semibold text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">${CONTACT}</a>
             <button
               id="about-copy-email"
               type="button"
-              aria-label="${L('Copiar dirección de correo', 'Copy email address', 'Copia l’adreça de correu', 'Kopiatu helbide elektronikoa')}"
+              aria-label="${L('Copiar dirección de correo', 'Copy email address', 'Copia l’adreça de correu', 'Kopiatu helbide elektronikoa', 'Copiar o enderezo de correo')}"
               class="inline-flex items-center gap-1 rounded-md border border-[#e2e8f0] bg-white px-2 py-0.5 text-xs font-medium text-[#64748b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5"></i>
-              <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu')}</span>
+              <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>
             </button>
           </p>
         </div>
@@ -384,7 +464,7 @@ ${L(`
   const copyBtn = root.querySelector('#about-copy-email');
   copyBtn.addEventListener('click', async () => {
     await copyText(CONTACT);
-    flashCopied(copyBtn, L('¡Copiada!', 'Copied!', 'Copiada!', 'Kopiatuta!'));
+    flashCopied(copyBtn, L('¡Copiada!', 'Copied!', 'Copiada!', 'Kopiatuta!', 'Copiada!'));
   });
 
   root.querySelector('#about-back').addEventListener('click', (e) => {

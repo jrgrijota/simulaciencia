@@ -11,13 +11,13 @@ import { getRoute } from '../router.js';
 import { getLang } from '../i18n.js';
 import { LANGS, translatedPath, homePath } from '../paths.js';
 
-const NAMES = { es: 'Español', en: 'English', ca: 'Català', eu: 'Euskara' };
-const LABEL = { es: 'Idioma', en: 'Language', ca: 'Idioma', eu: 'Hizkuntza' };
+const NAMES = { es: 'Español', en: 'English', ca: 'Català', eu: 'Euskara', gl: 'Galego' };
+const LABEL = { es: 'Idioma', en: 'Language', ca: 'Idioma', eu: 'Hizkuntza', gl: 'Idioma' };
 
 let uid = 0;
 
 // Banderas en SVG (los emojis de bandera no se ven en Windows y no existen para
-// Cataluña ni Euskadi).
+// Cataluña, Euskadi ni Galicia).
 function flag(lang) {
   const id = `uj${++uid}`;
   const svg = {
@@ -25,8 +25,9 @@ function flag(lang) {
     en: `<clipPath id="${id}"><path d="M30 15h30v15zv15H0zH0V0zV0h30z"/></clipPath><rect width="60" height="30" fill="#012169"/><path d="M0 0l60 30m0-30L0 30" stroke="#fff" stroke-width="6"/><path d="M0 0l60 30m0-30L0 30" clip-path="url(#${id})" stroke="#C8102E" stroke-width="4"/><path d="M30 0v30M0 15h60" stroke="#fff" stroke-width="10"/><path d="M30 0v30M0 15h60" stroke="#C8102E" stroke-width="6"/>`,
     ca: `<rect width="9" height="9" fill="#FCDD09"/><path d="M0 1.5h9m0 2H0m0 2h9m0 2H0" stroke="#DA121A"/>`,
     eu: `<rect width="50" height="28" fill="#D52B1E"/><path d="M0 0l50 28M50 0L0 28" stroke="#009B48" stroke-width="4.3"/><path d="M25 0v28M0 14h50" stroke="#fff" stroke-width="4.3"/>`,
+    gl: `<rect width="3" height="2" fill="#fff"/><path d="M0 0L3 2" stroke="#0099CC" stroke-width=".55"/>`,
   }[lang];
-  const box = { es: '0 0 3 2', en: '0 0 60 30', ca: '0 0 9 9', eu: '0 0 50 28' }[lang];
+  const box = { es: '0 0 3 2', en: '0 0 60 30', ca: '0 0 9 9', eu: '0 0 50 28', gl: '0 0 3 2' }[lang];
   return `<svg viewBox="${box}" preserveAspectRatio="none" aria-hidden="true" focusable="false" class="h-3.5 w-5 shrink-0 rounded-[2px] ring-1 ring-black/10">${svg}</svg>`;
 }
 

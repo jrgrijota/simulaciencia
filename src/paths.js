@@ -7,20 +7,20 @@
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
 //
-// En inglés, catalán y euskera (interfaz y simulaciones; las guías y el aviso legal
+// En inglés, catalán, euskera y gallego (interfaz y simulaciones; las guías y el aviso legal
 // solo existen en español):
 //
-//   /en/                       /ca/                       /eu/                        => Catálogo
-//   /en/simulations/<nombre>/  /ca/simulacions/<nombre>/  /eu/simulazioak/<nombre>/   => Modo Laboratorio
-//   /en/about/                 /ca/sobre-el-projecte/     /eu/proiektuari-buruz/      => Sobre el proyecto
+//   /en/                       /ca/                       /eu/                        /gl/                      => Catálogo
+//   /en/simulations/<nombre>/  /ca/simulacions/<nombre>/  /eu/simulazioak/<nombre>/   /gl/simulacions/<nombre>/ => Modo Laboratorio
+//   /en/about/                 /ca/sobre-el-projecte/     /eu/proiektuari-buruz/      /gl/sobre-o-proxecto/     => Sobre el proyecto
 
 export const SITE_URL = 'https://simulaciencia.es/';
-export const LANGS = ['es', 'en', 'ca', 'eu'];
+export const LANGS = ['es', 'en', 'ca', 'eu', 'gl'];
 
 const slug = (simId) => simId.replace(/^sim-/, '');
 
-const HOME = { es: '/', en: '/en/', ca: '/ca/', eu: '/eu/' };
-const SIM_DIR = { es: '/simulaciones/', en: '/en/simulations/', ca: '/ca/simulacions/', eu: '/eu/simulazioak/' };
+const HOME = { es: '/', en: '/en/', ca: '/ca/', eu: '/eu/', gl: '/gl/' };
+const SIM_DIR = { es: '/simulaciones/', en: '/en/simulations/', ca: '/ca/simulacions/', eu: '/eu/simulazioak/', gl: '/gl/simulacions/' };
 
 export const homePath = (lang = 'es') => HOME[lang];
 export const simPath = (simId, lang = 'es') => `${SIM_DIR[lang]}${slug(simId)}/`;
@@ -31,6 +31,7 @@ const PAGES = {
   en: { about: '/en/about/' },
   ca: { about: '/ca/sobre-el-projecte/' },
   eu: { about: '/eu/proiektuari-buruz/' },
+  gl: { about: '/gl/sobre-o-proxecto/' },
 };
 
 // Páginas fijas de un idioma (para el sitemap y las páginas pregeneradas).

@@ -13,6 +13,7 @@ const LICENSE = {
   en: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',
   ca: 'https://creativecommons.org/licenses/by-sa/4.0/deed.ca',
   eu: 'https://creativecommons.org/licenses/by-sa/4.0/deed.eu',
+  gl: 'https://creativecommons.org/licenses/by-sa/4.0/deed.gl',
 };
 
 // Los del catálogo (en español, iguales que en index.html). No se leen del
@@ -22,21 +23,24 @@ const DEFAULT_TITLE = {
   en: `${SITE} · Physics and Chemistry Simulations`,
   ca: `${SITE} · Simulacions de Física i Química`,
   eu: `${SITE} · Fisika eta Kimikako simulazioak`,
+  gl: `${SITE} · Simulacións de Física e Química`,
 };
 const DEFAULT_DESCRIPTION = {
   es: 'Catálogo de simulaciones interactivas de Física y Química para el aula. Acceso inmediato, sin instalación.',
   en: 'Interactive Physics and Chemistry simulations for the classroom. Free, instant access, nothing to install.',
   ca: "Catàleg de simulacions interactives de Física i Química per a l'aula. Accés immediat, sense instal·lació.",
   eu: 'Gelarako Fisika eta Kimikako simulazio interaktiboen katalogoa. Berehalako sarbidea, instalaziorik gabe.',
+  gl: 'Catálogo de simulacións interactivas de Física e Química para a aula. Acceso inmediato, sen instalación.',
 };
 const DEFAULT_OG_DESCRIPTION = {
   es: 'Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato. Sin instalación ni registro.',
   en: 'Free interactive Physics and Chemistry simulations for secondary school. No installation or sign-up.',
   ca: 'Simulacions interactives i gratuïtes de Física i Química per a ESO i Batxillerat. Sense instal·lació ni registre.',
   eu: 'Fisika eta Kimikako simulazio interaktibo eta doakoak DBHrako eta Batxilergorako. Instalaziorik eta erregistrorik gabe.',
+  gl: 'Simulacións interactivas e gratuítas de Física e Química para ESO e Bacharelato. Sen instalación nin rexistro.',
 };
-const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES' };
-const KIND = { es: 'Simulación interactiva', en: 'Interactive simulation', ca: 'Simulació interactiva', eu: 'Simulazio interaktiboa' };
+const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES', gl: 'gl_ES' };
+const KIND = { es: 'Simulación interactiva', en: 'Interactive simulation', ca: 'Simulació interactiva', eu: 'Simulazio interaktiboa', gl: 'Simulación interactiva' };
 
 const metaDescription = document.querySelector('meta[name="description"]');
 
@@ -80,7 +84,7 @@ function simResource(sim, lang = 'es') {
 }
 
 const PAGES = {
-  about: { es: `Sobre el proyecto · ${SITE}`, en: `About the project · ${SITE}`, ca: `Sobre el projecte · ${SITE}`, eu: `Proiektuari buruz · ${SITE}` },
+  about: { es: `Sobre el proyecto · ${SITE}`, en: `About the project · ${SITE}`, ca: `Sobre el projecte · ${SITE}`, eu: `Proiektuari buruz · ${SITE}`, gl: `Sobre o proxecto · ${SITE}` },
   legal: { es: `Aviso legal y privacidad · ${SITE}` },
 };
 

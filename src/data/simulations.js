@@ -341,6 +341,36 @@ export const simulations = [
         'Axusta ecuacións químicas vendo como se reordenan os átomos, comproba cunha balanza a lei de Lavoisier e a de Proust, e descobre o reactivo limitante e o rendemento.',
     },
   },
+  {
+    id: 'sim-energia-mecanica',
+    title: 'Energía Mecánica',
+    description:
+      'Montaña rusa y péndulo: observa cómo la energía potencial se convierte en cinética y, con rozamiento, cómo la energía mecánica se degrada en calor.',
+    tags: ['Física', 'ESO', 'Bachillerato'],
+    url: 'https://jrgrijota.github.io/simulacion-energia-mecanica/',
+    responsive: true,
+    courses: ['3ESO', '4ESO', '1BACH'],
+    en: {
+      title: 'Mechanical Energy',
+      description:
+        'Roller coaster and pendulum: watch potential energy turn into kinetic energy and, with friction, mechanical energy being degraded into heat.',
+    },
+    ca: {
+      title: 'Energia Mecànica',
+      description:
+        "Muntanya russa i pèndol: observa com l'energia potencial es converteix en cinètica i, amb fregament, com l'energia mecànica es degrada en calor.",
+    },
+    eu: {
+      title: 'Energia mekanikoa',
+      description:
+        'Mendi errusiarra eta pendulua: ikusi nola bihurtzen den energia potentziala zinetiko eta, marruskadurarekin, nola degradatzen den energia mekanikoa beroan.',
+    },
+    gl: {
+      title: 'Enerxía mecánica',
+      description:
+        'Montaña rusa e péndulo: observa como a enerxía potencial se converte en cinética e, con rozamento, como a enerxía mecánica se degrada en calor.',
+    },
+  },
 ];
 
 // Cursos, en orden, para el filtro y las tarjetas.

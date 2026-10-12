@@ -25,6 +25,7 @@ proyecto en [Sobre el proyecto](https://simulaciencia.es/sobre-el-proyecto/).
 | [Espectros Atómicos](https://simulaciencia.es/simulaciones/espectros/) | Química | Bachillerato | Espectros de emisión y absorción y transiciones electrónicas. |
 | [Cinética de Gases](https://simulaciencia.es/simulaciones/gases/) | Física | Bachillerato | Presión, temperatura y volumen con la teoría cinético-molecular. |
 | [Velocidad de Reacción](https://simulaciencia.es/simulaciones/velocidad-reaccion/) | Química | Bachillerato | Efecto de la temperatura, la concentración y el catalizador. |
+| [Ajuste de Reacciones](https://simulaciencia.es/simulaciones/ajuste-reaccion/) | Química | ESO, Bachillerato | Ajuste de ecuaciones, leyes de Lavoisier y Proust, reactivo limitante y rendimiento. |
 | [Órbitas y Gravitación](https://simulaciencia.es/simulaciones/orbitas/) | Física | Bachillerato | Bala de cañón de Newton, Sistema Solar, leyes de Kepler y estrellas binarias. |
 
 ## Cómo usarlas en clase

@@ -311,6 +311,31 @@ export const simulations = [
         'Quenta e arrefría unha substancia e observa á vez o recipiente, as súas partículas e a curva de quecemento; explora co diagrama de fases por que a auga ferve a uns 72 °C no Everest.',
     },
   },
+  {
+    id: 'sim-ajuste-reaccion',
+    title: 'Ajuste de Reacciones',
+    description:
+      'Ajusta ecuaciones químicas viendo cómo se reordenan los átomos, comprueba con una balanza la ley de Lavoisier y la de Proust, y descubre el reactivo limitante y el rendimiento.',
+    tags: ['Química', 'ESO', 'Bachillerato'],
+    url: 'https://jrgrijota.github.io/simulacion-ajuste-reaccion/',
+    responsive: true,
+    courses: ['3ESO', '4ESO', '1BACH'],
+    en: {
+      title: 'Balancing Equations',
+      description:
+        "Balance chemical equations by watching the atoms rearrange, use a balance to check Lavoisier's and Proust's laws, and discover the limiting reactant and the yield.",
+    },
+    ca: {
+      title: 'Ajust de Reaccions',
+      description:
+        "Ajusta equacions químiques veient com es reordenen els àtoms, comprova amb una balança la llei de Lavoisier i la de Proust, i descobreix el reactiu limitant i el rendiment.",
+    },
+    eu: {
+      title: 'Erreakzioen doikuntza',
+      description:
+        'Doitu ekuazio kimikoak atomoak nola berrantolatzen diren ikusiz, egiaztatu balantza batekin Lavoisierren eta Prousten legeak, eta aurkitu erreaktibo mugatzailea eta errendimendua.',
+    },
+  },
 ];
 
 // Cursos, en orden, para el filtro y las tarjetas.

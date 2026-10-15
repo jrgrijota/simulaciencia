@@ -32,6 +32,7 @@ import { renderLegal } from './views/legal.js';
 import { renderAbout } from './views/about.js';
 import { renderGuide } from './views/guide.js';
 import { hasGuide } from './data/guides.js';
+import { updateLangNotice } from './components/lang-notice.js';
 
 const app = document.getElementById('app');
 const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen };
@@ -71,6 +72,7 @@ function render() {
   else cleanup = renderCatalog(app);
 
   updateHead({ sim, guideSim, page: sim || guideSim ? null : page, lang: route.lang });
+  updateLangNotice();
   window.scrollTo(0, 0);
   trackPageview();
 

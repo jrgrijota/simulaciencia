@@ -403,13 +403,15 @@ export const simulations = [
   },
 ];
 
-// Cursos, en orden, para el filtro y las tarjetas.
+// Cursos, en orden, para el filtro y las tarjetas. En inglés se muestra el
+// equivalente por edad en Reino Unido (Year) y EE. UU. (grade); `enTitle`
+// recuerda el curso español en el tooltip.
 export const COURSES = [
-  { id: '2ESO', label: '2.º ESO', en: 'ESO Year 2', ca: '2n ESO', eu: 'DBH 2.', gl: '2.º ESO' },
-  { id: '3ESO', label: '3.º ESO', en: 'ESO Year 3', ca: '3r ESO', eu: 'DBH 3.', gl: '3.º ESO' },
-  { id: '4ESO', label: '4.º ESO', en: 'ESO Year 4', ca: '4t ESO', eu: 'DBH 4.', gl: '4.º ESO' },
-  { id: '1BACH', label: '1.º Bach.', en: 'Bach. Year 1', ca: '1r Batx.', eu: 'Batx. 1.', gl: '1.º Bach.' },
-  { id: '2BACH', label: '2.º Bach.', en: 'Bach. Year 2', ca: '2n Batx.', eu: 'Batx. 2.', gl: '2.º Bach.' },
+  { id: '2ESO', label: '2.º ESO', en: 'Year 9 (8th grade)', enTitle: 'ESO 2 in Spain · ages 13–14', ca: '2n ESO', eu: 'DBH 2.', gl: '2.º ESO' },
+  { id: '3ESO', label: '3.º ESO', en: 'Year 10 (9th grade)', enTitle: 'ESO 3 in Spain · ages 14–15', ca: '3r ESO', eu: 'DBH 3.', gl: '3.º ESO' },
+  { id: '4ESO', label: '4.º ESO', en: 'Year 11 (10th grade)', enTitle: 'ESO 4 in Spain · ages 15–16', ca: '4t ESO', eu: 'DBH 4.', gl: '4.º ESO' },
+  { id: '1BACH', label: '1.º Bach.', en: 'Year 12 (11th grade)', enTitle: 'Bachillerato 1 in Spain · ages 16–17', ca: '1r Batx.', eu: 'Batx. 1.', gl: '1.º Bach.' },
+  { id: '2BACH', label: '2.º Bach.', en: 'Year 13 (12th grade)', enTitle: 'Bachillerato 2 in Spain · ages 17–18', ca: '2n Batx.', eu: 'Batx. 2.', gl: '2.º Bach.' },
 ];
 
 export function courseLabel(id, lang = 'es') {

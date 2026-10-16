@@ -401,6 +401,36 @@ export const simulations = [
         'Pila, interruptor e lámpadas ou resistencias: mide tensión e intensidade, comproba a lei de Ohm e compara os receptores en serie e en paralelo.',
     },
   },
+  {
+    id: 'sim-ondas',
+    title: 'Ondas',
+    description:
+      'Cuerda y muelle: distingue las ondas transversales de las longitudinales, mide la amplitud, la longitud de onda y el período, y comprueba que la onda transporta energía, pero no materia.',
+    tags: ['Física', 'ESO', 'Bachillerato'],
+    url: 'https://jrgrijota.github.io/simulacion-ondas/',
+    responsive: true,
+    courses: ['4ESO', '2BACH'],
+    en: {
+      title: 'Waves',
+      description:
+        'String and spring: tell transverse waves from longitudinal ones, measure the amplitude, the wavelength and the period, and check that the wave carries energy but not matter.',
+    },
+    ca: {
+      title: 'Ones',
+      description:
+        "Corda i molla: distingeix les ones transversals de les longitudinals, mesura l'amplitud, la longitud d'ona i el període, i comprova que l'ona transporta energia, però no matèria.",
+    },
+    eu: {
+      title: 'Uhinak',
+      description:
+        'Soka eta malgukia: bereizi zeharkako uhinak eta luzetarakoak, neurtu anplitudea, uhin-luzera eta periodoa, eta egiaztatu uhinak energia garraiatzen duela, baina ez materia.',
+    },
+    gl: {
+      title: 'Ondas',
+      description:
+        'Corda e resorte: distingue as ondas transversais das lonxitudinais, mide a amplitude, a lonxitude de onda e o período, e comproba que a onda transporta enerxía, pero non materia.',
+    },
+  },
 ];
 
 // Cursos, en orden, para el filtro y las tarjetas. En inglés se muestra el

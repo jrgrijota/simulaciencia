@@ -1,8 +1,9 @@
 // Selector de idioma: un desplegable (patrón «disclosure» de WAI-ARIA para
 // navegación). El botón muestra el idioma actual; la lista enlaza a la misma
-// página en cada idioma, o a su portada si la página solo existe en español
-// (las guías y el aviso legal). Cada idioma lleva su bandera, pero siempre junto
-// a su nombre escrito en ese idioma: la bandera sola no identifica un idioma.
+// página en cada idioma, o a su portada si la página no existe en él (el aviso
+// legal, y las guías en catalán, euskera y gallego). Cada idioma lleva su bandera,
+// pero siempre junto a su nombre escrito en ese idioma: la bandera sola no
+// identifica un idioma.
 //
 // Teclado: Intro/Espacio abre y cierra, ↓/↑ recorren la lista, Inicio/Fin van al
 // primero/último y Esc cierra y devuelve el foco al botón. Se cierra también al

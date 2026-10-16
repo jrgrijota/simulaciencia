@@ -1,6 +1,6 @@
 // Tarjeta de simulación: todo el contenido visible de un vistazo,
 // sin efectos hover que oculten datos.
-import { hasGuide } from '../data/guides.js';
+import { guideLangFor } from '../data/guides.js';
 import { subjectTags, courseLabel, simTitle, simDescription, tagLabel } from '../data/simulations.js';
 import { simPath, guidePath } from '../paths.js';
 import { getLang, L } from '../i18n.js';
@@ -15,15 +15,16 @@ export function cardMarkup(sim) {
   const courses = sim.courses.map((c) => courseLabel(c, lang));
   const tagLabels = sim.tags.map((t) => tagLabel(t, lang));
   const haystack = `${title} ${description} ${tagLabels.join(' ')} ${courses.join(' ')}`.toLowerCase();
-  const guideButton = hasGuide(sim.id)
+  const guide = guideLangFor(sim.id, lang);
+  const guideButton = guide
     ? `
     <a
-      href="${guidePath(sim.id)}"
-      data-route${lang !== 'es' ? ' hreflang="es"' : ''}
+      href="${guidePath(sim.id, guide)}"
+      data-route${guide !== lang ? ` hreflang="${guide}"` : ''}
       class="mt-2 inline-flex items-center justify-center gap-2 rounded-md border border-[#e2e8f0] bg-white px-4 py-2 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]"
     >
       <i data-lucide="book-open" class="h-4 w-4"></i>
-      ${L('Guía docente', 'Teacher guide (in Spanish)', 'Guia docent (en castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (en castelán)')}
+      ${L('Guía docente', 'Teacher guide', 'Guia docent (en castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (en castelán)')}
     </a>`
     : '';
   const tags = subjectTags(sim).map((t) => `<span class="${TAG_CLASS}">${tagLabel(t, lang)}</span>`).join('');

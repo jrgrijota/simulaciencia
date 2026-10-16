@@ -7,11 +7,12 @@
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
 //
-// En inglés, catalán, euskera y gallego (interfaz y simulaciones; las guías y el aviso legal
-// solo existen en español):
+// En inglés, catalán, euskera y gallego (interfaz y simulaciones; el aviso legal solo
+// existe en español y las guías, en español e inglés):
 //
 //   /en/                       /ca/                       /eu/                        /gl/                      => Catálogo
 //   /en/simulations/<nombre>/  /ca/simulacions/<nombre>/  /eu/simulazioak/<nombre>/   /gl/simulacions/<nombre>/ => Modo Laboratorio
+//   /en/guides/<nombre>/                                                                                       => Guía docente
 //   /en/about/                 /ca/sobre-el-projecte/     /eu/proiektuari-buruz/      /gl/sobre-o-proxecto/     => Sobre el proyecto
 
 export const SITE_URL = 'https://simulaciencia.es/';
@@ -24,7 +25,13 @@ const SIM_DIR = { es: '/simulaciones/', en: '/en/simulations/', ca: '/ca/simulac
 
 export const homePath = (lang = 'es') => HOME[lang];
 export const simPath = (simId, lang = 'es') => `${SIM_DIR[lang]}${slug(simId)}/`;
-export const guidePath = (simId) => `/guias/${slug(simId)}/`;
+
+// Idiomas con guías docentes (guias/*.md en español, guias/en/*.md en inglés).
+export const GUIDE_LANGS = ['es', 'en'];
+const GUIDE_DIR = { es: '/guias/', en: '/en/guides/' };
+// Idioma de la guía que se enlaza desde una página: la suya si existe, si no la española.
+export const guideLang = (lang) => (GUIDE_DIR[lang] ? lang : 'es');
+export const guidePath = (simId, lang = 'es') => `${GUIDE_DIR[guideLang(lang)]}${slug(simId)}/`;
 export const PAGE_PATHS = { about: '/sobre-el-proyecto/', legal: '/aviso-legal/' };
 const PAGES = {
   es: PAGE_PATHS,
@@ -49,8 +56,10 @@ export function parsePath(pathname) {
   const lang = LANGS.find((l) => l !== 'es' && path.startsWith(HOME[l])) || 'es';
   const page = Object.keys(PAGES[lang]).find((k) => PAGES[lang][k] === path) || null;
   if (lang !== 'es') {
-    const slug = path.startsWith(SIM_DIR[lang]) ? path.slice(SIM_DIR[lang].length).match(/^([a-z0-9-]+)\/$/) : null;
-    return { lang, simId: slug ? `sim-${slug[1]}` : null, guideId: null, page };
+    const under = (dir) => (dir && path.startsWith(dir) ? path.slice(dir.length).match(/^([a-z0-9-]+)\/$/)?.[1] : null);
+    const sim = under(SIM_DIR[lang]);
+    const guide = under(GUIDE_DIR[lang]);
+    return { lang, simId: sim ? `sim-${sim}` : null, guideId: guide ? `sim-${guide}` : null, page };
   }
   const m = path.match(/^\/(simulaciones|guias)\/([a-z0-9-]+)\/$/);
   return {
@@ -61,10 +70,11 @@ export function parsePath(pathname) {
   };
 }
 
-// La misma página en el otro idioma, o null si no existe (guías y aviso legal).
+// La misma página en el otro idioma, o null si no existe (el aviso legal fuera del
+// español y las guías fuera del español y el inglés).
 // Sirve para el selector de idioma y para las etiquetas hreflang.
 export function translatedPath({ simId, guideId, page }, lang) {
-  if (guideId) return null;
+  if (guideId) return GUIDE_DIR[lang] ? guidePath(guideId, lang) : null;
   if (simId) return simPath(simId, lang);
   if (page) return pagePath(page, lang);
   return homePath(lang);

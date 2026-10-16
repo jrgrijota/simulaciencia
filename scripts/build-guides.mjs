@@ -1,5 +1,6 @@
 // Genera las descargas de cada guía docente (PDF, Word y LibreOffice) a partir
-// de guias/*.md. Se ejecuta tras `vite build` y escribe en dist/guias/.
+// de guias/*.md (y de su traducción, guias/en/*.md). Se ejecuta tras `vite build`
+// y escribe en dist/guias/ y dist/en/guides/.
 //
 //   PDF:  la guía en HTML (mismo Markdown que la web) impresa con Chrome sin interfaz.
 //   DOCX y ODT: Pandoc.
@@ -11,7 +12,7 @@
 import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { strFromU8, strToU8, unzipSync, zipSync } from 'fflate';
 import {
@@ -22,7 +23,7 @@ import {
   renderGuideHtml,
   rewriteLinks,
 } from '../src/guides/shared.js';
-import { absoluteUrl, guidePath } from '../src/paths.js';
+import { absoluteUrl, guidePath, GUIDE_LANGS } from '../src/paths.js';
 import { findTool, findChrome } from './tools.mjs';
 
 // Pandoc deja las tablas sin bordes y con letra con serifa. Se retocan los XML
@@ -95,9 +96,29 @@ const pandoc = findTool('PANDOC_PATH', ['pandoc']);
 const fontUrl = (w) =>
   pathToFileURL(join(ROOT, `node_modules/@fontsource/inter/files/inter-latin-${w}-normal.woff2`)).href;
 
-function pdfHtml(title, body, simId) {
+// Textos fijos de las descargas en cada idioma de las guías.
+const TEXT = {
+  es: {
+    kicker: 'Guía docente',
+    license: (url, link) =>
+      `Guía publicada bajo licencia <a href="${url}">CC BY-SA 4.0</a>: puedes adaptarla y compartirla citando ` +
+      `la autoría y con la misma licencia. Versión actualizada y simulación en ${link}.`,
+    pandocLang: 'es-ES',
+  },
+  en: {
+    kicker: 'Teacher guide',
+    license: (url, link) =>
+      `Guide published under a <a href="${url}">CC BY-SA 4.0</a> licence: you may adapt and share it, crediting ` +
+      `the author and keeping the same licence. Latest version and simulation at ${link}.`,
+    pandocLang: 'en-GB',
+  },
+};
+
+function pdfHtml(title, body, simId, lang) {
+  const t = TEXT[lang];
+  const url = absoluteUrl(guidePath(simId, lang));
   return `<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><title>${title}</title>
+<html lang="${lang}"><head><meta charset="utf-8"><title>${title}</title>
 <style>
   @font-face { font-family: Inter; font-weight: 400; src: url(${fontUrl(400)}); }
   @font-face { font-family: Inter; font-weight: 600; src: url(${fontUrl(600)}); }
@@ -123,29 +144,35 @@ function pdfHtml(title, body, simId) {
   .license { margin-top: 16pt; padding-top: 6pt; border-top: 1px solid #cbd5e1; font-size: 8pt; color: #64748b; }
 </style></head>
 <body>
-  <p class="kicker">Guía docente · SimulaCiencia</p>
+  <p class="kicker">${t.kicker} · SimulaCiencia</p>
   ${body}
-  <p class="license">© 2026 Juan Ramón Grijota · SimulaCiencia. Guía publicada bajo licencia
-  <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>: puedes adaptarla y
-  compartirla citando la autoría y con la misma licencia. Versión actualizada y simulación en
-  <a href="${absoluteUrl(guidePath(simId))}">${absoluteUrl(guidePath(simId)).replace('https://', '')}</a>.</p>
+  <p class="license">© 2026 Juan Ramón Grijota · SimulaCiencia. ${t.license(
+    `https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}`,
+    `<a href="${url}">${url.replace('https://', '')}</a>`,
+  )}</p>
 </body></html>`;
 }
 
-const files = readdirSync(join(ROOT, 'guias')).filter((f) => f.endsWith('.md'));
-mkdirSync(join(OUT, 'guias'), { recursive: true });
+// Guías de cada idioma: guias/*.md (español) y guias/<idioma>/*.md.
+const guides = GUIDE_LANGS.flatMap((lang) => {
+  const dir = join(ROOT, 'guias', lang === 'es' ? '' : lang);
+  return readdirSync(dir)
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => ({ lang, file: join(dir, f) }));
+});
 const tmp = join(tmpdir(), `simulaciencia-guias-${process.pid}`);
 mkdirSync(tmp, { recursive: true });
 
-for (const file of files) {
+for (const { lang, file } of guides) {
   const simId = guideIdFromFile(file);
-  const markdown = readFileSync(join(ROOT, 'guias', file), 'utf8');
+  const markdown = readFileSync(file, 'utf8');
   const title = guideTitle(markdown);
-  const out = join(OUT, downloadBase(simId));
+  const out = join(OUT, downloadBase(simId, lang));
+  mkdirSync(dirname(out), { recursive: true });
 
   if (chrome) {
-    const html = join(tmp, `${simId}.html`);
-    writeFileSync(html, pdfHtml(title, renderGuideHtml(markdown), simId));
+    const html = join(tmp, `${lang}-${simId}.html`);
+    writeFileSync(html, pdfHtml(title, renderGuideHtml(markdown, lang), simId, lang));
     execFileSync(chrome, [
       '--headless=new',
       '--disable-gpu',
@@ -161,20 +188,20 @@ for (const file of files) {
   if (pandoc) {
     // El título va a los metadatos (estilo «Título» y propiedades del documento),
     // así que se quita el h1 del cuerpo para no duplicarlo.
-    const body = rewriteLinks(markdown).replace(/^#\s+.+\n+/m, '') + '\n\n' + licenseNote(simId) + '\n';
+    const body = rewriteLinks(markdown, lang).replace(/^#\s+.+\n+/m, '') + '\n\n' + licenseNote(simId, lang) + '\n';
     for (const ext of ['docx', 'odt']) {
       execFileSync(pandoc, [
         '-f', 'gfm', '-t', ext, '-o', `${out}.${ext}`,
         '--metadata', `title=${title}`,
         '--metadata', 'author=Juan Ramón Grijota · SimulaCiencia',
-        '--metadata', 'lang=es-ES',
+        '--metadata', `lang=${TEXT[lang].pandocLang}`,
       ], { input: body });
     }
     patchDocx(`${out}.docx`);
     patchOdt(`${out}.odt`);
   }
-  console.log(`✓ ${simId}`);
+  console.log(`✓ ${lang} ${simId}`);
 }
 
 rmSync(tmp, { recursive: true, force: true });
-console.log(`Guías: ${files.length} (${[chrome && 'PDF', pandoc && 'DOCX, ODT'].filter(Boolean).join(', ') || 'sin descargas'})`);
+console.log(`Guías: ${guides.length} (${[chrome && 'PDF', pandoc && 'DOCX, ODT'].filter(Boolean).join(', ') || 'sin descargas'})`);

@@ -1,5 +1,6 @@
 import { navigateToCatalog } from '../router.js';
 import { simPath } from '../paths.js';
+import { getLang, L } from '../i18n.js';
 import { setDescription } from '../head.js';
 import { footerMarkup } from '../components/footer.js';
 import { loadGuide } from '../data/guides.js';
@@ -11,10 +12,12 @@ const BTN_PRIMARY =
   'inline-flex items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#0369a1]';
 
 const DOWNLOADS = [
-  { ext: 'pdf', label: 'PDF', hint: 'para imprimir' },
-  { ext: 'docx', label: 'Word', hint: 'editable' },
-  { ext: 'odt', label: 'LibreOffice', hint: 'editable' },
+  { ext: 'pdf', label: 'PDF', hint: { es: 'para imprimir', en: 'to print' } },
+  { ext: 'docx', label: 'Word', hint: { es: 'editable', en: 'editable' } },
+  { ext: 'odt', label: 'LibreOffice', hint: { es: 'editable', en: 'editable' } },
 ];
+
+const LICENSE_URL = { es: 'https://creativecommons.org/licenses/by-sa/4.0/deed.es', en: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en' };
 
 function tocMarkup(toc) {
   const items = toc
@@ -24,19 +27,20 @@ function tocMarkup(toc) {
     )
     .join('');
   return `
-    <nav data-print-hide aria-label="Contenido de la guía" class="mb-8 rounded-md border border-[#e2e8f0] bg-white px-4 py-3">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-[#64748b]">En esta guía</p>
+    <nav data-print-hide aria-label="${L('Contenido de la guía', 'Guide contents')}" class="mb-8 rounded-md border border-[#e2e8f0] bg-white px-4 py-3">
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-[#64748b]">${L('En esta guía', 'In this guide')}</p>
       <ul class="space-y-1 text-sm text-[#1e293b]">${items}</ul>
     </nav>`;
 }
 
 export function renderGuide(root, sim) {
-  const base = downloadBase(sim.id);
+  const lang = getLang();
+  const base = downloadBase(sim.id, lang);
   const downloads = DOWNLOADS.map(
     (d) => `
       <a href="/${base}.${d.ext}" download data-download class="${d.ext === 'pdf' ? BTN_PRIMARY : BTN_SECONDARY}">
         <i data-lucide="download" class="h-4 w-4"></i>
-        ${d.label} <span class="hidden font-normal opacity-75 sm:inline">· ${d.hint}</span>
+        ${d.label} <span class="hidden font-normal opacity-75 sm:inline">· ${d.hint[lang]}</span>
       </a>`,
   ).join('');
 
@@ -46,43 +50,46 @@ export function renderGuide(root, sim) {
       <div class="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
         <button id="guide-back" class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
           <i data-lucide="arrow-left" class="h-4 w-4"></i>
-          Volver al catálogo
+          ${L('Volver al catálogo', 'Back to catalogue')}
         </button>
-        <a href="${simPath(sim.id)}" data-route class="${BTN_SECONDARY} ml-auto">
+        <a href="${simPath(sim.id, lang)}" data-route class="${BTN_SECONDARY} ml-auto">
           <i data-lucide="flask-conical" class="h-4 w-4"></i>
-          <span class="hidden sm:inline">Abrir la simulación</span><span class="sm:hidden">Simulación</span>
+          <span class="hidden sm:inline">${L('Abrir la simulación', 'Open the simulation')}</span><span class="sm:hidden">${L('Simulación', 'Simulation')}</span>
         </a>
       </div>
     </header>
 
     <main data-print-main class="mx-auto max-w-3xl px-4 py-8">
-      <p class="mb-1 text-sm font-semibold uppercase tracking-wide text-[#0284c7]">Guía docente</p>
+      <p class="mb-1 text-sm font-semibold uppercase tracking-wide text-[#0284c7]">${L('Guía docente', 'Teacher guide')}</p>
       <div id="guide-body" class="guide-prose">
-        <p class="text-sm text-[#64748b]">Cargando la guía…</p>
+        <p class="text-sm text-[#64748b]">${L('Cargando la guía…', 'Loading the guide…')}</p>
       </div>
     </main>
     ${footerMarkup()}
   </div>`;
 
   let cancelled = false;
-  loadGuide(sim.id).then((markdown) => {
+  loadGuide(sim.id, lang).then((markdown) => {
     if (cancelled) return;
     setDescription(guideSummary(markdown));
     const body = root.querySelector('#guide-body');
-    const html = renderGuideHtml(markdown);
+    const html = renderGuideHtml(markdown, lang);
     // El h1 va primero; tras él, las descargas y el índice.
     const h1End = html.indexOf('</h1>') + '</h1>'.length;
     body.innerHTML = `
       ${html.slice(0, h1End)}
       <div data-print-hide class="mb-6 flex flex-wrap items-center gap-2">
-        <span class="mr-1 text-sm text-[#64748b]">Descargar:</span>${downloads}
+        <span class="mr-1 text-sm text-[#64748b]">${L('Descargar:', 'Download:')}</span>${downloads}
       </div>
       ${tocMarkup(guideToc(markdown))}
       ${html.slice(h1End)}
       <p class="mt-10 border-t border-[#e2e8f0] pt-4 text-xs text-[#64748b]">
-        © 2026 Juan Ramón Grijota · Guía bajo licencia
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener license">CC BY-SA 4.0</a>:
-        puedes adaptarla y compartirla citando la autoría y con la misma licencia.
+        © 2026 Juan Ramón Grijota · ${L('Guía bajo licencia', 'Guide licensed under')}
+        <a href="${LICENSE_URL[lang]}" target="_blank" rel="noopener license">CC BY-SA 4.0</a>:
+        ${L(
+          'puedes adaptarla y compartirla citando la autoría y con la misma licencia.',
+          'you may adapt and share it, crediting the author and keeping the same licence.',
+        )}
       </p>`;
     window.lucide?.createIcons({ nodes: [...body.querySelectorAll('[data-lucide]')] });
 

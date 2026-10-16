@@ -53,7 +53,7 @@ export function renderCatalog(root) {
           `Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato, con su guía docente.
         Sin instalar nada ni crear una cuenta.`,
           `Free interactive Physics and Chemistry simulations for secondary school (ESO and Bachillerato in Spain).
-        Nothing to install and no account needed. Teacher guides are available in Spanish.`,
+        Nothing to install and no account needed, and each one comes with its teacher guide.`,
           `Simulacions interactives i gratuïtes de Física i Química per a ESO i Batxillerat.
         Sense instal·lar res ni crear cap compte. Les guies docents estan en castellà.`,
           `Fisika eta Kimikako simulazio interaktibo eta doakoak DBHrako eta Batxilergorako.

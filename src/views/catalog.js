@@ -35,7 +35,7 @@ export function renderCatalog(root) {
       <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
         <h1 class="contents">
           <span class="text-lg font-bold tracking-tight text-[#1e293b]">
-            <span class="text-[#0284c7]">⚗</span> SimulaCiencia
+            <img src="/logo.svg" alt="" width="28" height="28" class="-mt-1 inline-block h-7 w-7 align-middle" /> SimulaCiencia
           </span>
           <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Simulaciones de Física y Química', 'Physics and Chemistry Simulations', 'Simulacions de Física i Química', 'Fisika eta Kimikako simulazioak', 'Simulacións de Física e Química')}</span>
         </h1>

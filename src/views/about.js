@@ -13,7 +13,7 @@ export function renderAbout(root) {
     <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
         <a id="about-home" href="${homePath(getLang())}" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0284c7] transition-colors">
-          <span class="text-[#0284c7]">⚗</span> SimulaCiencia
+          <img src="/logo.svg" alt="" width="28" height="28" class="-mt-1 inline-block h-7 w-7 align-middle" /> SimulaCiencia
         </a>
         <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>
         <div class="ml-auto">${langSwitchMarkup()}</div>

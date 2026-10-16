@@ -20,7 +20,7 @@ export function renderLegal(root) {
           <i data-lucide="arrow-left" class="h-4 w-4"></i> Catálogo
         </a>
         <span class="text-lg font-bold tracking-tight text-[#1e293b]">
-          <span class="text-[#0284c7]">⚗</span> SimulaCiencia
+          <img src="/logo.svg" alt="" width="28" height="28" class="-mt-1 inline-block h-7 w-7 align-middle" /> SimulaCiencia
         </span>
       </div>
     </header>

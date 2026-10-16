@@ -18,7 +18,7 @@ let uid = 0;
 
 // Banderas en SVG (los emojis de bandera no se ven en Windows y no existen para
 // Cataluña, Euskadi ni Galicia).
-function flag(lang) {
+export function flag(lang) {
   const id = `uj${++uid}`;
   const svg = {
     es: `<rect width="3" height="2" fill="#AA151B"/><rect y=".5" width="3" height="1" fill="#F1BF00"/>`,

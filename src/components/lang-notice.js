@@ -67,7 +67,7 @@ export function updateLangNotice() {
   if (dismissed || /HeadlessChrome/.test(navigator.userAgent) || storage.get()) return;
   const lang = browserLang(navigator.languages?.length ? navigator.languages : [navigator.language || '']);
   const href = translatedPath(getRoute(), lang);
-  // Las guías y el aviso legal solo existen en español: ahí no se ofrece nada.
+  // El aviso legal (y las guías fuera del español y el inglés) no está traducido: ahí no se ofrece nada.
   if (lang === getLang() || !href) return;
 
   const t = TEXT[lang];

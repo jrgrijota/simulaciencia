@@ -38,7 +38,8 @@ proyecto en [Sobre el proyecto](https://simulaciencia.es/sobre-el-proyecto/).
 - **Guía docente:** cada simulación tiene la suya, con los cursos y saberes básicos que trabaja,
   una secuencia para explicarla en clase, las concepciones alternativas que ayuda a corregir y
   sus simplificaciones. Se lee en la web (por ejemplo,
-  `https://simulaciencia.es/guias/densidad/`) o se descarga en PDF, Word o LibreOffice.
+  `https://simulaciencia.es/guias/densidad/`, y en inglés `https://simulaciencia.es/en/guides/densidad/`)
+  o se descarga en PDF, Word o LibreOffice.
 
 Las simulaciones simplifican la física para que se entienda lo importante. No sustituyen al
 laboratorio ni pretenden ser software de precisión científica.
@@ -82,17 +83,18 @@ sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
 - **Guías docentes:** cada archivo `guias/<nombre>.md` es la guía de la simulación `sim-<nombre>`.
   Al añadir o sustituir uno, el build crea su página, el botón «Guía docente», la entrada del
   sitemap y las descargas (`scripts/build-guides.mjs`). Los enlaces a `jrgrijota.github.io` se
-  reescriben solos a simulaciencia.es.
+  reescriben solos a simulaciencia.es. La traducción inglesa de cada guía es `guias/en/<nombre>.md`
+  (mismo nombre de archivo) y se publica en `/en/guides/<nombre>/`.
 - **Rutas:** `/simulaciones/<nombre>/` abre una simulación, `/guias/<nombre>/` su guía docente,
   y `/sobre-el-proyecto/` y `/aviso-legal/` las páginas fijas ([`src/paths.js`](src/paths.js)).
   Los enlaces antiguos (`?sim=`, `?guia=`, `?page=`) redirigen a la dirección nueva.
-- **Otros idiomas:** inglés (`/en/`, `/en/simulations/<nombre>/`, `/en/about/`), catalán (`/ca/`,
+- **Otros idiomas:** inglés (`/en/`, `/en/simulations/<nombre>/`, `/en/guides/<nombre>/`, `/en/about/`), catalán (`/ca/`,
   `/ca/simulacions/<nombre>/`, `/ca/sobre-el-projecte/`), euskera (`/eu/`, `/eu/simulazioak/<nombre>/`,
   `/eu/proiektuari-buruz/`) y gallego (`/gl/`, `/gl/simulacions/<nombre>/`, `/gl/sobre-o-proxecto/`);
   cada simulación se carga con `?lang=en`, `?lang=ca`, `?lang=eu` o `?lang=gl`. Las guías
-  docentes y el aviso legal solo están en español. Los textos traducidos de la web están junto a los
+  docentes están en español e inglés, y el aviso legal solo en español. Los textos traducidos de la web están junto a los
   españoles (`L('es', 'en', 'ca', 'eu', 'gl')`, ver [`src/i18n.js`](src/i18n.js)) y los del catálogo en los
-  campos `en`, `ca`, `eu` y `gl` de cada simulación. Las páginas que existen en todos los idiomas se enlazan
+  campos `en`, `ca`, `eu` y `gl` de cada simulación. Las páginas que existen en más de un idioma se enlazan
   entre sí con `hreflang` en el `<head>` y en el sitemap. El selector de idioma
   ([`src/components/lang-switch.js`](src/components/lang-switch.js)) es un desplegable accesible
   (teclado, Esc, lector de pantalla) con la bandera y el nombre de cada idioma en ese idioma.

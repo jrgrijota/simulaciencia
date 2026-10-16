@@ -1,6 +1,6 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
 import { guidePath } from '../paths.js';
-import { hasGuide } from '../data/guides.js';
+import { guideLangFor } from '../data/guides.js';
 import { copyText, flashCopied } from '../components/copy.js';
 import { langSwitchMarkup } from '../components/lang-switch.js';
 import { simTitle, simUrl } from '../data/simulations.js';
@@ -89,11 +89,12 @@ const BASE_WIDTH = 1270;
 export function renderLab(root, sim) {
   const lang = getLang();
   const title = simTitle(sim, lang);
-  const withGuide = hasGuide(sim.id);
+  const guide = guideLangFor(sim.id, lang);
+  const withGuide = !!guide;
   const guideButton = withGuide
-    ? `<a href="${guidePath(sim.id)}" data-route${lang !== 'es' ? ' hreflang="es"' : ''} class=""ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
+    ? `<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
         <i data-lucide="book-open" class="h-4 w-4"></i>
-        <span class="hidden sm:inline">${L('Guía docente', 'Teacher guide (Spanish)', 'Guia docent (castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (castelán)')}</span>
+        <span class="hidden sm:inline">${L('Guía docente', 'Teacher guide', 'Guia docent (castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (castelán)')}</span>
       </a>`
     : '';
   root.innerHTML = `

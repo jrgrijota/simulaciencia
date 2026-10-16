@@ -157,7 +157,7 @@ ${L(`
           </p>
           <p>
             So that you can use them with confidence, each simulation has a <strong>teacher guide</strong>
-            (currently in Spanish only): which year groups it suits, the content it covers in the Spanish
+            (in Spanish and English): which year groups it suits, the content it covers in the Spanish
             curriculum, a sequence for teaching it, the misconceptions it helps to address and the
             simplifications worth knowing about. You can read it on the website or download it as a PDF,
             Word or LibreOffice file to adapt it to your class.

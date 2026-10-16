@@ -3,28 +3,35 @@ import tailwindcss from '@tailwindcss/vite';
 import { readdirSync } from 'node:fs';
 import { simulations } from './src/data/simulations.js';
 import { guideIdFromFile } from './src/guides/shared.js';
-import { simPath, guidePath, homePath, PAGE_PATHS, pagePaths, LANGS, parsePath, translatedPath, absoluteUrl } from './src/paths.js';
+import { simPath, guidePath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, parsePath, translatedPath, absoluteUrl } from './src/paths.js';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
-// Las páginas que existen en todos los idiomas llevan sus alternativas (hreflang).
+// Las páginas que existen en más de un idioma llevan sus alternativas (hreflang).
 function sitemap() {
   return {
     name: 'sitemap',
     generateBundle() {
+      const guides = (lang) =>
+        readdirSync(lang === 'es' ? 'guias' : `guias/${lang}`)
+          .filter((f) => f.endsWith('.md'))
+          .map((f) => guidePath(guideIdFromFile(f), lang));
       const paths = [
         homePath('es'),
         ...simulations.map((s) => simPath(s.id)),
-        ...readdirSync('guias')
-          .filter((f) => f.endsWith('.md'))
-          .map((f) => guidePath(guideIdFromFile(f))),
+        ...guides('es'),
         ...Object.values(PAGE_PATHS),
-        ...LANGS.filter((l) => l !== 'es').flatMap((l) => [homePath(l), ...simulations.map((s) => simPath(s.id, l)), ...pagePaths(l)]),
+        ...LANGS.filter((l) => l !== 'es').flatMap((l) => [
+          homePath(l),
+          ...simulations.map((s) => simPath(s.id, l)),
+          ...(GUIDE_LANGS.includes(l) ? guides(l) : []),
+          ...pagePaths(l),
+        ]),
       ];
       const body = paths
         .map((path) => {
-          const alt = LANGS.map((l) => [l, translatedPath(parsePath(path), l)]);
-          const links = alt.every(([, p]) => p)
+          const alt = LANGS.map((l) => [l, translatedPath(parsePath(path), l)]).filter(([, p]) => p);
+          const links = alt.length > 1
             ? [...alt, ['x-default', alt[0][1]]]
                 .map(([l, p]) => `\n    <xhtml:link rel="alternate" hreflang="${l}" href="${absoluteUrl(p)}"/>`)
                 .join('')

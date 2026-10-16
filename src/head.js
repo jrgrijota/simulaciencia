@@ -3,7 +3,7 @@
 // WhatsApp o Classroom. scripts/prerender.mjs guarda el resultado en el HTML de
 // cada página; al cargarla, este módulo reutiliza esas etiquetas.
 // Además, el <head> enlaza la versión de cada idioma (hreflang).
-import { simPath, guidePath, homePath, pagePath, absoluteUrl, translatedPath, LANGS } from './paths.js';
+import { simPath, guidePath, homePath, pagePath, absoluteUrl, translatedPath, LANGS, GUIDE_LANGS } from './paths.js';
 import { simulations, courseLabel, simTitle, simDescription, tagLabel } from './data/simulations.js';
 
 export const SITE = 'SimulaCiencia';
@@ -60,7 +60,7 @@ const ogLocale = og('locale');
 const jsonLd = headElement('#ld-route', 'script', { id: 'ld-route', type: 'application/ld+json' });
 
 const simUrl = (id, lang = 'es') => absoluteUrl(simPath(id, lang));
-const guideUrl = (id) => absoluteUrl(guidePath(id));
+const guideUrl = (id, lang = 'es') => absoluteUrl(guidePath(id, lang));
 
 // Cursos en los que la guía propone la simulación (2.º ESO, 1.º Bach.…).
 function levels(sim, lang = 'es') {
@@ -88,18 +88,18 @@ const PAGES = {
   legal: { es: `Aviso legal y privacidad · ${SITE}` },
 };
 
-// <link rel="alternate" hreflang> de las páginas que existen en todos los idiomas
-// (catálogo, simulaciones y «Sobre el proyecto»); x-default es la española.
+// <link rel="alternate" hreflang> de las páginas que existen en más de un idioma
+// (catálogo, simulaciones, guías y «Sobre el proyecto»); x-default es la española.
 function setAlternates(route) {
   document.head.querySelectorAll('link[rel="alternate"][hreflang]').forEach((l) => l.remove());
-  const paths = LANGS.map((l) => [l, translatedPath(route, l)]);
-  if (paths.some(([, p]) => !p)) return;
+  const paths = LANGS.map((l) => [l, translatedPath(route, l)]).filter(([, p]) => p);
+  if (paths.length < 2) return;
   for (const [l, p] of [...paths, ['x-default', paths[0][1]]]) {
     document.head.append(Object.assign(document.createElement('link'), { rel: 'alternate', hreflang: l, href: absoluteUrl(p) }));
   }
 }
 
-function set(lang, title, description, url, data) {
+function set(lang, title, description, url, data, locales = LANGS) {
   document.title = title;
   metaDescription.content = description;
   canonical.href = url;
@@ -108,7 +108,7 @@ function set(lang, title, description, url, data) {
   og('description').content = description === DEFAULT_DESCRIPTION[lang] ? DEFAULT_OG_DESCRIPTION[lang] : description;
   ogLocale.content = OG_LOCALE[lang];
   document.head.querySelectorAll('meta[property="og:locale:alternate"]').forEach((m) => m.remove());
-  for (const l of LANGS.filter((l) => l !== lang)) {
+  for (const l of locales.filter((l) => l !== lang)) {
     const m = document.createElement('meta');
     m.setAttribute('property', 'og:locale:alternate');
     m.content = OG_LOCALE[l];
@@ -120,25 +120,33 @@ function set(lang, title, description, url, data) {
 export function updateHead({ sim, guideSim, page, lang = 'es' }) {
   setAlternates({ simId: sim?.id, guideId: guideSim?.id, page });
   if (guideSim) {
+    const en = lang === 'en';
+    const l = en ? 'en' : 'es';
+    const title = simTitle(guideSim, l);
+    const name = en ? `Teacher guide: ${title}` : `Guía docente: ${title}`;
     return set(
-      'es',
-      `Guía docente: ${guideSim.title} · ${SITE}`,
-      `Guía para usar en clase la simulación «${guideSim.title}»: cursos y saberes básicos, secuencia de ` +
-        'explicación, concepciones alternativas y simplificaciones. Descarga en PDF, Word y LibreOffice.',
-      guideUrl(guideSim.id),
+      l,
+      `${name} · ${SITE}`,
+      en
+        ? `Guide to using the “${title}” simulation in class: year groups and curriculum content, teaching ` +
+            'sequence, misconceptions and simplifications. Download as PDF, Word or LibreOffice.'
+        : `Guía para usar en clase la simulación «${title}»: cursos y saberes básicos, secuencia de ` +
+            'explicación, concepciones alternativas y simplificaciones. Descarga en PDF, Word y LibreOffice.',
+      guideUrl(guideSim.id, l),
       {
         '@type': 'LearningResource',
-        name: `Guía docente: ${guideSim.title}`,
-        url: guideUrl(guideSim.id),
-        learningResourceType: 'Guía didáctica',
-        educationalLevel: levels(guideSim),
+        name,
+        url: guideUrl(guideSim.id, l),
+        learningResourceType: en ? 'Teacher guide' : 'Guía didáctica',
+        educationalLevel: levels(guideSim, l),
         audience: { '@type': 'EducationalAudience', educationalRole: 'teacher' },
-        inLanguage: 'es',
+        inLanguage: l,
         isAccessibleForFree: true,
         author: AUTHOR,
-        license: LICENSE.es,
-        isBasedOn: simUrl(guideSim.id),
+        license: LICENSE[l],
+        isBasedOn: simUrl(guideSim.id, l),
       },
+      GUIDE_LANGS,
     );
   }
   if (sim) {

@@ -62,7 +62,7 @@ function render() {
   const { simId, guideId, page } = route;
   setLang(route.lang);
   const sim = simId ? getSimulationById(simId) : null;
-  const guideSim = !sim && guideId && hasGuide(guideId) ? getSimulationById(guideId) : null;
+  const guideSim = !sim && guideId && hasGuide(guideId, route.lang) ? getSimulationById(guideId) : null;
 
   // Rutas desconocidas => degradamos al catálogo de forma silenciosa.
   if (sim) cleanup = renderLab(app, sim);

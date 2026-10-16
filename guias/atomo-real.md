@@ -28,7 +28,7 @@ La pantalla tiene tres zonas. A la izquierda, el panel con «Guía rápida», «
 
 Tres elementos sostienen la explicación:
 
-- **La ficha del elemento.** Bajo el selector aparecen «Protones (Z)», «Neutrones (N)», «Diámetro del núcleo», «Diámetro del átomo», «Tasa átomo / núcleo» y «Capas electrónicas». Para el hidrógeno: 2,4 fm, 62 pm y «25.833 : 1».
+- **La ficha del elemento.** Bajo el selector aparecen «Protones (Z)», «Neutrones (N)», «Diámetro del núcleo», «Diámetro del átomo», «El átomo es mayor que su núcleo» y «Capas electrónicas». Para el hidrógeno: 2,4 fm, 62 pm y «25.833 veces».
 - **La cota con notación científica.** Cada salto muestra el diámetro en la unidad más cómoda y en metros, por ejemplo «D = 2,4 fm = 2,40 × 10⁻¹⁵ m». Permite contar las potencias de 10 en voz alta.
 - **La regla del núcleo en la franja.** La barra roja del núcleo va sobre una pista tan larga como el átomo. La pista lleva una marca cada 100 diámetros nucleares («100·D», «200·D»...). En el hidrógeno hay 258 marcas; cuando quedan muy juntas solo se rotula una de cada varias.
 
@@ -52,7 +52,7 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 2. Recordar el modelo de Thomson: carga positiva repartida por todo el átomo. Contraponer el de Rutherford: carga positiva concentrada en un núcleo diminuto.
 3. Pulsar «Acercar →» salto a salto. Tras el primero, el núcleo sigue invisible y el rótulo marca «Tamaño original ×10».
 4. Seguir hasta que aparece un punto rojo, en el segundo o tercer salto según la pantalla. En el cuarto y último salto ya se ven el núcleo entero y el rótulo «1p · 0n».
-5. Leer la «Tasa átomo / núcleo»: 25.833 : 1. Traducirlo: si el núcleo fuera una canica de 1 cm, el átomo mediría unos 258 m.
+5. Leer «El átomo es mayor que su núcleo»: 25.833 veces. Traducirlo: si el núcleo fuera una canica de 1 cm, el átomo mediría unos 258 m.
 6. Cambiar a Carbono y leer «Protones (Z)»: 6. Señalar que Z identifica al elemento y aparece en el selector como «Carbono (Z=6)».
 
 ### 3.º ESO: estructura atómica a escala
@@ -68,7 +68,7 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 1. Hidrógeno en «Escala natural». Escribir la cota en la pizarra: D = 62 pm = 6,20 × 10⁻¹¹ m. Repasar pm = 10⁻¹² m.
 2. Pulsar «Acercar →» una vez. La cota pasa a «D = 6,2 pm = 6,20 × 10⁻¹² m». Preguntar qué ha pasado con el exponente: baja uno en cada salto.
 3. Seguir acercando hasta que la cota cambia a «Núcleo de Hidrógeno», con «D = 2,4 fm = 2,40 × 10⁻¹⁵ m». Introducir el femtómetro, 10⁻¹⁵ m.
-4. Dividir en la pizarra: 6,20 × 10⁻¹¹ m / 2,40 × 10⁻¹⁵ m ≈ 2,6 × 10⁴. Comprobarlo con la «Tasa átomo / núcleo»: 25.833 : 1.
+4. Dividir en la pizarra: 6,20 × 10⁻¹¹ m / 2,40 × 10⁻¹⁵ m ≈ 2,6 × 10⁴. Comprobarlo con «El átomo es mayor que su núcleo»: 25.833 veces.
 5. Cambiar a Sodio. Leer Z = 11 y N = 12, y deducir A = 23. En el cuarto salto, el núcleo muestra «11p · 12n». Contar 2 + 8 + 1 = 11 electrones en «Capas electrónicas»: el átomo es neutro.
 6. Cerrar con el Uranio: 92 protones y 146 neutrones (uranio-238). Explicar que otro isótopo cambiaría N, no Z. La simulación no permite cambiarlo.
 
@@ -83,7 +83,7 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 **Secuencia de explicación (15–20 min).**
 
 1. Oro en «Escala natural». Recordar el experimento de Rutherford con lámina de oro. Preguntar por qué casi todas las partículas alfa atravesaban la lámina.
-2. Acercar hasta el cuarto salto: aparecen los nucleones y el rótulo «79p · 118n». Leer la tasa, 19.478 : 1. Casi todo el átomo es espacio sin materia nuclear.
+2. Acercar hasta el cuarto salto: aparecen los nucleones y el rótulo «79p · 118n». Leer cuántas veces es mayor el átomo: 19.478. Casi todo el átomo es espacio sin materia nuclear.
 3. Volver con «Reiniciar viaje» y leer «Capas electrónicas»: «6 (K:2, L:8, M:18, N:32, O:18, P:1)». Relacionar seis capas con el periodo 6.
 4. Comparar Sodio, «3 (K:2, L:8, M:1)», con Hierro, «4 (K:2, L:8, M:14, N:2)». Señalar que la capa M del hierro no tiene 8 electrones.
 5. Señalar el recuadro azul: «Representamos los electrones como puntos para que puedas ver en qué capa están, no para indicar su tamaño real.» Explicar que el modelo de Bohr-Sommerfeld y el cuántico no tienen órbitas circulares nítidas.
@@ -106,7 +106,7 @@ La simulación ataca sobre todo la idea de un átomo macizo con un núcleo grand
 
 | Idea del alumnado | Idea correcta | Cómo mostrarlo |
 | --- | --- | --- |
-| «El núcleo ocupa buena parte del átomo, como en los dibujos del libro» | El átomo es entre 14.699 y 48.643 veces mayor que su núcleo | Hidrógeno, «Escala natural»: el núcleo no se ve. Leer la «Tasa átomo / núcleo»: 25.833 : 1 |
+| «El núcleo ocupa buena parte del átomo, como en los dibujos del libro» | El átomo es entre 14.699 y 48.643 veces mayor que su núcleo | Hidrógeno, «Escala natural»: el núcleo no se ve. Leer «El átomo es mayor que su núcleo»: 25.833 veces |
 | «El átomo es una bolita maciza» | Casi todo el átomo es espacio vacío entre el núcleo y los electrones | Oro, acercar cuatro saltos: se ve el núcleo y alrededor no hay nada; la capa K queda fuera de la pantalla |
 | «Entre el núcleo y los electrones hay aire» | El aire está formado por moléculas, que a su vez son átomos; dentro del átomo hay vacío | Hidrógeno en el primer salto: el lienzo entero es interior del átomo y no contiene partículas |
 | «Con una lupa o un microscopio que aumente un poco ya se ve el núcleo» | Hacen falta unos cuatro órdenes de magnitud de aumento sobre el átomo | Pulsar «Acercar →» una vez: con ×10 el recuadro sigue diciendo que el núcleo es demasiado pequeño para verlo |

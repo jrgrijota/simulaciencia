@@ -7,9 +7,9 @@ import { loadGuide } from '../data/guides.js';
 import { renderGuideHtml, guideToc, guideSummary, downloadBase } from '../guides/shared.js';
 
 const BTN_SECONDARY =
-  'inline-flex items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]';
+  'inline-flex items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]';
 const BTN_PRIMARY =
-  'inline-flex items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#0369a1]';
+  'inline-flex items-center gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#075985]';
 
 const DOWNLOADS = [
   { ext: 'pdf', label: 'PDF', hint: { es: 'para imprimir', en: 'to print' } },
@@ -23,7 +23,7 @@ function tocMarkup(toc) {
   const items = toc
     .map(
       (t) =>
-        `<li class="${t.depth === 3 ? 'pl-4' : 'font-medium'}"><a href="#${t.id}" class="hover:text-[#0284c7] hover:underline">${t.text}</a></li>`,
+        `<li class="${t.depth === 3 ? 'pl-4' : 'font-medium'}"><a href="#${t.id}" class="hover:text-[#0369a1] hover:underline">${t.text}</a></li>`,
     )
     .join('');
   return `
@@ -40,7 +40,7 @@ export function renderGuide(root, sim) {
     (d) => `
       <a href="/${base}.${d.ext}" download data-download class="${d.ext === 'pdf' ? BTN_PRIMARY : BTN_SECONDARY}">
         <i data-lucide="download" class="h-4 w-4"></i>
-        ${d.label} <span class="hidden font-normal opacity-75 sm:inline">· ${d.hint[lang]}</span>
+        ${d.label} <span class="hidden font-normal opacity-90 sm:inline">· ${d.hint[lang]}</span>
       </a>`,
   ).join('');
 
@@ -48,7 +48,7 @@ export function renderGuide(root, sim) {
   <div class="min-h-screen">
     <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
-        <button id="guide-back" class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
+        <button id="guide-back" class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]">
           <i data-lucide="arrow-left" class="h-4 w-4"></i>
           ${L('Volver al catálogo', 'Back to catalogue')}
         </button>
@@ -60,7 +60,7 @@ export function renderGuide(root, sim) {
     </header>
 
     <main data-print-main class="mx-auto max-w-3xl px-4 py-8">
-      <p class="mb-1 text-sm font-semibold uppercase tracking-wide text-[#0284c7]">${L('Guía docente', 'Teacher guide')}</p>
+      <p class="mb-1 text-sm font-semibold uppercase tracking-wide text-[#0369a1]">${L('Guía docente', 'Teacher guide')}</p>
       <div id="guide-body" class="guide-prose">
         <p class="text-sm text-[#64748b]">${L('Cargando la guía…', 'Loading the guide…')}</p>
       </div>

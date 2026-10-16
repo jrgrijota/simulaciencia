@@ -81,7 +81,7 @@ export function updateLangNotice() {
   el.innerHTML = `
     ${flag(lang)}
     <p class="flex-1">${t.msg}
-      <a href="${href}" data-route hreflang="${lang}" class="font-semibold text-[#0284c7] underline-offset-2 hover:underline">${t.go}</a>
+      <a href="${href}" data-route hreflang="${lang}" class="font-semibold text-[#0369a1] underline-offset-2 hover:underline">${t.go}</a>
     </p>
     <button type="button" aria-label="${t.close}" class="shrink-0 rounded-md p-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#1e293b]">
       <svg viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>

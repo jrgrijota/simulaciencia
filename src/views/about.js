@@ -12,7 +12,7 @@ export function renderAbout(root) {
   <div class="min-h-screen">
     <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <a id="about-home" href="${homePath(getLang())}" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0284c7] transition-colors">
+        <a id="about-home" href="${homePath(getLang())}" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0369a1] transition-colors">
           <img src="/logo.svg" alt="" width="28" height="28" class="-mt-1 inline-block h-7 w-7 align-middle" /> SimulaCiencia
         </a>
         <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>
@@ -22,7 +22,7 @@ export function renderAbout(root) {
 
     <main class="mx-auto max-w-2xl px-4 py-10">
 
-      <button id="about-back" class="mb-8 inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
+      <button id="about-back" class="mb-8 inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]">
         <i data-lucide="arrow-left" class="h-4 w-4"></i>
         ${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}
       </button>
@@ -39,7 +39,7 @@ ${L(`
           </p>
           <p>
             Durante mucho tiempo he usado en clase los magníficos simuladores de
-            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">PhET Colorado</a>.
+            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0369a1] underline underline-offset-2 hover:text-[#075985]">PhET Colorado</a>.
             Son una herramienta extraordinaria, pero a menudo echaba en falta alguna función concreta
             para mis explicaciones o, al contrario, me sobraban opciones que acababan distrayendo al
             alumnado. Quería algo hecho a la medida de mis clases.
@@ -107,7 +107,7 @@ ${L(`
           </p>
           <p>
             For a long time I've used the wonderful
-            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">PhET Colorado</a>
+            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0369a1] underline underline-offset-2 hover:text-[#075985]">PhET Colorado</a>
             simulations in class. They're an extraordinary tool, but I often missed a particular feature
             for my explanations or, the other way round, had options that ended up distracting my
             students. I wanted something tailored to my lessons.
@@ -177,7 +177,7 @@ ${L(`
           </p>
           <p>
             Durant molt de temps he fet servir a classe els magnífics simuladors de
-            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">PhET Colorado</a>.
+            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0369a1] underline underline-offset-2 hover:text-[#075985]">PhET Colorado</a>.
             Són una eina extraordinària, però sovint trobava a faltar alguna funció concreta per a les
             meves explicacions o, al contrari, em sobraven opcions que acabaven distraient l'alumnat.
             Volia alguna cosa feta a la mida de les meves classes.
@@ -247,7 +247,7 @@ ${L(`
           </p>
           <p>
             Denbora luzez erabili ditut klasean
-            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">PhET Colorado</a>
+            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0369a1] underline underline-offset-2 hover:text-[#075985]">PhET Colorado</a>
             proiektuaren simulagailu bikainak. Tresna apartak dira, baina askotan funtzio zehatzen bat
             falta zitzaidan nire azalpenetarako, edo, alderantziz, ikasleak desbideratzen zituzten
             aukerak soberan nituen. Nire klaseetara egokitutako zerbait nahi nuen.
@@ -316,7 +316,7 @@ ${L(`
           </p>
           <p>
             Durante moito tempo usei na aula os magníficos simuladores de
-            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">PhET Colorado</a>.
+            <a href="https://phet.colorado.edu" target="_blank" rel="noopener noreferrer" class="font-medium text-[#0369a1] underline underline-offset-2 hover:text-[#075985]">PhET Colorado</a>.
             Son unha ferramenta extraordinaria, pero a miúdo botaba en falta algunha función concreta
             para as miñas explicacións ou, ao contrario, sobrábanme opcións que acababan distraendo o
             alumnado. Quería algo feito á medida das miñas clases.
@@ -443,12 +443,12 @@ ${L(`
           </p>
           <p class="flex flex-wrap items-center gap-x-2 gap-y-1">
             ${L('Puedes escribirme a', 'You can write to me at', 'Em pots escriure a', 'Idatz iezadazu helbide honetara:', 'Podes escribirme a')}
-            <a href="mailto:${CONTACT}" class="font-semibold text-[#0284c7] underline underline-offset-2 hover:text-[#0369a1]">${CONTACT}</a>
+            <a href="mailto:${CONTACT}" class="font-semibold text-[#0369a1] underline underline-offset-2 hover:text-[#075985]">${CONTACT}</a>
             <button
               id="about-copy-email"
               type="button"
               aria-label="${L('Copiar dirección de correo', 'Copy email address', 'Copia l’adreça de correu', 'Kopiatu helbide elektronikoa', 'Copiar o enderezo de correo')}"
-              class="inline-flex items-center gap-1 rounded-md border border-[#e2e8f0] bg-white px-2 py-0.5 text-xs font-medium text-[#64748b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]"
+              class="inline-flex items-center gap-1 rounded-md border border-[#e2e8f0] bg-white px-2 py-0.5 text-xs font-medium text-[#64748b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5"></i>
               <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>

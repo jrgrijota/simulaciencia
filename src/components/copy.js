@@ -26,13 +26,13 @@ export function flashCopied(btn, doneText = L('¡Copiado!', 'Copied!', 'Copiat!'
   label.textContent = doneText;
   icon.setAttribute('data-lucide', 'check');
   if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
-  btn.classList.replace('bg-[#0284c7]', 'bg-[#16a34a]');
-  btn.classList.replace('hover:bg-[#0369a1]', 'hover:bg-[#15803d]');
+  btn.classList.replace('bg-[#0369a1]', 'bg-[#16a34a]');
+  btn.classList.replace('hover:bg-[#075985]', 'hover:bg-[#15803d]');
   setTimeout(() => {
     label.textContent = original;
     icon.setAttribute('data-lucide', 'copy');
     if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
-    btn.classList.replace('bg-[#16a34a]', 'bg-[#0284c7]');
-    btn.classList.replace('hover:bg-[#15803d]', 'hover:bg-[#0369a1]');
+    btn.classList.replace('bg-[#16a34a]', 'bg-[#0369a1]');
+    btn.classList.replace('hover:bg-[#15803d]', 'hover:bg-[#075985]');
   }, 2000);
 }

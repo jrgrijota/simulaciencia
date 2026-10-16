@@ -35,7 +35,7 @@ export function flag(lang) {
 }
 
 const BUTTON =
-  'inline-flex min-h-9 shrink-0 items-center gap-2 rounded-md border border-[#e2e8f0] bg-white px-2.5 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0284c7]';
+  'inline-flex min-h-9 shrink-0 items-center gap-2 rounded-md border border-[#e2e8f0] bg-white px-2.5 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0369a1]';
 const ITEM =
   'flex min-h-11 items-center gap-2.5 rounded px-3 py-2 text-sm text-[#1e293b] hover:bg-[#f1f5f9] focus:bg-[#f1f5f9] focus:outline-none';
 
@@ -54,7 +54,7 @@ export function langSwitchMarkup({ compact = false, up = false } = {}) {
           <a href="${href}" data-route hreflang="${l}" lang="${l}" ${current ? 'aria-current="true"' : ''} class="${ITEM}${current ? ' font-semibold' : ''}">
             ${flag(l)}
             <span class="flex-1">${NAMES[l]}</span>
-            ${current ? '<svg viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4 text-[#0284c7]" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' : ''}
+            ${current ? '<svg viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4 text-[#0369a1]" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>' : ''}
           </a>
         </li>`;
   }).join('');

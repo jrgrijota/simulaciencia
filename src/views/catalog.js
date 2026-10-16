@@ -7,8 +7,8 @@ import { getLang, L } from '../i18n.js';
 
 const FILTER_BASE =
   'filter-btn rounded-md border px-3 py-1.5 text-sm font-medium transition-colors';
-const FILTER_ON = 'border-[#0284c7] bg-[#0284c7] text-white';
-const FILTER_OFF = 'border-[#e2e8f0] bg-white text-[#64748b] hover:border-[#0284c7] hover:text-[#0284c7]';
+const FILTER_ON = 'border-[#0369a1] bg-[#0369a1] text-white';
+const FILTER_OFF = 'border-[#e2e8f0] bg-white text-[#64748b] hover:border-[#0369a1] hover:text-[#0369a1]';
 
 export function renderCatalog(root) {
   const lang = getLang();
@@ -39,9 +39,9 @@ export function renderCatalog(root) {
           </span>
           <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Simulaciones de Física y Química', 'Physics and Chemistry Simulations', 'Simulacions de Física i Química', 'Fisika eta Kimikako simulazioak', 'Simulacións de Física e Química')}</span>
         </h1>
-        <a href="${pagePath('about', lang)}" data-route class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
+        <a href="${pagePath('about', lang)}" data-route class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]">
           <i data-lucide="info" class="h-4 w-4"></i>
-          <span class="hidden sm:inline">${L('Sobre el proyecto', 'About', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>
+          <span class="sr-only sm:not-sr-only">${L('Sobre el proyecto', 'About', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>
         </a>
         ${langSwitchMarkup()}
       </div>
@@ -70,7 +70,7 @@ export function renderCatalog(root) {
             type="search"
             placeholder="${L('Buscar simulación por nombre, tema o nivel…', 'Search by name, topic or year…', 'Cerca per nom, tema o nivell…', 'Bilatu izenaren, gaiaren edo mailaren arabera…', 'Buscar simulación por nome, tema ou nivel…')}"
             autocomplete="off"
-            class="w-full rounded-md border border-[#e2e8f0] bg-white py-2.5 pl-11 pr-4 text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:border-[#0284c7] focus:outline-none"
+            class="w-full rounded-md border border-[#e2e8f0] bg-white py-2.5 pl-11 pr-4 text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:border-[#0369a1] focus:outline-none"
           />
         </div>
         <div class="flex items-center gap-2">

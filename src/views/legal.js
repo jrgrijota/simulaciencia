@@ -5,7 +5,7 @@ const UPDATED = '8 de octubre de 2026';
 
 const H2 = 'mt-8 mb-2 text-lg font-semibold text-[#1e293b]';
 const P = 'mb-3 leading-relaxed';
-const A = 'text-[#0284c7] underline hover:text-[#0369a1]';
+const A = 'text-[#0369a1] underline hover:text-[#075985]';
 
 function ext(href, text) {
   return `<a href="${href}" target="_blank" rel="noopener" class="${A}">${text}</a>`;
@@ -16,7 +16,7 @@ export function renderLegal(root) {
   <div class="min-h-screen">
     <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <a href="/" data-route class="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-[#64748b] hover:text-[#0284c7]">
+        <a href="/" data-route class="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm font-medium text-[#64748b] hover:text-[#0369a1]">
           <i data-lucide="arrow-left" class="h-4 w-4"></i> Catálogo
         </a>
         <span class="text-lg font-bold tracking-tight text-[#1e293b]">

@@ -2,7 +2,7 @@ import { PAGE_PATHS, pagePath } from '../paths.js';
 import { getLang, L } from '../i18n.js';
 import { langSwitchMarkup } from './lang-switch.js';
 
-const LINK = 'underline hover:text-[#0284c7]';
+const LINK = 'underline hover:text-[#0369a1]';
 
 export function footerMarkup() {
   const lang = getLang();

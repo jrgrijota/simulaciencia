@@ -40,6 +40,8 @@ En 3.º ESO la simulación introduce la gravitación universal. En 4.º ESO trab
 
 ### 3.º ESO: introducción a la gravitación
 
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
+
 **Saberes básicos.** Bloque D: «Introducción a la Ley de la Gravitación Universal» y «Fenómenos gravitatorios, eléctricos y magnéticos: experimentos sencillos que evidencian la relación con las fuerzas de la naturaleza».
 
 **Objetivos.** Entender que la gravedad que hace caer los objetos es la misma que mantiene la Luna y los planetas en órbita. Relacionar la velocidad de lanzamiento con la trayectoria. Reconocer que la atracción gravitatoria es mutua.
@@ -55,6 +57,8 @@ En 3.º ESO la simulación introduce la gravitación universal. En 4.º ESO trab
 
 ### 4.º ESO: peso, movimiento circular y energía mecánica
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque D: «Movimiento circular uniforme» y «Ley de la gravitación universal: atracción entre los cuerpos que componen el universo. Concepto de peso». Bloque E: «Energía cinética y energía potencial. Energía mecánica. Conservación de la energía mecánica».
 
 **Objetivos.** Identificar el peso como la fuerza que curva la trayectoria de un satélite. Describir una órbita circular como un movimiento circular uniforme. Explicar con la energía mecánica por qué el satélite acelera al acercarse a la Tierra.
@@ -69,6 +73,8 @@ En 3.º ESO la simulación introduce la gravitación universal. En 4.º ESO trab
 
 ### 1.º Bachillerato: fuerza centrípeta y energía potencial gravitatoria
 
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
+
 **Saberes básicos.** Bloque D: «Composición de movimientos: tiro horizontal y tiro oblicuo». Bloque E: «La fuerza centrípeta. Dinámica del movimiento circular» y «Leyes de Newton de la dinámica». Bloque F: «Fuerzas conservativas. Energía potencial: gravitatoria y elástica».
 
 **Objetivos.** Deducir la velocidad orbital igualando el peso a la fuerza centrípeta. Ver el tiro horizontal como caso límite de una órbita. Usar Ep = −GMm/r cuando mgh deja de valer. Introducir la velocidad de escape.
@@ -82,6 +88,8 @@ En 3.º ESO la simulación introduce la gravitación universal. En 4.º ESO trab
 5. Pulsar «Ve ≈ 9.75 km/s» y disparar. Mostrar que Ve = √2 · Vc y que con energía ε positiva la bala escapa.
 
 ### 2.º Bachillerato Física: campo gravitatorio y leyes de Kepler
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 **Saberes básicos.** Bloque A: «Movimiento orbital de satélites, planetas y galaxias», «Energía mecánica de un objeto sometido a un campo gravitatorio: deducción del tipo de movimiento que posee, cálculo del trabajo o los balances energéticos existentes en desplazamientos entre distintas posiciones, velocidades y tipos de trayectorias», «Aplicación de la conservación del momento angular al estudio del movimiento de un cuerpo en un campo gravitatorio» y «Leyes de Kepler».
 

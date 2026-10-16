@@ -39,6 +39,8 @@ En 2.º ESO la simulación sirve para presentar los modelos de Thomson y Rutherf
 
 ### 2.º ESO: de Thomson a Rutherford
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 **Saberes básicos.** Bloque B: «Estructura atómica: presentación del desarrollo histórico de los modelos atómicos», «Los primeros modelos atómicos: modelo de Thomson y modelo de Rutherford» y «Números atómicos». Bloque A: «elaboración de hipótesis y comprobación experimental de las mismas» y «el laboratorio y los entornos virtuales».
 
 **Objetivos.** Describir los modelos de Thomson y Rutherford. Entender que un experimento puede descartar un modelo. Reconocer que el átomo está casi vacío y tiene un núcleo pequeño con carga positiva.
@@ -54,6 +56,8 @@ En 2.º ESO la simulación sirve para presentar los modelos de Thomson y Rutherf
 
 ### 3.º ESO: estructura atómica y fuerza eléctrica
 
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
+
 **Saberes básicos.** Bloque B: «Estructura atómica de la materia». Bloque E: «Naturaleza eléctrica de la materia» y «La fuerza eléctrica: analogías y diferencias con la fuerza gravitatoria». Bloque A: «Registro de datos y resultados empleando tablas, gráficos y expresiones matemáticas».
 
 **Objetivos.** Situar protones y neutrones en el núcleo y electrones en la corteza. Explicar la desviación de las α como repulsión eléctrica a distancia. Relacionar la intensidad de la repulsión con la carga del núcleo y con la velocidad de la partícula.
@@ -67,6 +71,8 @@ En 2.º ESO la simulación sirve para presentar los modelos de Thomson y Rutherf
 5. Pasar a Lámina con «Lluvia continua» y abrir el gráfico. Comparar Z = 1, Z = 14 y Z = 79 con «Reiniciar» entre medias. Anotar en la pizarra el porcentaje de la primera barra y de las rojas.
 
 ### 4.º ESO: evolución de los modelos atómicos
+
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
 
 **Saberes básicos.** Bloque B: «Modelos atómicos: desarrollo histórico de los principales modelos atómicos clásicos y cuánticos y descripción de las partículas subatómicas» y «Evolución de los modelos atómicos hasta el modelo de Borh-Sommerfeld». Bloque A: «La investigación científica. La medida y su error. Análisis de datos experimentales» y «Valoración de la cultura científica y del papel de científicos y científicas en los principales hitos históricos y actuales de la física y la química». Bloque E: «Energía cinética y energía potencial».
 
@@ -83,6 +89,8 @@ En 2.º ESO la simulación sirve para presentar los modelos de Thomson y Rutherf
 
 ### 2.º Bachillerato Física: campo y potencial eléctricos
 
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
+
 **Saberes básicos.** Bloque B: «Intensidad del campo eléctrico en distribuciones de cargas discretas y continuas. Ley de Coulomb», «Teorema de Gauss. Aplicaciones a esfera y lámina cargadas» y «Potencial eléctrico creado por una o varias cargas». Bloque D: «El núcleo atómico: fuerzas nucleares y energía de enlace» y «Tipos de radiaciones y desintegración radiactiva».
 
 **Objetivos.** Aplicar el teorema de Gauss a la esfera de Thomson y la ley de Coulomb al núcleo. Calcular la distancia de máximo acercamiento con la conservación de la energía. Relacionar ángulo de desviación y parámetro de impacto.
@@ -96,6 +104,8 @@ En 2.º ESO la simulación sirve para presentar los modelos de Thomson y Rutherf
 5. Comentar que la fuente α es un emisor radiactivo y que la α es un núcleo de helio. Si la α llegara a tocar el núcleo actuaría la fuerza nuclear, que la simulación no incluye.
 
 ### 2.º Bachillerato Química: repaso puntual
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 No hay un saber específico de Thomson y Rutherford. La simulación puede abrir el bloque A al tratar «Los espectros atómicos como responsables de la necesidad de la revisión del modelo atómico. Relevancia de este fenómeno en el contexto del desarrollo histórico del modelo atómico». Basta con la vista Lámina en Rutherford para recordar el modelo nuclear. Después se plantea qué no explica: la estabilidad del átomo y los espectros.
 

@@ -39,6 +39,8 @@ En 4.º ESO la simulación sirve para presentar la energía cinética, la potenc
 
 ### 4.º ESO: energía cinética, potencial y su conservación
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque E: «La energía: formulación y comprobación de hipótesis sobre las distintas formas y aplicaciones de la energía, a partir de sus propiedades y del principio de conservación, como base para la experimentación y la resolución de problemas relacionados con la energía mecánica en situaciones cotidianas», «Energía cinética y energía potencial», «Energía mecánica. Conservación de la energía mecánica» y «El trabajo y la energía mecánica. Potencia». Bloque D: «Principales fuerzas del entorno cotidiano: reconocimiento del peso, la normal, el rozamiento, la tensión o el empuje». Bloque A: «el laboratorio o los entornos virtuales».
 
 **Objetivos.** Calcular la energía cinética y la potencial gravitatoria. Explicar que, sin rozamiento, la energía mecánica se conserva aunque Ec y Ep cambien. Calcular velocidades a partir de diferencias de altura. Reconocer que el rozamiento transforma energía mecánica en calor.
@@ -53,6 +55,8 @@ En 4.º ESO la simulación sirve para presentar la energía cinética, la potenc
 6. Volver a 500 kg y activar «Rozamiento» con μ = 0,05. En cada viaje la vagoneta se queda más baja (22,4 m, 20,0 m, 17,5 m…), la línea amarilla baja y crece la barra Q. Cerrar con el balance: Em,inicial = Em,final + |Wroz|. La energía no desaparece: se transforma en calor.
 
 ### 1.º Bachillerato: sistemas conservativos y no conservativos
+
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
 
 **Saberes básicos.** Bloque F: «Energía potencial y energía cinética de un sistema sencillo: aplicación a la conservación de la energía mecánica en sistemas conservativos y no conservativos y al estudio de las causas que producen el movimiento de los objetos en el mundo real», «Energía cinética. Teorema del trabajo-energía», «Fuerzas conservativas. Energía potencial: gravitatoria y elástica», «La fuerza de rozamiento: una fuerza no conservativa», «Principio de conservación de la energía mecánica en sistemas conservativos y no conservativos» y «Conservación y degradación de la energía. Segundo principio de la termodinámica». Bloque D: «Estudio y elaboración de gráficas de movimientos a partir de observaciones experimentales y/o simulaciones interactivas».
 
@@ -69,6 +73,8 @@ En 4.º ESO la simulación sirve para presentar la energía cinética, la potenc
 
 ### 3.º ESO: transformaciones de la energía
 
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
+
 **Saberes básicos.** Bloque E: «Diseño y comprobación experimental de hipótesis relacionadas con el uso doméstico e industrial de la energía en sus distintas formas y las transformaciones entre ellas» y «Concienciación sobre la necesidad del ahorro energético y conservación del medio ambiente. Uso racional de la energía». Bloque A: «Registro de datos y resultados empleando tablas, gráficos y expresiones matemáticas».
 
 **Objetivos.** Reconocer la energía de movimiento y la energía debida a la altura. Describir cómo se transforma una en otra. Entender que la energía no se pierde, sino que se transforma en otras formas menos útiles.
@@ -83,6 +89,8 @@ En 4.º ESO la simulación sirve para presentar la energía cinética, la potenc
 6. Pedir al alumnado que copie una tabla con altura, velocidad, Ec y Ep en cuatro puntos de la vía (pausando en cada uno) y que compruebe que Ec + Ep da siempre lo mismo.
 
 ### 2.º Bachillerato Física: uso puntual
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 En el bloque C aparece «Movimiento oscilatorio: variables cinemáticas de un cuerpo oscilante. Energía cinética y potencial del movimiento armónico simple y conservación de energía en estos sistemas. Representación gráfica en función del tiempo.». El péndulo con ángulos pequeños (5–10°) es un oscilador casi armónico. En la gráfica, Ec y Ep oscilan con la mitad del período del péndulo y siempre suman lo mismo. Con resistencia del aire se ve un oscilador amortiguado: la energía decae de forma exponencial, Em ∝ e^(−b·t/m). La simulación usa g · h y no −GMm/r, así que no sirve para la energía en el campo gravitatorio a gran escala; para eso es mejor la simulación de órbitas.
 

@@ -40,6 +40,8 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 
 ### 2.º ESO: el átomo de Rutherford
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 **Saberes básicos.** Bloque A: «el laboratorio y los entornos virtuales». Bloque B: «Los primeros modelos atómicos: modelo de Thomson y modelo de Rutherford», «Introducción a la tabla periódica de los elementos químicos» y «Números atómicos».
 
 **Objetivos.** Reconocer que el átomo tiene un núcleo central y electrones alrededor. Comprender que el núcleo es muy pequeño comparado con el átomo. Relacionar el número atómico con el número de protones.
@@ -54,6 +56,8 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 6. Cambiar a Carbono y leer «Protones (Z)»: 6. Señalar que Z identifica al elemento y aparece en el selector como «Carbono (Z=6)».
 
 ### 3.º ESO: estructura atómica a escala
+
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
 
 **Saberes básicos.** Bloque A: «Cambio de unidades» y «Notación científica. Cifras significativas». Bloque B: «Estructura atómica de la materia. Isótopos.», «Átomos e iones» y «Tabla periódica y propiedades de los elementos».
 
@@ -70,6 +74,8 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 
 ### 4.º ESO: modelos atómicos y capas electrónicas
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque B: «Modelos atómicos: desarrollo histórico de los principales modelos atómicos clásicos y cuánticos y descripción de las partículas subatómicas, estableciendo su relación con los avances de la física y la química», «Las partículas elementales» y «Configuración electrónica de los elementos y posición en la tabla periódica».
 
 **Objetivos.** Situar el modelo de Rutherford y el de capas en el desarrollo histórico. Describir protones, neutrones y electrones por su localización. Relacionar el número de capas con el periodo. Reconocer los límites del dibujo de órbitas.
@@ -84,9 +90,13 @@ En 2.º ESO la simulación ilustra el modelo de Rutherford. En 3.º ESO trabaja 
 
 ### 1.º Bachillerato: repaso puntual
 
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
+
 No hay un saber específico de tamaño nuclear. La simulación puede servir de repaso al tratar «Propiedades periódicas de los elementos químicos: radio atómico, energía de ionización y afinidad electrónica» (Bloque A). Por ejemplo, el sodio (Z = 11) tiene 332 pm de diámetro y el oro (Z = 79), 272 pm. El tamaño no crece con Z. Todos los radios son covalentes y salen de la misma tabla, así que se pueden comparar entre sí (ver simplificaciones).
 
 ### 2.º Bachillerato Física: tamaño del núcleo
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 En el Bloque D, la simulación ilustra «Núcleos atómicos y estabilidad de los isótopos» y «El núcleo atómico: fuerzas nucleares y energía de enlace». El diámetro nuclear se calcula con R = 1,2 fm · A^(1/3). Comparar Hidrógeno (2,4 fm) con Uranio (14,9 fm): el cociente es 6,2, la raíz cúbica de 238. De ahí se deduce que el volumen nuclear crece con A y la densidad nuclear es casi constante.
 

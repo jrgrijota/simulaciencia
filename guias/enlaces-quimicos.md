@@ -41,6 +41,8 @@ En 3.º ESO la simulación sirve para introducir la formación de iones y el enl
 
 ### 3.º ESO: iones y primer contacto con el enlace
 
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
+
 **Saberes básicos.** Bloque A: «el laboratorio o los entornos virtuales». Bloque B: «Aplicación de los conocimientos sobre la estructura atómica de la materia para entender la formación de iones», «Átomos e iones» e «Introducción al enlace químico». También «formulando y nombrando sustancias simples, iones monoatómicos y compuestos binarios».
 
 **Objetivos.** Explicar cómo se forma un catión y un anión. Relacionar la carga de un ion con los electrones ganados o cedidos. Distinguir ceder electrones de compartirlos. Escribir la fórmula de compuestos binarios sencillos.
@@ -54,6 +56,8 @@ En 3.º ESO la simulación sirve para introducir la formación de iones y el enl
 5. Montar A = H, B = O, C = H. El O empieza en 6 / 8. Pulsar «Compartir» entre A y B y entre B y C: el O llega a 8 / 8 y sale H₂O. Subrayar que ningún átomo queda con carga.
 
 ### 4.º ESO: los tres enlaces y sus propiedades
+
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
 
 **Saberes básicos.** Bloque A: «el laboratorio o los entornos virtuales». Bloque B: «Configuración electrónica de los elementos y posición en la tabla periódica», «El enlace químico: iónico, covalente y metálico» y «Compuestos químicos de especial interés».
 
@@ -70,6 +74,8 @@ En 3.º ESO la simulación sirve para introducir la formación de iones y el enl
 
 ### 1.º Bachillerato: cristales, coordinación y enlace dativo
 
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
+
 **Saberes básicos.** Bloque A: «El enlace covalente: estructuras de Lewis para el enlace covalente», «Fuerzas intermoleculares» y «Estructura y propiedades de las sustancias con enlace covalente: sustancias moleculares y redes covalentes». También «El enlace iónico. Cristales iónicos. Propiedades de los compuestos iónicos» y «El enlace metálico. Estructura y propiedades».
 
 **Objetivos.** Relacionar la proporción de iones con la estructura y el índice de coordinación. Construir enlaces simples, dobles, triples y dativos con el criterio de Lewis. Comparar redes covalentes, cristales moleculares y redes metálicas.
@@ -84,6 +90,8 @@ En 3.º ESO la simulación sirve para introducir la formación de iones y el enl
 6. En «Ver cristales covalentes», elegir «Sílice»: «Cada Si está unido a 4 O» y «SiO₂ indica la proporción de átomos». Subirla por encima de 1713 °C: «Se rompen enlaces covalentes». Contrastar con el hielo seco, donde solo se pierden fuerzas intermoleculares.
 
 ### 2.º Bachillerato Química: repaso puntual
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 La simulación no calcula energías, así que no sirve para el «Ciclo de Born-Haber». Puede servir de repaso visual de las «características de los sólidos covalentes y moleculares» con los cuatro cristales covalentes. También ilustra el «Modelos de la nube electrónica» del metal, aunque no la teoría de bandas. Conviene usarla junto a la RPECV, porque dibuja todas las moléculas en línea.
 

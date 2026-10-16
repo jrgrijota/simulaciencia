@@ -9,8 +9,8 @@
   --color-ink: #1e293b; /* texto principal: carbón */
   --color-muted: #64748b; /* texto secundario */
   --color-line: #e2e8f0; /* bordes 1px */
-  --color-accent: #0284c7; /* azul educativo */
-  --color-accent-strong: #0369a1; /* azul hover */
+  --color-accent: #0369a1; /* azul educativo (contraste AA sobre blanco y gris claro) */
+  --color-accent-strong: #075985; /* azul hover */
   --color-sim-cyan: #00c8ff; /* cian característico de las simulaciones */
 }
 
@@ -201,4 +201,11 @@ body {
   .guide-table tr {
     break-inside: avoid;
   }
+}
+
+/* Destino del foco al cambiar de página (ver focusContent en main.js): sin recuadro */
+h1[tabindex='-1']:focus,
+main[tabindex='-1']:focus,
+#app:focus {
+  outline: none;
 }

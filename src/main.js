@@ -24,7 +24,7 @@ import {
 
 import { getRoute, onRouteChange, navigateTo } from './router.js';
 import { updateHead } from './head.js';
-import { setLang } from './i18n.js';
+import { setLang, L } from './i18n.js';
 import { getSimulationById } from './data/simulations.js';
 import { renderCatalog } from './views/catalog.js';
 import { renderLab } from './views/lab.js';
@@ -52,6 +52,27 @@ function trackPageview() {
 
 let cleanup = null;
 
+// Lleva el foco al principio del contenido: el título de la página si se ve,
+// si no el <main> o la aplicación entera. Lo usan el enlace «Saltar al contenido»
+// y cada cambio de página, para que el teclado y el lector de pantalla no se
+// queden en la página anterior.
+function focusContent() {
+  const target =
+    [...app.querySelectorAll('h1')].find((h) => h.getClientRects().length && getComputedStyle(h).display !== 'contents') ||
+    app.querySelector('main') ||
+    app;
+  if (!target.hasAttribute('tabindex')) target.setAttribute('tabindex', '-1');
+  target.focus({ preventScroll: true });
+}
+
+const skipLink = document.getElementById('skip-link');
+skipLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  focusContent();
+});
+
+let firstRender = true;
+
 function render() {
   if (cleanup) {
     cleanup();
@@ -74,6 +95,12 @@ function render() {
   updateHead({ sim, guideSim, page: sim || guideSim ? null : page, lang: route.lang });
   updateLangNotice();
   window.scrollTo(0, 0);
+  skipLink.textContent = L('Saltar al contenido', 'Skip to content', 'Salta al contingut', 'Joan edukira', 'Saltar ao contido');
+  if (!firstRender) {
+    focusContent();
+    document.getElementById('route-announcer').textContent = document.title;
+  }
+  firstRender = false;
   trackPageview();
 
   // Sustituye los <i data-lucide> por sus SVG tras inyectar el HTML.

@@ -66,9 +66,11 @@ const md = new Marked({
 });
 
 export function renderGuideHtml(markdown, lang = 'es') {
+  let n = 0;
   return md
     .parse(rewriteLinks(markdown, lang))
-    .replace(/<table>/g, '<div class="guide-table"><table>')
+    // tabindex: en el móvil la tabla se desplaza de lado y así también se mueve con el teclado.
+    .replace(/<table>/g, () => `<div class="guide-table" tabindex="0" role="region" aria-label="${lang === 'en' ? 'Table' : 'Tabla'} ${++n}"><table>`)
     .replace(/<\/table>/g, '</table></div>');
 }
 

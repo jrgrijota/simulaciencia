@@ -48,7 +48,7 @@ function createShareModal(sim) {
             />
             <button
               data-copy="share-url"
-              class="copy-btn inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#0369a1]"
+              class="copy-btn inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#075985]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5"></i>
               <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>
@@ -69,7 +69,7 @@ function createShareModal(sim) {
             >${embedCode}</textarea>
             <button
               data-copy="share-embed"
-              class="copy-btn inline-flex shrink-0 items-start gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#0369a1]"
+              class="copy-btn inline-flex shrink-0 items-start gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#075985]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5 mt-0.5"></i>
               <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>
@@ -92,28 +92,28 @@ export function renderLab(root, sim) {
   const guide = guideLangFor(sim.id, lang);
   const withGuide = !!guide;
   const guideButton = withGuide
-    ? `<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
+    ? `<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="book-open" class="h-4 w-4"></i>
-        <span class="hidden sm:inline">${L('Guía docente', 'Teacher guide', 'Guia docent (castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (castelán)')}</span>
+        <span class="sr-only sm:not-sr-only">${L('Guía docente', 'Teacher guide', 'Guia docent (castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (castelán)')}</span>
       </a>`
     : '';
   root.innerHTML = `
   <div class="flex h-screen flex-col overflow-hidden">
     <header data-print-hide class="flex h-14 shrink-0 items-center gap-3 border-b border-[#e2e8f0] bg-white px-4">
-      <button id="lab-back" aria-label="${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}" class="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0284c7]">
+      <button id="lab-back" aria-label="${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}" class="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]">
         <i data-lucide="arrow-left" class="h-4 w-4"></i>
         <span class="hidden sm:inline">${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}</span>
       </button>
       <div class="hidden h-5 w-px bg-[#e2e8f0] sm:block"></div>
       <h1 class="hidden truncate font-semibold text-[#1e293b] sm:block">${title}</h1>
       ${guideButton}
-      <button id="lab-fs" class="${withGuide ? '' : 'ml-auto '}inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0284c7] hover:text-[#0284c7]">
+      <button id="lab-fs" class="${withGuide ? '' : 'ml-auto '}inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="maximize" class="h-4 w-4"></i>
-        <span class="hidden sm:inline">${L('Pantalla completa', 'Full screen', 'Pantalla completa', 'Pantaila osoa', 'Pantalla completa')}</span>
+        <span class="sr-only sm:not-sr-only">${L('Pantalla completa', 'Full screen', 'Pantalla completa', 'Pantaila osoa', 'Pantalla completa')}</span>
       </button>
-      <button id="lab-share" class="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0284c7] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#0369a1]">
+      <button id="lab-share" class="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#075985]">
         <i data-lucide="share-2" class="h-4 w-4"></i>
-        <span class="hidden sm:inline">${L('Compartir', 'Share', 'Comparteix', 'Partekatu', 'Compartir')}</span>
+        <span class="sr-only sm:not-sr-only">${L('Compartir', 'Share', 'Comparteix', 'Partekatu', 'Compartir')}</span>
       </button>
       ${langSwitchMarkup({ compact: true })}
     </header>
@@ -222,7 +222,16 @@ export function renderLab(root, sim) {
 
     modal.querySelector('#share-close').addEventListener('click', closeModal);
     modal.querySelector('#share-backdrop').addEventListener('click', closeModal);
-    modal.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    // Esc cierra; Tab y Mayús+Tab no salen de la ventana mientras está abierta.
+    modal.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') return closeModal();
+      if (e.key !== 'Tab') return;
+      const items = [...modal.querySelectorAll('button, input, textarea')];
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
 
     modal.querySelectorAll('.copy-btn').forEach((btn) => {
       btn.addEventListener('click', async () => {
@@ -237,7 +246,11 @@ export function renderLab(root, sim) {
   }
 
   function closeModal() {
-    if (modal) { modal.remove(); modal = null; }
+    if (!modal) return;
+    modal.remove();
+    modal = null;
+    // El foco vuelve al botón que abrió la ventana.
+    root.querySelector('#lab-share')?.focus();
   }
 
   root.querySelector('#lab-share').addEventListener('click', openModal);

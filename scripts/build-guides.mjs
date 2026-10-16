@@ -127,7 +127,7 @@ function pdfHtml(title, body, simId, lang) {
     @bottom-left { content: "SimulaCiencia · simulaciencia.es"; font: 8pt Inter, sans-serif; color: #64748b; }
     @bottom-right { content: counter(page) " / " counter(pages); font: 8pt Inter, sans-serif; color: #64748b; } }
   body { font-family: Inter, system-ui, sans-serif; font-size: 10pt; line-height: 1.55; color: #1e293b; margin: 0; }
-  .kicker { margin: 0 0 4pt; font-size: 8.5pt; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #0284c7; }
+  .kicker { margin: 0 0 4pt; font-size: 8.5pt; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #0369a1; }
   h1 { margin: 0 0 12pt; font-size: 19pt; line-height: 1.2; }
   h2 { margin: 18pt 0 6pt; padding-bottom: 3pt; border-bottom: 1px solid #cbd5e1; font-size: 13.5pt; break-after: avoid; }
   h3 { margin: 13pt 0 4pt; font-size: 11pt; color: #0369a1; break-after: avoid; }

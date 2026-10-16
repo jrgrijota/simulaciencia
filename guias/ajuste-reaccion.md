@@ -43,9 +43,13 @@ Las masas que se citan son las que muestra la simulación, con las masas atómic
 
 ### 2.º ESO: uso puntual
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 No hay un saber de ajuste. El modo ajuste puede ilustrar «Cambios físicos y químicos de los sistemas materiales» e «Introducción a las reacciones químicas» (bloque C), y «Átomos y moléculas: sustancias simples y compuestas de uso frecuente y conocido» (bloque B). Con «Formación de agua» ya ajustada (2, 1 y 2), «▶ Ver la reacción» muestra que los átomos de hidrógeno y oxígeno se separan y se vuelven a unir formando una sustancia nueva, sin aparecer ni desaparecer.
 
 ### 3.º ESO: ajuste y leyes de Lavoisier y Proust
+
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
 
 **Saberes básicos.** Bloque C: «Interpretación microscópica de las reacciones químicas» con el «Ajuste de reacciones químicas sencillas», y «Aplicación de la ley de conservación de la masa (Ley de Lavoisier) y de la ley de las proporciones definidas (Ley de Proust): aplicación de estas leyes como evidencias experimentales que permitan validar el modelo atómico-molecular de la materia. Cálculos estequiométricos sencillos». Bloque B: «Masa atómica y masa molecular».
 
@@ -62,6 +66,8 @@ No hay un saber de ajuste. El modo ajuste puede ilustrar «Cambios físicos y qu
 
 ### 4.º ESO: ajuste de combustiones y estequiometría
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque C: «Ecuaciones químicas: ajuste de reacciones químicas y realización de predicciones cualitativas y cuantitativas basadas en la estequiometría», con «Ajuste de ecuaciones químicas. Cálculos estequiométricos. Rendimiento de una reacción», y «Descripción cualitativa de reacciones químicas de interés: reacciones de combustión». Bloque B: «Masa atómica y molecular. Concepto de mol. Constante de Avogadro».
 
 **Objetivos.** Ajustar combustiones de hidrocarburos. Interpretar los coeficientes como proporción en moles. Calcular la cantidad de producto a partir de la de un reactivo y aplicar el rendimiento.
@@ -77,6 +83,8 @@ No hay un saber de ajuste. El modo ajuste puede ilustrar «Cambios físicos y qu
 
 ### 1.º Bachillerato: leyes ponderales, limitante y rendimiento
 
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
+
 **Saberes básicos.** Bloque B: «Aplicación de las leyes fundamentales de la química para comprender las relaciones estequiométricas en las reacciones químicas y en la composición de los compuestos», con «Ley de Lavoisier de conservación de la masa, ley de Proust de las proporciones definidas y ley de Dalton de las proporciones múltiples. Composición centesimal de un compuesto» y «Cálculos estequiométricos en las reacciones químicas. Riqueza de un reactivo. Rendimiento de una reacción. Reactivo limitante y reactivo en exceso». También «Reacciones de síntesis, sustitución, doble sustitución, descomposición y combustión» y «Observación de distintos tipos de reacciones y comprobación de su estequiometría».
 
 **Objetivos.** Relacionar las leyes ponderales con la teoría atómica de Dalton. Calcular la composición centesimal. Identificar el reactivo limitante y calcular el producto teórico, el exceso y el rendimiento.
@@ -91,6 +99,8 @@ No hay un saber de ajuste. El modo ajuste puede ilustrar «Cambios físicos y qu
 6. Volver a 8 H₂ y 5 O₂ y bajar «Rendimiento» al 75 %: se forman 6 H₂O y quedan sin reaccionar 2 H₂ y 2 O₂. Comentar que en la industria el rendimiento baja por reacciones incompletas, reacciones secundarias y pérdidas al separar el producto.
 
 ### 2.º Bachillerato Química: repaso puntual
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 No hay un saber específico. Puede servir de repaso antes de los «Cálculos estequiométricos y volumetrías redox» (bloque B, 5). La simulación solo ajusta por tanteo y no trabaja el «Método del ion-electrón»; conviene recordar que ese método también se basa en conservar los átomos, y además la carga.
 

@@ -38,6 +38,8 @@ En 4.º ESO la simulación sirve para presentar el principio de Arquímedes y ca
 
 ### 4.º ESO: principio de Arquímedes y flotación
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque D: «Fuerzas y presión en los fluidos: efectos de las fuerzas y la presión sobre los líquidos y los gases, estudiando los principios fundamentales que las describen», «Principio de Arquímedes y Principio de Pascal» y «Principales fuerzas del entorno cotidiano: reconocimiento del peso, la normal, el rozamiento, la tensión o el empuje, y su uso en la explicación de fenómenos físicos en distintos escenarios». Bloque A: «el laboratorio o los entornos virtuales».
 
 **Objetivos.** Enunciar el principio de Arquímedes. Calcular el empuje con E = ρlíquido · g · Vsumergido. Predecir si un cuerpo flota comparando su densidad con la del líquido. Explicar qué fracción queda sumergida cuando flota.
@@ -52,6 +54,8 @@ En 4.º ESO la simulación sirve para presentar el principio de Arquímedes y ca
 6. Pasar a «Materiales reales». El hierro se hunde en agua dulce y flota en mercurio con unos 58,1 L sumergidos (7,87 / 13,534). Cerrar con el hielo: 91,7 L sumergidos en agua dulce y 89,5 L en agua de mar. Relacionarlo con los icebergs y la línea de flotación de los barcos.
 
 ### 3.º ESO: el empuje como fuerza y la resultante
+
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
 
 **Saberes básicos.** Bloque D: «Tipos de magnitudes escalares y vectoriales», «Fuerza y movimiento», «Cálculo de la resultante de varias fuerzas» y «Aplicación de las leyes de Newton: observación de situaciones cotidianas o de laboratorio que permiten entender cómo se comportan los sistemas materiales ante la acción de las fuerzas». Bloque A: «Magnitudes derivadas. Sistema Internacional de Unidades. Cambio de unidades. Factores de conversión».
 
@@ -68,9 +72,13 @@ En 4.º ESO la simulación sirve para presentar el principio de Arquímedes y ca
 
 ### 2.º ESO: uso puntual
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 No hay un saber específico de flotación. La simulación sirve de apoyo cualitativo para «Composición sencilla de fuerzas» (bloque D) y para la densidad como «Medidas indirectas» (bloque A). Basta el modo «Materiales reales» con agua dulce: los materiales menos densos que 1,000 kg/L flotan y los más densos se hunden. Para introducir la densidad es mejor la simulación de densidad.
 
 ### 1.º Bachillerato: repaso puntual
+
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
 
 En el bloque E aparecen «Composición vectorial de un sistema de fuerzas. Fuerza resultante.» y «Leyes de Newton de la dinámica. Condiciones de equilibrio de traslación.». La simulación sirve para repasar el equilibrio de traslación de un cuerpo que flota. También permite trabajar «La fuerza peso y la fuerza normal.». Con 150 kg y 100 L el bloque reposa en el fondo y el diagrama dibuja la normal: N = P − E = 1470 − 980 = 490 N. Se puede pedir al alumnado que la calcule antes de activar el diagrama.
 

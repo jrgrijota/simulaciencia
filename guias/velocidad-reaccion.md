@@ -41,9 +41,13 @@ Las cifras de reacciones son orientativas. La simulación es aleatoria y el núm
 
 ### 2.º ESO: uso puntual
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 No hay un saber de velocidad de reacción. El «Modo choque» puede ilustrar «Cambios físicos y químicos de los sistemas materiales» e «Introducción a las reacciones químicas» (bloque C). Con los valores iniciales, «▶ Lanzar» da un choque efectivo y aparece C, formado por los átomos de A y de B. Basta para mostrar que una reacción reorganiza átomos y forma una sustancia nueva.
 
 ### 3.º ESO: temperatura y concentración
+
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
 
 **Saberes básicos.** Bloque C: «Interpretación microscópica de las reacciones químicas», «Análisis de los factores que afectan a las reacciones químicas: predicción cualitativa de la evolución de las reacciones» y «Análisis cualitativo de la influencia de la temperatura y la concentración en una reacción química». Bloque B: «Modelo cinético-molecular de la materia». Bloque A: «Empleo de diversos entornos y recursos de aprendizaje científico, como el laboratorio o los entornos virtuales».
 
@@ -60,6 +64,8 @@ No hay un saber de velocidad de reacción. El «Modo choque» puede ilustrar «C
 
 ### 4.º ESO: teoría de colisiones y factores
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque C: «Factores que influyen en la velocidad de las reacciones químicas: comprensión de cómo ocurre la reordenación de los átomos aplicando modelos como la teoría de colisiones y realización de predicciones en los procesos químicos cotidianos más importantes». También «Aproximación al concepto de velocidad de reacción química», «Mecanismo de las reacciones químicas» y «Factores que influyen en la velocidad de una reacción química».
 
 **Objetivos.** Enunciar las dos condiciones de un choque eficaz: energía suficiente y orientación adecuada. Explicar el efecto de la temperatura, la concentración y el catalizador con esas condiciones. Interpretar la velocidad de reacción como reacciones por unidad de tiempo.
@@ -75,9 +81,13 @@ No hay un saber de velocidad de reacción. El «Modo choque» puede ilustrar «C
 
 ### 1.º Bachillerato: repaso puntual
 
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
+
 No hay un saber de cinética. La simulación puede apoyar el saber «Reactivo limitante y reactivo en exceso» (bloque B). En Modo reacción con 16 A, 10 B y 4 catalizadores, la reacción se detiene con 10 moléculas de C. Quedan 6 A sin reaccionar y la «conversión» marca 100 %, porque se calcula respecto al reactivo limitante.
 
 ### 2.º Bachillerato Química: cinética química
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 **Saberes básicos.** Bloque B, 2. Cinética química: «Conceptos de velocidad de reacción», «Teoría de las colisiones como modelo a escala microscópica de las reacciones químicas. Teoría del estado de transición. Energía de activación», «Influencia de las condiciones de reacción sobre la velocidad de la misma. Ecuación de Arrhenius» y «Utilización de catalizadores en procesos industriales».
 

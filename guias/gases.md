@@ -38,6 +38,8 @@ En 2.º ESO la simulación sirve para presentar el modelo cinético y las escala
 
 ### 2.º ESO: teoría cinética y temperatura
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 **Saberes básicos.** Bloque A: «el laboratorio y los entornos virtuales». Bloque B: «Aplicación de la teoría cinético-molecular a observaciones sobre la materia explicando sus propiedades» y «Introducción a la teoría cinética-molecular. Estados de agregación de la materia». Bloque E: «Temperatura. Escalas de temperatura» y «Efectos del calor sobre la materia: cambios de estado y dilataciones».
 
 **Objetivos.** Describir un gas como partículas en movimiento con espacio vacío entre ellas. Relacionar la temperatura con la rapidez de las partículas. Convertir entre K y ºC. Explicar la dilatación de un gas al calentarlo.
@@ -51,6 +53,8 @@ En 2.º ESO la simulación sirve para presentar el modelo cinético y las escala
 5. Volver a 100 K: el globo encoge hasta unos 0,75 L. Relacionarlo con la dilatación: al calentar, las partículas no crecen, se mueven más y empujan más la pared.
 
 ### 3.º ESO: leyes de los gases
+
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
 
 **Saberes básicos.** Bloque A: «Empleo de diversos entornos y recursos de aprendizaje científico, como el laboratorio o los entornos virtuales» y «Registro de datos y resultados empleando tablas, gráficos y expresiones matemáticas». Bloque B: «Profundización en el modelo cinético-molecular de la materia y su relación con los cambios de estado. Leyes de los gases. Modelo cinético-molecular de la materia».
 
@@ -66,6 +70,8 @@ En 2.º ESO la simulación sirve para presentar el modelo cinético y las escala
 
 ### 4.º ESO: presión y ley general de los gases
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque B: «Sistemas materiales: resolución de problemas y situaciones de aprendizaje diversas sobre las disoluciones y los gases» y «Los gases. Ley general de los gases». Bloque D: «Fuerzas y presión en los fluidos: efectos de las fuerzas y la presión sobre los líquidos y los gases» y «Concepto de Presión».
 
 **Objetivos.** Explicar la presión de un gas como resultado de muchos choques repartidos por toda la pared. Relacionar a la vez presión, volumen, temperatura y cantidad de gas. Reconocer la ley de Boyle en un recipiente más grande.
@@ -79,6 +85,8 @@ En 2.º ESO la simulación sirve para presentar el modelo cinético y las escala
 5. Volver a 150 px y subir a 500 K: la presión pasa a ~1,0 atm. Luego subir a 100 partículas: sube otra vez. Escribir P · V / T = constante y razonar cada cambio con el modelo.
 
 ### 1.º Bachillerato: repaso cualitativo
+
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
 
 La simulación puede servir de repaso al tratar «Leyes de los gases ideales. Volumen molar. Condiciones normales o estándar de un gas» (bloque B) y «Energía interna de un sistema» (bloque F). Sirve para ligar la temperatura con la energía cinética media de las partículas y la presión con los choques. Con pared rígida y 2 px, P · V se mantiene y P es proporcional a T, con unas décimas de ruido. Pero no sirve para P · V = n · R · T con números: sus unidades son de escala.
 

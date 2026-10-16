@@ -39,6 +39,8 @@ En 2.º ESO la simulación sirve para introducir la densidad; en 3.º ESO, para 
 
 ### 2.º ESO: introducir la densidad
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 **Saberes básicos.** Bloque A: «Medida de magnitudes. Medidas indirectas. Sistema Internacional de Unidades. Cambios sencillos de unidades» y «el laboratorio y los entornos virtuales». Bloque B: «La materia y sus propiedades. Introducción a la teoría cinética-molecular. Estados de agregación de la materia».
 
 **Objetivos.** Distinguir masa, volumen y densidad. Calcular la densidad como medida indirecta. Reconocer que la densidad es propia del material y no del tamaño del objeto. Predecir si un material flota en agua.
@@ -52,6 +54,8 @@ En 2.º ESO la simulación sirve para introducir la densidad; en 3.º ESO, para 
 5. Recorrer corcho, madera, hielo y plástico mirando el indicador de flotación y la línea del agua en la barra inferior. Cerrar con el hielo (0,92 g/cm³), que flota en agua líquida.
 
 ### 3.º ESO: densidad como magnitud derivada
+
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
 
 **Saberes básicos.** Bloque A: «Magnitudes derivadas. Sistema Internacional de Unidades. Cambio de unidades. Factores de conversión. Notación científica. Cifras significativas» y «Registro de datos y resultados empleando tablas, gráficos y expresiones matemáticas». Bloque B: «Modelo cinético-molecular de la materia» y «Masa atómica y masa molecular».
 
@@ -67,6 +71,8 @@ En 2.º ESO la simulación sirve para introducir la densidad; en 3.º ESO, para 
 
 ### 4.º ESO: densidad y flotación
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque D: «Principales fuerzas del entorno cotidiano: reconocimiento del peso, la normal, el rozamiento, la tensión o el empuje» y «Fuerzas y presión en los fluidos [...] Principio de Arquímedes». Bloque B: «Masa atómica y molecular. Concepto de mol».
 
 **Objetivos.** Relacionar la condición de flotación con la comparación entre la densidad del objeto y la del fluido. Explicar la densidad a partir de la masa de las partículas y de lo juntas que están.
@@ -80,6 +86,8 @@ En 2.º ESO la simulación sirve para introducir la densidad; en 3.º ESO, para 
 5. Usar plomo frente a aluminio para discutir que la densidad depende de la masa de cada átomo y no solo de cuántos hay (ver «Simplificaciones»).
 
 ### 1.º Bachillerato: repaso puntual
+
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
 
 No hay un saber específico de densidad. La simulación puede servir de repaso al tratar «Concepto de mol. Masa atómica [...] Masa molar» o «El enlace metálico. Estructura y propiedades»: con la masa molar y la densidad de hierro, cobre y plomo se calcula cuántos átomos hay por cm³ y se contrasta con la lupa.
 

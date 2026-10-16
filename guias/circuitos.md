@@ -42,6 +42,8 @@ En 2.º ESO la simulación sirve para presentar el circuito eléctrico, sus elem
 
 ### 2.º ESO: el circuito y las magnitudes eléctricas
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 **Saberes básicos.** Bloque E: «Consideración de la naturaleza eléctrica de la materia y de la obtención de energía eléctrica a partir de distintas fuentes de energía. Magnitudes eléctricas fundamentales. Unidades de medida. Corriente continua». Bloque A: «el laboratorio y los entornos virtuales», «Instrumentos de medida» y «unidades del Sistema Internacional y sus símbolos. Medida de magnitudes».
 
 **Criterios de evaluación.** 1.1 (identificar fenómenos fisicoquímicos cotidianos con la terminología científica adecuada), 3.1 (utilizar datos en diferentes formatos para interpretar y comunicar información) y 3.2 (identificar los materiales e instrumentos básicos del laboratorio).
@@ -59,6 +61,8 @@ En 2.º ESO la simulación sirve para presentar el circuito eléctrico, sus elem
 
 ### 3.º ESO: ley de Ohm y asociación de resistencias
 
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
+
 **Saberes básicos.** Bloque E: «Naturaleza eléctrica de la materia: electrización de los cuerpos y los circuitos eléctricos», «La electricidad como movimiento de cargas eléctricas. Ley de Ohm. Circuitos eléctricos básicos. Asociación de resistencias. Aplicaciones de la electricidad en la vida diaria». Bloque A: «Registro de datos y resultados empleando tablas, gráficos y expresiones matemáticas» y «Aplicación del método científico a experiencias sencillas».
 
 **Criterios de evaluación.** 1.2 (resolver problemas con las leyes adecuadas, razonando los procedimientos y expresando los resultados), 2.1 (emplear las metodologías propias de la ciencia, incluido el razonamiento lógico-matemático), 3.1 (emplear datos en diferentes formatos) y 3.2 (usar correctamente las unidades de medida y las herramientas matemáticas).
@@ -75,6 +79,8 @@ En 2.º ESO la simulación sirve para presentar el circuito eléctrico, sus elem
 6. Modo «Paralelo» con los mismos valores. Todos tienen 6 V y las intensidades, 0,600, 0,300 y 0,200 A, suman 1,100 A. 1 / R equivalente = 1/10 + 1/20 + 1/30, luego R equivalente = 5,45 Ω, menor que la más pequeña. Quitar R₂: las otras ramas no cambian y la intensidad total baja a 0,800 A (R equivalente = 7,5 Ω).
 
 ### 4.º ESO: uso puntual
+
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
 
 En el bloque E aparecen «El trabajo y la energía mecánica. Potencia» y «La energía en nuestro mundo: estimación de la energía consumida en la vida cotidiana mediante la búsqueda de información contrastada, la experimentación y el razonamiento científico». La simulación da la potencia de cada receptor (P = V · I) y sirve para estimar la energía consumida con E = P · t. Por ejemplo, la bombilla del modo «Ley de Ohm» con 6 V y 20 Ω consume 1,80 W; en una hora son 1,80 × 3600 = 6480 J. Con tres bombillas iguales de 20 Ω a 6 V, en paralelo cada una consume 1,80 W y en serie solo 0,20 W: nueve veces menos, por eso en serie brillan mucho menos. No trata la energía en kWh ni el coste de la factura.
 

@@ -40,6 +40,8 @@ En 2.º ESO la simulación sirve para introducir los estados y los cambios de es
 
 ### 2.º ESO: estados y cambios de estado
 
+*13–14 años · 8th grade en EE. UU. · Year 9 en Reino Unido*
+
 **Saberes básicos.** Bloque A: «Representación gráfica de resultados» y «el laboratorio y los entornos virtuales». Bloque B: «Introducción a la teoría cinética-molecular. Estados de agregación de la materia». Bloque E: «Temperatura. Escalas de temperatura. Concepto de calor» y «Efectos del calor sobre la materia: cambios de estado y dilataciones».
 
 **Objetivos.** Describir sólido, líquido y gas con el modelo de partículas. Nombrar los seis cambios de estado. Reconocer que la temperatura no cambia durante la fusión y la ebullición. Asociar cada sustancia a sus temperaturas de fusión y ebullición.
@@ -54,6 +56,8 @@ En 2.º ESO la simulación sirve para introducir los estados y los cambios de es
 6. Cambiar a Alcohol (funde a −114 °C, hierve a 78 °C) y a Nitrógeno (−210 °C y −196 °C). La curva tiene los mismos tramos y sus mesetas duran lo mismo; lo que cambia son las temperaturas. Concluir que son propiedades características.
 
 ### 3.º ESO: modelo cinético-molecular y energía de los cambios
+
+*14–15 años · 9th grade en EE. UU. · Year 10 en Reino Unido*
 
 **Saberes básicos.** Bloque A: «Registro de datos y resultados empleando tablas, gráficos y expresiones matemáticas». Bloque B: «Profundización en el modelo cinético-molecular de la materia y su relación con los cambios de estado» y «Modelo cinético-molecular de la materia. Cambios de estado de la materia».
 
@@ -70,6 +74,8 @@ En 2.º ESO la simulación sirve para introducir los estados y los cambios de es
 
 ### 4.º ESO: cambios de estado y presión
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque D: «Concepto de Presión. Presión hidrostática. Presión atmosférica» y «Física de la atmósfera». Bloque E: «Transferencias de energía: el trabajo y el calor como formas de transferencia de energía entre sistemas relacionados con las fuerzas o la diferencia de temperatura» y «Efecto del calor sobre los cuerpos».
 
 **Objetivos.** Leer un diagrama de fases. Explicar que la temperatura de ebullición depende de la presión. Justificar la olla a presión y la cocción en alta montaña. Situar el punto triple y la sublimación del hielo seco.
@@ -85,9 +91,13 @@ En 2.º ESO la simulación sirve para introducir los estados y los cambios de es
 
 ### 1.º Bachillerato: repaso puntual
 
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
+
 La simulación encaja como repaso al tratar «El calor como mecanismo de transferencia de energía entre dos cuerpos» y «Energía interna de un sistema. Primer principio de la termodinámica» (bloque F). Durante una meseta entra calor y la temperatura no cambia: la barra de energía permite discutir que aumenta la energía interna. La casilla de atracciones sirve de puente hacia «Fuerzas intermoleculares» (bloque A), comparando los 100 °C del agua con los −196 °C del nitrógeno.
 
 ### 2.º Bachillerato Química: repaso puntual
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 En el diagrama, sobre cualquier línea o en el punto triple, las partículas intercambian su estado cada 0,65 s y se marcan con un anillo. Ilustra «El equilibrio químico como proceso dinámico» (bloque B) sin necesidad de una reacción. Las temperaturas de ebullición del agua, el etanol y el nitrógeno sirven de entrada a «Propiedades macroscópicas de elementos y compuestos moleculares» (bloque A).
 

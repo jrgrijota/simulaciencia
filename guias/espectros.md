@@ -40,6 +40,8 @@ En 4.º ESO la simulación sirve para dar contenido al modelo de Bohr y a la luz
 
 ### 4.º ESO: niveles de energía y color de la luz
 
+*15–16 años · 10th grade en EE. UU. · Year 11 en Reino Unido*
+
 **Saberes básicos.** Bloque A: «Empleo de diversos entornos y recursos de aprendizaje científico, como el laboratorio o los entornos virtuales». Bloque B: «Modelos atómicos: desarrollo histórico de los principales modelos atómicos clásicos y cuánticos y descripción de las partículas subatómicas». Bloque E: «La luz y el sonido como ondas que transfieren energía».
 
 **Objetivos.** Reconocer que el electrón solo ocupa niveles de energía concretos. Asociar absorber con subir de nivel y emitir con bajar. Relacionar el color de la luz con la energía del salto. Entender el espectro como huella de cada elemento.
@@ -53,6 +55,8 @@ En 4.º ESO la simulación sirve para dar contenido al modelo de Bohr y a la luz
 5. Pasar a Gas Ionizado a 5,0 eV. Aparecen las tres líneas visibles del hidrógeno. Cambiar el elemento a sodio (línea amarilla de 589 nm, farolas antiguas) y a neón (rojos y naranjas de los letreros). Cada elemento da un espectro distinto.
 
 ### 1.º Bachillerato: espectros y estructura electrónica
+
+*16–17 años · 11th grade en EE. UU. · Year 12 en Reino Unido*
 
 **Saberes básicos.** Bloque A: «Estructura electrónica de los átomos tras el análisis de su interacción con la radiación electromagnética» y «Los espectros atómicos y la estructura electrónica de los átomos».
 
@@ -69,6 +73,8 @@ En 4.º ESO la simulación sirve para dar contenido al modelo de Bohr y a la luz
 
 ### 2.º Bachillerato Química: modelo de Bohr y espectro del hidrógeno
 
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
+
 **Saberes básicos.** Bloque A: «El espectro de emisión del hidrógeno», «Relación entre el fenómeno de los espectros atómicos y la cuantización de la energía», «Modelo atómico de Bohr. Postulados. Energía de las órbitas del átomo de hidrógeno», «Interpretación de los espectros de emisión y absorción de los elementos» y «Aciertos y limitaciones del modelo atómico de Bohr».
 
 **Objetivos.** Interpretar el espectro visible del hidrógeno como la serie de Balmer. Ligar los postulados de Bohr con lo que se ve. Mostrar la cuantización con umbrales de energía. Reconocer las limitaciones del modelo en átomos con varios electrones.
@@ -83,6 +89,8 @@ En 4.º ESO la simulación sirve para dar contenido al modelo de Bohr y a la luz
 6. Cambiar a sodio. Las etiquetas 3s y 3p remiten a subniveles que Bohr no explica. Usarlo para presentar las limitaciones del modelo y la necesidad de los números cuánticos.
 
 ### 2.º Bachillerato Física: repaso puntual
+
+*17–18 años · 12th grade en EE. UU. · Year 13 en Reino Unido*
 
 No hay un saber específico de espectros más allá de una mención. La simulación puede apoyar el saber del bloque D «Otras limitaciones de la física clásica: radiación del cuerpo negro, efecto fotoeléctrico y espectros atómicos». Con hidrógeno, 550 nm y «Emisión continua» al flujo «Máximo», ningún fotón se absorbe. La analogía con el efecto fotoeléctrico es directa: importa la energía de cada fotón, no cuántos llegan.
 

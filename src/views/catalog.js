@@ -24,7 +24,7 @@ export function renderCatalog(root) {
   const courseFilters = [{ id: 'all', label: 'Todos', en: 'All', ca: 'Tots', eu: 'Guztiak', gl: 'Todos' }, ...COURSES]
     .map((c, i) => {
       const state = i === 0 ? FILTER_ON : FILTER_OFF;
-      return `<button data-course="${c.id}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${lang === 'es' ? c.label : c[lang]}</button>`;
+      return `<button data-course="${c.id}"${lang === 'en' && c.enTitle ? ` title="${c.enTitle}"` : ''} aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${lang === 'es' ? c.label : c[lang]}</button>`;
     })
     .join('');
   const LABEL = 'w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-[#64748b]';

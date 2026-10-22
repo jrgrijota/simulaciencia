@@ -4,6 +4,11 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      indexnow_todas:
+        description: 'Avisar por IndexNow de todas las páginas (no solo las nuevas)'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -18,6 +23,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      indexnow: ${{ steps.indexnow.outputs.urls }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -32,6 +39,13 @@ jobs:
           curl -sSL -o pandoc.deb https://github.com/jgm/pandoc/releases/download/3.12.1/pandoc-3.12.1-1-amd64.deb
           sudo dpkg -i pandoc.deb
       - run: npm run build
+      # Antes de desplegar, para comparar con el sitemap aún publicado.
+      - name: Páginas para IndexNow
+        id: indexnow
+        continue-on-error: true
+        run: |
+          node scripts/indexnow.mjs list ${{ inputs.indexnow_todas && '--todas' || '' }} > indexnow.txt
+          { echo 'urls<<EOF'; cat indexnow.txt; echo 'EOF'; } >> "$GITHUB_OUTPUT"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
@@ -46,3 +60,19 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Avisa a Bing, Yandex, Seznam, Naver… de las páginas nuevas. Si falla, la web
+  # ya está publicada igualmente: los buscadores la encontrarán por el sitemap.
+  indexnow:
+    needs: [build, deploy]
+    if: needs.build.outputs.indexnow != ''
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: printf '%s\n' "$URLS" > indexnow.txt && node scripts/indexnow.mjs send indexnow.txt
+        env:
+          URLS: ${{ needs.build.outputs.indexnow }}

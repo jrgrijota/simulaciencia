@@ -67,6 +67,14 @@ function levels(sim, lang = 'es') {
   return sim.courses.map((c) => courseLabel(c, lang));
 }
 
+// Edad del alumnado de esos cursos, en números: los repositorios de recursos
+// educativos de otros países (OER Commons, Merlot…) no entienden «2.º ESO».
+const AGES = { '2ESO': [13, 14], '3ESO': [14, 15], '4ESO': [15, 16], '1BACH': [16, 17], '2BACH': [17, 18] };
+function ageRange(sim) {
+  const ages = sim.courses.flatMap((c) => AGES[c] ?? []);
+  return ages.length ? `${Math.min(...ages)}-${Math.max(...ages)}` : undefined;
+}
+
 function simResource(sim, lang = 'es') {
   return {
     '@type': 'LearningResource',
@@ -75,6 +83,12 @@ function simResource(sim, lang = 'es') {
     url: simUrl(sim.id, lang),
     learningResourceType: KIND[lang],
     educationalLevel: levels(sim, lang),
+    typicalAgeRange: ageRange(sim),
+    interactivityType: 'active',
+    audience: [
+      { '@type': 'EducationalAudience', educationalRole: 'student' },
+      { '@type': 'EducationalAudience', educationalRole: 'teacher' },
+    ],
     about: sim.tags.filter((t) => t !== 'ESO' && t !== 'Bachillerato').map((t) => tagLabel(t, lang)),
     inLanguage: lang,
     isAccessibleForFree: true,
@@ -139,6 +153,7 @@ export function updateHead({ sim, guideSim, page, lang = 'es' }) {
         url: guideUrl(guideSim.id, l),
         learningResourceType: en ? 'Teacher guide' : 'Guía didáctica',
         educationalLevel: levels(guideSim, l),
+        typicalAgeRange: ageRange(guideSim),
         audience: { '@type': 'EducationalAudience', educationalRole: 'teacher' },
         inLanguage: l,
         isAccessibleForFree: true,

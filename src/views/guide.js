@@ -53,7 +53,7 @@ export function renderGuide(root, sim) {
           ${L('Volver al catálogo', 'Back to catalogue')}
         </button>
         <a href="${simPath(sim.id, lang)}" data-route class="${BTN_SECONDARY} ml-auto">
-          <i data-lucide="flask-conical" class="h-4 w-4"></i>
+          <i data-lucide="play" class="h-4 w-4"></i>
           <span class="hidden sm:inline">${L('Abrir la simulación', 'Open the simulation')}</span><span class="sm:hidden">${L('Simulación', 'Simulation')}</span>
         </a>
       </div>

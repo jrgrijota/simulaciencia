@@ -255,7 +255,7 @@ export const simulations = [
     id: 'sim-orbitas',
     title: 'Órbitas y Gravitación',
     description:
-      'Mecánica orbital con la bala de cañón de Newton, el Sistema Solar, las leyes de Kepler y las estrellas binarias en un mismo laboratorio.',
+      'Mecánica orbital con la bala de cañón de Newton, el Sistema Solar, las leyes de Kepler y las estrellas binarias en una misma simulación.',
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-orbitas/',
     responsive: true,
@@ -263,22 +263,22 @@ export const simulations = [
     en: {
       title: 'Orbits and Gravitation',
       description:
-        "Orbital mechanics with Newton's cannonball, the Solar System, Kepler's laws and binary stars in a single lab.",
+        "Orbital mechanics with Newton's cannonball, the Solar System, Kepler's laws and binary stars in a single simulation.",
     },
     ca: {
       title: 'Òrbites i Gravitació',
       description:
-        'Mecànica orbital amb la bala de canó de Newton, el Sistema Solar, les lleis de Kepler i les estrelles binàries en un mateix laboratori.',
+        'Mecànica orbital amb la bala de canó de Newton, el Sistema Solar, les lleis de Kepler i les estrelles binàries en una mateixa simulació.',
     },
     eu: {
       title: 'Orbitak eta grabitazioa',
       description:
-        'Mekanika orbitala Newtonen kanoi-balarekin, Eguzki-sistemarekin, Keplerren legeekin eta izar bitarrekin, laborategi bakar batean.',
+        'Mekanika orbitala Newtonen kanoi-balarekin, Eguzki-sistemarekin, Keplerren legeekin eta izar bitarrekin, simulazio bakar batean.',
     },
     gl: {
       title: 'Órbitas e gravitación',
       description:
-        'Mecánica orbital coa bala de canón de Newton, o Sistema Solar, as leis de Kepler e as estrelas binarias nun mesmo laboratorio.',
+        'Mecánica orbital coa bala de canón de Newton, o Sistema Solar, as leis de Kepler e as estrelas binarias nunha mesma simulación.',
     },
   },
   {

@@ -45,7 +45,7 @@ export function cardMarkup(sim) {
       data-route
       class="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-[#0369a1] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2"
     >
-      <i data-lucide="flask-conical" class="h-4 w-4"></i>
+      <i data-lucide="play" class="h-4 w-4"></i>
       ${L('Abrir simulación', 'Open simulation', 'Obre la simulació', 'Ireki simulazioa', 'Abrir simulación')}
     </a>${guideButton}
   </article>`;

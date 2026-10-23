@@ -11,7 +11,7 @@ import {
   ArrowLeft,
   Copy,
   Check,
-  FlaskConical,
+  Play,
   Maximize,
   Minimize,
   Share2,
@@ -35,7 +35,7 @@ import { hasGuide } from './data/guides.js';
 import { updateLangNotice } from './components/lang-notice.js';
 
 const app = document.getElementById('app');
-const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, FlaskConical, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen };
+const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen };
 
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };

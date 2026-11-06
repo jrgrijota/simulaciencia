@@ -2,7 +2,7 @@
 
 ## Ficha rápida
 
-La simulación calienta o enfría una sustancia y muestra a la vez el recipiente, sus partículas y la curva temperatura–tiempo, con un segundo modo para el diagrama de fases del agua y del CO₂. Su uso principal es 2.º y 3.º ESO, con el diagrama de fases como recurso para 4.º ESO.
+La simulación calienta o enfría una sustancia y muestra a la vez el recipiente, sus partículas y la curva temperatura–tiempo, con un segundo modo para el diagrama de fases del agua, del CO₂ y del yodo. Su uso principal es 2.º y 3.º ESO, con el diagrama de fases como recurso para 4.º ESO.
 
 | Dato | Detalle |
 | --- | --- |
@@ -20,10 +20,11 @@ La simulación tiene dos modos, «Calentar y enfriar» (curva de calentamiento) 
 
 | Modo | Qué controla el docente | Qué muestra |
 | --- | --- | --- |
-| Calentar y enfriar | Sustancia (Agua, Alcohol (etanol), Nitrógeno, Hierro). Potencia de la placa, de −100 % (enfriar) a +100 % (calentar) en pasos de 5; empieza en +50 %. Velocidad ×1, ×2 o ×4. Botones «Pausar» y «Reiniciar» | El recipiente con sólido, líquido, burbujas o gotas en la tapa. El termómetro con las marcas de fusión y ebullición. La gráfica temperatura–tiempo con cada meseta rotulada. Las tarjetas Temperatura, Tiempo, Placa y «Estado de la sustancia» |
-| Calentar y enfriar, vista de partículas | Casillas «Mostrar las atracciones entre partículas» y «Mostrar la velocidad (estelas)» | Las mismas 64 partículas en todos los estados: red de 8 × 8 que vibra, partículas que se deslizan o partículas libres. Las uniones son fuertes en el sólido, débiles en el líquido y no existen en el gas |
+| Calentar y enfriar | Sustancia (Agua, Alcohol (etanol), Nitrógeno, Hierro, Hielo seco (CO₂)). Barra sobre la simulación: «Reiniciar», placa «❄ Enfriar», «Apagar» o «🔥 Calentar» y velocidad ×1, ×2 o ×4. En el panel, potencia de la placa de −100 % (enfriar) a +100 % (calentar) en pasos de 5; empieza en +50 %. «Apagar» deja la temperatura fija con las partículas en movimiento, para explicar con calma. Tecla R para reiniciar | El recipiente con sólido, líquido, burbujas o gotas en la tapa. El termómetro con las marcas de fusión y ebullición (de sublimación en el hielo seco). La gráfica temperatura–tiempo con cada meseta rotulada. Las tarjetas Temperatura, Tiempo, Placa y «Estado de la sustancia» |
+| Calentar y enfriar, vista de partículas | Casillas «Mostrar las atracciones entre partículas» y «Mostrar la velocidad (estelas)» | Las mismas 64 partículas en todos los estados: red de 16 × 4 que vibra en el fondo, partículas que se deslizan o partículas libres. El agua se dibuja como molécula H₂O, el nitrógeno como N₂ y el hielo seco como CO₂; el alcohol y el hierro, como esferas. Las moléculas oscilan en el sólido y giran en el líquido y en el gas. Las uniones son fuertes en el sólido, débiles en el líquido y no existen en el gas |
 | Presión y temperatura, agua | Temperatura de −40 a 160 °C. Presión de 0,003 a 5 atm en escala logarítmica. Ejemplos «Nivel del mar», «Cima del Everest», «Olla a presión» y «Punto triple». También se arrastra el punto | Las regiones SÓLIDO, LÍQUIDO y GAS, la línea de 1 atm con «funde a 0 °C» y «hierve a 100 °C», y el punto triple. La tarjeta «A esta presión, la sustancia…» da las temperaturas de cambio a esa presión |
 | Presión y temperatura, CO₂ | Temperatura de −120 a 30 °C. Presión de 0,30 a 100 atm. Ejemplos «Hielo seco», «Aire libre», «Extintor de CO₂» y «Punto triple» | El mismo diagrama para el CO₂, con su punto triple a 5,11 atm y −57 °C. A 1 atm marca «sublima a −78 °C» |
+| Presión y temperatura, yodo | Temperatura de 20 a 220 °C. Presión de 0,0003 a 5 atm. Ejemplos «En el laboratorio», «Con poca presión», «Yodo fundido» y «Punto triple» | El diagrama del yodo, con su punto triple a 0,12 atm y 113,5 °C. A 1 atm funde a 114 °C y hierve a 184 °C; por debajo de 0,12 atm sublima |
 
 Cuatro elementos sostienen la explicación:
 
@@ -48,7 +49,7 @@ En 2.º ESO la simulación sirve para introducir los estados y los cambios de es
 
 **Secuencia de explicación (15–20 min).**
 
-1. Modo Calentar y enfriar con agua (configuración inicial). Poner la placa a 0 %: hielo a unos −20 °C. Mostrar la lupa: partículas ordenadas que vibran en su sitio. Leer la leyenda «SÓLIDO».
+1. Modo Calentar y enfriar con agua (configuración inicial). Pulsar «Apagar»: hielo a unos −20 °C. Mostrar la lupa: partículas ordenadas que vibran en su sitio. Leer la leyenda «SÓLIDO».
 2. Elegir velocidad ×2, subir la placa a +50 % y pulsar «Reiniciar»: el hielo vuelve a −20 °C y el tiempo a 0. Preguntar qué marcará el termómetro mientras el hielo se funde. A los 5 min de la tarjeta Tiempo llega a 0 °C.
 3. Señalar la meseta: la temperatura sigue en 0 °C hasta los 33 min. En la lupa las partículas abandonan la red; en el recipiente el hielo flota y se hace pequeño.
 4. El líquido se calienta hasta 100 °C a los 85 min; en la gráfica sube más despacio que el hielo. Preguntar qué son las burbujas. La lupa muestra que son las mismas partículas, ahora separadas. La meseta dura hasta los 137 min.
@@ -68,9 +69,9 @@ En 2.º ESO la simulación sirve para introducir los estados y los cambios de es
 1. Agua, placa a +100 %, velocidad ×2 y «Reiniciar». Activar las dos casillas de la vista de partículas. Relacionar la vibración del sólido y la rapidez del líquido con la temperatura.
 2. Al terminar la fusión, leer la barra de energía: 16 % «Subir la temperatura» y 84 % «Separar las partículas». Al terminar la ebullición marca 41 % y 59 %. La vaporización necesita más energía que la fusión: la meseta de 100 °C es casi el doble de larga que la de 0 °C.
 3. Poner la placa a +50 %, pulsar «Reiniciar» y repetir. La fusión dura 28 min en vez de 14, pero sigue a 0 °C. Más potencia acorta la meseta; no sube la temperatura de cambio.
-4. A mitad de la fusión, poner la placa a 0 %. El estado pasa a «Sólido y líquido a la vez» y la franja a EQUILIBRIO. Sin intercambio de energía, la proporción no cambia.
+4. A mitad de la fusión, pulsar «Apagar». El estado pasa a «Sólido y líquido a la vez» y la franja a EQUILIBRIO. Sin intercambio de energía, la proporción no cambia.
 5. Calentar hasta el gas a 140 °C, poner la placa a −100 % y comentar la curva de enfriamiento: mismas mesetas, ahora CONDENSACIÓN y SOLIDIFICACIÓN. Cambiar a Nitrógeno y leer en la gráfica sus temperaturas para identificarlo.
-6. Pasar a Presión y temperatura, CO₂, ejemplo «Hielo seco» (1 atm, −100 °C). Subir la temperatura: hacia −78 °C el sólido pasa directamente a gas. La franja dice SUBLIMACIÓN.
+6. Pasar a Presión y temperatura, CO₂, ejemplo «Hielo seco» (1 atm, −100 °C). Subir la temperatura: hacia −78 °C el sólido pasa directamente a gas. La franja dice SUBLIMACIÓN. También se puede ver en la curva: Calentar y enfriar con «Hielo seco (CO₂)» tiene una sola meseta, a −78 °C, rotulada SUBLIMACIÓN, sin tramo de líquido.
 
 ### 4.º ESO: cambios de estado y presión
 
@@ -88,6 +89,7 @@ En 2.º ESO la simulación sirve para introducir los estados y los cambios de es
 4. Volver a «Nivel del mar» y bajar solo la presión. Hacia 0,023 atm el agua hierve a 20 °C. La franja dice «¡Al bajar la presión, el líquido hierve sin calentarlo!».
 5. Ejemplo «Punto triple» (0,006 atm y 0 °C): conviven los tres estados. Por debajo de esa presión no hay líquido; a 0,005 atm el hielo sublima a −2 °C.
 6. Cambiar a CO₂. «Aire libre» (1 atm, 20 °C) es gas. «Extintor de CO₂» (65 atm) es líquido y hervirá a 26 °C. A 1 atm el CO₂ nunca es líquido.
+7. Cambiar a Yodo. «En el laboratorio» (1 atm, 80 °C) es sólido y a 1 atm fundiría a 114 °C. «Con poca presión» (0,01 atm, 80 °C) es gas: por debajo de 0,12 atm el yodo sublima. Preguntar por qué al calentar yodo en un tubo abierto se ven vapores violetas sin líquido: el vapor se dispersa en el aire y la presión del yodo se mantiene muy baja.
 
 ### 1.º Bachillerato: repaso puntual
 
@@ -110,9 +112,10 @@ La simulación ataca sobre todo la idea de que las partículas cambian al cambia
 | «Si sigo calentando, el agua que hierve sigue subiendo de temperatura» | Durante la ebullición la temperatura se mantiene constante | Agua a +50 %: el termómetro se queda en 100 °C de los 85 a los 137 min y la gráfica rotula «temperatura constante» |
 | «Con más fuego el agua hierve a más temperatura» | La potencia acorta la meseta, pero no cambia la temperatura de ebullición | Repetir con +100 %: la ebullición dura 26 min en vez de 52 y sigue a 100 °C |
 | «Las burbujas del agua hirviendo son aire» | Son la misma sustancia en estado gaseoso | Mirar la lupa durante la EBULLICIÓN: las partículas del líquido escapan como gas. El recipiente está cerrado y no hay otras partículas |
-| «Al fundirse o evaporarse, las partículas se dilatan, se ablandan o cambian» | Las partículas son las mismas; cambian su orden, su separación y su movimiento | Recorrer la curva del agua: siempre hay 64 partículas del mismo tamaño y color. Leer «Conceptos clave» |
-| «En un sólido las partículas están quietas» | Las partículas del sólido vibran en torno a su posición, más cuanto más caliente | Con la placa a 0 %, comparar en la lupa el hielo a −40 °C y a −5 °C (con «Pausar» las partículas se congelan) |
+| «Al fundirse o evaporarse, las partículas se dilatan, se ablandan o cambian» | Las partículas son las mismas; cambian su orden, su separación y su movimiento | Recorrer la curva del agua: siempre hay las mismas 64 moléculas de H₂O. Leer «Conceptos clave» |
+| «En un sólido las partículas están quietas» | Las partículas del sólido vibran en torno a su posición, más cuanto más caliente | Pulsar «Apagar» con el hielo a −40 °C y después a −5 °C, y comparar la vibración en la lupa: con la placa apagada la temperatura no cambia y las partículas siguen vibrando |
 | «Entre las partículas de un gas hay aire» | Entre las partículas solo hay vacío | Vapor de agua a 120 °C: la ventana de partículas está vacía entre ellas |
+| «Al calentar un sólido, siempre se funde antes de pasar a gas» | Hay sustancias que, a 1 atm, pasan directamente de sólido a gas | Hielo seco (CO₂) en Calentar y enfriar: una sola meseta a −78 °C, SUBLIMACIÓN, y nunca aparece líquido en el recipiente |
 | «Enfriar es añadir frío» | Enfriar es sacar energía | Placa a −50 %: el rótulo dice «ENFRÍA 50 % · sale energía» y las flechas salen del recipiente |
 | «El agua siempre hierve a 100 °C» | La temperatura de ebullición depende de la presión | Diagrama del agua: «Cima del Everest» hierve a 72 °C y «Olla a presión» a 121 °C |
 
@@ -120,12 +123,12 @@ La simulación ataca sobre todo la idea de que las partículas cambian al cambia
 
 La simulación prioriza que se vean bien las mesetas y el modelo de partículas, y para ello escala energías y tiempos. Conviene conocer estas licencias para no reforzar ideas incorrectas sin querer.
 
-1. **Energías iguales para todas las sustancias.** La fusión absorbe 14 unidades y la vaporización 26 en las cuatro sustancias. Los tres tramos de calentamiento se reparten 36 unidades según lo que sube la temperatura en cada uno. Las temperaturas sí son reales; en la realidad cada sustancia tiene sus propios calores específicos y latentes.
+1. **Energías iguales para todas las sustancias.** La fusión absorbe 14 unidades y la vaporización 26 en todas las sustancias con líquido; en el hielo seco, la sublimación absorbe las dos juntas, 40. Los tres tramos de calentamiento se reparten 36 unidades según lo que sube la temperatura en cada uno. Las temperaturas sí son reales; en la realidad cada sustancia tiene sus propios calores específicos y latentes.
 2. **Las proporciones entre tramos no son reales.** La vaporización absorbe 26 unidades frente a 14 de la fusión, unas 1,9 veces más. En el agua real es unas 6,8 veces más (2257 frente a 334 J/g). Basta con decir «más energía».
-3. **El líquido siempre necesita el doble por grado.** En las cuatro sustancias el líquido necesita el doble de energía por grado que el sólido y el gas, así que su tramo de la curva es menos inclinado. Es el caso del agua (4,18 frente a unos 2 J/g·°C), pero en el alcohol, el nitrógeno o el hierro la proporción real es otra. Las pendientes se pueden comparar dentro del agua, no entre sustancias.
+3. **El líquido siempre necesita el doble por grado.** En las sustancias con líquido, este necesita el doble de energía por grado que el sólido y el gas, así que su tramo de la curva es menos inclinado. Es el caso del agua (4,18 frente a unos 2 J/g·°C), pero en el alcohol, el nitrógeno o el hierro la proporción real es otra. Las pendientes se pueden comparar dentro del agua, no entre sustancias.
 4. **El tiempo no es real.** Cada «min» de la tarjeta Tiempo es un segundo real a ×1. Con el agua a +50 %, la curva completa dura 147 min. Las cifras de tiempo solo sirven para comparar tramos entre sí.
 5. **Una tapa móvil mantiene 1 atm.** El recipiente está cerrado con una tapa que se mueve libremente, así que la presión no cambia y las mesetas son las de 1 atm. En un recipiente rígido la presión subiría al formarse vapor y no habría meseta a 100 °C; la pista y el rótulo del recipiente lo indican. Además, no aparece gas hasta la temperatura de ebullición: la evaporación por debajo de ella no se representa. Conviene matizarlo al hablar de la ropa tendida.
 6. **La agitación no depende de la temperatura absoluta.** Cada estado reparte su agitación dentro de su propio rango de temperaturas. La vibración del sólido va de 0,8 a 3,2 px y la rapidez del gas, de 3,2 a 4,6. El nitrógeno gas a −188 °C se mueve igual que el vapor de agua a 120 °C. Para comparar sustancias, usar el termómetro, no la lupa.
-7. **En la lupa el sólido es menos compacto que el líquido.** La red tiene las partículas a 21 px y el líquido las junta a 18 px. Eso encaja con el hielo, que flota, pero no con el alcohol, el nitrógeno o el hierro. En el recipiente, en cambio, solo flota el hielo.
-8. **El diagrama de fases es esquemático.** La presión va en escala logarítmica. La línea de fusión del agua tiene la pendiente real (−0,0075 °C/atm), pero a 5 atm solo baja a −0,03 °C y parece vertical. No sirve para mostrar esa anomalía. El CO₂ no tiene punto crítico: su curva acaba a 30 °C y 71,5 atm.
+7. **La red del sólido es una figura de 16 × 4.** Es ancha y baja, como el líquido, para que al solidificar las partículas se ordenen en el fondo. En el hielo las partículas quedan a 20 px y el sólido ocupa algo más que el agua líquida, que las junta a 18 px; en las demás sustancias la red es compacta (17,5 px). En la lupa el sólido siempre está en el fondo; en el recipiente, en cambio, el hielo flota. Las moléculas de agua, nitrógeno, CO₂ y yodo tienen la forma real, pero los tamaños de los átomos son orientativos, y el alcohol se dibuja como esfera para no recargar la vista.
+8. **El diagrama de fases es esquemático.** La presión va en escala logarítmica. La línea de fusión del agua tiene la pendiente real (−0,0075 °C/atm), pero a 5 atm solo baja a −0,03 °C y parece vertical. No sirve para mostrar esa anomalía. El CO₂ no tiene punto crítico: su curva acaba a 30 °C y 71,5 atm. En el yodo, las curvas se ajustan a su punto triple, a su ebullición a 1 atm y a su presión de vapor a 25 °C (0,0004 atm); la pendiente de la línea de fusión es aproximada.
 9. **Las líneas tienen grosor.** El punto está sobre una línea si queda a menos de 5 px, y en el punto triple a menos de 12 px. Por eso «Líquido + gas» aparece en un intervalo, de 70 a 73 °C en el Everest. Sobre la línea se reparten las partículas a partes iguales, cuando en la realidad la proporción depende de la energía aportada.

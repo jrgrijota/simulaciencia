@@ -45,7 +45,7 @@ export const simulations = [
     id: 'sim-densidad',
     title: 'Densidad',
     description:
-      'Masa, volumen y densidad: compara materiales como el corcho, el agua o el plomo, mira cuánta masa tiene cada cm³ y comprueba con una balanza de brazos cuál tiene más masa.',
+      'Masa, volumen y densidad: compara materiales como el corcho, el agua o el plomo, mira cuánta masa tiene cada litro y comprueba con una balanza de brazos cuál tiene más masa.',
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-densidad/',
     responsive: true,
@@ -53,22 +53,22 @@ export const simulations = [
     en: {
       title: 'Density',
       description:
-        'Mass, volume and density: compare materials such as cork, water or lead, see how much mass each cm³ has and check on a two-pan balance which one has more mass.',
+        'Mass, volume and density: compare materials such as cork, water or lead, see how much mass each litre has and check on a two-pan balance which one has more mass.',
     },
     ca: {
       title: 'Densitat',
       description:
-        "Massa, volum i densitat: compara materials com el suro, l'aigua o el plom, mira quanta massa té cada cm³ i comprova amb una balança de braços quin té més massa.",
+        "Massa, volum i densitat: compara materials com el suro, l'aigua o el plom, mira quanta massa té cada litre i comprova amb una balança de braços quin té més massa.",
     },
     eu: {
       title: 'Dentsitatea',
       description:
-        'Masa, bolumena eta dentsitatea: alderatu kortxoa, ura edo beruna bezalako materialak, ikusi cm³ bakoitzak zenbat masa duen eta egiaztatu beso-balantza batekin zeinek duen masa gehiago.',
+        'Masa, bolumena eta dentsitatea: alderatu kortxoa, ura edo beruna bezalako materialak, ikusi litro bakoitzak zenbat masa duen eta egiaztatu beso-balantza batekin zeinek duen masa gehiago.',
     },
     gl: {
       title: 'Densidade',
       description:
-        'Masa, volume e densidade: compara materiais como a cortiza, a auga ou o chumbo, mira canta masa ten cada cm³ e comproba cunha balanza de brazos cal ten máis masa.',
+        'Masa, volume e densidade: compara materiais como a cortiza, a auga ou o chumbo, mira canta masa ten cada litro e comproba cunha balanza de brazos cal ten máis masa.',
     },
   },
   {

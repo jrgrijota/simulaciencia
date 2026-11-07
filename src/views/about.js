@@ -1,31 +1,17 @@
-import { navigateToCatalog } from '../router.js';
 import { footerMarkup } from '../components/footer.js';
 import { copyText, flashCopied } from '../components/copy.js';
-import { langSwitchMarkup } from '../components/lang-switch.js';
-import { homePath } from '../paths.js';
-import { getLang, L } from '../i18n.js';
+import { siteHeaderMarkup } from '../components/site-header.js';
+import { L } from '../i18n.js';
 
 const CONTACT = 'contacto@simulaciencia.es';
 
 export function renderAbout(root) {
   root.innerHTML = `
   <div class="min-h-screen">
-    <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
-      <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <a id="about-home" href="${homePath(getLang())}" class="text-lg font-bold tracking-tight text-[#1e293b] hover:text-[#0369a1] transition-colors">
-          <img src="/logo.svg" alt="" width="28" height="28" class="-mt-1 inline-block h-7 w-7 align-middle" /> SimulaCiencia
-        </a>
-        <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>
-        <div class="ml-auto">${langSwitchMarkup()}</div>
-      </div>
-    </header>
+    ${siteHeaderMarkup({ current: 'about' })}
 
     <main class="mx-auto max-w-2xl px-4 py-10">
 
-      <button id="about-back" class="mb-8 inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]">
-        <i data-lucide="arrow-left" class="h-4 w-4"></i>
-        ${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}
-      </button>
 
 ${L(`
       <!-- Sección 1 -->
@@ -465,15 +451,6 @@ ${L(`
   copyBtn.addEventListener('click', async () => {
     await copyText(CONTACT);
     flashCopied(copyBtn, L('¡Copiada!', 'Copied!', 'Copiada!', 'Kopiatuta!', 'Copiada!'));
-  });
-
-  root.querySelector('#about-back').addEventListener('click', (e) => {
-    e.preventDefault();
-    navigateToCatalog();
-  });
-  root.querySelector('#about-home').addEventListener('click', (e) => {
-    e.preventDefault();
-    navigateToCatalog();
   });
 
   return null;

@@ -1,8 +1,11 @@
-// Inter servida desde el propio portal (sin peticiones a Google Fonts).
-import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
-import '@fontsource/inter/latin-600.css';
-import '@fontsource/inter/latin-700.css';
+// Fuentes servidas desde el propio portal (sin peticiones a Google Fonts):
+// Atkinson Hyperlegible para el texto, Bricolage Grotesque para los títulos y
+// JetBrains Mono para los datos.
+import '@fontsource/atkinson-hyperlegible/latin-400.css';
+import '@fontsource/atkinson-hyperlegible/latin-700.css';
+import '@fontsource-variable/bricolage-grotesque/wght.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-500.css';
 import './style.css';
 import {
   createIcons,
@@ -20,6 +23,7 @@ import {
   Info,
   Download,
   BookOpen,
+  SlidersHorizontal,
 } from 'lucide';
 
 import { getRoute, onRouteChange, navigateTo } from './router.js';
@@ -35,7 +39,7 @@ import { hasGuide } from './data/guides.js';
 import { updateLangNotice } from './components/lang-notice.js';
 
 const app = document.getElementById('app');
-const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen };
+const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal };
 
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };

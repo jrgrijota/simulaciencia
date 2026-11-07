@@ -2,7 +2,9 @@
 
 /* ===== Tokens "Aula Limpia" ===== */
 @theme {
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Atkinson Hyperlegible', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Atkinson Hyperlegible', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --color-bg: #f8fafc; /* fondo body: gris pizarra muy claro */
   --color-surface: #ffffff; /* tarjetas / navs */
@@ -12,10 +14,44 @@
   --color-accent: #0369a1; /* azul educativo (contraste AA sobre blanco y gris claro) */
   --color-accent-strong: #075985; /* azul hover */
   --color-sim-cyan: #00c8ff; /* cian característico de las simulaciones */
+  --color-chem: #c2410c; /* Química: naranja (contraste AA sobre blanco) */
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* La cabecera fija no tapa lo que recibe el foco con el teclado */
 html {
-  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+/* Sin la espera del doble toque para hacer zoom en móviles y tabletas */
+a,
+button,
+input,
+select,
+summary {
+  touch-action: manipulation;
+}
+
+/* Títulos con Bricolage Grotesque (el texto sigue en Atkinson Hyperlegible) */
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
 }
 
 body {
@@ -32,6 +68,19 @@ body {
   outline-offset: 2px;
 }
 
+/* ===== Portada ===== */
+/* Papel milimetrado de fondo (cabecera de la portada y miniaturas de las tarjetas) */
+.paper {
+  background-color: #ffffff;
+  background-image:
+    linear-gradient(#e2e8f0 1px, transparent 1px),
+    linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+/* El ancla #catalogo no queda tapada por la cabecera fija */
+#catalogo {
+  scroll-margin-top: 4.5rem;
+}
 /* ===== Skeleton / loader del iframe ===== */
 @keyframes lab-shimmer {
   0% {

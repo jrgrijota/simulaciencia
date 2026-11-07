@@ -76,7 +76,7 @@ export const simulations = [
     title: 'Espectros Atómicos',
     description:
       'Visualización e interacción con los espectros de emisión y absorción de diferentes elementos químicos y sus transiciones electrónicas.',
-    tags: ['Química', 'Física Cuántica', 'ESO', 'Bachillerato'],
+    tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-espectros/',
     responsive: true,
     courses: ['4ESO', '1BACH', '2BACH'],
@@ -433,6 +433,42 @@ export const simulations = [
   },
 ];
 
+// Bloques temáticos: los botones del filtro «Tema» del catálogo
+// (?tema=<bloque> en la dirección). Una simulación puede estar en más de un bloque. Al añadir una
+// simulación, añádela también a su bloque.
+export const TOPICS = [
+  {
+    id: 'fuerzas',
+    label: { es: 'Fuerzas y gravitación', en: 'Forces and gravity', ca: 'Forces i gravitació', eu: 'Indarrak eta grabitazioa', gl: 'Forzas e gravitación' },
+    sims: ['sim-arquimedes', 'sim-orbitas'],
+  },
+  {
+    id: 'energia',
+    label: { es: 'Energía y electricidad', en: 'Energy and electricity', ca: 'Energia i electricitat', eu: 'Energia eta elektrizitatea', gl: 'Enerxía e electricidade' },
+    sims: ['sim-energia-mecanica', 'sim-circuitos'],
+  },
+  {
+    id: 'ondas',
+    label: { es: 'Ondas y luz', en: 'Waves and light', ca: 'Ones i llum', eu: 'Uhinak eta argia', gl: 'Ondas e luz' },
+    sims: ['sim-ondas', 'sim-espectros'],
+  },
+  {
+    id: 'materia',
+    label: { es: 'La materia y sus estados', en: 'Matter and its states', ca: 'La matèria i els seus estats', eu: 'Materia eta haren egoerak', gl: 'A materia e os seus estados' },
+    sims: ['sim-densidad', 'sim-cambios-estado', 'sim-gases'],
+  },
+  {
+    id: 'atomo',
+    label: { es: 'El átomo', en: 'The atom', ca: "L'àtom", eu: 'Atomoa', gl: 'O átomo' },
+    sims: ['sim-modelos', 'sim-atomo-real', 'sim-espectros'],
+  },
+  {
+    id: 'reacciones',
+    label: { es: 'Enlaces y reacciones', en: 'Bonds and reactions', ca: 'Enllaços i reaccions', eu: 'Loturak eta erreakzioak', gl: 'Enlaces e reaccións' },
+    sims: ['sim-enlaces-quimicos', 'sim-ajuste-reaccion', 'sim-velocidad-reaccion'],
+  },
+];
+
 // Cursos, en orden, para el filtro y las tarjetas. En inglés se muestra el
 // equivalente por edad en Reino Unido (Year) y EE. UU. (grade); `enTitle`
 // recuerda el curso español en el tooltip.
@@ -464,10 +500,10 @@ export function simUrl(sim, lang = 'es') {
 
 // Las etiquetas se guardan en español (son también el valor de los filtros).
 const TAGS = {
-  en: { Física: 'Physics', Química: 'Chemistry', 'Física Cuántica': 'Quantum Physics' },
-  ca: { Física: 'Física', Química: 'Química', 'Física Cuántica': 'Física Quàntica' },
-  eu: { Física: 'Fisika', Química: 'Kimika', 'Física Cuántica': 'Fisika kuantikoa' },
-  gl: { Física: 'Física', Química: 'Química', 'Física Cuántica': 'Física cuántica' },
+  en: { Física: 'Physics', Química: 'Chemistry' },
+  ca: { Física: 'Física', Química: 'Química' },
+  eu: { Física: 'Fisika', Química: 'Kimika' },
+  gl: { Física: 'Física', Química: 'Química' },
 };
 export function tagLabel(tag, lang = 'es') {
   return TAGS[lang]?.[tag] || tag;

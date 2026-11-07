@@ -1,153 +1,295 @@
-import { simulations, allTags, COURSES, tagLabel } from '../data/simulations.js';
+// Portada: presentación, catálogo con
+// buscador y filtros (tema, materia y curso) y «Pensado para el aula».
+import { simulations, COURSES, TOPICS } from '../data/simulations.js';
 import { cardMarkup } from '../components/card.js';
 import { footerMarkup } from '../components/footer.js';
-import { langSwitchMarkup } from '../components/lang-switch.js';
-import { pagePath } from '../paths.js';
+import { siteHeaderMarkup } from '../components/site-header.js';
+import { saveCatalogPlace, takeCatalogPlace } from '../catalog-place.js';
 import { getLang, L } from '../i18n.js';
 
 const FILTER_BASE =
-  'filter-btn rounded-md border px-3 py-1.5 text-sm font-medium transition-colors';
+  'filter-btn inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-bold transition-colors';
 const FILTER_ON = 'border-[#0369a1] bg-[#0369a1] text-white';
-const FILTER_OFF = 'border-[#e2e8f0] bg-white text-[#64748b] hover:border-[#0369a1] hover:text-[#0369a1]';
+const FILTER_OFF = 'border-[#cbd5e1] bg-white text-[#334155] hover:border-[#0369a1] hover:text-[#0369a1]';
+
+
+const simsWord = (n) => L(`${n} simulaciones`, `${n} simulations`, `${n} simulacions`, `${n} simulazio`, `${n} simulacións`);
 
 export function renderCatalog(root) {
   const lang = getLang();
-  const filters = ['all', ...allTags]
-    .map((value, i) => {
-      const label = i === 0 ? L('Todas', 'All', 'Totes', 'Guztiak', 'Todas') : tagLabel(value, lang);
-      const state = i === 0 ? FILTER_ON : FILTER_OFF;
-      return `<button data-tag="${value}" aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${label}</button>`;
-    })
-    .join('');
+  const total = simulations.length;
+  const LABEL = 'shrink-0 text-xs sm:w-16 sm:pt-2.5 font-bold uppercase tracking-wide text-[#475569]';
+
+  const filterButton = (attr, value, label, on, extra = '') =>
+    `<button type="button" ${attr}="${value}"${extra} aria-pressed="${on}" class="${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}">${label}</button>`;
+
+  const topicFilters = [
+    filterButton('data-topic', 'all', L('Todos', 'All', 'Tots', 'Guztiak', 'Todos'), true),
+    ...TOPICS.map((t) => filterButton('data-topic', t.id, L(t.label), false)),
+  ].join('');
 
   // Un docente busca por el curso que da: filtro propio, combinable con la materia.
   const courseFilters = [{ id: 'all', label: 'Todos', en: 'All', ca: 'Tots', eu: 'Guztiak', gl: 'Todos' }, ...COURSES]
-    .map((c, i) => {
-      const state = i === 0 ? FILTER_ON : FILTER_OFF;
-      return `<button data-course="${c.id}"${lang === 'en' && c.enTitle ? ` title="${c.enTitle}"` : ''} aria-pressed="${i === 0}" class="${FILTER_BASE} ${state}">${lang === 'es' ? c.label : c[lang]}</button>`;
-    })
+    .map((c, i) =>
+      filterButton('data-course', c.id, lang === 'es' ? c.label : c[lang], i === 0, lang === 'en' && c.enTitle ? ` title="${c.enTitle}"` : ''),
+    )
     .join('');
-  const LABEL = 'w-16 shrink-0 text-xs font-semibold uppercase tracking-wide text-[#64748b]';
+
+  const features = [
+    {
+      icon: '<path d="M4 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H4z"/><path d="M13 8a3 3 0 0 1 3-3h4v13h-5a2 2 0 0 0-2 2"/>',
+      title: L('Guía docente en cada simulación', 'A teacher guide for every simulation', 'Guia docent per a cada simulació', 'Irakaslearen gida simulazio bakoitzean', 'Guía docente en cada simulación'),
+      text: L(
+        'Cursos, saberes básicos, una secuencia para la clase y las concepciones alternativas que ayuda a corregir.',
+        'Year groups, curriculum content, a lesson sequence and the misconceptions it helps to address.',
+        'Cursos, sabers bàsics, una seqüència per a la classe i les concepcions alternatives que ajuda a corregir. En castellà.',
+        'Mailak, oinarrizko jakintzak, eskolarako sekuentzia bat eta zuzentzen laguntzen dituen ideia okerrak. Gaztelaniaz.',
+        'Cursos, saberes básicos, unha secuencia para a clase e as concepcións alternativas que axuda a corrixir. En castelán.',
+      ),
+    },
+    {
+      icon: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',
+      title: L('En el aula o en casa', 'In class or at home', "A l'aula o a casa", 'Ikasgelan edo etxean', 'Na aula ou na casa'),
+      text: L(
+        'Sin instalar nada: en el ordenador, la pizarra digital o el móvil, con enlace directo para Classroom, Moodle o Teams.',
+        'Nothing to install: on a computer, an interactive whiteboard or a phone, with a direct link for Classroom, Moodle or Teams.',
+        "Sense instal·lar res: a l'ordinador, la pissarra digital o el mòbil, amb enllaç directe per a Classroom, Moodle o Teams.",
+        'Ezer instalatu gabe: ordenagailuan, arbel digitalean edo mugikorrean, Classroom, Moodle edo Teamserako esteka zuzenarekin.',
+        'Sen instalar nada: no ordenador, no encerado dixital ou no móbil, con ligazón directa para Classroom, Moodle ou Teams.',
+      ),
+    },
+    {
+      icon: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.75-1.4"/>',
+      title: L('Libre y abierto', 'Free and open', 'Lliure i obert', 'Librea eta irekia', 'Libre e aberto'),
+      text: L(
+        'Código con licencia MIT y contenidos CC BY-SA 4.0: úsalas, adáptalas y compártelas.',
+        'MIT-licensed code and CC BY-SA 4.0 content: use them, adapt them and share them.',
+        'Codi amb llicència MIT i continguts CC BY-SA 4.0: fes-les servir, adapta-les i comparteix-les.',
+        'MIT lizentziako kodea eta CC BY-SA 4.0 edukiak: erabili, egokitu eta partekatu.',
+        'Código con licenza MIT e contidos CC BY-SA 4.0: úsaas, adáptaas e compárteas.',
+      ),
+    },
+  ]
+    .map(
+      (f) => `
+        <div class="rounded-xl border border-white/10 bg-white/5 p-5">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${f.icon}</svg>
+          <h3 class="mt-3 text-lg font-bold text-white">${f.title}</h3>
+          <p class="mt-1 leading-relaxed text-[#cbd5e1]">${f.text}</p>
+        </div>`,
+    )
+    .join('');
 
   root.innerHTML = `
   <div class="min-h-screen">
-    <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
-      <div class="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
-        <h1 class="contents">
-          <span class="text-lg font-bold tracking-tight text-[#1e293b]">
-            <img src="/logo.svg" alt="" width="28" height="28" class="-mt-1 inline-block h-7 w-7 align-middle" /> SimulaCiencia
-          </span>
-          <span class="hidden text-sm text-[#64748b] sm:inline">· ${L('Simulaciones de Física y Química', 'Physics and Chemistry Simulations', 'Simulacions de Física i Química', 'Fisika eta Kimikako simulazioak', 'Simulacións de Física e Química')}</span>
-        </h1>
-        <a href="${pagePath('about', lang)}" data-route class="ml-auto inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]">
-          <i data-lucide="info" class="h-4 w-4"></i>
-          <span class="sr-only sm:not-sr-only">${L('Sobre el proyecto', 'About', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>
-        </a>
-        ${langSwitchMarkup()}
-      </div>
-    </header>
+    ${siteHeaderMarkup()}
 
-    <main class="mx-auto max-w-6xl px-4 py-6">
-      <p class="mb-4 text-sm leading-relaxed text-[#64748b]">
-        ${L(
-          `Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato, con su guía docente.
-        Sin instalar nada ni crear una cuenta.`,
-          `Free interactive Physics and Chemistry simulations for secondary school (ESO and Bachillerato in Spain).
-        Nothing to install and no account needed, and each one comes with its teacher guide.`,
-          `Simulacions interactives i gratuïtes de Física i Química per a ESO i Batxillerat.
-        Sense instal·lar res ni crear cap compte. Les guies docents estan en castellà.`,
-          `Fisika eta Kimikako simulazio interaktibo eta doakoak DBHrako eta Batxilergorako.
-        Ez da ezer instalatu behar, ezta konturik sortu ere. Irakaslearen gidak gaztelaniaz daude.`,
-          `Simulacións interactivas e gratuítas de Física e Química para ESO e Bacharelato.
-        Sen instalar nada nin crear unha conta. As guías docentes están en castelán.`,
-        )}
-      </p>
-      <div data-print-hide class="mb-6 flex flex-col gap-3">
-        <div class="relative">
+    <main>
+      <section class="paper border-b border-[#e2e8f0]">
+        <div class="mx-auto max-w-6xl px-4 py-8 md:py-14">
+          <div class="text-center">
+            <h1 class="text-4xl font-extrabold leading-[1.05] text-balance text-[#0f172a] sm:text-5xl md:text-6xl xl:whitespace-nowrap">${L(
+              'La física y la química, <span class="text-[#0369a1]">para tocarlas.</span>',
+              'Physics and chemistry <span class="text-[#0369a1]">you can touch.</span>',
+              'La física i la química, <span class="text-[#0369a1]">per tocar-les.</span>',
+              'Fisika eta kimika, <span class="text-[#0369a1]">ukitzeko moduan.</span>',
+              'A física e a química, <span class="text-[#0369a1]">para tocalas.</span>',
+            )}</h1>
+          </div>
+        </div>
+      </section>
+
+      <section id="catalogo" class="mx-auto max-w-6xl px-4 pb-12 pt-8" aria-labelledby="catalogo-titulo">
+        <h2 id="catalogo-titulo" tabindex="-1" class="sr-only">${L('Todas las simulaciones', 'All simulations', 'Totes les simulacions', 'Simulazio guztiak', 'Todas as simulacións')}</h2>
+        <div data-print-hide class="relative">
+          <label for="search" class="sr-only">${L('Buscar', 'Search', 'Cerca', 'Bilatu', 'Buscar')}</label>
           <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#64748b]"></i>
           <input
             id="search"
+            name="q"
             type="search"
-            placeholder="${L('Buscar simulación por nombre, tema o nivel…', 'Search by name, topic or year…', 'Cerca per nom, tema o nivell…', 'Bilatu izenaren, gaiaren edo mailaren arabera…', 'Buscar simulación por nome, tema ou nivel…')}"
+            placeholder="${L('Buscar por nombre, tema o nivel…', 'Search by name, topic or year…', 'Cerca per nom, tema o nivell…', 'Bilatu izenaren, gaiaren edo mailaren arabera…', 'Buscar por nome, tema ou nivel…')}"
             autocomplete="off"
-            class="w-full rounded-md border border-[#e2e8f0] bg-white py-2.5 pl-11 pr-4 text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:border-[#0369a1] focus:outline-none"
+            class="min-h-12 w-full rounded-lg border border-[#cbd5e1] bg-white py-3 pl-11 pr-4 text-[#1e293b] placeholder:text-[#64748b] focus:border-[#0369a1] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0369a1]/40"
           />
         </div>
-        <div class="flex items-center gap-2">
-          <span class="${LABEL}">${L('Materia', 'Subject', 'Matèria', 'Ikasgaia', 'Materia')}</span>
-          <div id="filters" role="group" aria-label="${L('Materia', 'Subject', 'Matèria', 'Ikasgaia', 'Materia')}" class="flex flex-wrap gap-2">${filters}</div>
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="${LABEL}">${L('Curso', 'Year', 'Curs', 'Maila', 'Curso')}</span>
-          <div id="course-filters" role="group" aria-label="${L('Curso', 'Year', 'Curs', 'Maila', 'Curso')}" class="flex flex-wrap gap-2">${courseFilters}</div>
-        </div>
-      </div>
 
-      <div id="grid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        ${simulations.map(cardMarkup).join('')}
-      </div>
+        <button id="filters-toggle" type="button" data-print-hide aria-expanded="false" aria-controls="filters-panel" class="mt-3 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#cbd5e1] bg-white px-4 text-sm font-bold text-[#1e293b] sm:hidden">
+          <i data-lucide="sliders-horizontal" class="h-4 w-4"></i>
+          ${L('Filtros', 'Filters', 'Filtres', 'Iragazkiak', 'Filtros')}<span id="filters-n" class="font-normal text-[#475569]"></span>
+        </button>
+        <div id="filters-panel" data-print-hide class="mt-3 hidden flex-col gap-3 rounded-xl border border-[#e2e8f0] bg-white p-4 sm:mt-4 sm:flex">
+          <div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
+            <span class="${LABEL}">${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}</span>
+            <div id="topic-filters" role="group" aria-label="${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}" class="flex flex-wrap gap-2">${topicFilters}</div>
+          </div>
+          <div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
+            <span class="${LABEL}">${L('Curso', 'Year', 'Curs', 'Maila', 'Curso')}</span>
+            <div id="course-filters" role="group" aria-label="${L('Curso', 'Year', 'Curs', 'Maila', 'Curso')}" class="flex flex-wrap gap-2">${courseFilters}</div>
+          </div>
+        </div>
 
-      <div id="empty" class="hidden flex-col items-center gap-2 py-20 text-center text-[#64748b]">
-        <i data-lucide="search-x" class="h-8 w-8"></i>
-        <p class="text-sm">${L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.', 'No hi ha cap simulació que coincideixi amb la cerca.', 'Ez dago bilaketarekin bat datorren simulaziorik.', 'Non hai simulacións que coincidan coa túa busca.')}</p>
-      </div>
+        <div id="results" class="mt-4 hidden flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+          <p id="count" class="font-bold text-[#334155]" aria-live="polite"></p>
+          <button id="clear-active" type="button" class="inline-flex min-h-11 items-center gap-1 rounded-md px-1 font-bold text-[#0369a1] underline-offset-4 hover:underline">
+            <i data-lucide="x" class="h-4 w-4"></i>${L('Quitar filtros', 'Clear filters', 'Treu els filtres', 'Kendu iragazkiak', 'Quitar filtros')}
+          </button>
+        </div>
+
+        <div id="grid" class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          ${simulations.map(cardMarkup).join('')}
+        </div>
+
+        <div id="empty" class="hidden flex-col items-center gap-3 py-20 text-center text-[#475569]">
+          <i data-lucide="search-x" class="h-8 w-8"></i>
+          <p>${L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.', 'No hi ha cap simulació que coincideixi amb la cerca.', 'Ez dago bilaketarekin bat datorren simulaziorik.', 'Non hai simulacións que coincidan coa túa busca.')}</p>
+          <button id="clear-filters" type="button" class="${FILTER_BASE} ${FILTER_OFF}">${L('Quitar los filtros', 'Clear filters', 'Treu els filtres', 'Kendu iragazkiak', 'Quitar os filtros')}</button>
+        </div>
+      </section>
+
+      <section data-print-hide class="bg-[#0f172a]" aria-labelledby="aula-titulo">
+        <div class="mx-auto max-w-6xl px-4 py-14">
+          <h2 id="aula-titulo" class="text-center text-3xl font-bold text-white">${L('Pensado para el aula', 'Made for the classroom', "Pensat per a l'aula", 'Ikasgelarako pentsatua', 'Pensado para a aula')}</h2>
+          <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">${features}</div>
+        </div>
+      </section>
     </main>
     ${footerMarkup()}
   </div>`;
 
   const grid = root.querySelector('#grid');
   const empty = root.querySelector('#empty');
+  const results = root.querySelector('#results');
+  const count = root.querySelector('#count');
   const search = root.querySelector('#search');
-  const filterBar = root.querySelector('#filters');
-  const courseBar = root.querySelector('#course-filters');
+  const toggle = root.querySelector('#filters-toggle');
+  const panel = root.querySelector('#filters-panel');
+  const bars = {
+    topic: root.querySelector('#topic-filters'),
+    course: root.querySelector('#course-filters'),
+  };
 
   let term = '';
-  let activeTag = 'all';
-  let activeCourse = 'all';
+  const active = { topic: 'all', course: 'all' };
 
   function apply() {
+    const topic = TOPICS.find((t) => t.id === active.topic);
     let visible = 0;
     simulations.forEach((sim) => {
       const el = grid.querySelector(`[data-sim-id="${sim.id}"]`);
-      const matchTerm = !term || el.dataset.search.includes(term);
-      const matchTag = activeTag === 'all' || sim.tags.includes(activeTag);
-      const matchCourse = activeCourse === 'all' || sim.courses.includes(activeCourse);
-      const show = matchTerm && matchTag && matchCourse;
+      const show =
+        (!term || el.dataset.search.includes(term)) &&
+        (!topic || topic.sims.includes(sim.id)) &&
+        (active.course === 'all' || sim.courses.includes(active.course));
       el.classList.toggle('hidden', !show);
       if (show) visible += 1;
     });
     empty.classList.toggle('hidden', visible !== 0);
     empty.classList.toggle('flex', visible === 0);
+
+    // Con algún filtro o búsqueda: «3 de 14 simulaciones · Quitar filtros».
+    const filtering = Boolean(term) || Object.values(active).some((v) => v !== 'all');
+    results.classList.toggle('hidden', !filtering || visible === 0);
+    results.classList.toggle('flex', filtering && visible !== 0);
+    count.textContent = filtering
+      ? L(`${visible} de ${total} simulaciones`, `${visible} of ${total} simulations`, `${visible} de ${total} simulacions`, `${total} simulaziotatik ${visible}`, `${visible} de ${total} simulacións`)
+      : '';
+    const n = Object.values(active).filter((v) => v !== 'all').length;
+    root.querySelector('#filters-n').textContent = n ? ` (${n})` : '';
+  }
+
+  // Marca el botón activo de una fila de filtros.
+  function select(kind, value) {
+    active[kind] = value;
+    bars[kind].querySelectorAll('button').forEach((b) => {
+      const on = b.getAttribute(`data-${kind}`) === value;
+      b.setAttribute('aria-pressed', String(on));
+      b.className = `${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}`;
+    });
+  }
+
+  // Los filtros y la búsqueda van en la dirección (?tema=ondas&curso=2eso&q=…),
+  // para poder compartir o guardar el catálogo ya filtrado.
+  const PARAM = { topic: 'tema', course: 'curso' };
+  const slug = (v) => v.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  function syncUrl() {
+    const url = new URL(location.href);
+    for (const [kind, name] of Object.entries(PARAM)) {
+      if (active[kind] === 'all') url.searchParams.delete(name);
+      else url.searchParams.set(name, slug(active[kind]));
+    }
+    if (term) url.searchParams.set('q', search.value.trim());
+    else url.searchParams.delete('q');
+    history.replaceState(history.state, '', url);
   }
 
   search.addEventListener('input', (e) => {
     term = e.target.value.trim().toLowerCase();
+    syncUrl();
     apply();
   });
 
-  filterBar.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-tag]');
-    if (!btn) return;
-    activeTag = btn.dataset.tag;
-    filterBar.querySelectorAll('[data-tag]').forEach((b) => {
-      const on = b === btn;
-      b.setAttribute('aria-pressed', String(on));
-      b.className = `${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}`;
+  for (const kind of Object.keys(bars)) {
+    bars[kind].addEventListener('click', (e) => {
+      const btn = e.target.closest(`[data-${kind}]`);
+      if (!btn) return;
+      select(kind, btn.getAttribute(`data-${kind}`));
+      syncUrl();
+      apply();
     });
+  }
+
+  function clearAll() {
+    search.value = '';
+    term = '';
+    Object.keys(bars).forEach((k) => select(k, 'all'));
+    syncUrl();
     apply();
+    search.focus();
+  }
+  root.querySelector('#clear-filters').addEventListener('click', clearAll);
+  root.querySelector('#clear-active').addEventListener('click', clearAll);
+
+  // Móvil: los filtros se pliegan tras el botón «Filtros» (en pantallas anchas se ven siempre).
+  toggle.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') !== 'true';
+    toggle.setAttribute('aria-expanded', String(open));
+    panel.classList.toggle('hidden', !open);
+    panel.classList.toggle('flex', open);
   });
 
-  courseBar.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-course]');
-    if (!btn) return;
-    activeCourse = btn.dataset.course;
-    courseBar.querySelectorAll('[data-course]').forEach((b) => {
-      const on = b === btn;
-      b.setAttribute('aria-pressed', String(on));
-      b.className = `${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}`;
-    });
-    apply();
+  // Catálogo ya filtrado desde la dirección y ancla #catalogo.
+  const params = new URLSearchParams(location.search);
+  for (const [kind, name] of Object.entries(PARAM)) {
+    const wanted = params.get(name);
+    const btn = wanted && [...bars[kind].querySelectorAll('button')].find((b) => slug(b.getAttribute(`data-${kind}`)) === wanted);
+    if (btn) select(kind, btn.getAttribute(`data-${kind}`));
+  }
+  if (params.get('q')) {
+    search.value = params.get('q');
+    term = search.value.trim().toLowerCase();
+  }
+  apply();
+  if (location.hash === '#catalogo') {
+    requestAnimationFrame(() => root.querySelector('#catalogo').scrollIntoView({ block: 'start' }));
+  }
+
+  // Al salir a una simulación o a una guía se guarda dónde estaba el catálogo; al
+  // volver (Atrás, «Volver al catálogo» o el logo) se recupera la posición y el foco
+  // vuelve al título de esa tarjeta.
+  root.addEventListener('click', (e) => {
+    const a = e.target.closest('a[data-route]');
+    const card = a?.closest('[data-sim-id]');
+    if (!card) return;
+    saveCatalogPlace({ url: location.pathname + location.search, y: window.scrollY, sim: card.dataset.simId });
   });
+  const place = takeCatalogPlace(location.pathname + location.search);
+  if (place) {
+    requestAnimationFrame(() => {
+      window.scrollTo(0, place.y);
+      root.querySelector(`[data-sim-id="${place.sim}"] h3 a`)?.focus({ preventScroll: true });
+    });
+  }
 
   // El catálogo no instala listeners globales: nada que limpiar.
   return null;

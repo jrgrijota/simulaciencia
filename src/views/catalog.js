@@ -155,11 +155,11 @@ export function renderCatalog(root) {
               'A física e a química, <span class="text-[#0369a1]">para tocalas.</span>',
             )}</h1>
             <p class="mx-auto mt-5 max-w-4xl text-balance text-lg leading-relaxed text-[#334155]">${L(
-              `${total} simulaciones interactivas y gratuitas, cada una con su guía docente. Se abren en el navegador: sin instalar nada y sin crear cuenta.`,
-              `${total} free interactive simulations, each with its own teacher guide. They open in the browser: nothing to install and no account needed.`,
-              `${total} simulacions interactives i gratuïtes, cadascuna amb la seva guia docent (en castellà). S'obren al navegador: sense instal·lar res ni crear cap compte.`,
-              `${total} simulazio interaktibo eta doako, bakoitza bere irakaslearen gidarekin (gaztelaniaz). Nabigatzailean irekitzen dira: ez da ezer instalatu behar, ezta konturik sortu ere.`,
-              `${total} simulacións interactivas e gratuítas, cada unha coa súa guía docente (en castelán). Ábrense no navegador: sen instalar nada nin crear unha conta.`,
+              'Simulaciones interactivas, cada una con su guía docente.',
+              'Interactive simulations, each with its own teacher guide.',
+              'Simulacions interactives, cadascuna amb la seva guia docent (en castellà).',
+              'Simulazio interaktiboak, bakoitza bere irakaslearen gidarekin (gaztelaniaz).',
+              'Simulacións interactivas, cada unha coa súa guía docente (en castelán).',
             )}</p>
             <div class="mt-7 flex flex-wrap justify-center gap-3">
               <a href="#catalogo" class="inline-flex min-h-12 items-center gap-2 rounded-lg bg-[#0369a1] px-5 py-3 font-bold text-white shadow-sm transition-colors hover:bg-[#075985]">

@@ -154,7 +154,7 @@ export function renderAbout(root) {
       </section>
 
       <section class="bg-[#0f172a]" aria-labelledby="comunidad-titulo">
-        <div class="mx-auto max-w-3xl px-4 py-14 text-center">
+        <div class="mx-auto max-w-6xl px-4 py-14 text-center">
           <h2 id="comunidad-titulo" class="text-3xl font-bold text-balance text-white">${L('Ideas, mejoras y comunidad', 'Ideas, improvements and community', 'Idees, millores i comunitat', 'Ideiak, hobekuntzak eta komunitatea', 'Ideas, melloras e comunidade')}</h2>
           <div class="mt-5 flex flex-col gap-4 text-lg leading-relaxed text-[#cbd5e1]">${L(
             `<p>Este proyecto no está cerrado: sigue vivo y en constante evolución. Si eres docente, estudiante o simplemente te apasionan la ciencia y la programación, tu opinión me interesa mucho.</p>

@@ -139,7 +139,7 @@ export function renderCatalog(root) {
     <main>
       <section class="paper border-b border-[#e2e8f0]">
         <div class="mx-auto max-w-6xl px-4 pb-12 pt-10 md:pt-14">
-          <div class="max-w-3xl">
+          <div>
             <p class="font-mono text-sm font-medium text-[#0369a1]">${L(
               'Física y Química · 2.º ESO – 2.º Bachillerato',
               'Physics and Chemistry · ages 13 to 18',
@@ -147,7 +147,7 @@ export function renderCatalog(root) {
               'Fisika eta Kimika · DBH 2. – Batxilergoko 2.',
               'Física e Química · 2.º ESO – 2.º Bacharelato',
             )}</p>
-            <h1 class="mt-3 text-4xl font-extrabold leading-[1.05] text-[#0f172a] sm:text-5xl md:text-6xl">${L(
+            <h1 class="mt-3 text-4xl font-extrabold leading-[1.05] text-balance text-[#0f172a] sm:text-5xl md:text-6xl xl:whitespace-nowrap">${L(
               'La física y la química, <span class="text-[#0369a1]">para tocarlas.</span>',
               'Physics and chemistry <span class="text-[#0369a1]">you can touch.</span>',
               'La física i la química, <span class="text-[#0369a1]">per tocar-les.</span>',

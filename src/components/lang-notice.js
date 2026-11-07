@@ -77,7 +77,9 @@ export function updateLangNotice() {
   el.setAttribute('role', 'region');
   el.setAttribute('aria-label', t.msg);
   el.className =
-    'fixed inset-x-4 bottom-4 z-40 mx-auto flex max-w-md items-center gap-3 rounded-lg border border-[#e2e8f0] bg-white p-3 pl-4 text-sm text-[#1e293b] shadow-lg';
+    // Móvil: franja arriba, dentro de la página (no tapa el contenido). Pantallas
+    // anchas: tarjeta flotante abajo.
+    'flex items-center gap-3 border-b border-[#bae6fd] bg-[#f0f9ff] px-4 py-2 text-sm text-[#1e293b] sm:fixed sm:inset-x-4 sm:bottom-4 sm:z-40 sm:mx-auto sm:max-w-md sm:rounded-lg sm:border sm:border-[#e2e8f0] sm:bg-white sm:p-3 sm:pl-4 sm:shadow-lg';
   el.innerHTML = `
     ${flag(lang)}
     <p class="flex-1">${t.msg}
@@ -88,7 +90,7 @@ export function updateLangNotice() {
     </button>`;
   el.querySelector('a').addEventListener('click', dismiss);
   el.querySelector('button').addEventListener('click', dismiss);
-  document.body.append(el);
+  document.body.insertBefore(el, document.getElementById('app'));
 }
 
 // Elegir un idioma en el selector también cuenta como elección.

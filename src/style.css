@@ -32,6 +32,19 @@
   }
 }
 
+/* La cabecera fija no tapa lo que recibe el foco con el teclado */
+html {
+  scroll-padding-top: 4.5rem;
+}
+/* Sin la espera del doble toque para hacer zoom en móviles y tabletas */
+a,
+button,
+input,
+select,
+summary {
+  touch-action: manipulation;
+}
+
 /* Títulos con Bricolage Grotesque (el texto sigue en Atkinson Hyperlegible) */
 h1,
 h2,

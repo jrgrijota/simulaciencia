@@ -98,7 +98,7 @@ export function renderCatalog(root) {
       <div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2">
         <a href="${home}" data-route class="mr-auto flex min-h-11 items-center gap-2 rounded-md text-[#0f172a]">
           <img src="/logo.svg" alt="SimulaCiencia" width="32" height="32" class="h-8 w-8" />
-          <span aria-hidden="true" class="font-display text-xl font-bold tracking-tight">Simula<span class="text-[#0369a1]">Ciencia</span></span>
+          <span aria-hidden="true" translate="no" class="font-display text-xl font-bold tracking-tight">Simula<span class="text-[#0369a1]">Ciencia</span></span>
         </a>
         <nav aria-label="${L('Principal', 'Main', 'Principal', 'Nagusia', 'Principal')}" class="flex items-center gap-1">
           <a href="#catalogo" class="${NAV_LINK} hidden md:inline-flex">${L('Simulaciones', 'Simulations', 'Simulacions', 'Simulazioak', 'Simulacións')}</a>
@@ -140,10 +140,11 @@ export function renderCatalog(root) {
           <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#64748b]"></i>
           <input
             id="search"
+            name="q"
             type="search"
             placeholder="${L('Buscar por nombre, tema o nivel…', 'Search by name, topic or year…', 'Cerca per nom, tema o nivell…', 'Bilatu izenaren, gaiaren edo mailaren arabera…', 'Buscar por nome, tema ou nivel…')}"
             autocomplete="off"
-            class="min-h-12 w-full rounded-lg border border-[#cbd5e1] bg-white py-3 pl-11 pr-4 text-[#1e293b] placeholder:text-[#64748b] focus:border-[#0369a1] focus:outline-none"
+            class="min-h-12 w-full rounded-lg border border-[#cbd5e1] bg-white py-3 pl-11 pr-4 text-[#1e293b] placeholder:text-[#64748b] focus:border-[#0369a1] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0369a1]/40"
           />
         </div>
 
@@ -229,16 +230,24 @@ export function renderCatalog(root) {
     });
   }
 
-  // El tema va en la dirección (?tema=ondas) para poder enlazar el catálogo ya filtrado.
+  // Los filtros y la búsqueda van en la dirección (?tema=ondas&materia=fisica&curso=2eso&q=…),
+  // para poder compartir o guardar el catálogo ya filtrado.
+  const PARAM = { topic: 'tema', tag: 'materia', course: 'curso' };
+  const slug = (v) => v.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   function syncUrl() {
     const url = new URL(location.href);
-    if (active.topic === 'all') url.searchParams.delete('tema');
-    else url.searchParams.set('tema', active.topic);
+    for (const [kind, name] of Object.entries(PARAM)) {
+      if (active[kind] === 'all') url.searchParams.delete(name);
+      else url.searchParams.set(name, slug(active[kind]));
+    }
+    if (term) url.searchParams.set('q', search.value.trim());
+    else url.searchParams.delete('q');
     history.replaceState(history.state, '', url);
   }
 
   search.addEventListener('input', (e) => {
     term = e.target.value.trim().toLowerCase();
+    syncUrl();
     apply();
   });
 
@@ -247,7 +256,7 @@ export function renderCatalog(root) {
       const btn = e.target.closest(`[data-${kind}]`);
       if (!btn) return;
       select(kind, btn.getAttribute(`data-${kind}`));
-      if (kind === 'topic') syncUrl();
+      syncUrl();
       apply();
     });
   }
@@ -277,12 +286,18 @@ export function renderCatalog(root) {
     }),
   );
 
-  // Catálogo ya filtrado desde la dirección (?tema=…) y ancla #catalogo.
-  const fromUrl = new URLSearchParams(location.search).get('tema');
-  if (TOPICS.some((t) => t.id === fromUrl)) {
-    select('topic', fromUrl);
-    apply();
+  // Catálogo ya filtrado desde la dirección y ancla #catalogo.
+  const params = new URLSearchParams(location.search);
+  for (const [kind, name] of Object.entries(PARAM)) {
+    const wanted = params.get(name);
+    const btn = wanted && [...bars[kind].querySelectorAll('button')].find((b) => slug(b.getAttribute(`data-${kind}`)) === wanted);
+    if (btn) select(kind, btn.getAttribute(`data-${kind}`));
   }
+  if (params.get('q')) {
+    search.value = params.get('q');
+    term = search.value.trim().toLowerCase();
+  }
+  apply();
   if (location.hash === '#catalogo') {
     requestAnimationFrame(() => root.querySelector('#catalogo').scrollIntoView({ block: 'start' }));
   }

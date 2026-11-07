@@ -48,9 +48,9 @@ export function cardMarkup(sim) {
     <div class="paper aspect-[16/9] border-b border-[#e2e8f0]">${thumbMarkup(sim.id)}</div>
     <div class="flex flex-1 flex-col p-5">
       <div class="flex flex-wrap gap-1.5">${tags}</div>
-      <h3 class="mt-3 text-xl font-bold text-[#0f172a]">${title}</h3>
+      <h3 class="mt-3 text-xl font-bold text-pretty text-[#0f172a]">${title}</h3>
       <p class="mt-1 font-mono text-xs text-[#475569]"><span class="sr-only">${L('Cursos:', 'Years:', 'Cursos:', 'Mailak:', 'Cursos:')} </span>${courses.join(' · ')}</p>
-      <p class="mt-2 text-[0.95rem] leading-relaxed text-[#475569]">${description}</p>
+      <p class="mt-2 break-words text-[0.95rem] leading-relaxed text-[#475569]">${description}</p>
       <div class="mt-auto flex flex-wrap gap-2 pt-4">
         <a
           href="${simPath(sim.id, lang)}"

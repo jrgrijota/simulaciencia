@@ -1,8 +1,8 @@
-import { navigateToCatalog } from '../router.js';
 import { simPath } from '../paths.js';
 import { getLang, L } from '../i18n.js';
 import { setDescription } from '../head.js';
 import { footerMarkup } from '../components/footer.js';
+import { siteHeaderMarkup } from '../components/site-header.js';
 import { loadGuide } from '../data/guides.js';
 import { renderGuideHtml, guideToc, guideSummary, downloadBase } from '../guides/shared.js';
 
@@ -46,18 +46,12 @@ export function renderGuide(root, sim) {
 
   root.innerHTML = `
   <div class="min-h-screen">
-    <header data-print-hide class="sticky top-0 z-20 border-b border-[#e2e8f0] bg-white/95 backdrop-blur">
-      <div class="mx-auto flex max-w-3xl items-center gap-3 px-4 py-3">
-        <button id="guide-back" class="inline-flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]">
-          <i data-lucide="arrow-left" class="h-4 w-4"></i>
-          ${L('Volver al catálogo', 'Back to catalogue')}
-        </button>
-        <a href="${simPath(sim.id, lang)}" data-route class="${BTN_SECONDARY} ml-auto">
+    ${siteHeaderMarkup({
+      extra: `<a href="${simPath(sim.id, lang)}" data-route class="inline-flex min-h-11 items-center gap-1.5 rounded-lg bg-[#0369a1] px-3 text-sm font-bold text-white transition-colors hover:bg-[#075985]">
           <i data-lucide="play" class="h-4 w-4"></i>
           <span class="hidden sm:inline">${L('Abrir la simulación', 'Open the simulation')}</span><span class="sm:hidden">${L('Simulación', 'Simulation')}</span>
-        </a>
-      </div>
-    </header>
+        </a>`,
+    })}
 
     <main data-print-main class="mx-auto max-w-3xl px-4 py-8">
       <p class="mb-1 text-sm font-semibold uppercase tracking-wide text-[#0369a1]">${L('Guía docente', 'Teacher guide')}</p>
@@ -109,7 +103,6 @@ export function renderGuide(root, sim) {
     );
   });
 
-  root.querySelector('#guide-back').addEventListener('click', navigateToCatalog);
 
   return () => {
     cancelled = true;

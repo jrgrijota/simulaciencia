@@ -32,7 +32,8 @@ export function renderCatalog(root) {
     ...TOPICS.map((t) => filterButton('data-topic', t.id, L(t.label), false)),
   ].join('');
 
-  const filters = ['all', ...allTags]
+  // «Física Cuántica» no tiene botón propio: solo la lleva Espectros, que ya sale con Química.
+  const filters = ['all', ...allTags.filter((t) => t !== 'Física Cuántica')]
     .map((value, i) =>
       filterButton('data-tag', value, i === 0 ? L('Todas', 'All', 'Totes', 'Guztiak', 'Todas') : `${subjectDot(value)}${tagLabel(value, lang)}`, i === 0),
     )
@@ -152,6 +153,7 @@ export function renderCatalog(root) {
             <span class="${LABEL}">${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}</span>
             <div id="topic-filters" role="group" aria-label="${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}" class="flex flex-wrap gap-2">${topicFilters}</div>
           </div>
+          <div class="flex flex-wrap gap-x-10 gap-y-3">
           <div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
             <span class="${LABEL}">${L('Materia', 'Subject', 'Matèria', 'Ikasgaia', 'Materia')}</span>
             <div id="filters" role="group" aria-label="${L('Materia', 'Subject', 'Matèria', 'Ikasgaia', 'Materia')}" class="flex flex-wrap gap-2">${filters}</div>
@@ -159,6 +161,7 @@ export function renderCatalog(root) {
           <div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
             <span class="${LABEL}">${L('Curso', 'Year', 'Curs', 'Maila', 'Curso')}</span>
             <div id="course-filters" role="group" aria-label="${L('Curso', 'Year', 'Curs', 'Maila', 'Curso')}" class="flex flex-wrap gap-2">${courseFilters}</div>
+          </div>
           </div>
         </div>
 

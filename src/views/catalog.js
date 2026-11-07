@@ -116,27 +116,13 @@ export function renderCatalog(root) {
       <section class="paper border-b border-[#e2e8f0]">
         <div class="mx-auto max-w-6xl px-4 py-10 md:py-14">
           <div class="text-center">
-            <p class="font-mono text-sm font-medium text-[#0369a1]">${L(
-              'Física y Química · 2.º ESO – 2.º Bachillerato',
-              'Physics and Chemistry · ages 13 to 18',
-              'Física i Química · 2n ESO – 2n Batxillerat',
-              'Fisika eta Kimika · DBH 2. – Batxilergoko 2.',
-              'Física e Química · 2.º ESO – 2.º Bacharelato',
-            )}</p>
-            <h1 class="mt-3 text-4xl font-extrabold leading-[1.05] text-balance text-[#0f172a] sm:text-5xl md:text-6xl xl:whitespace-nowrap">${L(
+            <h1 class="text-4xl font-extrabold leading-[1.05] text-balance text-[#0f172a] sm:text-5xl md:text-6xl xl:whitespace-nowrap">${L(
               'La física y la química, <span class="text-[#0369a1]">para tocarlas.</span>',
               'Physics and chemistry <span class="text-[#0369a1]">you can touch.</span>',
               'La física i la química, <span class="text-[#0369a1]">per tocar-les.</span>',
               'Fisika eta kimika, <span class="text-[#0369a1]">ukitzeko moduan.</span>',
               'A física e a química, <span class="text-[#0369a1]">para tocalas.</span>',
             )}</h1>
-            <p class="mx-auto mt-5 max-w-4xl text-balance text-lg leading-relaxed text-[#334155]">${L(
-              'Simulaciones interactivas, cada una con su guía docente.',
-              'Interactive simulations, each with its own teacher guide.',
-              'Simulacions interactives, cadascuna amb la seva guia docent (en castellà).',
-              'Simulazio interaktiboak, bakoitza bere irakaslearen gidarekin (gaztelaniaz).',
-              'Simulacións interactivas, cada unha coa súa guía docente (en castelán).',
-            )}</p>
             <ul class="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-bold text-[#334155]">
               <li class="flex items-center gap-2">${CHECK}${L('Guía docente incluida', 'Teacher guide included', 'Guia docent inclosa', 'Irakaslearen gida barne', 'Guía docente incluída')}</li>
               <li class="flex items-center gap-2">${CHECK}${L('Sin instalación ni cuenta', 'No install, no account', 'Sense instal·lació ni compte', 'Instalaziorik eta konturik gabe', 'Sen instalación nin conta')}</li>
@@ -146,26 +132,22 @@ export function renderCatalog(root) {
         </div>
       </section>
 
-      <section id="catalogo" class="mx-auto max-w-6xl px-4 py-12" aria-labelledby="catalogo-titulo">
-        <div class="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <h2 id="catalogo-titulo" tabindex="-1" class="text-3xl font-bold text-[#0f172a] focus:outline-none">${L('Todas las simulaciones', 'All simulations', 'Totes les simulacions', 'Simulazio guztiak', 'Todas as simulacións')}</h2>
-            <p id="count" class="mt-1 font-mono text-sm text-[#475569]" aria-live="polite">${simsWord(total)}</p>
-          </div>
-          <div data-print-hide class="relative w-full sm:w-80">
-            <label for="search" class="sr-only">${L('Buscar', 'Search', 'Cerca', 'Bilatu', 'Buscar')}</label>
-            <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#64748b]"></i>
-            <input
-              id="search"
-              type="search"
-              placeholder="${L('Buscar por nombre, tema o nivel…', 'Search by name, topic or year…', 'Cerca per nom, tema o nivell…', 'Bilatu izenaren, gaiaren edo mailaren arabera…', 'Buscar por nome, tema ou nivel…')}"
-              autocomplete="off"
-              class="min-h-11 w-full rounded-lg border border-[#cbd5e1] bg-white py-2.5 pl-11 pr-4 text-[#1e293b] placeholder:text-[#64748b] focus:border-[#0369a1] focus:outline-none"
-            />
-          </div>
+      <section id="catalogo" class="mx-auto max-w-6xl px-4 pb-12 pt-8" aria-labelledby="catalogo-titulo">
+        <h2 id="catalogo-titulo" tabindex="-1" class="sr-only">${L('Todas las simulaciones', 'All simulations', 'Totes les simulacions', 'Simulazio guztiak', 'Todas as simulacións')}</h2>
+        <p id="count" class="sr-only" aria-live="polite">${simsWord(total)}</p>
+        <div data-print-hide class="relative">
+          <label for="search" class="sr-only">${L('Buscar', 'Search', 'Cerca', 'Bilatu', 'Buscar')}</label>
+          <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#64748b]"></i>
+          <input
+            id="search"
+            type="search"
+            placeholder="${L('Buscar por nombre, tema o nivel…', 'Search by name, topic or year…', 'Cerca per nom, tema o nivell…', 'Bilatu izenaren, gaiaren edo mailaren arabera…', 'Buscar por nome, tema ou nivel…')}"
+            autocomplete="off"
+            class="min-h-12 w-full rounded-lg border border-[#cbd5e1] bg-white py-3 pl-11 pr-4 text-[#1e293b] placeholder:text-[#64748b] focus:border-[#0369a1] focus:outline-none"
+          />
         </div>
 
-        <div data-print-hide class="mt-6 flex flex-col gap-3 rounded-xl border border-[#e2e8f0] bg-white p-4">
+        <div data-print-hide class="mt-4 flex flex-col gap-3 rounded-xl border border-[#e2e8f0] bg-white p-4">
           <div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
             <span class="${LABEL}">${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}</span>
             <div id="topic-filters" role="group" aria-label="${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}" class="flex flex-wrap gap-2">${topicFilters}</div>

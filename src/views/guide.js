@@ -54,7 +54,6 @@ export function renderGuide(root, sim) {
     })}
 
     <main data-print-main class="mx-auto max-w-3xl px-4 py-8">
-      <p class="mb-1 text-sm font-semibold uppercase tracking-wide text-[#0369a1]">${L('Guía docente', 'Teacher guide')}</p>
       <div id="guide-body" class="guide-prose">
         <p class="text-sm text-[#64748b]">${L('Cargando la guía…', 'Loading the guide…')}</p>
       </div>

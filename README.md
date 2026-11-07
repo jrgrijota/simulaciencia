@@ -80,7 +80,15 @@ Para pregenerar las páginas y generar las descargas de las guías en local hace
 sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
 
 - **Catálogo:** [`src/data/simulations.js`](src/data/simulations.js) es la única fuente de verdad.
-  Para añadir una simulación basta con añadir una entrada; el sitemap se regenera solo.
+  Para añadir una simulación basta con añadir una entrada (y su id en el bloque temático que le toque,
+  `TOPICS` en el mismo archivo); el sitemap se regenera solo.
+- **Portada:** [`src/views/catalog.js`](src/views/catalog.js). El hero incrusta la simulación de
+  espectros ([`src/components/hero.js`](src/components/hero.js)); en móvil, y con «reducir movimiento»,
+  muestra una captura de `public/portada/espectros-<idioma>.jpg` (rehacerlas si la simulación cambia de
+  aspecto). Cada tarjeta lleva una miniatura SVG de [`src/components/thumbs.js`](src/components/thumbs.js):
+  al añadir una simulación, dibuja también la suya. Los bloques temáticos enlazan al catálogo filtrado
+  con `?tema=<bloque>`. Fuentes: Bricolage Grotesque (títulos), Atkinson Hyperlegible (texto) y
+  JetBrains Mono (datos), servidas con Fontsource.
 - **Guías docentes:** cada archivo `guias/<nombre>.md` es la guía de la simulación `sim-<nombre>`.
   Al añadir o sustituir uno, el build crea su página, el botón «Guía docente», la entrada del
   sitemap y las descargas (`scripts/build-guides.mjs`). Los enlaces a `jrgrijota.github.io` se

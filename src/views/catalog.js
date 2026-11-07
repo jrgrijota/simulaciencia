@@ -12,7 +12,6 @@ const FILTER_BASE =
 const FILTER_ON = 'border-[#0369a1] bg-[#0369a1] text-white';
 const FILTER_OFF = 'border-[#cbd5e1] bg-white text-[#334155] hover:border-[#0369a1] hover:text-[#0369a1]';
 
-const ARROW = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
 const CHECK = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0"><path d="M4 12l5 5L20 6"/></svg>`;
 const GITHUB_URL = 'https://github.com/jrgrijota/simulaciencia';
 
@@ -231,17 +230,7 @@ export function renderCatalog(root) {
       <section data-print-hide class="bg-[#0f172a]" aria-labelledby="aula-titulo">
         <div class="mx-auto max-w-6xl px-4 py-14">
           <h2 id="aula-titulo" class="text-3xl font-bold text-white">${L('Pensado para el aula', 'Made for the classroom', "Pensat per a l'aula", 'Ikasgelarako pentsatua', 'Pensado para a aula')}</h2>
-          <p class="mt-1 max-w-2xl text-[#cbd5e1]">${L(
-            'Las crea un profesor de Física y Química de la Comunidad de Madrid, a la medida de sus clases.',
-            'Made by a Physics and Chemistry teacher in Madrid, Spain, for real lessons.',
-            'Les crea un professor de Física i Química de la Comunitat de Madrid, a la mida de les seves classes.',
-            'Madrilgo Erkidegoko Fisika eta Kimikako irakasle batek sortzen ditu, bere eskoletarako neurrira.',
-            'Están feitas por un profesor de Física e Química da Comunidade de Madrid, á medida das súas clases.',
-          )}</p>
-          <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3">${features}</div>
-          <a href="${about}" data-route class="mt-8 inline-flex min-h-11 items-center gap-2 font-bold text-[#7dd3fc] underline-offset-4 hover:text-white hover:underline">
-            ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')} ${ARROW}
-          </a>
+          <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">${features}</div>
         </div>
       </section>
     </main>

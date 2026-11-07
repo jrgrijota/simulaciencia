@@ -57,34 +57,41 @@ const THUMBS = {
       <text x="290" y="154" text-anchor="end">λ (nm)</text>
     </g>`,
 
-  // Recipiente con émbolo y partículas en movimiento.
+  // Gas en un globo (membrana flexible, el modo inicial): la membrana roja se ajusta
+  // a la presión del gas; la línea discontinua es el tamaño de referencia.
   'sim-gases': `
-    <line x1="160" y1="14" x2="160" y2="44" stroke="#0f172a" stroke-width="3"/>
-    <rect x="72" y="44" width="176" height="10" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.5"/>
-    <path d="M70 34V165H250V34" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <circle cx="128" cy="92" r="62" fill="none" stroke="#16a34a" stroke-width="1.2" stroke-dasharray="4 4"/>
+    <path d="M86 42C104 30 140 26 160 36C178 46 192 70 190 96C188 122 172 146 146 154C120 160 92 152 76 132C62 114 62 84 70 64C74 54 80 46 86 42Z" fill="#fee2e2" fill-opacity=".45" stroke="#dc2626" stroke-width="2.5" stroke-linejoin="round"/>
     <g fill="#0369a1">
-      <circle cx="95" cy="80" r="4.5"/><circle cx="132" cy="104" r="4.5"/><circle cx="172" cy="74" r="4.5"/>
-      <circle cx="216" cy="94" r="4.5"/><circle cx="102" cy="140" r="4.5"/><circle cx="148" cy="146" r="4.5"/>
-      <circle cx="192" cy="124" r="4.5"/><circle cx="230" cy="148" r="4.5"/><circle cx="122" cy="70" r="4.5"/>
+      <circle cx="98" cy="64" r="3"/><circle cx="136" cy="54" r="3"/><circle cx="166" cy="78" r="3"/><circle cx="88" cy="100" r="3"/>
+      <circle cx="124" cy="96" r="3"/><circle cx="170" cy="112" r="3"/><circle cx="108" cy="132" r="3"/><circle cx="146" cy="138" r="3"/>
     </g>
-    <g stroke="#0369a1" stroke-width="1.5" stroke-linecap="round" opacity=".6">
-      <path d="M95 80L84 72"/><path d="M132 104L145 98"/><path d="M172 74L180 85"/><path d="M216 94L205 104"/>
-      <path d="M102 140L90 134"/><path d="M148 146L160 152"/><path d="M192 124L196 112"/><path d="M230 148L238 138"/><path d="M122 70L134 66"/>
+    <g fill="#7c3aed">
+      <circle cx="116" cy="74" r="3"/><circle cx="150" cy="96" r="3"/><circle cx="92" cy="122" r="3"/><circle cx="132" cy="118" r="3"/><circle cx="154" cy="60" r="3"/>
+    </g>
+    <g ${MONO}>
+      <text x="220" y="62" font-size="11" fill="#475569">P</text>
+      <text x="220" y="82" font-size="16" font-weight="500" fill="#0f172a">1,22 atm</text>
+      <text x="220" y="112" font-size="11" fill="#475569">V</text>
+      <text x="220" y="132" font-size="16" font-weight="500" fill="#0f172a">0,89 L</text>
     </g>`,
 
-  // Dispersión de Rutherford: trayectorias de partículas alfa junto a un núcleo.
+  // Dispersión de partículas α: la fuente a la izquierda, un átomo de Thomson
+  // (esfera con cargas positivas y electrones) y el detector en arco.
   'sim-modelos': `
-    <g fill="none" stroke="#0369a1" stroke-width="1.8" opacity=".85">
-      <path d="M20 30L300 28"/>
-      <path d="M20 58C150 58 205 58 300 46"/>
-      <path d="M20 78C160 78 205 70 300 18"/>
-      <path d="M20 90C180 90 222 94 120 168"/>
-      <path d="M20 106C160 106 210 114 300 152"/>
-      <path d="M20 128C150 128 210 132 300 142"/>
-      <path d="M20 154L300 156"/>
+    <rect x="22" y="22" width="26" height="136" rx="3" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.5"/>
+    <text x="35" y="96" text-anchor="middle" ${MONO} font-size="16" font-weight="500" fill="#0f172a">α</text>
+    <path d="M196 14A92 92 0 0 1 196 166" fill="none" stroke="#0369a1" stroke-width="2.5" stroke-linecap="round"/>
+    <g stroke="#0369a1" stroke-width="1.6" stroke-linecap="round" opacity=".7">
+      <path d="M52 34H200"/><path d="M52 146H200"/>
     </g>
-    <circle cx="228" cy="88" r="14" fill="#fed7aa" opacity=".7"/>
-    <circle cx="228" cy="88" r="6" fill="#c2410c"/>`,
+    <circle cx="170" cy="90" r="46" fill="#fde68a" fill-opacity=".6" stroke="#b45309" stroke-width="1.5"/>
+    <g stroke="#b45309" stroke-width="1.6" stroke-linecap="round">
+      <path d="M146 72h8M150 68v8M178 66h8M182 62v8M156 98h8M160 94v8M186 92h8M190 88v8M168 120h8M172 116v8M138 92h6M141 89v6M196 114h6M199 111v6"/>
+    </g>
+    <g fill="#0369a1">
+      <circle cx="166" cy="78" r="2.5"/><circle cx="148" cy="112" r="2.5"/><circle cx="196" cy="74" r="2.5"/><circle cx="176" cy="104" r="2.5"/><circle cx="164" cy="56" r="2.5"/>
+    </g>`,
 
   // Concentración de reactivo y de producto frente al tiempo.
   'sim-velocidad-reaccion': `
@@ -98,18 +105,17 @@ const THUMBS = {
       <text x="36" y="32" fill="#475569">c</text>
     </g>`,
 
-  // Zoom ×10 sucesivo hasta el núcleo.
+  // Átomo de hidrógeno a escala: el núcleo, en el centro, es demasiado pequeño para
+  // verse; la flecha lo señala. Debajo, el diámetro del átomo.
   'sim-atomo-real': `
-    <g fill="none" stroke="#64748b" stroke-width="1.4">
-      <circle cx="160" cy="90" r="76" stroke-dasharray="4 5"/>
-      <rect x="128" y="58" width="64" height="64"/>
-      <rect x="150" y="80" width="20" height="20"/>
-      <rect x="157" y="87" width="6" height="6"/>
-    </g>
-    <path d="M128 58L84 14M192 58L236 14" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 4"/>
-    <circle cx="160" cy="90" r="2" fill="#c2410c"/>
-    <circle cx="96" cy="128" r="3.5" fill="#0369a1"/>
-    <text x="250" y="40" ${MONO} font-size="14" fill="#0369a1">×10</text>`,
+    <circle cx="160" cy="76" r="60" fill="#e0f2fe" fill-opacity=".5" stroke="#0369a1" stroke-width="1.6"/>
+    <circle cx="137" cy="131.5" r="3.5" fill="#0369a1"/>
+    ${arrow(84, 18, 158, 74, '#dc2626', 2)}
+    <circle cx="160" cy="76" r="1.2" fill="#0f172a"/>
+    ${arrow(160, 152, 100, 152, '#0369a1', 1.8)}
+    ${arrow(160, 152, 220, 152, '#0369a1', 1.8)}
+    <path d="M100 145V159M220 145V159" stroke="#0369a1" stroke-width="1.8"/>
+    <text x="160" y="172" text-anchor="middle" ${MONO} font-size="12" fill="#0369a1">D = 62 pm</text>`,
 
   // Red iónica: cationes y aniones alternados.
   'sim-enlaces-quimicos': (() => {

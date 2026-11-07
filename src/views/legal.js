@@ -57,8 +57,11 @@ export function renderLegal(root) {
       <p class="${P}">
         Las bibliotecas de terceros mantienen sus propias licencias, entre ellas
         ${ext('https://p5js.org', 'p5.js')} (LGPL),
-        ${ext('https://lucide.dev', 'Lucide')} (ISC) y la tipografía
-        ${ext('https://rsms.me/inter/', 'Inter')} (SIL Open Font License).
+        ${ext('https://lucide.dev', 'Lucide')} (ISC) y las tipografías
+        ${ext('https://www.brailleinstitute.org/freefont/', 'Atkinson Hyperlegible')},
+        ${ext('https://github.com/ateliertriay/bricolage', 'Bricolage Grotesque')},
+        ${ext('https://www.jetbrains.com/lp/mono/', 'JetBrains Mono')} e
+        ${ext('https://rsms.me/inter/', 'Inter')} (las guías descargables), todas con SIL Open Font License.
       </p>
 
       <h2 class="${H2}">4. Responsabilidad</h2>

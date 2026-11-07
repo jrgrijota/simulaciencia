@@ -1,8 +1,11 @@
-// Inter servida desde el propio portal (sin peticiones a Google Fonts).
-import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
-import '@fontsource/inter/latin-600.css';
-import '@fontsource/inter/latin-700.css';
+// Fuentes servidas desde el propio portal (sin peticiones a Google Fonts):
+// Atkinson Hyperlegible para el texto, Bricolage Grotesque para los títulos y
+// JetBrains Mono para los datos.
+import '@fontsource/atkinson-hyperlegible/latin-400.css';
+import '@fontsource/atkinson-hyperlegible/latin-700.css';
+import '@fontsource-variable/bricolage-grotesque/wght.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-500.css';
 import './style.css';
 import {
   createIcons,

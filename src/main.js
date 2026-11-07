@@ -23,6 +23,7 @@ import {
   Info,
   Download,
   BookOpen,
+  SlidersHorizontal,
 } from 'lucide';
 
 import { getRoute, onRouteChange, navigateTo } from './router.js';
@@ -38,7 +39,7 @@ import { hasGuide } from './data/guides.js';
 import { updateLangNotice } from './components/lang-notice.js';
 
 const app = document.getElementById('app');
-const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen };
+const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal };
 
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };

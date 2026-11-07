@@ -45,12 +45,14 @@ export function cardMarkup(sim) {
     data-sim-id="${sim.id}"
     data-search="${haystack}"
   >
-    <div class="paper aspect-[16/9] border-b border-[#e2e8f0]">${thumbMarkup(sim.id)}</div>
-    <div class="flex flex-1 flex-col p-5">
+    <div class="paper aspect-[2/1] border-b border-[#e2e8f0] sm:aspect-[16/9]">${thumbMarkup(sim.id)}</div>
+    <div class="flex flex-1 flex-col p-4 sm:p-5">
       <div class="flex flex-wrap gap-1.5">${tags}</div>
-      <h3 class="mt-3 text-xl font-bold text-pretty text-[#0f172a]">${title}</h3>
-      <p class="mt-1 font-mono text-xs text-[#475569]"><span class="sr-only">${L('Cursos:', 'Years:', 'Cursos:', 'Mailak:', 'Cursos:')} </span>${courses.join(' · ')}</p>
-      <p class="mt-2 break-words text-[0.95rem] leading-relaxed text-[#475569]">${description}</p>
+      <h3 class="mt-3 text-lg font-bold text-pretty text-[#0f172a] sm:text-xl">
+        <a href="${simPath(sim.id, lang)}" data-route class="rounded-sm underline-offset-4 hover:text-[#0369a1] hover:underline">${title}</a>
+      </h3>
+      <p class="mt-1 text-sm font-bold text-[#475569]"><span class="sr-only">${L('Cursos:', 'Years:', 'Cursos:', 'Mailak:', 'Cursos:')} </span>${courses.join(' · ')}</p>
+      <p class="mt-2 line-clamp-3 break-words text-[0.95rem] leading-relaxed text-[#475569] sm:line-clamp-none">${description}</p>
       <div class="mt-auto flex flex-wrap gap-2 pt-4">
         <a
           href="${simPath(sim.id, lang)}"

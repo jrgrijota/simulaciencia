@@ -1,10 +1,9 @@
-// Portada: hero con la simulación de espectros, bloques temáticos, catálogo con
+// Portada: presentación, bloques temáticos, catálogo con
 // buscador y filtros (tema, materia y curso) y «Pensado para el aula».
 import { simulations, allTags, COURSES, TOPICS, tagLabel } from '../data/simulations.js';
 import { cardMarkup, subjectDot } from '../components/card.js';
 import { footerMarkup } from '../components/footer.js';
 import { langSwitchMarkup } from '../components/lang-switch.js';
-import { heroFigureMarkup, mountHero } from '../components/hero.js';
 import { pagePath, homePath } from '../paths.js';
 import { getLang, L } from '../i18n.js';
 
@@ -138,7 +137,7 @@ export function renderCatalog(root) {
 
     <main>
       <section class="paper border-b border-[#e2e8f0]">
-        <div class="mx-auto max-w-6xl px-4 pb-12 pt-10 md:pt-14">
+        <div class="mx-auto max-w-6xl px-4 py-10 md:py-14">
           <div class="text-center">
             <p class="font-mono text-sm font-medium text-[#0369a1]">${L(
               'Física y Química · 2.º ESO – 2.º Bachillerato',
@@ -161,21 +160,12 @@ export function renderCatalog(root) {
               'Simulazio interaktiboak, bakoitza bere irakaslearen gidarekin (gaztelaniaz).',
               'Simulacións interactivas, cada unha coa súa guía docente (en castelán).',
             )}</p>
-            <div class="mt-7 flex flex-wrap justify-center gap-3">
-              <a href="#catalogo" class="inline-flex min-h-12 items-center gap-2 rounded-lg bg-[#0369a1] px-5 py-3 font-bold text-white shadow-sm transition-colors hover:bg-[#075985]">
-                ${L('Explorar simulaciones', 'Browse simulations', 'Explora les simulacions', 'Arakatu simulazioak', 'Explorar simulacións')} ${ARROW}
-              </a>
-              <a href="${about}" data-route class="inline-flex min-h-12 items-center gap-2 rounded-lg border border-[#cbd5e1] bg-white px-5 py-3 font-bold text-[#0f172a] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
-                ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}
-              </a>
-            </div>
-            <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-bold text-[#334155]">
+            <ul class="mt-5 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-bold text-[#334155]">
               <li class="flex items-center gap-2">${CHECK}${L('Guía docente incluida', 'Teacher guide included', 'Guia docent inclosa', 'Irakaslearen gida barne', 'Guía docente incluída')}</li>
               <li class="flex items-center gap-2">${CHECK}${L('Sin instalación ni cuenta', 'No install, no account', 'Sense instal·lació ni compte', 'Instalaziorik eta konturik gabe', 'Sen instalación nin conta')}</li>
               <li class="flex items-center gap-2">${CHECK}${L('Libre: MIT y CC BY-SA 4.0', 'Open: MIT and CC BY-SA 4.0', 'Lliure: MIT i CC BY-SA 4.0', 'Librea: MIT eta CC BY-SA 4.0', 'Libre: MIT e CC BY-SA 4.0')}</li>
             </ul>
           </div>
-          <div class="mt-10">${heroFigureMarkup()}</div>
         </div>
       </section>
 
@@ -376,5 +366,6 @@ export function renderCatalog(root) {
     requestAnimationFrame(() => root.querySelector('#catalogo').scrollIntoView({ block: 'start' }));
   }
 
-  return mountHero(root);
+  // El catálogo no instala listeners globales: nada que limpiar.
+  return null;
 }

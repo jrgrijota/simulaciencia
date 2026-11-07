@@ -82,10 +82,7 @@ sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
 - **Catálogo:** [`src/data/simulations.js`](src/data/simulations.js) es la única fuente de verdad.
   Para añadir una simulación basta con añadir una entrada (y su id en el bloque temático que le toque,
   `TOPICS` en el mismo archivo); el sitemap se regenera solo.
-- **Portada:** [`src/views/catalog.js`](src/views/catalog.js). El hero incrusta la simulación de
-  espectros ([`src/components/hero.js`](src/components/hero.js)); en móvil, y con «reducir movimiento»,
-  muestra una captura de `public/portada/espectros-<idioma>.jpg` (rehacerlas si la simulación cambia de
-  aspecto). Cada tarjeta lleva una miniatura SVG de [`src/components/thumbs.js`](src/components/thumbs.js):
+- **Portada:** [`src/views/catalog.js`](src/views/catalog.js). Cada tarjeta lleva una miniatura SVG de [`src/components/thumbs.js`](src/components/thumbs.js):
   al añadir una simulación, dibuja también la suya. Los bloques temáticos enlazan al catálogo filtrado
   con `?tema=<bloque>`. Fuentes: Bricolage Grotesque (títulos), Atkinson Hyperlegible (texto) y
   JetBrains Mono (datos), servidas con Fontsource.

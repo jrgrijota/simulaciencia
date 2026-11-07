@@ -82,9 +82,8 @@ async function snapshot(origin, route) {
   );
   if (!/<div id="app">\s*</.test(stdout)) throw new Error(`${route}: la página quedó vacía`);
   if (stdout.includes('Cargando la guía…') || stdout.includes('Loading the guide…')) throw new Error(`${route}: la guía no terminó de cargar`);
-  // Los iframes (laboratorio y simulación de la portada) los vuelve a crear main.js
-  // al cargar; sin src no se descargan dos veces.
-  return stdout.replace(/(<iframe id="(?:lab|hero)-frame"[^>]*?) src="[^"]*"/g, '$1');
+  // El iframe lo vuelve a crear main.js al cargar; sin src no se descarga dos veces.
+  return stdout.replace(/(<iframe id="lab-frame"[^>]*?) src="[^"]*"/, '$1');
 }
 
 let pages = 0;

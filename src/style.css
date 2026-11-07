@@ -57,7 +57,7 @@ body {
 }
 
 /* ===== Portada ===== */
-/* Papel milimetrado de fondo (hero y miniaturas de las tarjetas) */
+/* Papel milimetrado de fondo (cabecera de la portada y miniaturas de las tarjetas) */
 .paper {
   background-color: #ffffff;
   background-image:
@@ -69,18 +69,6 @@ body {
 #catalogo {
   scroll-margin-top: 4.5rem;
 }
-/* Simulación incrustada en el hero: se dibuja a 1200 px de ancho como mínimo y
-   se escala para que quepa (ver hero.js) */
-.hero-stage {
-  aspect-ratio: 1200 / 700;
-}
-.hero-stage iframe {
-  position: absolute;
-  inset: 0 auto auto 0;
-  transform-origin: top left;
-  border: 0;
-}
-
 /* ===== Skeleton / loader del iframe ===== */
 @keyframes lab-shimmer {
   0% {

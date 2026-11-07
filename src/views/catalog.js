@@ -32,8 +32,7 @@ export function renderCatalog(root) {
     ...TOPICS.map((t) => filterButton('data-topic', t.id, L(t.label), false)),
   ].join('');
 
-  // «Física Cuántica» no tiene botón propio: solo la lleva Espectros, que ya sale con Química.
-  const filters = ['all', ...allTags.filter((t) => t !== 'Física Cuántica')]
+  const filters = ['all', ...allTags]
     .map((value, i) =>
       filterButton('data-tag', value, i === 0 ? L('Todas', 'All', 'Totes', 'Guztiak', 'Todas') : `${subjectDot(value)}${tagLabel(value, lang)}`, i === 0),
     )

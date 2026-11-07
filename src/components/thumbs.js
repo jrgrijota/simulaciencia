@@ -3,7 +3,7 @@
 // descripción de la tarjeta ya dicen qué es. Lienzo de 320 × 180.
 //
 // Colores: tinta #0f172a, gris #64748b, azul #0369a1 (Física), naranja #c2410c
-// (Química), violeta #6d28d9 (Física Cuántica).
+// (Química) y violeta #6d28d9.
 
 const MONO = `font-family="'JetBrains Mono', ui-monospace, monospace"`;
 

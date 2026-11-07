@@ -7,7 +7,7 @@ import { getLang, L } from '../i18n.js';
 import { thumbMarkup } from './thumbs.js';
 
 // Color de cada materia (punto de la etiqueta).
-export const SUBJECT_COLOR = { Física: '#0369a1', Química: '#c2410c', 'Física Cuántica': '#6d28d9' };
+export const SUBJECT_COLOR = { Física: '#0369a1', Química: '#c2410c' };
 
 export const subjectDot = (tag) =>
   `<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false" class="shrink-0"><circle cx="5" cy="5" r="5" fill="${SUBJECT_COLOR[tag] || '#64748b'}"/></svg>`;

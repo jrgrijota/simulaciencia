@@ -76,7 +76,7 @@ export const simulations = [
     title: 'Espectros Atómicos',
     description:
       'Visualización e interacción con los espectros de emisión y absorción de diferentes elementos químicos y sus transiciones electrónicas.',
-    tags: ['Química', 'Física Cuántica', 'ESO', 'Bachillerato'],
+    tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-espectros/',
     responsive: true,
     courses: ['4ESO', '1BACH', '2BACH'],
@@ -500,10 +500,10 @@ export function simUrl(sim, lang = 'es') {
 
 // Las etiquetas se guardan en español (son también el valor de los filtros).
 const TAGS = {
-  en: { Física: 'Physics', Química: 'Chemistry', 'Física Cuántica': 'Quantum Physics' },
-  ca: { Física: 'Física', Química: 'Química', 'Física Cuántica': 'Física Quàntica' },
-  eu: { Física: 'Fisika', Química: 'Kimika', 'Física Cuántica': 'Fisika kuantikoa' },
-  gl: { Física: 'Física', Química: 'Química', 'Física Cuántica': 'Física cuántica' },
+  en: { Física: 'Physics', Química: 'Chemistry' },
+  ca: { Física: 'Física', Química: 'Química' },
+  eu: { Física: 'Fisika', Química: 'Kimika' },
+  gl: { Física: 'Física', Química: 'Química' },
 };
 export function tagLabel(tag, lang = 'es') {
   return TAGS[lang]?.[tag] || tag;

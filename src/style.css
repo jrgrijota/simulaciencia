@@ -15,7 +15,6 @@
   --color-accent-strong: #075985; /* azul hover */
   --color-sim-cyan: #00c8ff; /* cian característico de las simulaciones */
   --color-chem: #c2410c; /* Química: naranja (contraste AA sobre blanco) */
-  --color-quantum: #6d28d9; /* Física Cuántica: violeta */
 }
 
 @media (prefers-reduced-motion: no-preference) {

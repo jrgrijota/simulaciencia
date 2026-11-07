@@ -1,8 +1,8 @@
 // Tarjeta de simulación: miniatura, materia, cursos, título, descripción y los dos
 // enlaces. Todo el contenido visible de un vistazo, sin efectos hover que oculten datos.
-import { guideLangFor } from '../data/guides.js';
-import { subjectTags, courseLabel, simTitle, simDescription, tagLabel } from '../data/simulations.js';
-import { simPath, guidePath } from '../paths.js';
+import { guideLangFor, hasGuion } from '../data/guides.js';
+import { subjectTags, courseLabel, simTitle, simDescription, tagLabel, isPractical } from '../data/simulations.js';
+import { simPath, guidePath, guionPath } from '../paths.js';
 import { getLang, L } from '../i18n.js';
 import { thumbMarkup } from './thumbs.js';
 
@@ -16,14 +16,39 @@ const TAG_CLASS =
   'inline-flex items-center gap-1.5 rounded-full border border-[#e2e8f0] bg-white px-2.5 py-0.5 text-xs font-bold text-[#334155]';
 const BUTTON = 'inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm font-bold transition-colors';
 
-export function cardMarkup(sim) {
+// Tipo de recurso, encima del título: solo cuando el catálogo mezcla simulaciones y
+// prácticas (showKind). Las prácticas llevan además su franja de color.
+const KIND_BADGE = {
+  simulacion: { icon: 'monitor-play', color: '#0369a1', text: 'Simulación' },
+  practica: { icon: 'flask-conical', color: '#7c2d4f', text: 'Práctica de laboratorio' },
+};
+
+export function cardMarkup(sim, { showKind = false } = {}) {
   const lang = getLang();
+  const practical = isPractical(sim);
   const title = simTitle(sim, lang);
   const description = simDescription(sim, lang);
   const courses = sim.courses.map((c) => courseLabel(c, lang));
   const tagLabels = sim.tags.map((t) => tagLabel(t, lang));
-  const haystack = `${title} ${description} ${tagLabels.join(' ')} ${courses.join(' ')}`.toLowerCase();
+  const kindWords = practical ? 'práctica de laboratorio' : '';
+  const haystack = `${title} ${description} ${tagLabels.join(' ')} ${courses.join(' ')} ${kindWords}`.toLowerCase();
   const guide = guideLangFor(sim.id, lang);
+  const guionButton =
+    practical && hasGuion(sim.id)
+      ? `
+      <a
+        href="${guionPath(sim.id)}"
+        data-route
+        class="${BUTTON} border border-[#cbd5e1] bg-white text-[#1e293b] hover:border-[#0369a1] hover:text-[#0369a1]"
+      >
+        <i data-lucide="clipboard-list" class="h-4 w-4"></i>
+        Guion del alumnado
+      </a>`
+      : '';
+  const kind = KIND_BADGE[practical ? 'practica' : 'simulacion'];
+  const kindLine = showKind
+    ? `<p class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide" style="color:${kind.color}"><i data-lucide="${kind.icon}" class="h-4 w-4"></i>${kind.text}</p>`
+    : '';
   const guideButton = guide
     ? `
       <a
@@ -41,13 +66,15 @@ export function cardMarkup(sim) {
 
   return `
   <article
-    class="sim-card flex flex-col overflow-hidden rounded-xl border border-[#e2e8f0] bg-white shadow-sm"
+    class="sim-card flex flex-col overflow-hidden rounded-xl border bg-white shadow-sm ${practical ? 'border-[#d8b4c6] border-t-4 border-t-[#7c2d4f]' : 'border-[#e2e8f0]'}"
     data-sim-id="${sim.id}"
+    data-kind="${practical ? 'practica' : 'simulacion'}"
     data-search="${haystack}"
   >
     <div class="paper aspect-[2/1] border-b border-[#e2e8f0] sm:aspect-[16/9]">${thumbMarkup(sim.id)}</div>
     <div class="flex flex-1 flex-col p-4 sm:p-5">
-      <div class="flex flex-wrap gap-1.5">${tags}</div>
+      ${kindLine}
+      <div class="${showKind ? 'mt-2 ' : ''}flex flex-wrap gap-1.5">${tags}</div>
       <h3 class="mt-3 text-lg font-bold text-pretty text-[#0f172a] sm:text-xl">
         <a href="${simPath(sim.id, lang)}" data-route class="rounded-sm underline-offset-4 hover:text-[#0369a1] hover:underline">${title}</a>
       </h3>
@@ -60,8 +87,8 @@ export function cardMarkup(sim) {
           class="${BUTTON} bg-[#0369a1] text-white hover:bg-[#075985]"
         >
           <i data-lucide="play" class="h-4 w-4"></i>
-          ${L('Abrir simulación', 'Open simulation', 'Obre la simulació', 'Ireki simulazioa', 'Abrir simulación')}
-        </a>${guideButton}
+          ${practical ? 'Abrir práctica' : L('Abrir simulación', 'Open simulation', 'Obre la simulació', 'Ireki simulazioa', 'Abrir simulación')}
+        </a>${guideButton}${guionButton}
       </div>
     </div>
   </article>`;

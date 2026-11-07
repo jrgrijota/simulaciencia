@@ -1,9 +1,9 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import { readdirSync } from 'node:fs';
-import { simulations } from './src/data/simulations.js';
+import { simulationsIn } from './src/data/simulations.js';
 import { guideIdFromFile } from './src/guides/shared.js';
-import { simPath, guidePath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, parsePath, translatedPath, absoluteUrl } from './src/paths.js';
+import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, parsePath, translatedPath, absoluteUrl } from './src/paths.js';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
@@ -16,14 +16,18 @@ function sitemap() {
         readdirSync(lang === 'es' ? 'guias' : `guias/${lang}`)
           .filter((f) => f.endsWith('.md'))
           .map((f) => guidePath(guideIdFromFile(f), lang));
+      const guiones = readdirSync('guiones')
+        .filter((f) => f.endsWith('.md'))
+        .map((f) => guionPath(guideIdFromFile(f)));
       const paths = [
         homePath('es'),
-        ...simulations.map((s) => simPath(s.id)),
+        ...simulationsIn('es').map((s) => simPath(s.id)),
         ...guides('es'),
+        ...guiones,
         ...Object.values(PAGE_PATHS),
         ...LANGS.filter((l) => l !== 'es').flatMap((l) => [
           homePath(l),
-          ...simulations.map((s) => simPath(s.id, l)),
+          ...simulationsIn(l).map((s) => simPath(s.id, l)),
           ...(GUIDE_LANGS.includes(l) ? guides(l) : []),
           ...pagePaths(l),
         ]),

@@ -1,6 +1,7 @@
 // Genera las descargas de cada guía docente (PDF, Word y LibreOffice) a partir
-// de guias/*.md (y de su traducción, guias/en/*.md). Se ejecuta tras `vite build`
-// y escribe en dist/guias/ y dist/en/guides/.
+// de guias/*.md (y de su traducción, guias/en/*.md), y las de los guiones del
+// alumnado de las prácticas (guiones/*.md). Se ejecuta tras `vite build` y escribe
+// en dist/guias/, dist/en/guides/ y dist/guiones/.
 //
 //   PDF:  la guía en HTML (mismo Markdown que la web) impresa con Chrome sin interfaz.
 //   DOCX y ODT: Pandoc.
@@ -23,7 +24,7 @@ import {
   renderGuideHtml,
   rewriteLinks,
 } from '../src/guides/shared.js';
-import { absoluteUrl, guidePath, GUIDE_LANGS } from '../src/paths.js';
+import { absoluteUrl, guidePath, guionPath, GUIDE_LANGS } from '../src/paths.js';
 import { findTool, findChrome } from './tools.mjs';
 
 // Pandoc deja las tablas sin bordes y con letra con serifa. Se retocan los XML
@@ -34,20 +35,27 @@ const HEADER_BG = 'F1F5F9';
 // Cada retoque es [archivo interno, patrón, sustitución]. Si un patrón no aparece
 // (p. ej. otra versión de Pandoc escribe distinto el XML), se detiene el build en
 // vez de publicar en silencio documentos sin formato.
-function patchZip(path, patches) {
+// Los retoques de `optional` (filas más altas en los guiones) solo avisan si no aparecen.
+function patchZip(path, patches, optional = []) {
   const files = unzipSync(readFileSync(path));
-  for (const [name, pattern, replacement] of patches) {
-    const before = strFromU8(files[name]);
-    const after = before.replace(pattern, replacement);
-    if (after === before) throw new Error(`${path}: no se encuentra ${pattern} en ${name}`);
-    files[name] = strToU8(after);
+  for (const [list, strict] of [[patches, true], [optional, false]]) {
+    for (const [name, pattern, replacement] of list) {
+      const before = strFromU8(files[name]);
+      const after = before.replace(pattern, replacement);
+      if (after === before) {
+        if (strict) throw new Error(`${path}: no se encuentra ${pattern} en ${name}`);
+        console.warn(`⚠ ${path}: no se encuentra ${pattern} en ${name}; se deja sin ese retoque`);
+      }
+      files[name] = strToU8(after);
+    }
   }
   // ODT exige que «mimetype» vaya primero y sin comprimir.
   const entries = Object.entries(files).map(([n, d]) => [n, n === 'mimetype' ? [d, { level: 0 }] : d]);
   writeFileSync(path, zipSync(Object.fromEntries(entries)));
 }
 
-function patchDocx(path) {
+// En los guiones, las filas de las tablas son más altas para escribir a mano en ellas.
+function patchDocx(path, doc = 'guide') {
   const side = (s) => `<w:${s} w:val="single" w:sz="4" w:space="0" w:color="${BORDER}" />`;
   const borders = `<w:tblBorders>${['top', 'left', 'bottom', 'right', 'insideH', 'insideV'].map(side).join('')}</w:tblBorders>`;
   const calibri = '<w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:eastAsia="Calibri" w:cs="Calibri" />';
@@ -64,10 +72,12 @@ function patchDocx(path) {
     ['word/styles.xml', /(<w:rPrDefault>[\s\S]*?)<w:sz w:val="24" \/>\s*<w:szCs w:val="24" \/>/, '$1<w:sz w:val="22" /><w:szCs w:val="22" />'],
     // Tablas a todo el ancho de la página.
     ['word/document.xml', /<w:tblW w:type="auto" w:w="0" \/>/g, '<w:tblW w:type="pct" w:w="5000" />'],
-  ]);
+  ], doc === 'guion'
+    ? [['word/document.xml', /<w:tr>(?!\s*<w:trPr>\s*<w:tblHeader)/g, '<w:tr><w:trPr><w:trHeight w:val="480" /></w:trPr>']]
+    : []);
 }
 
-function patchOdt(path) {
+function patchOdt(path, doc = 'guide') {
   const cell = (bg) =>
     `<style:table-cell-properties fo:border="0.5pt solid #${BORDER}" fo:padding="0.1cm"${bg ? ` fo:background-color="#${HEADER_BG}"` : ''} />`;
   patchZip(path, [
@@ -83,7 +93,16 @@ function patchOdt(path) {
     ],
     ['content.xml', /<style:table-properties table:align="center" \/>/g, '<style:table-properties table:align="margins" />'],
     ['styles.xml', 'style:font-name="Times New Roman"', 'style:font-name="Arial"'],
-  ]);
+  ], doc === 'guion'
+    ? [
+        [
+          'content.xml',
+          /(<office:automatic-styles>)/,
+          '$1<style:style style:name="FilaGuion" style:family="table-row"><style:table-row-properties style:min-row-height="0.85cm" /></style:style>',
+        ],
+        ['content.xml', /<table:table-row>/g, '<table:table-row table:style-name="FilaGuion">'],
+      ]
+    : []);
 }
 
 
@@ -98,6 +117,13 @@ const fontUrl = (w) =>
 
 // Textos fijos de las descargas en cada idioma de las guías.
 const TEXT = {
+  guion: {
+    kicker: 'Guion de la práctica',
+    license: (url, link) =>
+      `Guion publicado bajo licencia <a href="${url}">CC BY-SA 4.0</a>: puedes adaptarlo y compartirlo citando ` +
+      `la autoría y con la misma licencia. Práctica en ${link}.`,
+    pandocLang: 'es-ES',
+  },
   es: {
     kicker: 'Guía docente',
     license: (url, link) =>
@@ -114,9 +140,10 @@ const TEXT = {
   },
 };
 
-function pdfHtml(title, body, simId, lang) {
-  const t = TEXT[lang];
-  const url = absoluteUrl(guidePath(simId, lang));
+function pdfHtml(title, body, simId, lang, doc = 'guide') {
+  const guion = doc === 'guion';
+  const t = TEXT[guion ? 'guion' : lang];
+  const url = absoluteUrl(guion ? guionPath(simId) : guidePath(simId, lang));
   return `<!doctype html>
 <html lang="${lang}"><head><meta charset="utf-8"><title>${title}</title>
 <style>
@@ -141,6 +168,7 @@ function pdfHtml(title, body, simId, lang) {
   th, td { padding: 4pt 6pt; border: 1px solid #cbd5e1; text-align: left; vertical-align: top; }
   th { background: #f1f5f9; font-weight: 600; }
   tr { break-inside: avoid; }
+  ${guion ? '.guide-table td:empty { height: 26pt; } h2 { margin-top: 14pt; }' : ''}
   .license { margin-top: 16pt; padding-top: 6pt; border-top: 1px solid #cbd5e1; font-size: 8pt; color: #64748b; }
 </style></head>
 <body>
@@ -160,19 +188,25 @@ const guides = GUIDE_LANGS.flatMap((lang) => {
     .filter((f) => f.endsWith('.md'))
     .map((f) => ({ lang, file: join(dir, f) }));
 });
+// Guiones del alumnado de las prácticas: guiones/*.md, solo en español.
+guides.push(
+  ...readdirSync(join(ROOT, 'guiones'))
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => ({ lang: 'es', doc: 'guion', file: join(ROOT, 'guiones', f) })),
+);
 const tmp = join(tmpdir(), `simulaciencia-guias-${process.pid}`);
 mkdirSync(tmp, { recursive: true });
 
-for (const { lang, file } of guides) {
+for (const { lang, file, doc = 'guide' } of guides) {
   const simId = guideIdFromFile(file);
   const markdown = readFileSync(file, 'utf8');
   const title = guideTitle(markdown);
-  const out = join(OUT, downloadBase(simId, lang));
+  const out = join(OUT, downloadBase(simId, lang, doc));
   mkdirSync(dirname(out), { recursive: true });
 
   if (chrome) {
-    const html = join(tmp, `${lang}-${simId}.html`);
-    writeFileSync(html, pdfHtml(title, renderGuideHtml(markdown, lang), simId, lang));
+    const html = join(tmp, `${doc}-${lang}-${simId}.html`);
+    writeFileSync(html, pdfHtml(title, renderGuideHtml(markdown, lang), simId, lang, doc));
     execFileSync(chrome, [
       '--headless=new',
       '--disable-gpu',
@@ -188,7 +222,7 @@ for (const { lang, file } of guides) {
   if (pandoc) {
     // El título va a los metadatos (estilo «Título» y propiedades del documento),
     // así que se quita el h1 del cuerpo para no duplicarlo.
-    const body = rewriteLinks(markdown, lang).replace(/^#\s+.+\n+/m, '') + '\n\n' + licenseNote(simId, lang) + '\n';
+    const body = rewriteLinks(markdown, lang).replace(/^#\s+.+\n+/m, '') + '\n\n' + licenseNote(simId, lang, doc) + '\n';
     for (const ext of ['docx', 'odt']) {
       execFileSync(pandoc, [
         '-f', 'gfm', '-t', ext, '-o', `${out}.${ext}`,
@@ -197,10 +231,10 @@ for (const { lang, file } of guides) {
         '--metadata', `lang=${TEXT[lang].pandocLang}`,
       ], { input: body });
     }
-    patchDocx(`${out}.docx`);
-    patchOdt(`${out}.odt`);
+    patchDocx(`${out}.docx`, doc);
+    patchOdt(`${out}.odt`, doc);
   }
-  console.log(`✓ ${lang} ${simId}`);
+  console.log(`✓ ${doc === 'guion' ? 'guion' : lang} ${simId}`);
 }
 
 rmSync(tmp, { recursive: true, force: true });

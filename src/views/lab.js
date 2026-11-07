@@ -1,19 +1,33 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
-import { guidePath } from '../paths.js';
-import { guideLangFor } from '../data/guides.js';
+import { guidePath, guionPath } from '../paths.js';
+import { guideLangFor, hasGuion } from '../data/guides.js';
 import { copyText, flashCopied } from '../components/copy.js';
 import { langSwitchMarkup } from '../components/lang-switch.js';
-import { simTitle, simUrl } from '../data/simulations.js';
+import { simTitle, simUrl, isPractical } from '../data/simulations.js';
 import { getLang, L } from '../i18n.js';
+
+// Parámetros de una práctica que se pasan de la dirección de la web a la práctica,
+// para repartirla ya preparada: /simulaciones/practica-densidad/?nivel=libre&muestra=7
+const PRACTICAL_PARAMS = ['nivel', 'muestra', 'probeta'];
+function withPracticalParams(sim, href) {
+  if (!isPractical(sim)) return href;
+  const url = new URL(href);
+  const here = new URLSearchParams(location.search);
+  for (const p of PRACTICAL_PARAMS) if (here.has(p)) url.searchParams.set(p, here.get(p));
+  return url.href;
+}
+const frameUrl = (sim, lang) => withPracticalParams(sim, simUrl(sim, lang));
 
 function buildEmbedCode(sim) {
   const lang = getLang();
-  const url = simUrl(sim, lang);
+  const url = frameUrl(sim, lang);
   return `<iframe\n  src="${url}"\n  title="${simTitle(sim, lang)}"\n  width="100%"\n  height="600"\n  frameborder="0"\n  allowfullscreen\n></iframe>`;
 }
 
 function createShareModal(sim) {
-  const shareUrl = buildShareUrl(sim.id);
+  const practical = isPractical(sim);
+  // En una práctica, el enlace conserva el nivel, la muestra y la probeta de la dirección.
+  const shareUrl = practical ? withPracticalParams(sim, buildShareUrl(sim.id)) : buildShareUrl(sim.id);
   const embedCode = buildEmbedCode(sim);
 
   const el = document.createElement('div');
@@ -26,7 +40,7 @@ function createShareModal(sim) {
     <div class="absolute inset-0 bg-[#1e293b]/60 backdrop-blur" id="share-backdrop"></div>
     <div class="relative w-full max-w-lg rounded-lg border border-[#e2e8f0] bg-white shadow-xl">
       <div class="flex items-center justify-between border-b border-[#e2e8f0] px-5 py-4">
-        <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">${L('Compartir simulación', 'Share simulation', 'Comparteix la simulació', 'Partekatu simulazioa', 'Compartir simulación')}</h2>
+        <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">${practical ? 'Compartir práctica' : L('Compartir simulación', 'Share simulation', 'Comparteix la simulació', 'Partekatu simulazioa', 'Compartir simulación')}</h2>
         <button id="share-close" aria-label="${L('Cerrar', 'Close', 'Tanca', 'Itxi', 'Pechar')}" class="rounded-md p-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#1e293b]">
           <i data-lucide="x" class="h-5 w-5"></i>
         </button>
@@ -91,8 +105,15 @@ export function renderLab(root, sim) {
   const title = simTitle(sim, lang);
   const guide = guideLangFor(sim.id, lang);
   const withGuide = !!guide;
+  const practical = isPractical(sim);
+  const guionButton = practical && hasGuion(sim.id)
+    ? `<a href="${guionPath(sim.id)}" data-route class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
+        <i data-lucide="clipboard-list" class="h-4 w-4"></i>
+        <span class="sr-only sm:not-sr-only">Guion</span>
+      </a>`
+    : '';
   const guideButton = withGuide
-    ? `<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
+    ? `${guionButton}<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="${guionButton ? '' : 'ml-auto '}inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="book-open" class="h-4 w-4"></i>
         <span class="sr-only sm:not-sr-only">${L('Guía docente', 'Teacher guide', 'Guia docent (castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (castelán)')}</span>
       </a>`
@@ -120,7 +141,7 @@ export function renderLab(root, sim) {
 
     <div id="lab-stage" data-print-main class="relative min-h-0 flex-1 overflow-hidden bg-[#f8fafc]">
       <div id="lab-loader" class="lab-skeleton absolute inset-0 z-10 flex items-center justify-center text-sm text-[#64748b]">
-        ${L('Cargando simulación…', 'Loading simulation…', 'Carregant la simulació…', 'Simulazioa kargatzen…', 'Cargando a simulación…')}
+        ${practical ? 'Cargando la práctica…' : L('Cargando simulación…', 'Loading simulation…', 'Carregant la simulació…', 'Simulazioa kargatzen…', 'Cargando a simulación…')}
       </div>
       <button id="lab-fs-exit" class="absolute right-4 top-4 z-20 hidden items-center gap-1.5 rounded-md bg-[#1e293b]/85 px-3 py-1.5 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-[#1e293b]">
         <i data-lucide="minimize" class="h-4 w-4"></i>
@@ -130,7 +151,7 @@ export function renderLab(root, sim) {
         <iframe
           id="lab-frame"
           title="${title}"
-          src="${simUrl(sim, lang)}"
+          src="${frameUrl(sim, lang)}"
           sandbox="allow-scripts allow-same-origin allow-forms"
           referrerpolicy="no-referrer-when-downgrade"
           class="block border-0 opacity-0 transition-opacity duration-300"

@@ -24,22 +24,25 @@ import {
   Download,
   BookOpen,
   SlidersHorizontal,
+  FlaskConical,
+  ClipboardList,
+  MonitorPlay,
 } from 'lucide';
 
 import { getRoute, onRouteChange, navigateTo } from './router.js';
 import { updateHead } from './head.js';
 import { setLang, L } from './i18n.js';
-import { getSimulationById } from './data/simulations.js';
+import { getSimulationById, availableIn } from './data/simulations.js';
 import { renderCatalog } from './views/catalog.js';
 import { renderLab } from './views/lab.js';
 import { renderLegal } from './views/legal.js';
 import { renderAbout } from './views/about.js';
 import { renderGuide } from './views/guide.js';
-import { hasGuide } from './data/guides.js';
+import { hasGuide, hasGuion } from './data/guides.js';
 import { updateLangNotice } from './components/lang-notice.js';
 
 const app = document.getElementById('app');
-const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal };
+const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal, FlaskConical, ClipboardList, MonitorPlay };
 
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };
@@ -84,19 +87,26 @@ function render() {
   }
 
   const route = getRoute();
-  const { simId, guideId, page } = route;
+  const { simId, guideId, guionId, page } = route;
   setLang(route.lang);
-  const sim = simId ? getSimulationById(simId) : null;
-  const guideSim = !sim && guideId && hasGuide(guideId, route.lang) ? getSimulationById(guideId) : null;
+  // Solo lo que existe en el idioma de la página (las prácticas, por ahora, en español).
+  const find = (id) => {
+    const s = id ? getSimulationById(id) : null;
+    return s && availableIn(s, route.lang) ? s : null;
+  };
+  const sim = find(simId);
+  const guideSim = !sim && guideId && hasGuide(guideId, route.lang) ? find(guideId) : null;
+  const guionSim = guionId && hasGuion(guionId) ? find(guionId) : null;
 
   // Rutas desconocidas => degradamos al catálogo de forma silenciosa.
   if (sim) cleanup = renderLab(app, sim);
   else if (guideSim) cleanup = renderGuide(app, guideSim);
+  else if (guionSim) cleanup = renderGuide(app, guionSim, 'guion');
   else if (page === 'about') cleanup = renderAbout(app);
   else if (page === 'legal') cleanup = renderLegal(app);
   else cleanup = renderCatalog(app);
 
-  updateHead({ sim, guideSim, page: sim || guideSim ? null : page, lang: route.lang });
+  updateHead({ sim, guideSim, guionSim, page: sim || guideSim || guionSim ? null : page, lang: route.lang });
   updateLangNotice();
   window.scrollTo(0, 0);
   skipLink.textContent = L('Saltar al contenido', 'Skip to content', 'Salta al contingut', 'Joan edukira', 'Saltar ao contido');

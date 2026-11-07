@@ -258,3 +258,8 @@ main[tabindex='-1']:focus,
 #app:focus {
   outline: none;
 }
+
+/* Guion del alumnado: las celdas vacías son huecos para escribir a mano. */
+.guion-prose td:empty {
+  height: 2.5rem;
+}

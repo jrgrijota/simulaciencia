@@ -3,8 +3,8 @@
 // WhatsApp o Classroom. scripts/prerender.mjs guarda el resultado en el HTML de
 // cada página; al cargarla, este módulo reutiliza esas etiquetas.
 // Además, el <head> enlaza la versión de cada idioma (hreflang).
-import { simPath, guidePath, homePath, pagePath, absoluteUrl, translatedPath, LANGS, GUIDE_LANGS } from './paths.js';
-import { simulations, courseLabel, simTitle, simDescription, tagLabel } from './data/simulations.js';
+import { simPath, guidePath, guionPath, homePath, pagePath, absoluteUrl, translatedPath, LANGS, GUIDE_LANGS } from './paths.js';
+import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical } from './data/simulations.js';
 
 export const SITE = 'SimulaCiencia';
 const AUTHOR = { '@type': 'Person', name: 'Juan Ramón Grijota' };
@@ -40,6 +40,7 @@ const DEFAULT_OG_DESCRIPTION = {
   gl: 'Simulacións interactivas e gratuítas de Física e Química para ESO e Bacharelato. Sen instalación nin rexistro.',
 };
 const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES', gl: 'gl_ES' };
+const PRACTICAL_KIND = 'Práctica de laboratorio simulada';
 const KIND = { es: 'Simulación interactiva', en: 'Interactive simulation', ca: 'Simulació interactiva', eu: 'Simulazio interaktiboa', gl: 'Simulación interactiva' };
 
 const metaDescription = document.querySelector('meta[name="description"]');
@@ -81,7 +82,7 @@ function simResource(sim, lang = 'es') {
     name: simTitle(sim, lang),
     description: simDescription(sim, lang),
     url: simUrl(sim.id, lang),
-    learningResourceType: KIND[lang],
+    learningResourceType: isPractical(sim) ? PRACTICAL_KIND : KIND[lang],
     educationalLevel: levels(sim, lang),
     typicalAgeRange: ageRange(sim),
     interactivityType: 'active',
@@ -131,12 +132,39 @@ function set(lang, title, description, url, data, locales = LANGS) {
   jsonLd.textContent = JSON.stringify({ '@context': 'https://schema.org', ...data });
 }
 
-export function updateHead({ sim, guideSim, page, lang = 'es' }) {
-  setAlternates({ simId: sim?.id, guideId: guideSim?.id, page });
+export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
+  setAlternates({ simId: sim?.id, guideId: guideSim?.id, guionId: guionSim?.id, page });
+  if (guionSim) {
+    const title = simTitle(guionSim);
+    const url = absoluteUrl(guionPath(guionSim.id));
+    return set(
+      'es',
+      `Guion de la práctica: ${title} · ${SITE}`,
+      `Guion para el alumnado de la práctica de laboratorio «${title}»: objetivo, procedimiento, tabla de datos, ` +
+        'cálculos y cuestiones. Descarga en Word y LibreOffice para adaptarlo, o en PDF.',
+      url,
+      {
+        '@type': 'LearningResource',
+        name: `Guion de la práctica: ${title}`,
+        url,
+        learningResourceType: 'Guion de prácticas',
+        educationalLevel: levels(guionSim),
+        typicalAgeRange: ageRange(guionSim),
+        audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
+        inLanguage: 'es',
+        isAccessibleForFree: true,
+        author: AUTHOR,
+        license: LICENSE.es,
+        isBasedOn: simUrl(guionSim.id),
+      },
+      ['es'],
+    );
+  }
   if (guideSim) {
     const en = lang === 'en';
     const l = en ? 'en' : 'es';
     const title = simTitle(guideSim, l);
+    const practical = isPractical(guideSim);
     const name = en ? `Teacher guide: ${title}` : `Guía docente: ${title}`;
     return set(
       l,
@@ -144,7 +172,10 @@ export function updateHead({ sim, guideSim, page, lang = 'es' }) {
       en
         ? `Guide to using the “${title}” simulation in class: year groups and curriculum content, teaching ` +
             'sequence, misconceptions and simplifications. Download as PDF, Word or LibreOffice.'
-        : `Guía para usar en clase la simulación «${title}»: cursos y saberes básicos, secuencia de ` +
+        : practical
+          ? `Guía para usar en clase la práctica de laboratorio «${title}»: cursos y saberes básicos, propuesta ` +
+            'de sesión, clave de las muestras, evaluación y concepciones alternativas. Descarga en PDF, Word y LibreOffice.'
+          : `Guía para usar en clase la simulación «${title}»: cursos y saberes básicos, secuencia de ` +
             'explicación, concepciones alternativas y simplificaciones. Descarga en PDF, Word y LibreOffice.',
       guideUrl(guideSim.id, l),
       {
@@ -161,11 +192,12 @@ export function updateHead({ sim, guideSim, page, lang = 'es' }) {
         license: LICENSE[l],
         isBasedOn: simUrl(guideSim.id, l),
       },
-      GUIDE_LANGS,
+      practical ? ['es'] : GUIDE_LANGS,
     );
   }
   if (sim) {
-    return set(lang, `${simTitle(sim, lang)} · ${KIND[lang]} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), simResource(sim, lang));
+    const kind = isPractical(sim) ? PRACTICAL_KIND : KIND[lang];
+    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), simResource(sim, lang), sim.langs || LANGS);
   }
   if (PAGES[page]) {
     const url = absoluteUrl(pagePath(page, lang));
@@ -179,7 +211,7 @@ export function updateHead({ sim, guideSim, page, lang = 'es' }) {
     inLanguage: lang,
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: simulations.map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: simResource(s, lang) })),
+      itemListElement: simulationsIn(lang).map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: simResource(s, lang) })),
     },
   });
 }

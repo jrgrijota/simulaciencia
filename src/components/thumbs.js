@@ -42,6 +42,24 @@ const THUMBS = {
     <text x="80" y="122" text-anchor="middle" ${MONO} font-size="12" fill="#475569">1 kg</text>
     <text x="240" y="122" text-anchor="middle" ${MONO} font-size="12" fill="#475569">1 kg</text>`,
 
+  // Práctica de densidad: probeta con agua y la muestra (ciruela) sumergida, y la
+  // balanza electrónica con su lectura.
+  'sim-practica-densidad': `
+    <rect x="56" y="104" width="108" height="6" rx="3" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.5"/>
+    <path d="M110 110V118" stroke="#0f172a" stroke-width="3"/>
+    <path d="M40 160L48 118H172L180 160Z" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.5" stroke-linejoin="round"/>
+    <rect x="66" y="128" width="88" height="24" rx="3" fill="#0f172a"/>
+    <text x="110" y="145" text-anchor="middle" ${MONO} font-size="14" font-weight="500" fill="#7dd3fc">52,6 g</text>
+    <rect x="226" y="72" width="40" height="84" fill="#bae6fd"/>
+    <path d="M226 72q20 6 40 0" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.2"/>
+    <path d="M237 126l11 -7l10 5l-1 27l-13 4l-8 -7z" fill="#7c2d4f" stroke="#0f172a" stroke-width="1.3" stroke-linejoin="round"/>
+    <path d="M222 20H270M226 20V156H266V20" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <path d="M214 160H278" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+    <g stroke="#475569" stroke-width="1.2">
+      <path d="M266 36h-10M266 52h-6M266 68h-10M266 84h-6M266 100h-10M266 116h-6M266 132h-10M266 148h-6"/>
+    </g>
+    <text x="276" y="72" ${MONO} font-size="11" fill="#475569">mL</text>`,
+
   // Espectro de emisión del hidrógeno: las tres líneas visibles de Balmer del modelo.
   'sim-espectros': `
     <text x="30" y="44" ${MONO} font-size="13" font-weight="500" fill="#334155">H</text>

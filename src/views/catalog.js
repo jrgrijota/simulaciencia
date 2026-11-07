@@ -1,6 +1,6 @@
 // Portada: presentación, catálogo con
-// buscador y filtros (tema, materia y curso) y «Pensado para el aula».
-import { simulations, COURSES, TOPICS } from '../data/simulations.js';
+// buscador y filtros (tipo, tema y curso) y «Pensado para el aula».
+import { simulationsIn, simKind, COURSES, TOPICS, KINDS } from '../data/simulations.js';
 import { cardMarkup } from '../components/card.js';
 import { footerMarkup } from '../components/footer.js';
 import { siteHeaderMarkup } from '../components/site-header.js';
@@ -17,11 +17,28 @@ const simsWord = (n) => L(`${n} simulaciones`, `${n} simulations`, `${n} simulac
 
 export function renderCatalog(root) {
   const lang = getLang();
+  const simulations = simulationsIn(lang);
   const total = simulations.length;
+  // Filtro «Tipo» solo si el catálogo de este idioma mezcla simulaciones y prácticas.
+  const kinds = KINDS.filter((k) => simulations.some((s) => simKind(s) === k.id));
+  const mixed = kinds.length > 1;
+  const KIND_ICON = { simulacion: 'monitor-play', practica: 'flask-conical' };
   const LABEL = 'shrink-0 text-xs sm:w-16 sm:pt-2.5 font-bold uppercase tracking-wide text-[#475569]';
 
   const filterButton = (attr, value, label, on, extra = '') =>
     `<button type="button" ${attr}="${value}"${extra} aria-pressed="${on}" class="${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}">${label}</button>`;
+
+  const kindFilters = [
+    filterButton('data-kind', 'all', L('Todo', 'All', 'Tot', 'Guztiak', 'Todo'), true),
+    ...kinds.map((k) =>
+      filterButton(
+        'data-kind',
+        k.id,
+        `<i data-lucide="${KIND_ICON[k.id]}" class="h-4 w-4"></i>${L(k.label)} <span class="font-normal opacity-80">${simulations.filter((s) => simKind(s) === k.id).length}</span>`,
+        false,
+      ),
+    ),
+  ].join('');
 
   const topicFilters = [
     filterButton('data-topic', 'all', L('Todos', 'All', 'Tots', 'Guztiak', 'Todos'), true),
@@ -100,7 +117,7 @@ export function renderCatalog(root) {
       </section>
 
       <section id="catalogo" class="mx-auto max-w-6xl px-4 pb-12 pt-8" aria-labelledby="catalogo-titulo">
-        <h2 id="catalogo-titulo" tabindex="-1" class="sr-only">${L('Todas las simulaciones', 'All simulations', 'Totes les simulacions', 'Simulazio guztiak', 'Todas as simulacións')}</h2>
+        <h2 id="catalogo-titulo" tabindex="-1" class="sr-only">${mixed ? 'Simulaciones y prácticas de laboratorio' : L('Todas las simulaciones', 'All simulations', 'Totes les simulacions', 'Simulazio guztiak', 'Todas as simulacións')}</h2>
         <div data-print-hide class="relative">
           <label for="search" class="sr-only">${L('Buscar', 'Search', 'Cerca', 'Bilatu', 'Buscar')}</label>
           <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#64748b]"></i>
@@ -119,6 +136,10 @@ export function renderCatalog(root) {
           ${L('Filtros', 'Filters', 'Filtres', 'Iragazkiak', 'Filtros')}<span id="filters-n" class="font-normal text-[#475569]"></span>
         </button>
         <div id="filters-panel" data-print-hide class="mt-3 hidden flex-col gap-3 rounded-xl border border-[#e2e8f0] bg-white p-4 sm:mt-4 sm:flex">
+          ${mixed ? `<div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
+            <span class="${LABEL}">${L('Tipo', 'Type', 'Tipus', 'Mota', 'Tipo')}</span>
+            <div id="kind-filters" role="group" aria-label="${L('Tipo', 'Type', 'Tipus', 'Mota', 'Tipo')}" class="flex flex-wrap gap-2">${kindFilters}</div>
+          </div>` : ''}
           <div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
             <span class="${LABEL}">${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}</span>
             <div id="topic-filters" role="group" aria-label="${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}" class="flex flex-wrap gap-2">${topicFilters}</div>
@@ -137,12 +158,12 @@ export function renderCatalog(root) {
         </div>
 
         <div id="grid" class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          ${simulations.map(cardMarkup).join('')}
+          ${simulations.map((sim) => cardMarkup(sim, { showKind: mixed })).join('')}
         </div>
 
         <div id="empty" class="hidden flex-col items-center gap-3 py-20 text-center text-[#475569]">
           <i data-lucide="search-x" class="h-8 w-8"></i>
-          <p>${L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.', 'No hi ha cap simulació que coincideixi amb la cerca.', 'Ez dago bilaketarekin bat datorren simulaziorik.', 'Non hai simulacións que coincidan coa túa busca.')}</p>
+          <p>${mixed ? 'No hay simulaciones ni prácticas que coincidan con tu búsqueda.' : L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.', 'No hi ha cap simulació que coincideixi amb la cerca.', 'Ez dago bilaketarekin bat datorren simulaziorik.', 'Non hai simulacións que coincidan coa túa busca.')}</p>
           <button id="clear-filters" type="button" class="${FILTER_BASE} ${FILTER_OFF}">${L('Quitar los filtros', 'Clear filters', 'Treu els filtres', 'Kendu iragazkiak', 'Quitar os filtros')}</button>
         </div>
       </section>
@@ -165,12 +186,13 @@ export function renderCatalog(root) {
   const toggle = root.querySelector('#filters-toggle');
   const panel = root.querySelector('#filters-panel');
   const bars = {
+    ...(mixed ? { kind: root.querySelector('#kind-filters') } : {}),
     topic: root.querySelector('#topic-filters'),
     course: root.querySelector('#course-filters'),
   };
 
   let term = '';
-  const active = { topic: 'all', course: 'all' };
+  const active = { ...(mixed ? { kind: 'all' } : {}), topic: 'all', course: 'all' };
 
   function apply() {
     const topic = TOPICS.find((t) => t.id === active.topic);
@@ -179,6 +201,7 @@ export function renderCatalog(root) {
       const el = grid.querySelector(`[data-sim-id="${sim.id}"]`);
       const show =
         (!term || el.dataset.search.includes(term)) &&
+        (!active.kind || active.kind === 'all' || simKind(sim) === active.kind) &&
         (!topic || topic.sims.includes(sim.id)) &&
         (active.course === 'all' || sim.courses.includes(active.course));
       el.classList.toggle('hidden', !show);
@@ -191,11 +214,24 @@ export function renderCatalog(root) {
     const filtering = Boolean(term) || Object.values(active).some((v) => v !== 'all');
     results.classList.toggle('hidden', !filtering || visible === 0);
     results.classList.toggle('flex', filtering && visible !== 0);
-    count.textContent = filtering
-      ? L(`${visible} de ${total} simulaciones`, `${visible} of ${total} simulations`, `${visible} de ${total} simulacions`, `${total} simulaziotatik ${visible}`, `${visible} de ${total} simulacións`)
-      : '';
+    count.textContent = filtering ? countText(visible) : '';
     const n = Object.values(active).filter((v) => v !== 'all').length;
     root.querySelector('#filters-n').textContent = n ? ` (${n})` : '';
+  }
+
+  // «3 de 14 simulaciones»; con prácticas en el catálogo, cuenta del tipo elegido o
+  // «4 de 15 recursos» si no se ha elegido ninguno.
+  function countText(visible) {
+    if (mixed && active.kind === 'practica') {
+      const n = simulations.filter((s) => simKind(s) === 'practica').length;
+      return `${visible} de ${n} ${n === 1 ? 'práctica' : 'prácticas'} de laboratorio`;
+    }
+    if (mixed && active.kind === 'simulacion') {
+      const n = simulations.filter((s) => simKind(s) === 'simulacion').length;
+      return `${visible} de ${n} simulaciones`;
+    }
+    if (mixed) return `${visible} de ${total} recursos`;
+    return L(`${visible} de ${total} simulaciones`, `${visible} of ${total} simulations`, `${visible} de ${total} simulacions`, `${total} simulaziotatik ${visible}`, `${visible} de ${total} simulacións`);
   }
 
   // Marca el botón activo de una fila de filtros.
@@ -210,13 +246,15 @@ export function renderCatalog(root) {
 
   // Los filtros y la búsqueda van en la dirección (?tema=ondas&curso=2eso&q=…),
   // para poder compartir o guardar el catálogo ya filtrado.
-  const PARAM = { topic: 'tema', course: 'curso' };
+  // Tipo: ?tipo=simulaciones o ?tipo=practicas.
+  const PARAM = { ...(mixed ? { kind: 'tipo' } : {}), topic: 'tema', course: 'curso' };
+  const KIND_SLUG = { simulacion: 'simulaciones', practica: 'practicas' };
   const slug = (v) => v.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
   function syncUrl() {
     const url = new URL(location.href);
     for (const [kind, name] of Object.entries(PARAM)) {
       if (active[kind] === 'all') url.searchParams.delete(name);
-      else url.searchParams.set(name, slug(active[kind]));
+      else url.searchParams.set(name, kind === 'kind' ? KIND_SLUG[active.kind] : slug(active[kind]));
     }
     if (term) url.searchParams.set('q', search.value.trim());
     else url.searchParams.delete('q');
@@ -262,7 +300,8 @@ export function renderCatalog(root) {
   const params = new URLSearchParams(location.search);
   for (const [kind, name] of Object.entries(PARAM)) {
     const wanted = params.get(name);
-    const btn = wanted && [...bars[kind].querySelectorAll('button')].find((b) => slug(b.getAttribute(`data-${kind}`)) === wanted);
+    const value = (b) => b.getAttribute(`data-${kind}`);
+    const btn = wanted && [...bars[kind].querySelectorAll('button')].find((b) => (kind === 'kind' ? KIND_SLUG[value(b)] : slug(value(b))) === wanted);
     if (btn) select(kind, btn.getAttribute(`data-${kind}`));
   }
   if (params.get('q')) {

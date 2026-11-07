@@ -10,6 +10,10 @@
 //                        el iframe ocupa el 100% y ella se reorganiza sola.
 //               false -> layout rígido (~1270px); el Modo Laboratorio la escala
 //                        proporcionalmente para encuadrarla sin recortes.
+// `kind`:    'practica' para las prácticas de laboratorio simuladas (filtro «Tipo»,
+//            su guion del alumnado en guiones/<nombre>.md); sin él, simulación.
+// `langs`:   idiomas en los que está; sin él, en todos. Fuera de ellos no aparece
+//            en el catálogo ni tiene página.
 export const simulations = [
   {
     id: 'sim-arquimedes',
@@ -431,6 +435,18 @@ export const simulations = [
         'Corda e resorte: distingue as ondas transversais das lonxitudinais, mide a amplitude, a lonxitude de onda e o período, e comproba que a onda transporta enerxía, pero non materia.',
     },
   },
+  {
+    id: 'sim-practica-densidad',
+    kind: 'practica',
+    langs: ['es'],
+    title: 'Densidad de un sólido',
+    description:
+      'Práctica de laboratorio: pesa una muestra desconocida, mide su volumen por inmersión en una probeta, calcula su densidad e identifica el material. Con nivel guiado y nivel libre con guion.',
+    tags: ['Física', 'Química', 'ESO'],
+    url: 'https://jrgrijota.github.io/simulacion-practica-densidad/',
+    responsive: true,
+    courses: ['2ESO', '3ESO'],
+  },
 ];
 
 // Bloques temáticos: los botones del filtro «Tema» del catálogo
@@ -455,7 +471,7 @@ export const TOPICS = [
   {
     id: 'materia',
     label: { es: 'La materia y sus estados', en: 'Matter and its states', ca: 'La matèria i els seus estats', eu: 'Materia eta haren egoerak', gl: 'A materia e os seus estados' },
-    sims: ['sim-densidad', 'sim-cambios-estado', 'sim-gases'],
+    sims: ['sim-densidad', 'sim-practica-densidad', 'sim-cambios-estado', 'sim-gases'],
   },
   {
     id: 'atomo',
@@ -522,3 +538,18 @@ export function subjectTags(sim) {
 export function getSimulationById(id) {
   return simulations.find((s) => s.id === id) || null;
 }
+
+// Tipos de recurso del filtro «Tipo»: simulaciones y prácticas de laboratorio.
+export const KINDS = [
+  { id: 'simulacion', label: { es: 'Simulaciones', en: 'Simulations', ca: 'Simulacions', eu: 'Simulazioak', gl: 'Simulacións' } },
+  { id: 'practica', label: { es: 'Prácticas de laboratorio', en: 'Lab practicals', ca: 'Pràctiques de laboratori', eu: 'Laborategiko praktikak', gl: 'Prácticas de laboratorio' } },
+];
+
+export const simKind = (sim) => sim.kind || 'simulacion';
+export const isPractical = (sim) => simKind(sim) === 'practica';
+
+// ¿Está en este idioma? Las prácticas, por ahora, solo en español.
+export const availableIn = (sim, lang = 'es') => !sim.langs || sim.langs.includes(lang);
+
+// Catálogo de un idioma.
+export const simulationsIn = (lang = 'es') => simulations.filter((s) => availableIn(s, lang));

@@ -177,7 +177,7 @@ export function renderCatalog(root) {
 
       <section data-print-hide class="bg-[#0f172a]" aria-labelledby="aula-titulo">
         <div class="mx-auto max-w-6xl px-4 py-14">
-          <h2 id="aula-titulo" class="text-3xl font-bold text-white">${L('Pensado para el aula', 'Made for the classroom', "Pensat per a l'aula", 'Ikasgelarako pentsatua', 'Pensado para a aula')}</h2>
+          <h2 id="aula-titulo" class="text-center text-3xl font-bold text-white">${L('Pensado para el aula', 'Made for the classroom', "Pensat per a l'aula", 'Ikasgelarako pentsatua', 'Pensado para a aula')}</h2>
           <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">${features}</div>
         </div>
       </section>

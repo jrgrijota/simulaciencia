@@ -139,7 +139,7 @@ export function renderCatalog(root) {
     <main>
       <section class="paper border-b border-[#e2e8f0]">
         <div class="mx-auto max-w-6xl px-4 pb-12 pt-10 md:pt-14">
-          <div>
+          <div class="text-center">
             <p class="font-mono text-sm font-medium text-[#0369a1]">${L(
               'Física y Química · 2.º ESO – 2.º Bachillerato',
               'Physics and Chemistry · ages 13 to 18',
@@ -154,14 +154,14 @@ export function renderCatalog(root) {
               'Fisika eta kimika, <span class="text-[#0369a1]">ukitzeko moduan.</span>',
               'A física e a química, <span class="text-[#0369a1]">para tocalas.</span>',
             )}</h1>
-            <p class="mt-5 max-w-2xl text-lg leading-relaxed text-[#334155]">${L(
+            <p class="mx-auto mt-5 max-w-4xl text-balance text-lg leading-relaxed text-[#334155]">${L(
               `${total} simulaciones interactivas y gratuitas, cada una con su guía docente. Se abren en el navegador: sin instalar nada y sin crear cuenta.`,
               `${total} free interactive simulations, each with its own teacher guide. They open in the browser: nothing to install and no account needed.`,
               `${total} simulacions interactives i gratuïtes, cadascuna amb la seva guia docent (en castellà). S'obren al navegador: sense instal·lar res ni crear cap compte.`,
               `${total} simulazio interaktibo eta doako, bakoitza bere irakaslearen gidarekin (gaztelaniaz). Nabigatzailean irekitzen dira: ez da ezer instalatu behar, ezta konturik sortu ere.`,
               `${total} simulacións interactivas e gratuítas, cada unha coa súa guía docente (en castelán). Ábrense no navegador: sen instalar nada nin crear unha conta.`,
             )}</p>
-            <div class="mt-7 flex flex-wrap gap-3">
+            <div class="mt-7 flex flex-wrap justify-center gap-3">
               <a href="#catalogo" class="inline-flex min-h-12 items-center gap-2 rounded-lg bg-[#0369a1] px-5 py-3 font-bold text-white shadow-sm transition-colors hover:bg-[#075985]">
                 ${L('Explorar simulaciones', 'Browse simulations', 'Explora les simulacions', 'Arakatu simulazioak', 'Explorar simulacións')} ${ARROW}
               </a>
@@ -169,7 +169,7 @@ export function renderCatalog(root) {
                 ${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}
               </a>
             </div>
-            <ul class="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-bold text-[#334155]">
+            <ul class="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-bold text-[#334155]">
               <li class="flex items-center gap-2">${CHECK}${L('Guía docente incluida', 'Teacher guide included', 'Guia docent inclosa', 'Irakaslearen gida barne', 'Guía docente incluída')}</li>
               <li class="flex items-center gap-2">${CHECK}${L('Sin instalación ni cuenta', 'No install, no account', 'Sense instal·lació ni compte', 'Instalaziorik eta konturik gabe', 'Sen instalación nin conta')}</li>
               <li class="flex items-center gap-2">${CHECK}${L('Libre: MIT y CC BY-SA 4.0', 'Open: MIT and CC BY-SA 4.0', 'Lliure: MIT i CC BY-SA 4.0', 'Librea: MIT eta CC BY-SA 4.0', 'Libre: MIT e CC BY-SA 4.0')}</li>

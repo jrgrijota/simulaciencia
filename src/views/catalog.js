@@ -1,4 +1,4 @@
-// Portada: presentación, bloques temáticos, catálogo con
+// Portada: presentación, catálogo con
 // buscador y filtros (tema, materia y curso) y «Pensado para el aula».
 import { simulations, allTags, COURSES, TOPICS, tagLabel } from '../data/simulations.js';
 import { cardMarkup, subjectDot } from '../components/card.js';
@@ -14,17 +14,6 @@ const FILTER_OFF = 'border-[#cbd5e1] bg-white text-[#334155] hover:border-[#0369
 
 const CHECK = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="shrink-0"><path d="M4 12l5 5L20 6"/></svg>`;
 const GITHUB_URL = 'https://github.com/jrgrijota/simulaciencia';
-
-// Iconos de los bloques temáticos (trazo de 2 px, 32 × 32).
-const TOPIC_ICON = {
-  fuerzas: '<path d="M3 27H29V11Z"/><rect x="15" y="12" width="7" height="7" transform="rotate(-31 18.5 15.5)"/>',
-  energia: '<path d="M18 3L8 18H16L14 29L24 13H16Z"/>',
-  ondas: '<path d="M2 16C5 6 9 6 12 16S19 26 22 16S28 7 30 11" stroke-linecap="round"/>',
-  materia: '<path d="M13 19V6A3 3 0 0 1 19 6V19" stroke-linecap="round"/><circle cx="16" cy="24" r="5"/><path d="M16 22V12" stroke-linecap="round"/>',
-  atomo: '<circle cx="16" cy="16" r="2.5" fill="currentColor"/><ellipse cx="16" cy="16" rx="13" ry="5.5"/><ellipse cx="16" cy="16" rx="13" ry="5.5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="13" ry="5.5" transform="rotate(120 16 16)"/>',
-  reacciones: '<path d="M12 4H20M14 4V12L6 26Q5 29 8 29H24Q27 29 26 26L18 12V4"/><path d="M9 21H23"/>',
-};
-const TOPIC_COLOR = { fuerzas: '#0369a1', energia: '#0369a1', ondas: '#0369a1', materia: '#c2410c', atomo: '#6d28d9', reacciones: '#c2410c' };
 
 const simsWord = (n) => L(`${n} simulaciones`, `${n} simulations`, `${n} simulacions`, `${n} simulazio`, `${n} simulacións`);
 
@@ -55,17 +44,6 @@ export function renderCatalog(root) {
       filterButton('data-course', c.id, lang === 'es' ? c.label : c[lang], i === 0, lang === 'en' && c.enTitle ? ` title="${c.enTitle}"` : ''),
     )
     .join('');
-
-  const topicCards = TOPICS.map(
-    (t) => `
-        <a href="${home}?tema=${t.id}#catalogo" data-topic-link="${t.id}" class="group flex min-h-11 flex-col gap-2 rounded-xl border border-[#e2e8f0] bg-white p-3.5 shadow-sm transition-colors hover:border-[#0369a1] sm:flex-row sm:items-center sm:gap-4 sm:p-4">
-          <svg width="34" height="34" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true" class="shrink-0" style="color:${TOPIC_COLOR[t.id]}">${TOPIC_ICON[t.id]}</svg>
-          <span class="flex flex-col">
-            <span class="font-display text-base font-bold leading-tight text-[#0f172a] group-hover:text-[#0369a1] sm:text-lg">${L(t.label)}</span>
-            <span class="font-mono text-xs text-[#475569]">${simsWord(t.sims.length)}</span>
-          </span>
-        </a>`,
-  ).join('');
 
   const features = [
     {
@@ -165,20 +143,6 @@ export function renderCatalog(root) {
               <li class="flex items-center gap-2">${CHECK}${L('Libre: MIT y CC BY-SA 4.0', 'Open: MIT and CC BY-SA 4.0', 'Lliure: MIT i CC BY-SA 4.0', 'Librea: MIT eta CC BY-SA 4.0', 'Libre: MIT e CC BY-SA 4.0')}</li>
             </ul>
           </div>
-        </div>
-      </section>
-
-      <section data-print-hide class="border-b border-[#e2e8f0] bg-[#f1f5f9]" aria-labelledby="bloques-titulo">
-        <div class="mx-auto max-w-6xl px-4 py-12">
-          <h2 id="bloques-titulo" class="text-3xl font-bold text-[#0f172a]">${L('Explora por bloques', 'Browse by topic', 'Explora per blocs', 'Arakatu gaika', 'Explora por bloques')}</h2>
-          <p class="mt-1 text-[#475569]">${L(
-            'Elige un tema y encuentra todas sus simulaciones.',
-            'Pick a topic to see all its simulations.',
-            "Tria un tema i troba'n totes les simulacions.",
-            'Aukeratu gai bat eta ikusi haren simulazio guztiak.',
-            'Escolle un tema e atopa todas as súas simulacións.',
-          )}</p>
-          <div class="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-3">${topicCards}</div>
         </div>
       </section>
 
@@ -325,22 +289,6 @@ export function renderCatalog(root) {
   root.querySelectorAll('a[href="#catalogo"]').forEach((a) =>
     a.addEventListener('click', (e) => {
       e.preventDefault();
-      goToCatalog();
-    }),
-  );
-
-  // Un bloque temático deja el catálogo filtrado solo por ese tema y baja hasta él.
-  root.querySelectorAll('[data-topic-link]').forEach((a) =>
-    a.addEventListener('click', (e) => {
-      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      e.preventDefault();
-      search.value = '';
-      term = '';
-      select('tag', 'all');
-      select('course', 'all');
-      select('topic', a.dataset.topicLink);
-      syncUrl();
-      apply();
       goToCatalog();
     }),
   );

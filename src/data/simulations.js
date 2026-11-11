@@ -10,6 +10,8 @@
 //                        el iframe ocupa el 100% y ella se reorganiza sola.
 //               false -> layout rígido (~1270px); el Modo Laboratorio la escala
 //                        proporcionalmente para encuadrarla sin recortes.
+// `params`:  parámetros que la página de la simulación pasa de su dirección a la
+//            simulación, para abrirla ya preparada (fichas del alumnado, guiones).
 // `kind`:    'practica' para las prácticas de laboratorio simuladas (filtro «Tipo»,
 //            su guion del alumnado en guiones/<nombre>.md); sin él, simulación.
 // `langs`:   idiomas en los que está; sin él, en todos. Fuera de ellos no aparece
@@ -53,6 +55,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-densidad/',
     responsive: true,
+    params: ['modo', 'material', 'volumen', 'masa', 'comparar', 'a', 'b', 'valor'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'Density',
@@ -445,6 +448,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-practica-densidad/',
     responsive: true,
+    params: ['nivel', 'muestra', 'probeta'],
     courses: ['2ESO', '3ESO'],
   },
 ];
@@ -547,6 +551,14 @@ export const KINDS = [
 
 export const simKind = (sim) => sim.kind || 'simulacion';
 export const isPractical = (sim) => simKind(sim) === 'practica';
+
+// Documento del alumnado (guiones/<nombre>.md, solo en español): en una práctica es
+// el guion; en una simulación, la ficha de actividades.
+export function studentDoc(sim) {
+  return isPractical(sim)
+    ? { title: 'Guion de la práctica', label: 'Guion del alumnado', short: 'Guion', the: 'el guion', it: 'lo', file: 'guion', type: 'Guion de prácticas' }
+    : { title: 'Ficha de actividades', label: 'Ficha del alumnado', short: 'Ficha', the: 'la ficha', it: 'la', file: 'ficha', type: 'Ficha de actividades' };
+}
 
 // ¿Está en este idioma? Las prácticas, por ahora, solo en español.
 export const availableIn = (sim, lang = 'es') => !sim.langs || sim.langs.includes(lang);

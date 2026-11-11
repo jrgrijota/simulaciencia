@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { simulationsIn, simTitle, simDescription, courseLabel, isPractical } from './src/data/simulations.js';
 import { guideIdFromFile, guideSummary, guideMisconceptions } from './src/guides/shared.js';
-import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, parsePath, translatedPath, absoluteUrl } from './src/paths.js';
+import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, parsePath, translatedPath, absoluteUrl, STUDENT_DOC_DIRS } from './src/paths.js';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
@@ -16,9 +16,11 @@ function sitemap() {
         readdirSync(lang === 'es' ? 'guias' : `guias/${lang}`)
           .filter((f) => f.endsWith('.md'))
           .map((f) => guidePath(guideIdFromFile(f), lang));
-      const guiones = readdirSync('guiones')
-        .filter((f) => f.endsWith('.md'))
-        .map((f) => guionPath(guideIdFromFile(f)));
+      const guiones = STUDENT_DOC_DIRS.filter((d) => existsSync(d)).flatMap((d) =>
+        readdirSync(d)
+          .filter((f) => f.endsWith('.md'))
+          .map((f) => guionPath(guideIdFromFile(f))),
+      );
       const paths = [
         homePath('es'),
         ...simulationsIn('es').map((s) => simPath(s.id)),
@@ -77,8 +79,12 @@ function llmsTxt() {
           const ideas = guideMisconceptions(md).slice(0, 4);
           if (ideas.length) lines.push(`  - Ideas previas que ayuda a corregir: ${ideas.map((i) => `${i.idea} (${i.correct.replace(/\.$/, '')})`).join('; ')}.`);
         }
-        if (isPractical(s) && existsSync(`guiones/${name(s.id)}.md`)) {
-          lines.push(`  - [Guion del alumnado](${absoluteUrl(guionPath(s.id))}): editable en Word y LibreOffice, o en PDF.`);
+        if (STUDENT_DOC_DIRS.some((d) => existsSync(`${d}/${name(s.id)}.md`))) {
+          lines.push(
+            isPractical(s)
+              ? `  - [Guion del alumnado](${absoluteUrl(guionPath(s.id))}): editable en Word y LibreOffice, o en PDF.`
+              : `  - [Ficha de actividades del alumnado](${absoluteUrl(guionPath(s.id))}): predice, observa y explica, con enlaces a la simulación ya preparada; editable en Word y LibreOffice, o en PDF.`,
+          );
         }
         return lines.join('\n');
       };

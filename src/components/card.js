@@ -1,7 +1,7 @@
 // Tarjeta de simulación: miniatura, materia, cursos, título, descripción y los dos
 // enlaces. Todo el contenido visible de un vistazo, sin efectos hover que oculten datos.
 import { guideLangFor, hasGuion } from '../data/guides.js';
-import { subjectTags, courseLabel, simTitle, simDescription, tagLabel, isPractical } from '../data/simulations.js';
+import { subjectTags, courseLabel, simTitle, simDescription, tagLabel, isPractical, studentDoc } from '../data/simulations.js';
 import { simPath, guidePath, guionPath } from '../paths.js';
 import { getLang, L } from '../i18n.js';
 import { thumbMarkup } from './thumbs.js';
@@ -34,7 +34,7 @@ export function cardMarkup(sim, { showKind = false } = {}) {
   const haystack = `${title} ${description} ${tagLabels.join(' ')} ${courses.join(' ')} ${kindWords}`.toLowerCase();
   const guide = guideLangFor(sim.id, lang);
   const guionButton =
-    practical && hasGuion(sim.id)
+    lang === 'es' && hasGuion(sim.id)
       ? `
       <a
         href="${guionPath(sim.id)}"
@@ -42,7 +42,7 @@ export function cardMarkup(sim, { showKind = false } = {}) {
         class="${BUTTON} border border-[#cbd5e1] bg-white text-[#1e293b] hover:border-[#0369a1] hover:text-[#0369a1]"
       >
         <i data-lucide="clipboard-list" class="h-4 w-4"></i>
-        Guion del alumnado
+        ${studentDoc(sim).label}
       </a>`
       : '';
   const kind = KIND_BADGE[practical ? 'practica' : 'simulacion'];

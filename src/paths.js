@@ -5,6 +5,7 @@
 //   /simulaciones/<nombre>/    => Modo Laboratorio de la simulación sim-<nombre>
 //   /guias/<nombre>/           => Su guía docente
 //   /guiones/<nombre>/         => Guion del alumnado de una práctica de laboratorio (solo en español)
+//   /fichas/<nombre>/          => Ficha de actividades del alumnado de una simulación (solo en español)
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
 //
@@ -16,7 +17,7 @@
 //   /en/guides/<nombre>/                                                                                       => Guía docente
 //   /en/about/                 /ca/sobre-el-projecte/     /eu/proiektuari-buruz/      /gl/sobre-o-proxecto/     => Sobre el proyecto
 
-import { getSimulationById, availableIn } from './data/simulations.js';
+import { getSimulationById, availableIn, isPractical } from './data/simulations.js';
 
 export const SITE_URL = 'https://simulaciencia.es/';
 export const LANGS = ['es', 'en', 'ca', 'eu', 'gl'];
@@ -35,8 +36,15 @@ const GUIDE_DIR = { es: '/guias/', en: '/en/guides/' };
 // Idioma de la guía que se enlaza desde una página: la suya si existe, si no la española.
 export const guideLang = (lang) => (GUIDE_DIR[lang] ? lang : 'es');
 export const guidePath = (simId, lang = 'es') => `${GUIDE_DIR[guideLang(lang)]}${slug(simId)}/`;
-// Guiones del alumnado de las prácticas (guiones/*.md), solo en español.
-export const guionPath = (simId) => `/guiones/${slug(simId)}/`;
+// Documentos del alumnado, solo en español: guiones de las prácticas (guiones/*.md)
+// y fichas de actividades de las simulaciones (fichas/*.md). En el código, los dos
+// son «guion»; la carpeta y la dirección dependen del tipo.
+export const STUDENT_DOC_DIRS = ['guiones', 'fichas'];
+const studentDir = (simId) => {
+  const sim = getSimulationById(simId);
+  return !sim || isPractical(sim) ? 'guiones' : 'fichas';
+};
+export const guionPath = (simId) => `/${studentDir(simId)}/${slug(simId)}/`;
 export const PAGE_PATHS = { about: '/sobre-el-proyecto/', legal: '/aviso-legal/' };
 const PAGES = {
   es: PAGE_PATHS,
@@ -66,12 +74,12 @@ export function parsePath(pathname) {
     const guide = under(GUIDE_DIR[lang]);
     return { lang, simId: sim ? `sim-${sim}` : null, guideId: guide ? `sim-${guide}` : null, guionId: null, page };
   }
-  const m = path.match(/^\/(simulaciones|guias|guiones)\/([a-z0-9-]+)\/$/);
+  const m = path.match(/^\/(simulaciones|guias|guiones|fichas)\/([a-z0-9-]+)\/$/);
   return {
     lang,
     simId: m?.[1] === 'simulaciones' ? `sim-${m[2]}` : null,
     guideId: m?.[1] === 'guias' ? `sim-${m[2]}` : null,
-    guionId: m?.[1] === 'guiones' ? `sim-${m[2]}` : null,
+    guionId: m?.[1] === 'guiones' || m?.[1] === 'fichas' ? `sim-${m[2]}` : null,
     page,
   };
 }

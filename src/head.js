@@ -5,7 +5,7 @@
 // Además, el <head> enlaza la versión de cada idioma (hreflang).
 import { simPath, guidePath, guionPath, homePath, pagePath, absoluteUrl, translatedPath, LANGS, GUIDE_LANGS } from './paths.js';
 import { thumbMarkup } from './components/thumbs.js';
-import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical, TOPICS } from './data/simulations.js';
+import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical, studentDoc, TOPICS } from './data/simulations.js';
 
 export const SITE = 'SimulaCiencia';
 // La ficha completa del autor y del sitio está en index.html (@id #autor y #web).
@@ -176,17 +176,21 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
   if (guionSim) {
     const title = simTitle(guionSim);
     const url = absoluteUrl(guionPath(guionSim.id));
+    const doc = studentDoc(guionSim);
     return set(
       'es',
-      `Guion de la práctica: ${title} · ${SITE}`,
-      `Guion para el alumnado de la práctica de laboratorio «${title}»: objetivo, procedimiento, tabla de datos, ` +
-        'cálculos y cuestiones. Descarga en Word y LibreOffice para adaptarlo, o en PDF.',
+      `${doc.title}: ${title} · ${SITE}`,
+      isPractical(guionSim)
+        ? `Guion para el alumnado de la práctica de laboratorio «${title}»: objetivo, procedimiento, tabla de datos, ` +
+            'cálculos y cuestiones. Descarga en Word y LibreOffice para adaptarlo, o en PDF.'
+        : `Ficha de actividades para el alumnado con la simulación «${title}»: predice, observa y explica, con enlaces ` +
+            'que abren la simulación ya preparada. Descarga en Word y LibreOffice para adaptarla, o en PDF.',
       url,
       withBreadcrumb({
         '@type': 'LearningResource',
-        name: `Guion de la práctica: ${title}`,
+        name: `${doc.title}: ${title}`,
         url,
-        learningResourceType: 'Guion de prácticas',
+        learningResourceType: doc.type,
         educationalLevel: levels(guionSim),
         typicalAgeRange: ageRange(guionSim),
         audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
@@ -195,7 +199,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
         author: AUTHOR,
         license: LICENSE.es,
         isBasedOn: simUrl(guionSim.id),
-      }, 'es', [[title, simUrl(guionSim.id)], ['Guion', url]]),
+      }, 'es', [[title, simUrl(guionSim.id)], [doc.short, url]]),
       ['es'],
       simImage(guionSim, 'es'),
     );

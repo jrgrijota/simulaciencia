@@ -1,7 +1,8 @@
 // Genera las descargas de cada guía docente (PDF, Word y LibreOffice) a partir
-// de guias/*.md (y de su traducción, guias/en/*.md), y las de los guiones del
-// alumnado de las prácticas (guiones/*.md). Se ejecuta tras `vite build` y escribe
-// en dist/guias/, dist/en/guides/ y dist/guiones/.
+// de guias/*.md (y de su traducción, guias/en/*.md), y las de los documentos del
+// alumnado (guiones/*.md, guion de una práctica; fichas/*.md, ficha de actividades
+// de una simulación). Se ejecuta tras `vite build` y escribe en dist/guias/,
+// dist/en/guides/, dist/guiones/ y dist/fichas/.
 //
 //   PDF:  la guía en HTML (mismo Markdown que la web) impresa con Chrome sin interfaz.
 //   DOCX y ODT: Pandoc.
@@ -11,7 +12,7 @@
 // rotos. En local solo avisa y se salta ese formato.
 
 import { execFileSync } from 'node:child_process';
-import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -24,7 +25,8 @@ import {
   renderGuideHtml,
   rewriteLinks,
 } from '../src/guides/shared.js';
-import { absoluteUrl, guidePath, guionPath, GUIDE_LANGS } from '../src/paths.js';
+import { absoluteUrl, guidePath, guionPath, GUIDE_LANGS, STUDENT_DOC_DIRS } from '../src/paths.js';
+import { getSimulationById, isPractical } from '../src/data/simulations.js';
 import { findTool, findChrome } from './tools.mjs';
 
 // Pandoc deja las tablas sin bordes y con letra con serifa. Se retocan los XML
@@ -124,6 +126,13 @@ const TEXT = {
       `la autoría y con la misma licencia. Práctica en ${link}.`,
     pandocLang: 'es-ES',
   },
+  ficha: {
+    kicker: 'Ficha de actividades',
+    license: (url, link) =>
+      `Ficha publicada bajo licencia <a href="${url}">CC BY-SA 4.0</a>: puedes adaptarla y compartirla citando ` +
+      `la autoría y con la misma licencia. Simulación en ${link}.`,
+    pandocLang: 'es-ES',
+  },
   es: {
     kicker: 'Guía docente',
     license: (url, link) =>
@@ -140,9 +149,9 @@ const TEXT = {
   },
 };
 
-function pdfHtml(title, body, simId, lang, doc = 'guide') {
+function pdfHtml(title, body, simId, lang, doc = 'guide', practical = true) {
   const guion = doc === 'guion';
-  const t = TEXT[guion ? 'guion' : lang];
+  const t = TEXT[guion ? (practical ? 'guion' : 'ficha') : lang];
   const url = absoluteUrl(guion ? guionPath(simId) : guidePath(simId, lang));
   return `<!doctype html>
 <html lang="${lang}"><head><meta charset="utf-8"><title>${title}</title>
@@ -188,11 +197,13 @@ const guides = GUIDE_LANGS.flatMap((lang) => {
     .filter((f) => f.endsWith('.md'))
     .map((f) => ({ lang, file: join(dir, f) }));
 });
-// Guiones del alumnado de las prácticas: guiones/*.md, solo en español.
+// Documentos del alumnado (guiones y fichas): guiones/*.md, solo en español.
 guides.push(
-  ...readdirSync(join(ROOT, 'guiones'))
-    .filter((f) => f.endsWith('.md'))
-    .map((f) => ({ lang: 'es', doc: 'guion', file: join(ROOT, 'guiones', f) })),
+  ...STUDENT_DOC_DIRS.filter((d) => existsSync(join(ROOT, d))).flatMap((d) =>
+    readdirSync(join(ROOT, d))
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => ({ lang: 'es', doc: 'guion', file: join(ROOT, d, f) })),
+  ),
 );
 const tmp = join(tmpdir(), `simulaciencia-guias-${process.pid}`);
 mkdirSync(tmp, { recursive: true });
@@ -201,12 +212,15 @@ for (const { lang, file, doc = 'guide' } of guides) {
   const simId = guideIdFromFile(file);
   const markdown = readFileSync(file, 'utf8');
   const title = guideTitle(markdown);
-  const out = join(OUT, downloadBase(simId, lang, doc));
+  const sim = getSimulationById(simId);
+  if (!sim) throw new Error(`${file}: no hay ninguna simulación ${simId} en el catálogo`);
+  const practical = isPractical(sim);
+  const out = join(OUT, downloadBase(simId, lang, doc, practical));
   mkdirSync(dirname(out), { recursive: true });
 
   if (chrome) {
     const html = join(tmp, `${doc}-${lang}-${simId}.html`);
-    writeFileSync(html, pdfHtml(title, renderGuideHtml(markdown, lang), simId, lang, doc));
+    writeFileSync(html, pdfHtml(title, renderGuideHtml(markdown, lang), simId, lang, doc, practical));
     execFileSync(chrome, [
       '--headless=new',
       '--disable-gpu',
@@ -222,7 +236,7 @@ for (const { lang, file, doc = 'guide' } of guides) {
   if (pandoc) {
     // El título va a los metadatos (estilo «Título» y propiedades del documento),
     // así que se quita el h1 del cuerpo para no duplicarlo.
-    const body = rewriteLinks(markdown, lang).replace(/^#\s+.+\n+/m, '') + '\n\n' + licenseNote(simId, lang, doc) + '\n';
+    const body = rewriteLinks(markdown, lang).replace(/^#\s+.+\n+/m, '') + '\n\n' + licenseNote(simId, lang, doc, practical) + '\n';
     for (const ext of ['docx', 'odt']) {
       execFileSync(pandoc, [
         '-f', 'gfm', '-t', ext, '-o', `${out}.${ext}`,
@@ -234,7 +248,7 @@ for (const { lang, file, doc = 'guide' } of guides) {
     patchDocx(`${out}.docx`, doc);
     patchOdt(`${out}.odt`, doc);
   }
-  console.log(`✓ ${doc === 'guion' ? 'guion' : lang} ${simId}`);
+  console.log(`✓ ${doc === 'guion' ? (practical ? 'guion' : 'ficha') : lang} ${simId}`);
 }
 
 rmSync(tmp, { recursive: true, force: true });

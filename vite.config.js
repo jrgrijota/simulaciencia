@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { simulationsIn, simTitle, simDescription, courseLabel, isPractical } from './src/data/simulations.js';
 import { guideIdFromFile, guideSummary, guideMisconceptions } from './src/guides/shared.js';
-import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, parsePath, translatedPath, absoluteUrl, STUDENT_DOC_DIRS } from './src/paths.js';
+import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, FICHA_LANGS, parsePath, translatedPath, absoluteUrl, STUDENT_DOC_DIRS } from './src/paths.js';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
@@ -21,6 +21,11 @@ function sitemap() {
           .filter((f) => f.endsWith('.md'))
           .map((f) => guionPath(guideIdFromFile(f))),
       );
+      // Fichas traducidas: fichas/<idioma>/*.md.
+      const fichas = (lang) =>
+        FICHA_LANGS.includes(lang) && existsSync(`fichas/${lang}`)
+          ? readdirSync(`fichas/${lang}`).filter((f) => f.endsWith('.md')).map((f) => guionPath(guideIdFromFile(f), lang))
+          : [];
       const paths = [
         homePath('es'),
         ...simulationsIn('es').map((s) => simPath(s.id)),
@@ -31,6 +36,7 @@ function sitemap() {
           homePath(l),
           ...simulationsIn(l).map((s) => simPath(s.id, l)),
           ...(GUIDE_LANGS.includes(l) ? guides(l) : []),
+          ...fichas(l),
           ...pagePaths(l),
         ]),
       ];

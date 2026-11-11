@@ -565,12 +565,34 @@ export const KINDS = [
 export const simKind = (sim) => sim.kind || 'simulacion';
 export const isPractical = (sim) => simKind(sim) === 'practica';
 
-// Documento del alumnado (guiones/<nombre>.md, solo en español): en una práctica es
-// el guion; en una simulación, la ficha de actividades.
-export function studentDoc(sim) {
-  return isPractical(sim)
-    ? { title: 'Guion de la práctica', label: 'Guion del alumnado', short: 'Guion', the: 'el guion', it: 'lo', file: 'guion', type: 'Guion de prácticas' }
-    : { title: 'Ficha de actividades', label: 'Ficha de actividades', short: 'Ficha de actividades', the: 'la ficha de actividades', it: 'la', file: 'ficha', type: 'Ficha de actividades' };
+// Documento del alumnado: en una práctica es el guion (guiones/<nombre>.md, solo
+// en español); en una simulación, la ficha de actividades (fichas/<nombre>.md y
+// fichas/<idioma>/<nombre>.md). Textos de la web en el idioma de la página.
+const FICHA_TEXT = {
+  es: { label: 'Ficha de actividades', the: 'la ficha de actividades', toc: 'En esta ficha de actividades', loading: 'Cargando la ficha de actividades…',
+    adapt: 'Descárgala en Word o LibreOffice para adaptarla a tu clase antes de repartirla.',
+    license: 'Ficha de actividades bajo licencia', licenseEnd: 'puedes adaptarla y compartirla citando la autoría y con la misma licencia.' },
+  en: { label: 'Activity worksheet', the: 'the activity worksheet', toc: 'In this worksheet', loading: 'Loading the activity worksheet…',
+    adapt: 'Download it in Word or LibreOffice format to adapt it to your class before handing it out.',
+    license: 'Activity worksheet licensed under', licenseEnd: 'you may adapt and share it, crediting the author and keeping the same licence.' },
+  ca: { label: 'Fitxa d’activitats', the: 'la fitxa d’activitats', toc: 'En aquesta fitxa d’activitats', loading: 'S’està carregant la fitxa d’activitats…',
+    adapt: 'Descarrega-la en Word o LibreOffice per adaptar-la a la teva classe abans de repartir-la.',
+    license: 'Fitxa d’activitats amb llicència', licenseEnd: 'la pots adaptar i compartir citant-ne l’autoria i amb la mateixa llicència.' },
+  eu: { label: 'Jarduera-fitxa', the: 'jarduera-fitxa', toc: 'Jarduera-fitxa honetan', loading: 'Jarduera-fitxa kargatzen…',
+    adapt: 'Deskargatu Word edo LibreOffice formatuan, banatu aurretik zure taldera egokitzeko.',
+    license: 'Jarduera-fitxaren lizentzia', licenseEnd: 'egokitu eta partekatu dezakezu, egilea aipatuz eta lizentzia bera erabiliz.' },
+  gl: { label: 'Ficha de actividades', the: 'a ficha de actividades', toc: 'Nesta ficha de actividades', loading: 'Cargando a ficha de actividades…',
+    adapt: 'Descárgaa en Word ou LibreOffice para adaptala á túa clase antes de repartila.',
+    license: 'Ficha de actividades baixo licenza', licenseEnd: 'podes adaptala e compartila citando a autoría e coa mesma licenza.' },
+};
+export function studentDoc(sim, lang = 'es') {
+  if (isPractical(sim))
+    return { title: 'Guion de la práctica', label: 'Guion del alumnado', short: 'Guion', the: 'el guion', file: 'guion', type: 'Guion de prácticas',
+      toc: 'En este guion', loading: 'Cargando el guion…',
+      adapt: 'Descárgalo en Word o LibreOffice para adaptarlo a tu clase antes de repartirlo.',
+      license: 'Guion bajo licencia', licenseEnd: 'puedes adaptarlo y compartirlo citando la autoría y con la misma licencia.' };
+  const t = FICHA_TEXT[lang] || FICHA_TEXT.es;
+  return { ...t, title: t.label, short: t.label, file: 'ficha', type: t.label };
 }
 
 // ¿Está en este idioma? Las prácticas, por ahora, solo en español.

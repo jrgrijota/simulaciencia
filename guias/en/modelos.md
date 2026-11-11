@@ -136,3 +136,31 @@ The simulation puts the qualitative contrast between the two models first, and t
 7. **The nucleus is “soft” and there is no nuclear force.** The force is smoothed near the centre and drops to zero beyond 1.2 atomic radii. With Z = 1 at speed 10, or with Z = 14 at speed 16, an α fired head-on passes through the nucleus without being deflected.
 8. **Made-up neutrons and shells.** The nucleus draws as many neutrons as protons; real gold has 118 neutrons. The electrons are arranged in shells of 2, 8, 18, 32, 32 and 8, which is an idea of Bohr's, not Rutherford's. From ESO 4 onwards it is worth pointing out the anachronism.
 9. **The electrons almost never collide.** The mass of the α is 7350 times that of the electron, close to the real value of about 7300. But its collision radius is 0.005 px and collisions practically never happen. In the Rutherford model the electrons exert no force on the α.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/modelos/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 2 (Year 9) | Before you start, activities 1 to 3, questions 1 to 3 of Apply what you have learnt, Review your ideas and Self-assessment | One lesson |
+| ESO 3 (Year 10) | Activities 3 to 6 and Apply what you have learnt | One lesson |
+| ESO 4 (Year 11) | Before you start, activities 1 to 6, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson |
+| Bachillerato 2 Physics (Year 13) | Activities 3 and 5 and Going further | 30 minutes |
+
+The “Before you start” table collects five of the prior ideas from the misconceptions table. It is best not to correct it at the beginning: students come back to it in “Review your ideas”.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) The atom is almost all empty space (activities 2 and 3). b) Electric repulsion acts at a distance and bends the path before the particle gets there (activity 3). c) The nucleus is tiny (activity 3). d) A model is changed when an experiment contradicts its prediction (activity 2). e) The deflection depends on the charge of the nucleus and on the speed (activities 4 and 5) |
+| Activity 1 | All of them go through the atom, with deflections of 1° or 2° at most; none comes back. The positive charge is spread over a large sphere and its effect is weak everywhere |
+| Activity 2 | Thomson: 100 % in the first bar and no red bars. Rutherford: around 88 % in the first bar and around 4 % in the red ones. Thomson's model cannot explain any bounce-back; a very concentrated positive charge is needed (in the real experiment about 1 in 8000 bounced back) |
+| Activity 3 | At the height of the nucleus it comes back; just above it, it curves sharply; far away it goes straight through. It does not touch the nucleus: it is deflected by the electric repulsion between positive charges, which acts at a distance. Almost all go straight through because the atom is almost all empty space and the nucleus is tiny |
+| Activity 4 | Z = 1: small deflection (about 6° at most). Z = 14: quite a large deflection. Z = 79: it bounces back. More protons, more positive charge and more repulsion |
+| Activity 5 | Speed 4: large (about 115°). 10: medium (about 38°). 16: small (about 16°). With more kinetic energy, the repulsion has less time and less effect in bending its path |
+| Activity 6 | Nucleus: 14 protons and 14 neutrons. Shells: 14 electrons in shells of 2, 8 and 4. Bohr (1913): electrons can only be in certain orbits or energy levels; this makes the atom stable and explains spectra |
+| Apply what you have learnt | 1) Thomson: positive sphere with electrons embedded in it. Rutherford: tiny positive nucleus in the centre with electrons going round it. 2) About 1000 m (1 km): like a marble in the centre of a large stadium. 3) Thomson's model explained what was known at the time; it was replaced when a new experiment contradicted it, which is how science moves forward. 4) They would be attracted by the nucleus: they would also be deflected near it, but curving towards it |
+| Going further | 1) r<sub>min</sub> falls to a quarter; in the simulation, from about 19 px to about 5 px. 2) r<sub>min</sub> = 9 · 10⁹ · (2 · 1.6 · 10⁻¹⁹) · (79 · 1.6 · 10⁻¹⁹) / (5 · 10⁶ · 1.6 · 10⁻¹⁹ J) ≈ 4.5 · 10⁻¹⁴ m |

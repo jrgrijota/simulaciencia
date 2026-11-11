@@ -96,7 +96,7 @@ function render() {
   };
   const sim = find(simId);
   const guideSim = !sim && guideId && hasGuide(guideId, route.lang) ? find(guideId) : null;
-  const guionSim = guionId && hasGuion(guionId) ? find(guionId) : null;
+  const guionSim = guionId && hasGuion(guionId, route.lang) ? find(guionId) : null;
 
   // Rutas desconocidas => degradamos al catálogo de forma silenciosa.
   if (sim) cleanup = renderLab(app, sim);

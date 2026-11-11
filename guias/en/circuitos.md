@@ -110,3 +110,29 @@ The simulation makes sure the rules for series and parallel can be seen, and to 
 5. **Approximate brightness.** The brightness increases with power but saturates (P / (P + 0.5 W)), so that both 0.1 W and 3 W can be told apart. It is not a measurement of the light emitted.
 6. **Voltage across gaps.** With a single gap in series (a component removed or the switch open), the whole battery voltage is across its ends. With two gaps at once that voltage is not defined in an ideal circuit and “—” is shown.
 7. **Direct current only.** There is no alternating current, no 230 V mains and no consumption in kWh. The resistances go in steps of 5 Ω and the voltage in steps of 0.5 V.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/circuitos/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 2 (Year 9) | Before you start, activities 1, 2 (without the last column) and 6, Review your ideas and Self-assessment | One 50–55 minute lesson |
+| ESO 3 (Year 10) | The whole worksheet except Going further | Two lessons, or one if the problems are set as homework |
+| ESO 4 (Year 11) | Activities 4 to 6 and Going further, as revision with power and energy | One lesson |
+
+The “Before you start” table collects six prior ideas about electric current. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. The values in the simulation are exact, so the answers are too.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) In series the current is the same in every bulb (activity 4). b) The electrons are already in all the wires and start moving at the same time (activity 1). c) The current depends on the resistance (activity 3). d) In parallel the equivalent resistance decreases (activity 5). e) Only in series; in parallel the others stay on (activities 4 and 5). f) With the switch open there is a voltage, but no current (activity 1) |
+| Activity 1 | Battery: gives the energy that moves the electrons; 6 V with the switch closed and open. Ammeter: measures the current, in series; 0.300 A closed and 0.000 A open. Voltmeter: measures the voltage across the bulb, in parallel; 6.00 V closed and 0 V open (the battery voltage appears across the terminals of the switch). The electrons stop, but they stay in the wires. The ammeter has to let all the current pass through it; the voltmeter compares two points of the circuit. Electrons move from − to +; by convention, the current goes from + to − |
+| Activity 2 | 0.100, 0.200, 0.300, 0.400, 0.500 and 0.600 A; V / I = 20 Ω every time. The graph is a straight line through the origin: V and I are directly proportional. The constant is the resistance: V = I · R |
+| Activity 3 | 10 Ω: 0.600 A and 3.60 W. 20 Ω: 0.300 A and 1.80 W. 30 Ω: 0.200 A and 1.20 W. 60 Ω: 0.100 A and 0.60 W. As R increases, the current and the brightness decrease. The battery keeps the voltage; the current depends on the resistance: I = V / R |
+| Activity 4 | R₁: 10 Ω, 1 V, 0.100 A, 0.10 W. R₂: 20 Ω, 2 V, 0.100 A, 0.20 W. R₃: 30 Ω, 3 V, 0.100 A, 0.30 W. Total: 60 Ω, 6 V, 0.100 A, 0.60 W. When R₂ is removed they all go out: the only path is broken and there are 6.00 V across the empty terminals. The current is the same in all of them: current is not used up; what is transformed is the energy. V = V₁ + V₂ + V₃ and equivalent R = R₁ + R₂ + R₃ |
+| Activity 5 | R₁: 10 Ω, 6 V, 0.600 A, 3.60 W. R₂: 20 Ω, 6 V, 0.300 A, 1.80 W. R₃: 30 Ω, 6 V, 0.200 A, 1.20 W. Total: 5.45 Ω, 6 V, 1.100 A, 6.60 W. When R₂ is removed the others stay the same and the total current falls to 0.800 A (7.5 Ω). They all have the battery voltage; I = I₁ + I₂ + I₃. The equivalent R is smaller than the smallest of them: each new branch is one more path for the current |
+| Activity 6 | Series: 2 V, 0.100 A and 0.20 W each; total 0.100 A; when one is removed they all go out. Parallel: 6 V, 0.300 A and 1.80 W each; total 0.900 A; the others stay on. Homes are wired in parallel: each appliance gets the full mains voltage and works even if another is switched off or breaks |
+| Apply what you have learnt | 1) I = 9 V / 30 Ω = 0.300 A. 2) R = 12 V / 0.240 A = 50 Ω. 3) R = 15 + 45 = 60 Ω; I = 12 / 60 = 0.200 A; V₁ = 0.2 · 15 = 3 V and V₂ = 0.2 · 45 = 9 V (they add up to 12 V). 4) I₁ = 12 / 15 = 0.800 A; I₂ = 12 / 45 ≈ 0.267 A; I = 1.067 A; R = 12 / 1.067 ≈ 11.25 Ω (or 1/R = 1/15 + 1/45) |
+| Going further | 1) E = 1.80 W · 3600 s = 6480 J. 2) Nine times: in parallel each bulb has three times the voltage and three times the current it has in series (1.80 W compared with 0.20 W). 3) In series R₃ shines most (0.30 W), the one with the most resistance, because P = I² · R with the same I; in parallel R₁ shines most (3.60 W), the one with the least resistance, because P = V² / R with the same V. It is not true in series |

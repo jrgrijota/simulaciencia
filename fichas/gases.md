@@ -141,7 +141,7 @@ Cada actividad tiene un enlace que abre la simulación ya preparada. Si tienes l
 | --- |
 |  |
 
-**Observa.** Cambia el tamaño con los botones «−» y «+» de «Radio del Contenedor» y calcula P · V.
+**Observa.** Cambia el tamaño con los botones «−» y «+» de «Volumen del recipiente» y calcula P · V.
 
 | Volumen V (L) | Presión P (atm) | P · V (atm·L) |
 | --- | --- | --- |

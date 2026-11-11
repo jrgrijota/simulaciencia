@@ -129,3 +129,30 @@ The simulation puts the two conditions for a successful collision first, and to 
 7. **Concentration is the number of molecules in the chamber.** The size of the chamber depends on the screen. In comparison mode each chamber is half the size, so 16 molecules mean twice the concentration. The figures change between a laptop and a projector.
 8. **Simulation seconds.** The rate is measured in reactions per 60 frames, a “simulation second”. On a slow computer the animation runs more slowly, but the figures are the same; the graph and the help say so. With so few molecules the values are small, very irregular whole numbers.
 9. **In Collision mode the energy is a step.** Each molecule is launched at 1.5·√E, so the relative speed exceeds the 5.8 threshold from level 4 upwards (level 3: 5.2; level 4: 6.0). There is no distribution of speeds: it is a single collision with a fixed energy.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/velocidad-reaccion/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 3 (Year 10) | Before you start, activities 1, 3 and 4, questions 1 to 3 of Apply what you have learnt and Review your ideas | One lesson |
+| ESO 4 (Year 11) | Before you start, activities 1 to 6, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson |
+| Bachillerato 2 Chemistry (Year 13) | Activities 2, 3, 5 and Going further | One lesson |
+
+The “Before you start” table collects five prior ideas about reactions. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. The simulation is random: the figures in the answers are a guide and depend on the screen size.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) Only successful collisions react (activities 1 and 2). b) Atoms are rearranged; they neither appear nor disappear (activity 1). c) Molecules do not grow; they move faster and collide with more energy (activity 3). d) The catalyst is not used up (activity 5). e) The rate falls as the reactants are used up (activity 6) |
+| Activity 1 | Between 5 and 8 reactions in one minute, with many more collisions. A molecule C has two blue atoms (from A) and two orange ones (from B): the atoms are rearranged. Not every collision produces a reaction |
+| Activity 2 | Case 1: successful. Case 2: unsuccessful, wrong orientation. Case 3: unsuccessful, not enough energy. Case 4: successful. Conditions: enough energy (at least the activation energy, level 4) and the right orientation (the reactive sites touch) |
+| Activity 3 | At temperature 2, about 7 reactions; at temperature 8, about 12. The green part is small at temperature 2 and large at temperature 8. When heated, the molecules move faster: they collide more often and a larger share of the collisions exceeds the activation energy |
+| Activity 4 | About 4 reactions with 8 + 8 and about 17 with 24 + 24. More molecules in the same volume collide more often. Example: concentrated bleach acts faster than diluted bleach |
+| Activity 5 | The chamber with 4 catalysts uses up the reactant in 15–25 s; the other one usually stays below 50 %. There are 4 catalysts at the start and at the end. The catalyst opens a reaction pathway with a lower activation energy and is recovered at the end of each reaction |
+| Activity 6 | The rate is highest at the start and falls to zero at the end, when there is no A or B left. It slows down because there are fewer and fewer reactants and they collide less often (lower concentration) |
+| Apply what you have learnt | 1) At low temperature the molecules move more slowly and there are fewer successful collisions: the reactions that spoil food are slower. 2) Sawdust has much more surface in contact with oxygen: more collisions. 3) At higher temperature there are more collisions and they have more energy. 4) It speeds up the reactions that turn toxic gases into less harmful ones; it is not used up, so it does not need replacing every time |
+| Going further | 1) The green part goes from about 12 % at temperature 1 to about 81 % at temperature 10: the fraction of collisions with energy above Ea grows strongly with T, as the factor e<sup>−Ea/RT</sup> shows. 2) B is limiting: 10 molecules of C form and 6 of A are left over; the conversion shows 100 % |

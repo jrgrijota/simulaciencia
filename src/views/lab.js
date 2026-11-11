@@ -21,8 +21,8 @@ function withSimParams(sim, href) {
 }
 const frameUrl = (sim, lang) => withSimParams(sim, simUrl(sim, lang));
 
-// La ficha o el guion del alumnado solo están en español.
-const hasStudentDoc = (sim, lang) => lang === 'es' && hasGuion(sim.id);
+// Ficha de actividades (en cada idioma) o guion de la práctica (solo en español).
+const hasStudentDoc = (sim, lang) => hasGuion(sim.id, lang);
 
 function buildEmbedCode(sim) {
   const lang = getLang();
@@ -123,7 +123,7 @@ function aboutMarkup(sim, lang, guide) {
           : L('Guía docente', 'Teacher guide', 'Guia docent (en castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (en castelán)')
       }</a>`
     : '';
-  const guionLink = hasStudentDoc(sim, lang) ? `<a href="${guionPath(sim.id)}" data-route class="${ABOUT_LINK}">${studentDoc(sim).label}</a>` : '';
+  const guionLink = hasStudentDoc(sim, lang) ? `<a href="${guionPath(sim.id, lang)}" data-route class="${ABOUT_LINK}">${studentDoc(sim, lang).label}</a>` : '';
   return `
   <section id="lab-about" aria-labelledby="lab-about-title" data-print-hide class="border-t border-[#e2e8f0] bg-white">
     <div class="mx-auto max-w-3xl px-4 py-10 text-[#334155]">
@@ -134,7 +134,13 @@ function aboutMarkup(sim, lang, guide) {
       }: ${esc(simTitle(sim, lang))}</h2>
       <p class="mt-3 leading-relaxed">${esc(simDescription(sim, lang))}</p>
       <div id="lab-about-guide"${guide === lang ? ' data-pending' : ''}></div>
-      ${!practical && hasStudentDoc(sim, lang) ? `<p class="mt-3 leading-relaxed">Esta simulación tiene una <a href="${guionPath(sim.id)}" data-route class="${ABOUT_LINK}">ficha de actividades</a> asociada para el alumnado: predice, observa y explica, con enlaces que abren la simulación ya preparada. Se descarga en Word, LibreOffice o PDF.</p>` : ''}
+      ${!practical && hasStudentDoc(sim, lang) ? `<p class="mt-3 leading-relaxed">${L(
+        'Esta simulación tiene una <a href="{}" data-route class="{c}">ficha de actividades</a> asociada para el alumnado: predice, observa y explica, con enlaces que abren la simulación ya preparada. Se descarga en Word, LibreOffice o PDF.',
+        'This simulation comes with an <a href="{}" data-route class="{c}">activity worksheet</a> for students: predict, observe and explain, with links that open the simulation already set up. It downloads as Word, LibreOffice or PDF.',
+        'Aquesta simulació té una <a href="{}" data-route class="{c}">fitxa d’activitats</a> associada per a l’alumnat: prediu, observa i explica, amb enllaços que obren la simulació ja preparada. Es descarrega en Word, LibreOffice o PDF.',
+        'Simulazio honek ikasleentzako <a href="{}" data-route class="{c}">jarduera-fitxa</a> bat du lotuta: iragarri, behatu eta azaldu, simulazioa prestatuta irekitzen duten estekekin. Word, LibreOffice edo PDF formatuan deskarga daiteke.',
+        'Esta simulación ten unha <a href="{}" data-route class="{c}">ficha de actividades</a> asociada para o alumnado: predí, observa e explica, con ligazóns que abren a simulación xa preparada. Descárgase en Word, LibreOffice ou PDF.',
+      ).replace('{}', guionPath(sim.id, lang)).replace('{c}', ABOUT_LINK)}</p>` : ''}
       ${guide && guide !== lang ? `<p class="mt-3 leading-relaxed">${L(
         '',
         '',
@@ -210,9 +216,9 @@ export function renderLab(root, sim) {
   const withGuide = !!guide;
   const practical = isPractical(sim);
   const guionButton = hasStudentDoc(sim, lang)
-    ? `<a href="${guionPath(sim.id)}" data-route class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
+    ? `<a href="${guionPath(sim.id, lang)}" data-route class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="clipboard-list" class="h-4 w-4"></i>
-        <span class="sr-only sm:not-sr-only">${studentDoc(sim).short}</span>
+        <span class="sr-only sm:not-sr-only">${studentDoc(sim, lang).short}</span>
       </a>`
     : '';
   const guideButton = withGuide

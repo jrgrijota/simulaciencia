@@ -16,7 +16,7 @@ import { dirname, extname, join, resolve } from 'node:path';
 import { promisify } from 'node:util';
 import { simulationsIn } from '../src/data/simulations.js';
 import { guideIdFromFile } from '../src/guides/shared.js';
-import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, LANGS, GUIDE_LANGS, pagePaths, STUDENT_DOC_DIRS } from '../src/paths.js';
+import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, LANGS, GUIDE_LANGS, FICHA_LANGS, pagePaths, STUDENT_DOC_DIRS } from '../src/paths.js';
 import { findChrome } from './tools.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..');
@@ -37,6 +37,14 @@ const guionRoutes = () =>
       .map((f) => guionPath(guideIdFromFile(f))),
   );
 
+// Fichas de actividades traducidas: fichas/<idioma>/*.md.
+const fichaRoutes = (lang) =>
+  FICHA_LANGS.includes(lang) && existsSync(join(ROOT, 'fichas', lang))
+    ? readdirSync(join(ROOT, 'fichas', lang))
+        .filter((f) => f.endsWith('.md'))
+        .map((f) => guionPath(guideIdFromFile(f), lang))
+    : [];
+
 const routes = [
   '/',
   ...simulationsIn('es').map((s) => simPath(s.id)),
@@ -48,6 +56,7 @@ const routes = [
     homePath(l),
     ...simulationsIn(l).map((s) => simPath(s.id, l)),
     ...(GUIDE_LANGS.includes(l) ? guideRoutes(l) : []),
+    ...fichaRoutes(l),
     ...pagePaths(l),
   ]),
 ];
@@ -90,7 +99,8 @@ async function snapshot(origin, route) {
     { maxBuffer: 32 * 1024 * 1024 },
   );
   if (!/<div id="app">\s*</.test(stdout)) throw new Error(`${route}: la página quedó vacía`);
-  if (stdout.includes('Cargando la guía…') || stdout.includes('Cargando el guion…') || stdout.includes('Cargando la ficha de actividades…') || stdout.includes('Loading the guide…')) throw new Error(`${route}: la guía no terminó de cargar`);
+  const LOADING = ['Cargando la guía…', 'Cargando el guion…', 'Loading the guide…', 'Cargando la ficha de actividades…', 'Loading the activity worksheet…', 'S’està carregant la fitxa d’activitats…', 'Jarduera-fitxa kargatzen…', 'Cargando a ficha de actividades…'];
+  if (LOADING.some((t) => stdout.includes(t))) throw new Error(`${route}: la guía no terminó de cargar`);
   if (stdout.includes('id="lab-about-guide" data-pending')) throw new Error(`${route}: el resumen de la guía no terminó de cargar`);
   // El iframe lo vuelve a crear main.js al cargar; sin src no se descarga dos veces.
   return stdout.replace(/(<iframe id="lab-frame"[^>]*?) src="[^"]*"/, '$1');

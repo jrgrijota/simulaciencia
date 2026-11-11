@@ -17,10 +17,18 @@ export function guideIdFromFile(fileName) {
 // Nombre de las descargas: guias/guia-docente-<nombre>.{pdf,docx,odt}
 // y, en inglés, en/guides/teacher-guide-<nombre>.{pdf,docx,odt}
 // y, para los documentos del alumnado, guiones/guion-<nombre> en las prácticas y
-// fichas/ficha-<nombre> en las simulaciones.
+// fichas/ficha-<nombre> en las simulaciones (en/worksheets/worksheet-<nombre>,
+// ca/fitxes/fitxa-<nombre>, eu/fitxak/fitxa-<nombre>, gl/fichas/ficha-<nombre>).
+const FICHA_FILE = {
+  es: 'fichas/ficha-',
+  en: 'en/worksheets/worksheet-',
+  ca: 'ca/fitxes/fitxa-',
+  eu: 'eu/fitxak/fitxa-',
+  gl: 'gl/fichas/ficha-',
+};
 export function downloadBase(simId, lang = 'es', doc = 'guide', practical = true) {
   const name = simId.replace(/^sim-/, '');
-  if (doc === 'guion') return practical ? `guiones/guion-${name}` : `fichas/ficha-${name}`;
+  if (doc === 'guion') return practical ? `guiones/guion-${name}` : `${FICHA_FILE[lang] || FICHA_FILE.es}${name}`;
   return lang === 'en' ? `en/guides/teacher-guide-${name}` : `guias/guia-docente-${name}`;
 }
 
@@ -39,9 +47,12 @@ export function guideTitle(md) {
 }
 
 // Primer párrafo de «Ficha rápida» («Quick reference»; en los guiones, «Objetivo»;
-// en las fichas de actividades, «Qué vas a aprender»): sirve de descripción para Google.
+// en las fichas de actividades, «Qué vas a aprender» y su traducción): sirve de
+// descripción para Google.
 export function guideSummary(md) {
-  const m = md.match(/^##\s+(?:Ficha rápida|Quick reference|Objetivo|Qué vas a aprender)\s*\n+([^\n#|][^\n]*)/m);
+  const m = md.match(
+    /^##\s+(?:Ficha rápida|Quick reference|Objetivo|Qué vas a aprender|What you will learn|Què aprendràs|Zer ikasiko duzu|Que vas aprender)\s*\n+([^\n#|][^\n]*)/m,
+  );
   return m ? m[1].trim() : '';
 }
 
@@ -69,12 +80,14 @@ const md = new Marked({
   },
 });
 
+const TABLE = { es: 'Tabla', en: 'Table', ca: 'Taula', eu: 'Taula', gl: 'Táboa' };
+
 export function renderGuideHtml(markdown, lang = 'es') {
   let n = 0;
   return md
     .parse(rewriteLinks(markdown, lang))
     // tabindex: en el móvil la tabla se desplaza de lado y así también se mueve con el teclado.
-    .replace(/<table>/g, () => `<div class="guide-table" tabindex="0" role="region" aria-label="${lang === 'en' ? 'Table' : 'Tabla'} ${++n}"><table>`)
+    .replace(/<table>/g, () => `<div class="guide-table" tabindex="0" role="region" aria-label="${TABLE[lang] || TABLE.es} ${++n}"><table>`)
     .replace(/<\/table>/g, '</table></div>');
 }
 
@@ -87,7 +100,40 @@ export function guideToc(markdown) {
 }
 
 // Aviso que acompaña a cada archivo descargado, que circula sin la web.
+const FICHA_NOTE = {
+  en: [
+    'Activity worksheet published under a Creative Commons Attribution-ShareAlike 4.0 licence (CC BY-SA 4.0)',
+    'You may adapt it for your class and share it, crediting the author and keeping the same licence.',
+    'Simulation',
+  ],
+  ca: [
+    'Fitxa d’activitats publicada amb llicència Creative Commons Reconeixement-CompartirIgual 4.0 (CC BY-SA 4.0)',
+    'La pots adaptar a la teva classe i compartir citant-ne l’autoria i amb la mateixa llicència.',
+    'Simulació',
+  ],
+  eu: [
+    'Jarduera-fitxa Creative Commons Aitortu-PartekatuBerdin 4.0 (CC BY-SA 4.0) lizentziapean argitaratua',
+    'Zure taldera egokitu eta partekatu dezakezu, egilea aipatuz eta lizentzia bera erabiliz.',
+    'Simulazioa',
+  ],
+  gl: [
+    'Ficha de actividades publicada baixo licenza Creative Commons Recoñecemento-CompartirIgual 4.0 (CC BY-SA 4.0)',
+    'Podes adaptala á túa clase e compartila citando a autoría e coa mesma licenza.',
+    'Simulación',
+  ],
+};
+
 export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true) {
+  if (doc === 'guion' && !practical && FICHA_NOTE[lang]) {
+    const [what, adapt, simWord] = FICHA_NOTE[lang];
+    return [
+      '---',
+      '',
+      `© 2026 Juan Ramón Grijota · SimulaCiencia. ${what}: https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}. ${adapt}`,
+      '',
+      `${simWord}: ${absoluteUrl(simPath(simId, lang))}`,
+    ].join('\n');
+  }
   if (doc === 'guion') {
     const [what, it] = practical ? ['Guion publicado', 'lo'] : ['Ficha de actividades publicada', 'la'];
     return [

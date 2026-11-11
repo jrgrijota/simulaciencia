@@ -122,3 +122,30 @@ The simulation puts the idea “discrete levels, jumps with a specific energy”
 7. **Orbits like planets.** The electron moves in circular orbits drawn with radii from 68 to 168 pixels for hydrogen, not to scale. In Bohr's model the radii grow with n². In Bachillerato 2 it is worth contrasting this with the idea of an orbital.
 8. **Spectra that fade by themselves.** The absorption spectrum only appears in Photons and only collects visible lines. The lines in both spectra lose half their brightness in about 14 s; when paused they freeze.
 9. **IR bar limited to 3000 nm.** The 4003 nm line of hydrogen and the 3444 and 6889 nm lines of neon are emitted but not drawn. They only appear in “Atomic transitions”.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/espectros/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 4 (Year 11) | Before you start, activities 1 to 4, questions 3 and 4 of Apply what you have learnt, Review your ideas and Self-assessment | One lesson |
+| Bachillerato 1 (Year 12) | Before you start, activities 1 to 6, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson, or two |
+| Bachillerato 2 Chemistry (Year 13) | Activities 3, 5 and 6 and Going further | One lesson |
+
+The “Before you start” table collects five prior ideas about light and atoms. It is best not to correct it at the beginning: students come back to it in “Review your ideas”.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) It only absorbs the wavelengths of its jumps (activity 1). b) It only occupies certain levels (activity 1). c) What matters is the energy of each photon, not how many arrive (activity 1). d) Each element has its own spectrum (activity 4). e) Blue light carries more (activity 3) |
+| Activity 1 | 550 nm (green): no. 600 nm (orange): no. 656 nm (red): yes, n = 2 → 3, 1.89 eV. 486 nm (blue-green): yes, n = 2 → 4, 2.55 eV. 434 nm (violet): yes, n = 2 → 5, 2.86 eV. The electron can only move to particular levels; the photon must carry exactly that energy difference |
+| Activity 2 | No: after a few seconds it drops back and emits a photon. 656: it emits 656 nm in any direction; red line in the spectrum. 486: it emits 486 nm or, in two steps, 1879 nm (IR, bottom bar) and 656 nm. 0.66 + 1.89 = 2.55 eV: energy is conserved |
+| Activity 3 | 656 nm, red, 1.89 eV. 486 nm, blue-green, 2.55 eV. 434 nm, violet, 2.86 eV. The shorter the wavelength, the more energy, as E = h · c / λ says |
+| Activity 4 | Hydrogen: 656, 486 and 434 nm (mainly red). Helium: 588 and 447 nm (yellow). Sodium: 589 nm (yellow). Neon: 703, 639, 585 and 454 nm (reds and oranges). Each element has different levels and emits different lines: by identifying them we know which elements are in a star's light |
+| Activity 5 | 1.5 eV: elastic collision, not enough energy, no level. 2.0 eV: it excites the 1.89 eV level and emits 656 nm. 3.0 eV: it reaches the 1.89, 2.55 and 2.86 eV levels. The electron does not need the exact energy: it is enough to have at least the energy of the jump; it keeps the rest |
+| Activity 6 | Dark lines at 656, 486 and 434 nm, right above the bright lines. The atom absorbs and emits in the same jumps between the same levels |
+| Apply what you have learnt | 1) E = 6.63 · 10⁻³⁴ · 3.00 · 10⁸ / 656 · 10⁻⁹ = 3.03 · 10⁻¹⁹ J = 1.89 eV. 2) λ = h · c / E = 1.99 · 10⁻²⁵ / (2.10 · 1.60 · 10⁻¹⁹) ≈ 592 nm, yellow: sodium (589 nm). 3) Sodium emits almost only at 589 nm (yellow), and neon's strongest visible lines are in the red and orange. 4) Its energy (2.07 eV) does not match any jump: it makes no difference how many arrive |
+| Going further | 1) E₃ − E₂ = 13.6 · (1/4 − 1/9) = 1.89 eV; E₄ − E₂ = 2.55 eV; E₅ − E₂ = 2.86 eV. They match. 2) 656 nm appears at about 1.9–2.0 eV, 486 nm at about 2.6 eV and 434 nm at about 2.9–3.0 eV: each line has a threshold because energy is quantised |

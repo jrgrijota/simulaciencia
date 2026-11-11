@@ -117,3 +117,30 @@ The simulation puts the relationship between collisions and pressure first, and 
 7. **Collisions with the wall neither cool nor heat.** The particles bounce back without losing speed even when the membrane moves. There is no cooling on expansion: the temperature only changes with the control. Every process is isothermal unless the teacher moves the temperature.
 8. **The particles have a size.** The starting radius is 3 px and they collide with each other. That volume of their own makes the pressure grow a little more than the number of particles: with 3 px and many particles the factor is more than 2. With 1 or 2 px, going from 50 to 100 particles doubles it. For the gas laws it is best to use 2 px.
 9. **The P-V graph keeps little.** It adds a point every 3 s with the mean values and keeps the last 35. V goes from 0 to 5 L and P from 0 to the recent maximum, which readjusts itself. It is cleared when the mode changes.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/gases/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 3 (Year 10) | Before you start, activities 1 to 6, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson, or two if the problems are done in class |
+| ESO 4 (Year 11) | Activities 2, 5 and 6, Apply what you have learnt and Going further | One lesson |
+| Bachillerato 1 (Year 12) | Activities 4 to 6 and Going further, as qualitative revision | 20–25 minutes |
+
+The “Before you start” table collects five prior ideas about gases. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. The values in the simulation vary by a few tenths from one load to another and from one second to the next; the answers give approximate values.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) Between the particles there is empty space (activity 1). b) The particles do not change size; they move faster (activity 3). c) The space between them is reduced (activity 5). d) A gas pushes equally in all directions: the balloon bulges in every direction (activity 1). e) The particles never stop moving (activity 1) |
+| Activity 1 | The particles take up a very small part; almost everything is empty space. They move in straight lines, in all directions, until they collide. When they hit the wall they push it and bounce off. The balloon does not go down because the collisions push the wall from inside in all directions |
+| Activity 2 | 50 particles: about 45–50 collisions/s and about 1.5 atm. 100: about 100 collisions/s and about 3.4 atm. 200: about 200 collisions/s and about 6.8 atm. The pressure is proportional to the number of collisions per second (and to how hard they are) |
+| Activity 3 | The volume grows with temperature, from about 0.74 L at 100 K to about 0.86 L at 500 K; the particles change from blue to red. When heated, the particles move faster and push harder on the wall, which gives way. The particles do not change size |
+| Activity 4 | The volume does not change (about 0.8 L). P ≈ 0.7 atm at 125 K, ≈ 1.5 atm at 273 K and ≈ 2.7 atm at 500 K; P / T ≈ 0.0055 atm/K in all three cases (Gay-Lussac's law). The gas left in the can increases its pressure when heated and can make it burst |
+| Activity 5 | P ≈ 3.8 atm at 0.37 L, ≈ 1.5 atm at 0.8 L, ≈ 0.85 atm at 1.5 L and ≈ 0.56 atm at 2.3 L. P · V stays at about 1.3–1.4 atm·L: Boyle's law. The particles do not shrink: there is less space between them and they hit the wall more often |
+| Activity 6 | Start ≈ 0.56 atm. At 500 K it rises to ≈ 1.0 atm (harder and more frequent collisions). With 100 particles it rises to ≈ 2 atm (twice as many collisions). With half the volume it rises to ≈ 4 atm (the particles reach the wall sooner) |
+| Apply what you have learnt | 1) Boyle: P₂ = 1 atm · 4 L / 1 L = 4 atm. 2) Gay-Lussac: P₂ = 1 atm · 450 K / 300 K = 1.5 atm. 3) Charles: V₂ = 2 L · 360 K / 300 K = 2.4 L. 4) Friction warms the air in the tyres; its particles move faster and hit the walls more often and harder, while the volume hardly changes |
+| Going further | 1) A hyperbola: P falls as V increases. 2) P · V / T comes out roughly the same, with a few tenths of noise |

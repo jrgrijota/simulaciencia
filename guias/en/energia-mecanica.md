@@ -121,3 +121,29 @@ The simulation makes sure the energy balance can be seen, and to do so it simpli
 7. **The pendulum's scale changes with L.** The string drawn gets longer with the length, but less than in proportion so that it fits on the screen. The heights of the same pendulum are to scale; those of two different lengths cannot be compared on screen.
 8. **Fixed reference level.** Potential energy is always measured from the lowest point of the track or path. The zero level cannot be changed.
 9. **Energy calculated from the balance.** The program calculates the speed from Ek = E initial − Ep − Q, so the bars always add up to exactly 100 %. The ends of the track have buffers that send the car back without losses; they can only be reached with an initial speed.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/energia-mecanica/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 3 (Year 10) | Before you start, activities 1 (without the energy columns), 4, 5 and 6, Review your ideas and Self-assessment | One 50–55 minute lesson |
+| ESO 4 (Year 11) | The whole worksheet except Going further | Two lessons, or one if the problems are set as homework |
+| Bachillerato 1 (Year 12) | Activities 3 and 5, Going further and problem 4 of Apply what you have learnt | One lesson |
+
+The “Before you start” table collects five prior ideas about energy. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. Pausing exactly at a point is tricky: it is easier at ×¼, and the answers allow a few tenths of difference.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) Without friction the speed depends only on the drop in height (activity 2). b) Without friction or initial speed it never goes above its starting height (activity 3). c) At the top the energy is potential; only the kinetic energy is zero (activity 4). d) Without friction it keeps swinging with the same amplitude (activity 4). e) It turns into heat; Ek + Ep + Q is always the initial energy (activity 5) |
+| Activity 1 | Start: 25 m, 0 m/s, Ek = 0, Ep = 122.5 kJ. First valley: 0 m, 22.1 m/s, Ek = 122.5 kJ, Ep = 0. 18 m hill: 11.7 m/s, Ek = 34.3 kJ, Ep = 88.2 kJ. 4 m valley: 20.3 m/s, Ek = 102.9 kJ, Ep = 19.6 kJ. Em = 122.5 kJ throughout. Going down, Ep turns into Ek, and going up the reverse. Without friction mechanical energy is conserved |
+| Activity 2 | 100 kg: 24.5 kJ and 22.1 m/s. 1000 kg: 245.0 kJ and 22.1 m/s. Mass appears in both energies: m · g · h = ½ · m · v², so it cancels and v = √(2 · g · h) |
+| Activity 3 | 0 m/s: it does not get over, it turns back at 25.0 m. 6.0 m/s: it does not get over, it reaches 26.8 m. 6.5 m/s: it gets over, reaching 27.2 m (above the top). With no initial speed its energy is only enough to climb to 25 m. The initial speed adds kinetic energy: Em = m · g · h + ½ · m · v₀² |
+| Activity 4 | End: h ≈ 0.59 m, v = 0, Ek = 0, Ep = Em ≈ 5.74 J. Lowest point: h = 0, v ≈ 3.39 m/s, Ek = Em ≈ 5.74 J, Ep = 0. After a minute the amplitude and the yellow line have not changed. At the highest point there is potential energy; only the kinetic energy is zero. On the graph, Ek and Ep rise and fall as mirror images and Em is a horizontal line |
+| Activity 5 | It comes back lower each time: about 22.4 m, 20.0 m and 17.5 m. Em falls to about 90 %, 80 % and 70 %, and Q rises to 10 %, 20 % and 30 %. The mechanical energy does not disappear: friction turns it into heat in the wheels and the track. Ek + Ep + Q always add up to 100 % of the initial energy: conservation of energy. The heat spreads into the surroundings and cannot be turned back completely into mechanical energy: the energy is degraded |
+| Activity 6 | Earth: 122.5 kJ and 22.1 m/s. Moon: 20.3 kJ and 9.0 m/s. Mars: 46.4 kJ and 13.6 m/s. Jupiter: 309.9 kJ and 35.2 m/s. Ep = m · g · h depends on g: with less gravity the weight is smaller and there is less energy to turn into motion |
+| Apply what you have learnt | 1) Ep = 400 · 9.8 · 20 = 78 400 J. 2) v = √(2 · 9.8 · 20) ≈ 19.8 m/s in the valley; on the 15 m hill, v = √(2 · 9.8 · 5) ≈ 9.9 m/s. 3) v = √(2 · 9.8 · 0.30) ≈ 2.4 m/s. 4) W<sub>fr</sub> = −15 kJ; those 15 kJ have turned into heat |
+| Going further | 1) ½ · v₀² ≥ g · (27 − 25), v₀ ≥ √(2 · 9.8 · 2) ≈ 6.26 m/s, between 6.0 and 6.5. 2) W<sub>fr</sub> = 0.05 · 500 · 9.8 · 9.7 ≈ 2.4 kJ, the same as Q ≈ 2.37 kJ in the valley. 3) After 10 s, 37 % is left with 1 kg and 61 % with 2 kg. Air resistance, b · v, does not depend on mass, but the energy does: the relative loss depends on b/m |

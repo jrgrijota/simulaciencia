@@ -51,6 +51,13 @@ const ABOUT_DESCRIPTION = {
 };
 const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES', gl: 'gl_ES' };
 const PRACTICAL_KIND = 'Práctica de laboratorio simulada';
+const FICHA_DESCRIPTION = {
+  es: (t) => `Ficha de actividades para el alumnado con la simulación «${t}»: predice, observa y explica, con enlaces que abren la simulación ya preparada. Descarga en Word y LibreOffice para adaptarla, o en PDF.`,
+  en: (t) => `Activity worksheet for students with the “${t}” simulation: predict, observe and explain, with links that open the simulation already set up. Download as Word or LibreOffice to adapt it, or as PDF.`,
+  ca: (t) => `Fitxa d’activitats per a l’alumnat amb la simulació «${t}»: prediu, observa i explica, amb enllaços que obren la simulació ja preparada. Descàrrega en Word i LibreOffice per adaptar-la, o en PDF.`,
+  eu: (t) => `Ikasleentzako jarduera-fitxa, «${t}» simulazioarekin: iragarri, behatu eta azaldu, simulazioa prestatuta irekitzen duten estekekin. Deskargatu Word edo LibreOffice formatuan egokitzeko, edo PDFn.`,
+  gl: (t) => `Ficha de actividades para o alumnado coa simulación «${t}»: predí, observa e explica, con ligazóns que abren a simulación xa preparada. Descarga en Word e LibreOffice para adaptala, ou en PDF.`,
+};
 const KIND = { es: 'Simulación interactiva', en: 'Interactive simulation', ca: 'Simulació interactiva', eu: 'Simulazio interaktiboa', gl: 'Simulación interactiva' };
 
 const metaDescription = document.querySelector('meta[name="description"]');
@@ -174,34 +181,35 @@ function set(lang, title, description, url, data, locales = LANGS, image = DEFAU
 export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
   setAlternates({ simId: sim?.id, guideId: guideSim?.id, guionId: guionSim?.id, page });
   if (guionSim) {
-    const title = simTitle(guionSim);
-    const url = absoluteUrl(guionPath(guionSim.id));
-    const doc = studentDoc(guionSim);
+    const practical = isPractical(guionSim);
+    const l = practical ? 'es' : lang;
+    const title = simTitle(guionSim, l);
+    const url = absoluteUrl(guionPath(guionSim.id, l));
+    const doc = studentDoc(guionSim, l);
     return set(
-      'es',
+      l,
       `${doc.title}: ${title} · ${SITE}`,
-      isPractical(guionSim)
+      practical
         ? `Guion para el alumnado de la práctica de laboratorio «${title}»: objetivo, procedimiento, tabla de datos, ` +
             'cálculos y cuestiones. Descarga en Word y LibreOffice para adaptarlo, o en PDF.'
-        : `Ficha de actividades para el alumnado con la simulación «${title}»: predice, observa y explica, con enlaces ` +
-            'que abren la simulación ya preparada. Descarga en Word y LibreOffice para adaptarla, o en PDF.',
+        : FICHA_DESCRIPTION[l](title),
       url,
       withBreadcrumb({
         '@type': 'LearningResource',
         name: `${doc.title}: ${title}`,
         url,
         learningResourceType: doc.type,
-        educationalLevel: levels(guionSim),
+        educationalLevel: levels(guionSim, l),
         typicalAgeRange: ageRange(guionSim),
         audience: { '@type': 'EducationalAudience', educationalRole: 'student' },
-        inLanguage: 'es',
+        inLanguage: l,
         isAccessibleForFree: true,
         author: AUTHOR,
-        license: LICENSE.es,
-        isBasedOn: simUrl(guionSim.id),
-      }, 'es', [[title, simUrl(guionSim.id)], [doc.short, url]]),
-      ['es'],
-      simImage(guionSim, 'es'),
+        license: LICENSE[l],
+        isBasedOn: simUrl(guionSim.id, l),
+      }, l, [[title, simUrl(guionSim.id, l)], [doc.short, url]]),
+      practical ? ['es'] : LANGS,
+      simImage(guionSim, l),
     );
   }
   if (guideSim) {

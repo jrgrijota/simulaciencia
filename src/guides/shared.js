@@ -118,3 +118,22 @@ export function licenseNote(simId, lang = 'es', doc = 'guide') {
       `Versión actualizada y simulación en ${absoluteUrl(guidePath(simId))}`,
   ].join('\n');
 }
+
+// Texto en línea de una guía (negritas, enlaces…) convertido a HTML.
+export function inlineHtml(text, lang = 'es') {
+  return md.parseInline(rewriteLinks(text, lang));
+}
+
+// Filas de la tabla de «Concepciones alternativas…» («Misconceptions…»): la idea
+// del alumnado y la idea correcta. Las usa la página de cada simulación y llms.txt.
+export function guideMisconceptions(markdown) {
+  const section = markdown.match(/^##\s+(?:Concepciones alternativas|Misconceptions)[^\n]*\n([\s\S]*?)(?=^##\s|(?![\s\S]))/m);
+  if (!section) return [];
+  return section[1]
+    .split('\n')
+    .filter((l) => l.startsWith('|') && !/^\|\s*-/.test(l))
+    .slice(1) // cabecera
+    .map((l) => l.split('|').slice(1, -1).map((c) => plain(c)))
+    .filter((c) => c.length >= 2 && c[0] && c[1])
+    .map(([idea, correct]) => ({ idea, correct }));
+}

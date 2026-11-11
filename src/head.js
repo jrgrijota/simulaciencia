@@ -4,10 +4,12 @@
 // cada página; al cargarla, este módulo reutiliza esas etiquetas.
 // Además, el <head> enlaza la versión de cada idioma (hreflang).
 import { simPath, guidePath, guionPath, homePath, pagePath, absoluteUrl, translatedPath, LANGS, GUIDE_LANGS } from './paths.js';
-import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical } from './data/simulations.js';
+import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical, TOPICS } from './data/simulations.js';
 
 export const SITE = 'SimulaCiencia';
-const AUTHOR = { '@type': 'Person', name: 'Juan Ramón Grijota' };
+// La ficha completa del autor y del sitio está en index.html (@id #autor y #web).
+const AUTHOR = { '@type': 'Person', '@id': 'https://simulaciencia.es/#autor', name: 'Juan Ramón Grijota' };
+const WEBSITE = { '@id': 'https://simulaciencia.es/#web' };
 const LICENSE = {
   es: 'https://creativecommons.org/licenses/by-sa/4.0/deed.es',
   en: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',
@@ -91,10 +93,12 @@ function simResource(sim, lang = 'es') {
       { '@type': 'EducationalAudience', educationalRole: 'teacher' },
     ],
     about: sim.tags.filter((t) => t !== 'ESO' && t !== 'Bachillerato').map((t) => tagLabel(t, lang)),
+    teaches: TOPICS.filter((t) => t.sims.includes(sim.id)).map((t) => t.label[lang] ?? t.label.es),
     inLanguage: lang,
     isAccessibleForFree: true,
     author: AUTHOR,
     license: LICENSE[lang],
+    isPartOf: WEBSITE,
   };
 }
 
@@ -209,6 +213,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
     name: DEFAULT_TITLE[lang],
     url: home,
     inLanguage: lang,
+    isPartOf: WEBSITE,
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: simulationsIn(lang).map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: simResource(s, lang) })),

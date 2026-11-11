@@ -109,3 +109,29 @@ La simulación prioriza la comparación entre peso y empuje y para ello simplifi
 7. **Movimiento solo cualitativo.** La velocidad se multiplica por 0,90 en cada fotograma dentro del líquido, tiene un tope y no hay rozamiento con el aire. El bloque oscila y se frena de forma orientativa. No sirve para medir tiempos ni aceleraciones.
 8. **Bloque ideal.** El bloque es siempre un cuadrado que no gira ni vuelca, y su tamaño en pantalla crece con el volumen de forma lineal. No se trata la estabilidad de los barcos ni la forma del casco.
 9. **Densidades fijas.** Cada material y cada líquido tiene un valor único, sin efecto de la temperatura. Las burbujas que suben cuando el bloque es más denso que el líquido son solo decorativas.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/arquimedes/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 4.º ESO | Antes de empezar, actividades 1 a 6, Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos, o dos si se hacen en clase los problemas |
+| 3.º ESO | Actividades 1, 2 y 3, centradas en el peso, el empuje, la normal y la resultante | Una sesión |
+| 1.º Bachillerato | Actividad 2 y Para ampliar, como repaso del equilibrio de traslación | 20–25 minutos |
+
+La tabla de «Antes de empezar» recoge cinco de las ideas previas de la tabla de concepciones alternativas. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas».
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) Depende de la densidad, no del peso (actividades 2 y 5). b) Todo cuerpo sumergido recibe empuje (actividades 3 y 5). c) El empuje depende del volumen sumergido, no de la profundidad (actividad 3). d) Si flota en reposo, E = P (actividad 1). e) Depende del líquido (actividades 4 y 6) |
+| Actividad 1 | P = 490 N, E = 490 N, 50 L sumergidos, «P ≈ E». Está quieto porque la resultante es nula. 50 L de agua tienen 50 kg y pesan 490 N, igual que el empuje. Principio de Arquímedes: todo cuerpo sumergido en un fluido recibe un empuje vertical hacia arriba igual al peso del fluido que desaloja |
+| Actividad 2 | 50 kg: 0,50 kg/L, 50 L, 490 N, flota. 80 kg: 0,80 kg/L, 80 L, 784 N, flota. 100 kg: 1,00 kg/L, 100 L, 980 N, equilibrio neutro. 150 kg: 1,50 kg/L, 100 L, 980 N, se hunde. La fracción sumergida es ρbloque / ρlíquido. Con 150 kg el bloque ya está entero dentro y el empuje máximo es 980 N; en el fondo aparece la normal, N = 1470 − 980 = 490 N |
+| Actividad 3 | El empuje se mantiene en 980 N mientras baja cubierto y en el fondo. Depende del volumen sumergido y del líquido, no de la profundidad |
+| Actividad 4 | 1,00 kg/L: se hunde, 100 L, 980 N. 1,50 kg/L: equilibrio neutro, 100 L, 1470 N. 2,00 kg/L: flota, 75 L, 1470 N. 3,00 kg/L: flota, 50 L, 1470 N. Cuanto más denso es el líquido, más pesa cada litro desalojado y basta menos volumen para igualar el peso |
+| Actividad 5 | Corcho 0,24 kg/L, P = E = 235 N, flota. Madera 0,60, P = E = 588 N, flota. Aluminio 2,70, P = 2646 N, E = 980 N, se hunde. Plomo 11,34, P = 11 113 N, E = 980 N. Oro 19,30, P = 18 914 N, E = 980 N. Flotan los menos densos que el agua. Los tres metales desalojan los mismos 100 L de agua, así que reciben el mismo empuje |
+| Actividad 6 | Hielo: flota con 91,7 L en agua dulce y 89,5 L en agua de mar (asoma más en el mar). Plástico: flota en agua dulce con 95 L y se hunde en aceite. Hierro: se hunde en agua dulce y flota en mercurio con unos 58 L. Flotar depende de la densidad del cuerpo comparada con la del líquido |
+| Aplica lo aprendido | 1) E = 40 L · 1,00 kg/L · 9,8 N/kg = 392 N. 2) V<sub>sum</sub> = 10 · 0,24 / 1,00 = 2,4 L; asoma el 76 %. 3) P = 29,4 N; E = 1,2 · 1,00 · 9,8 = 11,76 N; se hunde; P − E = 17,64 N. 4) V = 2 000 000 kg / 1,025 kg/L ≈ 1 951 000 L ≈ 1951 m³ |
+| Para ampliar | 1) N = P − E = 1470 − 980 = 490 N. 2) Se hunde si m > 120 L · 1,025 kg/L = 123 kg |

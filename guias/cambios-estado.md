@@ -132,3 +132,29 @@ La simulación prioriza que se vean bien las mesetas y el modelo de partículas,
 7. **La red del sólido es una figura de 16 × 4.** Es ancha y baja, como el líquido, para que al solidificar las partículas se ordenen en el fondo. En el hielo las partículas quedan a 20 px y el sólido ocupa algo más que el agua líquida, que las junta a 18 px; en las demás sustancias la red es compacta (17,5 px). En la lupa el sólido siempre está en el fondo; en el recipiente, en cambio, el hielo flota. Las moléculas de agua, nitrógeno, CO₂ y yodo tienen la forma real, pero los tamaños de los átomos son orientativos, y el alcohol se dibuja como esfera para no recargar la vista.
 8. **El diagrama de fases es esquemático.** La presión va en escala logarítmica. La línea de fusión del agua tiene la pendiente real (−0,0075 °C/atm), pero a 5 atm solo baja a −0,03 °C y parece vertical. No sirve para mostrar esa anomalía. El CO₂ no tiene punto crítico: su curva acaba a 30 °C y 71,5 atm. En el yodo, las curvas se ajustan a su punto triple, a su ebullición a 1 atm y a su presión de vapor a 25 °C (0,0004 atm); la pendiente de la línea de fusión es aproximada.
 9. **Las líneas tienen grosor.** El punto está sobre una línea si queda a menos de 5 px, y en el punto triple a menos de 12 px. Por eso «Líquido + gas» aparece en un intervalo, de 70 a 73 °C en el Everest. Sobre la línea se reparten las partículas a partes iguales, cuando en la realidad la proporción depende de la energía aportada.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/cambios-estado/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 2.º ESO | Antes de empezar, actividades 1, 2, 4 y 5, Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos |
+| 3.º ESO | Actividades 1 a 6 (la 3 con la barra de energía) y Aplica lo aprendido | Una o dos sesiones |
+| 4.º ESO | Actividades 1 y 3 como repaso y Para ampliar, con el diagrama de fases | Una sesión |
+
+La tabla de «Antes de empezar» recoge seis de las ideas previas de la tabla de concepciones alternativas. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas». Los tiempos dependen de la potencia y de cuándo se pulse «Reiniciar»; los de las soluciones son con la placa a +50 %.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) y b) La temperatura se queda en 100 °C mientras hierve, con cualquier potencia (actividades 1 y 3). c) Son vapor de agua (actividad 2). d) Las partículas son las mismas; cambian su orden, su separación y su movimiento (actividad 2). e) Vibran en torno a su posición (actividad 2). f) Depende de la presión (Para ampliar) |
+| Actividad 1 | Empieza a fundirse hacia los 5 min a 0 °C y termina hacia los 33 min, a 0 °C; empieza a hervir hacia los 85 min a 100 °C y termina hacia los 137 min. La gráfica tiene dos tramos planos (mesetas): la temperatura no cambia durante la fusión ni durante la ebullición. La ebullición dura casi el doble que la fusión |
+| Actividad 2 | Sólido: ordenadas en red, vibran en su sitio, uniones fuertes. Líquido: juntas pero desordenadas, se deslizan, uniones débiles. Gas: muy separadas, se mueven rápido y en línea recta, sin uniones. Las partículas no cambian; cambian su orden, su separación y su movimiento. Las burbujas son la propia agua en estado gaseoso. Entre las partículas del gas hay vacío |
+| Actividad 3 | Hierve a 100 °C con las dos potencias. La ebullición dura unos 52 min con +50 % y unos 26 min con +100 %. Más potencia acorta la meseta, pero no sube la temperatura: durante la ebullición la energía se gasta en separar las partículas, no en subir la temperatura |
+| Actividad 4 | Condensación a 100 °C (gotas en la tapa) y solidificación a 0 °C (se forma hielo). Enfriar no es añadir frío: es sacar energía, y las flechas salen del recipiente |
+| Actividad 5 | Agua: 0 y 100 °C, líquida a 20 °C. Alcohol: −114 y 78 °C, líquido. Nitrógeno: −210 y −196 °C, gas. Hierro: 1538 y 2862 °C, sólido. Son propias de cada sustancia y no dependen de la cantidad, así que sirven para identificar sustancias |
+| Actividad 6 | Una sola meseta, a −78 °C (en la simulación, −78,5 °C): SUBLIMACIÓN. No aparece líquido. A presión atmosférica el CO₂ sólido pasa directamente a gas, así que enfría sin mojar |
+| Aplica lo aprendido | 1) Fusión, vaporización y sublimación: hay que dar energía. Solidificación, condensación y sublimación inversa: hay que quitarla. 2) Gas que baja de 120 a 100 °C, meseta de condensación a 100 °C, líquido de 100 a 0 °C, meseta de solidificación a 0 °C, sólido de 0 a −20 °C. 3) Alcohol (etanol); a 0 °C es líquido. 4) Las dos están a 100 °C; la de fuego fuerte se evapora antes |
+| Para ampliar | 1) Hacia 72 °C: el agua hierve a menos temperatura y la pasta se cuece peor. 2) 121 °C: el agua líquida alcanza más temperatura y cocina antes. 3) Hacia 0,023 atm |

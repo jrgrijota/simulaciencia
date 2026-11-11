@@ -121,3 +121,29 @@ La simulación prioriza que se vea el balance de energía y para ello simplifica
 7. **La escala del péndulo cambia con L.** El hilo dibujado crece con la longitud, pero menos que ella para que quepa en pantalla. Las alturas de un mismo péndulo están a escala; las de dos longitudes distintas no se pueden comparar en la pantalla.
 8. **Nivel de referencia fijo.** La energía potencial se mide siempre desde el punto más bajo de la vía o de la trayectoria. No se puede cambiar el nivel cero.
 9. **Energía calculada por balance.** El programa calcula la velocidad a partir de Ec = E inicial − Ep − Q, de modo que las barras siempre suman exactamente el 100 %. Los extremos de la vía tienen topes que devuelven la vagoneta sin pérdidas; solo se alcanzan con velocidad inicial.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/energia-mecanica/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 3.º ESO | Antes de empezar, actividades 1 (sin las columnas de energía), 4, 5 y 6, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos |
+| 4.º ESO | Ficha completa salvo Para ampliar | Dos sesiones, o una si los problemas se hacen como tarea |
+| 1.º Bachillerato | Actividades 3 y 5, Para ampliar y problema 4 de Aplica lo aprendido | Una sesión |
+
+La tabla de «Antes de empezar» recoge cinco ideas previas sobre la energía. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas». Pausar justo en un punto cuesta: con ×¼ es más fácil, y las soluciones admiten unas décimas de diferencia.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) Sin rozamiento la velocidad solo depende del desnivel (actividad 2). b) Sin rozamiento ni velocidad inicial nunca supera la altura de salida (actividad 3). c) Arriba la energía es potencial; solo es nula la cinética (actividad 4). d) Sin rozamiento oscila siempre con la misma amplitud (actividad 4). e) Se transforma en calor; Ec + Ep + Q es siempre la energía inicial (actividad 5) |
+| Actividad 1 | Salida: 25 m, 0 m/s, Ec = 0, Ep = 122,5 kJ. Primer valle: 0 m, 22,1 m/s, Ec = 122,5 kJ, Ep = 0. Colina de 18 m: 11,7 m/s, Ec = 34,3 kJ, Ep = 88,2 kJ. Valle de 4 m: 20,3 m/s, Ec = 102,9 kJ, Ep = 19,6 kJ. Em = 122,5 kJ siempre. Al bajar, la Ep se transforma en Ec, y al subir al revés. Sin rozamiento la energía mecánica se conserva |
+| Actividad 2 | 100 kg: 24,5 kJ y 22,1 m/s. 1000 kg: 245,0 kJ y 22,1 m/s. La masa aparece en las dos energías: m · g · h = ½ · m · v², así que se simplifica y v = √(2 · g · h) |
+| Actividad 3 | 0 m/s: no pasa, da la vuelta a 25,0 m. 6,0 m/s: no pasa, llega a 26,8 m. 6,5 m/s: pasa, llega a 27,2 m (por encima de la cima). Sin velocidad inicial su energía solo alcanza para subir a 25 m. La velocidad inicial añade energía cinética: Em = m · g · h + ½ · m · v₀² |
+| Actividad 4 | Extremo: h ≈ 0,59 m, v = 0, Ec = 0, Ep = Em ≈ 5,74 J. Punto más bajo: h = 0, v ≈ 3,39 m/s, Ec = Em ≈ 5,74 J, Ep = 0. Tras un minuto la amplitud y la línea amarilla no han cambiado. En el punto más alto hay energía potencial; solo es nula la cinética. En la gráfica, Ec y Ep suben y bajan en espejo y Em es una recta horizontal |
+| Actividad 5 | Vuelve cada vez más bajo: unos 22,4 m, 20,0 m y 17,5 m. Em baja a cerca del 90 %, 80 % y 70 %, y Q sube al 10 %, 20 % y 30 %. La energía mecánica no desaparece: el rozamiento la transforma en calor en las ruedas y la vía. Ec + Ep + Q suman siempre el 100 % de la energía inicial: conservación de la energía. El calor se reparte por el entorno y no se puede volver a convertir del todo en energía mecánica: la energía se degrada |
+| Actividad 6 | Tierra: 122,5 kJ y 22,1 m/s. Luna: 20,3 kJ y 9,0 m/s. Marte: 46,4 kJ y 13,6 m/s. Júpiter: 309,9 kJ y 35,2 m/s. Ep = m · g · h depende de g: con menos gravedad el peso es menor y hay menos energía que convertir en movimiento |
+| Aplica lo aprendido | 1) Ep = 400 · 9,8 · 20 = 78 400 J. 2) v = √(2 · 9,8 · 20) ≈ 19,8 m/s en el valle; en la colina de 15 m, v = √(2 · 9,8 · 5) ≈ 9,9 m/s. 3) v = √(2 · 9,8 · 0,30) ≈ 2,4 m/s. 4) Wroz = −15 kJ; esos 15 kJ se han convertido en calor |
+| Para ampliar | 1) ½ · v₀² ≥ g · (27 − 25), v₀ ≥ √(2 · 9,8 · 2) ≈ 6,26 m/s, entre 6,0 y 6,5. 2) Wroz = 0,05 · 500 · 9,8 · 9,7 ≈ 2,4 kJ, igual que Q ≈ 2,37 kJ en el valle. 3) Tras 10 s queda un 37 % con 1 kg y un 61 % con 2 kg. La resistencia del aire, b · v, no depende de la masa, pero la energía sí: la pérdida relativa depende de b/m |

@@ -122,3 +122,29 @@ La simulación prioriza la idea «niveles discretos, saltos con energía concret
 7. **Órbitas como planetas.** El electrón gira en órbitas circulares dibujadas con radios de 68 a 168 píxeles en hidrógeno, sin escala real. En Bohr los radios crecen con n². En 2.º Bachillerato conviene contrastarlo con la idea de orbital.
 8. **Espectros que se borran solos.** El espectro de absorción solo aparece en Fotones y solo recoge rayas visibles. Las líneas de los dos espectros pierden la mitad de su brillo en unos 14 s; en pausa se congelan.
 9. **Barra IR limitada a 3000 nm.** Las líneas de 4003 nm del hidrógeno y de 3444 y 6889 nm del neón se emiten pero no se dibujan. Solo aparecen en «Transiciones del átomo».
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/espectros/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 4.º ESO | Antes de empezar, actividades 1 a 4, preguntas 3 y 4 de Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión |
+| 1.º Bachillerato | Antes de empezar, actividades 1 a 6, Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos, o dos |
+| 2.º Bachillerato Química | Actividades 3, 5 y 6 y Para ampliar | Una sesión |
+
+La tabla de «Antes de empezar» recoge cinco ideas previas sobre la luz y los átomos. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas».
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) Solo absorbe las longitudes de onda de sus saltos (actividad 1). b) Solo ocupa ciertos niveles (actividad 1). c) Importa la energía de cada fotón, no cuántos llegan (actividad 1). d) Cada elemento tiene su espectro (actividad 4). e) La azul transporta más (actividad 3) |
+| Actividad 1 | 550 nm (verde): no. 600 nm (naranja): no. 656 nm (rojo): sí, n = 2 → 3, 1,89 eV. 486 nm (azul verdoso): sí, n = 2 → 4, 2,55 eV. 434 nm (violeta): sí, n = 2 → 5, 2,86 eV. El electrón solo puede pasar a niveles concretos; el fotón tiene que llevar exactamente esa diferencia de energía |
+| Actividad 2 | No: a los pocos segundos baja y emite un fotón. 656: emite 656 nm en cualquier dirección; línea roja en el espectro. 486: emite 486 nm o, en dos pasos, 1879 nm (IR, barra inferior) y 656 nm. 0,66 + 1,89 = 2,55 eV: se conserva la energía |
+| Actividad 3 | 656 nm, rojo, 1,89 eV. 486 nm, azul verdoso, 2,55 eV. 434 nm, violeta, 2,86 eV. A menor longitud de onda, más energía, como dice E = h · c / λ |
+| Actividad 4 | Hidrógeno: 656, 486 y 434 nm (rojo dominante). Helio: 588 y 447 nm (amarillo). Sodio: 589 nm (amarillo). Neón: 703, 639, 585 y 454 nm (rojos y naranjas). Cada elemento tiene niveles distintos y emite líneas distintas: identificándolas se sabe qué elementos hay en la luz de una estrella |
+| Actividad 5 | 1,5 eV: colisión elástica, energía insuficiente, ningún nivel. 2,0 eV: excita el nivel de 1,89 eV y emite 656 nm. 3,0 eV: alcanza los niveles de 1,89, 2,55 y 2,86 eV. El electrón no necesita la energía exacta: basta con que tenga al menos la del salto; le sobra el resto |
+| Actividad 6 | Rayas oscuras en 656, 486 y 434 nm, justo encima de las líneas brillantes. El átomo absorbe y emite en los mismos saltos entre los mismos niveles |
+| Aplica lo aprendido | 1) E = 6,63 · 10⁻³⁴ · 3,00 · 10⁸ / 656 · 10⁻⁹ = 3,03 · 10⁻¹⁹ J = 1,89 eV. 2) λ = h · c / E = 1,99 · 10⁻²⁵ / (2,10 · 1,60 · 10⁻¹⁹) ≈ 592 nm, amarillo: el sodio (589 nm). 3) El sodio emite casi solo en 589 nm (amarillo) y el neón tiene sus líneas visibles más intensas en el rojo y el naranja. 4) Su energía (2,07 eV) no coincide con ningún salto: da igual cuántos lleguen |
+| Para ampliar | 1) E₃ − E₂ = 13,6 · (1/4 − 1/9) = 1,89 eV; E₄ − E₂ = 2,55 eV; E₅ − E₂ = 2,86 eV. Coinciden. 2) 656 nm aparece hacia 1,9–2,0 eV, 486 nm hacia 2,6 eV y 434 nm hacia 2,9–3,0 eV: cada línea tiene un umbral porque la energía está cuantizada |

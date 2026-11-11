@@ -25,6 +25,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-arquimedes/',
     responsive: true,
+    params: ['modo', 'masa', 'volumen', 'densidad', 'material', 'liquido', 'fuerzas'],
     courses: ['3ESO', '4ESO'],
     en: {
       title: "Archimedes' Principle",
@@ -86,6 +87,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-espectros/',
     responsive: true,
+    params: ['modo', 'elemento', 'luz', 'onda', 'fotones', 'flujo', 'energia', 'disparo', 'voltaje', 'densidad'],
     courses: ['4ESO', '1BACH', '2BACH'],
     en: {
       title: 'Atomic Spectra',
@@ -116,6 +118,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-gases/',
     responsive: true,
+    params: ['particulas', 'temperatura', 'recipiente', 'volumen', 'grafica'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'Kinetic Theory of Gases',
@@ -146,6 +149,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-modelos/',
     responsive: true,
+    params: ['modelo', 'vista', 'z', 'lanzamiento', 'ritmo', 'velocidad', 'emision', 'grafico'],
     courses: ['2ESO', '3ESO', '4ESO', '2BACH'],
     en: {
       title: 'Atomic Models',
@@ -176,6 +180,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion/',
     responsive: true,
+    params: ['modo', 'comparar', 'temperatura', 'a', 'b', 'catalizador', 'izquierda', 'derecha', 'energia'],
     courses: ['3ESO', '4ESO', '2BACH'],
     en: {
       title: 'Reaction Rate',
@@ -206,6 +211,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-atomo-real/',
     responsive: true,
+    params: ['elemento', 'zoom', 'intermedias'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'The Atom to Scale',
@@ -236,6 +242,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-enlaces-quimicos/',
     responsive: true,
+    params: ['modo', 'a', 'b', 'c', 'metal', 'cristal'],
     courses: ['3ESO', '4ESO', '1BACH'],
     en: {
       title: 'Chemical Bonding',
@@ -266,6 +273,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-orbitas/',
     responsive: true,
+    params: ['modo', 'velocidad', 'ley', 'a', 'e', 'm1', 'm2', 'separacion', 'planeta'],
     courses: ['3ESO', '4ESO', '1BACH', '2BACH'],
     en: {
       title: 'Orbits and Gravitation',
@@ -296,6 +304,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-cambios-estado/',
     responsive: true,
+    params: ['modo', 'sustancia', 'potencia', 'placa', 'velocidad', 'uniones', 'estelas', 'temperatura', 'presion'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'Changes of State',
@@ -326,6 +335,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-ajuste-reaccion/',
     responsive: true,
+    params: ['modo', 'reaccion', 'escala', 'recuento', 'reactivo1', 'reactivo2', 'rendimiento'],
     courses: ['3ESO', '4ESO', '1BACH'],
     en: {
       title: 'Balancing Equations',
@@ -356,6 +366,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-energia-mecanica/',
     responsive: true,
+    params: ['modo', 'perfil', 'altura', 'velocidad', 'masa', 'longitud', 'angulo', 'gravedad', 'rozamiento', 'mu', 'b', 'vector'],
     courses: ['3ESO', '4ESO', '1BACH'],
     en: {
       title: 'Mechanical Energy',
@@ -386,6 +397,7 @@ export const simulations = [
     tags: ['Física', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-circuitos/',
     responsive: true,
+    params: ['modo', 'voltaje', 'interruptor', 'receptor', 'r', 'receptores', 'r1', 'r2', 'r3', 'quitar', 'electrones'],
     courses: ['2ESO', '3ESO'],
     en: {
       title: 'Electric Circuits',
@@ -416,6 +428,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-ondas/',
     responsive: true,
+    params: ['modo', 'onda', 'amplitud', 'f', 'v', 'ritmo', 'rotulos', 'bach', 'dx'],
     courses: ['4ESO', '2BACH'],
     en: {
       title: 'Waves',

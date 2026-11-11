@@ -110,3 +110,29 @@ La simulación prioriza que se vean las reglas de la serie y del paralelo y para
 5. **Brillo orientativo.** El brillo crece con la potencia pero se satura (P / (P + 0,5 W)), para que se distingan tanto 0,1 W como 3 W. No es una medida de la luz emitida.
 6. **Tensión en los huecos.** Con un único hueco en serie (un receptor quitado o el interruptor abierto), entre sus extremos está toda la tensión de la pila. Con dos huecos a la vez esa tensión no está definida en un circuito ideal y se muestra «—».
 7. **Solo corriente continua.** No hay corriente alterna, ni red doméstica de 230 V, ni consumo en kWh. Las resistencias van de 5 en 5 Ω y la tensión de 0,5 en 0,5 V.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/circuitos/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 2.º ESO | Antes de empezar, actividades 1, 2 (sin la última columna) y 6, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos |
+| 3.º ESO | Ficha completa salvo Para ampliar | Dos sesiones, o una si los problemas se hacen como tarea |
+| 4.º ESO | Actividades 4 a 6 y Para ampliar, como repaso con potencia y energía | Una sesión |
+
+La tabla de «Antes de empezar» recoge seis ideas previas sobre la corriente eléctrica. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas». Los valores de la simulación son exactos, así que las soluciones también.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) En serie la intensidad es la misma en todas las bombillas (actividad 4). b) Los electrones ya están en todos los cables y se ponen en marcha a la vez (actividad 1). c) La intensidad depende de la resistencia (actividad 3). d) En paralelo la resistencia equivalente disminuye (actividad 5). e) Solo en serie; en paralelo las demás siguen encendidas (actividades 4 y 5). f) Con el interruptor abierto hay tensión, pero no corriente (actividad 1) |
+| Actividad 1 | Pila: da la energía que mueve los electrones; 6 V con el interruptor cerrado y abierto. Amperímetro: mide la intensidad, en serie; 0,300 A cerrado y 0,000 A abierto. Voltímetro: mide la tensión de la bombilla, en paralelo; 6,00 V cerrado y 0 V abierto (la tensión de la pila queda entre los bornes del interruptor). Los electrones se paran, pero siguen en los cables. El amperímetro tiene que dejar pasar por él toda la corriente; el voltímetro compara dos puntos del circuito. Los electrones van de − a +; por convenio, la corriente va de + a − |
+| Actividad 2 | 0,100, 0,200, 0,300, 0,400, 0,500 y 0,600 A; V / I = 20 Ω siempre. La gráfica es una recta que pasa por el origen: V e I son directamente proporcionales. La constante es la resistencia: V = I · R |
+| Actividad 3 | 10 Ω: 0,600 A y 3,60 W. 20 Ω: 0,300 A y 1,80 W. 30 Ω: 0,200 A y 1,20 W. 60 Ω: 0,100 A y 0,60 W. Al aumentar R, la intensidad y el brillo disminuyen. La pila mantiene la tensión; la intensidad depende de la resistencia: I = V / R |
+| Actividad 4 | R₁: 10 Ω, 1 V, 0,100 A, 0,10 W. R₂: 20 Ω, 2 V, 0,100 A, 0,20 W. R₃: 30 Ω, 3 V, 0,100 A, 0,30 W. Total: 60 Ω, 6 V, 0,100 A, 0,60 W. Al quitar R₂ se apagan todas: se corta el único camino y entre los bornes vacíos hay 6,00 V. La intensidad es la misma en todas: la corriente no se gasta, lo que se transforma es la energía. V = V₁ + V₂ + V₃ y R equivalente = R₁ + R₂ + R₃ |
+| Actividad 5 | R₁: 10 Ω, 6 V, 0,600 A, 3,60 W. R₂: 20 Ω, 6 V, 0,300 A, 1,80 W. R₃: 30 Ω, 6 V, 0,200 A, 1,20 W. Total: 5,45 Ω, 6 V, 1,100 A, 6,60 W. Al quitar R₂ las demás siguen igual y la intensidad total baja a 0,800 A (7,5 Ω). Todas tienen la tensión de la pila; I = I₁ + I₂ + I₃. La R equivalente es menor que la menor de ellas: cada rama nueva es un camino más para la corriente |
+| Actividad 6 | Serie: 2 V, 0,100 A y 0,20 W cada una; total 0,100 A; al quitar una se apagan todas. Paralelo: 6 V, 0,300 A y 1,80 W cada una; total 0,900 A; las demás siguen encendidas. En las casas se conectan en paralelo: cada aparato recibe toda la tensión de la red y funciona aunque se apague o se estropee otro |
+| Aplica lo aprendido | 1) I = 9 V / 30 Ω = 0,300 A. 2) R = 12 V / 0,240 A = 50 Ω. 3) R = 15 + 45 = 60 Ω; I = 12 / 60 = 0,200 A; V₁ = 0,2 · 15 = 3 V y V₂ = 0,2 · 45 = 9 V (suman 12 V). 4) I₁ = 12 / 15 = 0,800 A; I₂ = 12 / 45 ≈ 0,267 A; I = 1,067 A; R = 12 / 1,067 ≈ 11,25 Ω (o 1/R = 1/15 + 1/45) |
+| Para ampliar | 1) E = 1,80 W · 3600 s = 6480 J. 2) Nueve veces: en paralelo cada una tiene el triple de tensión y el triple de intensidad que en serie (1,80 W frente a 0,20 W). 3) En serie brilla más R₃ (0,30 W), la de mayor resistencia, porque P = I² · R con la misma I; en paralelo brilla más R₁ (3,60 W), la de menor resistencia, porque P = V² / R con la misma V. No es verdad en serie |

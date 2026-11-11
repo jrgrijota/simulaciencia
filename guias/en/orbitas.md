@@ -131,3 +131,30 @@ The simulation makes sure the key ideas can be seen, and to do so it compresses 
 7. **Kepler in normalised units.** GM is 1, so T²/a³ comes out as 39.48 (4π²), not 1 as with years and AU. The Sun is fixed, as if it had infinite mass. The shading for the “2nd Law” is the area swept out in the last 40 frames, the same all round the orbit; it cannot be compared with a sector from another orbit because only the last one is shown.
 8. **Binaries are circular only and have no real units.** Every change to a slider restarts a circular orbit; there are no eccentric binaries. The masses are labelled M☉, but G is 1 and the separation and energies have no units. The size of the stars grows with their mass, not to scale.
 9. **The lighter star can go off screen.** With separation 3.0 and masses 5.0 and 0.5 M☉, the lighter one orbits 2.73 units from the centre of mass. The screen only shows about 2.27 units on each side. For projecting, reduce the separation or bring the two masses closer together.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/orbitas/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 3 (Year 10) | Before you start, activities 1, 2, 4 and 6, problems 1 and 4 of Apply what you have learnt, and Self-assessment | One 50–55 minute lesson |
+| ESO 4 (Year 11) | The whole worksheet except Going further | One lesson, or two if the problems are done in class |
+| Bachillerato 1 (Year 12) | Activities 2 and 3, problem 3 and items 1 and 2 of Going further | One lesson |
+| Bachillerato 2 Physics (Year 13) | Activities 3, 5 and 6 and all of Going further | One lesson |
+
+The “Before you start” table collects six prior ideas about gravitation. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. The data in the “Orbital Status” panel vary by a few hundredths during the orbit because the simulation integrates the motion step by step.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) There is gravity: the Station is continuously falling towards the Earth, and so are the astronauts (activity 2). b) Only gravity acts; the speed is kept by inertia (activity 2). c) Above a certain speed the cannonball orbits, and faster still it escapes (activities 1 and 3). d) The Sun is at one focus of the ellipse (activity 5). e) It moves faster close to the Sun (activity 5). f) Both turn around the centre of mass (activity 6) |
+| Activity 1 | 3.45 km/s: it reaches the ground close by, “Hit the Earth”. 5.75 km/s: it reaches the ground much further away, also a hit. 6.90 km/s: it does not reach the ground, “Circular orbit”. It falls because the Earth attracts it (its weight). In orbit it is still falling towards the Earth, but it moves forwards so fast that the ground curves away at the same rate and it never reaches it |
+| Activity 2 | Speed between 6.87 and 6.90 km/s, altitude between 2017 and 2060 km, period 127.9 min; the number of orbits increases. It is uniform circular motion: the direction of the velocity changes, not its size. Only the weight acts, pointing towards the centre of the Earth; there is no force pushing it forwards |
+| Activity 3 | 8.05 km/s: “Elliptical orbit”; 8.05 km/s at perigee (2017 km) and about 3.75 km/s at apogee (11 643 km); ε = −15.1 km²/s² throughout; period 251.6 min. 10.35 km/s: “Escape velocity” and then “Escaped Earth’s gravity”; ε = +6.1 km²/s². It moves faster close to the Earth: as it moves away, kinetic energy turns into potential energy, and the reverse as it comes closer, with the mechanical energy constant. With a positive ε the cannonball has enough energy to move away for ever |
+| Activity 4 | Mercury: 0.387 AU, 0.241 years. Earth: 1.000 and 1.000. Mars: 1.524 and 1.881. Jupiter: 5.203 and 11.86. Neptune: 30.07 and 164.8. T²/a³ ≈ 1.00 for all of them (between 0.999 and 1.002). The further away the planet is, the longer it takes to go round (it travels further and more slowly). T²/a³ is the same for every planet in the Solar System: Kepler's third law |
+| Activity 5 | e = 0: a circle, with the Sun at the centre. e = 0.50: an ellipse; the Sun is at one focus and the other focus is empty. e = 0.90: a very elongated ellipse. In the 2nd law the planet moves much faster close to the Sun (perihelion) than far away (aphelion); the swept area is long and narrow far from the Sun and short and wide close to it, but it is the same in equal times. With e = 0.02 the orbit is almost a circle: drawing it very stretched gives a false idea |
+| Activity 6 | 2.0 and 1.0: star 2 (smaller mass) has the bigger orbit, twice that of star 1; the CM is closer to star 1. 3.0 and 3.0: equal orbits, CM at the midpoint. 5.0 and 0.5: star 2 makes almost all the orbit; star 1 hardly moves and the CM is almost at it. The gravitational forces are an action–reaction pair: the two stars attract each other with the same force. The Sun has so much mass that the CM of the Sun–Earth system is inside the Sun |
+| Apply what you have learnt | 1) W = m · g: 70 kg · 9.8 m/s² = 686 N on the surface; 70 kg · 8.7 m/s² ≈ 609 N on the Station. They do have weight; they float because they and the Station fall together. 2) a³ = T² = 64, a = 4 AU. 3) v = 2πr / T = 2π · 8388 km / (128 · 60 s) ≈ 6.86 km/s, very close to the 6.90 km/s on the panel. 4) The Moon is continuously falling towards the Earth, but its sideways velocity means it never gets there: it is in orbit |
+| Going further | 1) v = √(GM/r) = √(3.986·10⁵ / 8388) ≈ 6.89 km/s, the “Vc” value. 2) √2 · 6.89 ≈ 9.75 km/s, the “Ve” value. With 9.66 km/s, ε ≈ −0.8 km²/s² (a very elongated elliptical orbit); with 9.78 km/s, ε ≈ +0.3 km²/s² (it escapes). 3) T goes from 1.590 (a = 0.40) to 9.313 (a = 1.30) and T²/a³ stays at 39.48 = 4π²/GM. The period does not depend on the eccentricity, only on the semi-major axis |

@@ -1,8 +1,9 @@
 // Genera las descargas de cada guía docente (PDF, Word y LibreOffice) a partir
 // de guias/*.md (y de su traducción, guias/en/*.md), y las de los documentos del
-// alumnado (guiones/*.md, guion de una práctica; fichas/*.md, ficha de actividades
-// de una simulación). Se ejecuta tras `vite build` y escribe en dist/guias/,
-// dist/en/guides/, dist/guiones/ y dist/fichas/.
+// alumnado (guiones/*.md, guion de una práctica; fichas/*.md y fichas/<idioma>/*.md,
+// ficha de actividades de una simulación). Se ejecuta tras `vite build` y escribe
+// en dist/guias/, dist/en/guides/, dist/guiones/, dist/fichas/ y, para las fichas
+// traducidas, dist/en/worksheets/, dist/ca/fitxes/, dist/eu/fitxak/ y dist/gl/fichas/.
 //
 //   PDF:  la guía en HTML (mismo Markdown que la web) impresa con Chrome sin interfaz.
 //   DOCX y ODT: Pandoc.
@@ -25,7 +26,7 @@ import {
   renderGuideHtml,
   rewriteLinks,
 } from '../src/guides/shared.js';
-import { absoluteUrl, guidePath, guionPath, GUIDE_LANGS, STUDENT_DOC_DIRS } from '../src/paths.js';
+import { absoluteUrl, guidePath, guionPath, simPath, GUIDE_LANGS, FICHA_LANGS, STUDENT_DOC_DIRS } from '../src/paths.js';
 import { getSimulationById, isPractical } from '../src/data/simulations.js';
 import { findTool, findChrome } from './tools.mjs';
 
@@ -133,6 +134,34 @@ const TEXT = {
       `la autoría y con la misma licencia. Simulación en ${link}.`,
     pandocLang: 'es-ES',
   },
+  'ficha-en': {
+    kicker: 'Activity worksheet',
+    license: (url, link) =>
+      `Worksheet published under a <a href="${url}">CC BY-SA 4.0</a> licence: you may adapt and share it, crediting ` +
+      `the author and keeping the same licence. Simulation at ${link}.`,
+    pandocLang: 'en-GB',
+  },
+  'ficha-ca': {
+    kicker: 'Fitxa d’activitats',
+    license: (url, link) =>
+      `Fitxa publicada amb llicència <a href="${url}">CC BY-SA 4.0</a>: la pots adaptar i compartir citant-ne ` +
+      `l’autoria i amb la mateixa llicència. Simulació a ${link}.`,
+    pandocLang: 'ca-ES',
+  },
+  'ficha-eu': {
+    kicker: 'Jarduera-fitxa',
+    license: (url, link) =>
+      `<a href="${url}">CC BY-SA 4.0</a> lizentziapean argitaratutako fitxa: egokitu eta partekatu dezakezu, ` +
+      `egilea aipatuz eta lizentzia bera erabiliz. Simulazioa: ${link}.`,
+    pandocLang: 'eu-ES',
+  },
+  'ficha-gl': {
+    kicker: 'Ficha de actividades',
+    license: (url, link) =>
+      `Ficha publicada baixo licenza <a href="${url}">CC BY-SA 4.0</a>: podes adaptala e compartila citando ` +
+      `a autoría e coa mesma licenza. Simulación en ${link}.`,
+    pandocLang: 'gl-ES',
+  },
   es: {
     kicker: 'Guía docente',
     license: (url, link) =>
@@ -149,10 +178,14 @@ const TEXT = {
   },
 };
 
+const textKey = (lang, doc, practical) =>
+  doc !== 'guion' ? lang : practical ? 'guion' : lang === 'es' ? 'ficha' : `ficha-${lang}`;
+
 function pdfHtml(title, body, simId, lang, doc = 'guide', practical = true) {
   const guion = doc === 'guion';
-  const t = TEXT[guion ? (practical ? 'guion' : 'ficha') : lang];
-  const url = absoluteUrl(guion ? guionPath(simId) : guidePath(simId, lang));
+  const t = TEXT[textKey(lang, doc, practical)];
+  // La ficha enlaza a su simulación; el guion y la guía, a su propia página.
+  const url = absoluteUrl(guion ? (practical ? guionPath(simId) : simPath(simId, lang)) : guidePath(simId, lang));
   return `<!doctype html>
 <html lang="${lang}"><head><meta charset="utf-8"><title>${title}</title>
 <style>
@@ -197,12 +230,17 @@ const guides = GUIDE_LANGS.flatMap((lang) => {
     .filter((f) => f.endsWith('.md'))
     .map((f) => ({ lang, file: join(dir, f) }));
 });
-// Documentos del alumnado (guiones y fichas): guiones/*.md, solo en español.
+// Documentos del alumnado: guiones/*.md (solo en español), fichas/*.md y fichas/<idioma>/*.md.
 guides.push(
   ...STUDENT_DOC_DIRS.filter((d) => existsSync(join(ROOT, d))).flatMap((d) =>
     readdirSync(join(ROOT, d))
       .filter((f) => f.endsWith('.md'))
       .map((f) => ({ lang: 'es', doc: 'guion', file: join(ROOT, d, f) })),
+  ),
+  ...FICHA_LANGS.filter((l) => l !== 'es' && existsSync(join(ROOT, 'fichas', l))).flatMap((lang) =>
+    readdirSync(join(ROOT, 'fichas', lang))
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => ({ lang, doc: 'guion', file: join(ROOT, 'fichas', lang, f) })),
   ),
 );
 const tmp = join(tmpdir(), `simulaciencia-guias-${process.pid}`);
@@ -242,13 +280,13 @@ for (const { lang, file, doc = 'guide' } of guides) {
         '-f', 'gfm', '-t', ext, '-o', `${out}.${ext}`,
         '--metadata', `title=${title}`,
         '--metadata', 'author=Juan Ramón Grijota · SimulaCiencia',
-        '--metadata', `lang=${TEXT[lang].pandocLang}`,
+        '--metadata', `lang=${TEXT[textKey(lang, doc, practical)].pandocLang}`,
       ], { input: body });
     }
     patchDocx(`${out}.docx`, doc);
     patchOdt(`${out}.odt`, doc);
   }
-  console.log(`✓ ${doc === 'guion' ? (practical ? 'guion' : 'ficha') : lang} ${simId}`);
+  console.log(`✓ ${textKey(lang, doc, practical)} ${simId}`);
 }
 
 rmSync(tmp, { recursive: true, force: true });

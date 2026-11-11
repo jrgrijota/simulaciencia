@@ -109,3 +109,30 @@ The simulation puts the comparison between weight and upthrust first, and to do 
 7. **Qualitative motion only.** The velocity is multiplied by 0.90 in every frame inside the liquid, it has a cap and there is no air resistance. The block oscillates and slows down in an approximate way. It cannot be used to measure times or accelerations.
 8. **Ideal block.** The block is always a square that does not rotate or tip over, and its size on screen grows linearly with the volume. Ship stability and hull shape are not dealt with.
 9. **Fixed densities.** Each material and each liquid has a single value, with no effect of temperature. The bubbles that rise when the block is denser than the liquid are purely decorative.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/arquimedes/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 4 (Year 11) | Before you start, activities 1 to 6, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson, or two if the problems are done in class |
+| ESO 3 (Year 10) | Activities 1, 2 and 3, focusing on weight, upthrust, the normal force and the resultant | One lesson |
+| Bachillerato 1 (Year 12) | Activity 2 and Going further, as revision of translational equilibrium | 20–25 minutes |
+
+The “Before you start” table collects five of the prior ideas from the misconceptions table. It is best not to correct it at the beginning: students come back to it in “Review your ideas”.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) It depends on density, not weight (activities 2 and 5). b) Every submerged body gets an upthrust (activities 3 and 5). c) The upthrust depends on the submerged volume, not the depth (activity 3). d) If it floats at rest, E = P (activity 1). e) It depends on the liquid (activities 4 and 6) |
+| Activity 1 | P = 490 N, E = 490 N, 50 L submerged, “P ≈ E”. It is still because the resultant force is zero. 50 L of water have a mass of 50 kg and weigh 490 N, the same as the upthrust. Archimedes' principle: a body immersed in a fluid gets a vertical upward thrust equal to the weight of the fluid it displaces |
+| Activity 2 | 50 kg: 0.50 kg/L, 50 L, 490 N, floats. 80 kg: 0.80 kg/L, 80 L, 784 N, floats. 100 kg: 1.00 kg/L, 100 L, 980 N, neutral equilibrium. 150 kg: 1.50 kg/L, 100 L, 980 N, sinks. The submerged fraction is ρblock / ρliquid. With 150 kg the block is already completely under water and the maximum upthrust is 980 N; on the bottom the normal force appears, N = 1470 − 980 = 490 N |
+| Activity 3 | The upthrust stays at 980 N while the block goes down covered and on the bottom. It depends on the submerged volume and the liquid, not on the depth |
+| Activity 4 | 1.00 kg/L: sinks, 100 L, 980 N. 1.50 kg/L: neutral equilibrium, 100 L, 1470 N. 2.00 kg/L: floats, 75 L, 1470 N. 3.00 kg/L: floats, 50 L, 1470 N. The denser the liquid, the more each displaced litre weighs, so less volume is needed to balance the weight |
+| Activity 5 | Cork 0.24 kg/L, P = E = 235 N, floats. Wood 0.60, P = E = 588 N, floats. Aluminium 2.70, P = 2646 N, E = 980 N, sinks. Lead 11.34, P = 11,113 N, E = 980 N. Gold 19.30, P = 18,914 N, E = 980 N. The materials less dense than water float. The three metals displace the same 100 L of water, so they get the same upthrust |
+| Activity 6 | Ice: floats with 91.7 L submerged in fresh water and 89.5 L in seawater (more sticks out in the sea). Plastic: floats in fresh water with 95 L and sinks in oil. Iron: sinks in fresh water and floats in mercury with about 58 L. Floating depends on the density of the body compared with that of the liquid |
+| Apply what you have learnt | 1) E = 40 L · 1.00 kg/L · 9.8 N/kg = 392 N. 2) V<sub>sub</sub> = 10 · 0.24 / 1.00 = 2.4 L; 76 % sticks out. 3) P = 29.4 N; E = 1.2 · 1.00 · 9.8 = 11.76 N; it sinks; P − E = 17.64 N. 4) V = 2,000,000 kg / 1.025 kg/L ≈ 1,951,000 L ≈ 1951 m³ |
+| Going further | 1) N = P − E = 1470 − 980 = 490 N. 2) It sinks if m > 120 L · 1.025 kg/L = 123 kg |

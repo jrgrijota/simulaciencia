@@ -40,15 +40,15 @@ export function cardMarkup(sim, { showKind = false } = {}) {
   const haystack = `${title} ${description} ${tagLabels.join(' ')} ${courses.join(' ')} ${kindWords}`.toLowerCase();
   const guide = guideLangFor(sim.id, lang);
   const guionButton =
-    lang === 'es' && hasGuion(sim.id)
+    hasGuion(sim.id, lang)
       ? `
       <a
-        href="${guionPath(sim.id)}"
+        href="${guionPath(sim.id, lang)}"
         data-route
         class="${SECONDARY}"
       >
         <i data-lucide="clipboard-list" class="h-4 w-4 shrink-0"></i>
-        ${studentDoc(sim).label}
+        ${studentDoc(sim, lang).label}
       </a>`
       : '';
   const kind = KIND_BADGE[practical ? 'practica' : 'simulacion'];

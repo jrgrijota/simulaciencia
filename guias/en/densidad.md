@@ -121,3 +121,30 @@ The simulation puts the idea “more density, more mass in each litre” first, 
 5. **2D cross-section.** The blocks are drawn as a flat section.
 6. **Fixed densities.** Each material has a single value, with no effect of temperature or pressure. Wood (0.60 kg/L) and plastic (PET, 1.38 kg/L) vary a great deal depending on the type, and water is exactly 1.00 kg/L.
 7. **It only compares with water.** The flotation indicator always uses fresh water and treats any density between 0.995 and 1.005 kg/L as “neutrally buoyant”. It does not take hollow objects into account, such as a steel ship, where what matters is the average density of the whole.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/densidad/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 2 (Year 9) | Before you start, activities 1 to 6, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson, or two if the problems are done in class |
+| ESO 3 (Year 10) | Before you start, activities 2, 4 and 6, Apply what you have learnt and Going further | One lesson |
+| ESO 4 (Year 11) | Activities 3, 5 and 6 as revision before Archimedes' principle | 20–25 minutes |
+
+The “Before you start” table collects five of the prior ideas from the misconceptions table. It is best not to correct it at the beginning: students come back to it in “Review your ideas”, and the contrast between prediction and observation is what makes the idea change.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) For the same size, the mass depends on the material (activity 1). b) Floating depends on density, not on mass (activity 6). c) Density does not depend on size (activity 2). d) The cork takes up 63 times more space (activity 4). e) Ice is less dense than liquid water (activity 5) |
+| Activity 1 | Wood 0.6 kg; iron 7.87 kg; aluminium 2.7 kg; cork 0.18 kg. The balance tips towards the iron. For the same volume, each material has a different mass: it depends on the material |
+| Activity 2 | 2.7, 5.4, 10.8 and 21.6 kg. m / V = 2.7 kg/L every time. When the volume doubles, the mass doubles and the density does not change. “The density of a material is the mass there is in each litre (unit of volume). It does not depend on the size of the object.” |
+| Activity 3 | Cork 0.18, wood 0.60 and ice 0.92 float; PET 1.38, aluminium 2.70 and iron 7.87 sink. The materials less dense than water float; the boundary is 1 kg/L, the density of water |
+| Activity 4 | The balance stays level because it compares masses, and both are 1 kg. Cork 5.56 L; lead 0.0882 L. 5.56 / 0.0882 ≈ 63 times (also 11.34 / 0.18 = 63). Lead is much denser: the same mass fits into less volume |
+| Activity 5 | Ice 0.92 kg and 0.92 kg/L; water 1 kg and 1.00 kg/L. Ice floats because it is less dense than liquid water, not because it has air in it: the block in the simulation is solid ice |
+| Activity 6 | ρ = 15 kg / 10 L = 1.5 kg/L: it sinks. At 15 L it is neutrally buoyant (1.00 kg/L); it floats from 15.1 L upwards (0.993 kg/L). It is false: what decides is the density. Examples: a large log, an iceberg, a ship (here what counts is the average density of the hull and the air it encloses) |
+| Apply what you have learnt | 1) ρ = 1.84 kg / 2 L = 0.92 kg/L; it stays on top of the water. 2) ρ = 8.1 kg / 3 L = 2.7 kg/L: aluminium. 3) m = ρ · V = 8.96 kg/L · 5 L = 44.8 kg. 4) V = m / ρ = 3 kg / 0.60 kg/L = 5 L |
+| Going further | 1) Three straight lines through the origin; the steepest is lead, because the gradient is the density. 2) 2.70 kg/L · (1000 g / 1 kg) · (1 L / 1000 cm³) = 2.70 g/cm³; 2.70 kg/L · (1000 L / 1 m³) = 2700 kg/m³ |

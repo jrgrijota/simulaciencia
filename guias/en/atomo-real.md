@@ -127,3 +127,30 @@ The simulation puts the idea “the nucleus is tiny compared with the atom” fi
 7. **A flat nucleus with a sharp edge.** Protons (red) and neutrons (grey) jiggle at random inside a circle. In reality the nucleus is three-dimensional and its surface is diffuse.
 8. **A single isotope per element.** Each element has a fixed mass number: H-1, He-4, C-12, O-16, Na-23, Fe-56, Au-197 and U-238. Isotopes have to be discussed verbally.
 9. **Spaced-out ruler labels.** When the “100·D” marks are very close together, only one in every few is labelled so they can be read; the ones in between are still marked.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/atomo-real/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 2 (Year 9) | Before you start, activities 1, 2 and 4, questions 3 and 4 of Apply what you have learnt, Review your ideas and Self-assessment | One lesson |
+| ESO 3 (Year 10) | Before you start, activities 1 to 6, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson |
+| ESO 4 (Year 11) | Activities 4 to 6 and Going further | 30 minutes |
+
+The “Before you start” table collects five prior ideas about the atom. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. The jump at which the nucleus starts to be visible depends on the screen size.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | a) F: the atom is about 25,000 times bigger (activity 2). b) F: it would need to be magnified thousands of times (activity 1). c) F: the dots show the shell, not the size (activity 6). d) F: gold, with 79 protons, is smaller than sodium (activity 5). e) T: Z identifies the element (activity 4) |
+| Activity 1 | Natural scale: not visible; D = 62 pm = 6.20 × 10⁻¹¹ m. ×10: not visible; 6.2 pm. At around ×100 or ×1000 a red dot appears. ×10,000: “Nucleus reached!”, D = 2.4 fm = 2.40 × 10⁻¹⁵ m. It cannot be seen because it is very much smaller than the atom |
+| Activity 2 | Nucleus 2.4 fm = 2.4 × 10⁻¹⁵ m; atom 62 pm = 6.2 × 10⁻¹¹ m; 25,833 times. 6.2 × 10⁻¹¹ / 2.4 × 10⁻¹⁵ ≈ 2.6 × 10⁴. With a 1 cm nucleus, the atom would measure about 258 m, like two or three football pitches end to end |
+| Activity 3 | Jump 0: the atom, 272 pm = 2.72 × 10⁻¹⁰ m. Jump 1: the atom, 27.2 pm = 2.72 × 10⁻¹¹ m. From jump 2 (depending on the screen) the scale bar measures the nucleus: 14 fm = 1.4 × 10⁻¹⁴ m. The exponent goes down by 1 at each jump, because each jump magnifies ×10. 2.72 × 10⁻¹⁰ / 1.4 × 10⁻¹⁴ ≈ 1.9 × 10⁴: 19,478 times |
+| Activity 4 | Carbon: 6, 6, 12, 6, 2 (K:2, L:4). Oxygen: 8, 8, 16, 8, 2 (K:2, L:6). Sodium: 11, 12, 23, 11, 3 (K:2, L:8, M:1). Iron: 26, 30, 56, 26, 4 (K:2, L:8, M:14, N:2). It is neutral because it has as many electrons as protons. Z identifies the element |
+| Activity 5 | Sodium: 6.83 fm and 332 pm. Gold: 14 fm and 272 pm. Uranium: 14.9 fm and 392 pm. The nucleus grows with Z (and A); the atom does not: it depends on how many shells it has and how strongly the nucleus attracts the electrons |
+| Activity 6 | “Electrons are shown as dots so you can see which shell they are in, not to show their real size.” Gold: 6 shells (K:2, L:8, M:18, N:32, O:18, P:1). Electrons are not little balls going round in circles: in the current model we only know where they are most likely to be found (orbitals) |
+| Apply what you have learnt | 1) 6.2 × 10⁻¹¹ m; 2.4 × 10⁻¹⁵ m; 1.5 × 10⁻¹⁰ m. 2) 1.52 × 10⁻¹⁰ / 5.49 × 10⁻¹⁵ ≈ 2.77 × 10⁴, about 27,700 times. 3) 13 protons, 14 neutrons and 13 electrons. 4) Almost all the mass is in the nucleus, which takes up a tiny part of the volume of the atom |
+| Going further | 1) ²³⁸₉₂U; uranium-235 has the same 92 protons and 143 neutrons (another isotope). 2) Ten 1/10 bars fit; in hydrogen about 25,800 nuclei would fit in a row |

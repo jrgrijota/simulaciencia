@@ -111,3 +111,28 @@ The simulation puts a clear view of the wave quantities first. To do so it treat
 5. **A change of speed affects the whole medium at once.** It represents changing the medium. In reality, a wave that passes into another medium changes speed and wavelength only from the boundary onwards.
 6. **The equation only describes the steady continuous wave.** While an old wave and a new one coexist, or with single pulses, the equation in the panel does not describe the whole medium; the simulation points this out.
 7. **It does not deal with the nature of light.** Electromagnetic waves appear only as an example of a transverse wave. Photon energy (E = h f = h c / λ), wave–particle duality and the photoelectric effect belong to Bachillerato 2 and are covered with the atomic spectra simulation.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/ondas/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 4 (Year 11) | The whole worksheet except Going further | One 50–55 minute lesson, or two if the problems are done in class |
+| Bachillerato 2 Physics (Year 13) | Activities 3 and 5 as revision, and Going further | One lesson |
+
+The “Before you start” table collects five prior ideas about waves. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. When the frequency changes, the new wave takes a few seconds to fill the string: wait until it reaches the end before reading λ on the drawing.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) Each piece of string oscillates and returns to its place (activity 1). b) The speed depends on the medium; moving the source faster makes the wavelength shorter (activity 3). c) The amplitude does not change the speed; it changes the energy (activity 5). d) It has λ between two compressions and an amplitude along the direction of travel (activity 6). e) The water goes up and down; what reaches the beach is energy (activity 1 and problem 4) |
+| Activity 1 | P goes up, down and back to its place; the displacement never exceeds the amplitude. The pulse reaches the end of the string. The disturbance travels and, with it, the energy. A wave is a disturbance that travels through a medium and carries energy without carrying matter |
+| Activity 2 | A = 0.20 m (from the equilibrium line to a crest); λ = 1.50 m (between two crests); T = 1.00 s (one oscillation of P; at ×0.25 it takes 4 s); f = 1.00 Hz; v = 1.50 m/s (the front takes about 2.7 s to travel the 4 m). T = 1 / 1.00 = 1.00 s and v = 1.50 · 1.00 = 1.50 m/s. 1 Hz is one oscillation every second |
+| Activity 3 | 0.50 Hz: T = 2.00 s, λ = 3.00 m. 1.00 Hz: T = 1.00 s, λ = 1.50 m. 2.00 Hz: T = 0.50 s, λ = 0.75 m. v = 1.50 m/s and λ · f = 1.50 m/s in all three cases. The speed does not change; the higher the frequency, the shorter the wavelength. The change starts at the source and travels at the speed of the wave, so for a few seconds the old wave and the new one are both on the string |
+| Activity 4 | λ = 1.00 m at 1.0 m/s, 1.50 m at 1.5 m/s and 3.00 m at 3.0 m/s. The source sets the frequency (and the period); the medium sets the speed; the wavelength depends on both. Examples: sound going from air into water travels faster; light going from air into glass travels more slowly; a wave reaching shallow water |
+| Activity 5 | v = 1.50 m/s in every case. λ = 1.50 m at 1.00 Hz and 0.75 m at 2.00 Hz. Energy: × 0.25 with 0.10 m, × 1.00 with 0.20 m, × 2.25 with 0.30 m and × 4.00 with 2.00 Hz. The amplitude does not change v or λ: it changes the energy, which is proportional to A² · f². Doubling the amplitude multiplies the energy by four: a louder loudspeaker moves the air more; an earthquake with a larger amplitude does much more damage |
+| Activity 6 | String: the particles vibrate up and down, perpendicular to the direction the wave travels. Spring: they vibrate backwards and forwards, in the same direction as the wave travels. Crests correspond to compressions (particles close together) and troughs to rarefactions (spread out). λ = 1.50 m in both. Sound: longitudinal. Light: transverse. Skipping rope: transverse. Spring being stretched and compressed: longitudinal |
+| Apply what you have learnt | 1) T = 1 / 5 = 0.20 s; v = 0.40 · 5 = 2.0 m/s. 2) λ = 340 / 440 ≈ 0.77 m. 3) f = 10 / 20 s = 0.5 Hz; T = 2 s; v = 3 · 0.5 = 1.5 m/s. 4) The wave is a disturbance that carries energy, not water: the boat, like each particle of water, goes up and down around its position |
+| Going further | 1) ω = 2π · 1 = 6.28 rad/s; λ = 1.50 m; k = 2π / 1.50 = 4.19 rad/m; y(x, t) = 0.20 · sin(6.28 t − 4.19 x) (SI). 2) A · ω = 0.20 · 6.28 = 1.26 m/s, different from v = 1.50 m/s. With A = 0.30 m, A · ω = 1.88 m/s and v does not change. 3) Δx = λ/2: Δφ = π rad = 3.14 rad, in antiphase, opposite curves. Δx = λ: Δφ = 2π (equivalent to 0), in phase, curves on top of each other |

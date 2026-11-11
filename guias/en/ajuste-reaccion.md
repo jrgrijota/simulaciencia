@@ -132,3 +132,30 @@ The simulation puts the conservation of atoms and the ratio in the equation firs
 7. **One mole per particle.** With “One mole (mass in g)” each particle drawn represents 6.022·10²³ particles. The amounts are always whole numbers of moles.
 8. **Atomic masses with more decimal places than the textbook.** The IUPAC values are used (H = 1.008; O = 15.999…). That is why m(O)/m(H) for water comes out as 7.94 and not 8, as it would with H = 1 and O = 16. It is worth warning students if they check the calculations with rounded masses.
 9. **The coefficients go from 1 to 9.** That is enough for every equation on the list, whose largest coefficient is 7 (ethane).
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/ajuste-reaccion/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 3 (Year 10) | Before you start, activities 1 to 4, problems 1 to 3 of Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson |
+| ESO 4 (Year 11) | Activities 2, 5 and 6 and all of Apply what you have learnt | One lesson |
+| Bachillerato 1 (Year 12) | Activities 4 to 6 and Going further | One lesson |
+
+The “Before you start” table collects five prior ideas about reactions. It is best not to correct it at the beginning: students come back to it in “Review your ideas”.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) Changing a subscript changes the substance (activity 1). b) Atoms are conserved, not molecules (activity 3). c) Mass is conserved; if the gas escapes it is missing from the balance, but it has not disappeared (activity 3). d) A compound always has the same proportion (activity 4). e) One runs out first: the limiting reactant (activity 5) |
+| Activity 1 | 1, 1, 1: H 2/2, O 2/1, 34.01 u against 18.02 u, “✗ Not balanced” and “Atoms left over: 1 O”. 1, 1, 2: H 2/4, O 2/2, “atoms missing: 2 H”. 2, 1, 2: H 4/4, O 2/2, 36.03 u on each side, “✓ Balanced equation”. H₂O₂ is hydrogen peroxide, a different substance. The balance levels out because there are the same atoms on each side |
+| Activity 2 | N₂ + 3 H₂ → 2 NH₃. 2 Mg + O₂ → 2 MgO. CH₄ + 2 O₂ → CO₂ + 2 H₂O. C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O. Convenient order: carbon, hydrogen and oxygen last, because O₂ is an element and its coefficient does not upset any other element |
+| Activity 3 | Reactants: 3 molecules, 6 atoms, 36.03 u. Products: 2 molecules, 6 atoms, 36.03 u. Lavoisier's law: in a chemical reaction the total mass is conserved, because the atoms are only rearranged |
+| Activity 4 | 4 H₂ + 4 O₂: 4 H₂O, 2 O₂ left over. 24 H₂ + 4 O₂: 8 H₂O, 16 H₂ left over. 8 H₂ + 12 O₂: 8 H₂O, 8 O₂ left over. m(O)/m(H) = 7.94 every time: Proust's law. A reactant is left over when the amounts are not in the 2 : 1 ratio of molecules |
+| Activity 5 | Limiting: CH₄. The 4 CH₄ need 8 O₂ and there are 10, so all the CH₄ is used up and 2 O₂ are left over (in excess). 4 CO₂ (176.04 u) and 8 H₂O form. It is not enough: with 4 CH₄ and 6 O₂ the limiting reactant is O₂ even though there are more molecules of it, because each CH₄ needs 2 O₂ (3 CO₂ form and 1 CH₄ is left over). The limiting reactant depends on the ratio in the equation |
+| Activity 6 | Limiting: H₂ (8 mol need 4 mol of O₂; 1 mol is left over). Theoretical: 8 mol of H₂O = 144.12 g. Actual: 6 mol = 108.09 g. Yield 75 %. There are side reactions, losses when separating and purifying, and reactions that do not go to completion |
+| Apply what you have learnt | 1) 4 Fe + 3 O₂ → 2 Fe₂O₃; 2 C₂H₆ + 7 O₂ → 4 CO₂ + 6 H₂O. 2) 44 g, Lavoisier's law. 3) 5 g, Proust's law. 4) Limiting O₂ (2 mol need 4 mol of H₂); 4 mol of H₂O form and 2 mol of H₂ are left over |
+| Going further | 1) 11.2 % H and 88.8 % O. 2) In H₂O₂, m(O)/m(H) = 15.87, twice that of water: a 2 : 1 ratio, Dalton's law of multiple proportions |

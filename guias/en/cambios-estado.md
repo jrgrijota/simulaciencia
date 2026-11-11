@@ -132,3 +132,30 @@ The simulation makes sure the plateaus and the particle model are clearly visibl
 7. **The solid lattice is a 16 × 4 block.** It is wide and low, like the liquid, so that on freezing the particles line up at the bottom. In ice the particles are 20 px apart and the solid takes up a little more room than liquid water, which brings them to 18 px; in the other substances the lattice is compact (17.5 px). In the magnifier the solid is always at the bottom; in the container, on the other hand, ice floats. The water, nitrogen, CO₂ and iodine molecules have their real shape, but the atom sizes are only indicative, and alcohol is drawn as a sphere to keep the view uncluttered.
 8. **The phase diagram is schematic.** Pressure is on a logarithmic scale. The melting line of water has the real gradient (−0.0075 °C/atm), but at 5 atm it only drops to −0.03 °C and looks vertical. It cannot be used to show that anomaly. CO₂ has no critical point: its curve ends at 30 °C and 71.5 atm. For iodine, the curves are fitted to its triple point, its boiling point at 1 atm and its vapour pressure at 25 °C (0.0004 atm); the gradient of the melting line is approximate.
 9. **The lines have thickness.** The point is on a line if it is less than 5 px away, and on the triple point if less than 12 px. That is why “Liquid + gas” appears over an interval, from 70 to 73 °C on Everest. On the line the particles are split half and half, whereas in reality the proportion depends on the energy supplied.
+
+## Student activity worksheet
+
+The [activity worksheet](https://simulaciencia.es/en/worksheets/cambios-estado/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
+
+
+| Year group | Activities | Suggested time |
+| --- | --- | --- |
+| ESO 2 (Year 9) | Before you start, activities 1, 2, 4 and 5, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson |
+| ESO 3 (Year 10) | Activities 1 to 6 (activity 3 with the energy bar) and Apply what you have learnt | One or two lessons |
+| ESO 4 (Year 11) | Activities 1 and 3 as revision and Going further, with the phase diagram | One lesson |
+
+The “Before you start” table collects six of the prior ideas from the misconceptions table. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. The times depend on the power and on when “Restart” is pressed; those in the answers are with the hotplate at +50 %.
+
+### Answers
+
+| Section | Answer |
+| --- | --- |
+| Before you start | All false. a) and b) The temperature stays at 100 °C while it boils, at any power (activities 1 and 3). c) They are water vapour (activity 2). d) The particles are the same; their order, spacing and movement change (activity 2). e) They vibrate about their position (activity 2). f) It depends on the pressure (Going further) |
+| Activity 1 | It starts to melt at about 5 min at 0 °C and finishes at about 33 min, at 0 °C; it starts to boil at about 85 min at 100 °C and finishes at about 137 min. The graph has two flat sections (plateaus): the temperature does not change during melting or boiling. Boiling lasts almost twice as long as melting |
+| Activity 2 | Solid: arranged in a lattice, vibrating in place, strong bonds. Liquid: close together but disordered, sliding past each other, weak bonds. Gas: far apart, moving fast in straight lines, no bonds. The particles do not change; their order, spacing and movement change. The bubbles are the water itself in the gaseous state. Between the particles of a gas there is empty space |
+| Activity 3 | It boils at 100 °C with both powers. Boiling lasts about 52 min with +50 % and about 26 min with +100 %. More power shortens the plateau but does not raise the temperature: during boiling the energy is used to separate the particles, not to raise the temperature |
+| Activity 4 | Condensation at 100 °C (drops on the lid) and freezing at 0 °C (ice forms). Cooling is not adding cold: it is taking energy away, and the arrows come out of the container |
+| Activity 5 | Water: 0 and 100 °C, liquid at 20 °C. Alcohol: −114 and 78 °C, liquid. Nitrogen: −210 and −196 °C, gas. Iron: 1538 and 2862 °C, solid. They belong to each substance and do not depend on the amount, so they can be used to identify substances |
+| Activity 6 | A single plateau, at −78 °C (in the simulation, −78.5 °C): SUBLIMATION. No liquid appears. At atmospheric pressure solid CO₂ turns straight into gas, so it cools without making things wet |
+| Apply what you have learnt | 1) Melting, vaporisation and sublimation: energy must be supplied. Freezing, condensation and deposition: energy must be removed. 2) Gas cooling from 120 to 100 °C, condensation plateau at 100 °C, liquid from 100 to 0 °C, freezing plateau at 0 °C, solid from 0 to −20 °C. 3) Alcohol (ethanol); at 0 °C it is liquid. 4) Both are at 100 °C; the one on the high heat boils away sooner |
+| Going further | 1) About 72 °C: water boils at a lower temperature and pasta cooks less well. 2) 121 °C: liquid water reaches a higher temperature and cooks faster. 3) About 0.023 atm |

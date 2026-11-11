@@ -1,5 +1,6 @@
-// Tarjeta de simulación: miniatura, materia, cursos, título, descripción y los dos
-// enlaces. Todo el contenido visible de un vistazo, sin efectos hover que oculten datos.
+// Tarjeta de simulación: miniatura, materia, cursos, título, descripción y los
+// botones (abrir a todo el ancho; guía y ficha debajo, llenando la misma anchura).
+// Todo el contenido visible de un vistazo, sin efectos hover que oculten datos.
 import { guideLangFor, hasGuion } from '../data/guides.js';
 import { subjectTags, courseLabel, simTitle, simDescription, tagLabel, isPractical, studentDoc } from '../data/simulations.js';
 import { simPath, guidePath, guionPath } from '../paths.js';
@@ -15,6 +16,11 @@ export const subjectDot = (tag) =>
 const TAG_CLASS =
   'inline-flex items-center gap-1.5 rounded-full border border-[#e2e8f0] bg-white px-2.5 py-0.5 text-xs font-bold text-[#334155]';
 const BUTTON = 'inline-flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 py-2 text-sm font-bold transition-colors';
+// Guía y ficha, en la fila de abajo: crecen hasta llenarla entre las dos. Con algo
+// menos de relleno caben juntas en una tarjeta de tres columnas; si no caben (tarjeta
+// muy estrecha), cada una pasa a su propia fila, también a todo el ancho.
+const SECONDARY =
+  'inline-flex min-h-11 flex-auto items-center justify-center gap-1 whitespace-nowrap rounded-lg border border-[#cbd5e1] bg-white px-2 py-2 text-sm font-bold text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]';
 
 // Tipo de recurso, encima del título: solo cuando el catálogo mezcla simulaciones y
 // prácticas (showKind). Las prácticas llevan además su franja de color.
@@ -39,9 +45,9 @@ export function cardMarkup(sim, { showKind = false } = {}) {
       <a
         href="${guionPath(sim.id)}"
         data-route
-        class="${BUTTON} border border-[#cbd5e1] bg-white text-[#1e293b] hover:border-[#0369a1] hover:text-[#0369a1]"
+        class="${SECONDARY}"
       >
-        <i data-lucide="clipboard-list" class="h-4 w-4"></i>
+        <i data-lucide="clipboard-list" class="h-4 w-4 shrink-0"></i>
         ${studentDoc(sim).label}
       </a>`
       : '';
@@ -54,12 +60,20 @@ export function cardMarkup(sim, { showKind = false } = {}) {
       <a
         href="${guidePath(sim.id, guide)}"
         data-route${guide !== lang ? ` hreflang="${guide}"` : ''}
-        class="${BUTTON} border border-[#cbd5e1] bg-white text-[#1e293b] hover:border-[#0369a1] hover:text-[#0369a1]"
+        class="${SECONDARY}"
       >
-        <i data-lucide="book-open" class="h-4 w-4"></i>
+        <i data-lucide="book-open" class="h-4 w-4 shrink-0"></i>
         ${L('Guía docente', 'Teacher guide', 'Guia docent (en castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (en castelán)')}
       </a>`
     : '';
+  // Fila de abajo: guía y ficha (o guion), juntas tan anchas como el botón azul. Si
+  // solo hay una, ocupa la fila entera.
+  const secondary =
+    guideButton || guionButton
+      ? `
+        <div class="flex flex-wrap gap-2">${guideButton}${guionButton}
+        </div>`
+      : '';
   const tags = subjectTags(sim)
     .map((t) => `<span class="${TAG_CLASS}">${subjectDot(t)}${tagLabel(t, lang)}</span>`)
     .join('');
@@ -80,15 +94,15 @@ export function cardMarkup(sim, { showKind = false } = {}) {
       </h3>
       <p class="mt-1 text-sm font-bold text-[#475569]"><span class="sr-only">${L('Cursos:', 'Years:', 'Cursos:', 'Mailak:', 'Cursos:')} </span>${courses.join(' · ')}</p>
       <p class="mt-2 line-clamp-3 break-words text-[0.95rem] leading-relaxed text-[#475569] sm:line-clamp-none">${description}</p>
-      <div class="mt-auto flex flex-wrap gap-2 pt-4">
+      <div class="mt-auto grid gap-2 pt-4">
         <a
           href="${simPath(sim.id, lang)}"
           data-route
-          class="${BUTTON} bg-[#0369a1] text-white hover:bg-[#075985]"
+          class="${BUTTON} w-full bg-[#0369a1] text-white hover:bg-[#075985]"
         >
           <i data-lucide="play" class="h-4 w-4"></i>
           ${practical ? 'Abrir práctica' : L('Abrir simulación', 'Open simulation', 'Obre la simulació', 'Ireki simulazioa', 'Abrir simulación')}
-        </a>${guideButton}${guionButton}
+        </a>${secondary}
       </div>
     </div>
   </article>`;

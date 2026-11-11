@@ -1,9 +1,11 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
 import { guidePath, guionPath } from '../paths.js';
-import { guideLangFor, hasGuion } from '../data/guides.js';
+import { guideLangFor, hasGuion, loadGuide } from '../data/guides.js';
+import { guideSummary, guideMisconceptions, inlineHtml } from '../guides/shared.js';
+import { footerMarkup } from '../components/footer.js';
 import { copyText, flashCopied } from '../components/copy.js';
 import { langSwitchMarkup } from '../components/lang-switch.js';
-import { simTitle, simUrl, isPractical } from '../data/simulations.js';
+import { simTitle, simUrl, simDescription, isPractical, courseLabel, subjectTags, tagLabel, TOPICS } from '../data/simulations.js';
 import { getLang, L } from '../i18n.js';
 
 // Parámetros de una práctica que se pasan de la dirección de la web a la práctica,
@@ -96,6 +98,101 @@ function createShareModal(sim) {
   return el;
 }
 
+// «Sobre esta simulación»: texto bajo el escenario, en el propio HTML pregenerado,
+// para que los buscadores y las IA sepan qué enseña la página sin ejecutar la
+// simulación (que va en un iframe de otro dominio). Datos del catálogo y, en
+// español e inglés, el resumen y las ideas previas de la guía docente.
+const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' };
+const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ESC[c]);
+const ABOUT_LINK = 'font-medium text-[#0369a1] underline hover:text-[#075985]';
+
+function aboutMarkup(sim, lang, guide) {
+  const practical = isPractical(sim);
+  const topics = TOPICS.filter((t) => t.sims.includes(sim.id)).map((t) => t.label[lang] ?? t.label.es);
+  const row = (label, value) =>
+    value ? `<div><dt class="font-semibold text-[#1e293b]">${label}</dt><dd class="text-[#475569]">${value}</dd></div>` : '';
+  const guideLink = guide
+    ? `<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="${ABOUT_LINK}">${
+        practical
+          ? 'Guía docente de la práctica'
+          : L('Guía docente', 'Teacher guide', 'Guia docent (en castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (en castelán)')
+      }</a>`
+    : '';
+  const guionLink = practical && hasGuion(sim.id) ? `<a href="${guionPath(sim.id)}" data-route class="${ABOUT_LINK}">Guion del alumnado</a>` : '';
+  return `
+  <section id="lab-about" aria-labelledby="lab-about-title" data-print-hide class="border-t border-[#e2e8f0] bg-white">
+    <div class="mx-auto max-w-3xl px-4 py-10 text-[#334155]">
+      <h2 id="lab-about-title" class="text-xl font-semibold text-[#1e293b]">${
+        practical
+          ? 'Sobre esta práctica'
+          : L('Sobre esta simulación', 'About this simulation', 'Sobre aquesta simulació', 'Simulazio honi buruz', 'Sobre esta simulación')
+      }: ${esc(simTitle(sim, lang))}</h2>
+      <p class="mt-3 leading-relaxed">${esc(simDescription(sim, lang))}</p>
+      <div id="lab-about-guide"${guide === lang ? ' data-pending' : ''}></div>
+      ${guide && guide !== lang ? `<p class="mt-3 leading-relaxed">${L(
+        '',
+        '',
+        'La guia docent, en castellà, recull per a cada curs els sabers bàsics, una seqüència per explicar-la a classe i les idees prèvies de l’alumnat que ajuda a corregir.',
+        'Irakaslearen gidak, gaztelaniaz, maila bakoitzeko oinarrizko jakintzak, klasean azaltzeko sekuentzia bat eta ikasleen aurretiazko ideia okerrak zuzentzeko proposamenak biltzen ditu.',
+        'A guía docente, en castelán, recolle para cada curso os saberes básicos, unha secuencia para explicala na clase e as ideas previas do alumnado que axuda a corrixir.',
+      )}</p>` : ''}
+      <dl class="mt-6 grid gap-4 text-sm sm:grid-cols-2">
+        ${row(L('Cursos', 'Year groups', 'Cursos', 'Mailak', 'Cursos'), sim.courses.map((c) => courseLabel(c, lang)).join(', '))}
+        ${row(L('Materia', 'Subject', 'Matèria', 'Ikasgaia', 'Materia'), subjectTags(sim).map((t) => tagLabel(t, lang)).join(', '))}
+        ${row(L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema'), topics.join(', '))}
+        ${row(
+          L('Uso', 'Use', 'Ús', 'Erabilera', 'Uso'),
+          L(
+            'Gratis, sin registro ni instalación. En el navegador del ordenador, la tableta o el móvil.',
+            'Free, no sign-up or installation. Runs in the browser on a computer, tablet or phone.',
+            "Gratuïta, sense registre ni instal·lació. Al navegador de l'ordinador, la tauleta o el mòbil.",
+            'Doakoa, erregistrorik eta instalaziorik gabe. Ordenagailuko, tabletako edo mugikorreko nabigatzailean.',
+            'De balde, sen rexistro nin instalación. No navegador do ordenador, a tableta ou o móbil.',
+          ),
+        )}
+      </dl>
+      <p class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+        ${guideLink}
+        ${guionLink}
+        <a href="${frameUrl(sim, lang)}" target="_blank" rel="noopener" class="${ABOUT_LINK}">${L(
+          'Abrir sola en una pestaña',
+          'Open on its own in a new tab',
+          'Obre-la sola en una pestanya',
+          'Ireki bakarrik fitxa berri batean',
+          'Abrila soa nunha lapela',
+        )}</a>
+      </p>
+      <p class="mt-6 text-xs text-[#64748b]">${L(
+        'Autor: Juan Ramón Grijota, profesor de Física y Química. Licencia',
+        'Author: Juan Ramón Grijota, Physics and Chemistry teacher. Licence',
+        'Autor: Juan Ramón Grijota, professor de Física i Química. Llicència',
+        'Egilea: Juan Ramón Grijota, Fisika eta Kimikako irakaslea. Lizentzia:',
+        'Autor: Juan Ramón Grijota, profesor de Física e Química. Licenza',
+      )} <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}" target="_blank" rel="noopener license" class="underline hover:text-[#0369a1]">CC BY-SA 4.0</a>.</p>
+    </div>
+  </section>
+  ${footerMarkup()}`;
+}
+
+// Resumen de la guía («Ficha rápida») y hasta cuatro ideas previas que la
+// simulación ayuda a corregir. Solo si la guía está en el idioma de la página.
+async function fillAboutFromGuide(root, sim, lang) {
+  const box = root.querySelector('#lab-about-guide[data-pending]');
+  if (!box) return;
+  const md = await loadGuide(sim.id, lang);
+  if (!box.isConnected) return;
+  const summary = guideSummary(md);
+  const ideas = guideMisconceptions(md).slice(0, 4);
+  box.innerHTML = `
+    ${summary ? `<p class="mt-3 leading-relaxed">${inlineHtml(summary, lang)}</p>` : ''}
+    ${ideas.length ? `
+      <h3 class="mt-6 font-semibold text-[#1e293b]">${L('Ideas previas que ayuda a corregir', 'Misconceptions it helps to address')}</h3>
+      <ul class="mt-2 list-disc space-y-1.5 pl-5 leading-relaxed">
+        ${ideas.map((i) => `<li>${esc(i.idea)}: ${esc(i.correct.replace(/\.$/, ''))}.</li>`).join('')}
+      </ul>` : ''}`;
+  box.removeAttribute('data-pending');
+}
+
 // Ancho de diseño base de las simulaciones: panel de control (370px) + lienzo
 // p5.js (900px) = 1270px. Por debajo de esto hay que escalar para no recortar.
 const BASE_WIDTH = 1270;
@@ -126,7 +223,7 @@ export function renderLab(root, sim) {
         <span class="hidden sm:inline">${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}</span>
       </button>
       <div class="hidden h-5 w-px bg-[#e2e8f0] sm:block"></div>
-      <h1 class="hidden truncate font-semibold text-[#1e293b] sm:block">${title}</h1>
+      <h1 class="sr-only truncate font-semibold text-[#1e293b] sm:not-sr-only">${title}</h1>
       ${guideButton}
       <button id="lab-fs" class="${withGuide ? '' : 'ml-auto '}inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="maximize" class="h-4 w-4"></i>
@@ -158,7 +255,9 @@ export function renderLab(root, sim) {
         ></iframe>
       </div>
     </div>
-  </div>`;
+  </div>
+  ${aboutMarkup(sim, lang, guide)}`;
+  fillAboutFromGuide(root, sim, lang);
 
   const stage = root.querySelector('#lab-stage');
   const iframe = root.querySelector('#lab-frame');

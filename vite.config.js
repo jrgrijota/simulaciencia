@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
-import { readdirSync } from 'node:fs';
-import { simulationsIn } from './src/data/simulations.js';
-import { guideIdFromFile } from './src/guides/shared.js';
+import { readdirSync, readFileSync, existsSync } from 'node:fs';
+import { simulationsIn, simTitle, simDescription, courseLabel, isPractical } from './src/data/simulations.js';
+import { guideIdFromFile, guideSummary, guideMisconceptions } from './src/guides/shared.js';
 import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, parsePath, translatedPath, absoluteUrl } from './src/paths.js';
 
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
@@ -55,9 +55,76 @@ function sitemap() {
   };
 }
 
+// llms.txt (https://llmstxt.org): índice en Markdown de la web para los asistentes
+// de IA (ChatGPT, Claude, Perplexity…). Cada simulación con su curso, su
+// descripción, su guía docente y las ideas previas que ayuda a corregir. Se
+// genera en cada build a partir del catálogo y de las guías.
+function llmsTxt() {
+  return {
+    name: 'llms-txt',
+    generateBundle() {
+      const name = (id) => id.replace(/^sim-/, '');
+      const guide = (id) => {
+        const f = `guias/${name(id)}.md`;
+        return existsSync(f) ? readFileSync(f, 'utf8') : null;
+      };
+      const entry = (s) => {
+        const md = guide(s.id);
+        const courses = s.courses.map((c) => courseLabel(c)).join(', ');
+        const lines = [`- [${simTitle(s)}](${absoluteUrl(simPath(s.id))}): ${simDescription(s)} Cursos: ${courses}.`];
+        if (md) {
+          lines.push(`  - [Guía docente: ${simTitle(s)}](${absoluteUrl(guidePath(s.id))}): ${guideSummary(md).replace(/[*_`]/g, '')}`);
+          const ideas = guideMisconceptions(md).slice(0, 4);
+          if (ideas.length) lines.push(`  - Ideas previas que ayuda a corregir: ${ideas.map((i) => `${i.idea} (${i.correct.replace(/\.$/, '')})`).join('; ')}.`);
+        }
+        if (isPractical(s) && existsSync(`guiones/${name(s.id)}.md`)) {
+          lines.push(`  - [Guion del alumnado](${absoluteUrl(guionPath(s.id))}): editable en Word y LibreOffice, o en PDF.`);
+        }
+        return lines.join('\n');
+      };
+      const sims = simulationsIn('es');
+      const others = LANGS.filter((l) => l !== 'es');
+      const body = [
+        '# SimulaCiencia',
+        '',
+        '> Simulaciones interactivas y gratuitas de Física y Química para Educación Secundaria (ESO) y Bachillerato, ' +
+          'con una guía docente por simulación ligada al currículo LOMLOE de la Comunidad de Madrid. Funcionan en el ' +
+          'navegador del ordenador, la tableta o el móvil, sin registro ni instalación.',
+        '',
+        'Autor: Juan Ramón Grijota, profesor de Física y Química en la Comunidad de Madrid. Contenido con licencia ' +
+          'CC BY-SA 4.0 y código con licencia MIT. Las guías docentes indican, para cada curso, los saberes básicos, ' +
+          'una secuencia de explicación, las concepciones alternativas que ayuda a corregir y las simplificaciones del modelo. ' +
+          'Cada simulación se puede compartir con un enlace o insertar en Moodle, Classroom o una web con un iframe.',
+        '',
+        '## Simulaciones',
+        '',
+        ...sims.filter((s) => !isPractical(s)).map(entry),
+        '',
+        '## Prácticas de laboratorio simuladas',
+        '',
+        ...sims.filter(isPractical).map(entry),
+        '',
+        '## Otros idiomas',
+        '',
+        'La interfaz de las simulaciones está también en inglés, catalán, euskera y gallego; las guías docentes, en español e inglés.',
+        '',
+        ...others.map((l) => `- [${{ en: 'English', ca: 'Català', eu: 'Euskara', gl: 'Galego' }[l]}](${absoluteUrl(homePath(l))})`),
+        '',
+        '## Optional',
+        '',
+        `- [Sobre el proyecto](${absoluteUrl(PAGE_PATHS.about)}): quién lo hace, por qué y cómo usarlo en clase.`,
+        `- [Mapa del sitio](${absoluteUrl('/sitemap.xml')}): todas las páginas en los cinco idiomas.`,
+        '- [Código fuente](https://github.com/jrgrijota/simulaciencia)',
+        '',
+      ];
+      this.emitFile({ type: 'asset', fileName: 'llms.txt', source: body.join('\n') });
+    },
+  };
+}
+
 export default defineConfig({
   // base absoluto: las páginas viven en subcarpetas (/guias/densidad/) y la web
   // se sirve en la raíz de simulaciencia.es.
   base: '/',
-  plugins: [tailwindcss(), sitemap()],
+  plugins: [tailwindcss(), sitemap(), llmsTxt()],
 });

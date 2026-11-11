@@ -44,11 +44,29 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "SimulaCiencia",
-        "alternateName": "simulaciencia.es",
-        "url": "https://simulaciencia.es/",
-        "inLanguage": "es"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://simulaciencia.es/#web",
+            "name": "SimulaCiencia",
+            "alternateName": "simulaciencia.es",
+            "url": "https://simulaciencia.es/",
+            "description": "Simulaciones interactivas y gratuitas de Física y Química para ESO y Bachillerato, con guías docentes ligadas al currículo LOMLOE.",
+            "inLanguage": ["es", "en", "ca", "eu", "gl"],
+            "isAccessibleForFree": true,
+            "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+            "author": { "@id": "https://simulaciencia.es/#autor" },
+            "publisher": { "@id": "https://simulaciencia.es/#autor" }
+          },
+          {
+            "@type": "Person",
+            "@id": "https://simulaciencia.es/#autor",
+            "name": "Juan Ramón Grijota",
+            "jobTitle": "Profesor de Física y Química",
+            "url": "https://simulaciencia.es/sobre-el-proyecto/",
+            "sameAs": ["https://github.com/jrgrijota"]
+          }
+        ]
       }
     </script>
 

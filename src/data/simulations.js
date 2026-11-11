@@ -27,17 +27,17 @@ export const simulations = [
     en: {
       title: "Archimedes' Principle",
       description:
-        'Buoyancy and upthrust: with free values or with real materials and liquids, see when an object floats, sinks or stays in equilibrium, and the forces acting on it.',
+        'Buoyancy and upthrust: with free values or real materials and liquids, see when an object floats, sinks or stays in equilibrium, and the forces on it.',
     },
     ca: {
       title: "Principi d'Arquimedes",
       description:
-        "Flotabilitat i empenyiment: amb valors lliures o amb materials i líquids reals, observa quan un cos sura, s'enfonsa o queda en equilibri, i les forces que hi actuen.",
+        "Flotabilitat i empenyiment: amb valors lliures o materials i líquids reals, observa quan un cos sura, s'enfonsa o queda en equilibri, i les seves forces.",
     },
     eu: {
       title: 'Arkimedesen printzipioa',
       description:
-        'Flotagarritasuna eta bultzada: balio libreekin edo benetako material eta likidoekin, ikusi noiz dagoen gorputz bat flotatzen, noiz hondoratzen den edo noiz geratzen den orekan, eta zer indarrek eragiten dioten.',
+        'Flotagarritasuna eta bultzada: balio libreekin edo benetako material eta likidoekin, ikusi noiz flotatzen, hondoratzen edo orekan geratzen den gorputz bat.',
     },
     gl: {
       title: 'Principio de Arquímedes',
@@ -49,7 +49,7 @@ export const simulations = [
     id: 'sim-densidad',
     title: 'Densidad',
     description:
-      'Masa, volumen y densidad: compara materiales como el corcho, el agua o el plomo, mira cuánta masa tiene cada litro y comprueba con una balanza de brazos cuál tiene más masa.',
+      'Masa, volumen y densidad: compara materiales como el corcho, el agua o el plomo, mira cuánta masa tiene cada litro y compruébalo con una balanza de brazos.',
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-densidad/',
     responsive: true,
@@ -57,22 +57,22 @@ export const simulations = [
     en: {
       title: 'Density',
       description:
-        'Mass, volume and density: compare materials such as cork, water or lead, see how much mass each litre has and check on a two-pan balance which one has more mass.',
+        'Mass, volume and density: compare materials such as cork, water or lead, see how much mass each litre has and check it on a two-pan balance.',
     },
     ca: {
       title: 'Densitat',
       description:
-        "Massa, volum i densitat: compara materials com el suro, l'aigua o el plom, mira quanta massa té cada litre i comprova amb una balança de braços quin té més massa.",
+        "Massa, volum i densitat: compara materials com el suro, l'aigua o el plom, mira quanta massa té cada litre i comprova-ho amb una balança de braços.",
     },
     eu: {
       title: 'Dentsitatea',
       description:
-        'Masa, bolumena eta dentsitatea: alderatu kortxoa, ura edo beruna bezalako materialak, ikusi litro bakoitzak zenbat masa duen eta egiaztatu beso-balantza batekin zeinek duen masa gehiago.',
+        'Masa, bolumena eta dentsitatea: alderatu kortxoa, ura edo beruna, ikusi litro bakoitzak zenbat masa duen eta egiaztatu beso-balantza batekin.',
     },
     gl: {
       title: 'Densidade',
       description:
-        'Masa, volume e densidade: compara materiais como a cortiza, a auga ou o chumbo, mira canta masa ten cada litro e comproba cunha balanza de brazos cal ten máis masa.',
+        'Masa, volume e densidade: compara materiais como a cortiza, a auga ou o chumbo, mira canta masa ten cada litro e compróbao cunha balanza de brazos.',
     },
   },
   {
@@ -177,7 +177,7 @@ export const simulations = [
     en: {
       title: 'Reaction Rate',
       description:
-        'How temperature, concentration and a catalyst affect the rate of a reaction, with a collision mode that shows why particles need enough energy and the right orientation.',
+        'How temperature, concentration and catalysts change reaction rate, with a collision mode showing why particles need enough energy and the right orientation.',
     },
     ca: {
       title: 'Velocitat de Reacció',
@@ -187,7 +187,7 @@ export const simulations = [
     eu: {
       title: 'Erreakzio-abiadura',
       description:
-        'Nola eragiten dioten tenperaturak, kontzentrazioak eta katalizatzaileak erreakzio baten abiadurari, eta talka-modu batek erakusten du zergatik behar diren energia eta orientazioa.',
+        'Tenperaturak, kontzentrazioak eta katalizatzaileak erreakzio-abiaduran duten eragina, eta talka-modua: zergatik behar diren energia eta orientazio egokia.',
     },
     gl: {
       title: 'Velocidade de reacción',
@@ -242,12 +242,12 @@ export const simulations = [
     ca: {
       title: 'Enllaços Químics',
       description:
-        'Enllaç iònic, covalent i metàl·lic: com els àtoms guanyen, comparteixen o deslocalitzen electrons, amb xarxes iòniques, cristalls covalents i metalls mal·leables.',
+        'Enllaç iònic, covalent i metàl·lic: com els àtoms guanyen, comparteixen o deslocalitzen electrons, amb xarxes iòniques, cristalls covalents i metalls.',
     },
     eu: {
       title: 'Lotura kimikoak',
       description:
-        'Lotura ionikoa, kobalentea eta metalikoa: nola irabazten, partekatzen edo deslokalizatzen dituzten atomoek elektroiak, sare ionikoekin, kristal kobalenteekin eta metal xaflagarriekin.',
+        'Lotura ionikoa, kobalentea eta metalikoa: atomoek elektroiak nola irabazten, partekatzen edo deslokalizatzen dituzten, sareekin, kristalekin eta metalekin.',
     },
     gl: {
       title: 'Enlaces químicos',
@@ -289,7 +289,7 @@ export const simulations = [
     id: 'sim-cambios-estado',
     title: 'Cambios de Estado',
     description:
-      'Calienta y enfría una sustancia y observa a la vez el recipiente, sus partículas y la curva de calentamiento; explora con el diagrama de fases por qué el agua hierve a unos 72 °C en el Everest.',
+      'Calienta y enfría una sustancia viendo sus partículas y su curva de calentamiento, y mira con el diagrama de fases por qué el agua hierve a unos 72 °C en el Everest.',
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-cambios-estado/',
     responsive: true,
@@ -297,29 +297,29 @@ export const simulations = [
     en: {
       title: 'Changes of State',
       description:
-        'Heat and cool a substance and watch the container, its particles and the heating curve at the same time; use the phase diagram to see why water boils at about 72 °C on Everest.',
+        'Heat and cool a substance while watching its particles and heating curve, and use the phase diagram to see why water boils at about 72 °C on Everest.',
     },
     ca: {
       title: "Canvis d'Estat",
       description:
-        "Escalfa i refreda una substància i observa alhora el recipient, les seves partícules i la corba d'escalfament; explora amb el diagrama de fases per què l'aigua bull a uns 72 °C a l'Everest.",
+        "Escalfa i refreda una substància veient-ne les partícules i la corba d'escalfament, i mira amb el diagrama de fases per què l'aigua bull a uns 72 °C a l'Everest.",
     },
     eu: {
       title: 'Egoera-aldaketak',
       description:
-        'Berotu eta hoztu substantzia bat, eta ikusi aldi berean ontzia, haren partikulak eta berotze-kurba; aztertu fase-diagramarekin zergatik irakiten duen urak 72 °C ingurutan Everesten.',
+        'Berotu eta hoztu substantzia bat haren partikulak eta berotze-kurba ikusiz, eta aztertu fase-diagramarekin zergatik irakiten duen urak 72 °C-an Everesten.',
     },
     gl: {
       title: 'Cambios de estado',
       description:
-        'Quenta e arrefría unha substancia e observa á vez o recipiente, as súas partículas e a curva de quecemento; explora co diagrama de fases por que a auga ferve a uns 72 °C no Everest.',
+        'Quenta e arrefría unha substancia vendo as súas partículas e a curva de quecemento, e descobre co diagrama de fases por que a auga ferve a uns 72 °C no Everest.',
     },
   },
   {
     id: 'sim-ajuste-reaccion',
     title: 'Ajuste de Reacciones',
     description:
-      'Ajusta ecuaciones químicas viendo cómo se reordenan los átomos, comprueba con una balanza la ley de Lavoisier y la de Proust, y descubre el reactivo limitante y el rendimiento.',
+      'Ajusta ecuaciones viendo cómo se reordenan los átomos, comprueba en una balanza las leyes de Lavoisier y Proust y halla el reactivo limitante y el rendimiento.',
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-ajuste-reaccion/',
     responsive: true,
@@ -327,22 +327,22 @@ export const simulations = [
     en: {
       title: 'Balancing Equations',
       description:
-        "Balance chemical equations by watching the atoms rearrange, use a balance to check Lavoisier's and Proust's laws, and discover the limiting reactant and the yield.",
+        "Balance equations by watching the atoms rearrange, check Lavoisier's and Proust's laws on a balance, and discover the limiting reactant and the yield.",
     },
     ca: {
       title: 'Ajust de Reaccions',
       description:
-        "Ajusta equacions químiques veient com es reordenen els àtoms, comprova amb una balança la llei de Lavoisier i la de Proust, i descobreix el reactiu limitant i el rendiment.",
+        "Ajusta equacions veient com es reordenen els àtoms, comprova amb una balança les lleis de Lavoisier i Proust, i descobreix el reactiu limitant i el rendiment.",
     },
     eu: {
       title: 'Erreakzioen doikuntza',
       description:
-        'Doitu ekuazio kimikoak atomoak nola berrantolatzen diren ikusiz, egiaztatu balantza batekin Lavoisierren eta Prousten legeak, eta aurkitu erreaktibo mugatzailea eta errendimendua.',
+        'Doitu ekuazioak atomoen berrantolaketa ikusiz, egiaztatu balantzan Lavoisierren eta Prousten legeak, eta aurkitu erreaktibo mugatzailea eta errendimendua.',
     },
     gl: {
       title: 'Axuste de Reaccións',
       description:
-        'Axusta ecuacións químicas vendo como se reordenan os átomos, comproba cunha balanza a lei de Lavoisier e a de Proust, e descobre o reactivo limitante e o rendemento.',
+        'Axusta ecuacións vendo como se reordenan os átomos, comproba cunha balanza as leis de Lavoisier e Proust, e descobre o reactivo limitante e o rendemento.',
     },
   },
   {
@@ -409,7 +409,7 @@ export const simulations = [
     id: 'sim-ondas',
     title: 'Ondas',
     description:
-      'Cuerda y muelle: distingue las ondas transversales de las longitudinales, mide la amplitud, la longitud de onda y el período, y comprueba que la onda transporta energía, pero no materia.',
+      'Cuerda y muelle: distingue ondas transversales y longitudinales, mide amplitud, longitud de onda y período, y comprueba que transporta energía, no materia.',
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-ondas/',
     responsive: true,
@@ -417,22 +417,22 @@ export const simulations = [
     en: {
       title: 'Waves',
       description:
-        'String and spring: tell transverse waves from longitudinal ones, measure the amplitude, the wavelength and the period, and check that the wave carries energy but not matter.',
+        'String and spring: tell transverse from longitudinal waves, measure amplitude, wavelength and period, and check that a wave carries energy, not matter.',
     },
     ca: {
       title: 'Ones',
       description:
-        "Corda i molla: distingeix les ones transversals de les longitudinals, mesura l'amplitud, la longitud d'ona i el període, i comprova que l'ona transporta energia, però no matèria.",
+        "Corda i molla: distingeix ones transversals i longitudinals, mesura amplitud, longitud d'ona i període, i comprova que l'ona transporta energia, no matèria.",
     },
     eu: {
       title: 'Uhinak',
       description:
-        'Soka eta malgukia: bereizi zeharkako uhinak eta luzetarakoak, neurtu anplitudea, uhin-luzera eta periodoa, eta egiaztatu uhinak energia garraiatzen duela, baina ez materia.',
+        'Soka eta malgukia: bereizi zeharkako eta luzetarako uhinak, neurtu anplitudea, uhin-luzera eta periodoa, eta egiaztatu uhinak energia daramala, ez materia.',
     },
     gl: {
       title: 'Ondas',
       description:
-        'Corda e resorte: distingue as ondas transversais das lonxitudinais, mide a amplitude, a lonxitude de onda e o período, e comproba que a onda transporta enerxía, pero non materia.',
+        'Corda e resorte: distingue ondas transversais e lonxitudinais, mide amplitude, lonxitude de onda e período, e comproba que a onda leva enerxía, non materia.',
     },
   },
   {
@@ -441,7 +441,7 @@ export const simulations = [
     langs: ['es'],
     title: 'Densidad de un sólido',
     description:
-      'Práctica de laboratorio: pesa una muestra desconocida, mide su volumen por inmersión en una probeta, calcula su densidad e identifica el material. Con nivel guiado y nivel libre con guion.',
+      'Práctica de laboratorio: pesa una muestra desconocida, mide su volumen en una probeta, calcula su densidad e identifica el material. Nivel guiado y nivel libre.',
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-practica-densidad/',
     responsive: true,

@@ -4,10 +4,13 @@
 // cada página; al cargarla, este módulo reutiliza esas etiquetas.
 // Además, el <head> enlaza la versión de cada idioma (hreflang).
 import { simPath, guidePath, guionPath, homePath, pagePath, absoluteUrl, translatedPath, LANGS, GUIDE_LANGS } from './paths.js';
-import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical } from './data/simulations.js';
+import { thumbMarkup } from './components/thumbs.js';
+import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical, TOPICS } from './data/simulations.js';
 
 export const SITE = 'SimulaCiencia';
-const AUTHOR = { '@type': 'Person', name: 'Juan Ramón Grijota' };
+// La ficha completa del autor y del sitio está en index.html (@id #autor y #web).
+const AUTHOR = { '@type': 'Person', '@id': 'https://simulaciencia.es/#autor', name: 'Juan Ramón Grijota' };
+const WEBSITE = { '@id': 'https://simulaciencia.es/#web' };
 const LICENSE = {
   es: 'https://creativecommons.org/licenses/by-sa/4.0/deed.es',
   en: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',
@@ -39,11 +42,26 @@ const DEFAULT_OG_DESCRIPTION = {
   eu: 'Fisika eta Kimikako simulazio interaktibo eta doakoak DBHrako eta Batxilergorako. Instalaziorik eta erregistrorik gabe.',
   gl: 'Simulacións interactivas e gratuítas de Física e Química para ESO e Bacharelato. Sen instalación nin rexistro.',
 };
+const ABOUT_DESCRIPTION = {
+  es: 'Quién hace SimulaCiencia y por qué: un profesor de Física y Química de la Comunidad de Madrid que crea simulaciones libres y gratuitas para el aula.',
+  en: 'Who makes SimulaCiencia and why: a Physics and Chemistry teacher in Madrid creating free, open simulations for the classroom.',
+  ca: "Qui fa SimulaCiencia i per què: un professor de Física i Química de la Comunitat de Madrid que crea simulacions lliures i gratuïtes per a l'aula.",
+  eu: 'Nork egiten du SimulaCiencia eta zergatik: Madrilgo Erkidegoko Fisika eta Kimikako irakasle bat, gelarako simulazio libre eta doakoak sortzen dituena.',
+  gl: 'Quen fai SimulaCiencia e por que: un profesor de Física e Química da Comunidade de Madrid que crea simulacións libres e gratuítas para a aula.',
+};
 const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES', gl: 'gl_ES' };
 const PRACTICAL_KIND = 'Práctica de laboratorio simulada';
 const KIND = { es: 'Simulación interactiva', en: 'Interactive simulation', ca: 'Simulació interactiva', eu: 'Simulazio interaktiboa', gl: 'Simulación interactiva' };
 
 const metaDescription = document.querySelector('meta[name="description"]');
+
+// Vista previa al compartir: la imagen de la simulación (public/og/<nombre>.png,
+// generada con `npm run og` desde su miniatura) o la general de la web.
+// (El texto alternativo general es el de index.html; no se lee del documento porque
+// la página pregenerada de una simulación ya trae el suyo.)
+const DEFAULT_IMAGE = { url: absoluteUrl('/og-image.png'), alt: 'SimulaCiencia: simulaciones interactivas de Física y Química para el aula' };
+const simImage = (sim, lang) =>
+  thumbMarkup(sim.id) ? { url: absoluteUrl(`/og/${sim.id.replace(/^sim-/, '')}.png`), alt: `${simTitle(sim, lang)} · ${SITE}` } : DEFAULT_IMAGE;
 
 const og = (prop) => document.querySelector(`meta[property="og:${prop}"]`);
 
@@ -91,10 +109,29 @@ function simResource(sim, lang = 'es') {
       { '@type': 'EducationalAudience', educationalRole: 'teacher' },
     ],
     about: sim.tags.filter((t) => t !== 'ESO' && t !== 'Bachillerato').map((t) => tagLabel(t, lang)),
+    teaches: TOPICS.filter((t) => t.sims.includes(sim.id)).map((t) => t.label[lang] ?? t.label.es),
     inLanguage: lang,
     isAccessibleForFree: true,
     author: AUTHOR,
     license: LICENSE[lang],
+    isPartOf: WEBSITE,
+    image: simImage(sim, lang).url,
+  };
+}
+
+// Migas de pan (Inicio › Simulación › Guía): Google las muestra en el resultado en
+// lugar de la dirección. `trail`: [nombre, url] después de la portada.
+const HOME_NAME = { es: 'Inicio', en: 'Home', ca: 'Inici', eu: 'Hasiera', gl: 'Inicio' };
+function withBreadcrumb(data, lang, trail) {
+  const items = [[HOME_NAME[lang], absoluteUrl(homePath(lang))], ...trail];
+  return {
+    '@graph': [
+      data,
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: items.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })),
+      },
+    ],
   };
 }
 
@@ -114,8 +151,10 @@ function setAlternates(route) {
   }
 }
 
-function set(lang, title, description, url, data, locales = LANGS) {
+function set(lang, title, description, url, data, locales = LANGS, image = DEFAULT_IMAGE) {
   document.title = title;
+  og('image').content = image.url;
+  if (og('image:alt') && image.alt) og('image:alt').content = image.alt;
   metaDescription.content = description;
   canonical.href = url;
   og('url').content = url;
@@ -143,7 +182,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
       `Guion para el alumnado de la práctica de laboratorio «${title}»: objetivo, procedimiento, tabla de datos, ` +
         'cálculos y cuestiones. Descarga en Word y LibreOffice para adaptarlo, o en PDF.',
       url,
-      {
+      withBreadcrumb({
         '@type': 'LearningResource',
         name: `Guion de la práctica: ${title}`,
         url,
@@ -156,8 +195,9 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
         author: AUTHOR,
         license: LICENSE.es,
         isBasedOn: simUrl(guionSim.id),
-      },
+      }, 'es', [[title, simUrl(guionSim.id)], ['Guion', url]]),
       ['es'],
+      simImage(guionSim, 'es'),
     );
   }
   if (guideSim) {
@@ -178,7 +218,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
           : `Guía para usar en clase la simulación «${title}»: cursos y saberes básicos, secuencia de ` +
             'explicación, concepciones alternativas y simplificaciones. Descarga en PDF, Word y LibreOffice.',
       guideUrl(guideSim.id, l),
-      {
+      withBreadcrumb({
         '@type': 'LearningResource',
         name,
         url: guideUrl(guideSim.id, l),
@@ -191,17 +231,18 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
         author: AUTHOR,
         license: LICENSE[l],
         isBasedOn: simUrl(guideSim.id, l),
-      },
+      }, l, [[title, simUrl(guideSim.id, l)], [en ? 'Teacher guide' : 'Guía docente', guideUrl(guideSim.id, l)]]),
       practical ? ['es'] : GUIDE_LANGS,
+      simImage(guideSim, l),
     );
   }
   if (sim) {
     const kind = isPractical(sim) ? PRACTICAL_KIND : KIND[lang];
-    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), simResource(sim, lang), sim.langs || LANGS);
+    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), withBreadcrumb(simResource(sim, lang), lang, [[simTitle(sim, lang), simUrl(sim.id, lang)]]), sim.langs || LANGS, simImage(sim, lang));
   }
   if (PAGES[page]) {
     const url = absoluteUrl(pagePath(page, lang));
-    return set(lang, PAGES[page][lang], DEFAULT_DESCRIPTION[lang], url, { '@type': 'WebPage', url, inLanguage: lang });
+    return set(lang, PAGES[page][lang], (page === 'about' && ABOUT_DESCRIPTION[lang]) || DEFAULT_DESCRIPTION[lang], url, { '@type': 'WebPage', url, inLanguage: lang });
   }
   const home = absoluteUrl(homePath(lang));
   set(lang, DEFAULT_TITLE[lang], DEFAULT_DESCRIPTION[lang], home, {
@@ -209,6 +250,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
     name: DEFAULT_TITLE[lang],
     url: home,
     inLanguage: lang,
+    isPartOf: WEBSITE,
     mainEntity: {
       '@type': 'ItemList',
       itemListElement: simulationsIn(lang).map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: simResource(s, lang) })),
@@ -217,8 +259,24 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
 }
 
 // La descripción de cada guía es su «Ficha rápida», que solo se conoce al cargarla.
+// Google corta la descripción hacia los 155-160 caracteres: se queda con las
+// frases completas que caben o, si la primera ya es larga, la corta en una palabra.
+export function shortDescription(text, max = 160) {
+  const clean = text.replace(/[*_`]/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim();
+  if (clean.length <= max) return clean;
+  const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g) || [];
+  let out = '';
+  for (const s of sentences) {
+    if ((out + s).trim().length > max) break;
+    out += s;
+  }
+  if (out.trim().length >= 70) return out.trim();
+  return clean.slice(0, max - 1).replace(/\s+\S*$/, '') + '…';
+}
+
 export function setDescription(text) {
   if (!text) return;
+  text = shortDescription(text);
   metaDescription.content = text;
   og('description').content = text;
 }

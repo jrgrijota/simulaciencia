@@ -55,9 +55,9 @@ export function renderCatalog(root) {
   const features = [
     {
       icon: '<path d="M4 5h6a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H4z"/><path d="M13 8a3 3 0 0 1 3-3h4v13h-5a2 2 0 0 0-2 2"/>',
-      title: L('Guía docente en cada simulación', 'A teacher guide for every simulation', 'Guia docent per a cada simulació', 'Irakaslearen gida simulazio bakoitzean', 'Guía docente en cada simulación'),
+      title: L('Guía docente y ficha de actividades en cada simulación', 'A teacher guide for every simulation', 'Guia docent per a cada simulació', 'Irakaslearen gida simulazio bakoitzean', 'Guía docente en cada simulación'),
       text: L(
-        'Cursos, saberes básicos, una secuencia para la clase y las concepciones alternativas que ayuda a corregir.',
+        'Cursos, saberes básicos, una secuencia para la clase y las concepciones alternativas que ayuda a corregir. Y una ficha de actividades para el alumnado, con enlaces que abren la simulación ya preparada.',
         'Year groups, curriculum content, a lesson sequence and the misconceptions it helps to address.',
         'Cursos, sabers bàsics, una seqüència per a la classe i les concepcions alternatives que ajuda a corregir. En castellà.',
         'Mailak, oinarrizko jakintzak, eskolarako sekuentzia bat eta zuzentzen laguntzen dituen ideia okerrak. Gaztelaniaz.',

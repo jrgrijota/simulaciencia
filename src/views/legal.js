@@ -31,7 +31,7 @@ export function renderLegal(root) {
       <h2 class="${H2}">2. Objeto y uso</h2>
       <p class="${P}">
         El sitio ofrece de forma gratuita simulaciones interactivas de Física y Química pensadas
-        para el aula y una guía docente de cada una, que se puede consultar en la web o descargar
+        para el aula, con una guía docente y una ficha de actividades de cada una, que se pueden consultar en la web o descargar
         en PDF, Word y LibreOffice. Su uso no requiere registro. Quien lo utiliza se compromete a hacerlo de
         forma lícita y a no dañar su funcionamiento.
       </p>

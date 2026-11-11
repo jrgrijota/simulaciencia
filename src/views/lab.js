@@ -134,6 +134,7 @@ function aboutMarkup(sim, lang, guide) {
       }: ${esc(simTitle(sim, lang))}</h2>
       <p class="mt-3 leading-relaxed">${esc(simDescription(sim, lang))}</p>
       <div id="lab-about-guide"${guide === lang ? ' data-pending' : ''}></div>
+      ${!practical && hasStudentDoc(sim, lang) ? `<p class="mt-3 leading-relaxed">Esta simulación tiene una <a href="${guionPath(sim.id)}" data-route class="${ABOUT_LINK}">ficha de actividades</a> asociada para el alumnado: predice, observa y explica, con enlaces que abren la simulación ya preparada. Se descarga en Word, LibreOffice o PDF.</p>` : ''}
       ${guide && guide !== lang ? `<p class="mt-3 leading-relaxed">${L(
         '',
         '',

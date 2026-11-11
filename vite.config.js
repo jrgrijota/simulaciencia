@@ -83,7 +83,7 @@ function llmsTxt() {
           lines.push(
             isPractical(s)
               ? `  - [Guion del alumnado](${absoluteUrl(guionPath(s.id))}): editable en Word y LibreOffice, o en PDF.`
-              : `  - [Ficha de actividades del alumnado](${absoluteUrl(guionPath(s.id))}): predice, observa y explica, con enlaces a la simulación ya preparada; editable en Word y LibreOffice, o en PDF.`,
+              : `  - [Ficha de actividades](${absoluteUrl(guionPath(s.id))}): predice, observa y explica, con enlaces a la simulación ya preparada; editable en Word y LibreOffice, o en PDF.`,
           );
         }
         return lines.join('\n');
@@ -94,7 +94,7 @@ function llmsTxt() {
         '# SimulaCiencia',
         '',
         '> Simulaciones interactivas y gratuitas de Física y Química para Educación Secundaria (ESO) y Bachillerato, ' +
-          'con una guía docente por simulación ligada al currículo LOMLOE de la Comunidad de Madrid. Funcionan en el ' +
+          'con una guía docente y una ficha de actividades para el alumnado por simulación, ligadas al currículo LOMLOE de la Comunidad de Madrid. Funcionan en el ' +
           'navegador del ordenador, la tableta o el móvil, sin registro ni instalación.',
         '',
         'Autor: Juan Ramón Grijota, profesor de Física y Química en la Comunidad de Madrid. Contenido con licencia ' +

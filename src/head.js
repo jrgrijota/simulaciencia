@@ -41,6 +41,13 @@ const DEFAULT_OG_DESCRIPTION = {
   eu: 'Fisika eta Kimikako simulazio interaktibo eta doakoak DBHrako eta Batxilergorako. Instalaziorik eta erregistrorik gabe.',
   gl: 'Simulacións interactivas e gratuítas de Física e Química para ESO e Bacharelato. Sen instalación nin rexistro.',
 };
+const ABOUT_DESCRIPTION = {
+  es: 'Quién hace SimulaCiencia y por qué: un profesor de Física y Química de la Comunidad de Madrid que crea simulaciones libres y gratuitas para el aula.',
+  en: 'Who makes SimulaCiencia and why: a Physics and Chemistry teacher in Madrid creating free, open simulations for the classroom.',
+  ca: "Qui fa SimulaCiencia i per què: un professor de Física i Química de la Comunitat de Madrid que crea simulacions lliures i gratuïtes per a l'aula.",
+  eu: 'Nork egiten du SimulaCiencia eta zergatik: Madrilgo Erkidegoko Fisika eta Kimikako irakasle bat, gelarako simulazio libre eta doakoak sortzen dituena.',
+  gl: 'Quen fai SimulaCiencia e por que: un profesor de Física e Química da Comunidade de Madrid que crea simulacións libres e gratuítas para a aula.',
+};
 const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES', gl: 'gl_ES' };
 const PRACTICAL_KIND = 'Práctica de laboratorio simulada';
 const KIND = { es: 'Simulación interactiva', en: 'Interactive simulation', ca: 'Simulació interactiva', eu: 'Simulazio interaktiboa', gl: 'Simulación interactiva' };
@@ -102,6 +109,22 @@ function simResource(sim, lang = 'es') {
   };
 }
 
+// Migas de pan (Inicio › Simulación › Guía): Google las muestra en el resultado en
+// lugar de la dirección. `trail`: [nombre, url] después de la portada.
+const HOME_NAME = { es: 'Inicio', en: 'Home', ca: 'Inici', eu: 'Hasiera', gl: 'Inicio' };
+function withBreadcrumb(data, lang, trail) {
+  const items = [[HOME_NAME[lang], absoluteUrl(homePath(lang))], ...trail];
+  return {
+    '@graph': [
+      data,
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: items.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })),
+      },
+    ],
+  };
+}
+
 const PAGES = {
   about: { es: `Sobre el proyecto · ${SITE}`, en: `About the project · ${SITE}`, ca: `Sobre el projecte · ${SITE}`, eu: `Proiektuari buruz · ${SITE}`, gl: `Sobre o proxecto · ${SITE}` },
   legal: { es: `Aviso legal y privacidad · ${SITE}` },
@@ -147,7 +170,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
       `Guion para el alumnado de la práctica de laboratorio «${title}»: objetivo, procedimiento, tabla de datos, ` +
         'cálculos y cuestiones. Descarga en Word y LibreOffice para adaptarlo, o en PDF.',
       url,
-      {
+      withBreadcrumb({
         '@type': 'LearningResource',
         name: `Guion de la práctica: ${title}`,
         url,
@@ -160,7 +183,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
         author: AUTHOR,
         license: LICENSE.es,
         isBasedOn: simUrl(guionSim.id),
-      },
+      }, 'es', [[title, simUrl(guionSim.id)], ['Guion', url]]),
       ['es'],
     );
   }
@@ -182,7 +205,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
           : `Guía para usar en clase la simulación «${title}»: cursos y saberes básicos, secuencia de ` +
             'explicación, concepciones alternativas y simplificaciones. Descarga en PDF, Word y LibreOffice.',
       guideUrl(guideSim.id, l),
-      {
+      withBreadcrumb({
         '@type': 'LearningResource',
         name,
         url: guideUrl(guideSim.id, l),
@@ -195,17 +218,17 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
         author: AUTHOR,
         license: LICENSE[l],
         isBasedOn: simUrl(guideSim.id, l),
-      },
+      }, l, [[title, simUrl(guideSim.id, l)], [en ? 'Teacher guide' : 'Guía docente', guideUrl(guideSim.id, l)]]),
       practical ? ['es'] : GUIDE_LANGS,
     );
   }
   if (sim) {
     const kind = isPractical(sim) ? PRACTICAL_KIND : KIND[lang];
-    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), simResource(sim, lang), sim.langs || LANGS);
+    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), withBreadcrumb(simResource(sim, lang), lang, [[simTitle(sim, lang), simUrl(sim.id, lang)]]), sim.langs || LANGS);
   }
   if (PAGES[page]) {
     const url = absoluteUrl(pagePath(page, lang));
-    return set(lang, PAGES[page][lang], DEFAULT_DESCRIPTION[lang], url, { '@type': 'WebPage', url, inLanguage: lang });
+    return set(lang, PAGES[page][lang], (page === 'about' && ABOUT_DESCRIPTION[lang]) || DEFAULT_DESCRIPTION[lang], url, { '@type': 'WebPage', url, inLanguage: lang });
   }
   const home = absoluteUrl(homePath(lang));
   set(lang, DEFAULT_TITLE[lang], DEFAULT_DESCRIPTION[lang], home, {
@@ -222,8 +245,24 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
 }
 
 // La descripción de cada guía es su «Ficha rápida», que solo se conoce al cargarla.
+// Google corta la descripción hacia los 155-160 caracteres: se queda con las
+// frases completas que caben o, si la primera ya es larga, la corta en una palabra.
+export function shortDescription(text, max = 160) {
+  const clean = text.replace(/[*_`]/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim();
+  if (clean.length <= max) return clean;
+  const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g) || [];
+  let out = '';
+  for (const s of sentences) {
+    if ((out + s).trim().length > max) break;
+    out += s;
+  }
+  if (out.trim().length >= 70) return out.trim();
+  return clean.slice(0, max - 1).replace(/\s+\S*$/, '') + '…';
+}
+
 export function setDescription(text) {
   if (!text) return;
+  text = shortDescription(text);
   metaDescription.content = text;
   og('description').content = text;
 }

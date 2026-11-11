@@ -127,3 +127,29 @@ La simulación prioriza la idea «el núcleo es diminuto frente al átomo». Par
 7. **Núcleo plano y con borde nítido.** Protones (rojos) y neutrones (grises) se agitan al azar dentro de un círculo. En realidad el núcleo es tridimensional y su superficie es difusa.
 8. **Un único isótopo por elemento.** Cada elemento tiene un número másico fijo: H-1, He-4, C-12, O-16, Na-23, Fe-56, Au-197 y U-238. Para hablar de isótopos hay que hacerlo de palabra.
 9. **Rótulos de la regla espaciados.** Cuando las marcas «100·D» quedan muy juntas, solo se rotula una de cada varias para que se lean; las intermedias siguen marcadas.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/atomo-real/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 2.º ESO | Antes de empezar, actividades 1, 2 y 4, preguntas 3 y 4 de Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión |
+| 3.º ESO | Antes de empezar, actividades 1 a 6, Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos |
+| 4.º ESO | Actividades 4 a 6 y Para ampliar | 30 minutos |
+
+La tabla de «Antes de empezar» recoge cinco ideas previas sobre el átomo. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas». En qué salto se empieza a ver el núcleo depende del tamaño de la pantalla.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | a) F: el átomo es unas 25 000 veces mayor (actividad 2). b) F: haría falta ampliar miles de veces (actividad 1). c) F: los puntos indican la capa, no el tamaño (actividad 6). d) F: el oro, con 79 protones, es menor que el sodio (actividad 5). e) V: Z identifica al elemento (actividad 4) |
+| Actividad 1 | Escala natural: no se ve; D = 62 pm = 6,20 × 10⁻¹¹ m. ×10: no se ve; 6,2 pm. Hacia ×100 o ×1000 aparece un punto rojo. ×10 000: «¡Núcleo alcanzado!», D = 2,4 fm = 2,40 × 10⁻¹⁵ m. No se ve porque es muchísimo más pequeño que el átomo |
+| Actividad 2 | Núcleo 2,4 fm = 2,4 × 10⁻¹⁵ m; átomo 62 pm = 6,2 × 10⁻¹¹ m; 25 833 veces. 6,2 × 10⁻¹¹ / 2,4 × 10⁻¹⁵ ≈ 2,6 × 10⁴. Con un núcleo de 1 cm, el átomo mediría unos 258 m, como dos o tres campos de fútbol seguidos |
+| Actividad 3 | Salto 0: el átomo, 272 pm = 2,72 × 10⁻¹⁰ m. Salto 1: el átomo, 27,2 pm = 2,72 × 10⁻¹¹ m. Desde el salto 2 (según la pantalla) la cota mide el núcleo: 14 fm = 1,4 × 10⁻¹⁴ m. El exponente baja 1 en cada salto, porque cada salto amplía ×10. 2,72 × 10⁻¹⁰ / 1,4 × 10⁻¹⁴ ≈ 1,9 × 10⁴: 19 478 veces |
+| Actividad 4 | Carbono: 6, 6, 12, 6, 2 (K:2, L:4). Oxígeno: 8, 8, 16, 8, 2 (K:2, L:6). Sodio: 11, 12, 23, 11, 3 (K:2, L:8, M:1). Hierro: 26, 30, 56, 26, 4 (K:2, L:8, M:14, N:2). Es neutro porque tiene tantos electrones como protones. Z identifica al elemento |
+| Actividad 5 | Sodio: 6,83 fm y 332 pm. Oro: 14 fm y 272 pm. Uranio: 14,9 fm y 392 pm. El núcleo crece con Z (y con A); el átomo no: depende de cuántas capas tiene y de con qué fuerza atrae el núcleo a los electrones |
+| Actividad 6 | «Representamos los electrones como puntos para que puedas ver en qué capa están, no para indicar su tamaño real.» Oro: 6 capas (K:2, L:8, M:18, N:32, O:18, P:1). Los electrones no son bolitas en círculos: en el modelo actual solo se sabe dónde es más probable encontrarlos (orbitales) |
+| Aplica lo aprendido | 1) 6,2 × 10⁻¹¹ m; 2,4 × 10⁻¹⁵ m; 1,5 × 10⁻¹⁰ m. 2) 1,52 × 10⁻¹⁰ / 5,49 × 10⁻¹⁵ ≈ 2,77 × 10⁴, unas 27 700 veces. 3) 13 protones, 14 neutrones y 13 electrones. 4) Casi toda la masa está en el núcleo, que ocupa una parte ínfima del volumen del átomo |
+| Para ampliar | 1) ²³⁸₉₂U; el uranio-235 tiene los mismos 92 protones y 143 neutrones (otro isótopo). 2) Caben 10 barras de 1/10; en el hidrógeno caben unos 25 800 núcleos en fila |

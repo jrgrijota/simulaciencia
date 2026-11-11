@@ -16,10 +16,11 @@ export function guideIdFromFile(fileName) {
 
 // Nombre de las descargas: guias/guia-docente-<nombre>.{pdf,docx,odt}
 // y, en inglés, en/guides/teacher-guide-<nombre>.{pdf,docx,odt}
-// y, para los guiones del alumnado de las prácticas, guiones/guion-<nombre>.{pdf,docx,odt}.
-export function downloadBase(simId, lang = 'es', doc = 'guide') {
+// y, para los documentos del alumnado, guiones/guion-<nombre> en las prácticas y
+// fichas/ficha-<nombre> en las simulaciones.
+export function downloadBase(simId, lang = 'es', doc = 'guide', practical = true) {
   const name = simId.replace(/^sim-/, '');
-  if (doc === 'guion') return `guiones/guion-${name}`;
+  if (doc === 'guion') return practical ? `guiones/guion-${name}` : `fichas/ficha-${name}`;
   return lang === 'en' ? `en/guides/teacher-guide-${name}` : `guias/guia-docente-${name}`;
 }
 
@@ -37,9 +38,10 @@ export function guideTitle(md) {
   return m ? m[1].trim() : 'Guía docente';
 }
 
-// Primer párrafo de «Ficha rápida» («Quick reference»; en los guiones, «Objetivo»): sirve de descripción para Google.
+// Primer párrafo de «Ficha rápida» («Quick reference»; en los guiones, «Objetivo»;
+// en las fichas de actividades, «Qué vas a aprender»): sirve de descripción para Google.
 export function guideSummary(md) {
-  const m = md.match(/^##\s+(?:Ficha rápida|Quick reference|Objetivo)\s*\n+([^\n#|][^\n]*)/m);
+  const m = md.match(/^##\s+(?:Ficha rápida|Quick reference|Objetivo|Qué vas a aprender)\s*\n+([^\n#|][^\n]*)/m);
   return m ? m[1].trim() : '';
 }
 
@@ -85,16 +87,17 @@ export function guideToc(markdown) {
 }
 
 // Aviso que acompaña a cada archivo descargado, que circula sin la web.
-export function licenseNote(simId, lang = 'es', doc = 'guide') {
+export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true) {
   if (doc === 'guion') {
+    const [what, it] = practical ? ['Guion publicado', 'lo'] : ['Ficha publicada', 'la'];
     return [
       '---',
       '',
-      `© 2026 Juan Ramón Grijota · SimulaCiencia. Guion publicado bajo licencia Creative Commons ` +
+      `© 2026 Juan Ramón Grijota · SimulaCiencia. ${what} bajo licencia Creative Commons ` +
         `Atribución-CompartirIgual 4.0 (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/deed.es. ` +
-        `Puedes adaptarlo a tu clase y compartirlo citando la autoría y con la misma licencia.`,
+        `Puedes adaptar${it} a tu clase y compartir${it} citando la autoría y con la misma licencia.`,
       '',
-      `Práctica: ${absoluteUrl(simPath(simId))}`,
+      `${practical ? 'Práctica' : 'Simulación'}: ${absoluteUrl(simPath(simId))}`,
     ].join('\n');
   }
   if (lang === 'en') {

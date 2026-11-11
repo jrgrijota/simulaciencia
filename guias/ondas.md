@@ -111,3 +111,28 @@ La simulación prioriza que se vean con claridad las magnitudes de la onda. Para
 5. **Un cambio de velocidad afecta a todo el medio a la vez.** Representa cambiar de medio. En la realidad, una onda que pasa a otro medio cambia de velocidad y de longitud de onda solo a partir de la frontera.
 6. **La ecuación solo describe la onda continua estacionaria.** Mientras conviven una onda antigua y otra nueva, o con pulsos sueltos, la ecuación del panel no describe todo el medio; la simulación lo avisa.
 7. **No trata la naturaleza de la luz.** Las ondas electromagnéticas aparecen solo como ejemplo de onda transversal. La energía del fotón (E = h f = h c / λ), la dualidad onda-partícula y el efecto fotoeléctrico son de 2.º de Bachillerato y se trabajan con la simulación de espectros atómicos.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/ondas/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 4.º ESO | Ficha completa salvo Para ampliar | Una sesión de 50–55 minutos, o dos si se hacen en clase los problemas |
+| 2.º Bachillerato Física | Actividades 3 y 5 como repaso y Para ampliar | Una sesión |
+
+La tabla de «Antes de empezar» recoge cinco ideas previas sobre las ondas. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas». Al cambiar la frecuencia, la onda nueva tarda unos segundos en llenar la cuerda: conviene esperar a que llegue al final antes de leer λ en el dibujo.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) Cada trozo de cuerda oscila y vuelve a su sitio (actividad 1). b) La velocidad depende del medio; al mover el foco más deprisa baja la longitud de onda (actividad 3). c) La amplitud no cambia la velocidad; cambia la energía (actividad 5). d) Tiene λ entre dos compresiones y amplitud a lo largo de la dirección de propagación (actividad 6). e) El agua sube y baja; lo que llega a la playa es la energía (actividad 1 y problema 4) |
+| Actividad 1 | P sube, baja y vuelve a su sitio; el desplazamiento nunca supera la amplitud. El pulso llega hasta el final de la cuerda. Viaja la perturbación y, con ella, la energía. Una onda es una perturbación que se propaga por un medio y transporta energía sin transportar materia |
+| Actividad 2 | A = 0,20 m (de la línea de equilibrio a una cresta); λ = 1,50 m (entre dos crestas); T = 1,00 s (una oscilación de P; con ×0,25 se ve en 4 s); f = 1,00 Hz; v = 1,50 m/s (el frente tarda unos 2,7 s en recorrer los 4 m). T = 1 / 1,00 = 1,00 s y v = 1,50 · 1,00 = 1,50 m/s. 1 Hz es una oscilación cada segundo |
+| Actividad 3 | 0,50 Hz: T = 2,00 s, λ = 3,00 m. 1,00 Hz: T = 1,00 s, λ = 1,50 m. 2,00 Hz: T = 0,50 s, λ = 0,75 m. v = 1,50 m/s y λ · f = 1,50 m/s en los tres casos. La velocidad no cambia; a más frecuencia, menor longitud de onda. El cambio sale del foco y avanza a la velocidad de la onda, así que durante unos segundos conviven la onda antigua y la nueva |
+| Actividad 4 | λ = 1,00 m con 1,0 m/s, 1,50 m con 1,5 m/s y 3,00 m con 3,0 m/s. La frecuencia (y el período) la fija el foco; la velocidad, el medio; la longitud de onda depende de los dos. Ejemplos: el sonido al pasar del aire al agua va más rápido; la luz al pasar del aire al vidrio va más despacio; una ola que llega a aguas poco profundas |
+| Actividad 5 | v = 1,50 m/s en todos los casos. λ = 1,50 m con 1,00 Hz y 0,75 m con 2,00 Hz. Energía: × 0,25 con 0,10 m, × 1,00 con 0,20 m, × 2,25 con 0,30 m y × 4,00 con 2,00 Hz. La amplitud no cambia v ni λ: cambia la energía, que es proporcional a A² · f². Al duplicar la amplitud, la energía se multiplica por cuatro: un altavoz más fuerte mueve más el aire; un terremoto de mayor amplitud destruye mucho más |
+| Actividad 6 | Cuerda: las partículas vibran arriba y abajo, perpendiculares al avance de la onda. Muelle: vibran adelante y atrás, en la misma dirección en que avanza la onda. Las crestas se corresponden con compresiones (partículas juntas) y los valles con enrarecimientos (separadas). λ = 1,50 m en los dos. Sonido: longitudinal. Luz: transversal. Cuerda de saltar: transversal. Muelle que se estira y se comprime: longitudinal |
+| Aplica lo aprendido | 1) T = 1 / 5 = 0,20 s; v = 0,40 · 5 = 2,0 m/s. 2) λ = 340 / 440 ≈ 0,77 m. 3) f = 10 / 20 s = 0,5 Hz; T = 2 s; v = 3 · 0,5 = 1,5 m/s. 4) La ola es una perturbación que transporta energía, no agua: el barco, como cada partícula de agua, sube y baja alrededor de su posición |
+| Para ampliar | 1) ω = 2π · 1 = 6,28 rad/s; λ = 1,50 m; k = 2π / 1,50 = 4,19 rad/m; y(x, t) = 0,20 · sen(6,28 t − 4,19 x) (SI). 2) A · ω = 0,20 · 6,28 = 1,26 m/s, distinta de v = 1,50 m/s. Con A = 0,30 m, A · ω = 1,88 m/s y v no cambia. 3) Δx = λ/2: Δφ = π rad = 3,14 rad, en oposición de fase, curvas opuestas. Δx = λ: Δφ = 2π (equivale a 0), en fase, curvas superpuestas |

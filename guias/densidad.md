@@ -121,3 +121,29 @@ La simulación prioriza la idea «más densidad, más masa en cada litro» y par
 5. **Corte en 2D.** Los bloques se dibujan como una sección plana.
 6. **Densidades fijas.** Cada material tiene un valor único, sin efecto de la temperatura ni de la presión. La madera (0,60 kg/L) y el plástico (PET, 1,38 kg/L) varían mucho según el tipo, y el agua es exactamente 1,00 kg/L.
 7. **Solo se compara con agua.** El indicador de flotación usa siempre agua dulce y considera «equilibrio» cualquier densidad entre 0,995 y 1,005 kg/L. No tiene en cuenta objetos huecos, como un barco de acero, donde cuenta la densidad media del conjunto.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/densidad/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 2.º ESO | Antes de empezar, actividades 1 a 6, Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos, o dos si se hacen en clase los problemas |
+| 3.º ESO | Antes de empezar, actividades 2, 4 y 6, Aplica lo aprendido y Para ampliar | Una sesión |
+| 4.º ESO | Actividades 3, 5 y 6 como repaso antes del principio de Arquímedes | 20–25 minutos |
+
+La tabla de «Antes de empezar» recoge cinco de las ideas previas de la tabla de concepciones alternativas. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas», y el contraste entre la predicción y lo observado es lo que hace que cambie la idea.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) A igual tamaño, la masa depende del material (actividad 1). b) Flotar depende de la densidad, no de la masa (actividad 6). c) La densidad no depende del tamaño (actividad 2). d) El corcho ocupa 63 veces más (actividad 4). e) El hielo es menos denso que el agua líquida (actividad 5) |
+| Actividad 1 | Madera 0,6 kg; hierro 7,87 kg; aluminio 2,7 kg; corcho 0,18 kg. La balanza se inclina hacia el hierro. Con el mismo volumen, cada material tiene una masa distinta: depende del material |
+| Actividad 2 | 2,7; 5,4; 10,8 y 21,6 kg. m / V = 2,7 kg/L siempre. Al duplicar el volumen se duplica la masa y la densidad no cambia. «La densidad de un material es la masa que hay en cada litro (unidad de volumen). No depende del tamaño del objeto» |
+| Actividad 3 | Corcho 0,18, madera 0,60 y hielo 0,92 flotan; PET 1,38, aluminio 2,70 y hierro 7,87 se hunden. Flotan los menos densos que el agua; la frontera es 1 kg/L, la densidad del agua |
+| Actividad 4 | La balanza queda equilibrada porque compara masas, y las dos son de 1 kg. Corcho 5,56 L; plomo 0,0882 L. 5,56 / 0,0882 ≈ 63 veces (también 11,34 / 0,18 = 63). El plomo es mucho más denso: cabe la misma masa en menos volumen |
+| Actividad 5 | Hielo 0,92 kg y 0,92 kg/L; agua 1 kg y 1,00 kg/L. El hielo flota porque es menos denso que el agua líquida, no porque tenga aire: el bloque de la simulación es hielo macizo |
+| Actividad 6 | ρ = 15 kg / 10 L = 1,5 kg/L: se hunde. Con 15 L queda en equilibrio (1,00 kg/L); flota a partir de 15,1 L (0,993 kg/L). Es falso: lo que decide es la densidad. Ejemplos: un tronco grande, un iceberg, un barco (en este caso cuenta la densidad media del casco y el aire que encierra) |
+| Aplica lo aprendido | 1) ρ = 1,84 kg / 2 L = 0,92 kg/L; queda encima del agua. 2) ρ = 8,1 kg / 3 L = 2,7 kg/L: aluminio. 3) m = ρ · V = 8,96 kg/L · 5 L = 44,8 kg. 4) V = m / ρ = 3 kg / 0,60 kg/L = 5 L |
+| Para ampliar | 1) Tres rectas que pasan por el origen; la más inclinada es la del plomo, porque su pendiente es la densidad. 2) 2,70 kg/L · (1000 g / 1 kg) · (1 L / 1000 cm³) = 2,70 g/cm³; 2,70 kg/L · (1000 L / 1 m³) = 2700 kg/m³ |

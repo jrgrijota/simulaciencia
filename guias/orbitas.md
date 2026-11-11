@@ -131,3 +131,30 @@ La simulación prioriza que se vean las ideas clave y para ello comprime escalas
 7. **Kepler en unidades normalizadas.** GM vale 1, así que T²/a³ sale 39,48 (4π²), no 1 como con años y UA. El Sol está fijo, como si tuviera masa infinita. El sombreado de la «2ª Ley» es el área barrida en los últimos 40 fotogramas, la misma en toda la órbita; no se puede comparar con un sector de otra vuelta porque solo se ve el último.
 8. **Binarias solo circulares y sin unidades reales.** Cada cambio de deslizador reinicia una órbita circular; no hay binarias excéntricas. Las masas dicen M☉, pero G vale 1 y separación y energías no tienen unidades. El tamaño de las estrellas crece con la masa sin escala real.
 9. **La estrella ligera puede salirse.** Con separación 3,0 y masas 5,0 y 0,5 M☉, la ligera gira a 2,73 unidades del centro de masas. La pantalla solo muestra unas 2,27 unidades hacia cada lado. Para proyectar, reducir la separación o acercar las dos masas.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/orbitas/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 3.º ESO | Antes de empezar, actividades 1, 2, 4 y 6, problemas 1 y 4 de Aplica lo aprendido y Autoevaluación | Una sesión de 50–55 minutos |
+| 4.º ESO | Ficha completa salvo Para ampliar | Una sesión, o dos si se hacen en clase los problemas |
+| 1.º Bachillerato | Actividades 2 y 3, problema 3 y apartados 1 y 2 de Para ampliar | Una sesión |
+| 2.º Bachillerato Física | Actividades 3, 5 y 6 y Para ampliar completo | Una sesión |
+
+La tabla de «Antes de empezar» recoge seis ideas previas sobre la gravitación. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas». Los datos del panel «Estado Orbital» oscilan unas centésimas durante la vuelta porque la simulación integra el movimiento paso a paso.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) Hay gravedad: la Estación cae continuamente hacia la Tierra, igual que los astronautas (actividad 2). b) Solo actúa la gravedad; la velocidad se mantiene por inercia (actividad 2). c) Por encima de cierta velocidad la bala orbita, y más deprisa escapa (actividades 1 y 3). d) El Sol está en un foco de la elipse (actividad 5). e) Va más rápido cerca del Sol (actividad 5). f) Las dos giran alrededor del centro de masas (actividad 6) |
+| Actividad 1 | 3,45 km/s: llega al suelo cerca, «Impacto con la Tierra». 5,75 km/s: llega al suelo mucho más lejos, también impacto. 6,90 km/s: no llega, «Órbita circular». Cae porque la Tierra la atrae (su peso). En órbita sigue cayendo hacia la Tierra, pero avanza tan deprisa que el suelo se curva al mismo ritmo y nunca lo alcanza |
+| Actividad 2 | Velocidad entre 6,87 y 6,90 km/s, altitud entre 2017 y 2060 km, período 127,9 min; el número de órbitas aumenta. Es un movimiento circular uniforme: cambia la dirección de la velocidad, no su valor. Solo actúa el peso, dirigido hacia el centro de la Tierra; no hay ninguna fuerza hacia delante |
+| Actividad 3 | 8,05 km/s: «Órbita elíptica»; 8,05 km/s en el perigeo (2017 km) y unos 3,75 km/s en el apogeo (11 643 km); ε = −15,1 km²/s² siempre; período 251,6 min. 10,35 km/s: «Vel. de escape» y luego «Escape gravitatorio»; ε = +6,1 km²/s². Va más rápida cerca de la Tierra: al alejarse, la energía cinética se transforma en potencial, y al acercarse al revés, con la energía mecánica constante. Con ε positiva la bala tiene energía suficiente para alejarse indefinidamente |
+| Actividad 4 | Mercurio: 0,387 AU, 0,241 años. Tierra: 1,000 y 1,000. Marte: 1,524 y 1,881. Júpiter: 5,203 y 11,86. Neptuno: 30,07 y 164,8. T²/a³ ≈ 1,00 en todos (entre 0,999 y 1,002). Cuanto más lejos está el planeta, más tarda en dar la vuelta (recorre más camino y más despacio). T²/a³ es igual para todos los planetas del Sistema Solar: tercera ley de Kepler |
+| Actividad 5 | e = 0: circunferencia, el Sol en el centro. e = 0,50: elipse; el Sol está en un foco y el otro foco está vacío. e = 0,90: elipse muy alargada. En la 2.ª ley el planeta va mucho más rápido cerca del Sol (perihelio) que lejos (afelio); el área barrida es estrecha y larga lejos del Sol y ancha y corta cerca, pero vale lo mismo en tiempos iguales. Con e = 0,02 la órbita es casi una circunferencia: dibujarla muy estirada da una idea falsa |
+| Actividad 6 | 2,0 y 1,0: la estrella 2 (menor masa) hace la órbita más grande, el doble que la 1; el CM está más cerca de la estrella 1. 3,0 y 3,0: órbitas iguales, CM en el punto medio. 5,0 y 0,5: la estrella 2 hace casi toda la órbita; la 1 casi no se mueve y el CM está casi en ella. Las fuerzas gravitatorias son una pareja de acción y reacción: las dos estrellas se atraen con la misma fuerza. El Sol tiene tanta masa que el CM del sistema Sol-Tierra está dentro del Sol |
+| Aplica lo aprendido | 1) P = m · g: 70 kg · 9,8 m/s² = 686 N en la superficie; 70 kg · 8,7 m/s² ≈ 609 N en la Estación. Sí pesa; flota porque él y la Estación caen juntos. 2) a³ = T² = 64, a = 4 AU. 3) v = 2πr / T = 2π · 8388 km / (128 · 60 s) ≈ 6,86 km/s, muy cerca de los 6,90 km/s del panel. 4) La Luna cae continuamente hacia la Tierra, pero su velocidad tangente hace que nunca llegue: está en órbita |
+| Para ampliar | 1) v = √(GM/r) = √(3,986·10⁵ / 8388) ≈ 6,89 km/s, el valor de «Vc». 2) √2 · 6,89 ≈ 9,75 km/s, el valor de «Ve». Con 9,66 km/s, ε ≈ −0,8 km²/s² (órbita elíptica muy alargada); con 9,78 km/s, ε ≈ +0,3 km²/s² (escapa). 3) T pasa de 1,590 (a = 0,40) a 9,313 (a = 1,30) y T²/a³ se mantiene en 39,48 = 4π²/GM. El período no depende de la excentricidad, solo del semieje mayor |

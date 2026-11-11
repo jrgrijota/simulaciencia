@@ -136,3 +136,30 @@ La simulación prioriza el contraste cualitativo entre los dos modelos y para el
 7. **El núcleo es «blando» y no hay fuerza nuclear.** La fuerza se suaviza cerca del centro y se anula más allá de 1,2 radios atómicos. Con Z = 1 a velocidad 10, o con Z = 14 a velocidad 16, una α lanzada de frente atraviesa el núcleo sin desviarse.
 8. **Neutrones y capas inventados.** El núcleo dibuja tantos neutrones como protones; el oro real tiene 118 neutrones. Los electrones se reparten en capas de 2, 8, 18, 32, 32 y 8, que es una idea de Bohr, no de Rutherford. Desde 4.º ESO conviene señalar el anacronismo.
 9. **Los electrones casi nunca chocan.** La masa de la α es 7350 veces la del electrón, cerca del valor real de unas 7300. Pero su radio de choque es de 0,005 px y los choques prácticamente no ocurren. En el modelo de Rutherford los electrones no ejercen fuerza sobre la α.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/modelos/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 2.º ESO | Antes de empezar, actividades 1 a 3, preguntas 1 a 3 de Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión |
+| 3.º ESO | Actividades 3 a 6 y Aplica lo aprendido | Una sesión |
+| 4.º ESO | Antes de empezar, actividades 1 a 6, Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos |
+| 2.º Bachillerato Física | Actividades 3 y 5 y Para ampliar | 30 minutos |
+
+La tabla de «Antes de empezar» recoge cinco de las ideas previas de la tabla de concepciones alternativas. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas».
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) El átomo es casi todo vacío (actividades 2 y 3). b) La repulsión eléctrica actúa a distancia y curva la trayectoria antes de llegar (actividad 3). c) El núcleo es diminuto (actividad 3). d) Un modelo se cambia cuando un experimento contradice su predicción (actividad 2). e) La desviación depende de la carga del núcleo y de la velocidad (actividades 4 y 5) |
+| Actividad 1 | Todas atraviesan el átomo, con desviaciones de 1° o 2° como mucho; ninguna vuelve. La carga positiva está repartida en una esfera grande y su efecto es débil en todas partes |
+| Actividad 2 | Thomson: el 100 % en la primera barra y ninguna roja. Rutherford: en torno al 88 % en la primera barra y en torno al 4 % en las rojas. Thomson no puede explicar ningún rebote; hace falta una carga positiva muy concentrada (en el experimento real rebotaba 1 de cada 8000) |
+| Actividad 3 | A la altura del núcleo vuelve hacia atrás; un poco por encima se curva mucho; lejos pasa recta. No toca el núcleo: la desvía la repulsión eléctrica entre cargas positivas, que actúa a distancia. Casi todas pasan rectas porque el átomo es casi todo vacío y el núcleo es diminuto |
+| Actividad 4 | Z = 1: se desvía poco (unos 6° como mucho). Z = 14: se desvía bastante. Z = 79: rebota. Más protones, más carga positiva y más repulsión |
+| Actividad 5 | Velocidad 4: mucha (unos 115°). 10: media (unos 38°). 16: poca (unos 16°). Con más energía cinética, la repulsión tiene menos tiempo y menos efecto para curvarla |
+| Actividad 6 | Núcleo: 14 protones y 14 neutrones. Corteza: 14 electrones en capas de 2, 8 y 4. Bohr (1913): los electrones solo pueden estar en ciertas órbitas o niveles de energía; así el átomo es estable y se explican los espectros |
+| Aplica lo aprendido | 1) Thomson: esfera positiva con electrones incrustados. Rutherford: núcleo positivo diminuto en el centro y electrones girando alrededor. 2) Unos 1000 m (1 km): como una canica en el centro de un estadio grande. 3) El modelo de Thomson explicaba lo que se sabía entonces; se sustituyó cuando un experimento nuevo lo contradijo, que es como avanza la ciencia. 4) Serían atraídas por el núcleo: también se desviarían cerca de él, pero curvándose hacia él |
+| Para ampliar | 1) r<sub>mín</sub> se reduce a la cuarta parte; en la simulación, de unos 19 px a unos 5 px. 2) r<sub>mín</sub> = 9 · 10⁹ · (2 · 1,6 · 10⁻¹⁹) · (79 · 1,6 · 10⁻¹⁹) / (5 · 10⁶ · 1,6 · 10⁻¹⁹ J) ≈ 4,5 · 10⁻¹⁴ m |

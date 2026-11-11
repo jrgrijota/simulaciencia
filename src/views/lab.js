@@ -5,20 +5,24 @@ import { guideSummary, guideMisconceptions, inlineHtml } from '../guides/shared.
 import { footerMarkup } from '../components/footer.js';
 import { copyText, flashCopied } from '../components/copy.js';
 import { langSwitchMarkup } from '../components/lang-switch.js';
-import { simTitle, simUrl, simDescription, isPractical, courseLabel, subjectTags, tagLabel, TOPICS } from '../data/simulations.js';
+import { simTitle, simUrl, simDescription, isPractical, studentDoc, courseLabel, subjectTags, tagLabel, TOPICS } from '../data/simulations.js';
 import { getLang, L } from '../i18n.js';
 
-// Parámetros de una práctica que se pasan de la dirección de la web a la práctica,
-// para repartirla ya preparada: /simulaciones/practica-densidad/?nivel=libre&muestra=7
-const PRACTICAL_PARAMS = ['nivel', 'muestra', 'probeta'];
-function withPracticalParams(sim, href) {
-  if (!isPractical(sim)) return href;
+// Parámetros (sim.params) que se pasan de la dirección de la web a la simulación o
+// a la práctica, para abrirla ya preparada:
+//   /simulaciones/practica-densidad/?nivel=libre&muestra=7
+//   /simulaciones/densidad/?modo=comparar&a=madera&b=hierro (fichas del alumnado)
+function withSimParams(sim, href) {
+  if (!sim.params) return href;
   const url = new URL(href);
   const here = new URLSearchParams(location.search);
-  for (const p of PRACTICAL_PARAMS) if (here.has(p)) url.searchParams.set(p, here.get(p));
+  for (const p of sim.params) if (here.has(p)) url.searchParams.set(p, here.get(p));
   return url.href;
 }
-const frameUrl = (sim, lang) => withPracticalParams(sim, simUrl(sim, lang));
+const frameUrl = (sim, lang) => withSimParams(sim, simUrl(sim, lang));
+
+// La ficha o el guion del alumnado solo están en español.
+const hasStudentDoc = (sim, lang) => lang === 'es' && hasGuion(sim.id);
 
 function buildEmbedCode(sim) {
   const lang = getLang();
@@ -28,8 +32,9 @@ function buildEmbedCode(sim) {
 
 function createShareModal(sim) {
   const practical = isPractical(sim);
-  // En una práctica, el enlace conserva el nivel, la muestra y la probeta de la dirección.
-  const shareUrl = practical ? withPracticalParams(sim, buildShareUrl(sim.id)) : buildShareUrl(sim.id);
+  // El enlace conserva los parámetros de la dirección (en una práctica, el nivel,
+  // la muestra y la probeta; en una simulación, el modo y los valores de la ficha).
+  const shareUrl = withSimParams(sim, buildShareUrl(sim.id));
   const embedCode = buildEmbedCode(sim);
 
   const el = document.createElement('div');
@@ -118,7 +123,7 @@ function aboutMarkup(sim, lang, guide) {
           : L('Guía docente', 'Teacher guide', 'Guia docent (en castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (en castelán)')
       }</a>`
     : '';
-  const guionLink = practical && hasGuion(sim.id) ? `<a href="${guionPath(sim.id)}" data-route class="${ABOUT_LINK}">Guion del alumnado</a>` : '';
+  const guionLink = hasStudentDoc(sim, lang) ? `<a href="${guionPath(sim.id)}" data-route class="${ABOUT_LINK}">${studentDoc(sim).label}</a>` : '';
   return `
   <section id="lab-about" aria-labelledby="lab-about-title" data-print-hide class="border-t border-[#e2e8f0] bg-white">
     <div class="mx-auto max-w-3xl px-4 py-10 text-[#334155]">
@@ -203,10 +208,10 @@ export function renderLab(root, sim) {
   const guide = guideLangFor(sim.id, lang);
   const withGuide = !!guide;
   const practical = isPractical(sim);
-  const guionButton = practical && hasGuion(sim.id)
+  const guionButton = hasStudentDoc(sim, lang)
     ? `<a href="${guionPath(sim.id)}" data-route class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="clipboard-list" class="h-4 w-4"></i>
-        <span class="sr-only sm:not-sr-only">Guion</span>
+        <span class="sr-only sm:not-sr-only">${studentDoc(sim).short}</span>
       </a>`
     : '';
   const guideButton = withGuide

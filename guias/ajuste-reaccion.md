@@ -132,3 +132,29 @@ La simulación prioriza la conservación de los átomos y la proporción de la e
 7. **Un mol por partícula.** Con «Un mol (masa en g)» cada partícula dibujada representa 6,022·10²³ partículas. Las cantidades son siempre números enteros de moles.
 8. **Masas atómicas con más decimales que los del libro.** Se usan las de la IUPAC (H = 1,008; O = 15,999…). Por eso m(O)/m(H) en el agua sale 7,94 y no 8, como con H = 1 y O = 16. Conviene avisar si el alumnado comprueba los cálculos con masas redondeadas.
 9. **Los coeficientes van de 1 a 9.** Basta para todas las ecuaciones de la lista, cuyo coeficiente mayor es 7 (etano).
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/ajuste-reaccion/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 3.º ESO | Antes de empezar, actividades 1 a 4, problemas 1 a 3 de Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos |
+| 4.º ESO | Actividades 2, 5 y 6 y Aplica lo aprendido completo | Una sesión |
+| 1.º Bachillerato | Actividades 4 a 6 y Para ampliar | Una sesión |
+
+La tabla de «Antes de empezar» recoge cinco ideas previas sobre las reacciones. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas».
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) Cambiar un subíndice cambia la sustancia (actividad 1). b) Se conservan los átomos, no las moléculas (actividad 3). c) La masa se conserva; si el gas escapa, falta en la balanza, pero no ha desaparecido (actividad 3). d) Un compuesto tiene siempre la misma proporción (actividad 4). e) Uno se agota antes: el limitante (actividad 5) |
+| Actividad 1 | 1, 1, 1: H 2/2, O 2/1, 34,01 u frente a 18,02 u, «✗ Sin ajustar» y «Sobran átomos: 1 O». 1, 1, 2: H 2/4, O 2/2, «Faltan átomos: 2 H». 2, 1, 2: H 4/4, O 2/2, 36,03 u a cada lado, «✓ Ecuación ajustada». H₂O₂ es agua oxigenada, otra sustancia. La balanza se nivela porque hay los mismos átomos a cada lado |
+| Actividad 2 | N₂ + 3 H₂ → 2 NH₃. 2 Mg + O₂ → 2 MgO. CH₄ + 2 O₂ → CO₂ + 2 H₂O. C₃H₈ + 5 O₂ → 3 CO₂ + 4 H₂O. Orden cómodo: carbono, hidrógeno y por último oxígeno, porque el O₂ es una sustancia simple y su coeficiente no descuadra otros elementos |
+| Actividad 3 | Reactivos: 3 moléculas, 6 átomos, 36,03 u. Productos: 2 moléculas, 6 átomos, 36,03 u. Ley de Lavoisier: en una reacción química la masa total se conserva, porque los átomos solo se reorganizan |
+| Actividad 4 | 4 H₂ + 4 O₂: 4 H₂O, sobran 2 O₂. 24 H₂ + 4 O₂: 8 H₂O, sobran 16 H₂. 8 H₂ + 12 O₂: 8 H₂O, sobran 8 O₂. m(O)/m(H) = 7,94 siempre: ley de Proust. Sobra un reactivo cuando no está en la proporción 2 : 1 en moléculas |
+| Actividad 5 | Limitante: CH₄. Los 4 CH₄ necesitan 8 O₂ y hay 10, así que se gasta todo el CH₄ y sobran 2 O₂ (en exceso). Se forman 4 CO₂ (176,04 u) y 8 H₂O. No basta: con 4 CH₄ y 6 O₂ el limitante es el O₂ aunque haya más moléculas, porque cada CH₄ necesita 2 O₂ (se forman 3 CO₂ y sobra 1 CH₄). El limitante depende de la proporción de la ecuación |
+| Actividad 6 | Limitante: H₂ (8 mol necesitan 4 mol de O₂; sobra 1 mol). Teórico: 8 mol de H₂O = 144,12 g. Real: 6 mol = 108,09 g. Rendimiento 75 %. Hay reacciones secundarias, pérdidas al separar y purificar, y reacciones que no se completan |
+| Aplica lo aprendido | 1) 4 Fe + 3 O₂ → 2 Fe₂O₃; 2 C₂H₆ + 7 O₂ → 4 CO₂ + 6 H₂O. 2) 44 g, ley de Lavoisier. 3) 5 g, ley de Proust. 4) Limitante O₂ (2 mol necesitan 4 mol de H₂); se forman 4 mol de H₂O y sobran 2 mol de H₂ |
+| Para ampliar | 1) 11,2 % de H y 88,8 % de O. 2) En H₂O₂, m(O)/m(H) = 15,87, el doble que en el agua: relación 2 : 1, ley de las proporciones múltiples de Dalton |

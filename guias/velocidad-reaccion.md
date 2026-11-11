@@ -129,3 +129,29 @@ La simulación prioriza las dos condiciones del choque eficaz y para ello simpli
 7. **La concentración es el número de moléculas en la cámara.** El tamaño de la cámara depende de la pantalla. En comparación cada cámara mide la mitad, así que 16 moléculas equivalen al doble de concentración. Las cifras cambian entre el portátil y el proyector.
 8. **Segundos de simulación.** La velocidad se mide en reacciones por cada 60 fotogramas, un «segundo de simulación». En un equipo lento la animación va más despacio, pero las cifras son las mismas; la gráfica y la ayuda lo indican. Con tan pocas moléculas los valores son enteros pequeños y muy irregulares.
 9. **En el Modo choque la energía es un escalón.** Cada molécula sale a 1,5·√E, así que la velocidad relativa supera el umbral de 5,8 a partir del nivel 4 (nivel 3: 5,2; nivel 4: 6,0). No hay distribución de velocidades: es un único choque con una energía fija.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/velocidad-reaccion/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 3.º ESO | Antes de empezar, actividades 1, 3 y 4, preguntas 1 a 3 de Aplica lo aprendido y Revisa tus ideas | Una sesión |
+| 4.º ESO | Antes de empezar, actividades 1 a 6, Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos |
+| 2.º Bachillerato Química | Actividades 2, 3, 5 y Para ampliar | Una sesión |
+
+La tabla de «Antes de empezar» recoge cinco ideas previas sobre las reacciones. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas». La simulación es aleatoria: las cifras de las soluciones son orientativas y dependen del tamaño de la pantalla.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) Solo los choques eficaces reaccionan (actividades 1 y 2). b) Los átomos se reorganizan; no aparecen ni desaparecen (actividad 1). c) Las moléculas no crecen; se mueven más deprisa y chocan con más energía (actividad 3). d) El catalizador no se gasta (actividad 5). e) La velocidad baja a medida que se gastan los reactivos (actividad 6) |
+| Actividad 1 | Entre 5 y 8 reacciones en un minuto, con muchos más choques. Una molécula C tiene dos átomos azules (de A) y dos naranjas (de B): los átomos se reorganizan. No todo choque produce reacción |
+| Actividad 2 | Caso 1: efectivo. Caso 2: inefectivo, falla la orientación. Caso 3: inefectivo, falla la energía. Caso 4: efectivo. Condiciones: energía suficiente (al menos la energía de activación, nivel 4) y orientación adecuada (los sitios reactivos se tocan) |
+| Actividad 3 | A temperatura 2, unas 7 reacciones; a temperatura 8, unas 12. La parte verde es pequeña a temperatura 2 y grande a temperatura 8. Al calentar, las moléculas se mueven más deprisa: chocan más a menudo y una parte mayor de los choques supera la energía de activación |
+| Actividad 4 | Unas 4 reacciones con 8 + 8 y unas 17 con 24 + 24. Más moléculas en el mismo volumen chocan más a menudo. Ejemplo: la lejía concentrada actúa antes que la diluida |
+| Actividad 5 | La cámara con 4 catalizadores agota el reactivo en 15–25 s; la otra suele quedar por debajo del 50 %. Hay 4 catalizadores al principio y al final. El catalizador abre un camino de reacción con menos energía de activación y se recupera al terminar cada reacción |
+| Actividad 6 | La velocidad es mayor al principio y baja hasta cero al final, cuando no quedan A ni B. Se frena porque cada vez hay menos reactivos y chocan menos a menudo (menos concentración) |
+| Aplica lo aprendido | 1) A baja temperatura las moléculas se mueven más despacio y hay menos choques eficaces: las reacciones que estropean los alimentos van más lentas. 2) El serrín tiene mucha más superficie en contacto con el oxígeno: más choques. 3) A más temperatura, más choques y más energéticos. 4) Acelera las reacciones que transforman los gases tóxicos en otros menos dañinos; no se gasta, así que no hay que reponerlo en cada uso |
+| Para ampliar | 1) La parte verde pasa de un 12 % a temperatura 1 a un 81 % a temperatura 10: la fracción de choques con energía mayor que Ea crece mucho con T, como indica el factor e<sup>−Ea/RT</sup>. 2) B es el limitante: se forman 10 moléculas de C y sobran 6 de A; la conversión marca 100 % |

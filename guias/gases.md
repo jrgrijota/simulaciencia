@@ -117,3 +117,29 @@ La simulación prioriza la relación entre choques y presión, y para ello simpl
 7. **Los choques con la pared no enfrían ni calientan.** Las partículas rebotan sin perder rapidez aunque la membrana se mueva. No hay enfriamiento al expandirse: la temperatura solo cambia con el control. Todos los procesos son isotermos salvo que el docente mueva la temperatura.
 8. **Las partículas tienen tamaño.** El radio inicial es 3 px y chocan entre sí. Ese volumen propio hace que la presión crezca algo más que el número de partículas: con 3 px y muchas partículas el factor pasa de 2. Con 1 o 2 px, de 50 a 100 partículas se duplica. Para las leyes de los gases conviene usar 2 px.
 9. **La gráfica P-V guarda poco.** Añade un punto cada 3 s con los valores medios y guarda los 35 últimos. V va de 0 a 5 L y P de 0 al máximo reciente, que se reajusta solo. Se borra al cambiar de modo.
+
+## Ficha de actividades del alumnado
+
+La [ficha de actividades](https://simulaciencia.es/fichas/gases/) sigue el esquema predice, observa y explica. Cada actividad enlaza a la simulación ya preparada, así que funciona en el aula de informática, con tabletas o como tarea en casa. Se descarga en Word y LibreOffice para adaptarla.
+
+| Curso | Actividades | Duración orientativa |
+| --- | --- | --- |
+| 3.º ESO | Antes de empezar, actividades 1 a 6, Aplica lo aprendido, Revisa tus ideas y Autoevaluación | Una sesión de 50–55 minutos, o dos si se hacen en clase los problemas |
+| 4.º ESO | Actividades 2, 5 y 6, Aplica lo aprendido y Para ampliar | Una sesión |
+| 1.º Bachillerato | Actividades 4 a 6 y Para ampliar, como repaso cualitativo | 20–25 minutos |
+
+La tabla de «Antes de empezar» recoge cinco ideas previas sobre los gases. Conviene no corregirla al principio: el alumnado vuelve a ella en «Revisa tus ideas». Los valores de la simulación varían unas décimas de una carga a otra y de un segundo a otro; las soluciones dan valores aproximados.
+
+### Soluciones
+
+| Apartado | Solución |
+| --- | --- |
+| Antes de empezar | Todas falsas. a) Entre las partículas hay vacío (actividad 1). b) Las partículas no cambian de tamaño; se mueven más deprisa (actividad 3). c) Se reduce el espacio entre ellas (actividad 5). d) El gas empuja por igual en todas direcciones: el globo se deforma hacia todos los lados (actividad 1). e) Las partículas se mueven sin parar (actividad 1) |
+| Actividad 1 | Las partículas ocupan una parte muy pequeña; casi todo es vacío. Se mueven en línea recta, en todas direcciones, hasta que chocan. Al chocar con la pared la empujan y rebotan. El globo no se desinfla porque los choques empujan la pared desde dentro en todas direcciones |
+| Actividad 2 | 50 partículas: unos 45–50 choques/s y unos 1,5 atm. 100: unos 100 choques/s y unos 3,4 atm. 200: unos 200 choques/s y unos 6,8 atm. La presión es proporcional al número de choques por segundo (y a su fuerza) |
+| Actividad 3 | El volumen crece con la temperatura, de unos 0,74 L a 100 K a unos 0,86 L a 500 K; las partículas pasan de azules a rojas. Al calentar, las partículas se mueven más deprisa y empujan más la pared, que cede. Las partículas no cambian de tamaño |
+| Actividad 4 | El volumen no cambia (unos 0,8 L). P ≈ 0,7 atm a 125 K, ≈ 1,5 atm a 273 K y ≈ 2,7 atm a 500 K; P / T ≈ 0,0055 atm/K en los tres casos (ley de Gay-Lussac). El gas que queda en el bote aumenta su presión al calentarse y puede reventarlo |
+| Actividad 5 | P ≈ 3,8 atm con 0,37 L, ≈ 1,5 atm con 0,8 L, ≈ 0,85 atm con 1,5 L y ≈ 0,56 atm con 2,3 L. P · V se mantiene en unos 1,3–1,4 atm·L: ley de Boyle. Las partículas no se encogen: hay menos espacio entre ellas y chocan más a menudo con la pared |
+| Actividad 6 | Inicial ≈ 0,56 atm. A 500 K sube a ≈ 1,0 atm (choques más fuertes y frecuentes). Con 100 partículas sube a ≈ 2 atm (el doble de choques). Con la mitad de volumen sube a ≈ 4 atm (las partículas llegan antes a la pared) |
+| Aplica lo aprendido | 1) Boyle: P₂ = 1 atm · 4 L / 1 L = 4 atm. 2) Gay-Lussac: P₂ = 1 atm · 450 K / 300 K = 1,5 atm. 3) Charles: V₂ = 2 L · 360 K / 300 K = 2,4 L. 4) El rozamiento calienta el aire de las ruedas; sus partículas se mueven más deprisa y chocan más y más fuerte contra las paredes, que apenas cambian de volumen |
+| Para ampliar | 1) Una hipérbola: P baja al aumentar V. 2) P · V / T sale aproximadamente igual, con unas décimas de ruido |

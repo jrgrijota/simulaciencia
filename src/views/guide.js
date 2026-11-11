@@ -1,5 +1,5 @@
 import { simPath, guidePath, guionPath } from '../paths.js';
-import { isPractical } from '../data/simulations.js';
+import { isPractical, studentDoc } from '../data/simulations.js';
 import { getLang, L } from '../i18n.js';
 import { setDescription } from '../head.js';
 import { footerMarkup } from '../components/footer.js';
@@ -24,7 +24,7 @@ const BTN_HEADER =
 
 const LICENSE_URL = { es: 'https://creativecommons.org/licenses/by-sa/4.0/deed.es', en: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en' };
 
-function tocMarkup(toc, guion = false) {
+function tocMarkup(toc, student = null) {
   const items = toc
     .map(
       (t) =>
@@ -32,15 +32,16 @@ function tocMarkup(toc, guion = false) {
     )
     .join('');
   return `
-    <nav data-print-hide aria-label="${guion ? 'Contenido del guion' : L('Contenido de la guía', 'Guide contents')}" class="mb-8 rounded-md border border-[#e2e8f0] bg-white px-4 py-3">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-[#64748b]">${guion ? 'En este guion' : L('En esta guía', 'In this guide')}</p>
+    <nav data-print-hide aria-label="${student ? `Contenido de ${student.the}` : L('Contenido de la guía', 'Guide contents')}" class="mb-8 rounded-md border border-[#e2e8f0] bg-white px-4 py-3">
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-[#64748b]">${student ? (student.file === 'ficha' ? 'En esta ficha' : 'En este guion') : L('En esta guía', 'In this guide')}</p>
       <ul class="space-y-1 text-sm text-[#1e293b]">${items}</ul>
     </nav>`;
 }
 
-// doc: 'guide' (guía docente) o 'guion' (guion del alumnado de una práctica).
-// Enlaces de la cabecera: abrir la simulación o la práctica y, en una práctica,
-// pasar de la guía docente al guion del alumnado y al revés.
+// doc: 'guide' (guía docente) o 'guion' (documento del alumnado: guion de una
+// práctica o ficha de actividades de una simulación, solo en español).
+// Enlaces de la cabecera: abrir la simulación o la práctica y pasar de la guía
+// docente al documento del alumnado y al revés.
 function headerLinks(sim, lang, doc) {
   const practical = isPractical(sim);
   const open = `<a href="${simPath(sim.id, lang)}" data-route class="${BTN_HEADER} bg-[#0369a1] text-white hover:bg-[#075985]">
@@ -51,11 +52,10 @@ function headerLinks(sim, lang, doc) {
               : `<span class="hidden sm:inline">${L('Abrir la simulación', 'Open the simulation')}</span><span class="sm:hidden">${L('Simulación', 'Simulation')}</span>`
           }
         </a>`;
-  if (!practical) return open;
   const other =
     doc === 'guion'
       ? guideLangFor(sim.id, lang) && { href: guidePath(sim.id), icon: 'book-open', text: 'Guía docente' }
-      : hasGuion(sim.id) && { href: guionPath(sim.id), icon: 'clipboard-list', text: 'Guion del alumnado' };
+      : lang === 'es' && hasGuion(sim.id) && { href: guionPath(sim.id), icon: 'clipboard-list', text: studentDoc(sim).label };
   if (!other) return open;
   return `<a href="${other.href}" data-route class="${BTN_HEADER} border border-[#cbd5e1] bg-white text-[#1e293b] hover:border-[#0369a1] hover:text-[#0369a1]">
           <i data-lucide="${other.icon}" class="h-4 w-4"></i><span class="sr-only sm:not-sr-only">${other.text}</span>
@@ -66,7 +66,8 @@ export function renderGuide(root, sim, doc = 'guide') {
   const lang = getLang();
   const guion = doc === 'guion';
   const practical = isPractical(sim);
-  const base = downloadBase(sim.id, lang, doc);
+  const student = guion ? studentDoc(sim) : null;
+  const base = downloadBase(sim.id, lang, doc, practical);
   const primary = guion ? 'docx' : 'pdf';
   const downloads = (guion ? GUION_DOWNLOADS : DOWNLOADS).map(
     (d) => `
@@ -82,7 +83,7 @@ export function renderGuide(root, sim, doc = 'guide') {
 
     <main data-print-main class="mx-auto max-w-3xl px-4 py-8">
       <div id="guide-body" class="guide-prose${guion ? ' guion-prose' : ''}">
-        <p class="text-sm text-[#64748b]">${guion ? 'Cargando el guion…' : L('Cargando la guía…', 'Loading the guide…')}</p>
+        <p class="text-sm text-[#64748b]">${guion ? `Cargando ${student.the}…` : L('Cargando la guía…', 'Loading the guide…')}</p>
       </div>
     </main>
     ${footerMarkup()}
@@ -101,15 +102,17 @@ export function renderGuide(root, sim, doc = 'guide') {
       <div data-print-hide class="mb-6 flex flex-wrap items-center gap-2">
         <span class="mr-1 text-sm text-[#64748b]">${L('Descargar:', 'Download:')}</span>${downloads}
       </div>
-      ${guion ? `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">Descárgalo en Word o LibreOffice para adaptarlo a tu clase antes de repartirlo.</p>` : ''}
-      ${!guion && practical && hasGuion(sim.id) ? `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">El alumnado sigue el <a href="${guionPath(sim.id)}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">guion de la práctica</a>, que se descarga en formato editable.</p>` : ''}
-      ${tocMarkup(guideToc(markdown), guion)}
+      ${guion ? `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">Descárga${student.it} en Word o LibreOffice para adaptar${student.it} a tu clase antes de repartir${student.it}.</p>` : ''}
+      ${!guion && lang === 'es' && hasGuion(sim.id) ? (practical
+        ? `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">El alumnado sigue el <a href="${guionPath(sim.id)}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">guion de la práctica</a>, que se descarga en formato editable.</p>`
+        : `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">Para el alumnado hay una <a href="${guionPath(sim.id)}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">ficha de actividades</a> con enlaces que abren la simulación ya preparada. Se descarga en formato editable.</p>`) : ''}
+      ${tocMarkup(guideToc(markdown), student)}
       ${html.slice(h1End)}
       <p class="mt-10 border-t border-[#e2e8f0] pt-4 text-xs text-[#64748b]">
-        © 2026 Juan Ramón Grijota · ${guion ? 'Guion bajo licencia' : L('Guía bajo licencia', 'Guide licensed under')}
+        © 2026 Juan Ramón Grijota · ${guion ? `${student.short} bajo licencia` : L('Guía bajo licencia', 'Guide licensed under')}
         <a href="${LICENSE_URL[lang]}" target="_blank" rel="noopener license">CC BY-SA 4.0</a>:
         ${guion
-          ? 'puedes adaptarlo y compartirlo citando la autoría y con la misma licencia.'
+          ? `puedes adaptar${student.it} y compartir${student.it} citando la autoría y con la misma licencia.`
           : L(
               'puedes adaptarla y compartirla citando la autoría y con la misma licencia.',
               'you may adapt and share it, crediting the author and keeping the same licence.',
@@ -120,7 +123,7 @@ export function renderGuide(root, sim, doc = 'guide') {
     // Las descargas se cuentan como eventos en GoatCounter (sin cookies).
     body.querySelectorAll('[data-download]').forEach((a) =>
       a.addEventListener('click', () =>
-        window.goatcounter?.count?.({ path: '/' + a.getAttribute('href'), title: `Descarga${guion ? ' del guion' : ''}: ${sim.title}`, event: true }),
+        window.goatcounter?.count?.({ path: '/' + a.getAttribute('href'), title: `Descarga${guion ? (practical ? ' del guion' : ' de la ficha') : ''}: ${sim.title}`, event: true }),
       ),
     );
 

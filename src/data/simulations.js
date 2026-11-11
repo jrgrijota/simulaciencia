@@ -10,6 +10,8 @@
 //                        el iframe ocupa el 100% y ella se reorganiza sola.
 //               false -> layout rígido (~1270px); el Modo Laboratorio la escala
 //                        proporcionalmente para encuadrarla sin recortes.
+// `params`:  parámetros que la página de la simulación pasa de su dirección a la
+//            simulación, para abrirla ya preparada (fichas del alumnado, guiones).
 // `kind`:    'practica' para las prácticas de laboratorio simuladas (filtro «Tipo»,
 //            su guion del alumnado en guiones/<nombre>.md); sin él, simulación.
 // `langs`:   idiomas en los que está; sin él, en todos. Fuera de ellos no aparece
@@ -23,6 +25,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-arquimedes/',
     responsive: true,
+    params: ['modo', 'masa', 'volumen', 'densidad', 'material', 'liquido', 'fuerzas'],
     courses: ['3ESO', '4ESO'],
     en: {
       title: "Archimedes' Principle",
@@ -53,6 +56,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-densidad/',
     responsive: true,
+    params: ['modo', 'material', 'volumen', 'masa', 'comparar', 'a', 'b', 'valor'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'Density',
@@ -83,6 +87,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-espectros/',
     responsive: true,
+    params: ['modo', 'elemento', 'luz', 'onda', 'fotones', 'flujo', 'energia', 'disparo', 'voltaje', 'densidad'],
     courses: ['4ESO', '1BACH', '2BACH'],
     en: {
       title: 'Atomic Spectra',
@@ -113,6 +118,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-gases/',
     responsive: true,
+    params: ['particulas', 'temperatura', 'recipiente', 'volumen', 'grafica'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'Kinetic Theory of Gases',
@@ -143,6 +149,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-modelos/',
     responsive: true,
+    params: ['modelo', 'vista', 'z', 'lanzamiento', 'ritmo', 'velocidad', 'emision', 'grafico'],
     courses: ['2ESO', '3ESO', '4ESO', '2BACH'],
     en: {
       title: 'Atomic Models',
@@ -173,6 +180,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-velocidad-reaccion/',
     responsive: true,
+    params: ['modo', 'comparar', 'temperatura', 'a', 'b', 'catalizador', 'izquierda', 'derecha', 'energia'],
     courses: ['3ESO', '4ESO', '2BACH'],
     en: {
       title: 'Reaction Rate',
@@ -203,6 +211,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-atomo-real/',
     responsive: true,
+    params: ['elemento', 'zoom', 'intermedias'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'The Atom to Scale',
@@ -233,6 +242,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-enlaces-quimicos/',
     responsive: true,
+    params: ['modo', 'a', 'b', 'c', 'metal', 'cristal'],
     courses: ['3ESO', '4ESO', '1BACH'],
     en: {
       title: 'Chemical Bonding',
@@ -263,6 +273,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-orbitas/',
     responsive: true,
+    params: ['modo', 'velocidad', 'ley', 'a', 'e', 'm1', 'm2', 'separacion', 'planeta'],
     courses: ['3ESO', '4ESO', '1BACH', '2BACH'],
     en: {
       title: 'Orbits and Gravitation',
@@ -293,6 +304,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-cambios-estado/',
     responsive: true,
+    params: ['modo', 'sustancia', 'potencia', 'placa', 'velocidad', 'uniones', 'estelas', 'temperatura', 'presion'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'Changes of State',
@@ -323,6 +335,7 @@ export const simulations = [
     tags: ['Química', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-ajuste-reaccion/',
     responsive: true,
+    params: ['modo', 'reaccion', 'escala', 'recuento', 'reactivo1', 'reactivo2', 'rendimiento'],
     courses: ['3ESO', '4ESO', '1BACH'],
     en: {
       title: 'Balancing Equations',
@@ -353,6 +366,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-energia-mecanica/',
     responsive: true,
+    params: ['modo', 'perfil', 'altura', 'velocidad', 'masa', 'longitud', 'angulo', 'gravedad', 'rozamiento', 'mu', 'b', 'vector'],
     courses: ['3ESO', '4ESO', '1BACH'],
     en: {
       title: 'Mechanical Energy',
@@ -383,6 +397,7 @@ export const simulations = [
     tags: ['Física', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-circuitos/',
     responsive: true,
+    params: ['modo', 'voltaje', 'interruptor', 'receptor', 'r', 'receptores', 'r1', 'r2', 'r3', 'quitar', 'electrones'],
     courses: ['2ESO', '3ESO'],
     en: {
       title: 'Electric Circuits',
@@ -413,6 +428,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-ondas/',
     responsive: true,
+    params: ['modo', 'onda', 'amplitud', 'f', 'v', 'ritmo', 'rotulos', 'bach', 'dx'],
     courses: ['4ESO', '2BACH'],
     en: {
       title: 'Waves',
@@ -445,6 +461,7 @@ export const simulations = [
     tags: ['Física', 'Química', 'ESO'],
     url: 'https://jrgrijota.github.io/simulacion-practica-densidad/',
     responsive: true,
+    params: ['nivel', 'muestra', 'probeta'],
     courses: ['2ESO', '3ESO'],
   },
 ];
@@ -547,6 +564,14 @@ export const KINDS = [
 
 export const simKind = (sim) => sim.kind || 'simulacion';
 export const isPractical = (sim) => simKind(sim) === 'practica';
+
+// Documento del alumnado (guiones/<nombre>.md, solo en español): en una práctica es
+// el guion; en una simulación, la ficha de actividades.
+export function studentDoc(sim) {
+  return isPractical(sim)
+    ? { title: 'Guion de la práctica', label: 'Guion del alumnado', short: 'Guion', the: 'el guion', it: 'lo', file: 'guion', type: 'Guion de prácticas' }
+    : { title: 'Ficha de actividades', label: 'Ficha del alumnado', short: 'Ficha', the: 'la ficha', it: 'la', file: 'ficha', type: 'Ficha de actividades' };
+}
 
 // ¿Está en este idioma? Las prácticas, por ahora, solo en español.
 export const availableIn = (sim, lang = 'es') => !sim.langs || sim.langs.includes(lang);

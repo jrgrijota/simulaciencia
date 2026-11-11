@@ -4,6 +4,7 @@
 // cada página; al cargarla, este módulo reutiliza esas etiquetas.
 // Además, el <head> enlaza la versión de cada idioma (hreflang).
 import { simPath, guidePath, guionPath, homePath, pagePath, absoluteUrl, translatedPath, LANGS, GUIDE_LANGS } from './paths.js';
+import { thumbMarkup } from './components/thumbs.js';
 import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical, TOPICS } from './data/simulations.js';
 
 export const SITE = 'SimulaCiencia';
@@ -53,6 +54,14 @@ const PRACTICAL_KIND = 'Práctica de laboratorio simulada';
 const KIND = { es: 'Simulación interactiva', en: 'Interactive simulation', ca: 'Simulació interactiva', eu: 'Simulazio interaktiboa', gl: 'Simulación interactiva' };
 
 const metaDescription = document.querySelector('meta[name="description"]');
+
+// Vista previa al compartir: la imagen de la simulación (public/og/<nombre>.png,
+// generada con `npm run og` desde su miniatura) o la general de la web.
+// (El texto alternativo general es el de index.html; no se lee del documento porque
+// la página pregenerada de una simulación ya trae el suyo.)
+const DEFAULT_IMAGE = { url: absoluteUrl('/og-image.png'), alt: 'SimulaCiencia: simulaciones interactivas de Física y Química para el aula' };
+const simImage = (sim, lang) =>
+  thumbMarkup(sim.id) ? { url: absoluteUrl(`/og/${sim.id.replace(/^sim-/, '')}.png`), alt: `${simTitle(sim, lang)} · ${SITE}` } : DEFAULT_IMAGE;
 
 const og = (prop) => document.querySelector(`meta[property="og:${prop}"]`);
 
@@ -106,6 +115,7 @@ function simResource(sim, lang = 'es') {
     author: AUTHOR,
     license: LICENSE[lang],
     isPartOf: WEBSITE,
+    image: simImage(sim, lang).url,
   };
 }
 
@@ -141,8 +151,10 @@ function setAlternates(route) {
   }
 }
 
-function set(lang, title, description, url, data, locales = LANGS) {
+function set(lang, title, description, url, data, locales = LANGS, image = DEFAULT_IMAGE) {
   document.title = title;
+  og('image').content = image.url;
+  if (og('image:alt') && image.alt) og('image:alt').content = image.alt;
   metaDescription.content = description;
   canonical.href = url;
   og('url').content = url;
@@ -185,6 +197,7 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
         isBasedOn: simUrl(guionSim.id),
       }, 'es', [[title, simUrl(guionSim.id)], ['Guion', url]]),
       ['es'],
+      simImage(guionSim, 'es'),
     );
   }
   if (guideSim) {
@@ -220,11 +233,12 @@ export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
         isBasedOn: simUrl(guideSim.id, l),
       }, l, [[title, simUrl(guideSim.id, l)], [en ? 'Teacher guide' : 'Guía docente', guideUrl(guideSim.id, l)]]),
       practical ? ['es'] : GUIDE_LANGS,
+      simImage(guideSim, l),
     );
   }
   if (sim) {
     const kind = isPractical(sim) ? PRACTICAL_KIND : KIND[lang];
-    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), withBreadcrumb(simResource(sim, lang), lang, [[simTitle(sim, lang), simUrl(sim.id, lang)]]), sim.langs || LANGS);
+    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), withBreadcrumb(simResource(sim, lang), lang, [[simTitle(sim, lang), simUrl(sim.id, lang)]]), sim.langs || LANGS, simImage(sim, lang));
   }
   if (PAGES[page]) {
     const url = absoluteUrl(pagePath(page, lang));

@@ -570,7 +570,7 @@ export const isPractical = (sim) => simKind(sim) === 'practica';
 export function studentDoc(sim) {
   return isPractical(sim)
     ? { title: 'Guion de la práctica', label: 'Guion del alumnado', short: 'Guion', the: 'el guion', it: 'lo', file: 'guion', type: 'Guion de prácticas' }
-    : { title: 'Ficha de actividades', label: 'Ficha del alumnado', short: 'Ficha', the: 'la ficha', it: 'la', file: 'ficha', type: 'Ficha de actividades' };
+    : { title: 'Ficha de actividades', label: 'Ficha de actividades', short: 'Ficha de actividades', the: 'la ficha de actividades', it: 'la', file: 'ficha', type: 'Ficha de actividades' };
 }
 
 // ¿Está en este idioma? Las prácticas, por ahora, solo en español.

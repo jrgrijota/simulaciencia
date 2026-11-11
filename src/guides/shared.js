@@ -89,7 +89,7 @@ export function guideToc(markdown) {
 // Aviso que acompaña a cada archivo descargado, que circula sin la web.
 export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true) {
   if (doc === 'guion') {
-    const [what, it] = practical ? ['Guion publicado', 'lo'] : ['Ficha publicada', 'la'];
+    const [what, it] = practical ? ['Guion publicado', 'lo'] : ['Ficha de actividades publicada', 'la'];
     return [
       '---',
       '',

@@ -33,7 +33,7 @@ function tocMarkup(toc, student = null) {
     .join('');
   return `
     <nav data-print-hide aria-label="${student ? `Contenido de ${student.the}` : L('Contenido de la guía', 'Guide contents')}" class="mb-8 rounded-md border border-[#e2e8f0] bg-white px-4 py-3">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-[#64748b]">${student ? (student.file === 'ficha' ? 'En esta ficha' : 'En este guion') : L('En esta guía', 'In this guide')}</p>
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-[#64748b]">${student ? (student.file === 'ficha' ? 'En esta ficha de actividades' : 'En este guion') : L('En esta guía', 'In this guide')}</p>
       <ul class="space-y-1 text-sm text-[#1e293b]">${items}</ul>
     </nav>`;
 }

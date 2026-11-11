@@ -90,7 +90,7 @@ async function snapshot(origin, route) {
     { maxBuffer: 32 * 1024 * 1024 },
   );
   if (!/<div id="app">\s*</.test(stdout)) throw new Error(`${route}: la página quedó vacía`);
-  if (stdout.includes('Cargando la guía…') || stdout.includes('Cargando el guion…') || stdout.includes('Cargando la ficha…') || stdout.includes('Loading the guide…')) throw new Error(`${route}: la guía no terminó de cargar`);
+  if (stdout.includes('Cargando la guía…') || stdout.includes('Cargando el guion…') || stdout.includes('Cargando la ficha de actividades…') || stdout.includes('Loading the guide…')) throw new Error(`${route}: la guía no terminó de cargar`);
   if (stdout.includes('id="lab-about-guide" data-pending')) throw new Error(`${route}: el resumen de la guía no terminó de cargar`);
   // El iframe lo vuelve a crear main.js al cargar; sin src no se descarga dos veces.
   return stdout.replace(/(<iframe id="lab-frame"[^>]*?) src="[^"]*"/, '$1');

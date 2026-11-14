@@ -57,6 +57,22 @@ const NEWS_DESCRIPTION = {
   eu: 'SimulaCienciaren berriak: Fisika eta Kimikako simulazio berriak, gelarako gidak eta fitxak eta simulazioen hobekuntzak.',
   gl: 'Novidades de SimulaCiencia: simulacións novas de Física e Química, guías e fichas para a aula e melloras das simulacións.',
 };
+// Guías docentes: nombre, tipo de recurso (schema.org) y descripción por idioma.
+// Las de ca, eu y gl se adaptan al currículo de Cataluña, Euskadi y Galicia.
+const GUIDE_WORD = { es: 'Guía docente', en: 'Teacher guide', ca: 'Guia docent', eu: 'Irakaslearen gida', gl: 'Guía docente' };
+const GUIDE_TYPE = { es: 'Guía didáctica', en: 'Teacher guide', ca: 'Guia didàctica', eu: 'Gida didaktikoa', gl: 'Guía didáctica' };
+const GUIDE_DESCRIPTION = {
+  es: (t) => `Guía para usar en clase la simulación «${t}»: cursos y saberes básicos, secuencia de ` +
+    'explicación, concepciones alternativas y simplificaciones. Descarga en PDF, Word y LibreOffice.',
+  en: (t) => `Guide to using the “${t}” simulation in class: year groups and curriculum content, teaching ` +
+    'sequence, misconceptions and simplifications. Download as PDF, Word or LibreOffice.',
+  ca: (t) => `Guia per fer servir a classe la simulació «${t}» segons el currículum de Catalunya: cursos i sabers, ` +
+    "seqüència d'explicació, concepcions alternatives i simplificacions. Descàrrega en PDF, Word i LibreOffice.",
+  eu: (t) => `«${t}» simulazioa eskolan erabiltzeko gida, Euskadiko curriculumaren arabera: mailak eta ` +
+    'jakintzak, azalpen-sekuentzia, ideia okerrak eta sinplifikazioak. PDF, Word eta LibreOffice formatuetan.',
+  gl: (t) => `Guía para usar na aula a simulación «${t}» segundo o currículo de Galicia: cursos e contidos, ` +
+    'secuencia de explicación, concepcións alternativas e simplificacións. Descarga en PDF, Word e LibreOffice.',
+};
 const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES', gl: 'gl_ES' };
 const PRACTICAL_KIND = 'Práctica de laboratorio simulada';
 const FICHA_DESCRIPTION = {
@@ -246,28 +262,24 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
     );
   }
   if (guideSim) {
-    const en = lang === 'en';
-    const l = en ? 'en' : 'es';
-    const title = simTitle(guideSim, l);
     const practical = isPractical(guideSim);
-    const name = en ? `Teacher guide: ${title}` : `Guía docente: ${title}`;
+    const l = practical && lang !== 'en' ? 'es' : lang;
+    const title = simTitle(guideSim, l);
+    const word = GUIDE_WORD[l];
+    const name = `${word}: ${title}`;
     return set(
       l,
       `${name} · ${SITE}`,
-      en
-        ? `Guide to using the “${title}” simulation in class: year groups and curriculum content, teaching ` +
-            'sequence, misconceptions and simplifications. Download as PDF, Word or LibreOffice.'
-        : practical
-          ? `Guía para usar en clase la práctica de laboratorio «${title}»: cursos y saberes básicos, propuesta ` +
-            'de sesión, clave de las muestras, evaluación y concepciones alternativas. Descarga en PDF, Word y LibreOffice.'
-          : `Guía para usar en clase la simulación «${title}»: cursos y saberes básicos, secuencia de ` +
-            'explicación, concepciones alternativas y simplificaciones. Descarga en PDF, Word y LibreOffice.',
+      practical && l === 'es'
+        ? `Guía para usar en clase la práctica de laboratorio «${title}»: cursos y saberes básicos, propuesta ` +
+          'de sesión, clave de las muestras, evaluación y concepciones alternativas. Descarga en PDF, Word y LibreOffice.'
+        : GUIDE_DESCRIPTION[l](title),
       guideUrl(guideSim.id, l),
       withBreadcrumb({
         '@type': 'LearningResource',
         name,
         url: guideUrl(guideSim.id, l),
-        learningResourceType: en ? 'Teacher guide' : 'Guía didáctica',
+        learningResourceType: GUIDE_TYPE[l],
         educationalLevel: levels(guideSim, l),
         typicalAgeRange: ageRange(guideSim),
         audience: { '@type': 'EducationalAudience', educationalRole: 'teacher' },
@@ -276,7 +288,7 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
         author: AUTHOR,
         license: LICENSE[l],
         isBasedOn: simUrl(guideSim.id, l),
-      }, l, [[title, simUrl(guideSim.id, l)], [en ? 'Teacher guide' : 'Guía docente', guideUrl(guideSim.id, l)]]),
+      }, l, [[title, simUrl(guideSim.id, l)], [word, guideUrl(guideSim.id, l)]]),
       practical ? ['es'] : GUIDE_LANGS,
       simImage(guideSim, l),
     );

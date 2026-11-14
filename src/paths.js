@@ -12,12 +12,12 @@
 //   /cursos/<curso>/           => Simulaciones y prácticas de un curso (2-eso, 1-bachillerato…)
 //   /temas/<tema>/             => Simulaciones y prácticas de un bloque temático
 //
-// En inglés, catalán, euskera y gallego (interfaz y simulaciones; el aviso legal solo
-// existe en español y las guías, en español e inglés):
+// En inglés, catalán, euskera y gallego (el aviso legal solo existe en español; las guías
+// en catalán, euskera y gallego están adaptadas al currículo de Cataluña, Euskadi y Galicia):
 //
 //   /en/                       /ca/                       /eu/                        /gl/                      => Catálogo
 //   /en/simulations/<nombre>/  /ca/simulacions/<nombre>/  /eu/simulazioak/<nombre>/   /gl/simulacions/<nombre>/ => Modo Laboratorio
-//   /en/guides/<nombre>/                                                                                       => Guía docente
+//   /en/guides/<nombre>/       /ca/guies/<nombre>/        /eu/gidak/<nombre>/         /gl/guias/<nombre>/       => Guía docente
 //   /en/worksheets/<nombre>/   /ca/fitxes/<nombre>/       /eu/fitxak/<nombre>/        /gl/fichas/<nombre>/      => Ficha de actividades
 //   /en/about/                 /ca/sobre-el-projecte/     /eu/proiektuari-buruz/      /gl/sobre-o-proxecto/     => Sobre el proyecto
 //   /en/year-groups/<curso>/   /ca/cursos/<curso>/        /eu/mailak/<curso>/         /gl/cursos/<curso>/       => Por curso
@@ -37,9 +37,10 @@ const SIM_DIR = { es: '/simulaciones/', en: '/en/simulations/', ca: '/ca/simulac
 export const homePath = (lang = 'es') => HOME[lang];
 export const simPath = (simId, lang = 'es') => `${SIM_DIR[lang]}${slug(simId)}/`;
 
-// Idiomas con guías docentes (guias/*.md en español, guias/en/*.md en inglés).
-export const GUIDE_LANGS = ['es', 'en'];
-const GUIDE_DIR = { es: '/guias/', en: '/en/guides/' };
+// Idiomas con guías docentes (guias/*.md en español y guias/<idioma>/*.md en los demás).
+// Cada guía tiene que existir en todos.
+export const GUIDE_LANGS = LANGS;
+const GUIDE_DIR = { es: '/guias/', en: '/en/guides/', ca: '/ca/guies/', eu: '/eu/gidak/', gl: '/gl/guias/' };
 // Idioma de la guía que se enlaza desde una página: la suya si existe, si no la española.
 export const guideLang = (lang) => (GUIDE_DIR[lang] ? lang : 'es');
 export const guidePath = (simId, lang = 'es') => `${GUIDE_DIR[guideLang(lang)]}${slug(simId)}/`;
@@ -138,8 +139,8 @@ export function parsePath(pathname) {
 }
 
 // La misma página en el otro idioma, o null si no existe (el aviso legal fuera del
-// español, las guías fuera del español y el inglés, y las prácticas y sus guiones
-// fuera del español; las fichas de actividades están en todos).
+// español y las prácticas y sus guiones fuera del español; las guías docentes y las
+// fichas de actividades están en todos).
 // Sirve para el selector de idioma y para las etiquetas hreflang.
 export function translatedPath({ simId, guideId, guionId, courseId, topicId, page }, lang) {
   if (courseId) return coursePath(courseId, lang);

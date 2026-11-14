@@ -4,7 +4,7 @@ import { getLang, L } from '../i18n.js';
 import { setDescription } from '../head.js';
 import { footerMarkup } from '../components/footer.js';
 import { siteHeaderMarkup } from '../components/site-header.js';
-import { loadGuide, loadGuion, hasGuion, guideLangFor } from '../data/guides.js';
+import { loadGuide, loadGuion, hasGuion, guideLangFor, guideLabel } from '../data/guides.js';
 import { trackEvent } from '../analytics.js';
 import { renderGuideHtml, guideToc, guideSummary, downloadBase } from '../guides/shared.js';
 
@@ -33,8 +33,8 @@ function tocMarkup(toc, student = null) {
     )
     .join('');
   return `
-    <nav data-print-hide aria-label="${student ? student.toc : L('Contenido de la guía', 'Guide contents')}" class="mb-8 rounded-md border border-[#e2e8f0] bg-white px-4 py-3">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-[#64748b]">${student ? student.toc : L('En esta guía', 'In this guide')}</p>
+    <nav data-print-hide aria-label="${student ? student.toc : L('Contenido de la guía', 'Guide contents', 'Contingut de la guia', 'Gidaren edukia', 'Contido da guía')}" class="mb-8 rounded-md border border-[#e2e8f0] bg-white px-4 py-3">
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-[#64748b]">${student ? student.toc : L('En esta guía', 'In this guide', 'En aquesta guia', 'Gida honetan', 'Nesta guía')}</p>
       <ul class="space-y-1 text-sm text-[#1e293b]">${items}</ul>
     </nav>`;
 }
@@ -56,9 +56,9 @@ function headerLinks(sim, lang, doc) {
   const other =
     doc === 'guion'
       ? guideLangFor(sim.id, lang) && {
-          href: guidePath(sim.id, lang),
+          href: guidePath(sim.id, guideLangFor(sim.id, lang)),
           icon: 'book-open',
-          text: L('Guía docente', 'Teacher guide', 'Guia docent (castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (castelán)'),
+          text: guideLabel(guideLangFor(sim.id, lang), lang, true),
         }
       : hasGuion(sim.id, lang) && { href: guionPath(sim.id, lang), icon: 'clipboard-list', text: studentDoc(sim, lang).label };
   if (!other) return open;
@@ -88,7 +88,7 @@ export function renderGuide(root, sim, doc = 'guide') {
 
     <main data-print-main class="mx-auto max-w-3xl px-4 py-8">
       <div id="guide-body" class="guide-prose${guion ? ' guion-prose' : ''}">
-        <p class="text-sm text-[#64748b]">${guion ? student.loading : L('Cargando la guía…', 'Loading the guide…')}</p>
+        <p class="text-sm text-[#64748b]">${guion ? student.loading : L('Cargando la guía…', 'Loading the guide…', 'S’està carregant la guia…', 'Gida kargatzen…', 'Cargando a guía…')}</p>
       </div>
     </main>
     ${footerMarkup()}
@@ -113,17 +113,23 @@ export function renderGuide(root, sim, doc = 'guide') {
         : `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">${L(
             `Para el alumnado hay una <a href="${guionPath(sim.id)}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">ficha de actividades</a> con enlaces que abren la simulación ya preparada. Se descarga en formato editable. Al final de esta guía están el uso por curso y las soluciones.`,
             `For students there is an <a href="${guionPath(sim.id, 'en')}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">activity worksheet</a> with links that open the simulation already set up. It downloads in an editable format. Its use in each year group and the answers are at the end of this guide.`,
+            `Per a l’alumnat hi ha una <a href="${guionPath(sim.id, 'ca')}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">fitxa d’activitats</a> amb enllaços que obren la simulació ja preparada. Es descarrega en format editable. Al final d’aquesta guia hi ha l’ús per curs i les solucions.`,
+            `Ikasleentzat <a href="${guionPath(sim.id, 'eu')}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">jarduera-fitxa</a> bat dago, simulazioa prestatuta irekitzen duten estekekin. Formatu editagarrian deskargatzen da. Gida honen amaieran daude maila bakoitzeko erabilera eta soluzioak.`,
+            `Para o alumnado hai unha <a href="${guionPath(sim.id, 'gl')}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">ficha de actividades</a> con ligazóns que abren a simulación xa preparada. Descárgase en formato editable. Ao final desta guía están o uso por curso e as solucións.`,
           )}</p>`) : ''}
       ${tocMarkup(guideToc(markdown), student)}
       ${html.slice(h1End)}
       <p class="mt-10 border-t border-[#e2e8f0] pt-4 text-xs text-[#64748b]">
-        © 2026 Juan Ramón Grijota · ${guion ? student.license : L('Guía bajo licencia', 'Guide licensed under')}
+        © 2026 Juan Ramón Grijota · ${guion ? student.license : L('Guía bajo licencia', 'Guide licensed under', 'Guia amb llicència', 'Gida lizentzia honekin', 'Guía baixo licenza')}
         <a href="${LICENSE_URL[lang]}" target="_blank" rel="noopener license">CC BY-SA 4.0</a>:
         ${guion
           ? student.licenseEnd
           : L(
               'puedes adaptarla y compartirla citando la autoría y con la misma licencia.',
               'you may adapt and share it, crediting the author and keeping the same licence.',
+              'la pots adaptar i compartir citant-ne l’autoria i amb la mateixa llicència.',
+              'egokitu eta partekatu dezakezu, egilea aipatuz eta lizentzia bera erabiliz.',
+              'podes adaptala e compartila citando a autoría e coa mesma licenza.',
             )}
       </p>`;
     window.lucide?.createIcons({ nodes: [...body.querySelectorAll('[data-lucide]')] });

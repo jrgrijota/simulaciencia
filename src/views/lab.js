@@ -1,7 +1,7 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
 import { guidePath, guionPath, simPath, absoluteUrl, coursePath, topicPath } from '../paths.js';
 import { trackEvent } from '../analytics.js';
-import { guideLangFor, hasGuion, loadGuide } from '../data/guides.js';
+import { guideLangFor, guideLabel, hasGuion, loadGuide } from '../data/guides.js';
 import { guideSummary, guideMisconceptions, inlineHtml } from '../guides/shared.js';
 import { footerMarkup } from '../components/footer.js';
 import { copyText, flashCopied } from '../components/copy.js';
@@ -140,7 +140,7 @@ function aboutMarkup(sim, lang, guide) {
     ? `<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="${ABOUT_LINK}">${
         practical
           ? 'Guía docente de la práctica'
-          : L('Guía docente', 'Teacher guide', 'Guia docent (en castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (en castelán)')
+          : guideLabel(guide, lang)
       }</a>`
     : '';
   const guionLink = hasStudentDoc(sim, lang) ? `<a href="${guionPath(sim.id, lang)}" data-route class="${ABOUT_LINK}">${studentDoc(sim, lang).label}</a>` : '';
@@ -271,7 +271,7 @@ export function renderLab(root, sim) {
   const guideButton = withGuide
     ? `${guionButton}<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="${guionButton ? '' : 'ml-auto '}inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="book-open" class="h-4 w-4"></i>
-        <span class="sr-only sm:not-sr-only">${L('Guía docente', 'Teacher guide', 'Guia docent (castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (castelán)')}</span>
+        <span class="sr-only sm:not-sr-only">${guideLabel(guide, lang, true)}</span>
       </a>`
     : '';
   root.innerHTML = `

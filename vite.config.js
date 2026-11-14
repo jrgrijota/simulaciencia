@@ -4,7 +4,8 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { simulationsIn, simTitle, simDescription, courseLabel, isPractical } from './src/data/simulations.js';
 import { guideIdFromFile, guideSummary, guideMisconceptions } from './src/guides/shared.js';
-import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, FICHA_LANGS, parsePath, translatedPath, absoluteUrl, STUDENT_DOC_DIRS } from './src/paths.js';
+import { collectionInfo } from './src/data/collections.js';
+import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, FICHA_LANGS, parsePath, translatedPath, absoluteUrl, STUDENT_DOC_DIRS, collectionPaths } from './src/paths.js';
 
 // Fecha de última modificación de cada página (<lastmod>), sacada del historial de git
 // de los archivos de los que sale su contenido. Google y Bing la usan para decidir qué
@@ -23,7 +24,7 @@ function gitDate(files) {
   return gitDates.get(key);
 }
 function sourceFiles(path) {
-  const { lang, simId, guideId, guionId, page } = parsePath(path);
+  const { lang, simId, guideId, guionId, courseId, topicId, page } = parsePath(path);
   const slug = (id) => id.replace(/^sim-/, '');
   const guideFile = (id, l) => (l === 'es' ? `guias/${slug(id)}.md` : `guias/${l}/${slug(id)}.md`);
   if (guideId) return [guideFile(guideId, lang)];
@@ -35,6 +36,7 @@ function sourceFiles(path) {
     const guide = GUIDE_LANGS.includes(lang) ? guideFile(simId, lang) : null;
     return ['src/data/simulations.js', 'src/views/lab.js', ...(guide && existsSync(guide) ? [guide] : [])];
   }
+  if (courseId || topicId) return ['src/data/simulations.js', 'src/data/collections.js', 'src/views/collection.js'];
   if (page) return [`src/views/${page}.js`];
   return ['src/data/simulations.js', 'src/views/catalog.js'];
 }
@@ -71,9 +73,11 @@ function sitemap() {
         ...guides('es'),
         ...guiones,
         ...Object.values(PAGE_PATHS),
+        ...collectionPaths('es'),
         ...LANGS.filter((l) => l !== 'es').flatMap((l) => [
           homePath(l),
           ...simulationsIn(l).map((s) => simPath(s.id, l)),
+          ...collectionPaths(l),
           ...(GUIDE_LANGS.includes(l) ? guides(l) : []),
           ...fichas(l),
           ...pagePaths(l),
@@ -154,6 +158,13 @@ function llmsTxt() {
         '## Prácticas de laboratorio simuladas',
         '',
         ...sims.filter(isPractical).map(entry),
+        '',
+        '## Por curso y por tema',
+        '',
+        ...collectionPaths('es').map((p) => {
+          const info = collectionInfo(parsePath(p), 'es');
+          return `- [${info.h1}](${absoluteUrl(p)}): ${info.sims.map((s) => simTitle(s, 'es')).join(', ')}.`;
+        }),
         '',
         '## Otros idiomas',
         '',

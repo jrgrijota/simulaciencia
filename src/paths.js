@@ -8,6 +8,8 @@
 //   /fichas/<nombre>/          => Ficha de actividades del alumnado de una simulación
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
+//   /cursos/<curso>/           => Simulaciones y prácticas de un curso (2-eso, 1-bachillerato…)
+//   /temas/<tema>/             => Simulaciones y prácticas de un bloque temático
 //
 // En inglés, catalán, euskera y gallego (interfaz y simulaciones; el aviso legal solo
 // existe en español y las guías, en español e inglés):
@@ -17,8 +19,11 @@
 //   /en/guides/<nombre>/                                                                                       => Guía docente
 //   /en/worksheets/<nombre>/   /ca/fitxes/<nombre>/       /eu/fitxak/<nombre>/        /gl/fichas/<nombre>/      => Ficha de actividades
 //   /en/about/                 /ca/sobre-el-projecte/     /eu/proiektuari-buruz/      /gl/sobre-o-proxecto/     => Sobre el proyecto
+//   /en/year-groups/<curso>/   /ca/cursos/<curso>/        /eu/mailak/<curso>/         /gl/cursos/<curso>/       => Por curso
+//   /en/topics/<tema>/         /ca/temes/<tema>/          /eu/gaiak/<tema>/           /gl/temas/<tema>/         => Por tema
+// (el nombre del curso y del tema va traducido: COURSE_SLUGS y TOPIC_SLUGS)
 
-import { getSimulationById, availableIn, isPractical } from './data/simulations.js';
+import { getSimulationById, availableIn, isPractical, simulationsIn, COURSES, TOPICS } from './data/simulations.js';
 
 export const SITE_URL = 'https://simulaciencia.es/';
 export const LANGS = ['es', 'en', 'ca', 'eu', 'gl'];
@@ -51,6 +56,42 @@ const isPracticalId = (simId) => {
 };
 export const guionPath = (simId, lang = 'es') =>
   isPracticalId(simId) ? `/guiones/${slug(simId)}/` : `${FICHA_DIR[lang] || FICHA_DIR.es}${slug(simId)}/`;
+// Páginas por curso y por tema: reúnen las simulaciones y prácticas de un curso o de
+// un bloque temático (TOPICS), para que quien busca «simulaciones de 3.º ESO» o
+// «simulaciones del átomo» llegue a una página que responde a eso. Solo existen en
+// un idioma si tienen algo que enseñar en él.
+const COURSE_DIR = { es: '/cursos/', en: '/en/year-groups/', ca: '/ca/cursos/', eu: '/eu/mailak/', gl: '/gl/cursos/' };
+const TOPIC_DIR = { es: '/temas/', en: '/en/topics/', ca: '/ca/temes/', eu: '/eu/gaiak/', gl: '/gl/temas/' };
+export const COURSE_SLUGS = {
+  '2ESO': { es: '2-eso', en: 'year-9', ca: '2n-eso', eu: 'dbh-2', gl: '2-eso' },
+  '3ESO': { es: '3-eso', en: 'year-10', ca: '3r-eso', eu: 'dbh-3', gl: '3-eso' },
+  '4ESO': { es: '4-eso', en: 'year-11', ca: '4t-eso', eu: 'dbh-4', gl: '4-eso' },
+  '1BACH': { es: '1-bachillerato', en: 'year-12', ca: '1r-batxillerat', eu: 'batxilergoa-1', gl: '1-bacharelato' },
+  '2BACH': { es: '2-bachillerato', en: 'year-13', ca: '2n-batxillerat', eu: 'batxilergoa-2', gl: '2-bacharelato' },
+};
+export const TOPIC_SLUGS = {
+  fuerzas: { es: 'fuerzas-y-gravitacion', en: 'forces-and-gravity', ca: 'forces-i-gravitacio', eu: 'indarrak-eta-grabitazioa', gl: 'forzas-e-gravitacion' },
+  energia: { es: 'energia-y-electricidad', en: 'energy-and-electricity', ca: 'energia-i-electricitat', eu: 'energia-eta-elektrizitatea', gl: 'enerxia-e-electricidade' },
+  ondas: { es: 'ondas-y-luz', en: 'waves-and-light', ca: 'ones-i-llum', eu: 'uhinak-eta-argia', gl: 'ondas-e-luz' },
+  materia: { es: 'materia-y-estados', en: 'matter-and-states', ca: 'materia-i-estats', eu: 'materia-eta-egoerak', gl: 'materia-e-estados' },
+  atomo: { es: 'el-atomo', en: 'the-atom', ca: 'l-atom', eu: 'atomoa', gl: 'o-atomo' },
+  reacciones: { es: 'enlaces-y-reacciones', en: 'bonds-and-reactions', ca: 'enllacos-i-reaccions', eu: 'loturak-eta-erreakzioak', gl: 'enlaces-e-reaccions' },
+};
+// Simulaciones y prácticas de una página por curso o por tema, en ese idioma.
+export const courseSims = (courseId, lang = 'es') => simulationsIn(lang).filter((s) => s.courses.includes(courseId));
+export const topicSims = (topicId, lang = 'es') => {
+  const topic = TOPICS.find((t) => t.id === topicId);
+  return topic ? simulationsIn(lang).filter((s) => topic.sims.includes(s.id)) : [];
+};
+export const coursePath = (courseId, lang = 'es') =>
+  COURSE_SLUGS[courseId] && courseSims(courseId, lang).length ? `${COURSE_DIR[lang]}${COURSE_SLUGS[courseId][lang]}/` : null;
+export const topicPath = (topicId, lang = 'es') =>
+  TOPIC_SLUGS[topicId] && topicSims(topicId, lang).length ? `${TOPIC_DIR[lang]}${TOPIC_SLUGS[topicId][lang]}/` : null;
+// Todas las páginas por curso y por tema de un idioma (sitemap y páginas pregeneradas).
+export const collectionPaths = (lang = 'es') =>
+  [...COURSES.map((c) => coursePath(c.id, lang)), ...TOPICS.map((t) => topicPath(t.id, lang))].filter(Boolean);
+const bySlug = (slugs, lang, value) => Object.keys(slugs).find((id) => slugs[id][lang] === value) || null;
+
 export const PAGE_PATHS = { about: '/sobre-el-proyecto/', legal: '/aviso-legal/' };
 const PAGES = {
   es: PAGE_PATHS,
@@ -79,14 +120,18 @@ export function parsePath(pathname) {
     const sim = under(SIM_DIR[lang]);
     const guide = under(GUIDE_DIR[lang]);
     const ficha = under(FICHA_DIR[lang]);
-    return { lang, simId: sim ? `sim-${sim}` : null, guideId: guide ? `sim-${guide}` : null, guionId: ficha ? `sim-${ficha}` : null, page };
+    const courseId = bySlug(COURSE_SLUGS, lang, under(COURSE_DIR[lang]));
+    const topicId = bySlug(TOPIC_SLUGS, lang, under(TOPIC_DIR[lang]));
+    return { lang, simId: sim ? `sim-${sim}` : null, guideId: guide ? `sim-${guide}` : null, guionId: ficha ? `sim-${ficha}` : null, courseId, topicId, page };
   }
-  const m = path.match(/^\/(simulaciones|guias|guiones|fichas)\/([a-z0-9-]+)\/$/);
+  const m = path.match(/^\/(simulaciones|guias|guiones|fichas|cursos|temas)\/([a-z0-9-]+)\/$/);
   return {
     lang,
     simId: m?.[1] === 'simulaciones' ? `sim-${m[2]}` : null,
     guideId: m?.[1] === 'guias' ? `sim-${m[2]}` : null,
     guionId: m?.[1] === 'guiones' || m?.[1] === 'fichas' ? `sim-${m[2]}` : null,
+    courseId: m?.[1] === 'cursos' ? bySlug(COURSE_SLUGS, 'es', m[2]) : null,
+    topicId: m?.[1] === 'temas' ? bySlug(TOPIC_SLUGS, 'es', m[2]) : null,
     page,
   };
 }
@@ -95,7 +140,9 @@ export function parsePath(pathname) {
 // español, las guías fuera del español y el inglés, y las prácticas y sus guiones
 // fuera del español; las fichas de actividades están en todos).
 // Sirve para el selector de idioma y para las etiquetas hreflang.
-export function translatedPath({ simId, guideId, guionId, page }, lang) {
+export function translatedPath({ simId, guideId, guionId, courseId, topicId, page }, lang) {
+  if (courseId) return coursePath(courseId, lang);
+  if (topicId) return topicPath(topicId, lang);
   if (guionId) return isPracticalId(guionId) ? (lang === 'es' ? guionPath(guionId) : null) : guionPath(guionId, lang);
   const sim = getSimulationById(simId || guideId);
   if (sim && !availableIn(sim, lang)) return null;

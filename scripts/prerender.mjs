@@ -16,7 +16,7 @@ import { dirname, extname, join, resolve } from 'node:path';
 import { promisify } from 'node:util';
 import { simulationsIn } from '../src/data/simulations.js';
 import { guideIdFromFile } from '../src/guides/shared.js';
-import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, LANGS, GUIDE_LANGS, FICHA_LANGS, pagePaths, STUDENT_DOC_DIRS } from '../src/paths.js';
+import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, LANGS, GUIDE_LANGS, FICHA_LANGS, pagePaths, STUDENT_DOC_DIRS, collectionPaths } from '../src/paths.js';
 import { findChrome } from './tools.mjs';
 
 const ROOT = resolve(import.meta.dirname, '..');
@@ -51,10 +51,12 @@ const routes = [
   ...guideRoutes('es'),
   ...guionRoutes(),
   ...Object.values(PAGE_PATHS),
+  ...collectionPaths('es'),
   // Resto de idiomas (sin aviso legal, que solo está en español; guías solo en inglés)
   ...LANGS.filter((l) => l !== 'es').flatMap((l) => [
     homePath(l),
     ...simulationsIn(l).map((s) => simPath(s.id, l)),
+    ...collectionPaths(l),
     ...(GUIDE_LANGS.includes(l) ? guideRoutes(l) : []),
     ...fichaRoutes(l),
     ...pagePaths(l),

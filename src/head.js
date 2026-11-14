@@ -3,7 +3,8 @@
 // WhatsApp o Classroom. scripts/prerender.mjs guarda el resultado en el HTML de
 // cada página; al cargarla, este módulo reutiliza esas etiquetas.
 // Además, el <head> enlaza la versión de cada idioma (hreflang).
-import { simPath, guidePath, guionPath, homePath, pagePath, absoluteUrl, translatedPath, LANGS, GUIDE_LANGS } from './paths.js';
+import { simPath, guidePath, guionPath, homePath, pagePath, absoluteUrl, translatedPath, coursePath, topicPath, LANGS, GUIDE_LANGS } from './paths.js';
+import { collectionInfo } from './data/collections.js';
 import { thumbMarkup } from './components/thumbs.js';
 import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical, studentDoc, TOPICS } from './data/simulations.js';
 
@@ -178,8 +179,32 @@ function set(lang, title, description, url, data, locales = LANGS, image = DEFAU
   jsonLd.textContent = JSON.stringify({ '@context': 'https://schema.org', ...data });
 }
 
-export function updateHead({ sim, guideSim, guionSim, page, lang = 'es' }) {
-  setAlternates({ simId: sim?.id, guideId: guideSim?.id, guionId: guionSim?.id, page });
+export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId = null, page, lang = 'es' }) {
+  setAlternates({ simId: sim?.id, guideId: guideSim?.id, guionId: guionSim?.id, courseId, topicId, page });
+  if (courseId || topicId) {
+    const info = collectionInfo({ courseId, topicId }, lang);
+    const url = absoluteUrl(courseId ? coursePath(courseId, lang) : topicPath(topicId, lang));
+    const locales = LANGS.filter((l) => translatedPath({ courseId, topicId }, l));
+    return set(
+      lang,
+      `${info.h1} · ${SITE}`,
+      shortDescription(info.intro),
+      url,
+      withBreadcrumb({
+        '@type': 'CollectionPage',
+        name: info.h1,
+        description: info.intro,
+        url,
+        inLanguage: lang,
+        isPartOf: WEBSITE,
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: info.sims.map((s, i) => ({ '@type': 'ListItem', position: i + 1, item: simResource(s, lang) })),
+        },
+      }, lang, [[info.label, url]]),
+      locales,
+    );
+  }
   if (guionSim) {
     const practical = isPractical(guionSim);
     const l = practical ? 'es' : lang;

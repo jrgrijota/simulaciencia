@@ -1,5 +1,5 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
-import { guidePath, guionPath, simPath, absoluteUrl } from '../paths.js';
+import { guidePath, guionPath, simPath, absoluteUrl, coursePath, topicPath } from '../paths.js';
 import { trackEvent } from '../analytics.js';
 import { guideLangFor, hasGuion, loadGuide } from '../data/guides.js';
 import { guideSummary, guideMisconceptions, inlineHtml } from '../guides/shared.js';
@@ -219,17 +219,17 @@ function relatedMarkup(sim, lang) {
   if (!sameTopic.length && !sameCourse.length) return '';
   const link = (s) => `<li><a href="${simPath(s.id, lang)}" data-route class="flex h-full items-center gap-2 rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
       <i data-lucide="${isPractical(s) ? 'flask-conical' : 'monitor-play'}" class="h-4 w-4 shrink-0 text-[#0369a1]"></i>${esc(simTitle(s, lang))}</a></li>`;
-  const group = (title, list) =>
+  const group = (title, list, href) =>
     list.length
-      ? `<h3 class="mt-6 text-sm font-bold uppercase tracking-wide text-[#475569]">${title}</h3>
+      ? `<h3 class="mt-6 text-sm font-bold uppercase tracking-wide text-[#475569]">${href ? `<a href="${href}" data-route class="underline-offset-4 hover:text-[#0369a1] hover:underline">${title} ›</a>` : title}</h3>
       <ul class="mt-2 grid gap-2 sm:grid-cols-2">${list.map(link).join('')}</ul>`
       : '';
   const topicName = topics.map((t) => t.label[lang] ?? t.label.es).join(' · ');
   return `
       <nav aria-labelledby="lab-related-title" class="mt-8 border-t border-[#e2e8f0] pt-6">
         <h2 id="lab-related-title" class="text-lg font-semibold text-[#1e293b]">${L('Sigue explorando', 'Keep exploring', 'Continua explorant', 'Jarraitu arakatzen', 'Segue explorando')}</h2>
-        ${group(`${L('Del mismo tema', 'Same topic', 'Del mateix tema', 'Gai berekoak', 'Do mesmo tema')}: ${esc(topicName)}`, sameTopic)}
-        ${group(`${L('Más para', 'More for', 'Més per a', 'Gehiago:', 'Máis para')} ${courseLabel(course, lang)}`, sameCourse)}
+        ${group(`${L('Del mismo tema', 'Same topic', 'Del mateix tema', 'Gai berekoak', 'Do mesmo tema')}: ${esc(topicName)}`, sameTopic, topics.length === 1 ? topicPath(topics[0].id, lang) : null)}
+        ${group(`${L('Más para', 'More for', 'Més per a', 'Gehiago:', 'Máis para')} ${courseLabel(course, lang)}`, sameCourse, coursePath(course, lang))}
       </nav>`;
 }
 

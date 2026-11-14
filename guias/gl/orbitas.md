@@ -20,7 +20,7 @@ O despregable da parte de arriba do panel esquerdo escolle o modo: «Bala de can
 
 | Modo | Que controla o docente | Que mostra |
 | --- | --- | --- |
-| Bala de canón de Newton | Control «Velocidade inicial» de 0,58 a 12,65 km/s (empeza en 6,90 km/s). Botóns «Vc ≈ 6.89 km/s» e «Ve ≈ 9.75 km/s», «▶ Disparar» e velocidade 1×, 2×, 4× | A bala sae en horizontal desde unha montaña a 2017 km de altura. Deixa estela e o panel «Estado orbital» calcula a traxectoria |
+| Bala de canón de Newton | Control «Velocidade inicial» de 0,58 a 12,65 km/s (empeza en 6,90 km/s). Botóns «Vc ≈ 6,89 km/s» e «Ve ≈ 9,75 km/s», «▶ Disparar» e velocidade 1×, 2×, 4× | A bala sae en horizontal desde unha montaña a 2017 km de altura. Deixa estela e o panel «Estado orbital» calcula a traxectoria |
 | Sistema Solar | Clic nun planeta da lista «Planetas», velocidade 1×, 3×, 8×, 20× e zoom (−, 1:1, +) | Oito planetas en órbitas circulares. Ao escoller un, a lista dá T²/a³ e o lenzo mostra a (en AU) e T (en anos) |
 | Leis de Kepler | Botóns «1.ª lei», «2.ª lei», «3.ª lei». Controis «Semieixo maior (a)» de 0,40 a 1,30 e «Excentricidade (e)» de 0,00 a 0,90 (empezan en 1,00 e 0,50) | Un corpo en órbita elíptica co Sol nun foco. Segundo a lei: raio vector, focos, perihelio e afelio, ou o cociente T²/a³ |
 | Estrelas binarias | «Estrela 1 (laranxa)» e «Estrela 2 (azul)» de 0,5 a 5,0 M☉ (empezan en 2,0 e 1,0) e «Separación» de 0,8 a 3,0 (empeza en 1,6) | Dúas estrelas en órbita circular arredor do centro de masas (cruz verde «CM»). Abaixo, Ec, Ep e E do sistema |
@@ -54,7 +54,7 @@ En Galicia os fenómenos gravitatorios e as leis de Newton están en 2.º de ESO
 
 1. Modo Bala de canón. Poñer o control en 3,45 km/s e premer «▶ Disparar». A bala cae a pouca distancia e o panel di «Impacto coa Terra». Preguntar por que cae.
 2. Subir a 5,75 km/s e disparar. A bala cae moito máis lonxe. Preguntar que pasaría se fose aínda máis rápida.
-3. Premer «Vc ≈ 6.89 km/s» e disparar. A bala dá voltas sen tocar o chan: «Órbita circular». Explicar que segue caendo, pero a Terra cúrvase ao mesmo ritmo.
+3. Premer «Vc ≈ 6,89 km/s» e disparar. A bala dá voltas sen tocar o chan: «Órbita circular». Explicar que segue caendo, pero a Terra cúrvase ao mesmo ritmo.
 4. Abrir a tarxeta «Experimento mental de Newton» e lela. Concluír que a forza que fai caer unha mazá é a que mantén un satélite en órbita.
 5. Modo Sistema Solar a 1×. Sinalar que a Terra dá unha volta en algo máis de 1 s e Neptuno tarda máis de 3 min. Canto máis lonxe do Sol, máis lenta é a órbita.
 6. Pechar con Estrelas binarias: as dúas estrelas móvense. A atracción gravitatoria é mutua, non só «do grande sobre o pequeno».
@@ -97,7 +97,7 @@ O currículo galego de 1.º non nomea a forza centrípeta nin a enerxía potenci
 2. Escribir a condición de órbita circular: GMm/r² = mv²/r, logo v = √(GM/r). Con GM = 3,986·10⁵ km³/s² e r = 8388 km sae 6,89 km/s, o valor do botón «Vc».
 3. Premer «Vc», disparar e ler o período. Con T = 2πr/v sae 7646 s ≈ 127,4 min. O panel dá 127,9 min porque o control deixa 6,90 km/s.
 4. Reiniciar con 8,05 km/s. A enerxía ε mantense en −15,1 km²/s² mentres a altitude cambia en 9600 km. Explicar que con eses cambios de altura mgh non serve e hai que usar −GMm/r.
-5. Premer «Ve ≈ 9.75 km/s» e disparar. Mostrar que Ve = √2 · Vc e que con enerxía ε positiva a bala escapa.
+5. Premer «Ve ≈ 9,75 km/s» e disparar. Mostrar que Ve = √2 · Vc e que con enerxía ε positiva a bala escapa.
 
 ### 2.º de Bacharelato (Física): campo gravitacional e leis de Kepler
 

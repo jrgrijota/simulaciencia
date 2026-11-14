@@ -20,7 +20,7 @@ Ezkerreko panelaren goiko zabalgarriak modua aukeratzen du: «Newtonen kanoi-bal
 
 | Modua | Irakasleak zer kontrolatzen duen | Zer erakusten duen |
 | --- | --- | --- |
-| Newtonen kanoi-bala | «Hasierako abiadura» graduatzailea, 0,58tik 12,65 km/s-ra (6,90 km/s-n hasten da). «Vc ≈ 6.89 km/s» eta «Ve ≈ 9.75 km/s» botoiak, «▶ Jaurti» eta 1×, 2×, 4× abiadura | Bala horizontalean irteten da 2017 km-ko altuerako mendi batetik. Arrastoa uzten du, eta «Egoera orbitala» panelak ibilbidea kalkulatzen du |
+| Newtonen kanoi-bala | «Hasierako abiadura» graduatzailea, 0,58tik 12,65 km/s-ra (6,90 km/s-n hasten da). «Vc ≈ 6,89 km/s» eta «Ve ≈ 9,75 km/s» botoiak, «▶ Jaurti» eta 1×, 2×, 4× abiadura | Bala horizontalean irteten da 2017 km-ko altuerako mendi batetik. Arrastoa uzten du, eta «Egoera orbitala» panelak ibilbidea kalkulatzen du |
 | Eguzki-sistema | Klik «Planetak» zerrendako planeta batean, 1×, 3×, 8×, 20× abiadura eta zooma (−, 1:1, +) | Zortzi planeta orbita zirkularretan. Bat aukeratzean, zerrendak T²/a³ ematen du eta oihalak a (AU-tan) eta T (urtetan) erakusten ditu |
 | Keplerren legeak | «1. legea», «2. legea», «3. legea» botoiak. «Ardatzerdi handia (a)» graduatzailea, 0,40tik 1,30era, eta «Eszentrikotasuna (e)», 0,00tik 0,90era (1,00 eta 0,50ean hasten dira) | Orbita eliptikoan dagoen gorputz bat, Eguzkia foku batean duela. Legearen arabera: erradio bektorea, fokuak, perihelioa eta afelioa, edo T²/a³ zatidura |
 | Izar bitarrak | «1. izarra (laranja)» eta «2. izarra (urdina)», 0,5etik 5,0 M☉-ra (2,0 eta 1,0ean hasten dira), eta «Distantzia», 0,8tik 3,0ra (1,6an hasten da) | Bi izar orbita zirkularrean masa-zentroaren inguruan (gurutze berdea, «CM»). Behean, sistemaren Ez, Ep eta E |
@@ -56,7 +56,7 @@ Curriculumak ez du grabitazio unibertsalaren legea izenez aipatzen DBHko 3. mail
 
 1. Kanoi-balaren modua. Jarri graduatzailea 3,45 km/s-an eta sakatu «▶ Jaurti». Bala hurbil erortzen da eta panelak «Lurraren kontrako talka» dio. Galdetu zergatik erortzen den.
 2. Igo 5,75 km/s-ra eta jaurti. Bala askoz urrunago erortzen da. Galdetu zer gertatuko litzatekeen are azkarragoa balitz.
-3. Sakatu «Vc ≈ 6.89 km/s» eta jaurti. Balak buelta ematen du lurra ukitu gabe: «Orbita zirkularra». Azaldu erortzen jarraitzen duela, baina Lurra erritmo berean kurbatzen dela.
+3. Sakatu «Vc ≈ 6,89 km/s» eta jaurti. Balak buelta ematen du lurra ukitu gabe: «Orbita zirkularra». Azaldu erortzen jarraitzen duela, baina Lurra erritmo berean kurbatzen dela.
 4. Ireki «Newtonen pentsamendu-esperimentua» txartela eta irakurri. Ondorioztatu sagar bat erorarazten duen indarra satelite bat orbitan mantentzen duen bera dela.
 5. Eguzki-sistemaren modua, 1× abiaduran. Seinalatu Lurrak segundo bat pasatxoan ematen duela buelta eta Neptunok 3 minutu baino gehiago behar dituela. Zenbat eta urrunago Eguzkitik, orduan eta motelagoa da orbita.
 6. Amaitu Izar bitarrekin: bi izarrak mugitzen dira. Erakarpen grabitatorioa elkarrekikoa da, ez soilik «handiak txikiaren gainean» egiten duena.
@@ -99,7 +99,7 @@ Batxilergoko 1. mailako curriculumak ez ditu izenez aipatzen indar zentripetua e
 2. Idatzi orbita zirkularraren baldintza: GMm/r² = mv²/r; beraz, v = √(GM/r). GM = 3,986·10⁵ km³/s² eta r = 8388 km izanik, 6,89 km/s ateratzen da, «Vc» botoiaren balioa.
 3. Sakatu «Vc», jaurti eta irakurri periodoa. T = 2πr/v erabiliz, 7646 s ≈ 127,4 min ateratzen da. Panelak 127,9 min ematen ditu graduatzaileak 6,90 km/s uzten dituelako.
 4. Berrabiarazi 8,05 km/s-rekin. ε energia −15,1 km²/s²-an mantentzen da altitudea 9600 km aldatzen den bitartean. Azaldu altuera-aldaketa horiekin mgh-k ez duela balio eta −GMm/r erabili behar dela.
-5. Sakatu «Ve ≈ 9.75 km/s» eta jaurti. Erakutsi Ve = √2 · Vc dela eta ε energia positiboarekin balak ihes egiten duela.
+5. Sakatu «Ve ≈ 9,75 km/s» eta jaurti. Erakutsi Ve = √2 · Vc dela eta ε energia positiboarekin balak ihes egiten duela.
 
 ### Batxilergoko 2. maila (Fisika): eremu grabitatorioa eta Keplerren legeak
 

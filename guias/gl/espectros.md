@@ -30,7 +30,7 @@ Catro elementos sosteñen a explicación:
 - **O diagrama de niveis.** Mostra os niveis coa súa enerxía e todas as transicións posibles. A transición que acaba de ocorrer resáltase, e un punto marca o nivel do electrón.
 - **O rótulo de estado.** Enriba do átomo aparece, por exemplo, «ABSORBE 486 nm» ou «EMITE 656 nm» cos niveis de partida e de chegada, coloreado coa cor da luz.
 - **Os espectros.** Cada fotón emitido acende a súa liña na barra de 380–780 nm. As liñas UV e IR van á barra inferior. En Fotóns, cada fotón absorbido escurece a súa raia no espectro de absorción, un arco da vella situado xusto enriba, así que as raias escuras e as brillantes quedan aliñadas. As liñas apáganse pouco a pouco, agás en pausa.
-- **O panel de enerxía accesible.** En Colisión, «Con 3.0 eV podes chegar a:» marca con ✓ ou ✗ cada nivel e a súa enerxía necesaria.
+- **O panel de enerxía accesible.** En Colisión, «Con 3,0 eV podes chegar a:» marca con ✓ ou ✗ cada nivel e a súa enerxía necesaria.
 
 Os botóns «Pausar» e «Limpar» son comúns aos tres modos; «Limpar» borra o espectro e os contadores. O despregable «Transicións do átomo» lista cada transición coa súa lonxitude de onda, a súa rexión (visible, UV ou IR) e os seus niveis. «Conceptos esenciais» resume E = h·f = h·c / λ e ΔE = E_sup − E_inf.
 

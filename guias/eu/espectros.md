@@ -30,7 +30,7 @@ Lau elementuk eusten diote azalpenari:
 - **Energia-mailen diagrama.** Mailak beren energiarekin eta trantsizio posible guztiak erakusten ditu. Gertatu berri den trantsizioa nabarmendu egiten da, eta puntu batek elektroiaren maila markatzen du.
 - **Egoera-errotulua.** Atomoaren gainean agertzen da, adibidez, «XURGATZEN DU 486 nm» edo «IGORTZEN DU 656 nm», abiapuntuko eta helmugako mailekin, argiaren kolorez margotuta.
 - **Espektroak.** Igorritako fotoi bakoitzak bere lerroa pizten du 380-780 nm-ko barran. UV eta IR lerroak beheko barrara doaz. Fotoiak moduan, xurgatutako fotoi bakoitzak bere marra iluntzen du absortzio-espektroan, justu gainean dagoen ortzadar batean; beraz, marra ilunak eta distiratsuak lerrokatuta geratzen dira. Lerroak pixkanaka itzaltzen dira, pausan izan ezik.
-- **Energia eskuragarriaren panela.** Talka moduan, «Irits zaitezkeen mailak (3.0 eV):» panelak ✓ edo ✗ batez markatzen ditu maila bakoitza eta behar duen energia.
+- **Energia eskuragarriaren panela.** Talka moduan, «Irits zaitezkeen mailak (3,0 eV):» panelak ✓ edo ✗ batez markatzen ditu maila bakoitza eta behar duen energia.
 
 «Pausatu» eta «Garbitu» botoiak hiru moduetan daude; «Garbitu»k espektroa eta kontagailuak ezabatzen ditu. «Atomoaren trantsizioak» zabalgarriak trantsizio bakoitza zerrendatzen du, bere uhin-luzerarekin, eskualdearekin (ikusgaia, UV edo IR) eta mailekin. «Funtsezko kontzeptuak» atalak E = h·f = h·c / λ eta ΔE = E_goi − E_behe laburbiltzen ditu.
 

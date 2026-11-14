@@ -27,6 +27,9 @@ jobs:
       indexnow: ${{ steps.indexnow.outputs.urls }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Historial completo: el sitemap saca de git la fecha de cada página.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 20

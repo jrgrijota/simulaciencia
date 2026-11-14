@@ -5,6 +5,7 @@ import { setDescription } from '../head.js';
 import { footerMarkup } from '../components/footer.js';
 import { siteHeaderMarkup } from '../components/site-header.js';
 import { loadGuide, loadGuion, hasGuion, guideLangFor } from '../data/guides.js';
+import { trackEvent } from '../analytics.js';
 import { renderGuideHtml, guideToc, guideSummary, downloadBase } from '../guides/shared.js';
 
 const BTN_SECONDARY =
@@ -130,7 +131,7 @@ export function renderGuide(root, sim, doc = 'guide') {
     // Las descargas se cuentan como eventos en GoatCounter (sin cookies).
     body.querySelectorAll('[data-download]').forEach((a) =>
       a.addEventListener('click', () =>
-        window.goatcounter?.count?.({ path: '/' + a.getAttribute('href'), title: `Descarga${guion ? (practical ? ' del guion' : ` de la ficha (${lang})`) : ''}: ${sim.title}`, event: true }),
+        trackEvent(a.getAttribute('href'), `Descarga${guion ? (practical ? ' del guion' : ` de la ficha (${lang})`) : ''}: ${sim.title}`),
       ),
     );
 

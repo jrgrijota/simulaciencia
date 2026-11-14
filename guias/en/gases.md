@@ -21,7 +21,7 @@ The screen has a left-hand control panel and a central canvas with the gas. The 
 | Mode | What the teacher controls | What it shows |
 | --- | --- | --- |
 | Flexible Membrane (Balloon) | “Number of particles”, from 1 to 500 (starting at 50, ±5 buttons). “Temperature”, from 0 to 500 K (starting at 273 K, ±10 buttons), or from −273 to 227 °C with the K/°C switch | A red balloon that deforms with every collision and a dashed green line showing its average radius. Pressure and volume change together |
-| Rigid Wall (Fixed) | The same controls plus the “Wall Radius (R)” buttons (in steps of 5 px, between 30 and 210 px). The container starts at the average size the balloon had | A light blue circle that only changes size with those buttons: at a fixed radius the volume is constant and only the pressure changes |
+| Rigid Wall (Fixed) | The same controls plus the “Container volume” buttons, which change the radius in steps of 5 px (from 30 to 210 px) and show the volume in litres, from 0.09 to 4.56 L. The container starts at the average size the balloon had | A light blue circle that only changes size with those buttons: at a fixed radius the volume is constant and only the pressure changes |
 | Display Settings | “Particle size” (1–15 px, starting at 3 px), colours, “Colour by speed” (on), “Show P-V graph” (off), “Full screen” | Particles from blue (slow) to red (fast) and a P-V graph in the bottom left corner, with P in atm and V in L starting from 0 |
 
 Three elements support the explanation:
@@ -79,10 +79,10 @@ In ESO 2 the simulation is used to present the kinetic model and the temperature
 **Teaching sequence (15–20 min).**
 
 1. Starting set-up with “Particle size” at 2 px. Show that the balloon is pushed out equally in all directions: pressure acts on the whole wall, not just downwards.
-2. Choose “Rigid Wall (Fixed)”. The “Wall Radius (R)” control appears, about 90 px, with V ≈ 0.8 L and P ≈ 1.6 atm. Calculate P · V ≈ 1.3 atm·L.
-3. Use the “+” button to take the radius to 150 px: V ≈ 2.3 L and the pressure drops to about 0.56 atm. P · V again comes out at about 1.3 atm·L.
-4. Use “−” to go down to 60 px: V ≈ 0.37 L and P ≈ 3.8 atm, with P · V ≈ 1.4 atm·L. Boyle's law: at constant temperature P · V stays the same; the differences of a few tenths are measurement noise.
-5. Go back to 150 px and raise it to 500 K: the pressure goes up to ~1.0 atm. Then increase to 100 particles: it goes up again. Write P · V / T = constant and reason through each change with the model.
+2. Choose “Rigid Wall (Fixed)”. “Container volume” appears, at about 0.8 L (a radius of about 90 px) and P ≈ 1.6 atm. Calculate P · V ≈ 1.3 atm·L.
+3. Use the “+” button to go up to about 2.3 L (a radius of 150 px): the pressure drops to about 0.56 atm. P · V again comes out at about 1.3 atm·L.
+4. Use “−” to go down to about 0.37 L (60 px): P ≈ 3.8 atm, with P · V ≈ 1.4 atm·L. Boyle's law: at constant temperature P · V stays the same; the differences of a few tenths are measurement noise.
+5. Go back to about 2.3 L and raise the temperature to 500 K: the pressure goes up to ~1.0 atm. Then increase to 100 particles: it goes up again. Write P · V / T = constant and reason through each change with the model.
 
 ### Bachillerato 1: qualitative review
 
@@ -98,7 +98,7 @@ The simulation mainly tackles the idea of a gas as continuous and static, and th
 | --- | --- | --- |
 | “There is air between the particles of a gas” | There is empty space between the particles | 10 particles at 273 K and “⏸ Pause”: almost all of the balloon is empty |
 | “When a gas is heated, its particles get bigger” | The particles do not change; they move faster and collide more | Balloon from 100 to 500 K: the balloon grows and the particles stay the same size |
-| “When a gas is compressed, the particles shrink” | The space between them is reduced, not their size | Rigid container at 150 px and then at 60 px (ESO 4 sequence): same particle size, more crowded together |
+| “When a gas is compressed, the particles shrink” | The space between them is reduced, not their size | Rigid container at 2.3 L and then at 0.37 L (ESO 4 sequence): same particle size, more crowded together |
 | “A gas only pushes downwards, because of its weight” | Pressure is due to collisions in all directions | Balloon with 200 particles: the membrane bulges out equally all the way round |
 | “All the particles of a gas move at the same speed” | At a given temperature there is a distribution of speeds | 100 particles at 273 K with “Colour by speed”: blue and red ones coexist |
 | “Each particle has its own temperature” or “the particles get hot” | Temperature measures the mean kinetic energy of the whole collection | Pause at 273 K and point out particles of different colours in the same gas |

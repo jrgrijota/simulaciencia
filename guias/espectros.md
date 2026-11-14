@@ -23,14 +23,14 @@ La simulación tiene tres modos, «Fotones», «Colisión» y «Gas Ionizado», 
 | Fotones, «Luz blanca» | «Un fotón» (se dispara con clic en la fuente del lienzo) o «Emisión continua», con «Flujo de fotones» de «Lento» a «Máximo» | Fotones de longitud de onda al azar entre 380 y 780 nm. El átomo solo absorbe los que coinciden con una de sus líneas visibles |
 | Fotones, «Monocromática» | «Longitud de onda» de 380 a 780 nm, en pasos de 2 nm; empieza en 550 nm | Si el fotón coincide con una transición, el rótulo indica «ABSORBE 656 nm» y el electrón sube de órbita. Si no, el fotón pasa de largo |
 | Colisión | «Energía del electrón» de 0,5 a 6,0 eV, en pasos de 0,1; empieza en 3,0 eV. «Disparo único» (clic en el cañón) o «Haz continuo» con «Frecuencia de disparo» | Rótulo «EXCITACIÓN» si el electrón tiene energía suficiente o «Colisión elástica — energía insuficiente» si no. Un panel indica qué niveles se alcanzan con esa energía |
-| Gas Ionizado | «Voltaje del tubo» de 1 a 8 eV, en pasos de 0,2; empieza en 5,0 eV. «Densidad del gas» de 4 a 20 átomos; empieza en 10 | Un tubo con cátodo y ánodo. Los electrones excitan átomos, que brillan y emiten. Contadores de electrones libres, átomos excitados y fotones emitidos, y el número de fotones encima de cada línea |
+| Gas Ionizado | «Voltaje del tubo» de 1 a 8 eV, en pasos de 0,2; empieza en 5,0 eV. «Densidad del gas» de «Muy diluida» a «Muy densa» (de 4 a 20 átomos); empieza en «Media» (10 átomos) | Un tubo con cátodo y ánodo. Los electrones excitan átomos, que brillan y emiten. Contadores de electrones libres, átomos excitados y fotones emitidos, y el número de fotones encima de cada línea |
 
 Cuatro elementos sostienen la explicación:
 
 - **El diagrama de niveles.** Muestra los niveles con su energía y todas las transiciones posibles. La transición que acaba de ocurrir se resalta, y un punto marca el nivel del electrón.
 - **El rótulo de estado.** Encima del átomo aparece, por ejemplo, «ABSORBE 486 nm» o «EMITE 656 nm» con los niveles de partida y llegada, coloreado con el color de la luz.
 - **Los espectros.** Cada fotón emitido enciende su línea en la barra de 380–780 nm. Las líneas UV e IR van a la barra inferior. En Fotones, cada fotón absorbido oscurece su raya en el espectro de absorción, un arcoíris situado justo encima, así que las rayas oscuras y las brillantes quedan alineadas. Las líneas se apagan poco a poco, salvo en pausa.
-- **El panel de energía accesible.** En Colisión, «Con 3.0 eV puedes alcanzar:» marca con ✓ o ✗ cada nivel y su energía necesaria.
+- **El panel de energía accesible.** En Colisión, «Con 3,0 eV puedes alcanzar:» marca con ✓ o ✗ cada nivel y su energía necesaria.
 
 Los botones «Pausar» y «Limpiar» son comunes a los tres modos; «Limpiar» borra el espectro y los contadores. El desplegable «Transiciones del átomo» lista cada transición con su longitud de onda, su región (visible, UV o IR) y sus niveles. «Conceptos esenciales» resume E = h·f = h·c / λ y ΔE = E_sup − E_inf.
 

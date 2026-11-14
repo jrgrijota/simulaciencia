@@ -1,7 +1,7 @@
 // Tarjeta de simulación: miniatura, materia, cursos, título, descripción y los
 // botones (abrir a todo el ancho; guía y ficha debajo, llenando la misma anchura).
 // Todo el contenido visible de un vistazo, sin efectos hover que oculten datos.
-import { guideLangFor, hasGuion } from '../data/guides.js';
+import { guideLangFor, guideLabel, hasGuion } from '../data/guides.js';
 import { subjectTags, courseLabel, simTitle, simDescription, tagLabel, isPractical, studentDoc } from '../data/simulations.js';
 import { simPath, guidePath, guionPath } from '../paths.js';
 import { getLang, L } from '../i18n.js';
@@ -63,7 +63,7 @@ export function cardMarkup(sim, { showKind = false } = {}) {
         class="${SECONDARY}"
       >
         <i data-lucide="book-open" class="h-4 w-4 shrink-0"></i>
-        ${L('Guía docente', 'Teacher guide', 'Guia docent (en castellà)', 'Irakaslearen gida (gaztelaniaz)', 'Guía docente (en castelán)')}
+        ${guideLabel(guide, lang)}
       </a>`
     : '';
   // Fila de abajo: guía y ficha (o guion), juntas tan anchas como el botón azul. Si

@@ -2,12 +2,15 @@ import { guideIdFromFile } from '../guides/shared.js';
 import { guideLang } from '../paths.js';
 
 // Las guías se cargan bajo demanda: el catálogo solo necesita saber cuáles existen.
-// guias/*.md en español y guias/en/*.md en inglés.
+// guias/*.md en español y guias/<idioma>/*.md en los demás.
 // Los documentos del alumnado (guiones/*.md de las prácticas y fichas/*.md de las
 // simulaciones, con sus traducciones en fichas/<idioma>/*.md) van como «guion».
 const files = {
   es: import.meta.glob('/guias/*.md', { query: '?raw', import: 'default' }),
   en: import.meta.glob('/guias/en/*.md', { query: '?raw', import: 'default' }),
+  ca: import.meta.glob('/guias/ca/*.md', { query: '?raw', import: 'default' }),
+  eu: import.meta.glob('/guias/eu/*.md', { query: '?raw', import: 'default' }),
+  gl: import.meta.glob('/guias/gl/*.md', { query: '?raw', import: 'default' }),
 };
 const guionFiles = {
   es: import.meta.glob(['/guiones/*.md', '/fichas/*.md'], { query: '?raw', import: 'default' }),
@@ -33,6 +36,16 @@ export function guideLangFor(simId, lang = 'es') {
   const l = guideLang(lang);
   if (loaders[l].has(simId)) return l;
   return loaders.es.has(simId) ? 'es' : null;
+}
+
+// Texto del enlace a la guía docente desde una página en `lang`, cuando la guía que
+// se enlaza está en `guide` (su idioma o, si no está traducida, el español).
+const GUIDE_WORD = { es: 'Guía docente', en: 'Teacher guide', ca: 'Guia docent', eu: 'Irakaslearen gida', gl: 'Guía docente' };
+const IN_SPANISH = { en: ['in Spanish', 'Spanish'], ca: ['en castellà', 'castellà'], eu: ['gaztelaniaz', 'gaztelaniaz'], gl: ['en castelán', 'castelán'] };
+export function guideLabel(guide, lang = 'es', short = false) {
+  const word = GUIDE_WORD[lang] || GUIDE_WORD.es;
+  if (!guide || guide === lang || !IN_SPANISH[lang]) return word;
+  return `${word} (${IN_SPANISH[lang][short ? 1 : 0]})`;
 }
 
 export function hasGuide(simId, lang = 'es') {

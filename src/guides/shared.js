@@ -26,10 +26,18 @@ const FICHA_FILE = {
   eu: 'eu/fitxak/fitxa-',
   gl: 'gl/fichas/ficha-',
 };
+// Archivos descargables de las guías docentes en cada idioma.
+const GUIDE_FILE = {
+  es: 'guias/guia-docente-',
+  en: 'en/guides/teacher-guide-',
+  ca: 'ca/guies/guia-docent-',
+  eu: 'eu/gidak/irakaslearen-gida-',
+  gl: 'gl/guias/guia-docente-',
+};
 export function downloadBase(simId, lang = 'es', doc = 'guide', practical = true) {
   const name = simId.replace(/^sim-/, '');
   if (doc === 'guion') return practical ? `guiones/guion-${name}` : `${FICHA_FILE[lang] || FICHA_FILE.es}${name}`;
-  return lang === 'en' ? `en/guides/teacher-guide-${name}` : `guias/guia-docente-${name}`;
+  return `${GUIDE_FILE[lang] || GUIDE_FILE.es}${name}`;
 }
 
 // Las guías enlazan a cada simulación en jrgrijota.github.io; se reescriben
@@ -51,7 +59,7 @@ export function guideTitle(md) {
 // descripción para Google.
 export function guideSummary(md) {
   const m = md.match(
-    /^##\s+(?:Ficha rápida|Quick reference|Objetivo|Qué vas a aprender|What you will learn|Què aprendràs|Zer ikasiko duzu|Que vas aprender)\s*\n+([^\n#|][^\n]*)/m,
+    /^##\s+(?:Ficha rápida|Quick reference|Fitxa ràpida|Laburpena|Objetivo|Qué vas a aprender|What you will learn|Què aprendràs|Zer ikasiko duzu|Que vas aprender)\s*\n+([^\n#|][^\n]*)/m,
   );
   return m ? m[1].trim() : '';
 }
@@ -123,6 +131,22 @@ const FICHA_NOTE = {
   ],
 };
 
+// Nota de licencia de las guías docentes en catalán, euskera y gallego.
+const GUIDE_NOTE = {
+  ca: [
+    'Guia publicada sota llicència Creative Commons Reconeixement-CompartirIgual 4.0 (CC BY-SA 4.0)',
+    "Pots adaptar-la i compartir-la citant l'autoria i mantenint la mateixa llicència. Versió actualitzada i simulació a",
+  ],
+  eu: [
+    'Creative Commons Aitortu-PartekatuBerdin 4.0 (CC BY-SA 4.0) lizentziapean argitaratutako gida',
+    'Egokitu eta parteka dezakezu, egilea aipatuz eta lizentzia bera mantenduz. Bertsio eguneratua eta simulazioa hemen:',
+  ],
+  gl: [
+    'Guía publicada baixo licenza Creative Commons Recoñecemento-CompartirIgual 4.0 (CC BY-SA 4.0)',
+    'Podes adaptala e compartila citando a autoría e mantendo a mesma licenza. Versión actualizada e simulación en',
+  ],
+};
+
 export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true) {
   if (doc === 'guion' && !practical && FICHA_NOTE[lang]) {
     const [what, adapt, simWord] = FICHA_NOTE[lang];
@@ -144,6 +168,16 @@ export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true)
         `Puedes adaptar${it} a tu clase y compartir${it} citando la autoría y con la misma licencia.`,
       '',
       `${practical ? 'Práctica' : 'Simulación'}: ${absoluteUrl(simPath(simId))}`,
+    ].join('\n');
+  }
+  if (GUIDE_NOTE[lang]) {
+    const [what, adapt] = GUIDE_NOTE[lang];
+    return [
+      '---',
+      '',
+      `© 2026 Juan Ramón Grijota · SimulaCiencia. ${what}: https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}`,
+      '',
+      `${adapt} ${absoluteUrl(guidePath(simId, lang))}`,
     ].join('\n');
   }
   if (lang === 'en') {
@@ -176,7 +210,7 @@ export function inlineHtml(text, lang = 'es') {
 // Filas de la tabla de «Concepciones alternativas…» («Misconceptions…»): la idea
 // del alumnado y la idea correcta. Las usa la página de cada simulación y llms.txt.
 export function guideMisconceptions(markdown) {
-  const section = markdown.match(/^##\s+(?:Concepciones alternativas|Misconceptions)[^\n]*\n([\s\S]*?)(?=^##\s|(?![\s\S]))/m);
+  const section = markdown.match(/^##\s+(?:Concepciones alternativas|Misconceptions|Concepcions alternatives|Concepcións alternativas|Zuzentzen laguntzen)[^\n]*\n([\s\S]*?)(?=^##\s|(?![\s\S]))/m);
   if (!section) return [];
   return section[1]
     .split('\n')

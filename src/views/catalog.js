@@ -59,9 +59,9 @@ export function renderCatalog(root) {
       text: L(
         'Cursos, saberes básicos, una secuencia para la clase y las concepciones alternativas que ayuda a corregir. Y una ficha de actividades para el alumnado, con enlaces que abren la simulación ya preparada.',
         'Year groups, curriculum content, a lesson sequence and the misconceptions it helps to address. And an activity worksheet for students, with links that open the simulation already set up.',
-        'Cursos, sabers bàsics, una seqüència per a la classe i les concepcions alternatives que ajuda a corregir (en castellà). I una fitxa d’activitats per a l’alumnat, amb enllaços que obren la simulació ja preparada.',
-        'Mailak, oinarrizko jakintzak, eskolarako sekuentzia bat eta zuzentzen laguntzen dituen ideia okerrak (gaztelaniaz). Eta ikasleentzako jarduera-fitxa bat, simulazioa prestatuta irekitzen duten estekekin.',
-        'Cursos, saberes básicos, unha secuencia para a clase e as concepcións alternativas que axuda a corrixir (en castelán). E unha ficha de actividades para o alumnado, con ligazóns que abren a simulación xa preparada.',
+        'Cursos, sabers bàsics, una seqüència per a la classe i les concepcions alternatives que ajuda a corregir, segons el currículum de Catalunya. I una fitxa d’activitats per a l’alumnat, amb enllaços que obren la simulació ja preparada.',
+        'Mailak, oinarrizko jakintzak, eskolarako sekuentzia bat eta zuzentzen laguntzen dituen ideia okerrak, Euskadiko curriculumaren arabera. Eta ikasleentzako jarduera-fitxa bat, simulazioa prestatuta irekitzen duten estekekin.',
+        'Cursos, saberes básicos, unha secuencia para a clase e as concepcións alternativas que axuda a corrixir, segundo o currículo de Galicia. E unha ficha de actividades para o alumnado, con ligazóns que abren a simulación xa preparada.',
       ),
     },
     {

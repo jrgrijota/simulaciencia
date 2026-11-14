@@ -21,7 +21,7 @@ La pantalla tiene un panel izquierdo de controles y un lienzo central con el gas
 | Modo | Qué controla el docente | Qué muestra |
 | --- | --- | --- |
 | Membrana Flexible (Globo) | «Cantidad de partículas», de 1 a 500 (inicial 50, botones de ±5). «Temperatura», de 0 a 500 K (inicial 273 K, botones de ±10), o de −273 a 227 ºC con el interruptor K/ºC | Un globo rojo que se deforma con cada choque y una línea verde discontinua con su radio medio. La presión y el volumen cambian a la vez |
-| Pared Rígida (Fija) | Los mismos controles y, además, los botones «Radio del Contenedor» (de 5 en 5 px, entre 30 y 210 px). El recipiente empieza con el tamaño medio que tenía el globo | Un círculo azul claro que solo cambia de tamaño con esos botones: a radio fijo el volumen es constante y solo cambia la presión |
+| Pared Rígida (Fija) | Los mismos controles y, además, los botones de «Volumen del recipiente», que cambian el radio de 5 en 5 px (de 30 a 210 px) y muestran el volumen en litros, de 0,09 a 4,56 L. El recipiente empieza con el tamaño medio que tenía el globo | Un círculo azul claro que solo cambia de tamaño con esos botones: a radio fijo el volumen es constante y solo cambia la presión |
 | Ajustes Visuales | «Tamaño partícula» (1–15 px, inicial 3 px), colores, «Color según velocidad» (activado), «Mostrar gráfica P-V» (desactivado), «Pantalla completa» | Partículas de azul (lentas) a rojo (rápidas) y una gráfica P-V en la esquina inferior izquierda, con P en atm y V en L desde 0 |
 
 Tres elementos sostienen la explicación:
@@ -79,10 +79,10 @@ En 2.º ESO la simulación sirve para presentar el modelo cinético y las escala
 **Secuencia de explicación (15–20 min).**
 
 1. Configuración inicial con «Tamaño partícula» a 2 px. Mostrar que el globo se deforma por igual en todas direcciones: la presión actúa sobre toda la pared, no solo hacia abajo.
-2. Elegir «Pared Rígida (Fija)». Aparece el «Radio del Contenedor», unos 90 px, con V ≈ 0,8 L y P ≈ 1,6 atm. Calcular P · V ≈ 1,3 atm·L.
-3. Con el botón «+» llevar el radio a 150 px: V ≈ 2,3 L y la presión baja a unos 0,56 atm. P · V vuelve a dar unos 1,3 atm·L.
-4. Con «−» bajar a 60 px: V ≈ 0,37 L y P ≈ 3,8 atm, con P · V ≈ 1,4 atm·L. Ley de Boyle: a temperatura constante P · V se mantiene; las décimas de diferencia son ruido de la medida.
-5. Volver a 150 px y subir a 500 K: la presión pasa a ~1,0 atm. Luego subir a 100 partículas: sube otra vez. Escribir P · V / T = constante y razonar cada cambio con el modelo.
+2. Elegir «Pared Rígida (Fija)». Aparece «Volumen del recipiente», con unos 0,8 L (radio de unos 90 px) y P ≈ 1,6 atm. Calcular P · V ≈ 1,3 atm·L.
+3. Con el botón «+» subir hasta unos 2,3 L (150 px de radio): la presión baja a unos 0,56 atm. P · V vuelve a dar unos 1,3 atm·L.
+4. Con «−» bajar hasta unos 0,37 L (60 px): P ≈ 3,8 atm, con P · V ≈ 1,4 atm·L. Ley de Boyle: a temperatura constante P · V se mantiene; las décimas de diferencia son ruido de la medida.
+5. Volver a unos 2,3 L y subir a 500 K: la presión pasa a ~1,0 atm. Luego subir a 100 partículas: sube otra vez. Escribir P · V / T = constante y razonar cada cambio con el modelo.
 
 ### 1.º Bachillerato: repaso cualitativo
 
@@ -98,7 +98,7 @@ La simulación ataca sobre todo la idea de un gas continuo y estático, y la con
 | --- | --- | --- |
 | «Entre las partículas del gas hay aire» | Entre las partículas hay vacío | 10 partículas a 273 K y «⏸ Pausar»: casi todo el globo está vacío |
 | «Al calentar un gas, sus partículas se hacen más grandes» | Las partículas no cambian; se mueven más rápido y chocan más | Globo de 100 a 500 K: el globo crece y las partículas siguen con el mismo tamaño |
-| «Al comprimir un gas, las partículas se encogen» | Se reduce el espacio entre ellas, no su tamaño | Recipiente rígido de 150 px y después de 60 px (secuencia de 4.º ESO): mismo tamaño de partícula, más apiñadas |
+| «Al comprimir un gas, las partículas se encogen» | Se reduce el espacio entre ellas, no su tamaño | Recipiente rígido de 2,3 L y después de 0,37 L (secuencia de 4.º ESO): mismo tamaño de partícula, más apiñadas |
 | «El gas empuja solo hacia abajo, por su peso» | La presión se debe a choques en todas direcciones | Globo con 200 partículas: la membrana se abomba por igual en todo el contorno |
 | «Todas las partículas de un gas van a la misma velocidad» | A una temperatura dada hay una distribución de velocidades | 100 partículas a 273 K con «Color según velocidad»: conviven azules y rojas |
 | «Cada partícula tiene su temperatura» o «las partículas se calientan» | La temperatura mide la energía cinética media del conjunto | Pausar a 273 K y señalar partículas de colores distintos en el mismo gas |

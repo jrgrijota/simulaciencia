@@ -30,16 +30,16 @@ function countPhrase(sims, lang) {
 const TAIL = {
   es: 'Cada simulación tiene una guía docente con su uso en el aula, la secuencia de explicación y las ideas previas que ayuda a corregir, y una ficha de actividades para el alumnado. Son gratuitas y funcionan en el navegador, sin registro ni instalación.',
   en: 'Each simulation has a teacher guide on how to use it in class, with a teaching sequence and the misconceptions it helps to address, plus an activity worksheet for students. They are free and run in the browser, with no sign-up or installation.',
-  ca: "Cada simulació té una guia docent (en castellà) amb el seu ús a l'aula i les idees prèvies que ajuda a corregir, i una fitxa d'activitats per a l'alumnat. Són gratuïtes i funcionen al navegador, sense registre ni instal·lació.",
-  eu: 'Simulazio bakoitzak irakaslearen gida bat du (gaztelaniaz), gelan nola erabili eta zer aurretiazko ideia zuzentzen laguntzen dituen azaltzen duena, eta ikasleentzako jarduera-fitxa bat. Doakoak dira eta nabigatzailean dabiltza, erregistrorik eta instalaziorik gabe.',
-  gl: 'Cada simulación ten unha guía docente (en castelán) co seu uso na aula e as ideas previas que axuda a corrixir, e unha ficha de actividades para o alumnado. Son gratuítas e funcionan no navegador, sen rexistro nin instalación.',
+  ca: "Cada simulació té una guia docent adaptada al currículum de Catalunya amb el seu ús a l'aula i les idees prèvies que ajuda a corregir, i una fitxa d'activitats per a l'alumnat. Són gratuïtes i funcionen al navegador, sense registre ni instal·lació.",
+  eu: 'Simulazio bakoitzak irakaslearen gida bat du, Euskadiko curriculumari egokitua, gelan nola erabili eta zer aurretiazko ideia zuzentzen laguntzen dituen azaltzen duena, eta ikasleentzako jarduera-fitxa bat. Doakoak dira eta nabigatzailean dabiltza, erregistrorik eta instalaziorik gabe.',
+  gl: 'Cada simulación ten unha guía docente adaptada ao currículo de Galicia co seu uso na aula e as ideas previas que axuda a corrixir, e unha ficha de actividades para o alumnado. Son gratuítas e funcionan no navegador, sen rexistro nin instalación.',
 };
 const CURRICULUM = {
   es: 'El uso por curso sigue el currículo LOMLOE de la Comunidad de Madrid.',
   en: null, // en inglés se explica la equivalencia del curso (enTitle)
-  ca: "L'ús per curs segueix el currículum LOMLOE de la Comunitat de Madrid.",
-  eu: 'Mailaz mailako erabilerak Madrilgo Erkidegoko LOMLOE curriculuma jarraitzen du.',
-  gl: 'O uso por curso segue o currículo LOMLOE da Comunidade de Madrid.',
+  ca: "La tria de simulacions per curs segueix el currículum LOMLOE de la Comunitat de Madrid; la guia docent de cada simulació en detalla l'encaix en el currículum de Catalunya.",
+  eu: 'Mailaz mailako simulazioen hautaketak Madrilgo Erkidegoko LOMLOE curriculuma jarraitzen du; simulazio bakoitzaren irakaslearen gidak Euskadiko curriculumean nola txertatzen den zehazten du.',
+  gl: 'A selección de simulacións por curso segue o currículo LOMLOE da Comunidade de Madrid; a guía docente de cada simulación detalla o seu encaixe no currículo de Galicia.',
 };
 
 // { h1, intro, sims } de una página por curso o por tema; null si no existe en ese idioma.

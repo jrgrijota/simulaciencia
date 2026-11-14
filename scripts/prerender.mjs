@@ -24,10 +24,12 @@ const OUT = join(ROOT, 'dist');
 const INDEX = readFileSync(join(OUT, 'index.html'));
 
 // Guías de un idioma: guias/*.md (español) o guias/<idioma>/*.md.
-const guideRoutes = (lang) =>
-  readdirSync(join(ROOT, 'guias', lang === 'es' ? '' : lang))
+const guideRoutes = (lang) => {
+  const dir = join(ROOT, 'guias', lang === 'es' ? '' : lang);
+  return !existsSync(dir) ? [] : readdirSync(dir)
     .filter((f) => f.endsWith('.md'))
     .map((f) => guidePath(guideIdFromFile(f), lang));
+};
 
 // Guiones de las prácticas (guiones/*.md) y fichas de las simulaciones (fichas/*.md), solo en español.
 const guionRoutes = () =>

@@ -20,7 +20,7 @@ El desplegable de arriba del panel izquierdo elige el modo: «Bala de Cañón de
 
 | Modo | Qué controla el docente | Qué muestra |
 | --- | --- | --- |
-| Bala de Cañón de Newton | Deslizador «Velocidad Inicial» de 0,58 a 12,65 km/s (empieza en 6,90 km/s). Botones «Vc ≈ 6.89 km/s» y «Ve ≈ 9.75 km/s», «▶ Disparar» y velocidad 1×, 2×, 4× | La bala sale en horizontal desde una montaña a 2017 km de altura. Deja estela y el panel «Estado Orbital» calcula la trayectoria |
+| Bala de Cañón de Newton | Deslizador «Velocidad Inicial» de 0,58 a 12,65 km/s (empieza en 6,90 km/s). Botones «Vc ≈ 6,89 km/s» y «Ve ≈ 9,75 km/s», «▶ Disparar» y velocidad 1×, 2×, 4× | La bala sale en horizontal desde una montaña a 2017 km de altura. Deja estela y el panel «Estado Orbital» calcula la trayectoria |
 | Sistema Solar | Clic en un planeta de la lista «Planetas», velocidad 1×, 3×, 8×, 20× y zoom (−, 1:1, +) | Ocho planetas en órbitas circulares. Al elegir uno, la lista da T²/a³ y el lienzo muestra a (en AU) y T (en años) |
 | Leyes de Kepler | Botones «1ª Ley», «2ª Ley», «3ª Ley». Deslizadores «Semieje mayor (a)» de 0,40 a 1,30 y «Excentricidad (e)» de 0,00 a 0,90 (empiezan en 1,00 y 0,50) | Un cuerpo en órbita elíptica con el Sol en un foco. Según la ley: radio vector, focos, perihelio y afelio, o el cociente T²/a³ |
 | Estrellas Binarias | «Estrella 1 (naranja)» y «Estrella 2 (azul)» de 0,5 a 5,0 M☉ (empiezan en 2,0 y 1,0) y «Separación» de 0,8 a 3,0 (empieza en 1,6) | Dos estrellas en órbita circular en torno al centro de masas (cruz verde «CM»). Abajo, Ec, Ep y E del sistema |
@@ -50,7 +50,7 @@ En 3.º ESO la simulación introduce la gravitación universal. En 4.º ESO trab
 
 1. Modo Bala de Cañón. Poner el deslizador en 3,45 km/s y pulsar «▶ Disparar». La bala cae a poca distancia y el panel dice «Impacto con la Tierra». Preguntar por qué cae.
 2. Subir a 5,75 km/s y disparar. La bala cae mucho más lejos. Preguntar qué pasaría si fuera aún más rápida.
-3. Pulsar «Vc ≈ 6.89 km/s» y disparar. La bala da vueltas sin tocar el suelo: «Órbita circular». Explicar que sigue cayendo, pero la Tierra se curva al mismo ritmo.
+3. Pulsar «Vc ≈ 6,89 km/s» y disparar. La bala da vueltas sin tocar el suelo: «Órbita circular». Explicar que sigue cayendo, pero la Tierra se curva al mismo ritmo.
 4. Abrir la tarjeta «Experimento mental de Newton» y leerla. Concluir que la fuerza que hace caer una manzana es la que mantiene un satélite en órbita.
 5. Modo Sistema Solar a 1×. Señalar que la Tierra da una vuelta en algo más de 1 s y Neptuno tarda más de 3 min. Cuanto más lejos del Sol, más lenta es la órbita.
 6. Cerrar con Estrellas Binarias: las dos estrellas se mueven. La atracción gravitatoria es mutua, no solo «del grande sobre el pequeño».
@@ -85,7 +85,7 @@ En 3.º ESO la simulación introduce la gravitación universal. En 4.º ESO trab
 2. Escribir la condición de órbita circular: GMm/r² = mv²/r, luego v = √(GM/r). Con GM = 3,986·10⁵ km³/s² y r = 8388 km sale 6,89 km/s, el valor del botón «Vc».
 3. Pulsar «Vc», disparar y leer el período. Con T = 2πr/v sale 7646 s ≈ 127,4 min. El panel da 127,9 min porque el deslizador deja 6,90 km/s.
 4. Reiniciar con 8,05 km/s. La energía ε se mantiene en −15,1 km²/s² mientras la altitud cambia en 9600 km. Explicar que con esos cambios de altura mgh no sirve y hay que usar −GMm/r.
-5. Pulsar «Ve ≈ 9.75 km/s» y disparar. Mostrar que Ve = √2 · Vc y que con energía ε positiva la bala escapa.
+5. Pulsar «Ve ≈ 9,75 km/s» y disparar. Mostrar que Ve = √2 · Vc y que con energía ε positiva la bala escapa.
 
 ### 2.º Bachillerato Física: campo gravitatorio y leyes de Kepler
 

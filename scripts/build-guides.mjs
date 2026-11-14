@@ -176,6 +176,27 @@ const TEXT = {
       `the author and keeping the same licence. Latest version and simulation at ${link}.`,
     pandocLang: 'en-GB',
   },
+  ca: {
+    kicker: 'Guia docent',
+    license: (url, link) =>
+      `Guia publicada amb llicència <a href="${url}">CC BY-SA 4.0</a>: la pots adaptar i compartir citant-ne ` +
+      `l’autoria i amb la mateixa llicència. Versió actualitzada i simulació a ${link}.`,
+    pandocLang: 'ca-ES',
+  },
+  eu: {
+    kicker: 'Irakaslearen gida',
+    license: (url, link) =>
+      `<a href="${url}">CC BY-SA 4.0</a> lizentziapean argitaratutako gida: egokitu eta partekatu dezakezu, ` +
+      `egilea aipatuz eta lizentzia bera erabiliz. Bertsio eguneratua eta simulazioa: ${link}.`,
+    pandocLang: 'eu-ES',
+  },
+  gl: {
+    kicker: 'Guía docente',
+    license: (url, link) =>
+      `Guía publicada baixo licenza <a href="${url}">CC BY-SA 4.0</a>: podes adaptala e compartila citando ` +
+      `a autoría e coa mesma licenza. Versión actualizada e simulación en ${link}.`,
+    pandocLang: 'gl-ES',
+  },
 };
 
 const textKey = (lang, doc, practical) =>
@@ -226,6 +247,7 @@ function pdfHtml(title, body, simId, lang, doc = 'guide', practical = true) {
 // Guías de cada idioma: guias/*.md (español) y guias/<idioma>/*.md.
 const guides = GUIDE_LANGS.flatMap((lang) => {
   const dir = join(ROOT, 'guias', lang === 'es' ? '' : lang);
+  if (!existsSync(dir)) return [];
   return readdirSync(dir)
     .filter((f) => f.endsWith('.md'))
     .map((f) => ({ lang, file: join(dir, f) }));

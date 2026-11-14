@@ -7,9 +7,18 @@
 // Campos: date (AAAA-MM-DD), link(lang) => ruta interna, langs (opcional: idiomas en
 // los que tiene sentido; sin él, en todos) y el texto en cada idioma { title, text }.
 // La más reciente, primero. También salen en el canal RSS (/novedades.xml).
-import { coursePath, simPath, guionPath, homePath } from '../paths.js';
+import { coursePath, simPath, guionPath, guidePath, homePath } from '../paths.js';
 
 export const NEWS = [
+  {
+    date: '2026-11-14',
+    langs: ['es', 'ca', 'eu', 'gl'],
+    link: (lang) => guidePath('sim-cambios-estado', lang),
+    es: { title: 'Guías docentes en catalán, euskera y gallego', text: 'Las guías de las 14 simulaciones ya están en catalán, euskera y gallego, adaptadas al currículo de Cataluña, Euskadi y Galicia: cursos, saberes y criterios de cada comunidad.' },
+    ca: { title: 'Guies docents en català', text: "Les guies de les 14 simulacions ja són en català, adaptades al currículum de Catalunya: cursos, sabers i criteris d'avaluació." },
+    eu: { title: 'Irakasleen gidak euskaraz', text: '14 simulazioen gidak euskaraz daude jada, Euskadiko curriculumera egokituta: mailak, jakintzak eta ebaluazio-irizpideak.' },
+    gl: { title: 'Guías docentes en galego', text: 'As guías das 14 simulacións xa están en galego, adaptadas ao currículo de Galicia: cursos, saberes e criterios de avaliación.' },
+  },
   {
     date: '2026-11-14',
     link: (lang) => coursePath('3ESO', lang),

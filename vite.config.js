@@ -48,6 +48,71 @@ const lastmod = (path) => {
   return date ? `<lastmod>${date}</lastmod>` : '';
 };
 
+// Todas las páginas de la web (las del sitemap).
+function allPaths() {
+  const guides = (lang) =>
+    readdirSync(lang === 'es' ? 'guias' : `guias/${lang}`)
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => guidePath(guideIdFromFile(f), lang));
+  const guiones = STUDENT_DOC_DIRS.filter((d) => existsSync(d)).flatMap((d) =>
+    readdirSync(d)
+      .filter((f) => f.endsWith('.md'))
+      .map((f) => guionPath(guideIdFromFile(f))),
+  );
+  // Fichas traducidas: fichas/<idioma>/*.md.
+  const fichas = (lang) =>
+    FICHA_LANGS.includes(lang) && existsSync(`fichas/${lang}`)
+      ? readdirSync(`fichas/${lang}`).filter((f) => f.endsWith('.md')).map((f) => guionPath(guideIdFromFile(f), lang))
+      : [];
+  const paths = [
+    homePath('es'),
+    ...simulationsIn('es').map((s) => simPath(s.id)),
+    ...guides('es'),
+    ...guiones,
+    ...Object.values(PAGE_PATHS),
+    ...collectionPaths('es'),
+    ...LANGS.filter((l) => l !== 'es').flatMap((l) => [
+      homePath(l),
+      ...simulationsIn(l).map((s) => simPath(s.id, l)),
+      ...collectionPaths(l),
+      ...(GUIDE_LANGS.includes(l) ? guides(l) : []),
+      ...fichas(l),
+      ...pagePaths(l),
+    ]),
+  ];
+  return paths;
+}
+
+// Fechas de publicación y de última modificación de cada simulación, guía y ficha,
+// para los datos estructurados (datePublished, dateModified). Salen de git como el
+// <lastmod>; la de publicación es la del primer cambio: la entrada de la simulación
+// en el catálogo o el primer commit del archivo de la guía o la ficha.
+function firstDate(args) {
+  const key = `first ${args.join(' ')}`;
+  if (!gitDates.has(key)) {
+    let date = '';
+    try {
+      date = execFileSync('git', ['log', '--reverse', '--format=%cs', ...args], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).split('\n')[0].trim();
+    } catch {}
+    gitDates.set(key, date);
+  }
+  return gitDates.get(key);
+}
+function pageDates() {
+  const dates = {};
+  for (const path of allPaths()) {
+    const { simId, guideId, guionId } = parsePath(path);
+    if (!simId && !guideId && !guionId) continue;
+    const files = sourceFiles(path);
+    const modified = files.length ? gitDate(files) : '';
+    const published = simId
+      ? firstDate([`-S id: '${simId}'`, '--', 'src/data/simulations.js'])
+      : files.map((f) => firstDate(['--follow', '--', f])).filter(Boolean).sort()[0] || '';
+    if (published || modified) dates[path] = [published, modified];
+  }
+  return dates;
+}
+
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
 // Las páginas que existen en más de un idioma llevan sus alternativas (hreflang).
@@ -55,36 +120,7 @@ function sitemap() {
   return {
     name: 'sitemap',
     generateBundle() {
-      const guides = (lang) =>
-        readdirSync(lang === 'es' ? 'guias' : `guias/${lang}`)
-          .filter((f) => f.endsWith('.md'))
-          .map((f) => guidePath(guideIdFromFile(f), lang));
-      const guiones = STUDENT_DOC_DIRS.filter((d) => existsSync(d)).flatMap((d) =>
-        readdirSync(d)
-          .filter((f) => f.endsWith('.md'))
-          .map((f) => guionPath(guideIdFromFile(f))),
-      );
-      // Fichas traducidas: fichas/<idioma>/*.md.
-      const fichas = (lang) =>
-        FICHA_LANGS.includes(lang) && existsSync(`fichas/${lang}`)
-          ? readdirSync(`fichas/${lang}`).filter((f) => f.endsWith('.md')).map((f) => guionPath(guideIdFromFile(f), lang))
-          : [];
-      const paths = [
-        homePath('es'),
-        ...simulationsIn('es').map((s) => simPath(s.id)),
-        ...guides('es'),
-        ...guiones,
-        ...Object.values(PAGE_PATHS),
-        ...collectionPaths('es'),
-        ...LANGS.filter((l) => l !== 'es').flatMap((l) => [
-          homePath(l),
-          ...simulationsIn(l).map((s) => simPath(s.id, l)),
-          ...collectionPaths(l),
-          ...(GUIDE_LANGS.includes(l) ? guides(l) : []),
-          ...fichas(l),
-          ...pagePaths(l),
-        ]),
-      ];
+      const paths = allPaths();
       const body = paths
         .map((path) => {
           const alt = LANGS.map((l) => [l, translatedPath(parsePath(path), l)]).filter(([, p]) => p);
@@ -231,4 +267,6 @@ export default defineConfig({
   // se sirve en la raíz de simulaciencia.es.
   base: '/',
   plugins: [tailwindcss(), sitemap(), llmsTxt(), newsRss()],
+  // Fechas por página para el JSON-LD (src/head.js).
+  define: { __PAGE_DATES__: JSON.stringify(pageDates()) },
 });

@@ -1,11 +1,12 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
-import { guidePath, guionPath } from '../paths.js';
+import { guidePath, guionPath, simPath, absoluteUrl } from '../paths.js';
+import { trackEvent } from '../analytics.js';
 import { guideLangFor, hasGuion, loadGuide } from '../data/guides.js';
 import { guideSummary, guideMisconceptions, inlineHtml } from '../guides/shared.js';
 import { footerMarkup } from '../components/footer.js';
 import { copyText, flashCopied } from '../components/copy.js';
 import { langSwitchMarkup } from '../components/lang-switch.js';
-import { simTitle, simUrl, simDescription, isPractical, studentDoc, courseLabel, subjectTags, tagLabel, TOPICS } from '../data/simulations.js';
+import { simTitle, simUrl, simDescription, isPractical, studentDoc, courseLabel, subjectTags, tagLabel, TOPICS, simulationsIn } from '../data/simulations.js';
 import { getLang, L } from '../i18n.js';
 
 // Parámetros (sim.params) que se pasan de la dirección de la web a la simulación o
@@ -24,10 +25,26 @@ const frameUrl = (sim, lang) => withSimParams(sim, simUrl(sim, lang));
 // Ficha de actividades (en cada idioma) o guion de la práctica (solo en español).
 const hasStudentDoc = (sim, lang) => hasGuion(sim.id, lang);
 
+// Nombre corto de la simulación para los eventos de GoatCounter («insertar/densidad»).
+const simSlug = (sim) => sim.id.replace(/^sim-/, '');
+
+// El código de inserción lleva debajo del iframe una línea con enlace a la página de la
+// simulación: quien la inserta en Moodle, Classroom o su web lleva al alumnado y a otros
+// docentes a la guía y la ficha, y la web gana un enlace.
 function buildEmbedCode(sim) {
   const lang = getLang();
   const url = frameUrl(sim, lang);
-  return `<iframe\n  src="${url}"\n  title="${simTitle(sim, lang)}"\n  width="100%"\n  height="600"\n  frameborder="0"\n  allowfullscreen\n></iframe>`;
+  const page = absoluteUrl(simPath(sim.id, lang));
+  const credit = isPractical(sim)
+    ? `Práctica de <a href="${page}">SimulaCiencia</a>, con guía docente y guion del alumnado.`
+    : L(
+        'Simulación de <a href="{}">SimulaCiencia</a>, con guía docente y ficha de actividades.',
+        'Simulation from <a href="{}">SimulaCiencia</a>, with a teacher guide and an activity worksheet.',
+        'Simulació de <a href="{}">SimulaCiencia</a>, amb guia docent i fitxa d’activitats.',
+        '<a href="{}">SimulaCiencia</a> webguneko simulazioa, irakaslearen gidarekin eta jarduera-fitxarekin.',
+        'Simulación de <a href="{}">SimulaCiencia</a>, con guía docente e ficha de actividades.',
+      ).replace('{}', page);
+  return `<iframe\n  src="${url}"\n  title="${simTitle(sim, lang)}"\n  width="100%"\n  height="600"\n  frameborder="0"\n  allowfullscreen\n></iframe>\n<p style="font-size:14px">${credit}</p>`;
 }
 
 function createShareModal(sim) {
@@ -65,11 +82,12 @@ function createShareModal(sim) {
               type="text"
               readonly
               value="${shareUrl}"
-              class="min-w-0 flex-1 rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-1.5 text-xs text-[#1e293b] focus:outline-none"
+              class="h-9 min-w-0 flex-1 rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 text-xs text-[#1e293b] focus:border-[#0369a1] focus:outline-none"
             />
             <button
               data-copy="share-url"
-              class="copy-btn inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#075985]"
+              type="button"
+              class="copy-btn inline-flex h-9 min-w-[7.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md bg-[#0369a1] px-3 text-xs font-semibold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0369a1]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5"></i>
               <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>
@@ -81,19 +99,21 @@ function createShareModal(sim) {
         <div>
           <p class="text-sm font-semibold text-[#1e293b]">${L('Insertar en tu web o en Moodle', 'Embed in your website or Moodle', 'Insereix-la al teu web o a Moodle', 'Txertatu zure webgunean edo Moodlen', 'Inserir na túa web ou en Moodle')}</p>
           <p class="mt-0.5 text-xs text-[#64748b]">${L('Si tu plataforma permite añadir HTML, pega este código. La simulación aparecerá integrada en la página.', 'If your platform lets you add HTML, paste this code. The simulation will appear inside the page.', 'Si la teva plataforma permet afegir HTML, enganxa aquest codi. La simulació apareixerà integrada a la pàgina.', 'Zure plataformak HTMLa gehitzen uzten badu, itsatsi kode hau. Simulazioa orrian txertatuta agertuko da.', 'Se a túa plataforma permite engadir HTML, pega este código. A simulación aparecerá integrada na páxina.')}</p>
-          <div class="mt-2 flex gap-2">
+          <div class="mt-2 flex flex-col gap-2">
             <textarea
               id="share-embed"
               readonly
-              rows="4"
-              class="min-w-0 flex-1 resize-none rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-1.5 font-mono text-xs text-[#1e293b] focus:outline-none"
+              rows="6"
+              wrap="off"
+              class="w-full resize-none rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 font-mono text-xs leading-relaxed text-[#1e293b] focus:border-[#0369a1] focus:outline-none"
             >${embedCode}</textarea>
             <button
               data-copy="share-embed"
-              class="copy-btn inline-flex shrink-0 items-start gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#075985]"
+              type="button"
+              class="copy-btn inline-flex h-9 min-w-[7.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md bg-[#0369a1] px-3 text-xs font-semibold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0369a1] self-end"
             >
-              <i data-lucide="copy" class="h-3.5 w-3.5 mt-0.5"></i>
-              <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>
+              <i data-lucide="copy" class="h-3.5 w-3.5"></i>
+              <span class="copy-label">${L('Copiar código', 'Copy code', 'Copia el codi', 'Kopiatu kodea', 'Copiar código')}</span>
             </button>
           </div>
         </div>
@@ -166,7 +186,7 @@ function aboutMarkup(sim, lang, guide) {
       <p class="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
         ${guideLink}
         ${guionLink}
-        <a href="${frameUrl(sim, lang)}" target="_blank" rel="noopener" class="${ABOUT_LINK}">${L(
+        <a href="${frameUrl(sim, lang)}" target="_blank" rel="noopener" data-event="sola/${simSlug(sim)}" class="${ABOUT_LINK}">${L(
           'Abrir sola en una pestaña',
           'Open on its own in a new tab',
           'Obre-la sola en una pestanya',
@@ -174,6 +194,7 @@ function aboutMarkup(sim, lang, guide) {
           'Abrila soa nunha lapela',
         )}</a>
       </p>
+      ${relatedMarkup(sim, lang)}
       <p class="mt-6 text-xs text-[#64748b]">${L(
         'Autor: Juan Ramón Grijota, profesor de Física y Química. Licencia',
         'Author: Juan Ramón Grijota, Physics and Chemistry teacher. Licence',
@@ -184,6 +205,32 @@ function aboutMarkup(sim, lang, guide) {
     </div>
   </section>
   ${footerMarkup()}`;
+}
+
+// «Sigue explorando»: otras simulaciones del mismo tema y del mismo curso, como
+// enlaces normales en el HTML pregenerado. Así el docente encuentra la siguiente
+// actividad y los buscadores recorren el catálogo desde cualquier página.
+function relatedMarkup(sim, lang) {
+  const others = simulationsIn(lang).filter((s) => s.id !== sim.id);
+  const topics = TOPICS.filter((t) => t.sims.includes(sim.id));
+  const sameTopic = others.filter((s) => topics.some((t) => t.sims.includes(s.id)));
+  const course = sim.courses[0];
+  const sameCourse = others.filter((s) => !sameTopic.includes(s) && s.courses.includes(course)).slice(0, 4);
+  if (!sameTopic.length && !sameCourse.length) return '';
+  const link = (s) => `<li><a href="${simPath(s.id, lang)}" data-route class="flex h-full items-center gap-2 rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
+      <i data-lucide="${isPractical(s) ? 'flask-conical' : 'monitor-play'}" class="h-4 w-4 shrink-0 text-[#0369a1]"></i>${esc(simTitle(s, lang))}</a></li>`;
+  const group = (title, list) =>
+    list.length
+      ? `<h3 class="mt-6 text-sm font-bold uppercase tracking-wide text-[#475569]">${title}</h3>
+      <ul class="mt-2 grid gap-2 sm:grid-cols-2">${list.map(link).join('')}</ul>`
+      : '';
+  const topicName = topics.map((t) => t.label[lang] ?? t.label.es).join(' · ');
+  return `
+      <nav aria-labelledby="lab-related-title" class="mt-8 border-t border-[#e2e8f0] pt-6">
+        <h2 id="lab-related-title" class="text-lg font-semibold text-[#1e293b]">${L('Sigue explorando', 'Keep exploring', 'Continua explorant', 'Jarraitu arakatzen', 'Segue explorando')}</h2>
+        ${group(`${L('Del mismo tema', 'Same topic', 'Del mateix tema', 'Gai berekoak', 'Do mesmo tema')}: ${esc(topicName)}`, sameTopic)}
+        ${group(`${L('Más para', 'More for', 'Més per a', 'Gehiago:', 'Máis para')} ${courseLabel(course, lang)}`, sameCourse)}
+      </nav>`;
 }
 
 // Resumen de la guía («Ficha rápida») y hasta cuatro ideas previas que la
@@ -270,6 +317,9 @@ export function renderLab(root, sim) {
   </div>
   ${aboutMarkup(sim, lang, guide)}`;
   fillAboutFromGuide(root, sim, lang);
+  root.querySelectorAll('[data-event]').forEach((a) =>
+    a.addEventListener('click', () => trackEvent(a.dataset.event, `${a.textContent.trim()}: ${sim.title}`)),
+  );
 
   const stage = root.querySelector('#lab-stage');
   const iframe = root.querySelector('#lab-frame');
@@ -322,6 +372,7 @@ export function renderLab(root, sim) {
     document.fullscreenElement || document.webkitFullscreenElement;
 
   function enterFullscreen() {
+    trackEvent(`pantalla-completa/${simSlug(sim)}`, `Pantalla completa: ${sim.title}`);
     const fn = stage.requestFullscreen || stage.webkitRequestFullscreen;
     if (fn) fn.call(stage);
   }
@@ -348,6 +399,7 @@ export function renderLab(root, sim) {
   let modal = null;
 
   function openModal() {
+    trackEvent(`compartir/${simSlug(sim)}`, `Compartir: ${sim.title}`);
     modal = createShareModal(sim);
     document.body.appendChild(modal);
     if (window.lucide) window.lucide.createIcons({ nodes: modal.querySelectorAll('[data-lucide]') });
@@ -371,6 +423,7 @@ export function renderLab(root, sim) {
         const source = modal.querySelector(`#${sourceId}`);
         await copyText(source.value);
         flashCopied(btn);
+        trackEvent(`${sourceId === 'share-embed' ? 'insertar' : 'copiar-enlace'}/${simSlug(sim)}`, `${sourceId === 'share-embed' ? 'Código de inserción' : 'Enlace copiado'}: ${sim.title}`);
       });
     });
 

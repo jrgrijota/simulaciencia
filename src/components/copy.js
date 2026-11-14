@@ -18,21 +18,22 @@ export async function copyText(text) {
 }
 
 // El botón debe contener un icono [data-lucide] y un <span class="copy-label">.
-// Los botones rellenos azules pasan a verde mientras dura el aviso.
-export function flashCopied(btn, doneText = L('¡Copiado!', 'Copied!', 'Copiat!', 'Kopiatuta!', 'Copiado!')) {
+// Mientras dura el aviso cambian el icono (copiar → marca) y el texto, sin cambiar
+// el color ni el tamaño del botón; el lector de pantalla lo anuncia por la región viva.
+export function flashCopied(btn, doneText = L('Copiado', 'Copied', 'Copiat', 'Kopiatuta', 'Copiado')) {
   const label = btn.querySelector('.copy-label');
-  const icon = btn.querySelector('[data-lucide]');
-  const original = label.textContent;
+  const icon = btn.querySelector('[data-lucide], svg[data-lucide]');
+  if (!btn.dataset.copyText) btn.dataset.copyText = label.textContent;
+  clearTimeout(btn._copyTimer);
   label.textContent = doneText;
   icon.setAttribute('data-lucide', 'check');
   if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
-  btn.classList.replace('bg-[#0369a1]', 'bg-[#16a34a]');
-  btn.classList.replace('hover:bg-[#075985]', 'hover:bg-[#15803d]');
-  setTimeout(() => {
-    label.textContent = original;
-    icon.setAttribute('data-lucide', 'copy');
-    if (window.lucide) window.lucide.createIcons({ nodes: [icon] });
-    btn.classList.replace('bg-[#16a34a]', 'bg-[#0369a1]');
-    btn.classList.replace('hover:bg-[#15803d]', 'hover:bg-[#075985]');
+  const live = document.getElementById('route-announcer');
+  if (live) live.textContent = doneText;
+  btn._copyTimer = setTimeout(() => {
+    label.textContent = btn.dataset.copyText;
+    const current = btn.querySelector('[data-lucide]');
+    current.setAttribute('data-lucide', 'copy');
+    if (window.lucide) window.lucide.createIcons({ nodes: [current] });
   }, 2000);
 }

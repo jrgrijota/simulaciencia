@@ -199,7 +199,7 @@ export function renderAbout(root) {
   const copyBtn = root.querySelector('#about-copy-email');
   copyBtn.addEventListener('click', async () => {
     await copyText(CONTACT);
-    flashCopied(copyBtn, L('¡Copiada!', 'Copied!', 'Copiada!', 'Kopiatuta!', 'Copiada!'));
+    flashCopied(copyBtn, L('Copiada', 'Copied', 'Copiada', 'Kopiatuta', 'Copiada'));
   });
 
   return null;

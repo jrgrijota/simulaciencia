@@ -143,7 +143,7 @@ Simulazioak lehentasuna ematen dio nukleoa atomoaren aldean txiki-txikia dela di
 
 | Atala | Soluzioa |
 | --- | --- |
-| Hasi aurretik | a) F: atomoa 25 000 aldiz inguru handiagoa da (2. jarduera). b) F: milaka aldiz handitu beharko litzateke (1. jarduera). c) F: puntuek geruza adierazten dute, ez tamaina (6. jarduera). d) F: urrea, 79 protoirekin, sodioa baino txikiagoa da (5. jarduera). e) E: Z-k elementua identifikatzen du (4. jarduera) |
+| Hasi aurretik | a) G: atomoa 25 000 aldiz inguru handiagoa da (2. jarduera). b) G: milaka aldiz handitu beharko litzateke (1. jarduera). c) G: puntuek geruza adierazten dute, ez tamaina (6. jarduera). d) G: urrea, 79 protoirekin, sodioa baino txikiagoa da (5. jarduera). e) E: Z-k elementua identifikatzen du (4. jarduera) |
 | 1. jarduera | Eskala naturala: ez da ikusten; D = 62 pm = 6,20 × 10⁻¹¹ m. ×10: ez da ikusten; 6,2 pm. ×100 edo ×1000 aldera puntu gorri bat agertzen da. ×10 000: «Nukleora iritsi zara!», D = 2,4 fm = 2,40 × 10⁻¹⁵ m. Ez da ikusten atomoa baino askoz txikiagoa delako |
 | 2. jarduera | Nukleoa 2,4 fm = 2,4 × 10⁻¹⁵ m; atomoa 62 pm = 6,2 × 10⁻¹¹ m; 25 833 aldiz. 6,2 × 10⁻¹¹ / 2,4 × 10⁻¹⁵ ≈ 2,6 × 10⁴. Nukleoa 1 cm-koa balitz, atomoak 258 m inguru neurtuko luke, segidako bi edo hiru futbol-zelai bezala |
 | 3. jarduera | 0. jauzia: atomoa, 272 pm = 2,72 × 10⁻¹⁰ m. 1. jauzia: atomoa, 27,2 pm = 2,72 × 10⁻¹¹ m. 2. jauzitik aurrera (pantailaren arabera) kotak nukleoa neurtzen du: 14 fm = 1,4 × 10⁻¹⁴ m. Berretzailea 1 jaisten da jauzi bakoitzean, jauzi bakoitzak ×10 handitzen duelako. 2,72 × 10⁻¹⁰ / 1,4 × 10⁻¹⁴ ≈ 1,9 × 10⁴: 19 478 aldiz |

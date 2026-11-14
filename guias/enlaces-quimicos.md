@@ -51,7 +51,7 @@ En 3.º ESO la simulación sirve para introducir la formación de iones y el enl
 
 1. Modo «Enlace Iónico» con la configuración inicial: A = Na, B = Cl. Leer los paneles: el Na tiene «e⁻ valencia: 1 / 8» y el Cl «7 / 8». Preguntar qué le resulta más fácil a cada uno.
 2. Pulsar «Cede un electrón a B». El Na pasa a «Carga: +» y el Cl a «Carga: −», los dos con 8 / 8. Aparece «Atracción electrostática» y la tarjeta da NaCl. Definir catión y anión.
-3. Montar A = Cl, B = Mg, C = Cl. El panel del Mg pide «Debe ceder 2 e⁻». Pulsar «Cede un electrón a A» y «Cede un electrón a C». Sale Mg²⁺ con dos Cl⁻ y la fórmula MgCl₂: 12 protones y 10 electrones dan carga 2+.
+3. Montar A = Cl, B = Mg, C = Cl. El panel del Mg indica «Le falta ceder 2 e⁻». Pulsar «Cede un electrón a A» y «Cede un electrón a C». Sale Mg²⁺ con dos Cl⁻ y la fórmula MgCl₂: 12 protones y 10 electrones dan carga 2+.
 4. Cambiar a «Enlace Covalente»: la configuración inicial es H y H, cada uno con «e⁻ efectivos: 1 / 2». Pulsar «Compartir»: los dos llegan a 2 / 2 y la tarjeta da H₂.
 5. Montar A = H, B = O, C = H. El O empieza en 6 / 8. Pulsar «Compartir» entre A y B y entre B y C: el O llega a 8 / 8 y sale H₂O. Subrayar que ningún átomo queda con carga.
 

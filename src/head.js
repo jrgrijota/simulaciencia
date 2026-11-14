@@ -12,6 +12,7 @@ export const SITE = 'SimulaCiencia';
 // La ficha completa del autor y del sitio está en index.html (@id #autor y #web).
 const AUTHOR = { '@type': 'Person', '@id': 'https://simulaciencia.es/#autor', name: 'Juan Ramón Grijota' };
 const WEBSITE = { '@id': 'https://simulaciencia.es/#web' };
+const PUBLISHER = { '@id': 'https://simulaciencia.es/#org' };
 const LICENSE = {
   es: 'https://creativecommons.org/licenses/by-sa/4.0/deed.es',
   en: 'https://creativecommons.org/licenses/by-sa/4.0/deed.en',
@@ -94,6 +95,33 @@ const DEFAULT_IMAGE = { url: absoluteUrl('/og-image.png'), alt: 'SimulaCiencia: 
 const simImage = (sim, lang) =>
   thumbMarkup(sim.id) ? { url: absoluteUrl(`/og/${sim.id.replace(/^sim-/, '')}.png`), alt: `${simTitle(sim, lang)} · ${SITE}` } : DEFAULT_IMAGE;
 
+// La misma imagen con autoría y licencia, para Google Imágenes (etiqueta «Con licencia»).
+// El aviso legal explica cómo reutilizar el contenido.
+const imageObject = (sim, lang) => {
+  const { url, alt } = simImage(sim, lang);
+  return {
+    '@type': 'ImageObject',
+    contentUrl: url,
+    url,
+    caption: alt,
+    width: 1200,
+    height: 630,
+    creator: AUTHOR,
+    creditText: SITE,
+    copyrightNotice: 'Juan Ramón Grijota · SimulaCiencia · CC BY-SA 4.0',
+    license: LICENSE[lang],
+    acquireLicensePage: absoluteUrl(pagePath('legal', lang) || pagePath('legal')),
+  };
+};
+
+// Fechas de publicación y de última modificación (del historial de git, en vite.config.js).
+// eslint-disable-next-line no-undef
+const PAGE_DATES = typeof __PAGE_DATES__ === 'undefined' ? {} : __PAGE_DATES__;
+function dates(path) {
+  const [published, modified] = PAGE_DATES[path] || [];
+  return { ...(published && { datePublished: published }), ...(modified && { dateModified: modified }) };
+}
+
 const og = (prop) => document.querySelector(`meta[property="og:${prop}"]`);
 
 function headElement(selector, tag, attrs) {
@@ -145,8 +173,10 @@ function simResource(sim, lang = 'es') {
     isAccessibleForFree: true,
     author: AUTHOR,
     license: LICENSE[lang],
+    publisher: PUBLISHER,
     isPartOf: WEBSITE,
-    image: simImage(sim, lang).url,
+    image: imageObject(sim, lang),
+    ...dates(simPath(sim.id, lang)),
   };
 }
 
@@ -255,7 +285,10 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
         isAccessibleForFree: true,
         author: AUTHOR,
         license: LICENSE[l],
+        publisher: PUBLISHER,
+        image: imageObject(guionSim, l),
         isBasedOn: simUrl(guionSim.id, l),
+        ...dates(guionPath(guionSim.id, l)),
       }, l, [[title, simUrl(guionSim.id, l)], [doc.short, url]]),
       practical ? ['es'] : LANGS,
       simImage(guionSim, l),
@@ -287,7 +320,10 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
         isAccessibleForFree: true,
         author: AUTHOR,
         license: LICENSE[l],
+        publisher: PUBLISHER,
+        image: imageObject(guideSim, l),
         isBasedOn: simUrl(guideSim.id, l),
+        ...dates(guidePath(guideSim.id, l)),
       }, l, [[title, simUrl(guideSim.id, l)], [word, guideUrl(guideSim.id, l)]]),
       practical ? ['es'] : GUIDE_LANGS,
       simImage(guideSim, l),

@@ -37,11 +37,12 @@ import { renderCatalog } from './views/catalog.js';
 import { renderLab } from './views/lab.js';
 import { renderLegal } from './views/legal.js';
 import { renderAbout } from './views/about.js';
+import { renderCollection } from './views/collection.js';
 import { renderGuide } from './views/guide.js';
 import { hasGuide, hasGuion } from './data/guides.js';
 import { updateLangNotice } from './components/lang-notice.js';
 import { trackPageview } from './analytics.js';
-import { homePath } from './paths.js';
+import { homePath, coursePath, topicPath } from './paths.js';
 
 const app = document.getElementById('app');
 const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal, FlaskConical, ClipboardList, MonitorPlay };
@@ -103,6 +104,9 @@ function render() {
 
   const route = getRoute();
   const { simId, guideId, guionId, page } = route;
+  // Páginas por curso y por tema, solo si tienen algo en este idioma.
+  const courseId = route.courseId && coursePath(route.courseId, route.lang) ? route.courseId : null;
+  const topicId = route.topicId && topicPath(route.topicId, route.lang) ? route.topicId : null;
   setLang(route.lang);
   // Solo lo que existe en el idioma de la página (las prácticas, por ahora, en español).
   const find = (id) => {
@@ -117,16 +121,17 @@ function render() {
   // idioma con un aviso. GitHub Pages ya la sirve con código 404 (404.html), y el
   // noindex evita que un buscador la tome por la portada.
   const path = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
-  const notFound = !sim && !guideSim && !guionSim && !page && path !== homePath(route.lang);
+  const notFound = !sim && !guideSim && !guionSim && !courseId && !topicId && !page && path !== homePath(route.lang);
 
   if (sim) cleanup = renderLab(app, sim);
   else if (guideSim) cleanup = renderGuide(app, guideSim);
   else if (guionSim) cleanup = renderGuide(app, guionSim, 'guion');
+  else if (courseId || topicId) cleanup = renderCollection(app, { courseId, topicId });
   else if (page === 'about') cleanup = renderAbout(app);
   else if (page === 'legal') cleanup = renderLegal(app);
   else cleanup = renderCatalog(app);
 
-  updateHead({ sim, guideSim, guionSim, page: sim || guideSim || guionSim ? null : page, lang: route.lang });
+  updateHead({ sim, guideSim, guionSim, courseId, topicId, page: sim || guideSim || guionSim ? null : page, lang: route.lang });
   setNotFound(notFound);
   updateLangNotice();
   window.scrollTo(0, 0);

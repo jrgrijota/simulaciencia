@@ -42,7 +42,11 @@ import { renderGuide } from './views/guide.js';
 import { hasGuide, hasGuion } from './data/guides.js';
 import { updateLangNotice } from './components/lang-notice.js';
 import { trackPageview } from './analytics.js';
+<<<<<<< HEAD
 import { homePath, coursePath, topicPath } from './paths.js';
+=======
+import { homePath } from './paths.js';
+>>>>>>> origin/claude/project-thread-rnqndc
 
 const app = document.getElementById('app');
 const ICONS = { Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal, FlaskConical, ClipboardList, MonitorPlay };
@@ -121,7 +125,11 @@ function render() {
   // idioma con un aviso. GitHub Pages ya la sirve con código 404 (404.html), y el
   // noindex evita que un buscador la tome por la portada.
   const path = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
+<<<<<<< HEAD
   const notFound = !sim && !guideSim && !guionSim && !courseId && !topicId && !page && path !== homePath(route.lang);
+=======
+  const notFound = !sim && !guideSim && !guionSim && !page && path !== homePath(route.lang);
+>>>>>>> origin/claude/project-thread-rnqndc
 
   if (sim) cleanup = renderLab(app, sim);
   else if (guideSim) cleanup = renderGuide(app, guideSim);
@@ -131,7 +139,11 @@ function render() {
   else if (page === 'legal') cleanup = renderLegal(app);
   else cleanup = renderCatalog(app);
 
+<<<<<<< HEAD
   updateHead({ sim, guideSim, guionSim, courseId, topicId, page: sim || guideSim || guionSim ? null : page, lang: route.lang });
+=======
+  updateHead({ sim, guideSim, guionSim, page: sim || guideSim || guionSim ? null : page, lang: route.lang });
+>>>>>>> origin/claude/project-thread-rnqndc
   setNotFound(notFound);
   updateLangNotice();
   window.scrollTo(0, 0);

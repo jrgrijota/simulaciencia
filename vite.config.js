@@ -46,6 +46,44 @@ const lastmod = (path) => {
   return date ? `<lastmod>${date}</lastmod>` : '';
 };
 
+// Fecha de última modificación de cada página (<lastmod>), sacada del historial de git
+// de los archivos de los que sale su contenido. Google y Bing la usan para decidir qué
+// volver a rastrear, así que solo cambia cuando cambia la página. El despliegue necesita
+// el historial completo (fetch-depth: 0); sin git, el sitemap sale sin fechas.
+const gitDates = new Map();
+function gitDate(files) {
+  const key = files.join(' ');
+  if (!gitDates.has(key)) {
+    let date = '';
+    try {
+      date = execFileSync('git', ['log', '-1', '--format=%cs', '--', ...files], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    } catch {}
+    gitDates.set(key, date);
+  }
+  return gitDates.get(key);
+}
+function sourceFiles(path) {
+  const { lang, simId, guideId, guionId, page } = parsePath(path);
+  const slug = (id) => id.replace(/^sim-/, '');
+  const guideFile = (id, l) => (l === 'es' ? `guias/${slug(id)}.md` : `guias/${l}/${slug(id)}.md`);
+  if (guideId) return [guideFile(guideId, lang)];
+  if (guionId) {
+    const files = lang === 'es' ? [`guiones/${slug(guionId)}.md`, `fichas/${slug(guionId)}.md`] : [`fichas/${lang}/${slug(guionId)}.md`];
+    return files.filter((f) => existsSync(f));
+  }
+  if (simId) {
+    const guide = GUIDE_LANGS.includes(lang) ? guideFile(simId, lang) : null;
+    return ['src/data/simulations.js', 'src/views/lab.js', ...(guide && existsSync(guide) ? [guide] : [])];
+  }
+  if (page) return [`src/views/${page}.js`];
+  return ['src/data/simulations.js', 'src/views/catalog.js'];
+}
+const lastmod = (path) => {
+  const files = sourceFiles(path);
+  const date = files.length ? gitDate(files) : '';
+  return date ? `<lastmod>${date}</lastmod>` : '';
+};
+
 // Genera sitemap.xml en cada build a partir del catálogo, para que las
 // simulaciones y guías nuevas aparezcan en Google sin mantener el archivo a mano.
 // Las páginas que existen en más de un idioma llevan sus alternativas (hreflang).

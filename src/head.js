@@ -50,6 +50,13 @@ const ABOUT_DESCRIPTION = {
   eu: 'Nork egiten du SimulaCiencia eta zergatik: Madrilgo Erkidegoko Fisika eta Kimikako irakasle bat, gelarako simulazio libre eta doakoak sortzen dituena.',
   gl: 'Quen fai SimulaCiencia e por que: un profesor de Física e Química da Comunidade de Madrid que crea simulacións libres e gratuítas para a aula.',
 };
+const NEWS_DESCRIPTION = {
+  es: 'Novedades de SimulaCiencia: simulaciones y prácticas de laboratorio nuevas, guías y fichas para el aula y mejoras de las simulaciones de Física y Química.',
+  en: 'What’s new in SimulaCiencia: new Physics and Chemistry simulations, classroom guides and worksheets, and improvements to the simulations.',
+  ca: "Novetats de SimulaCiencia: simulacions noves de Física i Química, guies i fitxes per a l'aula i millores de les simulacions.",
+  eu: 'SimulaCienciaren berriak: Fisika eta Kimikako simulazio berriak, gelarako gidak eta fitxak eta simulazioen hobekuntzak.',
+  gl: 'Novidades de SimulaCiencia: simulacións novas de Física e Química, guías e fichas para a aula e melloras das simulacións.',
+};
 const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES', gl: 'gl_ES' };
 const PRACTICAL_KIND = 'Práctica de laboratorio simulada';
 const FICHA_DESCRIPTION = {
@@ -146,6 +153,7 @@ function withBreadcrumb(data, lang, trail) {
 const PAGES = {
   about: { es: `Sobre el proyecto · ${SITE}`, en: `About the project · ${SITE}`, ca: `Sobre el projecte · ${SITE}`, eu: `Proiektuari buruz · ${SITE}`, gl: `Sobre o proxecto · ${SITE}` },
   legal: { es: `Aviso legal y privacidad · ${SITE}` },
+  news: { es: `Novedades · ${SITE}`, en: `What’s new · ${SITE}`, ca: `Novetats · ${SITE}`, eu: `Berriak · ${SITE}`, gl: `Novidades · ${SITE}` },
 };
 
 // <link rel="alternate" hreflang> de las páginas que existen en más de un idioma
@@ -279,7 +287,7 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
   }
   if (PAGES[page]) {
     const url = absoluteUrl(pagePath(page, lang));
-    return set(lang, PAGES[page][lang], (page === 'about' && ABOUT_DESCRIPTION[lang]) || DEFAULT_DESCRIPTION[lang], url, { '@type': 'WebPage', url, inLanguage: lang });
+    return set(lang, PAGES[page][lang], (page === 'about' && ABOUT_DESCRIPTION[lang]) || (page === 'news' && NEWS_DESCRIPTION[lang]) || DEFAULT_DESCRIPTION[lang], url, { '@type': 'WebPage', url, inLanguage: lang });
   }
   const home = absoluteUrl(homePath(lang));
   set(lang, DEFAULT_TITLE[lang], DEFAULT_DESCRIPTION[lang], home, {

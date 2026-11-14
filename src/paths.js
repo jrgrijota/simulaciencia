@@ -8,6 +8,7 @@
 //   /fichas/<nombre>/          => Ficha de actividades del alumnado de una simulación
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
+//   /novedades/                => Novedades (selección de lo nuevo; canal RSS en /novedades.xml)
 //   /cursos/<curso>/           => Simulaciones y prácticas de un curso (2-eso, 1-bachillerato…)
 //   /temas/<tema>/             => Simulaciones y prácticas de un bloque temático
 //
@@ -92,13 +93,13 @@ export const collectionPaths = (lang = 'es') =>
   [...COURSES.map((c) => coursePath(c.id, lang)), ...TOPICS.map((t) => topicPath(t.id, lang))].filter(Boolean);
 const bySlug = (slugs, lang, value) => Object.keys(slugs).find((id) => slugs[id][lang] === value) || null;
 
-export const PAGE_PATHS = { about: '/sobre-el-proyecto/', legal: '/aviso-legal/' };
+export const PAGE_PATHS = { about: '/sobre-el-proyecto/', news: '/novedades/', legal: '/aviso-legal/' };
 const PAGES = {
   es: PAGE_PATHS,
-  en: { about: '/en/about/' },
-  ca: { about: '/ca/sobre-el-projecte/' },
-  eu: { about: '/eu/proiektuari-buruz/' },
-  gl: { about: '/gl/sobre-o-proxecto/' },
+  en: { about: '/en/about/', news: '/en/news/' },
+  ca: { about: '/ca/sobre-el-projecte/', news: '/ca/novetats/' },
+  eu: { about: '/eu/proiektuari-buruz/', news: '/eu/berriak/' },
+  gl: { about: '/gl/sobre-o-proxecto/', news: '/gl/novidades/' },
 };
 
 // Páginas fijas de un idioma (para el sitemap y las páginas pregeneradas).

@@ -5,6 +5,7 @@ import { execFileSync } from 'node:child_process';
 import { simulationsIn, simTitle, simDescription, courseLabel, isPractical } from './src/data/simulations.js';
 import { guideIdFromFile, guideSummary, guideMisconceptions } from './src/guides/shared.js';
 import { collectionInfo } from './src/data/collections.js';
+import { newsIn } from './src/data/news.js';
 import { simPath, guidePath, guionPath, homePath, PAGE_PATHS, pagePaths, LANGS, GUIDE_LANGS, FICHA_LANGS, parsePath, translatedPath, absoluteUrl, STUDENT_DOC_DIRS, collectionPaths } from './src/paths.js';
 
 // Fecha de última modificación de cada página (<lastmod>), sacada del historial de git
@@ -37,6 +38,7 @@ function sourceFiles(path) {
     return ['src/data/simulations.js', 'src/views/lab.js', ...(guide && existsSync(guide) ? [guide] : [])];
   }
   if (courseId || topicId) return ['src/data/simulations.js', 'src/data/collections.js', 'src/views/collection.js'];
+  if (page === 'news') return ['src/data/news.js'];
   if (page) return [`src/views/${page}.js`];
   return ['src/data/simulations.js', 'src/views/catalog.js'];
 }
@@ -184,9 +186,49 @@ function llmsTxt() {
   };
 }
 
+// Canal RSS de las novedades en español (/novedades.xml), a partir de src/data/news.js.
+// Sirve para lectores de noticias y para que un boletín (Buttondown, Substack…)
+// recoja las entradas nuevas.
+function newsRss() {
+  return {
+    name: 'news-rss',
+    generateBundle() {
+      const x = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const news = newsIn('es');
+      const date = (d) => new Date(`${d}T09:00:00Z`).toUTCString();
+      const items = news
+        .map((n) => {
+          const url = absoluteUrl(n.link('es'));
+          return `    <item>
+      <title>${x(n.es.title)}</title>
+      <link>${x(url)}</link>
+      <guid isPermaLink="false">simulaciencia-${n.date}-${x(n.es.title)}</guid>
+      <pubDate>${date(n.date)}</pubDate>
+      <description>${x(n.es.text)}</description>
+    </item>`;
+        })
+        .join('\n');
+      const source = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Novedades de SimulaCiencia</title>
+    <link>${absoluteUrl(PAGE_PATHS.news)}</link>
+    <atom:link href="${absoluteUrl('/novedades.xml')}" rel="self" type="application/rss+xml"/>
+    <description>Simulaciones y prácticas nuevas de Física y Química, materiales para el aula y mejoras que se notan en clase.</description>
+    <language>es-es</language>
+    <lastBuildDate>${date(news[0].date)}</lastBuildDate>
+${items}
+  </channel>
+</rss>
+`;
+      this.emitFile({ type: 'asset', fileName: 'novedades.xml', source });
+    },
+  };
+}
+
 export default defineConfig({
   // base absoluto: las páginas viven en subcarpetas (/guias/densidad/) y la web
   // se sirve en la raíz de simulaciencia.es.
   base: '/',
-  plugins: [tailwindcss(), sitemap(), llmsTxt()],
+  plugins: [tailwindcss(), sitemap(), llmsTxt(), newsRss()],
 });

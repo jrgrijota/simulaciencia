@@ -21,6 +21,10 @@ export function siteHeaderMarkup({ current = null, extra = '' } = {}) {
           <span aria-hidden="true" translate="no" class="${extra ? 'max-[420px]:hidden ' : ''}font-display text-xl font-bold tracking-tight">Simula<span class="text-[#0369a1]">Ciencia</span></span>
         </a>
         <nav aria-label="${L('Principal', 'Main', 'Principal', 'Nagusia', 'Principal')}" class="flex items-center gap-1">
+          <a href="${pagePath('news', lang)}" data-route${current === 'news' ? ' aria-current="page"' : ''} class="${NAV_LINK}${current === 'news' ? ' text-[#0369a1]' : ''}">
+            <i data-lucide="newspaper" class="h-4 w-4 sm:hidden"></i>
+            <span class="sr-only sm:not-sr-only">${L('Novedades', 'What’s new', 'Novetats', 'Berriak', 'Novidades')}</span>
+          </a>
           <a href="${about}" data-route${current === 'about' ? ' aria-current="page"' : ''} class="${NAV_LINK}${current === 'about' ? ' text-[#0369a1]' : ''}">
             <i data-lucide="info" class="h-4 w-4 sm:hidden"></i>
             <span class="sr-only sm:not-sr-only">${L('Sobre el proyecto', 'About', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>

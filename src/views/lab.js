@@ -82,11 +82,12 @@ function createShareModal(sim) {
               type="text"
               readonly
               value="${shareUrl}"
-              class="min-w-0 flex-1 rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-1.5 text-xs text-[#1e293b] focus:outline-none"
+              class="h-9 min-w-0 flex-1 rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 text-xs text-[#1e293b] focus:border-[#0369a1] focus:outline-none"
             />
             <button
               data-copy="share-url"
-              class="copy-btn inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#075985]"
+              type="button"
+              class="copy-btn inline-flex h-9 min-w-[7.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md bg-[#0369a1] px-3 text-xs font-semibold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0369a1]"
             >
               <i data-lucide="copy" class="h-3.5 w-3.5"></i>
               <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>
@@ -98,19 +99,21 @@ function createShareModal(sim) {
         <div>
           <p class="text-sm font-semibold text-[#1e293b]">${L('Insertar en tu web o en Moodle', 'Embed in your website or Moodle', 'Insereix-la al teu web o a Moodle', 'Txertatu zure webgunean edo Moodlen', 'Inserir na túa web ou en Moodle')}</p>
           <p class="mt-0.5 text-xs text-[#64748b]">${L('Si tu plataforma permite añadir HTML, pega este código. La simulación aparecerá integrada en la página.', 'If your platform lets you add HTML, paste this code. The simulation will appear inside the page.', 'Si la teva plataforma permet afegir HTML, enganxa aquest codi. La simulació apareixerà integrada a la pàgina.', 'Zure plataformak HTMLa gehitzen uzten badu, itsatsi kode hau. Simulazioa orrian txertatuta agertuko da.', 'Se a túa plataforma permite engadir HTML, pega este código. A simulación aparecerá integrada na páxina.')}</p>
-          <div class="mt-2 flex gap-2">
+          <div class="mt-2 flex flex-col gap-2">
             <textarea
               id="share-embed"
               readonly
               rows="6"
-              class="min-w-0 flex-1 resize-none rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-1.5 font-mono text-xs text-[#1e293b] focus:outline-none"
+              wrap="off"
+              class="w-full resize-none rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 font-mono text-xs leading-relaxed text-[#1e293b] focus:border-[#0369a1] focus:outline-none"
             >${embedCode}</textarea>
             <button
               data-copy="share-embed"
-              class="copy-btn inline-flex shrink-0 items-start gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-[#075985]"
+              type="button"
+              class="copy-btn inline-flex h-9 min-w-[7.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md bg-[#0369a1] px-3 text-xs font-semibold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0369a1] self-end"
             >
-              <i data-lucide="copy" class="h-3.5 w-3.5 mt-0.5"></i>
-              <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>
+              <i data-lucide="copy" class="h-3.5 w-3.5"></i>
+              <span class="copy-label">${L('Copiar código', 'Copy code', 'Copia el codi', 'Kopiatu kodea', 'Copiar código')}</span>
             </button>
           </div>
         </div>

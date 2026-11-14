@@ -20,12 +20,12 @@ A simulación ten tres modos, «Lei de Ohm», «Serie» e «Paralelo», que se e
 
 | Modo | Que controla o docente | Que mostra |
 | --- | --- | --- |
-| Lei de Ohm | «Resistencia (R)» de 5 a 100 Ω, en pasos de 5 (empeza en 20 Ω). Os botóns «＋ Anotar medida» e o de borrar as medidas | Unha pila, un interruptor, un amperímetro en serie e un receptor cun voltímetro en paralelo. Cada aparello ten unha pantalla coa súa lectura. Debaixo, a gráfica intensidade–tensión e o recadro da lei de Ohm co cálculo, por exemplo «I = 6,00 V / 20 Ω = 0,300 A» |
-| Serie | Número de receptores (2 ou 3), «Resistencia R₁», «R₂» e «R₃» de 5 a 100 Ω (empezan en 10, 20 e 30 Ω) e os botóns «Receptores conectados» R₁, R₂ e R₃ | Os receptores un tras outro no cable de arriba. Xunto a cada un, a súa R, V, I e P. Debaixo, os diagramas de tensións (V) e de intensidades (A) |
+| Lei de Ohm | «Resistencia (R)» de 5 a 100 Ω, en pasos de 5 (empeza en 20 Ω). Os botóns «＋ Anotar medida» e «Borrar medidas» | Unha pila, un interruptor, un amperímetro en serie e un receptor cun voltímetro en paralelo. Cada aparello ten unha pantalla coa súa lectura. Debaixo, a «GRÁFICA INTENSIDADE – TENSIÓN» e o recadro «LEI DE OHM» co cálculo, por exemplo «I = 6,00 V / 20 Ω = 0,300 A» |
+| Serie | «Número de receptores» (2 ou 3), «Resistencia R₁», «R₂» e «R₃» de 5 a 100 Ω (empezan en 10, 20 e 30 Ω) e os botóns «Receptores conectados» R₁, R₂ e R₃ | Os receptores un tras outro no cable de arriba. Xunto a cada un, a súa R, V, I e P. Debaixo, os diagramas «TENSIÓNS (V)» e «INTENSIDADES (A)» |
 | Paralelo | Os mesmos controis ca en serie | Cada receptor na súa rama, entre o cable de arriba e o de abaixo, cos seus valores ao lado e os mesmos diagramas de barras |
-| Nos tres modos | «Tensión da pila» de 0 a 12 V, en pasos de 0,5 (empeza en 6,0 V). O interruptor. Tipo de receptor: lámpadas ou resistencias | As lámpadas brillan máis canta máis potencia teñen; as resistencias póñense ao vermello. Co circuíto aberto aparece un aviso de que non circula corrente (I = 0) |
+| Nos tres modos | «Tensión da pila» de 0 a 12 V, en pasos de 0,5 (empeza en 6,0 V). O interruptor. «Tipo de receptor»: «Lámpadas» ou «Resistencias» | As lámpadas brillan máis canta máis potencia teñen; as resistencias póñense ao vermello. Co circuíto aberto aparece o aviso «Circuíto aberto: non circula corrente (I = 0).» |
 
-O interruptor ábrese e péchase desde o panel ou premendo nel no circuíto. En serie e en paralelo, un receptor quítase e vólvese pór cos botóns «Receptores conectados» ou premendo nel no circuíto; no seu lugar quedan os dous bornes baleiros e un rótulo que indica que se quitou.
+O interruptor ábrese e péchase desde o panel ou premendo nel no circuíto. En serie e en paralelo, un receptor quítase e vólvese pór cos botóns «Receptores conectados» ou premendo nel no circuíto; no seu lugar quedan os dous bornes baleiros e o rótulo «lámpada quitada» ou «resistencia quitada».
 
 Catro elementos sosteñen a explicación:
 
@@ -34,7 +34,7 @@ Catro elementos sosteñen a explicación:
 - **A gráfica I–V.** No modo «Lei de Ohm» cada medida anotada é un punto. Cada resistencia ten a súa cor e a súa recta I = V / R; a do receptor actual vai descontinua e un círculo marca o punto no que está funcionando. A escala de intensidade axústase soa.
 - **Os diagramas de barras.** En serie e en paralelo hai unha barra por receptor e outra máis para a pila (tensións) ou o total (intensidades). Cando a última é a suma das demais, debúxase apilada cos anacos V₁, V₂, V₃ ou I₁, I₂, I₃. Arriba á dereita lémbrase a regra que se cumpre, por exemplo «V = V₁ + V₂ + V₃».
 
-O despregable «Medidas do circuíto» está aberto ao inicio. Dá a tensión, a intensidade total e a resistencia (a resistencia equivalente en serie e en paralelo), unha táboa «Receptores» con R, V, I e P de cada un e do total, e unha frase que resume o que pasa. No modo «Lei de Ohm» engade a táboa de medidas, con ata 12 filas e a columna V / I. O despregable de fórmulas reúne I = q / t, V = I · R e os seus despexes, P = V · I, as regras da serie e do paralelo e as unidades. Na cabeceira, a descrición resume as tres regras clave.
+O despregable «Medidas do circuíto» está aberto ao inicio. Dá a tensión, a intensidade total e a resistencia (a «R equivalente» en serie e en paralelo), unha táboa «Receptores» con R, V, I e P de cada un e do total, e unha frase que resume o que pasa. No modo «Lei de Ohm» engade a «Táboa de medidas», con ata 12 filas e a columna V / I. O despregable «Fórmulas esenciais» reúne I = q / t, V = I · R e os seus despexes, P = V · I, as regras da serie e do paralelo e as unidades. Na cabeceira, «Descrición e regras rápidas» resume as tres regras clave.
 
 ## Uso en cada curso
 

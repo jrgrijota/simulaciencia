@@ -22,7 +22,7 @@ The simulation has two modes, “Free values” and “Real materials”, chosen
 | --- | --- | --- |
 | Free values | Mass (10–200 kg), Volume (50–150 L) and Liquid density (0.50–13.60 kg/L, in steps of 0.01). Starting values: 50 kg, 100 L and 1.000 kg/L | The resulting block density (from 0.07 to 4.00 kg/L), the weight, the upthrust, the net force, the submerged volume and the system state |
 | Real materials | “Block material”: cork (0.24), wood (0.60), ice (0.917), plastic (0.95), aluminium (2.70), iron (7.87), lead (11.34) and gold (19.30 kg/L). “Liquid in the tank”: petrol (0.740), ethanol (0.789), oil (0.920), fresh water (1.000), seawater (1.025), glycerol (1.261) and mercury (13.534 kg/L) | The same, with textures for the material and the liquid. The volume is fixed at 100 L and the mass comes from m = ρ · V. It starts with wood in fresh water |
-| “Free-body diagram” button (in both modes) | Show or hide the right-hand panel | Arrows for weight (red), upthrust (blue) and net force, with lengths proportional to their values; with the block resting on the bottom, the normal force too (violet). A label “P > E”, “P < E”, “P ≈ E” or “P = E + N” and the “STEP BY STEP” calculation |
+| “Free-body diagram” button (in both modes) | Show or hide the right-hand panel | Arrows for weight (red), upthrust (blue) and net force, with lengths proportional to their values; with the block resting on the bottom, the normal force too (violet). A label “P > E”, “P < E”, “P = E” (at rest; “P ≈ E” while it oscillates) or “P = E + N” and the “STEP BY STEP” calculation |
 
 Three elements support the explanation:
 
@@ -47,7 +47,7 @@ In ESO 4 the simulation is used to present Archimedes' principle and calculate u
 **Teaching sequence (15–20 min).**
 
 1. Free values with the starting values: 50 kg, 100 L and 1.000 kg/L. Ask why the block stops halfway down. Read “Submerged vol.”: 50.0 L. Those 50 L of water have a mass of 50 kg and weigh 490 N, the same as the upthrust. State the principle.
-2. Turn on “Free-body diagram”. Point out P = 490.0 N and E = 490.0 N, with equal arrows and the label “P ≈ E”. Floating is a balance of forces, not an absence of weight.
+2. Turn on “Free-body diagram”. Point out P = 490.0 N and E = 490.0 N, with equal arrows and the label “P = E”. Floating is a balance of forces, not an absence of weight.
 3. Ask for a prediction and increase the mass to 80 kg. The block goes down until 80.0 L are submerged and E = P = 784 N. Open “Key formulas” and read Vsub/V = ρblock/ρliquid: 0.80 / 1.00 = 80 %.
 4. Increase the mass to 150 kg (ρ = 1.50 kg/L). The block sinks. With all its volume under the liquid, the upthrust reaches its maximum: 100 × 1.00 × 9.8 = 980 N, less than P = 1470 N. When it reaches the bottom, the diagram adds the normal force: N = 1470 − 980 = 490 N, and the label changes to “P = E + N”.
 5. Without touching the mass, take “Liquid density” to 2.00 kg/L. The block rises and floats with 75.0 L submerged: 75 × 2.00 × 9.8 = 1470 N. The upthrust depends on the liquid, not on the block.
@@ -93,7 +93,7 @@ The simulation mainly tackles the idea that floating depends on the weight or si
 | “If an object sinks, the water doesn't push it” | Every submerged object experiences upthrust, whether it floats or not | Real materials, iron in fresh water: the block sinks with E = 980 N against P = 7713 N |
 | “The deeper it is, the greater the upthrust” | Upthrust depends on the submerged volume, not on the depth | Free values with 150 kg and 100 L: while the fully submerged block goes down, “Upthrust (E)” stays at 980 N |
 | “A heavier object gets more upthrust” | With the same submerged volume and the same liquid, the upthrust is the same | Real materials in fresh water: aluminium, lead and gold all get E = 980 N |
-| “If it floats, the upthrust is greater than the weight” | For an object floating at rest, E = P | Starting values with “Free-body diagram”: P = E = 490.0 N and the label “P ≈ E” |
+| “If it floats, the upthrust is greater than the weight” | For an object floating at rest, E = P | Starting values with “Free-body diagram”: P = E = 490.0 N and the label “P = E” |
 | “An object floats or sinks by itself, whatever the liquid” | It depends on the density of the liquid | Real materials: plastic floats in fresh water (0.95 < 1.000) and sinks in oil (0.95 > 0.920). Iron floats in mercury |
 
 ## Simplifications worth knowing
@@ -128,7 +128,7 @@ The “Before you start” table collects five of the prior ideas from the misco
 | Section | Answer |
 | --- | --- |
 | Before you start | All false. a) It depends on density, not weight (activities 2 and 5). b) Every submerged body gets an upthrust (activities 3 and 5). c) The upthrust depends on the submerged volume, not the depth (activity 3). d) If it floats at rest, E = P (activity 1). e) It depends on the liquid (activities 4 and 6) |
-| Activity 1 | P = 490 N, E = 490 N, 50 L submerged, “P ≈ E”. It is still because the resultant force is zero. 50 L of water have a mass of 50 kg and weigh 490 N, the same as the upthrust. Archimedes' principle: a body immersed in a fluid gets a vertical upward thrust equal to the weight of the fluid it displaces |
+| Activity 1 | P = 490 N, E = 490 N, 50 L submerged, “P = E”. It is still because the resultant force is zero. 50 L of water have a mass of 50 kg and weigh 490 N, the same as the upthrust. Archimedes' principle: a body immersed in a fluid gets a vertical upward thrust equal to the weight of the fluid it displaces |
 | Activity 2 | 50 kg: 0.50 kg/L, 50 L, 490 N, floats. 80 kg: 0.80 kg/L, 80 L, 784 N, floats. 100 kg: 1.00 kg/L, 100 L, 980 N, neutral equilibrium. 150 kg: 1.50 kg/L, 100 L, 980 N, sinks. The submerged fraction is ρblock / ρliquid. With 150 kg the block is already completely under water and the maximum upthrust is 980 N; on the bottom the normal force appears, N = 1470 − 980 = 490 N |
 | Activity 3 | The upthrust stays at 980 N while the block goes down covered and on the bottom. It depends on the submerged volume and the liquid, not on the depth |
 | Activity 4 | 1.00 kg/L: sinks, 100 L, 980 N. 1.50 kg/L: neutral equilibrium, 100 L, 1470 N. 2.00 kg/L: floats, 75 L, 1470 N. 3.00 kg/L: floats, 50 L, 1470 N. The denser the liquid, the more each displaced litre weighs, so less volume is needed to balance the weight |

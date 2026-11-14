@@ -22,7 +22,7 @@ La simulación tiene dos modos, «Valores libres» y «Materiales reales», que 
 | --- | --- | --- |
 | Valores libres | Masa (10–200 kg), Volumen (50–150 L) y Densidad del líquido (0,50–13,60 kg/L, en pasos de 0,01). Valores iniciales: 50 kg, 100 L y 1,000 kg/L | La densidad del bloque que resulta (de 0,07 a 4,00 kg/L), el peso, el empuje, la fuerza neta, el volumen sumergido y el estado del sistema |
 | Materiales reales | «Material del bloque»: corcho (0,24), madera (0,60), hielo (0,917), plástico (0,95), aluminio (2,70), hierro (7,87), plomo (11,34) y oro (19,30 kg/L). «Líquido del depósito»: gasolina (0,740), etanol (0,789), aceite (0,920), agua dulce (1,000), agua de mar (1,025), glicerina (1,261) y mercurio (13,534 kg/L) | Lo mismo, con texturas del material y del líquido. El volumen queda fijo en 100 L y la masa sale de m = ρ · V. Empieza con madera en agua dulce |
-| Botón «Diagrama de cuerpo libre» (en los dos modos) | Mostrar u ocultar el panel derecho | Flechas de peso (roja), empuje (azul) y fuerza neta, con longitud proporcional al valor; con el bloque apoyado en el fondo, también la normal (violeta). Rótulo «P > E», «P < E», «P ≈ E» o «P = E + N» y el cálculo «PASO A PASO» |
+| Botón «Diagrama de cuerpo libre» (en los dos modos) | Mostrar u ocultar el panel derecho | Flechas de peso (roja), empuje (azul) y fuerza neta, con longitud proporcional al valor; con el bloque apoyado en el fondo, también la normal (violeta). Rótulo «P > E», «P < E», «P = E» (en reposo; «P ≈ E» mientras oscila) o «P = E + N» y el cálculo «PASO A PASO» |
 
 Tres elementos sostienen la explicación:
 
@@ -47,7 +47,7 @@ En 4.º ESO la simulación sirve para presentar el principio de Arquímedes y ca
 **Secuencia de explicación (15–20 min).**
 
 1. Valores libres con los valores iniciales: 50 kg, 100 L y 1,000 kg/L. Preguntar por qué el bloque se detiene a media altura. Leer «Vol. sumergido»: 50,0 L. Esos 50 L de agua tienen 50 kg y pesan 490 N, igual que el empuje. Enunciar el principio.
-2. Activar «Diagrama de cuerpo libre». Señalar P = 490,0 N y E = 490,0 N, con flechas iguales y el rótulo «P ≈ E». Flotar es equilibrio de fuerzas, no ausencia de peso.
+2. Activar «Diagrama de cuerpo libre». Señalar P = 490,0 N y E = 490,0 N, con flechas iguales y el rótulo «P = E». Flotar es equilibrio de fuerzas, no ausencia de peso.
 3. Pedir una predicción y subir la masa a 80 kg. El bloque baja hasta 80,0 L sumergidos y E = P = 784 N. Abrir «Fórmulas esenciales» y leer Vsub/V = ρbloque/ρlíquido: 0,80 / 1,00 = 80 %.
 4. Subir la masa a 150 kg (ρ = 1,50 kg/L). El bloque se hunde. Con todo el volumen dentro, el empuje alcanza su máximo: 100 × 1,00 × 9,8 = 980 N, menor que P = 1470 N. Al llegar al fondo, el diagrama añade la normal: N = 1470 − 980 = 490 N, y el rótulo pasa a «P = E + N».
 5. Sin tocar la masa, llevar «Densidad del líquido» a 2,00 kg/L. El bloque sube y flota con 75,0 L sumergidos: 75 × 2,00 × 9,8 = 1470 N. El empuje depende del líquido, no del bloque.
@@ -93,7 +93,7 @@ La simulación ataca sobre todo la idea de que flotar depende del peso o del tam
 | «Si un objeto se hunde, el agua no lo empuja» | Todo cuerpo sumergido recibe empuje, flote o no | Materiales reales, hierro en agua dulce: el bloque se hunde con E = 980 N frente a P = 7713 N |
 | «Cuanto más hondo, más empuje» | El empuje depende del volumen sumergido, no de la profundidad | Valores libres con 150 kg y 100 L: mientras el bloque baja totalmente sumergido, «Empuje (E)» se mantiene en 980 N |
 | «Un cuerpo más pesado recibe más empuje» | Con el mismo volumen sumergido y el mismo líquido, el empuje es el mismo | Materiales reales en agua dulce: aluminio, plomo y oro reciben los tres E = 980 N |
-| «Si flota, el empuje es mayor que el peso» | En un cuerpo que flota en reposo, E = P | Valores iniciales con «Diagrama de cuerpo libre»: P = E = 490,0 N y rótulo «P ≈ E» |
+| «Si flota, el empuje es mayor que el peso» | En un cuerpo que flota en reposo, E = P | Valores iniciales con «Diagrama de cuerpo libre»: P = E = 490,0 N y rótulo «P = E» |
 | «Un objeto flota o se hunde por sí mismo, sea cual sea el líquido» | Depende de la densidad del líquido | Materiales reales: el plástico flota en agua dulce (0,95 < 1,000) y se hunde en aceite (0,95 > 0,920). El hierro flota en mercurio |
 
 ## Simplificaciones que conviene conocer
@@ -127,7 +127,7 @@ La tabla de «Antes de empezar» recoge cinco de las ideas previas de la tabla d
 | Apartado | Solución |
 | --- | --- |
 | Antes de empezar | Todas falsas. a) Depende de la densidad, no del peso (actividades 2 y 5). b) Todo cuerpo sumergido recibe empuje (actividades 3 y 5). c) El empuje depende del volumen sumergido, no de la profundidad (actividad 3). d) Si flota en reposo, E = P (actividad 1). e) Depende del líquido (actividades 4 y 6) |
-| Actividad 1 | P = 490 N, E = 490 N, 50 L sumergidos, «P ≈ E». Está quieto porque la resultante es nula. 50 L de agua tienen 50 kg y pesan 490 N, igual que el empuje. Principio de Arquímedes: todo cuerpo sumergido en un fluido recibe un empuje vertical hacia arriba igual al peso del fluido que desaloja |
+| Actividad 1 | P = 490 N, E = 490 N, 50 L sumergidos, «P = E». Está quieto porque la resultante es nula. 50 L de agua tienen 50 kg y pesan 490 N, igual que el empuje. Principio de Arquímedes: todo cuerpo sumergido en un fluido recibe un empuje vertical hacia arriba igual al peso del fluido que desaloja |
 | Actividad 2 | 50 kg: 0,50 kg/L, 50 L, 490 N, flota. 80 kg: 0,80 kg/L, 80 L, 784 N, flota. 100 kg: 1,00 kg/L, 100 L, 980 N, equilibrio neutro. 150 kg: 1,50 kg/L, 100 L, 980 N, se hunde. La fracción sumergida es ρbloque / ρlíquido. Con 150 kg el bloque ya está entero dentro y el empuje máximo es 980 N; en el fondo aparece la normal, N = 1470 − 980 = 490 N |
 | Actividad 3 | El empuje se mantiene en 980 N mientras baja cubierto y en el fondo. Depende del volumen sumergido y del líquido, no de la profundidad |
 | Actividad 4 | 1,00 kg/L: se hunde, 100 L, 980 N. 1,50 kg/L: equilibrio neutro, 100 L, 1470 N. 2,00 kg/L: flota, 75 L, 1470 N. 3,00 kg/L: flota, 50 L, 1470 N. Cuanto más denso es el líquido, más pesa cada litro desalojado y basta menos volumen para igualar el peso |

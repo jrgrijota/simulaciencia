@@ -22,7 +22,7 @@ A simulación ten dous modos, «Valores libres» e «Materiais reais», que se e
 | --- | --- | --- |
 | Valores libres | Masa (10–200 kg), Volume (50–150 L) e Densidade do líquido (0,50–13,60 kg/L, en pasos de 0,01). Valores iniciais: 50 kg, 100 L e 1,000 kg/L | A densidade do bloque que resulta (de 0,07 a 4,00 kg/L), o peso, o empuxe, a forza neta, o volume somerxido e o estado do sistema |
 | Materiais reais | «Material do bloque»: cortiza (0,24), madeira (0,60), xeo (0,917), plástico (0,95), aluminio (2,70), ferro (7,87), chumbo (11,34) e ouro (19,30 kg/L). «Líquido do depósito»: gasolina (0,740), etanol (0,789), aceite (0,920), auga doce (1,000), auga de mar (1,025), glicerina (1,261) e mercurio (13,534 kg/L) | O mesmo, con texturas do material e do líquido. O volume queda fixo en 100 L e a masa sae de m = ρ · V. Empeza con madeira en auga doce |
-| Botón «Diagrama de corpo libre» (nos dous modos) | Amosar ou ocultar o panel dereito | Frechas de peso (vermella), empuxe (azul) e forza neta, con lonxitude proporcional ao valor; co bloque apoiado no fondo, tamén a normal (violeta). Rótulo «P > E», «P < E», «P ≈ E» ou «P = E + N» e o cálculo «PASO A PASO» |
+| Botón «Diagrama de corpo libre» (nos dous modos) | Amosar ou ocultar o panel dereito | Frechas de peso (vermella), empuxe (azul) e forza neta, con lonxitude proporcional ao valor; co bloque apoiado no fondo, tamén a normal (violeta). Rótulo «P > E», «P < E», «P = E» (en repouso; «P ≈ E» mentres oscila) ou «P = E + N» e o cálculo «PASO A PASO» |
 
 Tres elementos sosteñen a explicación:
 
@@ -53,7 +53,7 @@ O currículo galego non nomea o principio de Arquímedes nin o de Pascal; son os
 **Secuencia de explicación (15–20 min).**
 
 1. Valores libres cos valores iniciais: 50 kg, 100 L e 1,000 kg/L. Preguntar por que o bloque se detén a media altura. Ler «Vol. somerxido»: 50,0 L. Eses 50 L de auga teñen 50 kg e pesan 490 N, igual ca o empuxe. Enunciar o principio.
-2. Activar «Diagrama de corpo libre». Sinalar P = 490,0 N e E = 490,0 N, con frechas iguais e o rótulo «P ≈ E». Flotar é equilibrio de forzas, non ausencia de peso.
+2. Activar «Diagrama de corpo libre». Sinalar P = 490,0 N e E = 490,0 N, con frechas iguais e o rótulo «P = E». Flotar é equilibrio de forzas, non ausencia de peso.
 3. Pedir unha predición e subir a masa a 80 kg. O bloque baixa ata 80,0 L somerxidos e E = P = 784 N. Abrir «Fórmulas esenciais» e ler Vsub/V = ρbloque/ρlíquido: 0,80 / 1,00 = 80 %.
 4. Subir a masa a 150 kg (ρ = 1,50 kg/L). O bloque afúndese. Con todo o volume dentro, o empuxe alcanza o seu máximo: 100 × 1,00 × 9,8 = 980 N, menor ca P = 1470 N. Ao chegar ao fondo, o diagrama engade a normal: N = 1470 − 980 = 490 N, e o rótulo pasa a «P = E + N».
 5. Sen tocar a masa, levar «Densidade do líquido» a 2,00 kg/L. O bloque sobe e flota con 75,0 L somerxidos: 75 × 2,00 × 9,8 = 1470 N. O empuxe depende do líquido, non do bloque.
@@ -97,7 +97,7 @@ A simulación ataca sobre todo a idea de que flotar depende do peso ou do tamañ
 | «Se un obxecto se afunde, a auga non o empurra» | Todo corpo somerxido recibe empuxe, flote ou non | Materiais reais, ferro en auga doce: o bloque afúndese con E = 980 N fronte a P = 7713 N |
 | «Canto máis fondo, máis empuxe» | O empuxe depende do volume somerxido, non da profundidade | Valores libres con 150 kg e 100 L: mentres o bloque baixa totalmente somerxido, «Empuxe (E)» mantense en 980 N |
 | «Un corpo máis pesado recibe máis empuxe» | Co mesmo volume somerxido e o mesmo líquido, o empuxe é o mesmo | Materiais reais en auga doce: aluminio, chumbo e ouro reciben os tres E = 980 N |
-| «Se flota, o empuxe é maior ca o peso» | Nun corpo que flota en repouso, E = P | Valores iniciais con «Diagrama de corpo libre»: P = E = 490,0 N e rótulo «P ≈ E» |
+| «Se flota, o empuxe é maior ca o peso» | Nun corpo que flota en repouso, E = P | Valores iniciais con «Diagrama de corpo libre»: P = E = 490,0 N e rótulo «P = E» |
 | «Un obxecto flota ou se afunde por si mesmo, sexa cal sexa o líquido» | Depende da densidade do líquido | Materiais reais: o plástico flota en auga doce (0,95 < 1,000) e afúndese en aceite (0,95 > 0,920). O ferro flota en mercurio |
 
 ## Simplificacións que convén coñecer
@@ -131,7 +131,7 @@ A táboa de «Antes de comezar» recolle cinco das ideas previas da táboa de co
 | Apartado | Solución |
 | --- | --- |
 | Antes de comezar | Todas falsas. a) Depende da densidade, non do peso (actividades 2 e 5). b) Todo corpo somerxido recibe empuxe (actividades 3 e 5). c) O empuxe depende do volume somerxido, non da profundidade (actividade 3). d) Se flota en repouso, E = P (actividade 1). e) Depende do líquido (actividades 4 e 6) |
-| Actividade 1 | P = 490 N, E = 490 N, 50 L somerxidos, «P ≈ E». Está quieto porque a resultante é nula. 50 L de auga teñen 50 kg e pesan 490 N, igual ca o empuxe. Principio de Arquímedes: todo corpo somerxido nun fluído recibe un empuxe vertical cara arriba igual ao peso do fluído que desaloxa |
+| Actividade 1 | P = 490 N, E = 490 N, 50 L somerxidos, «P = E». Está quieto porque a resultante é nula. 50 L de auga teñen 50 kg e pesan 490 N, igual ca o empuxe. Principio de Arquímedes: todo corpo somerxido nun fluído recibe un empuxe vertical cara arriba igual ao peso do fluído que desaloxa |
 | Actividade 2 | 50 kg: 0,50 kg/L, 50 L, 490 N, flota. 80 kg: 0,80 kg/L, 80 L, 784 N, flota. 100 kg: 1,00 kg/L, 100 L, 980 N, equilibrio neutro. 150 kg: 1,50 kg/L, 100 L, 980 N, afúndese. A fracción somerxida é ρbloque / ρlíquido. Con 150 kg o bloque xa está enteiro dentro e o empuxe máximo é 980 N; no fondo aparece a normal, N = 1470 − 980 = 490 N |
 | Actividade 3 | O empuxe mantense en 980 N mentres baixa cuberto e no fondo. Depende do volume somerxido e do líquido, non da profundidade |
 | Actividade 4 | 1,00 kg/L: afúndese, 100 L, 980 N. 1,50 kg/L: equilibrio neutro, 100 L, 1470 N. 2,00 kg/L: flota, 75 L, 1470 N. 3,00 kg/L: flota, 50 L, 1470 N. Canto máis denso é o líquido, máis pesa cada litro desaloxado e abonda menos volume para igualar o peso |

@@ -23,7 +23,7 @@ The simulation has three modes, “Photons”, “Collision” and “Ionised Ga
 | Photons, “White light” | “Single photon” (fired by clicking the source on the canvas) or “Continuous stream”, with “Photon flux” from “Slow” to “Maximum” | Photons of random wavelength between 380 and 780 nm. The atom only absorbs those that match one of its visible lines |
 | Photons, “Monochromatic” | “Wavelength” from 380 to 780 nm, in steps of 2 nm; it starts at 550 nm | If the photon matches a transition, the label shows “ABSORBS 656 nm” and the electron moves up an orbit. If not, the photon passes straight by |
 | Collision | “Electron energy” from 0.5 to 6.0 eV, in steps of 0.1; it starts at 3.0 eV. “Single shot” (click the gun) or “Continuous beam” with “Firing rate” | The label “EXCITATION” if the electron has enough energy or “Elastic collision — not enough energy” if not. A panel shows which levels can be reached with that energy |
-| Ionised Gas | “Tube voltage” from 1 to 8 eV, in steps of 0.2; it starts at 5.0 eV. “Gas density” from 4 to 20 atoms; it starts at 10 | A tube with a cathode and an anode. The electrons excite atoms, which glow and emit. Counters for free electrons, excited atoms and photons emitted, and the number of photons above each line |
+| Ionised Gas | “Tube voltage” from 1 to 8 eV, in steps of 0.2; it starts at 5.0 eV. “Gas density” from “Very dilute” to “Very dense” (4 to 20 atoms); it starts at “Medium” (10 atoms) | A tube with a cathode and an anode. The electrons excite atoms, which glow and emit. Counters for free electrons, excited atoms and photons emitted, and the number of photons above each line |
 
 Four elements support the explanation:
 

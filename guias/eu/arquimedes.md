@@ -22,7 +22,7 @@ Simulazioak bi modu ditu, «Balio libreak» eta «Material errealak», ezkerreko
 | --- | --- | --- |
 | Balio libreak | Masa (10-200 kg), Bolumena (50-150 L) eta Likidoaren dentsitatea (0,50-13,60 kg/L, 0,01eko urratsetan). Hasierako balioak: 50 kg, 100 L eta 1,000 kg/L | Ateratzen den blokearen dentsitatea (0,07tik 4,00 kg/L-ra), pisua, bultzada, indar garbia, bolumen murgildua eta sistemaren egoera |
 | Material errealak | «Blokearen materiala»: kortxoa (0,24), egurra (0,60), izotza (0,917), plastikoa (0,95), aluminioa (2,70), burdina (7,87), beruna (11,34) eta urrea (19,30 kg/L). «Deposituko likidoa»: gasolina (0,740), etanola (0,789), olioa (0,920), ur geza (1,000), itsasoko ura (1,025), glizerina (1,261) eta merkurioa (13,534 kg/L) | Gauza bera, materialaren eta likidoaren testurekin. Bolumena 100 L-n finko geratzen da, eta masa m = ρ · V formulatik ateratzen da. Egurrarekin eta ur gezarekin hasten da |
-| «Gorputz askearen diagrama» botoia (bi moduetan) | Eskuineko panela erakutsi edo ezkutatu | Pisuaren (gorria), bultzadaren (urdina) eta indar garbiaren geziak, balioarekiko proportzionala den luzerarekin; blokea hondoan bermatuta dagoenean, normala ere bai (morea). «P > E», «P < E», «P ≈ E» edo «P = E + N» errotulua eta «URRATSEZ URRATS» kalkulua |
+| «Gorputz askearen diagrama» botoia (bi moduetan) | Eskuineko panela erakutsi edo ezkutatu | Pisuaren (gorria), bultzadaren (urdina) eta indar garbiaren geziak, balioarekiko proportzionala den luzerarekin; blokea hondoan bermatuta dagoenean, normala ere bai (morea). «P > E», «P < E», «P = E» (geldi dagoenean; «P ≈ E» oszilatzen ari den bitartean) edo «P = E + N» errotulua eta «URRATSEZ URRATS» kalkulua |
 
 Hiru elementuk eusten diote azalpenari:
 
@@ -51,7 +51,7 @@ Curriculumak ez ditu Arkimedesen eta Pascalen printzipioak izenez aipatzen; flui
 **Azalpen-sekuentzia (15-20 min).**
 
 1. Balio libreak, hasierako balioekin: 50 kg, 100 L eta 1,000 kg/L. Galdetu zergatik gelditzen den blokea erdiko altueran. Irakurri «Bol. murgildua»: 50,0 L. 50 L ur horiek 50 kg dituzte eta 490 N pisatzen dute, bultzadaren adina. Enuntziatu printzipioa.
-2. Aktibatu «Gorputz askearen diagrama». Seinalatu P = 490,0 N eta E = 490,0 N, gezi berdinekin eta «P ≈ E» errotuluarekin. Flotatzea indarren oreka da, ez pisurik eza.
+2. Aktibatu «Gorputz askearen diagrama». Seinalatu P = 490,0 N eta E = 490,0 N, gezi berdinekin eta «P = E» errotuluarekin. Flotatzea indarren oreka da, ez pisurik eza.
 3. Eskatu aurreikuspen bat eta igo masa 80 kg-ra. Blokea 80,0 L murgilduraino jaisten da, eta E = P = 784 N. Ireki «Funtsezko formulak» eta irakurri Vsub/V = ρblokea/ρlikidoa: 0,80 / 1,00 = % 80.
 4. Igo masa 150 kg-ra (ρ = 1,50 kg/L). Blokea hondoratu egiten da. Bolumen osoa barruan dagoela, bultzadak bere maximoa hartzen du: 100 × 1,00 × 9,8 = 980 N, P = 1470 N baino txikiagoa. Hondora iristean, diagramak normala gehitzen du: N = 1470 − 980 = 490 N, eta errotulua «P = E + N» bihurtzen da.
 5. Masa ukitu gabe, eraman «Likidoaren dentsitatea» 2,00 kg/L-ra. Blokea igo egiten da eta 75,0 L murgildurekin flotatzen du: 75 × 2,00 × 9,8 = 1470 N. Bultzada likidoaren mende dago, ez blokearen mende.
@@ -99,7 +99,7 @@ Simulazioak batez ere flotatzea objektuaren pisuaren edo tamainaren mende dagoel
 | «Objektu bat hondoratzen bada, urak ez du bultzatzen» | Murgildutako gorputz orok jasotzen du bultzada, flotatu ala ez | Material errealak, burdina ur gezan: blokea hondoratzen da, E = 980 N eta P = 7713 N |
 | «Zenbat eta sakonago, orduan eta bultzada handiagoa» | Bultzada bolumen murgilduaren mende dago, ez sakoneraren mende | Balio libreak, 150 kg eta 100 L: blokea erabat murgilduta jaisten den bitartean, «Bultzada (E)» 980 N-n mantentzen da |
 | «Gorputz astunago batek bultzada handiagoa jasotzen du» | Bolumen murgildu berarekin eta likido berean, bultzada bera da | Material errealak ur gezan: aluminioak, berunak eta urreak E = 980 N jasotzen dute hirurek |
-| «Flotatzen badu, bultzada pisua baino handiagoa da» | Atsedenean flotatzen duen gorputz batean, E = P | Hasierako balioak «Gorputz askearen diagrama» aukerarekin: P = E = 490,0 N eta «P ≈ E» errotulua |
+| «Flotatzen badu, bultzada pisua baino handiagoa da» | Atsedenean flotatzen duen gorputz batean, E = P | Hasierako balioak «Gorputz askearen diagrama» aukerarekin: P = E = 490,0 N eta «P = E» errotulua |
 | «Objektu batek berez flotatzen du edo hondoratzen da, likidoa edozein dela ere» | Likidoaren dentsitatearen mende dago | Material errealak: plastikoak ur gezan flotatzen du (0,95 < 1,000) eta olioan hondoratzen da (0,95 > 0,920). Burdinak merkurioan flotatzen du |
 
 ## Ezagutzea komeni diren sinplifikazioak
@@ -133,7 +133,7 @@ Simulazioak pisuaren eta bultzadaren arteko alderaketa lehenesten du, eta horret
 | Atala | Soluzioa |
 | --- | --- |
 | Hasi aurretik | Denak gezurrak. a) Dentsitatearen mende dago, ez pisuaren mende (2. eta 5. jarduerak). b) Murgildutako gorputz orok jasotzen du bultzada (3. eta 5. jarduerak). c) Bultzada bolumen murgilduaren mende dago, ez sakoneraren mende (3. jarduera). d) Atsedenean flotatzen badu, E = P (1. jarduera). e) Likidoaren mende dago (4. eta 6. jarduerak) |
-| 1. jarduera | P = 490 N, E = 490 N, 50 L murgilduta, «P ≈ E». Geldi dago erresultantea nulua delako. 50 L urek 50 kg dituzte eta 490 N pisatzen dute, bultzadaren adina. Arkimedesen printzipioa: fluido batean murgildutako gorputz orok gorako bultzada bertikal bat jasotzen du, desplazatzen duen fluidoaren pisuaren berdina |
+| 1. jarduera | P = 490 N, E = 490 N, 50 L murgilduta, «P = E». Geldi dago erresultantea nulua delako. 50 L urek 50 kg dituzte eta 490 N pisatzen dute, bultzadaren adina. Arkimedesen printzipioa: fluido batean murgildutako gorputz orok gorako bultzada bertikal bat jasotzen du, desplazatzen duen fluidoaren pisuaren berdina |
 | 2. jarduera | 50 kg: 0,50 kg/L, 50 L, 490 N, flotatzen du. 80 kg: 0,80 kg/L, 80 L, 784 N, flotatzen du. 100 kg: 1,00 kg/L, 100 L, 980 N, oreka neutroa. 150 kg: 1,50 kg/L, 100 L, 980 N, hondoratzen da. Zati murgildua ρblokea / ρlikidoa da. 150 kg-rekin, blokea osorik dago barruan, eta bultzada maximoa 980 N da; hondoan normala agertzen da, N = 1470 − 980 = 490 N |
 | 3. jarduera | Bultzada 980 N-n mantentzen da estalita jaisten den bitartean eta hondoan. Bolumen murgilduaren eta likidoaren mende dago, ez sakoneraren mende |
 | 4. jarduera | 1,00 kg/L: hondoratzen da, 100 L, 980 N. 1,50 kg/L: oreka neutroa, 100 L, 1470 N. 2,00 kg/L: flotatzen du, 75 L, 1470 N. 3,00 kg/L: flotatzen du, 50 L, 1470 N. Zenbat eta dentsoagoa izan likidoa, orduan eta gehiago pisatzen du desplazatutako litro bakoitzak, eta bolumen txikiagoa nahikoa da pisua berdintzeko |

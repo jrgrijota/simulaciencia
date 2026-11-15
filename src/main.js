@@ -28,6 +28,9 @@ import {
   FlaskConical,
   ClipboardList,
   MonitorPlay,
+  LayoutGrid,
+  GraduationCap,
+  ArrowRight,
 } from 'lucide';
 
 import { getRoute, onRouteChange, navigateTo } from './router.js';
@@ -47,7 +50,7 @@ import { trackPageview } from './analytics.js';
 import { homePath, coursePath, topicPath } from './paths.js';
 
 const app = document.getElementById('app');
-const ICONS = { Newspaper, Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal, FlaskConical, ClipboardList, MonitorPlay };
+const ICONS = { Newspaper, Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal, FlaskConical, ClipboardList, MonitorPlay, LayoutGrid, GraduationCap, ArrowRight };
 
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };

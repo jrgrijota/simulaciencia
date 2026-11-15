@@ -1,56 +1,171 @@
-// Portada: presentación, catálogo con
-// buscador y filtros (tipo, tema y curso) y «Pensado para el aula».
-import { simulationsIn, simKind, COURSES, TOPICS, KINDS } from '../data/simulations.js';
+// Portada: título, buscador, tarjetas por tema y por curso (cada una lleva a su
+// página, /temas/… o /cursos/…, y enlaza ya sus simulaciones) y «Pensado para el
+// aula». El catálogo completo, con todas las tarjetas, sigue en la página: se
+// enseña al buscar o con «Ver las 15 juntas» (?todas en la dirección).
+import { simulationsIn, COURSES, TOPICS, courseLabel, simTitle, isPractical } from '../data/simulations.js';
+import { topicSims, courseSims, topicPath, coursePath, simPath } from '../paths.js';
 import { cardMarkup } from '../components/card.js';
+import { thumbMarkup } from '../components/thumbs.js';
 import { footerMarkup } from '../components/footer.js';
 import { siteHeaderMarkup } from '../components/site-header.js';
 import { saveCatalogPlace, takeCatalogPlace } from '../catalog-place.js';
 import { getLang, L } from '../i18n.js';
 
-const FILTER_BASE =
-  'filter-btn inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3.5 py-1.5 text-sm font-bold transition-colors';
-const FILTER_ON = 'border-[#0369a1] bg-[#0369a1] text-white';
-const FILTER_OFF = 'border-[#cbd5e1] bg-white text-[#334155] hover:border-[#0369a1] hover:text-[#0369a1]';
+const BUTTON =
+  'inline-flex min-h-11 w-full items-center justify-center gap-1.5 rounded-lg bg-[#0369a1] px-3 py-2 text-sm font-bold text-white transition-colors hover:bg-[#075985]';
+const LIST_LINK = 'flex items-center gap-2 rounded-md py-1 text-[0.95rem] font-bold text-[#1e293b] hover:text-[#0369a1]';
+const KICKER = 'text-xs font-bold uppercase tracking-wide text-[#0369a1]';
+const CARD = 'flex flex-col overflow-hidden rounded-xl border border-[#e2e8f0] bg-white shadow-sm';
+const TEXT_LINK = 'inline-flex min-h-11 items-center gap-1 rounded-md px-1 text-sm font-bold text-[#0369a1] underline-offset-4 hover:underline';
 
+// «4 simulaciones · 1 práctica» (las prácticas, por ahora, solo en español).
+function countText(sims) {
+  const n = sims.filter((s) => !isPractical(s)).length;
+  const p = sims.length - n;
+  const a = L(
+    `${n} ${n === 1 ? 'simulación' : 'simulaciones'}`,
+    `${n} ${n === 1 ? 'simulation' : 'simulations'}`,
+    `${n} ${n === 1 ? 'simulació' : 'simulacions'}`,
+    `${n} simulazio`,
+    `${n} ${n === 1 ? 'simulación' : 'simulacións'}`,
+  );
+  return p ? `${a} · ${p} ${p === 1 ? 'práctica' : 'prácticas'}` : a;
+}
 
-const simsWord = (n) => L(`${n} simulaciones`, `${n} simulations`, `${n} simulacions`, `${n} simulazio`, `${n} simulacións`);
+// Cursos que abarca un tema: «2.º ESO – 4.º ESO».
+function courseRange(sims, lang) {
+  const cs = COURSES.filter((c) => sims.some((s) => s.courses.includes(c.id)));
+  if (!cs.length) return '';
+  const first = courseLabel(cs[0].id, lang);
+  return cs.length > 1 ? `${first} – ${courseLabel(cs[cs.length - 1].id, lang)}` : first;
+}
+
+// Mosaico con las miniaturas de las simulaciones del tema (de 1 a 4).
+function mosaic(sims) {
+  const ids = sims.map((s) => s.id).slice(0, 4);
+  const tile = (id, extra = '') => `<div class="paper flex items-center overflow-hidden ${extra}">${thumbMarkup(id)}</div>`;
+  if (ids.length === 1) return `<div class="paper h-full">${thumbMarkup(ids[0])}</div>`;
+  if (ids.length === 2) return `<div class="grid h-full grid-cols-2 gap-px bg-[#e2e8f0]">${ids.map((id) => tile(id)).join('')}</div>`;
+  if (ids.length === 3)
+    return `<div class="grid h-full grid-cols-3 grid-rows-2 gap-px bg-[#e2e8f0]">${tile(ids[0], 'col-span-2 row-span-2')}${tile(ids[1])}${tile(ids[2])}</div>`;
+  return `<div class="grid h-full grid-cols-2 grid-rows-2 gap-px bg-[#e2e8f0]">${ids.map((id) => tile(id)).join('')}</div>`;
+}
+
+// Tarjeta de un tema: mosaico, recuento, nombre, cursos, sus simulaciones (cada una
+// enlazada) y el botón a la página del tema.
+function topicCard(t, lang) {
+  const sims = topicSims(t.id, lang);
+  const href = topicPath(t.id, lang);
+  const label = t.label[lang] ?? t.label.es;
+  const items = sims
+    .map((s) => {
+      const p = isPractical(s);
+      return `
+        <li><a href="${simPath(s.id, lang)}" data-route class="${LIST_LINK} group">
+          <i data-lucide="${p ? 'flask-conical' : 'play'}" class="h-4 w-4 shrink-0 ${p ? 'text-[#7c2d4f]' : 'text-[#0369a1]'}"></i>
+          <span class="underline-offset-4 group-hover:underline">${simTitle(s, lang)}${p ? '<span class="sr-only"> (práctica de laboratorio)</span>' : ''}</span>
+        </a></li>`;
+    })
+    .join('');
+  return `
+  <article class="${CARD}" data-place="tema-${t.id}">
+    <div class="aspect-[2/1] border-b border-[#e2e8f0] sm:aspect-[16/9]">${mosaic(sims)}</div>
+    <div class="flex flex-1 flex-col p-4 sm:p-5">
+      <p class="${KICKER}">${countText(sims)}</p>
+      <h3 class="mt-2 text-lg font-bold text-pretty text-[#0f172a] sm:text-xl">
+        <a href="${href}" data-route class="rounded-sm underline-offset-4 hover:text-[#0369a1] hover:underline">${label}</a>
+      </h3>
+      <p class="mt-1 text-sm font-bold text-[#475569]"><span class="sr-only">${L('Cursos:', 'Years:', 'Cursos:', 'Mailak:', 'Cursos:')} </span>${courseRange(sims, lang)}</p>
+      <ul class="mt-3 grid gap-0.5 border-t border-[#e2e8f0] pt-3">${items}
+      </ul>
+      <div class="mt-auto pt-4">
+        <a href="${href}" data-route class="${BUTTON}" aria-label="${L('Ver el tema', 'View topic', 'Veure el tema', 'Ikusi gaia', 'Ver o tema')}: ${label}">
+          <i data-lucide="layout-grid" class="h-4 w-4"></i>${L('Ver el tema', 'View topic', 'Veure el tema', 'Ikusi gaia', 'Ver o tema')}
+        </a>
+      </div>
+    </div>
+  </article>`;
+}
+
+// El curso en grande: la cifra en azul y la etapa al lado («2.º ESO», «DBH 2.»,
+// «Year 9 (8th grade)»).
+function courseHeading(c, lang) {
+  if (lang === 'en') {
+    const [main, rest] = c.en.split(' (');
+    return `<span class="font-display text-4xl font-extrabold leading-none text-[#0369a1]">${main}</span>${rest ? `<span class="font-display text-lg font-bold text-[#475569]">${rest.replace(')', '')}</span>` : ''}`;
+  }
+  const label = courseLabel(c.id, lang);
+  const parts = label.split(' ');
+  const num = parts.find((p) => /\d/.test(p)) || parts[0];
+  const stage = parts.filter((p) => p !== num).join(' ');
+  return `<span class="font-display text-5xl font-extrabold leading-none text-[#0369a1]">${num}</span><span class="font-display text-2xl font-extrabold text-[#0f172a]">${stage}</span>`;
+}
+
+// Tarjeta de un curso: el curso en grande con una tira de miniaturas y, dentro, los
+// temas que se tratan en él con cuántos recursos tiene cada uno.
+function courseCard(c, lang, span) {
+  const sims = courseSims(c.id, lang);
+  const href = coursePath(c.id, lang);
+  const label = courseLabel(c.id, lang);
+  const SHOWN = 4;
+  const strip = sims
+    .slice(0, SHOWN)
+    .map((s) => `<div class="paper h-9 w-16 shrink-0 overflow-hidden rounded border border-[#e2e8f0]">${thumbMarkup(s.id)}</div>`)
+    .join('');
+  const more = sims.length > SHOWN ? `<span class="text-sm font-bold text-[#475569]">+${sims.length - SHOWN}</span>` : '';
+  const topics = TOPICS.map((t) => ({ t, n: sims.filter((s) => t.sims.includes(s.id)).length }))
+    .filter(({ t, n }) => n && topicPath(t.id, lang))
+    .map(
+      ({ t, n }) => `
+        <li><a href="${topicPath(t.id, lang)}" data-route class="${LIST_LINK} justify-between gap-3">
+          <span>${t.label[lang] ?? t.label.es}</span><span class="rounded-full bg-[#f1f5f9] px-2 py-0.5 text-xs text-[#475569]">${n}</span>
+        </a></li>`,
+    )
+    .join('');
+  const title = L(`Simulaciones para ${label}`, `Simulations for ${label}`, `Simulacions per a ${label}`, `${label} mailarako simulazioak`, `Simulacións para ${label}`);
+  return `
+  <article class="${CARD} ${span}" data-place="curso-${c.id}">
+    <div class="paper flex flex-col gap-3 border-b border-[#e2e8f0] p-4 sm:p-5" aria-hidden="true">
+      <div class="flex flex-wrap items-baseline gap-x-2">${courseHeading(c, lang)}</div>
+      <div class="flex items-center gap-1.5 overflow-hidden">${strip}${more}</div>
+    </div>
+    <div class="flex flex-1 flex-col p-4 sm:p-5">
+      <p class="${KICKER}">${countText(sims)}</p>
+      <h3 class="mt-2 text-lg font-bold text-pretty text-[#0f172a] sm:text-xl">
+        <a href="${href}" data-route class="rounded-sm underline-offset-4 hover:text-[#0369a1] hover:underline"${lang === 'en' ? ` title="${c.enTitle}"` : ''}>${title}</a>
+      </h3>
+      <ul class="mt-3 grid gap-0.5 border-t border-[#e2e8f0] pt-3" aria-label="${L('Temas', 'Topics', 'Temes', 'Gaiak', 'Temas')}">${topics}
+      </ul>
+      <div class="mt-auto pt-4">
+        <a href="${href}" data-route class="${BUTTON}" aria-label="${L('Ver el curso', 'View year group', 'Veure el curs', 'Ikusi maila', 'Ver o curso')}: ${label}">
+          <i data-lucide="graduation-cap" class="h-4 w-4"></i>${L('Ver el curso', 'View year group', 'Veure el curs', 'Ikusi maila', 'Ver o curso')}
+        </a>
+      </div>
+    </div>
+  </article>`;
+}
 
 export function renderCatalog(root) {
   const lang = getLang();
+  // Las direcciones del catálogo con filtros de antes (?tema=ondas, ?curso=3eso)
+  // llevan ahora a la página de ese tema o de ese curso.
+  const old = new URLSearchParams(location.search);
+  const oldTopic = TOPICS.find((t) => t.id === old.get('tema'));
+  const oldCourse = COURSES.find((c) => c.id.toLowerCase() === old.get('curso'));
+  const target = (oldTopic && topicPath(oldTopic.id, lang)) || (oldCourse && coursePath(oldCourse.id, lang));
+  if (target) {
+    // Después de terminar este render, para que no lo pise.
+    setTimeout(() => {
+      history.replaceState(history.state, '', target);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    });
+  }
   const simulations = simulationsIn(lang);
   const total = simulations.length;
-  // Filtro «Tipo» solo si el catálogo de este idioma mezcla simulaciones y prácticas.
-  const kinds = KINDS.filter((k) => simulations.some((s) => simKind(s) === k.id));
-  const mixed = kinds.length > 1;
-  const KIND_ICON = { simulacion: 'monitor-play', practica: 'flask-conical' };
-  const LABEL = 'shrink-0 text-xs sm:w-16 sm:pt-2.5 font-bold uppercase tracking-wide text-[#475569]';
-
-  const filterButton = (attr, value, label, on, extra = '') =>
-    `<button type="button" ${attr}="${value}"${extra} aria-pressed="${on}" class="${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}">${label}</button>`;
-
-  const kindFilters = [
-    filterButton('data-kind', 'all', L('Todo', 'All', 'Tot', 'Guztiak', 'Todo'), true),
-    ...kinds.map((k) =>
-      filterButton(
-        'data-kind',
-        k.id,
-        `<i data-lucide="${KIND_ICON[k.id]}" class="h-4 w-4"></i>${L(k.label)} <span class="font-normal opacity-80">${simulations.filter((s) => simKind(s) === k.id).length}</span>`,
-        false,
-      ),
-    ),
-  ].join('');
-
-  const topicFilters = [
-    filterButton('data-topic', 'all', L('Todos', 'All', 'Tots', 'Guztiak', 'Todos'), true),
-    ...TOPICS.map((t) => filterButton('data-topic', t.id, L(t.label), false)),
-  ].join('');
-
-  // Un docente busca por el curso que da: filtro propio, combinable con la materia.
-  const courseFilters = [{ id: 'all', label: 'Todos', en: 'All', ca: 'Tots', eu: 'Guztiak', gl: 'Todos' }, ...COURSES]
-    .map((c, i) =>
-      filterButton('data-course', c.id, lang === 'es' ? c.label : c[lang], i === 0, lang === 'en' && c.enTitle ? ` title="${c.enTitle}"` : ''),
-    )
-    .join('');
+  const mixed = simulations.some(isPractical) && simulations.some((s) => !isPractical(s));
+  const topics = TOPICS.filter((t) => topicPath(t.id, lang));
+  const courses = COURSES.filter((c) => coursePath(c.id, lang));
+  const H2 = 'text-2xl font-bold text-[#0f172a] sm:text-3xl';
 
   const features = [
     {
@@ -116,8 +231,7 @@ export function renderCatalog(root) {
         </div>
       </section>
 
-      <section id="catalogo" class="mx-auto max-w-6xl px-4 pb-12 pt-8" aria-labelledby="catalogo-titulo">
-        <h2 id="catalogo-titulo" tabindex="-1" class="sr-only">${mixed ? 'Simulaciones y prácticas de laboratorio' : L('Todas las simulaciones', 'All simulations', 'Totes les simulacions', 'Simulazio guztiak', 'Todas as simulacións')}</h2>
+      <div id="catalogo" class="mx-auto max-w-6xl px-4 pb-12 pt-8">
         <div data-print-hide class="relative">
           <label for="search" class="sr-only">${L('Buscar', 'Search', 'Cerca', 'Bilatu', 'Buscar')}</label>
           <i data-lucide="search" class="pointer-events-none absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-[#64748b]"></i>
@@ -131,42 +245,38 @@ export function renderCatalog(root) {
           />
         </div>
 
-        <button id="filters-toggle" type="button" data-print-hide aria-expanded="false" aria-controls="filters-panel" class="mt-3 inline-flex min-h-11 items-center gap-2 rounded-lg border border-[#cbd5e1] bg-white px-4 text-sm font-bold text-[#1e293b] sm:hidden">
-          <i data-lucide="sliders-horizontal" class="h-4 w-4"></i>
-          ${L('Filtros', 'Filters', 'Filtres', 'Iragazkiak', 'Filtros')}<span id="filters-n" class="font-normal text-[#475569]"></span>
-        </button>
-        <div id="filters-panel" data-print-hide class="mt-3 hidden flex-col gap-3 rounded-xl border border-[#e2e8f0] bg-white p-4 sm:mt-4 sm:flex">
-          ${mixed ? `<div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
-            <span class="${LABEL}">${L('Tipo', 'Type', 'Tipus', 'Mota', 'Tipo')}</span>
-            <div id="kind-filters" role="group" aria-label="${L('Tipo', 'Type', 'Tipus', 'Mota', 'Tipo')}" class="flex flex-wrap gap-2">${kindFilters}</div>
-          </div>` : ''}
-          <div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
-            <span class="${LABEL}">${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}</span>
-            <div id="topic-filters" role="group" aria-label="${L('Tema', 'Topic', 'Tema', 'Gaia', 'Tema')}" class="flex flex-wrap gap-2">${topicFilters}</div>
+        <div id="browse">
+          <section class="pt-10" aria-labelledby="temas-titulo">
+            <div class="flex flex-wrap items-end justify-between gap-2">
+              <h2 id="temas-titulo" class="${H2}">${L('Por temas', 'By topic', 'Per temes', 'Gaika', 'Por temas')}</h2>
+              <a href="?todas" id="show-all" class="${TEXT_LINK}">${L(`Ver las ${total} juntas`, `See all ${total} together`, `Veure-les totes (${total})`, `Ikusi ${total}ak batera`, `Ver as ${total} xuntas`)}<i data-lucide="arrow-right" class="h-4 w-4"></i></a>
+            </div>
+            <div class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">${topics.map((t) => topicCard(t, lang)).join('')}</div>
+          </section>
+
+          <section class="pt-12" aria-labelledby="cursos-titulo">
+            <h2 id="cursos-titulo" class="${H2}">${L('Por cursos', 'By year group', 'Per cursos', 'Mailaka', 'Por cursos')}</h2>
+            <div class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-6">
+              ${courses.map((c) => courseCard(c, lang, c.id.endsWith('ESO') ? 'lg:col-span-2' : 'lg:col-span-3')).join('')}
+            </div>
+          </section>
+        </div>
+
+        <section id="all" class="hidden pt-8" aria-labelledby="todas-titulo">
+          <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+            <h2 id="todas-titulo" tabindex="-1" class="${H2}">${mixed ? 'Simulaciones y prácticas de laboratorio' : L('Todas las simulaciones', 'All simulations', 'Totes les simulacions', 'Simulazio guztiak', 'Todas as simulacións')}</h2>
+            <a href="./" id="back-browse" class="${TEXT_LINK}"><i data-lucide="arrow-left" class="h-4 w-4"></i>${L('Por temas y cursos', 'By topic and year group', 'Per temes i cursos', 'Gaika eta mailaka', 'Por temas e cursos')}</a>
           </div>
-          <div class="flex flex-col gap-1.5 sm:flex-row sm:gap-2">
-            <span class="${LABEL}">${L('Curso', 'Year', 'Curs', 'Maila', 'Curso')}</span>
-            <div id="course-filters" role="group" aria-label="${L('Curso', 'Year', 'Curs', 'Maila', 'Curso')}" class="flex flex-wrap gap-2">${courseFilters}</div>
+          <p id="count" class="mt-2 text-sm font-bold text-[#334155]" aria-live="polite"></p>
+          <div id="grid" class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            ${simulations.map((sim) => cardMarkup(sim, { showKind: mixed })).join('')}
           </div>
-        </div>
-
-        <div id="results" class="mt-4 hidden flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-          <p id="count" class="font-bold text-[#334155]" aria-live="polite"></p>
-          <button id="clear-active" type="button" class="inline-flex min-h-11 items-center gap-1 rounded-md px-1 font-bold text-[#0369a1] underline-offset-4 hover:underline">
-            <i data-lucide="x" class="h-4 w-4"></i>${L('Quitar filtros', 'Clear filters', 'Treu els filtres', 'Kendu iragazkiak', 'Quitar filtros')}
-          </button>
-        </div>
-
-        <div id="grid" class="mt-4 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          ${simulations.map((sim) => cardMarkup(sim, { showKind: mixed })).join('')}
-        </div>
-
-        <div id="empty" class="hidden flex-col items-center gap-3 py-20 text-center text-[#475569]">
-          <i data-lucide="search-x" class="h-8 w-8"></i>
-          <p>${mixed ? 'No hay simulaciones ni prácticas que coincidan con tu búsqueda.' : L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.', 'No hi ha cap simulació que coincideixi amb la cerca.', 'Ez dago bilaketarekin bat datorren simulaziorik.', 'Non hai simulacións que coincidan coa túa busca.')}</p>
-          <button id="clear-filters" type="button" class="${FILTER_BASE} ${FILTER_OFF}">${L('Quitar los filtros', 'Clear filters', 'Treu els filtres', 'Kendu iragazkiak', 'Quitar os filtros')}</button>
-        </div>
-      </section>
+          <div id="empty" class="hidden flex-col items-center gap-3 py-20 text-center text-[#475569]">
+            <i data-lucide="search-x" class="h-8 w-8"></i>
+            <p>${mixed ? 'No hay simulaciones ni prácticas que coincidan con tu búsqueda.' : L('No hay simulaciones que coincidan con tu búsqueda.', 'No simulations match your search.', 'No hi ha cap simulació que coincideixi amb la cerca.', 'Ez dago bilaketarekin bat datorren simulaziorik.', 'Non hai simulacións que coincidan coa túa busca.')}</p>
+          </div>
+        </section>
+      </div>
 
       <section data-print-hide class="bg-[#0f172a]" aria-labelledby="aula-titulo">
         <div class="mx-auto max-w-6xl px-4 py-14">
@@ -178,87 +288,47 @@ export function renderCatalog(root) {
     ${footerMarkup()}
   </div>`;
 
+  const browse = root.querySelector('#browse');
+  const all = root.querySelector('#all');
   const grid = root.querySelector('#grid');
   const empty = root.querySelector('#empty');
-  const results = root.querySelector('#results');
   const count = root.querySelector('#count');
   const search = root.querySelector('#search');
-  const toggle = root.querySelector('#filters-toggle');
-  const panel = root.querySelector('#filters-panel');
-  const bars = {
-    ...(mixed ? { kind: root.querySelector('#kind-filters') } : {}),
-    topic: root.querySelector('#topic-filters'),
-    course: root.querySelector('#course-filters'),
-  };
 
   let term = '';
-  const active = { ...(mixed ? { kind: 'all' } : {}), topic: 'all', course: 'all' };
+  let showAll = false;
 
+  // Con búsqueda o con «Ver las 15 juntas» se enseñan las tarjetas de simulación;
+  // si no, los temas y los cursos.
   function apply() {
-    const topic = TOPICS.find((t) => t.id === active.topic);
+    const list = showAll || Boolean(term);
+    browse.classList.toggle('hidden', list);
+    all.classList.toggle('hidden', !list);
     let visible = 0;
-    simulations.forEach((sim) => {
-      const el = grid.querySelector(`[data-sim-id="${sim.id}"]`);
-      const show =
-        (!term || el.dataset.search.includes(term)) &&
-        (!active.kind || active.kind === 'all' || simKind(sim) === active.kind) &&
-        (!topic || topic.sims.includes(sim.id)) &&
-        (active.course === 'all' || sim.courses.includes(active.course));
+    grid.querySelectorAll('[data-sim-id]').forEach((el) => {
+      const show = !term || el.dataset.search.includes(term);
       el.classList.toggle('hidden', !show);
       if (show) visible += 1;
     });
     empty.classList.toggle('hidden', visible !== 0);
     empty.classList.toggle('flex', visible === 0);
-
-    // Con algún filtro o búsqueda: «3 de 14 simulaciones · Quitar filtros».
-    const filtering = Boolean(term) || Object.values(active).some((v) => v !== 'all');
-    results.classList.toggle('hidden', !filtering || visible === 0);
-    results.classList.toggle('flex', filtering && visible !== 0);
-    count.textContent = filtering ? countText(visible) : '';
-    const n = Object.values(active).filter((v) => v !== 'all').length;
-    root.querySelector('#filters-n').textContent = n ? ` (${n})` : '';
+    count.textContent = term && visible ? countLine(visible) : '';
   }
 
-  // «3 de 14 simulaciones»; con prácticas en el catálogo, cuenta del tipo elegido o
-  // «4 de 15 recursos» si no se ha elegido ninguno.
-  function countText(visible) {
-    if (mixed && active.kind === 'practica') {
-      const n = simulations.filter((s) => simKind(s) === 'practica').length;
-      return `${visible} de ${n} ${n === 1 ? 'práctica' : 'prácticas'} de laboratorio`;
-    }
-    if (mixed && active.kind === 'simulacion') {
-      const n = simulations.filter((s) => simKind(s) === 'simulacion').length;
-      return `${visible} de ${n} simulaciones`;
-    }
+  function countLine(visible) {
     if (mixed) return `${visible} de ${total} recursos`;
     return L(`${visible} de ${total} simulaciones`, `${visible} of ${total} simulations`, `${visible} de ${total} simulacions`, `${total} simulaziotatik ${visible}`, `${visible} de ${total} simulacións`);
   }
 
-  // Marca el botón activo de una fila de filtros.
-  function select(kind, value) {
-    active[kind] = value;
-    bars[kind].querySelectorAll('button').forEach((b) => {
-      const on = b.getAttribute(`data-${kind}`) === value;
-      b.setAttribute('aria-pressed', String(on));
-      b.className = `${FILTER_BASE} ${on ? FILTER_ON : FILTER_OFF}`;
-    });
-  }
-
-  // Los filtros y la búsqueda van en la dirección (?tema=ondas&curso=2eso&q=…),
-  // para poder compartir o guardar el catálogo ya filtrado.
-  // Tipo: ?tipo=simulaciones o ?tipo=practicas.
-  const PARAM = { ...(mixed ? { kind: 'tipo' } : {}), topic: 'tema', course: 'curso' };
-  const KIND_SLUG = { simulacion: 'simulaciones', practica: 'practicas' };
-  const slug = (v) => v.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+  // La búsqueda y «todas» van en la dirección (?q=… o ?todas), para compartirlas y
+  // para volver al mismo sitio con Atrás.
   function syncUrl() {
     const url = new URL(location.href);
-    for (const [kind, name] of Object.entries(PARAM)) {
-      if (active[kind] === 'all') url.searchParams.delete(name);
-      else url.searchParams.set(name, kind === 'kind' ? KIND_SLUG[active.kind] : slug(active[kind]));
-    }
     if (term) url.searchParams.set('q', search.value.trim());
     else url.searchParams.delete('q');
-    history.replaceState(history.state, '', url);
+    if (showAll) url.searchParams.set('todas', '');
+    else url.searchParams.delete('todas');
+    history.replaceState(history.state, '', url.toString().replace('todas=', 'todas'));
   }
 
   search.addEventListener('input', (e) => {
@@ -267,43 +337,28 @@ export function renderCatalog(root) {
     apply();
   });
 
-  for (const kind of Object.keys(bars)) {
-    bars[kind].addEventListener('click', (e) => {
-      const btn = e.target.closest(`[data-${kind}]`);
-      if (!btn) return;
-      select(kind, btn.getAttribute(`data-${kind}`));
-      syncUrl();
-      apply();
-    });
-  }
-
-  function clearAll() {
-    search.value = '';
-    term = '';
-    Object.keys(bars).forEach((k) => select(k, 'all'));
+  root.querySelector('#show-all').addEventListener('click', (e) => {
+    e.preventDefault();
+    showAll = true;
     syncUrl();
     apply();
-    search.focus();
-  }
-  root.querySelector('#clear-filters').addEventListener('click', clearAll);
-  root.querySelector('#clear-active').addEventListener('click', clearAll);
-
-  // Móvil: los filtros se pliegan tras el botón «Filtros» (en pantallas anchas se ven siempre).
-  toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') !== 'true';
-    toggle.setAttribute('aria-expanded', String(open));
-    panel.classList.toggle('hidden', !open);
-    panel.classList.toggle('flex', open);
+    root.querySelector('#todas-titulo').focus({ preventScroll: true });
+    all.scrollIntoView({ block: 'start' });
   });
 
-  // Catálogo ya filtrado desde la dirección y ancla #catalogo.
+  root.querySelector('#back-browse').addEventListener('click', (e) => {
+    e.preventDefault();
+    showAll = false;
+    search.value = '';
+    term = '';
+    syncUrl();
+    apply();
+    root.querySelector('#temas-titulo').scrollIntoView({ block: 'start' });
+    search.focus({ preventScroll: true });
+  });
+
   const params = new URLSearchParams(location.search);
-  for (const [kind, name] of Object.entries(PARAM)) {
-    const wanted = params.get(name);
-    const value = (b) => b.getAttribute(`data-${kind}`);
-    const btn = wanted && [...bars[kind].querySelectorAll('button')].find((b) => (kind === 'kind' ? KIND_SLUG[value(b)] : slug(value(b))) === wanted);
-    if (btn) select(kind, btn.getAttribute(`data-${kind}`));
-  }
+  if (params.has('todas')) showAll = true;
   if (params.get('q')) {
     search.value = params.get('q');
     term = search.value.trim().toLowerCase();
@@ -313,23 +368,23 @@ export function renderCatalog(root) {
     requestAnimationFrame(() => root.querySelector('#catalogo').scrollIntoView({ block: 'start' }));
   }
 
-  // Al salir a una simulación o a una guía se guarda dónde estaba el catálogo; al
-  // volver (Atrás, «Volver al catálogo» o el logo) se recupera la posición y el foco
-  // vuelve al título de esa tarjeta.
+  // Al salir a una simulación, una guía, un tema o un curso se guarda dónde estaba la
+  // portada; al volver (Atrás, «Volver al catálogo» o el logo) se recupera la
+  // posición y el foco vuelve al título de esa tarjeta.
   root.addEventListener('click', (e) => {
     const a = e.target.closest('a[data-route]');
-    const card = a?.closest('[data-sim-id]');
+    const card = a?.closest('[data-sim-id], [data-place]');
     if (!card) return;
-    saveCatalogPlace({ url: location.pathname + location.search, y: window.scrollY, sim: card.dataset.simId });
+    saveCatalogPlace({ url: location.pathname + location.search, y: window.scrollY, place: card.dataset.simId ? `[data-sim-id="${card.dataset.simId}"]` : `[data-place="${card.dataset.place}"]` });
   });
   const place = takeCatalogPlace(location.pathname + location.search);
   if (place) {
     requestAnimationFrame(() => {
       window.scrollTo(0, place.y);
-      root.querySelector(`[data-sim-id="${place.sim}"] h3 a`)?.focus({ preventScroll: true });
+      if (place.place) root.querySelector(`${place.place} h3 a`)?.focus({ preventScroll: true });
     });
   }
 
-  // El catálogo no instala listeners globales: nada que limpiar.
+  // La portada no instala listeners globales: nada que limpiar.
   return null;
 }

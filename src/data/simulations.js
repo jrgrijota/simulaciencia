@@ -547,32 +547,6 @@ export const simulations = [
         "Práctica de laboratorio: quenta aire encerrado nun matraz, le a temperatura e a presión, comproba que P / T é constante en kelvin e chega ao cero absoluto. Nivel guiado e nivel libre.",
     },
   },
-  {
-    id: 'sim-practica-boyle',
-    kind: 'practica',
-    langs: ['es'],
-    title: 'Ley de Boyle-Mariotte',
-    description:
-      'Práctica de laboratorio: encierra aire en una jeringa, cambia su volumen con el émbolo, lee la presión en el manómetro y comprueba que P · V es constante. Nivel guiado y nivel libre.',
-    tags: ['Física', 'Química', 'ESO'],
-    url: 'https://jrgrijota.github.io/simulacion-practica-boyle/',
-    responsive: true,
-    params: ['nivel', 'montaje', 'jeringa', 'manometro'],
-    courses: ['3ESO', '4ESO'],
-  },
-  {
-    id: 'sim-practica-gay-lussac',
-    kind: 'practica',
-    langs: ['es'],
-    title: 'Ley de Gay-Lussac',
-    description:
-      'Práctica de laboratorio: calienta aire encerrado en un matraz, lee la temperatura y la presión, comprueba que P / T es constante en kelvin y llega al cero absoluto. Nivel guiado y nivel libre.',
-    tags: ['Física', 'Química', 'ESO'],
-    url: 'https://jrgrijota.github.io/simulacion-practica-gay-lussac/',
-    responsive: true,
-    params: ['nivel', 'montaje'],
-    courses: ['3ESO', '4ESO'],
-  },
 ];
 
 // Bloques temáticos: las tarjetas «Por temas» de la portada y las páginas /temas/<tema>/.

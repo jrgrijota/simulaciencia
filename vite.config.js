@@ -30,7 +30,7 @@ function sourceFiles(path) {
   const guideFile = (id, l) => (l === 'es' ? `guias/${slug(id)}.md` : `guias/${l}/${slug(id)}.md`);
   if (guideId) return [guideFile(guideId, lang)];
   if (guionId) {
-    const files = lang === 'es' ? [`guiones/${slug(guionId)}.md`, `fichas/${slug(guionId)}.md`] : [`fichas/${lang}/${slug(guionId)}.md`];
+    const files = STUDENT_DOC_DIRS.map((d) => (lang === 'es' ? `${d}/${slug(guionId)}.md` : `${d}/${lang}/${slug(guionId)}.md`));
     return files.filter((f) => existsSync(f));
   }
   if (simId) {
@@ -59,10 +59,12 @@ function allPaths() {
       .filter((f) => f.endsWith('.md'))
       .map((f) => guionPath(guideIdFromFile(f))),
   );
-  // Fichas traducidas: fichas/<idioma>/*.md.
+  // Fichas y guiones traducidos: fichas/<idioma>/*.md y guiones/<idioma>/*.md.
   const fichas = (lang) =>
-    FICHA_LANGS.includes(lang) && existsSync(`fichas/${lang}`)
-      ? readdirSync(`fichas/${lang}`).filter((f) => f.endsWith('.md')).map((f) => guionPath(guideIdFromFile(f), lang))
+    FICHA_LANGS.includes(lang)
+      ? STUDENT_DOC_DIRS.filter((d) => existsSync(`${d}/${lang}`)).flatMap((d) =>
+          readdirSync(`${d}/${lang}`).filter((f) => f.endsWith('.md')).map((f) => guionPath(guideIdFromFile(f), lang)),
+        )
       : [];
   const paths = [
     homePath('es'),

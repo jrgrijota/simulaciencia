@@ -75,7 +75,21 @@ const GUIDE_DESCRIPTION = {
     'secuencia de explicación, concepcións alternativas e simplificacións. Descarga en PDF, Word e LibreOffice.',
 };
 const OG_LOCALE = { es: 'es_ES', en: 'en_GB', ca: 'ca_ES', eu: 'eu_ES', gl: 'gl_ES' };
-const PRACTICAL_KIND = 'Práctica de laboratorio simulada';
+const PRACTICAL_KIND = { es: 'Práctica de laboratorio simulada', en: 'Simulated lab practical', ca: 'Pràctica de laboratori simulada', eu: 'Laborategiko praktika simulatua', gl: 'Práctica de laboratorio simulada' };
+const GUION_DESCRIPTION = {
+  es: (t) => `Guion para el alumnado de la práctica de laboratorio «${t}»: objetivo, procedimiento, tabla de datos, cálculos y cuestiones. Descarga en Word y LibreOffice para adaptarlo, o en PDF.`,
+  en: (t) => `Student lab sheet for the “${t}” lab practical: aim, method, results table, calculations and questions. Download as Word or LibreOffice to adapt it, or as PDF.`,
+  ca: (t) => `Guió per a l’alumnat de la pràctica de laboratori «${t}»: objectiu, procediment, taula de dades, càlculs i qüestions. Descàrrega en Word i LibreOffice per adaptar-lo, o en PDF.`,
+  eu: (t) => `«${t}» laborategiko praktikaren ikaslearen gidoia: helburua, prozedura, datu-taula, kalkuluak eta galderak. Deskargatu Word eta LibreOffice formatuan egokitzeko, edo PDFn.`,
+  gl: (t) => `Guión para o alumnado da práctica de laboratorio «${t}»: obxectivo, procedemento, táboa de datos, cálculos e cuestións. Descarga en Word e LibreOffice para adaptalo, ou en PDF.`,
+};
+const PRACTICAL_GUIDE_DESCRIPTION = {
+  es: (t) => `Guía para usar en clase la práctica de laboratorio «${t}»: cursos y saberes básicos, propuesta de sesión, clave de respuestas, evaluación y concepciones alternativas. Descarga en PDF, Word y LibreOffice.`,
+  en: (t) => `Guide to using the “${t}” lab practical in class: year groups and curriculum content, suggested lesson, answer key, assessment and misconceptions. Download as PDF, Word or LibreOffice.`,
+  ca: (t) => `Guia per fer servir a classe la pràctica de laboratori «${t}» segons el currículum de Catalunya: cursos i sabers, proposta de sessió, clau de respostes, avaluació i concepcions alternatives. Descàrrega en PDF, Word i LibreOffice.`,
+  eu: (t) => `«${t}» laborategiko praktika gelan erabiltzeko gida, Euskadiko curriculumaren arabera: mailak eta jakintzak, saio-proposamena, erantzunen gakoa, ebaluazioa eta ideia okerrak. Deskargatu PDF, Word eta LibreOffice formatuan.`,
+  gl: (t) => `Guía para usar na aula a práctica de laboratorio «${t}» segundo o currículo de Galicia: cursos e saberes, proposta de sesión, clave de respostas, avaliación e concepcións alternativas. Descarga en PDF, Word e LibreOffice.`,
+};
 const FICHA_DESCRIPTION = {
   es: (t) => `Ficha de actividades para el alumnado con la simulación «${t}»: predice, observa y explica, con enlaces que abren la simulación ya preparada. Descarga en Word y LibreOffice para adaptarla, o en PDF.`,
   en: (t) => `Activity worksheet for students with the “${t}” simulation: predict, observe and explain, with links that open the simulation already set up. Download as Word or LibreOffice to adapt it, or as PDF.`,
@@ -159,7 +173,7 @@ function simResource(sim, lang = 'es') {
     name: simTitle(sim, lang),
     description: simDescription(sim, lang),
     url: simUrl(sim.id, lang),
-    learningResourceType: isPractical(sim) ? PRACTICAL_KIND : KIND[lang],
+    learningResourceType: (isPractical(sim) ? PRACTICAL_KIND : KIND)[lang],
     educationalLevel: levels(sim, lang),
     typicalAgeRange: ageRange(sim),
     interactivityType: 'active',
@@ -261,17 +275,14 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
   }
   if (guionSim) {
     const practical = isPractical(guionSim);
-    const l = practical ? 'es' : lang;
+    const l = lang;
     const title = simTitle(guionSim, l);
     const url = absoluteUrl(guionPath(guionSim.id, l));
     const doc = studentDoc(guionSim, l);
     return set(
       l,
       `${doc.title}: ${title} · ${SITE}`,
-      practical
-        ? `Guion para el alumnado de la práctica de laboratorio «${title}»: objetivo, procedimiento, tabla de datos, ` +
-            'cálculos y cuestiones. Descarga en Word y LibreOffice para adaptarlo, o en PDF.'
-        : FICHA_DESCRIPTION[l](title),
+      (practical ? GUION_DESCRIPTION : FICHA_DESCRIPTION)[l](title),
       url,
       withBreadcrumb({
         '@type': 'LearningResource',
@@ -290,23 +301,20 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
         isBasedOn: simUrl(guionSim.id, l),
         ...dates(guionPath(guionSim.id, l)),
       }, l, [[title, simUrl(guionSim.id, l)], [doc.short, url]]),
-      practical ? ['es'] : LANGS,
+      guionSim.langs || LANGS,
       simImage(guionSim, l),
     );
   }
   if (guideSim) {
     const practical = isPractical(guideSim);
-    const l = practical && lang !== 'en' ? 'es' : lang;
+    const l = lang;
     const title = simTitle(guideSim, l);
     const word = GUIDE_WORD[l];
     const name = `${word}: ${title}`;
     return set(
       l,
       `${name} · ${SITE}`,
-      practical && l === 'es'
-        ? `Guía para usar en clase la práctica de laboratorio «${title}»: cursos y saberes básicos, propuesta ` +
-          'de sesión, clave de las muestras, evaluación y concepciones alternativas. Descarga en PDF, Word y LibreOffice.'
-        : GUIDE_DESCRIPTION[l](title),
+      (practical ? PRACTICAL_GUIDE_DESCRIPTION : GUIDE_DESCRIPTION)[l](title),
       guideUrl(guideSim.id, l),
       withBreadcrumb({
         '@type': 'LearningResource',
@@ -325,12 +333,12 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
         isBasedOn: simUrl(guideSim.id, l),
         ...dates(guidePath(guideSim.id, l)),
       }, l, [[title, simUrl(guideSim.id, l)], [word, guideUrl(guideSim.id, l)]]),
-      practical ? ['es'] : GUIDE_LANGS,
+      guideSim.langs || GUIDE_LANGS,
       simImage(guideSim, l),
     );
   }
   if (sim) {
-    const kind = isPractical(sim) ? PRACTICAL_KIND : KIND[lang];
+    const kind = (isPractical(sim) ? PRACTICAL_KIND : KIND)[lang];
     return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), withBreadcrumb(simResource(sim, lang), lang, [[simTitle(sim, lang), simUrl(sim.id, lang)]]), sim.langs || LANGS, simImage(sim, lang));
   }
   if (PAGES[page]) {

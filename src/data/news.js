@@ -12,6 +12,15 @@ import { coursePath, simPath, guionPath, guidePath, homePath } from '../paths.js
 export const NEWS = [
   {
     date: '2026-11-15',
+    langs: ['en', 'ca', 'eu', 'gl'],
+    link: (lang) => simPath('sim-practica-boyle', lang),
+    en: { title: 'Three simulated lab practicals', text: 'Density of a solid, Boyle’s law and Gay-Lussac’s law: students take the readings from the instruments, and procedural mistakes have the same consequences as in the lab. Each one comes with a teacher guide and an editable lab sheet.' },
+    ca: { title: 'Tres pràctiques de laboratori simulades', text: "Densitat d'un sòlid, llei de Boyle i llei de Gay-Lussac: l'alumnat llegeix les mesures als instruments, i els errors de procediment tenen les mateixes conseqüències que al laboratori. Cadascuna amb guia docent adaptada al currículum de Catalunya i guió de l'alumnat editable." },
+    eu: { title: 'Laborategiko hiru praktika simulatu', text: 'Solido baten dentsitatea, Boyleren legea eta Gay-Lussacen legea: ikasleek tresnetan irakurtzen dituzte neurketak, eta prozedura-akatsek laborategian dituzten ondorio berberak dituzte. Bakoitzak Euskadiko curriculumera egokitutako irakaslearen gida eta ikaslearen gidoi editagarria ditu.' },
+    gl: { title: 'Tres prácticas de laboratorio simuladas', text: 'Densidade dun sólido, lei de Boyle e lei de Gay-Lussac: o alumnado le as medidas nos instrumentos, e os erros de procedemento teñen as mesmas consecuencias que no laboratorio. Cada unha con guía docente adaptada ao currículo de Galicia e guión do alumnado editable.' },
+  },
+  {
+    date: '2026-11-15',
     langs: ['es'],
     link: (lang) => simPath('sim-practica-boyle', lang),
     es: { title: 'Dos prácticas de laboratorio nuevas: las leyes de Boyle y de Gay-Lussac', text: 'Encierra aire en una jeringa y cambia su volumen, o en un matraz y caliéntalo: lee la presión, comprueba la ley y llega al cero absoluto. Cada una con guía docente y guion del alumnado editable.' },

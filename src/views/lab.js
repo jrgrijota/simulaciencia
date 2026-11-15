@@ -36,7 +36,13 @@ function buildEmbedCode(sim) {
   const url = frameUrl(sim, lang);
   const page = absoluteUrl(simPath(sim.id, lang));
   const credit = isPractical(sim)
-    ? `Práctica de <a href="${page}">SimulaCiencia</a>, con guía docente y guion del alumnado.`
+    ? L(
+        'Práctica de <a href="{}">SimulaCiencia</a>, con guía docente y guion del alumnado.',
+        'Lab practical from <a href="{}">SimulaCiencia</a>, with a teacher guide and a student lab sheet.',
+        'Pràctica de <a href="{}">SimulaCiencia</a>, amb guia docent i guió de l’alumnat.',
+        '<a href="{}">SimulaCiencia</a> webguneko praktika, irakaslearen gidarekin eta ikaslearen gidoiarekin.',
+        'Práctica de <a href="{}">SimulaCiencia</a>, con guía docente e guión do alumnado.',
+      ).replace('{}', page)
     : L(
         'Simulación de <a href="{}">SimulaCiencia</a>, con guía docente y ficha de actividades.',
         'Simulation from <a href="{}">SimulaCiencia</a>, with a teacher guide and an activity worksheet.',
@@ -64,7 +70,7 @@ function createShareModal(sim) {
     <div class="absolute inset-0 bg-[#1e293b]/60 backdrop-blur" id="share-backdrop"></div>
     <div class="relative w-full max-w-lg rounded-lg border border-[#e2e8f0] bg-white shadow-xl">
       <div class="flex items-center justify-between border-b border-[#e2e8f0] px-5 py-4">
-        <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">${practical ? 'Compartir práctica' : L('Compartir simulación', 'Share simulation', 'Comparteix la simulació', 'Partekatu simulazioa', 'Compartir simulación')}</h2>
+        <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">${practical ? L('Compartir práctica', 'Share practical', 'Comparteix la pràctica', 'Partekatu praktika', 'Compartir práctica') : L('Compartir simulación', 'Share simulation', 'Comparteix la simulació', 'Partekatu simulazioa', 'Compartir simulación')}</h2>
         <button id="share-close" aria-label="${L('Cerrar', 'Close', 'Tanca', 'Itxi', 'Pechar')}" class="rounded-md p-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#1e293b]">
           <i data-lucide="x" class="h-5 w-5"></i>
         </button>
@@ -138,8 +144,8 @@ function aboutMarkup(sim, lang, guide) {
     value ? `<div><dt class="font-semibold text-[#1e293b]">${label}</dt><dd class="text-[#475569]">${value}</dd></div>` : '';
   const guideLink = guide
     ? `<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="${ABOUT_LINK}">${
-        practical
-          ? 'Guía docente de la práctica'
+        practical && guide === lang
+          ? L('Guía docente de la práctica', 'Teacher guide for the practical', 'Guia docent de la pràctica', 'Praktikaren irakaslearen gida', 'Guía docente da práctica')
           : guideLabel(guide, lang)
       }</a>`
     : '';
@@ -149,7 +155,7 @@ function aboutMarkup(sim, lang, guide) {
     <div class="mx-auto max-w-3xl px-4 py-10 text-[#334155]">
       <h2 id="lab-about-title" class="text-xl font-semibold text-[#1e293b]">${
         practical
-          ? 'Sobre esta práctica'
+          ? L('Sobre esta práctica', 'About this practical', 'Sobre aquesta pràctica', 'Praktika honi buruz', 'Sobre esta práctica')
           : L('Sobre esta simulación', 'About this simulation', 'Sobre aquesta simulació', 'Simulazio honi buruz', 'Sobre esta simulación')
       }: ${esc(simTitle(sim, lang))}</h2>
       <p class="mt-3 leading-relaxed">${esc(simDescription(sim, lang))}</p>
@@ -297,7 +303,7 @@ export function renderLab(root, sim) {
 
     <div id="lab-stage" data-print-main class="relative min-h-0 flex-1 overflow-hidden bg-[#f8fafc]">
       <div id="lab-loader" class="lab-skeleton absolute inset-0 z-10 flex items-center justify-center text-sm text-[#64748b]">
-        ${practical ? 'Cargando la práctica…' : L('Cargando simulación…', 'Loading simulation…', 'Carregant la simulació…', 'Simulazioa kargatzen…', 'Cargando a simulación…')}
+        ${practical ? L('Cargando la práctica…', 'Loading the practical…', 'Carregant la pràctica…', 'Praktika kargatzen…', 'Cargando a práctica…') : L('Cargando simulación…', 'Loading simulation…', 'Carregant la simulació…', 'Simulazioa kargatzen…', 'Cargando a simulación…')}
       </div>
       <button id="lab-fs-exit" class="absolute right-4 top-4 z-20 hidden items-center gap-1.5 rounded-md bg-[#1e293b]/85 px-3 py-1.5 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-[#1e293b]">
         <i data-lucide="minimize" class="h-4 w-4"></i>

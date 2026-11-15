@@ -49,7 +49,7 @@ function headerLinks(sim, lang, doc) {
           <i data-lucide="play" class="h-4 w-4"></i>
           ${
             practical
-              ? '<span class="hidden sm:inline">Abrir la práctica</span><span class="sm:hidden">Práctica</span>'
+              ? `<span class="hidden sm:inline">${L('Abrir la práctica', 'Open the practical', 'Obre la pràctica', 'Ireki praktika', 'Abrir a práctica')}</span><span class="sm:hidden">${L('Práctica', 'Practical', 'Pràctica', 'Praktika', 'Práctica')}</span>`
               : `<span class="hidden sm:inline">${L('Abrir la simulación', 'Open the simulation', 'Obre la simulació', 'Ireki simulazioa', 'Abrir a simulación')}</span><span class="sm:hidden">${L('Simulación', 'Simulation', 'Simulació', 'Simulazioa', 'Simulación')}</span>`
           }
         </a>`;
@@ -109,7 +109,13 @@ export function renderGuide(root, sim, doc = 'guide') {
       </div>
       ${guion ? `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">${student.adapt}</p>` : ''}
       ${!guion && hasGuion(sim.id, lang) ? (practical
-        ? `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">El alumnado sigue el <a href="${guionPath(sim.id)}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">guion de la práctica</a>, que se descarga en formato editable.</p>`
+        ? `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">${L(
+            'El alumnado sigue el <a href="{}" data-route class="{c}">guion de la práctica</a>, que se descarga en formato editable.',
+            'Students follow the <a href="{}" data-route class="{c}">lab sheet</a>, which downloads in an editable format.',
+            'L’alumnat segueix el <a href="{}" data-route class="{c}">guió de la pràctica</a>, que es descarrega en format editable.',
+            'Ikasleek <a href="{}" data-route class="{c}">praktikaren gidoia</a> jarraitzen dute, formatu editagarrian deskargatzen dena.',
+            'O alumnado segue o <a href="{}" data-route class="{c}">guión da práctica</a>, que se descarga en formato editable.',
+          ).replace('{}', guionPath(sim.id, lang)).replace('{c}', 'font-bold text-[#0369a1] underline underline-offset-4')}</p>`
         : `<p data-print-hide class="-mt-3 mb-6 text-sm text-[#475569]">${L(
             `Para el alumnado hay una <a href="${guionPath(sim.id)}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">ficha de actividades</a> con enlaces que abren la simulación ya preparada. Se descarga en formato editable. Al final de esta guía están el uso por curso y las soluciones.`,
             `For students there is an <a href="${guionPath(sim.id, 'en')}" data-route class="font-bold text-[#0369a1] underline underline-offset-4">activity worksheet</a> with links that open the simulation already set up. It downloads in an editable format. Its use in each year group and the answers are at the end of this guide.`,

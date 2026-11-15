@@ -464,6 +464,32 @@ export const simulations = [
     params: ['nivel', 'muestra', 'probeta'],
     courses: ['2ESO', '3ESO'],
   },
+  {
+    id: 'sim-practica-boyle',
+    kind: 'practica',
+    langs: ['es'],
+    title: 'Ley de Boyle-Mariotte',
+    description:
+      'Práctica de laboratorio: encierra aire en una jeringa, cambia su volumen con el émbolo, lee la presión en el manómetro y comprueba que P · V es constante. Nivel guiado y nivel libre.',
+    tags: ['Física', 'Química', 'ESO'],
+    url: 'https://jrgrijota.github.io/simulacion-practica-boyle/',
+    responsive: true,
+    params: ['nivel', 'montaje', 'jeringa', 'manometro'],
+    courses: ['3ESO', '4ESO'],
+  },
+  {
+    id: 'sim-practica-gay-lussac',
+    kind: 'practica',
+    langs: ['es'],
+    title: 'Ley de Gay-Lussac',
+    description:
+      'Práctica de laboratorio: calienta aire encerrado en un matraz, lee la temperatura y la presión, comprueba que P / T es constante en kelvin y llega al cero absoluto. Nivel guiado y nivel libre.',
+    tags: ['Física', 'Química', 'ESO'],
+    url: 'https://jrgrijota.github.io/simulacion-practica-gay-lussac/',
+    responsive: true,
+    params: ['nivel', 'montaje'],
+    courses: ['3ESO', '4ESO'],
+  },
 ];
 
 // Bloques temáticos: las tarjetas «Por temas» de la portada y las páginas /temas/<tema>/.
@@ -488,7 +514,7 @@ export const TOPICS = [
   {
     id: 'materia',
     label: { es: 'La materia y sus estados', en: 'Matter and its states', ca: 'La matèria i els seus estats', eu: 'Materia eta haren egoerak', gl: 'A materia e os seus estados' },
-    sims: ['sim-densidad', 'sim-practica-densidad', 'sim-cambios-estado', 'sim-gases'],
+    sims: ['sim-densidad', 'sim-practica-densidad', 'sim-cambios-estado', 'sim-gases', 'sim-practica-boyle', 'sim-practica-gay-lussac'],
   },
   {
     id: 'atomo',

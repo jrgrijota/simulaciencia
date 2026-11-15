@@ -60,6 +60,56 @@ const THUMBS = {
     </g>
     <text x="276" y="72" ${MONO} font-size="11" fill="#475569">mL</text>`,
 
+  // Práctica de Boyle: manómetro de aguja unido por la llave a una jeringa tumbada,
+  // con el aire encerrado (azul claro) a la izquierda de la goma del émbolo.
+  'sim-practica-boyle': `
+    <path d="M24 164H296" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M78 112V160M62 160H94" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="78" cy="68" r="46" fill="#fff" stroke="#0f172a" stroke-width="2.5"/>
+    <g stroke="#475569" stroke-width="1.5">
+      <path d="M48 98l6 -5M40 68h8M48 38l6 5M78 30v8M108 38l-6 5M116 68h-8M108 98l-6 -5"/>
+    </g>
+    <path d="M78 68L92 33" stroke="#dc2626" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="78" cy="68" r="4" fill="#0f172a"/>
+    <text x="78" y="96" text-anchor="middle" ${MONO} font-size="10" fill="#475569">kPa</text>
+    <path d="M78 130H156" stroke="#0f172a" stroke-width="3"/>
+    <circle cx="128" cy="130" r="7" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.5"/>
+    <rect x="125" y="102" width="6" height="22" rx="2" fill="#0284c7"/>
+    <rect x="156" y="116" width="44" height="28" fill="#e0f2fe"/>
+    <rect x="156" y="116" width="104" height="28" rx="2" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <g stroke="#475569" stroke-width="1.2">
+      <path d="M164 116v7M174 116v4M184 116v7M194 116v4M204 116v7M214 116v4M224 116v7M234 116v4M244 116v7M254 116v4"/>
+    </g>
+    <rect x="200" y="117" width="8" height="26" fill="#7c2d4f"/>
+    <path d="M208 130H284" stroke="#64748b" stroke-width="4"/>
+    <path d="M260 110V150" stroke="#0f172a" stroke-width="2.5"/>
+    <rect x="284" y="114" width="7" height="32" rx="2" fill="#0284c7"/>`,
+
+  // Práctica de Gay-Lussac: matraz cerrado dentro de un baño de agua sobre la placa
+  // calefactora, con el termómetro y el manómetro digital unido por un tubo.
+  'sim-practica-gay-lussac': `
+    <path d="M24 166H296" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+    <rect x="22" y="72" width="76" height="46" rx="4" fill="#e2e8f0" stroke="#0f172a" stroke-width="1.5"/>
+    <rect x="30" y="80" width="60" height="24" rx="2" fill="#0f172a"/>
+    <text x="60" y="97" text-anchor="middle" ${MONO} font-size="13" font-weight="500" fill="#86efac">98,4</text>
+    <text x="60" y="114" text-anchor="middle" ${MONO} font-size="8" fill="#475569">kPa</text>
+    <path d="M60 118V160M44 160H76" stroke="#0f172a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M98 95H120V22H170V34" fill="none" stroke="#0f172a" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="114" y="52" width="12" height="16" rx="2" fill="#0284c7"/>
+    <rect x="132" y="146" width="104" height="18" rx="3" fill="#cbd5e1" stroke="#0f172a" stroke-width="1.5"/>
+    <circle cx="150" cy="155" r="4" fill="#dc2626"/>
+    <circle cx="218" cy="155" r="5" fill="#fff" stroke="#0f172a" stroke-width="1.2"/>
+    <rect x="142" y="70" width="84" height="74" fill="#bae6fd"/>
+    <path d="M142 70q21 -4 42 0t42 0" fill="none" stroke="#0284c7" stroke-width="1.2"/>
+    <path d="M164 34H176V64L198 132H142L164 64Z" fill="#f8fafc" fill-opacity=".7" stroke="#0f172a" stroke-width="2" stroke-linejoin="round"/>
+    <rect x="162" y="30" width="16" height="8" rx="1.5" fill="#64748b"/>
+    <path d="M138 40V144H230V40" fill="none" stroke="#0f172a" stroke-width="2"/>
+    <rect x="207" y="18" width="10" height="120" rx="5" fill="#fff" stroke="#0f172a" stroke-width="1.5"/>
+    <rect x="210.5" y="58" width="3" height="78" fill="#dc2626"/>
+    <circle cx="212" cy="136" r="6" fill="#dc2626" stroke="#0f172a" stroke-width="1.2"/>
+    <g stroke="#475569" stroke-width="1"><path d="M217 30h5M217 46h5M217 62h5M217 78h5M217 94h5M217 110h5"/></g>
+    <text x="250" y="66" ${MONO} font-size="12" fill="#475569">°C</text>`,
+
   // Espectro de emisión del hidrógeno: las tres líneas visibles de Balmer del modelo.
   'sim-espectros': `
     <text x="30" y="44" ${MONO} font-size="13" font-weight="500" fill="#334155">H</text>

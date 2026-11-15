@@ -11,6 +11,12 @@ import { coursePath, simPath, guionPath, guidePath, homePath } from '../paths.js
 
 export const NEWS = [
   {
+    date: '2026-11-15',
+    langs: ['es'],
+    link: (lang) => simPath('sim-practica-boyle', lang),
+    es: { title: 'Dos prácticas de laboratorio nuevas: las leyes de Boyle y de Gay-Lussac', text: 'Encierra aire en una jeringa y cambia su volumen, o en un matraz y caliéntalo: lee la presión, comprueba la ley y llega al cero absoluto. Cada una con guía docente y guion del alumnado editable.' },
+  },
+  {
     date: '2026-11-14',
     langs: ['es', 'ca', 'eu', 'gl'],
     link: (lang) => guidePath('sim-cambios-estado', lang),

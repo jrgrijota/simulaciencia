@@ -97,7 +97,8 @@ sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
   de la guía docente, cada una tiene un guion del alumnado, `guiones/<nombre>.md`, que se publica en
   `/guiones/<nombre>/` y se descarga en Word, LibreOffice y PDF (`guiones/guion-<nombre>.*`). Por ahora
   solo están en español (`langs: ['es']`): no salen en los catálogos de otros idiomas. La página de la
-  práctica pasa a la práctica los parámetros `nivel`, `muestra` y `probeta` de su dirección.
+  práctica pasa a la práctica los parámetros de su dirección (`params`): en la de densidad, `nivel`, `muestra`
+  y `probeta`; en las de Boyle y Gay-Lussac, `nivel` y `montaje`, y en la de Boyle, también `jeringa` y `manometro`.
 - **Rutas:** `/simulaciones/<nombre>/` abre una simulación, `/guias/<nombre>/` su guía docente, `/guiones/<nombre>/` el guion de una práctica,
   y `/sobre-el-proyecto/` y `/aviso-legal/` las páginas fijas ([`src/paths.js`](src/paths.js)).
   Los enlaces antiguos (`?sim=`, `?guia=`, `?page=`) redirigen a la dirección nueva.

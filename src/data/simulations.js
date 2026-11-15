@@ -466,9 +466,9 @@ export const simulations = [
   },
 ];
 
-// Bloques temáticos: los botones del filtro «Tema» del catálogo
-// (?tema=<bloque> en la dirección). Una simulación puede estar en más de un bloque. Al añadir una
-// simulación, añádela también a su bloque.
+// Bloques temáticos: las tarjetas «Por temas» de la portada y las páginas /temas/<tema>/.
+// Una simulación puede estar en más de un bloque. Al añadir una simulación, añádela
+// también a su bloque.
 export const TOPICS = [
   {
     id: 'fuerzas',

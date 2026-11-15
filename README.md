@@ -83,8 +83,9 @@ sus rutas se pueden indicar con `CHROME_PATH` y `PANDOC_PATH`.
   Para añadir una simulación basta con añadir una entrada (y su id en el bloque temático que le toque,
   `TOPICS` en el mismo archivo); el sitemap se regenera solo.
 - **Portada:** [`src/views/catalog.js`](src/views/catalog.js). Cada tarjeta lleva una miniatura SVG de [`src/components/thumbs.js`](src/components/thumbs.js):
-  al añadir una simulación, dibuja también la suya. El filtro «Tema» (bloques de `TOPICS`) se puede enlazar
-  con `?tema=<bloque>`. Fuentes: Bricolage Grotesque (títulos), Atkinson Hyperlegible (texto) y
+  al añadir una simulación, dibuja también la suya. La portada muestra tarjetas por tema (bloques de `TOPICS`)
+  y por curso; el catálogo completo sale al buscar o con `?todas`, y los enlaces antiguos `?tema=`/`?curso=`
+  llevan a la página del tema o del curso. Fuentes: Bricolage Grotesque (títulos), Atkinson Hyperlegible (texto) y
   JetBrains Mono (datos), servidas con Fontsource.
 - **Guías docentes:** cada archivo `guias/<nombre>.md` es la guía de la simulación `sim-<nombre>`.
   Al añadir o sustituir uno, el build crea su página, el botón «Guía docente», la entrada del

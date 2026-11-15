@@ -18,7 +18,7 @@ const KICKER = 'text-xs font-bold uppercase tracking-wide text-[#0369a1]';
 const CARD = 'flex flex-col overflow-hidden rounded-xl border border-[#e2e8f0] bg-white shadow-sm';
 const TEXT_LINK = 'inline-flex min-h-11 items-center gap-1 rounded-md px-1 text-sm font-bold text-[#0369a1] underline-offset-4 hover:underline';
 
-// «4 simulaciones · 1 práctica» (las prácticas, por ahora, solo en español).
+// «4 simulaciones · 1 práctica».
 function countText(sims) {
   const n = sims.filter((s) => !isPractical(s)).length;
   const p = sims.length - n;
@@ -29,7 +29,14 @@ function countText(sims) {
     `${n} simulazio`,
     `${n} ${n === 1 ? 'simulación' : 'simulacións'}`,
   );
-  return p ? `${a} · ${p} ${p === 1 ? 'práctica' : 'prácticas'}` : a;
+  const b = L(
+    `${p} ${p === 1 ? 'práctica' : 'prácticas'}`,
+    `${p} ${p === 1 ? 'practical' : 'practicals'}`,
+    `${p} ${p === 1 ? 'pràctica' : 'pràctiques'}`,
+    `${p} praktika`,
+    `${p} ${p === 1 ? 'práctica' : 'prácticas'}`,
+  );
+  return p ? `${a} · ${b}` : a;
 }
 
 // Cursos que abarca un tema: «2.º ESO – 4.º ESO».
@@ -63,7 +70,7 @@ function topicCard(t, lang) {
       return `
         <li><a href="${simPath(s.id, lang)}" data-route class="${LIST_LINK} group">
           <i data-lucide="${p ? 'flask-conical' : 'play'}" class="h-4 w-4 shrink-0 ${p ? 'text-[#7c2d4f]' : 'text-[#0369a1]'}"></i>
-          <span class="underline-offset-4 group-hover:underline">${simTitle(s, lang)}${p ? '<span class="sr-only"> (práctica de laboratorio)</span>' : ''}</span>
+          <span class="underline-offset-4 group-hover:underline">${simTitle(s, lang)}${p ? `<span class="sr-only"> (${L('práctica de laboratorio', 'lab practical', 'pràctica de laboratori', 'laborategiko praktika', 'práctica de laboratorio')})</span>` : ''}</span>
         </a></li>`;
     })
     .join('');

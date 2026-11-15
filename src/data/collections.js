@@ -12,7 +12,7 @@ const fixDots = (t) => t.replace(/\.\.$/, '.');
 const lower = (t) => t.charAt(0).toLowerCase() + t.slice(1);
 const topicLabel = (t, lang) => t.label[lang] ?? t.label.es;
 
-// «6 simulaciones interactivas y 1 práctica de laboratorio» (las prácticas, solo en español).
+// «6 simulaciones interactivas y 1 práctica de laboratorio».
 function countPhrase(sims, lang) {
   const n = sims.filter((s) => !isPractical(s)).length;
   const p = sims.length - n;
@@ -23,7 +23,14 @@ function countPhrase(sims, lang) {
     eu: `${n} simulazio interaktibo`,
     gl: `${n} ${n === 1 ? 'simulación interactiva' : 'simulacións interactivas'}`,
   }[lang];
-  return p ? `${simsText} y ${p} ${p === 1 ? 'práctica de laboratorio' : 'prácticas de laboratorio'}` : simsText;
+  const pracText = {
+    es: `${p} ${p === 1 ? 'práctica de laboratorio' : 'prácticas de laboratorio'}`,
+    en: `${p} lab ${p === 1 ? 'practical' : 'practicals'}`,
+    ca: `${p} ${p === 1 ? 'pràctica de laboratori' : 'pràctiques de laboratori'}`,
+    eu: `${p} laborategiko praktika`,
+    gl: `${p} ${p === 1 ? 'práctica de laboratorio' : 'prácticas de laboratorio'}`,
+  }[lang];
+  return p ? `${simsText} ${AND[lang]} ${pracText}` : simsText;
 }
 
 // Lo que tiene cada simulación, igual en las dos clases de página.
@@ -54,10 +61,10 @@ export function collectionInfo({ courseId, topicId }, lang = 'es') {
     const topics = list(TOPICS.filter((t) => t.sims.some((id) => sims.some((s) => s.id === id))).map((t) => `${Q[0]}${topicLabel(t, lang)}${Q[1]}`), lang);
     const h1 = {
       es: `${practicals ? 'Simulaciones y prácticas' : 'Simulaciones'} de Física y Química para ${c}`,
-      en: `Physics and Chemistry simulations for ${c}`,
-      ca: `Simulacions de Física i Química per a ${c}`,
-      eu: `Fisika eta Kimikako simulazioak: ${c}`,
-      gl: `Simulacións de Física e Química para ${c}`,
+      en: `Physics and Chemistry ${practicals ? 'simulations and practicals' : 'simulations'} for ${c}`,
+      ca: `${practicals ? 'Simulacions i pràctiques' : 'Simulacions'} de Física i Química per a ${c}`,
+      eu: `Fisika eta Kimikako ${practicals ? 'simulazioak eta praktikak' : 'simulazioak'}: ${c}`,
+      gl: `${practicals ? 'Simulacións e prácticas' : 'Simulacións'} de Física e Química para ${c}`,
     }[lang];
     const lead = {
       es: `${countPhrase(sims, lang)} para ${c}, sobre ${topics}.`,
@@ -77,10 +84,10 @@ export function collectionInfo({ courseId, topicId }, lang = 'es') {
     const courses = list(COURSES.filter((c) => sims.some((s) => s.courses.includes(c.id))).map((c) => courseLabel(c.id, lang)), lang);
     const h1 = {
       es: `${label}: ${sims.some(isPractical) ? 'simulaciones y prácticas' : 'simulaciones'} de Física y Química`,
-      en: `${label}: Physics and Chemistry simulations`,
-      ca: `${label}: simulacions de Física i Química`,
-      eu: `${label}: Fisika eta Kimikako simulazioak`,
-      gl: `${label}: simulacións de Física e Química`,
+      en: `${label}: Physics and Chemistry ${sims.some(isPractical) ? 'simulations and practicals' : 'simulations'}`,
+      ca: `${label}: ${sims.some(isPractical) ? 'simulacions i pràctiques' : 'simulacions'} de Física i Química`,
+      eu: `${label}: Fisika eta Kimikako ${sims.some(isPractical) ? 'simulazioak eta praktikak' : 'simulazioak'}`,
+      gl: `${label}: ${sims.some(isPractical) ? 'simulacións e prácticas' : 'simulacións'} de Física e Química`,
     }[lang];
     const lead = {
       es: `${countPhrase(sims, lang)} sobre ${lower(label)}, para ${courses}.`,

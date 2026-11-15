@@ -15,7 +15,7 @@
 // `kind`:    'practica' para las prácticas de laboratorio simuladas (filtro «Tipo»,
 //            su guion del alumnado en guiones/<nombre>.md); sin él, simulación.
 // `langs`:   idiomas en los que está; sin él, en todos. Fuera de ellos no aparece
-//            en el catálogo ni tiene página.
+//            en el catálogo ni tiene página. (Ahora todas están en los cinco.)
 export const simulations = [
   {
     id: 'sim-arquimedes',
@@ -454,7 +454,6 @@ export const simulations = [
   {
     id: 'sim-practica-densidad',
     kind: 'practica',
-    langs: ['es'],
     title: 'Densidad de un sólido',
     description:
       'Práctica de laboratorio: pesa una muestra desconocida, mide su volumen en una probeta, calcula su densidad e identifica el material. Nivel guiado y nivel libre.',
@@ -463,11 +462,30 @@ export const simulations = [
     responsive: true,
     params: ['nivel', 'muestra', 'probeta'],
     courses: ['2ESO', '3ESO'],
+    en: {
+      title: "Density of a solid",
+      description:
+        "Lab practical: weigh an unknown sample, measure its volume in a measuring cylinder, calculate its density and identify the material. Guided and open levels.",
+    },
+    ca: {
+      title: "Densitat d'un sòlid",
+      description:
+        "Pràctica de laboratori: pesa una mostra desconeguda, mesura el seu volum en una proveta, calcula la seva densitat i identifica el material. Nivell guiat i nivell lliure.",
+    },
+    eu: {
+      title: "Solido baten dentsitatea",
+      description:
+        "Laborategiko praktika: pisatu lagin ezezagun bat, neurtu haren bolumena probeta batean, kalkulatu haren dentsitatea eta identifikatu materiala. Maila gidatua eta maila librea.",
+    },
+    gl: {
+      title: "Densidade dun sólido",
+      description:
+        "Práctica de laboratorio: pesa unha mostra descoñecida, mide o seu volume nunha probeta, calcula a súa densidade e identifica o material. Nivel guiado e nivel libre.",
+    },
   },
   {
     id: 'sim-practica-boyle',
     kind: 'practica',
-    langs: ['es'],
     title: 'Ley de Boyle-Mariotte',
     description:
       'Práctica de laboratorio: encierra aire en una jeringa, cambia su volumen con el émbolo, lee la presión en el manómetro y comprueba que P · V es constante. Nivel guiado y nivel libre.',
@@ -476,11 +494,30 @@ export const simulations = [
     responsive: true,
     params: ['nivel', 'montaje', 'jeringa', 'manometro'],
     courses: ['3ESO', '4ESO'],
+    en: {
+      title: "Boyle's Law",
+      description:
+        "Lab practical: trap air in a syringe, change its volume with the plunger, read the pressure on the gauge and check that P · V is constant. Guided and open levels.",
+    },
+    ca: {
+      title: "Llei de Boyle-Mariotte",
+      description:
+        "Pràctica de laboratori: tanca aire en una xeringa, canvia el seu volum amb l’èmbol, llegeix la pressió al manòmetre i comprova que P · V és constant. Nivell guiat i nivell lliure.",
+    },
+    eu: {
+      title: "Boyle-Mariotteren legea",
+      description:
+        "Laborategiko praktika: itxi airea xiringa batean, aldatu haren bolumena enboloarekin, irakurri presioa manometroan eta egiaztatu P · V konstantea dela. Maila gidatua eta maila librea.",
+    },
+    gl: {
+      title: "Lei de Boyle-Mariotte",
+      description:
+        "Práctica de laboratorio: encerra aire nunha xiringa, cambia o seu volume co émbolo, le a presión no manómetro e comproba que P · V é constante. Nivel guiado e nivel libre.",
+    },
   },
   {
     id: 'sim-practica-gay-lussac',
     kind: 'practica',
-    langs: ['es'],
     title: 'Ley de Gay-Lussac',
     description:
       'Práctica de laboratorio: calienta aire encerrado en un matraz, lee la temperatura y la presión, comprueba que P / T es constante en kelvin y llega al cero absoluto. Nivel guiado y nivel libre.',
@@ -489,6 +526,26 @@ export const simulations = [
     responsive: true,
     params: ['nivel', 'montaje'],
     courses: ['3ESO', '4ESO'],
+    en: {
+      title: "Gay-Lussac's Law",
+      description:
+        "Lab practical: heat air trapped in a flask, read the temperature and the pressure, check that P / T is constant in kelvin and reach absolute zero. Guided and open levels.",
+    },
+    ca: {
+      title: "Llei de Gay-Lussac",
+      description:
+        "Pràctica de laboratori: escalfa aire tancat en un matràs, llegeix la temperatura i la pressió, comprova que P / T és constant en kelvin i arriba al zero absolut. Nivell guiat i nivell lliure.",
+    },
+    eu: {
+      title: "Gay-Lussacen legea",
+      description:
+        "Laborategiko praktika: berotu matraze batean itxitako airea, irakurri tenperatura eta presioa, egiaztatu P / T konstantea dela kelvinetan eta iritsi zero absolutura. Maila gidatua eta maila librea.",
+    },
+    gl: {
+      title: "Lei de Gay-Lussac",
+      description:
+        "Práctica de laboratorio: quenta aire encerrado nun matraz, le a temperatura e a presión, comproba que P / T é constante en kelvin e chega ao cero absoluto. Nivel guiado e nivel libre.",
+    },
   },
 ];
 
@@ -611,17 +668,35 @@ const FICHA_TEXT = {
     adapt: 'Descárgaa en Word ou LibreOffice para adaptala á túa clase antes de repartila.',
     license: 'Ficha de actividades baixo licenza', licenseEnd: 'podes adaptala e compartila citando a autoría e coa mesma licenza.' },
 };
+const GUION_TEXT = {
+  es: { title: 'Guion de la práctica', label: 'Guion del alumnado', short: 'Guion', the: 'el guion', type: 'Guion de prácticas',
+    toc: 'En este guion', loading: 'Cargando el guion…',
+    adapt: 'Descárgalo en Word o LibreOffice para adaptarlo a tu clase antes de repartirlo.',
+    license: 'Guion bajo licencia', licenseEnd: 'puedes adaptarlo y compartirlo citando la autoría y con la misma licencia.' },
+  en: { title: 'Lab sheet', label: 'Student lab sheet', short: 'Lab sheet', the: 'the lab sheet', type: 'Lab sheet',
+    toc: 'In this lab sheet', loading: 'Loading the lab sheet…',
+    adapt: 'Download it in Word or LibreOffice format to adapt it to your class before handing it out.',
+    license: 'Lab sheet licensed under', licenseEnd: 'you may adapt and share it, crediting the author and keeping the same licence.' },
+  ca: { title: 'Guió de la pràctica', label: 'Guió de l’alumnat', short: 'Guió', the: 'el guió', type: 'Guió de pràctiques',
+    toc: 'En aquest guió', loading: 'S’està carregant el guió…',
+    adapt: 'Descarrega’l en Word o LibreOffice per adaptar-lo a la teva classe abans de repartir-lo.',
+    license: 'Guió amb llicència', licenseEnd: 'el pots adaptar i compartir citant-ne l’autoria i amb la mateixa llicència.' },
+  eu: { title: 'Praktikaren gidoia', label: 'Ikaslearen gidoia', short: 'Gidoia', the: 'gidoia', type: 'Praktiken gidoia',
+    toc: 'Gidoi honetan', loading: 'Gidoia kargatzen…',
+    adapt: 'Deskargatu Word edo LibreOffice formatuan, banatu aurretik zure taldera egokitzeko.',
+    license: 'Gidoiaren lizentzia', licenseEnd: 'egokitu eta partekatu dezakezu, egilea aipatuz eta lizentzia bera erabiliz.' },
+  gl: { title: 'Guión da práctica', label: 'Guión do alumnado', short: 'Guión', the: 'o guión', type: 'Guión de prácticas',
+    toc: 'Neste guión', loading: 'Cargando o guión…',
+    adapt: 'Descárgao en Word ou LibreOffice para adaptalo á túa clase antes de repartilo.',
+    license: 'Guión baixo licenza', licenseEnd: 'podes adaptalo e compartilo citando a autoría e coa mesma licenza.' },
+};
 export function studentDoc(sim, lang = 'es') {
-  if (isPractical(sim))
-    return { title: 'Guion de la práctica', label: 'Guion del alumnado', short: 'Guion', the: 'el guion', file: 'guion', type: 'Guion de prácticas',
-      toc: 'En este guion', loading: 'Cargando el guion…',
-      adapt: 'Descárgalo en Word o LibreOffice para adaptarlo a tu clase antes de repartirlo.',
-      license: 'Guion bajo licencia', licenseEnd: 'puedes adaptarlo y compartirlo citando la autoría y con la misma licencia.' };
+  if (isPractical(sim)) return { ...(GUION_TEXT[lang] || GUION_TEXT.es), file: 'guion' };
   const t = FICHA_TEXT[lang] || FICHA_TEXT.es;
   return { ...t, title: t.label, short: t.label, file: 'ficha', type: t.label };
 }
 
-// ¿Está en este idioma? Las prácticas, por ahora, solo en español.
+// ¿Está en este idioma? (Todas están en los cinco; `langs` queda para alguna futura.)
 export const availableIn = (sim, lang = 'es') => !sim.langs || sim.langs.includes(lang);
 
 // Catálogo de un idioma.

@@ -31,7 +31,7 @@ const guideRoutes = (lang) => {
     .map((f) => guidePath(guideIdFromFile(f), lang));
 };
 
-// Guiones de las prácticas (guiones/*.md) y fichas de las simulaciones (fichas/*.md), solo en español.
+// Guiones de las prácticas (guiones/*.md) y fichas de las simulaciones (fichas/*.md), en español.
 const guionRoutes = () =>
   STUDENT_DOC_DIRS.filter((d) => existsSync(join(ROOT, d))).flatMap((d) =>
     readdirSync(join(ROOT, d))
@@ -39,12 +39,14 @@ const guionRoutes = () =>
       .map((f) => guionPath(guideIdFromFile(f))),
   );
 
-// Fichas de actividades traducidas: fichas/<idioma>/*.md.
+// Fichas de actividades y guiones traducidos: fichas/<idioma>/*.md y guiones/<idioma>/*.md.
 const fichaRoutes = (lang) =>
-  FICHA_LANGS.includes(lang) && existsSync(join(ROOT, 'fichas', lang))
-    ? readdirSync(join(ROOT, 'fichas', lang))
-        .filter((f) => f.endsWith('.md'))
-        .map((f) => guionPath(guideIdFromFile(f), lang))
+  FICHA_LANGS.includes(lang)
+    ? STUDENT_DOC_DIRS.filter((d) => existsSync(join(ROOT, d, lang))).flatMap((d) =>
+        readdirSync(join(ROOT, d, lang))
+          .filter((f) => f.endsWith('.md'))
+          .map((f) => guionPath(guideIdFromFile(f), lang)),
+      )
     : [];
 
 const routes = [

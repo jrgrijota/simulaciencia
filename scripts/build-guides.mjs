@@ -1,9 +1,9 @@
 // Genera las descargas de cada guía docente (PDF, Word y LibreOffice) a partir
 // de guias/*.md (y de su traducción, guias/en/*.md), y las de los documentos del
-// alumnado (guiones/*.md, guion de una práctica; fichas/*.md y fichas/<idioma>/*.md,
-// ficha de actividades de una simulación). Se ejecuta tras `vite build` y escribe
-// en dist/guias/, dist/en/guides/, dist/guiones/, dist/fichas/ y, para las fichas
-// traducidas, dist/en/worksheets/, dist/ca/fitxes/, dist/eu/fitxak/ y dist/gl/fichas/.
+// alumnado (guiones/*.md, guion de una práctica; fichas/*.md, ficha de actividades de
+// una simulación; y sus traducciones en guiones/<idioma>/ y fichas/<idioma>/). Se
+// ejecuta tras `vite build` y escribe en dist/guias/, dist/en/guides/, dist/guiones/,
+// dist/fichas/ y, para las traducciones, dist/en/worksheets/, dist/en/lab-sheets/, etc.
 //
 //   PDF:  la guía en HTML (mismo Markdown que la web) impresa con Chrome sin interfaz.
 //   DOCX y ODT: Pandoc.
@@ -127,6 +127,34 @@ const TEXT = {
       `la autoría y con la misma licencia. Práctica en ${link}.`,
     pandocLang: 'es-ES',
   },
+  'guion-en': {
+    kicker: 'Lab sheet',
+    license: (url, link) =>
+      `Lab sheet published under a <a href="${url}">CC BY-SA 4.0</a> licence: you may adapt and share it, crediting ` +
+      `the author and keeping the same licence. Practical at ${link}.`,
+    pandocLang: 'en-GB',
+  },
+  'guion-ca': {
+    kicker: 'Guió de la pràctica',
+    license: (url, link) =>
+      `Guió publicat amb llicència <a href="${url}">CC BY-SA 4.0</a>: el pots adaptar i compartir citant-ne ` +
+      `l’autoria i amb la mateixa llicència. Pràctica a ${link}.`,
+    pandocLang: 'ca-ES',
+  },
+  'guion-eu': {
+    kicker: 'Praktikaren gidoia',
+    license: (url, link) =>
+      `<a href="${url}">CC BY-SA 4.0</a> lizentziapean argitaratutako gidoia: egokitu eta partekatu dezakezu, ` +
+      `egilea aipatuz eta lizentzia bera erabiliz. Praktika: ${link}.`,
+    pandocLang: 'eu-ES',
+  },
+  'guion-gl': {
+    kicker: 'Guión da práctica',
+    license: (url, link) =>
+      `Guión publicado baixo licenza <a href="${url}">CC BY-SA 4.0</a>: podes adaptalo e compartilo citando ` +
+      `a autoría e coa mesma licenza. Práctica en ${link}.`,
+    pandocLang: 'gl-ES',
+  },
   ficha: {
     kicker: 'Ficha de actividades',
     license: (url, link) =>
@@ -200,13 +228,13 @@ const TEXT = {
 };
 
 const textKey = (lang, doc, practical) =>
-  doc !== 'guion' ? lang : practical ? 'guion' : lang === 'es' ? 'ficha' : `ficha-${lang}`;
+  doc !== 'guion' ? lang : `${practical ? 'guion' : 'ficha'}${lang === 'es' ? '' : `-${lang}`}`;
 
 function pdfHtml(title, body, simId, lang, doc = 'guide', practical = true) {
   const guion = doc === 'guion';
   const t = TEXT[textKey(lang, doc, practical)];
   // La ficha enlaza a su simulación; el guion y la guía, a su propia página.
-  const url = absoluteUrl(guion ? (practical ? guionPath(simId) : simPath(simId, lang)) : guidePath(simId, lang));
+  const url = absoluteUrl(guion ? (practical ? guionPath(simId, lang) : simPath(simId, lang)) : guidePath(simId, lang));
   return `<!doctype html>
 <html lang="${lang}"><head><meta charset="utf-8"><title>${title}</title>
 <style>
@@ -252,17 +280,19 @@ const guides = GUIDE_LANGS.flatMap((lang) => {
     .filter((f) => f.endsWith('.md'))
     .map((f) => ({ lang, file: join(dir, f) }));
 });
-// Documentos del alumnado: guiones/*.md (solo en español), fichas/*.md y fichas/<idioma>/*.md.
+// Documentos del alumnado: guiones/*.md, fichas/*.md y sus traducciones en guiones/<idioma>/ y fichas/<idioma>/.
 guides.push(
   ...STUDENT_DOC_DIRS.filter((d) => existsSync(join(ROOT, d))).flatMap((d) =>
     readdirSync(join(ROOT, d))
       .filter((f) => f.endsWith('.md'))
       .map((f) => ({ lang: 'es', doc: 'guion', file: join(ROOT, d, f) })),
   ),
-  ...FICHA_LANGS.filter((l) => l !== 'es' && existsSync(join(ROOT, 'fichas', l))).flatMap((lang) =>
-    readdirSync(join(ROOT, 'fichas', lang))
-      .filter((f) => f.endsWith('.md'))
-      .map((f) => ({ lang, doc: 'guion', file: join(ROOT, 'fichas', lang, f) })),
+  ...FICHA_LANGS.filter((l) => l !== 'es').flatMap((lang) =>
+    STUDENT_DOC_DIRS.filter((d) => existsSync(join(ROOT, d, lang))).flatMap((d) =>
+      readdirSync(join(ROOT, d, lang))
+        .filter((f) => f.endsWith('.md'))
+        .map((f) => ({ lang, doc: 'guion', file: join(ROOT, d, lang, f) })),
+    ),
   ),
 );
 const tmp = join(tmpdir(), `simulaciencia-guias-${process.pid}`);

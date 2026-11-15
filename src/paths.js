@@ -4,7 +4,7 @@
 //   /                          => Catálogo
 //   /simulaciones/<nombre>/    => Modo Laboratorio de la simulación sim-<nombre>
 //   /guias/<nombre>/           => Su guía docente
-//   /guiones/<nombre>/         => Guion del alumnado de una práctica de laboratorio (solo en español)
+//   /guiones/<nombre>/         => Guion del alumnado de una práctica de laboratorio
 //   /fichas/<nombre>/          => Ficha de actividades del alumnado de una simulación
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
@@ -19,6 +19,7 @@
 //   /en/simulations/<nombre>/  /ca/simulacions/<nombre>/  /eu/simulazioak/<nombre>/   /gl/simulacions/<nombre>/ => Modo Laboratorio
 //   /en/guides/<nombre>/       /ca/guies/<nombre>/        /eu/gidak/<nombre>/         /gl/guias/<nombre>/       => Guía docente
 //   /en/worksheets/<nombre>/   /ca/fitxes/<nombre>/       /eu/fitxak/<nombre>/        /gl/fichas/<nombre>/      => Ficha de actividades
+//   /en/lab-sheets/<nombre>/   /ca/guions/<nombre>/       /eu/gidoiak/<nombre>/       /gl/guions/<nombre>/      => Guion de una práctica
 //   /en/about/                 /ca/sobre-el-projecte/     /eu/proiektuari-buruz/      /gl/sobre-o-proxecto/     => Sobre el proyecto
 //   /en/year-groups/<curso>/   /ca/cursos/<curso>/        /eu/mailak/<curso>/         /gl/cursos/<curso>/       => Por curso
 //   /en/topics/<tema>/         /ca/temes/<tema>/          /eu/gaiak/<tema>/           /gl/temas/<tema>/         => Por tema
@@ -44,20 +45,23 @@ const GUIDE_DIR = { es: '/guias/', en: '/en/guides/', ca: '/ca/guies/', eu: '/eu
 // Idioma de la guía que se enlaza desde una página: la suya si existe, si no la española.
 export const guideLang = (lang) => (GUIDE_DIR[lang] ? lang : 'es');
 export const guidePath = (simId, lang = 'es') => `${GUIDE_DIR[guideLang(lang)]}${slug(simId)}/`;
-// Documentos del alumnado: guiones de las prácticas (guiones/*.md, solo en español)
-// y fichas de actividades de las simulaciones (fichas/*.md y su traducción en
-// fichas/<idioma>/*.md, en los cinco idiomas). En el código, los dos son «guion»;
+// Documentos del alumnado: guiones de las prácticas (guiones/*.md) y fichas de
+// actividades de las simulaciones (fichas/*.md), con su traducción en
+// guiones/<idioma>/*.md y fichas/<idioma>/*.md, en los cinco idiomas. En el código, los dos son «guion»;
 // la carpeta y la dirección dependen del tipo.
 export const STUDENT_DOC_DIRS = ['guiones', 'fichas'];
-// Idiomas con fichas de actividades. Cada ficha tiene que existir en todos.
+// Idiomas con fichas de actividades y guiones. Cada uno tiene que existir en todos.
 export const FICHA_LANGS = LANGS;
 const FICHA_DIR = { es: '/fichas/', en: '/en/worksheets/', ca: '/ca/fitxes/', eu: '/eu/fitxak/', gl: '/gl/fichas/' };
 const isPracticalId = (simId) => {
   const sim = getSimulationById(simId);
   return !sim || isPractical(sim);
 };
-export const guionPath = (simId, lang = 'es') =>
-  isPracticalId(simId) ? `/guiones/${slug(simId)}/` : `${FICHA_DIR[lang] || FICHA_DIR.es}${slug(simId)}/`;
+const GUION_DIR = { es: '/guiones/', en: '/en/lab-sheets/', ca: '/ca/guions/', eu: '/eu/gidoiak/', gl: '/gl/guions/' };
+export const guionPath = (simId, lang = 'es') => {
+  const dir = isPracticalId(simId) ? GUION_DIR : FICHA_DIR;
+  return `${dir[lang] || dir.es}${slug(simId)}/`;
+};
 // Páginas por curso y por tema: reúnen las simulaciones y prácticas de un curso o de
 // un bloque temático (TOPICS), para que quien busca «simulaciones de 3.º ESO» o
 // «simulaciones del átomo» llegue a una página que responde a eso. Solo existen en
@@ -121,7 +125,7 @@ export function parsePath(pathname) {
     const under = (dir) => (dir && path.startsWith(dir) ? path.slice(dir.length).match(/^([a-z0-9-]+)\/$/)?.[1] : null);
     const sim = under(SIM_DIR[lang]);
     const guide = under(GUIDE_DIR[lang]);
-    const ficha = under(FICHA_DIR[lang]);
+    const ficha = under(FICHA_DIR[lang]) || under(GUION_DIR[lang]);
     const courseId = bySlug(COURSE_SLUGS, lang, under(COURSE_DIR[lang]));
     const topicId = bySlug(TOPIC_SLUGS, lang, under(TOPIC_DIR[lang]));
     return { lang, simId: sim ? `sim-${sim}` : null, guideId: guide ? `sim-${guide}` : null, guionId: ficha ? `sim-${ficha}` : null, courseId, topicId, page };
@@ -139,13 +143,15 @@ export function parsePath(pathname) {
 }
 
 // La misma página en el otro idioma, o null si no existe (el aviso legal fuera del
-// español y las prácticas y sus guiones fuera del español; las guías docentes y las
-// fichas de actividades están en todos).
+// español; las guías docentes, las fichas y los guiones están en todos).
 // Sirve para el selector de idioma y para las etiquetas hreflang.
 export function translatedPath({ simId, guideId, guionId, courseId, topicId, page }, lang) {
   if (courseId) return coursePath(courseId, lang);
   if (topicId) return topicPath(topicId, lang);
-  if (guionId) return isPracticalId(guionId) ? (lang === 'es' ? guionPath(guionId) : null) : guionPath(guionId, lang);
+  if (guionId) {
+    const sim = getSimulationById(guionId);
+    return sim && !availableIn(sim, lang) ? null : guionPath(guionId, lang);
+  }
   const sim = getSimulationById(simId || guideId);
   if (sim && !availableIn(sim, lang)) return null;
   if (guideId) return GUIDE_DIR[lang] ? guidePath(guideId, lang) : null;

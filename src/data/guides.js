@@ -4,7 +4,7 @@ import { guideLang } from '../paths.js';
 // Las guías se cargan bajo demanda: el catálogo solo necesita saber cuáles existen.
 // guias/*.md en español y guias/<idioma>/*.md en los demás.
 // Los documentos del alumnado (guiones/*.md de las prácticas y fichas/*.md de las
-// simulaciones, con sus traducciones en fichas/<idioma>/*.md) van como «guion».
+// simulaciones, con sus traducciones en guiones/<idioma>/ y fichas/<idioma>/) van como «guion».
 const files = {
   es: import.meta.glob('/guias/*.md', { query: '?raw', import: 'default' }),
   en: import.meta.glob('/guias/en/*.md', { query: '?raw', import: 'default' }),
@@ -14,10 +14,10 @@ const files = {
 };
 const guionFiles = {
   es: import.meta.glob(['/guiones/*.md', '/fichas/*.md'], { query: '?raw', import: 'default' }),
-  en: import.meta.glob('/fichas/en/*.md', { query: '?raw', import: 'default' }),
-  ca: import.meta.glob('/fichas/ca/*.md', { query: '?raw', import: 'default' }),
-  eu: import.meta.glob('/fichas/eu/*.md', { query: '?raw', import: 'default' }),
-  gl: import.meta.glob('/fichas/gl/*.md', { query: '?raw', import: 'default' }),
+  en: import.meta.glob(['/guiones/en/*.md', '/fichas/en/*.md'], { query: '?raw', import: 'default' }),
+  ca: import.meta.glob(['/guiones/ca/*.md', '/fichas/ca/*.md'], { query: '?raw', import: 'default' }),
+  eu: import.meta.glob(['/guiones/eu/*.md', '/fichas/eu/*.md'], { query: '?raw', import: 'default' }),
+  gl: import.meta.glob(['/guiones/gl/*.md', '/fichas/gl/*.md'], { query: '?raw', import: 'default' }),
 };
 
 const toLoaders = (byLang) =>
@@ -56,8 +56,8 @@ export function loadGuide(simId, lang = 'es') {
   return loaders[lang].get(simId)();
 }
 
-// Documento del alumnado: guion de una práctica (solo en español) o ficha de
-// actividades de una simulación (en cada idioma).
+// Documento del alumnado: guion de una práctica o ficha de actividades de una
+// simulación (en cada idioma).
 export function hasGuion(simId, lang = 'es') {
   return guionLoaders[lang]?.has(simId) ?? false;
 }

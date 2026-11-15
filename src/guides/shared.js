@@ -26,6 +26,14 @@ const FICHA_FILE = {
   eu: 'eu/fitxak/fitxa-',
   gl: 'gl/fichas/ficha-',
 };
+// Guiones de las prácticas: guiones/guion-<nombre>, en/lab-sheets/lab-sheet-<nombre>…
+const GUION_FILE = {
+  es: 'guiones/guion-',
+  en: 'en/lab-sheets/lab-sheet-',
+  ca: 'ca/guions/guio-',
+  eu: 'eu/gidoiak/gidoia-',
+  gl: 'gl/guions/guion-',
+};
 // Archivos descargables de las guías docentes en cada idioma.
 const GUIDE_FILE = {
   es: 'guias/guia-docente-',
@@ -36,7 +44,7 @@ const GUIDE_FILE = {
 };
 export function downloadBase(simId, lang = 'es', doc = 'guide', practical = true) {
   const name = simId.replace(/^sim-/, '');
-  if (doc === 'guion') return practical ? `guiones/guion-${name}` : `${FICHA_FILE[lang] || FICHA_FILE.es}${name}`;
+  if (doc === 'guion') return `${(practical ? GUION_FILE : FICHA_FILE)[lang] || (practical ? GUION_FILE : FICHA_FILE).es}${name}`;
   return `${GUIDE_FILE[lang] || GUIDE_FILE.es}${name}`;
 }
 
@@ -131,6 +139,30 @@ const FICHA_NOTE = {
   ],
 };
 
+// Nota de licencia de los guiones de las prácticas fuera del español.
+const GUION_NOTE = {
+  en: [
+    'Lab sheet published under a Creative Commons Attribution-ShareAlike 4.0 licence (CC BY-SA 4.0)',
+    'You may adapt it for your class and share it, crediting the author and keeping the same licence.',
+    'Lab practical',
+  ],
+  ca: [
+    'Guió publicat amb llicència Creative Commons Reconeixement-CompartirIgual 4.0 (CC BY-SA 4.0)',
+    'El pots adaptar a la teva classe i compartir citant-ne l’autoria i amb la mateixa llicència.',
+    'Pràctica',
+  ],
+  eu: [
+    'Gidoia Creative Commons Aitortu-PartekatuBerdin 4.0 (CC BY-SA 4.0) lizentziapean argitaratua',
+    'Zure taldera egokitu eta partekatu dezakezu, egilea aipatuz eta lizentzia bera erabiliz.',
+    'Praktika',
+  ],
+  gl: [
+    'Guión publicado baixo licenza Creative Commons Recoñecemento-CompartirIgual 4.0 (CC BY-SA 4.0)',
+    'Podes adaptalo á túa clase e compartilo citando a autoría e coa mesma licenza.',
+    'Práctica',
+  ],
+};
+
 // Nota de licencia de las guías docentes en catalán, euskera y gallego.
 const GUIDE_NOTE = {
   ca: [
@@ -148,8 +180,9 @@ const GUIDE_NOTE = {
 };
 
 export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true) {
-  if (doc === 'guion' && !practical && FICHA_NOTE[lang]) {
-    const [what, adapt, simWord] = FICHA_NOTE[lang];
+  const note = doc === 'guion' && (practical ? GUION_NOTE : FICHA_NOTE)[lang];
+  if (note) {
+    const [what, adapt, simWord] = note;
     return [
       '---',
       '',

@@ -25,8 +25,8 @@ const SECONDARY =
 // Tipo de recurso, encima del título: solo cuando el catálogo mezcla simulaciones y
 // prácticas (showKind). Las prácticas llevan además su franja de color.
 const KIND_BADGE = {
-  simulacion: { icon: 'monitor-play', color: '#0369a1', text: 'Simulación' },
-  practica: { icon: 'flask-conical', color: '#7c2d4f', text: 'Práctica de laboratorio' },
+  simulacion: { icon: 'monitor-play', color: '#0369a1', text: () => L('Simulación', 'Simulation', 'Simulació', 'Simulazioa', 'Simulación') },
+  practica: { icon: 'flask-conical', color: '#7c2d4f', text: () => L('Práctica de laboratorio', 'Lab practical', 'Pràctica de laboratori', 'Laborategiko praktika', 'Práctica de laboratorio') },
 };
 
 export function cardMarkup(sim, { showKind = false } = {}) {
@@ -36,7 +36,7 @@ export function cardMarkup(sim, { showKind = false } = {}) {
   const description = simDescription(sim, lang);
   const courses = sim.courses.map((c) => courseLabel(c, lang));
   const tagLabels = sim.tags.map((t) => tagLabel(t, lang));
-  const kindWords = practical ? 'práctica de laboratorio' : '';
+  const kindWords = practical ? KIND_BADGE.practica.text() : '';
   const haystack = `${title} ${description} ${tagLabels.join(' ')} ${courses.join(' ')} ${kindWords}`.toLowerCase();
   const guide = guideLangFor(sim.id, lang);
   const guionButton =
@@ -53,7 +53,7 @@ export function cardMarkup(sim, { showKind = false } = {}) {
       : '';
   const kind = KIND_BADGE[practical ? 'practica' : 'simulacion'];
   const kindLine = showKind
-    ? `<p class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide" style="color:${kind.color}"><i data-lucide="${kind.icon}" class="h-4 w-4"></i>${kind.text}</p>`
+    ? `<p class="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wide" style="color:${kind.color}"><i data-lucide="${kind.icon}" class="h-4 w-4"></i>${kind.text()}</p>`
     : '';
   const guideButton = guide
     ? `
@@ -101,7 +101,7 @@ export function cardMarkup(sim, { showKind = false } = {}) {
           class="${BUTTON} w-full bg-[#0369a1] text-white hover:bg-[#075985]"
         >
           <i data-lucide="play" class="h-4 w-4"></i>
-          ${practical ? 'Abrir práctica' : L('Abrir simulación', 'Open simulation', 'Obre la simulació', 'Ireki simulazioa', 'Abrir simulación')}
+          ${practical ? L('Abrir práctica', 'Open practical', 'Obre la pràctica', 'Ireki praktika', 'Abrir práctica') : L('Abrir simulación', 'Open simulation', 'Obre la simulació', 'Ireki simulazioa', 'Abrir simulación')}
         </a>${secondary}
       </div>
     </div>

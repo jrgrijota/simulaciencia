@@ -6,6 +6,7 @@
 import { simPath, guidePath, guionPath, homePath, pagePath, absoluteUrl, translatedPath, coursePath, topicPath, LANGS, GUIDE_LANGS } from './paths.js';
 import { collectionInfo } from './data/collections.js';
 import { thumbMarkup } from './components/thumbs.js';
+import { simSeo } from './data/seo.js';
 import { simulationsIn, courseLabel, simTitle, simDescription, tagLabel, isPractical, studentDoc, TOPICS } from './data/simulations.js';
 
 export const SITE = 'SimulaCiencia';
@@ -25,14 +26,14 @@ const LICENSE = {
 // documento porque la página pregenerada de una guía o simulación ya trae los suyos.
 const DEFAULT_TITLE = {
   es: `${SITE} · Simulaciones de Física y Química`,
-  en: `${SITE} · Physics and Chemistry Simulations`,
+  en: `Free Interactive Physics and Chemistry Simulations · ${SITE}`,
   ca: `${SITE} · Simulacions de Física i Química`,
   eu: `${SITE} · Fisika eta Kimikako simulazioak`,
   gl: `${SITE} · Simulacións de Física e Química`,
 };
 const DEFAULT_DESCRIPTION = {
   es: 'Catálogo de simulaciones interactivas de Física y Química para el aula. Acceso inmediato, sin instalación.',
-  en: 'Interactive Physics and Chemistry simulations for the classroom. Free, instant access, nothing to install.',
+  en: 'Free interactive simulations for ages 13–18: atomic spectra, changes of state, density, buoyancy, chemical bonding and orbits, with teacher guides. No sign-up.',
   ca: "Catàleg de simulacions interactives de Física i Química per a l'aula. Accés immediat, sense instal·lació.",
   eu: 'Gelarako Fisika eta Kimikako simulazio interaktiboen katalogoa. Berehalako sarbidea, instalaziorik gabe.',
   gl: 'Catálogo de simulacións interactivas de Física e Química para a aula. Acceso inmediato, sen instalación.',
@@ -45,8 +46,8 @@ const DEFAULT_OG_DESCRIPTION = {
   gl: 'Simulacións interactivas e gratuítas de Física e Química para ESO e Bacharelato. Sen instalación nin rexistro.',
 };
 const ABOUT_DESCRIPTION = {
-  es: 'Quién hace SimulaCiencia y por qué: un profesor de Física y Química de la Comunidad de Madrid que crea simulaciones libres y gratuitas para el aula.',
-  en: 'Who makes SimulaCiencia and why: a Physics and Chemistry teacher in Madrid creating free, open simulations for the classroom.',
+  es: 'SimulaCiencia es el proyecto de un profesor de Física y Química de Madrid: simulaciones libres y gratuitas para el aula, con guías docentes y fichas. Así nació.',
+  en: 'SimulaCiencia is made by a Physics and Chemistry teacher in Madrid: free, open simulations for the classroom, with teacher guides and worksheets. Here is its story.',
   ca: "Qui fa SimulaCiencia i per què: un professor de Física i Química de la Comunitat de Madrid que crea simulacions lliures i gratuïtes per a l'aula.",
   eu: 'Nork egiten du SimulaCiencia eta zergatik: Madrilgo Erkidegoko Fisika eta Kimikako irakasle bat, gelarako simulazio libre eta doakoak sortzen dituena.',
   gl: 'Quen fai SimulaCiencia e por que: un profesor de Física e Química da Comunidade de Madrid que crea simulacións libres e gratuítas para a aula.',
@@ -211,7 +212,7 @@ function withBreadcrumb(data, lang, trail) {
 }
 
 const PAGES = {
-  about: { es: `Sobre el proyecto · ${SITE}`, en: `About the project · ${SITE}`, ca: `Sobre el projecte · ${SITE}`, eu: `Proiektuari buruz · ${SITE}`, gl: `Sobre o proxecto · ${SITE}` },
+  about: { es: `Quién hace SimulaCiencia y por qué · Sobre el proyecto`, en: `Who makes SimulaCiencia and why · About the project`, ca: `Sobre el projecte · ${SITE}`, eu: `Proiektuari buruz · ${SITE}`, gl: `Sobre o proxecto · ${SITE}` },
   legal: { es: `Aviso legal y privacidad · ${SITE}` },
   news: { es: `Novedades · ${SITE}`, en: `What’s new · ${SITE}`, ca: `Novetats · ${SITE}`, eu: `Berriak · ${SITE}`, gl: `Novidades · ${SITE}` },
 };
@@ -256,12 +257,12 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
     return set(
       lang,
       `${info.h1} · ${SITE}`,
-      shortDescription(info.intro),
+      shortDescription(info.text || info.intro),
       url,
       withBreadcrumb({
         '@type': 'CollectionPage',
         name: info.h1,
-        description: info.intro,
+        description: info.text ? `${info.text} ${info.intro}` : info.intro,
         url,
         inLanguage: lang,
         isPartOf: WEBSITE,
@@ -311,10 +312,11 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
     const title = simTitle(guideSim, l);
     const word = GUIDE_WORD[l];
     const name = `${word}: ${title}`;
+    const seo = simSeo(guideSim, l);
     return set(
       l,
-      `${name} · ${SITE}`,
-      (practical ? PRACTICAL_GUIDE_DESCRIPTION : GUIDE_DESCRIPTION)[l](title),
+      `${seo?.guideTitle || name} · ${SITE}`,
+      seo?.guideDescription || (practical ? PRACTICAL_GUIDE_DESCRIPTION : GUIDE_DESCRIPTION)[l](title),
       guideUrl(guideSim.id, l),
       withBreadcrumb({
         '@type': 'LearningResource',
@@ -339,7 +341,8 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
   }
   if (sim) {
     const kind = (isPractical(sim) ? PRACTICAL_KIND : KIND)[lang];
-    return set(lang, `${simTitle(sim, lang)} · ${kind} · ${SITE}`, simDescription(sim, lang), simUrl(sim.id, lang), withBreadcrumb(simResource(sim, lang), lang, [[simTitle(sim, lang), simUrl(sim.id, lang)]]), sim.langs || LANGS, simImage(sim, lang));
+    const seo = simSeo(sim, lang);
+    return set(lang, seo ? `${seo.title} · ${SITE}` : `${simTitle(sim, lang)} · ${kind} · ${SITE}`, seo?.description || simDescription(sim, lang), simUrl(sim.id, lang), withBreadcrumb(simResource(sim, lang), lang, [[simTitle(sim, lang), simUrl(sim.id, lang)]]), sim.langs || LANGS, simImage(sim, lang));
   }
   if (PAGES[page]) {
     const url = absoluteUrl(pagePath(page, lang));
@@ -365,11 +368,12 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
 export function shortDescription(text, max = 160) {
   const clean = text.replace(/[*_`]/g, '').replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').trim();
   if (clean.length <= max) return clean;
-  const sentences = clean.match(/[^.!?]+[.!?]+(\s|$)/g) || [];
+  // Una frase acaba en punto seguido de espacio: «2.º ESO» no corta la frase.
+  const sentences = clean.split(/(?<=[.!?])\s+/);
   let out = '';
   for (const s of sentences) {
-    if ((out + s).trim().length > max) break;
-    out += s;
+    if (`${out} ${s}`.trim().length > max) break;
+    out = `${out} ${s}`;
   }
   if (out.trim().length >= 70) return out.trim();
   return clean.slice(0, max - 1).replace(/\s+\S*$/, '') + '…';

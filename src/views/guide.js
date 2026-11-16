@@ -2,6 +2,7 @@ import { simPath, guidePath, guionPath } from '../paths.js';
 import { isPractical, studentDoc } from '../data/simulations.js';
 import { getLang, L } from '../i18n.js';
 import { setDescription } from '../head.js';
+import { simSeo } from '../data/seo.js';
 import { footerMarkup } from '../components/footer.js';
 import { siteHeaderMarkup } from '../components/site-header.js';
 import { loadGuide, loadGuion, hasGuion, guideLangFor, guideLabel } from '../data/guides.js';
@@ -97,7 +98,8 @@ export function renderGuide(root, sim, doc = 'guide') {
   let cancelled = false;
   (guion ? loadGuion(sim.id, lang) : loadGuide(sim.id, lang)).then((markdown) => {
     if (cancelled) return;
-    setDescription(guideSummary(markdown));
+    // Las guías con descripción propia para Google (src/data/seo.js) la conservan.
+    if (guion || !simSeo(sim, lang)?.guideDescription) setDescription(guideSummary(markdown));
     const body = root.querySelector('#guide-body');
     const html = renderGuideHtml(markdown, lang);
     // El h1 va primero; tras él, las descargas y el índice.

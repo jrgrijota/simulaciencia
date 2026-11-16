@@ -53,7 +53,7 @@ simulaciones son bienvenidas.
 
 ## Licencia
 
-© 2026 Juan Ramón Grijota.
+Autor: Juan Ramón Grijota (2026).
 
 - Código: [MIT](LICENSE).
 - Contenido educativo (textos, explicaciones, imágenes y diseño didáctico):

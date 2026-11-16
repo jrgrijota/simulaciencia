@@ -186,7 +186,7 @@ export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true)
     return [
       '---',
       '',
-      `© 2026 Juan Ramón Grijota · SimulaCiencia. ${what}: https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}. ${adapt}`,
+      `Juan Ramón Grijota · SimulaCiencia. ${what}: https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}. ${adapt}`,
       '',
       `${simWord}: ${absoluteUrl(simPath(simId, lang))}`,
     ].join('\n');
@@ -196,7 +196,7 @@ export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true)
     return [
       '---',
       '',
-      `© 2026 Juan Ramón Grijota · SimulaCiencia. ${what} bajo licencia Creative Commons ` +
+      `Juan Ramón Grijota · SimulaCiencia. ${what} bajo licencia Creative Commons ` +
         `Atribución-CompartirIgual 4.0 (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/deed.es. ` +
         `Puedes adaptar${it} a tu clase y compartir${it} citando la autoría y con la misma licencia.`,
       '',
@@ -208,7 +208,7 @@ export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true)
     return [
       '---',
       '',
-      `© 2026 Juan Ramón Grijota · SimulaCiencia. ${what}: https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}`,
+      `Juan Ramón Grijota · SimulaCiencia. ${what}: https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}`,
       '',
       `${adapt} ${absoluteUrl(guidePath(simId, lang))}`,
     ].join('\n');
@@ -217,7 +217,7 @@ export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true)
     return [
       '---',
       '',
-      `© 2026 Juan Ramón Grijota · SimulaCiencia. Guide published under a Creative Commons ` +
+      `Juan Ramón Grijota · SimulaCiencia. Guide published under a Creative Commons ` +
         `Attribution-ShareAlike 4.0 licence (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/deed.en`,
       '',
       `You may adapt and share it, crediting the author and keeping the same licence. ` +
@@ -227,7 +227,7 @@ export function licenseNote(simId, lang = 'es', doc = 'guide', practical = true)
   return [
     '---',
     '',
-    `© 2026 Juan Ramón Grijota · SimulaCiencia. Guía publicada bajo licencia Creative Commons ` +
+    `Juan Ramón Grijota · SimulaCiencia. Guía publicada bajo licencia Creative Commons ` +
       `Atribución-CompartirIgual 4.0 (CC BY-SA 4.0): https://creativecommons.org/licenses/by-sa/4.0/deed.es`,
     '',
     `Puedes adaptarla y compartirla citando la autoría y manteniendo la misma licencia. ` +

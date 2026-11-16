@@ -49,7 +49,7 @@ Els errors de procediment no es castiguen de manera arbitrària: cadascun espatl
 | Tirar tanta aigua que vessa en ficar-hi la mostra | L’aigua es vessa i cal començar de nou |
 | Deixar l’aigua per sobre de l’última ratlla | No hi ha escala per llegir i cal començar de nou |
 | Pesar la mostra després de treure-la de l’aigua | Porta aigua enganxada, la balança marca de més i cal començar de nou |
-| Triar una proveta on la mostra no cap (nivell lliure) | La mostra no entra per la boca i un avís demana una proveta més ampla. Només les mostres 5, 6, 12 i 15 caben a la de 50 mL |
+| Triar una proveta on la mostra no cap (nivell lliure) | La mostra no entra per la boca i un avís demana una proveta més ampla. Només les mostres 5, 6, 12, 15, 22, 29 i 30 caben a la de 50 mL |
 
 ### Repartir la pràctica ja preparada
 
@@ -58,7 +58,7 @@ L’adreça de la pràctica admet tres paràmetres, que es poden combinar i enga
 | Paràmetre | Efecte | Exemple |
 | --- | --- | --- |
 | `nivel=libre` | Obre el nivell lliure | simulaciencia.es/ca/simulacions/practica-densidad/?nivel=libre |
-| `muestra=N` | Comença amb la mostra N (d’1 a 20) | …/practica-densidad/?nivel=libre&muestra=7 |
+| `muestra=N` | Comença amb la mostra N (d’1 a 30) | …/practica-densidad/?nivel=libre&muestra=7 |
 | `probeta=50`, `100` o `250` | Al nivell lliure, comença amb aquesta proveta | …/practica-densidad/?nivel=libre&probeta=250 |
 
 ## Clau de les mostres
@@ -67,16 +67,16 @@ Per corregir el nivell lliure. La massa i el volum canvien a cada intent, així 
 
 | Material | Densitat (g/cm³) | Mostres |
 | --- | --- | --- |
-| PVC | 1,40 | 3, 12 |
-| Magnesi | 1,74 | 9, 16 |
-| Tefló | 2,20 | 5, 14 |
+| PVC | 1,40 | 3, 12, 21, 26 |
+| Magnesi | 1,74 | 9, 16, 22, 28 |
+| Tefló | 2,20 | 5, 14, 24, 29 |
 | Alumini | 2,70 | 1, 7, 15 |
-| Titani | 4,51 | 8, 18 |
-| Ferro | 7,87 | 2, 10, 17 |
-| Coure | 8,96 | 4, 11, 19 |
+| Titani | 4,51 | 8, 18, 23, 30 |
+| Ferro | 7,87 | 2, 10, 17, 25 |
+| Coure | 8,96 | 4, 11, 19, 27 |
 | Plom | 11,34 | 6, 13, 20 |
 
-Les mostres 5, 6, 12 i 15 són les més estretes i caben també a la proveta de 50 mL. La taula de densitats que veu l’alumnat és la mateixa d’aquesta clau, i dos materials veïns se separen almenys un 13 %: amb una lectura ben feta a la proveta de 100 mL, la densitat calculada porta sempre al material correcte.
+Hi ha 30 mostres, una per alumne en una classe de 30. Les mostres 5, 6, 12, 15, 22, 29 i 30 són les més estretes i caben també a la proveta de 50 mL. La taula de densitats que veu l’alumnat és la mateixa d’aquesta clau, i dos materials veïns se separen almenys un 13 %: amb una lectura ben feta a la proveta de 100 mL, la densitat calculada porta sempre al material correcte.
 
 ## Ús a cada curs
 
@@ -100,7 +100,7 @@ El currículum català del bloc de 1r a 3r no anomena la densitat; entra en les 
 
 1. **Pregunta inicial (5 min).** «Què té més massa, un quilo de plom o un quilo de palla?» i, després, «com sabríeu de quin metall és una peça sense etiqueta?». Recollir idees prèvies sobre massa, volum i densitat.
 2. **Nivell guiat, per parelles (15 min).** Cada parella amb la mostra que li surti. Serveix per aprendre’n el maneig i l’ordre dels passos. En acabar, la simulació proposa repetir amb la mateixa mostra: tindrà una altra massa i un altre volum.
-3. **Nivell lliure amb el guió (20 min).** Repartir a cada parella un número de mostra diferent amb el paràmetre `muestra=N`. Procurar que hi hagi dues o tres parelles amb el mateix material (per exemple, les mostres 1, 7 i 15 són d’alumini).
+3. **Nivell lliure amb el guió (20 min).** Repartir a cada alumne (o a cada parella) un número de mostra diferent amb el paràmetre `muestra=N`. N’hi ha 30, una per alumne, i cada material es repeteix en tres o quatre, de manera que diversos alumnes tindran el mateix material (per exemple, les mostres 1, 7 i 15 són d’alumini).
 4. **Posada en comú (10 min).** A la pissarra, una taula amb mostra, massa, volum, densitat i material. Les parelles que tenen el mateix material comparen: masses i volums diferents, la mateixa densitat. Aquí es tanca la idea central que la densitat és pròpia del material i no de la mida.
 
 ### 1r a 3r d’ESO, segona sessió: precisió de la mesura i error
@@ -119,7 +119,7 @@ El currículum no anomena l’error relatiu, els factors de conversió ni les xi
 
 1. **Repàs amb el nivell guiat (10 min).** Una mostra cada parella, per recordar el procediment.
 2. **Planificació (5 min).** Abans de mesurar al nivell lliure, contestar les preguntes de planificació del guió: quina proveta triar i per què, per què es pesa abans de mullar la mostra i quanta aigua cal.
-3. **La mateixa mostra amb tres provetes (20 min).** Mesurar el volum amb les provetes de 50, 100 i 250 mL (amb una mostra estreta: 5, 6, 12 o 15). Repetir cada lectura amb quantitats diferents d’aigua i fer la mitjana. Amb la de 250 mL, cada ratlla val 2 mL: en un volum d’uns 15 cm³ això ja suposa més d’un 10 %.
+3. **La mateixa mostra amb tres provetes (20 min).** Mesurar el volum amb les provetes de 50, 100 i 250 mL (amb una mostra estreta: 5, 6, 12, 15, 22, 29 o 30). Repetir cada lectura amb quantitats diferents d’aigua i fer la mitjana. Amb la de 250 mL, cada ratlla val 2 mL: en un volum d’uns 15 cm³ això ja suposa més d’un 10 %.
 4. **Error i unitats (15 min).** Calcular l’error relatiu amb la densitat de la taula i comprovar que ve sobretot de la proveta, no de la balança (0,1 g en una massa de desenes de grams és menys d’un 1 %). Passar la densitat a kg/m³.
 
 ### 4t d’ESO: repàs abans de la flotació

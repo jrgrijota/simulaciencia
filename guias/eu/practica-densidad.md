@@ -49,7 +49,7 @@ Prozedura-akatsak ez dira modu arbitrarioan zigortzen: bakoitzak neurketa hondat
 | Hainbeste ur botatzea non lagina sartzean gainezka egiten duen | Ura isuri egiten da eta berriro hasi behar da |
 | Ura azken marraren gainetik uztea | Ez dago irakurtzeko eskalarik eta berriro hasi behar da |
 | Lagina uretatik atera ondoren pisatzea | Ura itsatsita darama, balantzak gehiegi markatzen du eta berriro hasi behar da |
-| Lagina sartzen ez den probeta bat aukeratzea (maila librea) | Lagina ez da ahotik sartzen, eta abisu batek probeta zabalago bat eskatzen du. 5., 6., 12. eta 15. laginak baino ez dira sartzen 50 mL-koan |
+| Lagina sartzen ez den probeta bat aukeratzea (maila librea) | Lagina ez da ahotik sartzen, eta abisu batek probeta zabalago bat eskatzen du. 5., 6., 12., 15., 22., 29. eta 30. laginak baino ez dira sartzen 50 mL-koan |
 
 ### Praktika prestatuta banatzea
 
@@ -58,7 +58,7 @@ Praktikaren helbideak hiru parametro onartzen ditu; konbinatu eta Classroom, Moo
 | Parametroa | Efektua | Adibidea |
 | --- | --- | --- |
 | `nivel=libre` | Maila librea irekitzen du | simulaciencia.es/eu/simulazioak/practica-densidad/?nivel=libre |
-| `muestra=N` | N laginarekin hasten da (1etik 20ra) | …/practica-densidad/?nivel=libre&muestra=7 |
+| `muestra=N` | N laginarekin hasten da (1etik 30era) | …/practica-densidad/?nivel=libre&muestra=7 |
 | `probeta=50`, `100` edo `250` | Maila librean, probeta horrekin hasten da | …/practica-densidad/?nivel=libre&probeta=250 |
 
 ## Laginen gakoa
@@ -67,16 +67,16 @@ Maila librea zuzentzeko. Masa eta bolumena saiakera bakoitzean aldatzen dira; be
 
 | Materiala | Dentsitatea (g/cm³) | Laginak |
 | --- | --- | --- |
-| PVC | 1,40 | 3, 12 |
-| Magnesioa | 1,74 | 9, 16 |
-| Teflona | 2,20 | 5, 14 |
+| PVC | 1,40 | 3, 12, 21, 26 |
+| Magnesioa | 1,74 | 9, 16, 22, 28 |
+| Teflona | 2,20 | 5, 14, 24, 29 |
 | Aluminioa | 2,70 | 1, 7, 15 |
-| Titanioa | 4,51 | 8, 18 |
-| Burdina | 7,87 | 2, 10, 17 |
-| Kobrea | 8,96 | 4, 11, 19 |
+| Titanioa | 4,51 | 8, 18, 23, 30 |
+| Burdina | 7,87 | 2, 10, 17, 25 |
+| Kobrea | 8,96 | 4, 11, 19, 27 |
 | Beruna | 11,34 | 6, 13, 20 |
 
-5., 6., 12. eta 15. laginak dira estuenak, eta 50 mL-ko probetan ere sartzen dira. Ikasleek ikusten duten dentsitate-taula gako honetakoa bera da, eta ondoz ondoko bi material gutxienez % 13 bereizten dira: 100 mL-ko probetan ondo egindako irakurketa batekin, kalkulatutako dentsitateak beti material zuzenera eramaten du.
+30 lagin daude: 30 ikasleko gela batean, bat ikasle bakoitzarentzat. 5., 6., 12., 15., 22., 29. eta 30. laginak dira estuenak, eta 50 mL-ko probetan ere sartzen dira. Ikasleek ikusten duten dentsitate-taula gako honetakoa bera da, eta ondoz ondoko bi material gutxienez % 13 bereizten dira: 100 mL-ko probetan ondo egindako irakurketa batekin, kalkulatutako dentsitateak beti material zuzenera eramaten du.
 
 ## Maila bakoitzean nola erabili
 
@@ -96,7 +96,7 @@ Ikastetxe bakoitzak erabakitzen du zein mailatan lantzen den materiaren zatia. H
 
 1. **Hasierako galdera (5 min).** «Zerk du masa gehiago, kilo bat berunak ala kilo bat lastok?» eta, gero, «nola jakingo zenukete zein metalez egina dagoen etiketarik gabeko pieza bat?». Masari, bolumenari eta dentsitateari buruzko aurretiazko ideiak bildu.
 2. **Maila gidatua, bikoteka (15 min).** Bikote bakoitza tokatzen zaion laginarekin. Maneiua eta urratsen ordena ikasteko balio du. Amaitzean, simulazioak lagin berarekin errepikatzea proposatzen du: beste masa eta beste bolumen bat izango ditu.
-3. **Maila librea gidoiarekin (20 min).** Bikote bakoitzari lagin-zenbaki desberdin bat eman, `muestra=N` parametroarekin. Ziurtatu bizpahiru bikotek material bera dutela (adibidez, 1., 7. eta 15. laginak aluminiozkoak dira).
+3. **Maila librea gidoiarekin (20 min).** Ikasle (edo bikote) bakoitzari lagin-zenbaki desberdin bat eman, `muestra=N` parametroarekin. 30 daude, bat ikasle bakoitzeko, eta material bakoitza hiru edo lau lagini dagokie; beraz, hainbat ikaslek material bera izango dute (adibidez, 1., 7. eta 15. laginak aluminiozkoak dira).
 4. **Bateratzea (10 min).** Arbelean, taula bat laginarekin, masarekin, bolumenarekin, dentsitatearekin eta materialarekin. Material bera duten bikoteek alderatzen dute: masa eta bolumen desberdinak, dentsitate bera. Hor ixten da ideia nagusia: dentsitatea materialari dagokio, ez tamainari.
 
 ### DBHko 3. maila (Fisika eta Kimika): neurketaren doitasuna eta errorea
@@ -113,7 +113,7 @@ Euskadiko 3. mailako curriculumak ez ditu errore erlatiboa, bihurketa-faktoreak 
 
 1. **Errepasoa maila gidatuarekin (10 min).** Lagin bat bikote bakoitzeko, prozedura gogoratzeko.
 2. **Plangintza (5 min).** Maila librean neurtu aurretik, erantzun gidoiko plangintza-galderei: zein probeta aukeratu eta zergatik, zergatik pisatzen den lagina busti aurretik eta zenbat ur behar den.
-3. **Lagin bera hiru probetarekin (20 min).** Neurtu bolumena 50, 100 eta 250 mL-ko probetekin (lagin estu batekin: 5, 6, 12 edo 15). Errepikatu irakurketa bakoitza ur kantitate desberdinekin eta egin batez bestekoa. 250 mL-koarekin, marra bakoitzak 2 mL balio du: 15 cm³ inguruko bolumen batean, horrek dagoeneko % 10 baino gehiago dakar.
+3. **Lagin bera hiru probetarekin (20 min).** Neurtu bolumena 50, 100 eta 250 mL-ko probetekin (lagin estu batekin: 5, 6, 12, 15, 22, 29 edo 30). Errepikatu irakurketa bakoitza ur kantitate desberdinekin eta egin batez bestekoa. 250 mL-koarekin, marra bakoitzak 2 mL balio du: 15 cm³ inguruko bolumen batean, horrek dagoeneko % 10 baino gehiago dakar.
 4. **Errorea eta unitateak (15 min).** Kalkulatu errore erlatiboa taulako dentsitatearekin, eta egiaztatu batez ere probetatik datorrela, ez balantzatik (0,1 g hamarnaka gramoko masa batean % 1 baino gutxiago da). Pasatu dentsitatea kg/m³-ra.
 
 ### DBHko 4. maila (Fisika eta Kimika): errepasoa flotazioaren aurretik

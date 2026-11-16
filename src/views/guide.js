@@ -128,7 +128,7 @@ export function renderGuide(root, sim, doc = 'guide') {
       ${tocMarkup(guideToc(markdown), student)}
       ${html.slice(h1End)}
       <p class="mt-10 border-t border-[#e2e8f0] pt-4 text-xs text-[#64748b]">
-        © 2026 Juan Ramón Grijota · ${guion ? student.license : L('Guía bajo licencia', 'Guide licensed under', 'Guia amb llicència', 'Gida lizentzia honekin', 'Guía baixo licenza')}
+        Juan Ramón Grijota · ${guion ? student.license : L('Guía bajo licencia', 'Guide licensed under', 'Guia amb llicència', 'Gida lizentzia honekin', 'Guía baixo licenza')}
         <a href="${LICENSE_URL[lang]}" target="_blank" rel="noopener license">CC BY-SA 4.0</a>:
         ${guion
           ? student.licenseEnd

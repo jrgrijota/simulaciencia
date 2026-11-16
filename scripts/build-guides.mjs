@@ -265,7 +265,7 @@ function pdfHtml(title, body, simId, lang, doc = 'guide', practical = true) {
 <body>
   <p class="kicker">${t.kicker} · SimulaCiencia</p>
   ${body}
-  <p class="license">© 2026 Juan Ramón Grijota · SimulaCiencia. ${t.license(
+  <p class="license">Juan Ramón Grijota · SimulaCiencia. ${t.license(
     `https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}`,
     `<a href="${url}">${url.replace('https://', '')}</a>`,
   )}</p>

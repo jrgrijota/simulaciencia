@@ -49,7 +49,7 @@ Os erros de procedemento non se castigan de forma arbitraria: cada un estraga a 
 | Botar tanta auga que reborda ao meter a mostra | A auga derrámase e hai que comezar de novo |
 | Deixar a auga por riba da última raia | Non hai escala para ler e hai que comezar de novo |
 | Pesar a mostra despois de sacala da auga | Leva auga pegada, a balanza marca de máis e hai que comezar de novo |
-| Escoller unha probeta na que a mostra non cabe (nivel libre) | A mostra non entra pola boca e un aviso pide unha probeta máis ancha. Só as mostras 5, 6, 12 e 15 caben na de 50 mL |
+| Escoller unha probeta na que a mostra non cabe (nivel libre) | A mostra non entra pola boca e un aviso pide unha probeta máis ancha. Só as mostras 5, 6, 12, 15, 22, 29 e 30 caben na de 50 mL |
 
 ### Repartir a práctica xa preparada
 
@@ -58,7 +58,7 @@ O enderezo da práctica admite tres parámetros, que se poden combinar e pegar e
 | Parámetro | Efecto | Exemplo |
 | --- | --- | --- |
 | `nivel=libre` | Abre o nivel libre | simulaciencia.es/gl/simulacions/practica-densidad/?nivel=libre |
-| `muestra=N` | Comeza coa mostra N (de 1 a 20) | …/practica-densidad/?nivel=libre&muestra=7 |
+| `muestra=N` | Comeza coa mostra N (de 1 a 30) | …/practica-densidad/?nivel=libre&muestra=7 |
 | `probeta=50`, `100` ou `250` | No nivel libre, comeza con esa probeta | …/practica-densidad/?nivel=libre&probeta=250 |
 
 ## Clave das mostras
@@ -67,16 +67,16 @@ Para corrixir o nivel libre. A masa e o volume cambian en cada intento, así que
 
 | Material | Densidade (g/cm³) | Mostras |
 | --- | --- | --- |
-| PVC | 1,40 | 3, 12 |
-| Magnesio | 1,74 | 9, 16 |
-| Teflón | 2,20 | 5, 14 |
+| PVC | 1,40 | 3, 12, 21, 26 |
+| Magnesio | 1,74 | 9, 16, 22, 28 |
+| Teflón | 2,20 | 5, 14, 24, 29 |
 | Aluminio | 2,70 | 1, 7, 15 |
-| Titanio | 4,51 | 8, 18 |
-| Ferro | 7,87 | 2, 10, 17 |
-| Cobre | 8,96 | 4, 11, 19 |
+| Titanio | 4,51 | 8, 18, 23, 30 |
+| Ferro | 7,87 | 2, 10, 17, 25 |
+| Cobre | 8,96 | 4, 11, 19, 27 |
 | Chumbo | 11,34 | 6, 13, 20 |
 
-As mostras 5, 6, 12 e 15 son as máis estreitas e caben tamén na probeta de 50 mL. A táboa de densidades que ve o alumnado é a mesma desta clave, e dous materiais veciños sepáranse polo menos un 13 %: cunha lectura ben feita na probeta de 100 mL, a densidade calculada leva sempre ao material correcto.
+Hai 30 mostras, unha por alumno nunha clase de 30. As mostras 5, 6, 12, 15, 22, 29 e 30 son as máis estreitas e caben tamén na probeta de 50 mL. A táboa de densidades que ve o alumnado é a mesma desta clave, e dous materiais veciños sepáranse polo menos un 13 %: cunha lectura ben feita na probeta de 100 mL, a densidade calculada leva sempre ao material correcto.
 
 ## Uso en cada curso
 
@@ -96,7 +96,7 @@ En 2.º de ESO a práctica serve para aprender o procedemento e a densidade como
 
 1. **Pregunta inicial (5 min).** «Que ten máis masa, un quilo de chumbo ou un quilo de palla?» e, despois, «como saberiades de que metal é unha peza sen etiqueta?». Recoller ideas previas sobre masa, volume e densidade.
 2. **Nivel guiado, por parellas (15 min).** Cada parella coa mostra que lle saia. Serve para aprender o manexo e a orde dos pasos. Ao rematar, a simulación propón repetir coa mesma mostra: terá outra masa e outro volume.
-3. **Nivel libre co guión (20 min).** Repartir a cada parella un número de mostra distinto co parámetro `muestra=N`. Coidar que haxa dúas ou tres parellas co mesmo material (por exemplo, as mostras 1, 7 e 15 son de aluminio).
+3. **Nivel libre co guión (20 min).** Repartir a cada alumno (ou a cada parella) un número de mostra distinto co parámetro `muestra=N`. Hai 30, unha por alumno, e cada material repítese en tres ou catro delas, así que varios terán o mesmo material (por exemplo, as mostras 1, 7 e 15 son de aluminio).
 4. **Posta en común (10 min).** No encerado, unha táboa con mostra, masa, volume, densidade e material. As parellas que teñen o mesmo material comparan: masas e volumes distintos, a mesma densidade. Aí péchase a idea central de que a densidade é propia do material e non do tamaño.
 
 ### 3.º de ESO: precisión da medida e erro
@@ -115,7 +115,7 @@ O currículo galego de 3.º non nomea expresamente o erro relativo, os factores 
 
 1. **Repaso co nivel guiado (10 min).** Unha mostra cada parella, para lembrar o procedemento.
 2. **Planificación (5 min).** Antes de medir no nivel libre, contestar as preguntas de planificación do guión: que probeta escoller e por que, por que se pesa antes de mollar a mostra e canta auga fai falta.
-3. **A mesma mostra con tres probetas (20 min).** Medir o volume coas probetas de 50, 100 e 250 mL (cunha mostra estreita: 5, 6, 12 ou 15). Repetir cada lectura con cantidades distintas de auga e facer a media. Coa de 250 mL, cada raia vale 2 mL: nun volume duns 15 cm³ iso xa supón máis dun 10 %.
+3. **A mesma mostra con tres probetas (20 min).** Medir o volume coas probetas de 50, 100 e 250 mL (cunha mostra estreita: 5, 6, 12, 15, 22, 29 ou 30). Repetir cada lectura con cantidades distintas de auga e facer a media. Coa de 250 mL, cada raia vale 2 mL: nun volume duns 15 cm³ iso xa supón máis dun 10 %.
 4. **Erro e unidades (15 min).** Calcular o erro relativo coa densidade da táboa e comprobar que vén sobre todo da probeta, non da balanza (0,1 g nunha masa de decenas de gramos é menos dun 1 %). Pasar a densidade a kg/m³.
 
 ### 4.º de ESO: repaso antes da flotación

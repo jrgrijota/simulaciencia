@@ -46,7 +46,7 @@ Contesta antes de medir.
 
 1. Escolle no panel o teu número de montaxe, a xiringa e o manómetro que che indiquen.
 2. Coa chave **aberta**, leva o bordo da goma que toca o aire (o da esquerda) a **40 mL**. Se usas a xiringa de 20 mL, lévao a **15 mL**.
-3. Leva a lupa á agulla, le a presión e apúntaa na medida 1. É a presión do aire da sala. Se usas o manómetro relativo, apunta tamén o que marca o barómetro da parede.
+3. Leva a lupa á agulla, le a presión e apúntaa na medida 1. Como a chave está aberta, o aire da xiringa está unido ao da sala e ten a súa mesma presión: é a presión da sala. Se usas o manómetro relativo, apunta tamén o que marca o barómetro da parede.
 4. Pecha a chave (panca cara abaixo). Desde agora, non a volvas abrir.
 5. Empurra o émbolo **amodo** ata outro volume. Agarda a que a agulla pare, le o volume e a presión coa lupa e apúntaos.
 6. Repite o paso 5 ata ter polo menos catro medidas empurrando e dúas tirando do émbolo, por riba do volume inicial. Non empurres tanto que a agulla pase do final da escala, nin tires máis alá da última raia da xiringa.

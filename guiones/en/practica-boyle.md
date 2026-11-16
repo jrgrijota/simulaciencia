@@ -46,7 +46,7 @@ Answer these before measuring.
 
 1. Choose your set-up number, the syringe and the pressure gauge you have been given in the panel.
 2. With the valve **open**, move the edge of the rubber touching the air (the left-hand one) to **40 mL**. If you are using the 20 mL syringe, move it to **15 mL**.
-3. Take the magnifier to the needle, read the pressure and write it in measurement 1. This is the pressure of the room air. If you are using the relative gauge, also write down what the barometer on the wall shows.
+3. Take the magnifier to the needle, read the pressure and write it in measurement 1. As the valve is open, the air in the syringe is connected to the room air and has the same pressure: this is the room pressure. If you are using the relative gauge, also write down what the barometer on the wall shows.
 4. Close the valve (lever pointing down). Do not open it again from now on.
 5. Push the plunger in **slowly** to a different volume. Wait for the needle to stop, read the volume and the pressure with the magnifier and write them down.
 6. Repeat step 5 until you have at least four measurements pushing the plunger in and two pulling it out, above the starting volume. Do not push so far that the needle goes past the end of the scale, or pull beyond the last mark on the syringe.

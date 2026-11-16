@@ -50,7 +50,7 @@ Contesta abans de mesurar.
 ## Procediment
 
 1. Tria al tauler el teu número de muntatge.
-2. Amb la clau **oberta** i l’elevador **a baix**, porta la lupa al termòmetre i llegeix la temperatura de la sala. Posa la línia groga dels ulls al final de la columna vermella. Llegeix també el manòmetre. Apunta les dues a la mesura 1.
+2. Amb la clau **oberta** i l’elevador **a baix**, porta la lupa al termòmetre i llegeix la temperatura de la sala. Posa la línia groga dels ulls al final de la columna vermella. Llegeix també el manòmetre: com que la clau és oberta, marca la pressió de la sala. Apunta les dues a la mesura 1.
 3. Tanca la clau (palanca cap avall). A partir d’ara, no la tornis a obrir.
 4. Puja l’elevador fins **a dalt** perquè l’aigua amb gel cobreixi el matràs. Espera que el termòmetre i el manòmetre s’aturin i apunta la mesura 2.
 5. Encén la placa i l’**agitador**. Quan l’aigua sigui uns graus per sota de la temperatura que busques, apaga la placa. Espera que el termòmetre i el manòmetre s’aturin, i apunta la mesura.

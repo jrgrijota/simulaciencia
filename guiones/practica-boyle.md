@@ -46,7 +46,7 @@ Contesta antes de medir.
 
 1. Elige en el panel tu número de montaje, la jeringa y el manómetro que te indiquen.
 2. Con la llave **abierta**, lleva el borde de la goma que toca el aire (el de la izquierda) a **40 mL**. Si usas la jeringa de 20 mL, llévalo a **15 mL**.
-3. Lleva la lupa a la aguja, lee la presión y apúntala en la medida 1. Es la presión del aire de la sala. Si usas el manómetro relativo, apunta también lo que marca el barómetro de la pared.
+3. Lleva la lupa a la aguja, lee la presión y apúntala en la medida 1. Como la llave está abierta, el aire de la jeringa está unido al de la sala y tiene su misma presión: es la presión de la sala. Si usas el manómetro relativo, apunta también lo que marca el barómetro de la pared.
 4. Cierra la llave (palanca hacia abajo). Desde ahora, no la vuelvas a abrir.
 5. Empuja el émbolo **despacio** hasta otro volumen. Espera a que la aguja se pare, lee el volumen y la presión con la lupa y apúntalos.
 6. Repite el paso 5 hasta tener al menos cuatro medidas empujando y dos tirando del émbolo, por encima del volumen inicial. No empujes tanto que la aguja pase del final de la escala, ni tires más allá de la última raya de la jeringa.

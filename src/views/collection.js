@@ -61,7 +61,8 @@ export function renderCollection(root, { courseId = null, topicId = null }) {
             </ol>
           </nav>
           <h1 class="mt-3 max-w-4xl text-3xl font-extrabold leading-[1.1] text-balance text-[#0f172a] sm:text-4xl md:text-5xl">${info.h1}</h1>
-          <p class="mt-4 max-w-3xl text-lg leading-relaxed text-[#334155]">${info.intro}</p>
+          ${info.text ? `<p class="mt-4 max-w-3xl text-lg leading-relaxed text-[#334155]">${info.text}</p>` : ''}
+          <p class="${info.text ? 'mt-3 max-w-3xl leading-relaxed text-[#475569]' : 'mt-4 max-w-3xl text-lg leading-relaxed text-[#334155]'}">${info.intro}</p>
           ${info.note ? `<p class="mt-2 max-w-3xl text-sm text-[#64748b]">${info.note}</p>` : ''}
         </div>
       </section>

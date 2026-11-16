@@ -46,7 +46,7 @@ Contesta abans de mesurar.
 
 1. Tria al tauler el teu número de muntatge, la xeringa i el manòmetre que t’indiquin.
 2. Amb la clau **oberta**, porta la vora de la goma que toca l’aire (la de l’esquerra) a **40 mL**. Si fas servir la xeringa de 20 mL, porta-la a **15 mL**.
-3. Porta la lupa a l’agulla, llegeix la pressió i apunta-la a la mesura 1. És la pressió de l’aire de la sala. Si fas servir el manòmetre relatiu, apunta també el que marca el baròmetre de la paret.
+3. Porta la lupa a l’agulla, llegeix la pressió i apunta-la a la mesura 1. Com que la clau és oberta, l’aire de la xeringa està unit al de la sala i té la mateixa pressió: és la pressió de la sala. Si fas servir el manòmetre relatiu, apunta també el que marca el baròmetre de la paret.
 4. Tanca la clau (palanca cap avall). A partir d’ara, no la tornis a obrir.
 5. Empeny l’èmbol **a poc a poc** fins a un altre volum. Espera que l’agulla s’aturi, llegeix el volum i la pressió amb la lupa i apunta’ls.
 6. Repeteix el pas 5 fins a tenir com a mínim quatre mesures empenyent i dues estirant l’èmbol, per sobre del volum inicial. No empenyis tant que l’agulla passi del final de l’escala, ni estiris més enllà de l’última ratlla de la xeringa.

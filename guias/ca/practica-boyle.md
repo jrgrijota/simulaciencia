@@ -47,7 +47,7 @@ El manòmetre relatiu marca quant passa la pressió de l’aire de l’atmosfèr
 - **Ni la pressió ni el volum no apareixen escrits.** Es llegeixen amb la lupa a l’escala del manòmetre i a la de la xeringa.
 - **El volum es llegeix a la vora de la goma que toca l’aire,** la de l’esquerra. L’altra vora dona uns mil·lilitres de més.
 - **L’agulla es passa si l’èmbol es mou de pressa.** En empènyer ràpid, l’aire s’escalfa una mica i la pressió puja de més; en estirar ràpid, es refreda. En uns 4 segons torna a la temperatura de la sala i l’agulla s’atura. La primera vegada, un avís ho explica. És la raó que la llei demani temperatura constant, i es pot comentar a classe.
-- **Cada número de muntatge és sempre el mateix dia de laboratori:** la pressió atmosfèrica (l’habitual a Madrid, de 93 a 96 kPa, per l’altitud) i la temperatura de la sala. En obrir la pràctica surt un muntatge a l’atzar; se’n pot triar un altre al desplegable o amb «Un altre a l’atzar».
+- **Cada número de muntatge és sempre el mateix dia de laboratori:** la pressió atmosfèrica (l’habitual a Madrid, de 93 a 96 kPa, per l’altitud; al nivell del mar seria d’uns 101 kPa, 1 atm) i la temperatura de la sala. En obrir la pràctica surt un muntatge a l’atzar; se’n pot triar un altre al desplegable o amb «Un altre a l’atzar».
 - **Al nivell guiat** es dona per bo el volum exacte i la pressió a menys de mitja divisió (1 kPa). Amb aquestes lectures, P · V surt igual a totes les mesures amb menys d’un 3,5 % de diferència.
 
 ### Errors amb conseqüències

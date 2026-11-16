@@ -47,7 +47,7 @@ El manómetro relativo marca lo que la presión del aire se pasa de la atmosfér
 - **Ni la presión ni el volumen aparecen escritos.** Se leen con la lupa en la escala del manómetro y en la de la jeringa.
 - **El volumen se lee en el borde de la goma que toca el aire,** el de la izquierda. El otro borde da unos mililitros de más.
 - **La aguja se pasa si el émbolo se mueve deprisa.** Al empujar rápido, el aire se calienta un poco y la presión sube de más; al tirar rápido, se enfría. En unos 4 segundos vuelve a la temperatura de la sala y la aguja se para. La primera vez, un aviso lo explica. Es la razón de que la ley pida temperatura constante, y se puede comentar en clase.
-- **Cada número de montaje es siempre el mismo día de laboratorio:** la presión atmosférica (la habitual en Madrid, de 93 a 96 kPa) y la temperatura de la sala. Al abrir la práctica sale un montaje al azar; se puede elegir otro en el desplegable o con «Otro al azar».
+- **Cada número de montaje es siempre el mismo día de laboratorio:** la presión atmosférica (la habitual en Madrid, de 93 a 96 kPa, por la altitud; al nivel del mar sería de unos 101 kPa, 1 atm) y la temperatura de la sala. Al abrir la práctica sale un montaje al azar; se puede elegir otro en el desplegable o con «Otro al azar».
 - **En el nivel guiado** se da por bueno el volumen exacto y la presión a menos de media división (1 kPa). Con esas lecturas, P · V sale igual en todas las medidas con menos de un 3,5 % de diferencia.
 
 ### Errores con consecuencias

@@ -47,7 +47,7 @@ The relative gauge shows how much the pressure of the air is above atmospheric p
 - **Neither the pressure nor the volume appears in writing.** They are read with the magnifier on the scale of the gauge and on that of the syringe.
 - **The volume is read at the edge of the rubber touching the air,** the left-hand one. The other edge gives a few millilitres too many.
 - **The needle overshoots if the plunger is moved quickly.** When you push quickly, the air warms up a little and the pressure rises too much; when you pull quickly, it cools down. In about 4 seconds it returns to room temperature and the needle stops. The first time, a message explains this. It is the reason the law requires constant temperature, and it can be discussed in class.
-- **Each set-up number is always the same day in the lab:** the atmospheric pressure (typical for Madrid, 93 to 96 kPa) and the room temperature. When the practical opens, a random set-up appears; another can be chosen from the drop-down list or with “Random set-up”.
+- **Each set-up number is always the same day in the lab:** the atmospheric pressure (typical for Madrid, 93 to 96 kPa, because of the altitude; at sea level it would be about 101 kPa, 1 atm) and the room temperature. When the practical opens, a random set-up appears; another can be chosen from the drop-down list or with “Random set-up”.
 - **At the guided level** the exact volume is accepted, and the pressure to within half a division (1 kPa). With those readings, P · V comes out the same in every measurement to within 3.5 %.
 
 ### Mistakes with consequences

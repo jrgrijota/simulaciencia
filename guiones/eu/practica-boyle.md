@@ -46,7 +46,7 @@ Erantzun neurtu aurretik.
 
 1. Aukeratu panelean zure muntaiaren zenbakia, eta adierazten dizkizuten xiringa eta manometroa.
 2. Giltza **irekita** dagoela, eraman airea ukitzen duen gomaren ertza (ezkerrekoa) **40 mL**-ra. 20 mL-ko xiringa erabiltzen baduzu, eraman **15 mL**-ra.
-3. Eraman lupa orratzera, irakurri presioa eta idatzi 1. neurketan. Gelako airearen presioa da. Manometro erlatiboa erabiltzen baduzu, idatzi hormako barometroak markatzen duena ere.
+3. Eraman lupa orratzera, irakurri presioa eta idatzi 1. neurketan. Giltza irekita dagoenez, xiringako airea gelako airearekin lotuta dago eta presio bera du: gelako presioa da. Manometro erlatiboa erabiltzen baduzu, idatzi hormako barometroak markatzen duena ere.
 4. Itxi giltza (palanka beherantz). Hemendik aurrera, ez ireki berriro.
 5. Bultzatu enboloa **poliki** beste bolumen bateraino. Itxaron orratza gelditu arte, irakurri lupaz bolumena eta presioa eta idatzi.
 6. Errepikatu 5. urratsa gutxienez lau neurketa enboloa bultzatuz eta bi tiratuz izan arte, hasierako bolumenaren gainetik. Ez bultzatu hainbeste orratzak eskalaren amaiera gainditzeko moduan, eta ez tiratu xiringaren azken marratik harago.

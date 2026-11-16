@@ -50,7 +50,7 @@ Erantzun neurtu aurretik.
 ## Prozedura
 
 1. Aukeratu panelean zure muntaiaren zenbakia.
-2. Giltza **irekita** eta jasogailua **behean** dagoela, eraman lupa termometrora eta irakurri gelako tenperatura. Jarri begien marra horia zutabe gorriaren amaieran. Irakurri manometroa ere. Idatzi biak 1. neurketan.
+2. Giltza **irekita** eta jasogailua **behean** dagoela, eraman lupa termometrora eta irakurri gelako tenperatura. Jarri begien marra horia zutabe gorriaren amaieran. Irakurri manometroa ere: giltza irekita dagoenez, gelako presioa markatzen du. Idatzi biak 1. neurketan.
 3. Itxi giltza (palanka beherantz). Hemendik aurrera, ez ireki berriro.
 4. Igo jasogailua **goraino**, ur izoztunak matrazea estal dezan. Itxaron termometroa eta manometroa gelditu arte eta idatzi 2. neurketa.
 5. Piztu plaka eta **irabiagailua**. Ura bilatzen duzun tenperatura baino gradu batzuk beherago dagoenean, itzali plaka. Itxaron termometroa eta manometroa gelditu arte, eta idatzi neurketa.

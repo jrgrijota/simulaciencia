@@ -50,7 +50,7 @@ Contesta antes de medir.
 ## Procedemento
 
 1. Escolle no panel o teu número de montaxe.
-2. Coa chave **aberta** e o elevador **abaixo**, leva a lupa ao termómetro e le a temperatura da sala. Pon a liña amarela dos ollos no final da columna vermella. Le tamén o manómetro. Apunta as dúas na medida 1.
+2. Coa chave **aberta** e o elevador **abaixo**, leva a lupa ao termómetro e le a temperatura da sala. Pon a liña amarela dos ollos no final da columna vermella. Le tamén o manómetro: como a chave está aberta, marca a presión da sala. Apunta as dúas na medida 1.
 3. Pecha a chave (panca cara abaixo). Desde agora, non a volvas abrir.
 4. Sobe o elevador ata **arriba** para que a auga con xeo cubra o matraz. Agarda a que o termómetro e o manómetro se paren e apunta a medida 2.
 5. Acende a placa e o **axitador**. Cando a auga estea uns graos por debaixo da temperatura que buscas, apaga a placa. Agarda a que o termómetro e o manómetro se paren, e apunta a medida.

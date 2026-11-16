@@ -50,7 +50,7 @@ Answer these before measuring.
 ## Method
 
 1. Choose your set-up number in the panel.
-2. With the valve **open** and the lab jack **down**, take the magnifier to the thermometer and read the room temperature. Put the yellow eye line at the end of the red column. Also read the pressure gauge. Write both in measurement 1.
+2. With the valve **open** and the lab jack **down**, take the magnifier to the thermometer and read the room temperature. Put the yellow eye line at the end of the red column. Also read the pressure gauge: as the valve is open, it shows the room pressure. Write both in measurement 1.
 3. Close the valve (lever pointing down). Do not open it again from now on.
 4. Raise the lab jack all the way **up** so that the ice water covers the flask. Wait for the thermometer and the gauge to stop and write down measurement 2.
 5. Switch on the hot plate and the **stirrer**. When the water is a few degrees below the temperature you want, switch the hot plate off. Wait for the thermometer and the gauge to stop, and write down the measurement.

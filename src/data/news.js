@@ -11,6 +11,15 @@ import { coursePath, simPath, guionPath, guidePath, homePath } from '../paths.js
 
 export const NEWS = [
   {
+    date: '2026-11-17',
+    link: (lang) => simPath('sim-caida-libre', lang),
+    es: { title: 'Nueva simulación: Caída libre y tiro parabólico', text: 'Caída libre, tiro vertical y tiro parabólico con estela, vectores y gráficas. Se puede quitar el aire para ver que la pluma y la bola caen juntas, y un modo reto pide calcular antes de lanzar. Con su guía docente y su ficha de actividades.' },
+    en: { title: 'New simulation: Free fall and projectile motion', text: 'Free fall, vertical throws and projectiles with a strobe trail, vectors and graphs. Switch the air off to see a feather and a steel ball land together, and a challenge mode asks students to calculate before they launch. With its teacher guide and activity worksheet.' },
+    ca: { title: 'Nova simulació: Caiguda lliure i tir parabòlic', text: "Caiguda lliure, tir vertical i tir parabòlic amb estela, vectors i gràfiques. Es pot treure l'aire per veure que la ploma i la bola cauen juntes, i un mode repte demana calcular abans de llançar. Amb guia docent adaptada al currículum de Catalunya i fitxa d'activitats." },
+    eu: { title: 'Simulazio berria: Erorketa askea eta jaurtiketa parabolikoa', text: 'Erorketa askea, jaurtiketa bertikala eta parabolikoa, arrastoarekin, bektoreekin eta grafikoekin. Airea ken daiteke lumak eta bolak batera erortzen direla ikusteko, eta erronka-moduak jaurti aurretik kalkulatzeko eskatzen du. Euskadiko curriculumera egokitutako irakaslearen gidarekin eta jarduera-fitxarekin.' },
+    gl: { title: 'Nova simulación: Caída libre e tiro parabólico', text: 'Caída libre, tiro vertical e tiro parabólico con estela, vectores e gráficas. Pódese quitar o aire para ver que a pluma e a bóla caen xuntas, e un modo reto pide calcular antes de lanzar. Con guía docente adaptada ao currículo de Galicia e ficha de actividades.' },
+  },
+  {
     date: '2026-11-15',
     langs: ['en', 'ca', 'eu', 'gl'],
     link: (lang) => simPath('sim-practica-boyle', lang),

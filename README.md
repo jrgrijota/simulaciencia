@@ -27,6 +27,7 @@ proyecto en [Sobre el proyecto](https://simulaciencia.es/sobre-el-proyecto/).
 | [Velocidad de Reacción](https://simulaciencia.es/simulaciones/velocidad-reaccion/) | Química | Bachillerato | Efecto de la temperatura, la concentración y el catalizador. |
 | [Ajuste de Reacciones](https://simulaciencia.es/simulaciones/ajuste-reaccion/) | Química | ESO, Bachillerato | Ajuste de ecuaciones, leyes de Lavoisier y Proust, reactivo limitante y rendimiento. |
 | [Ondas](https://simulaciencia.es/simulaciones/ondas/) | Física | ESO, Bachillerato | Ondas transversales y longitudinales, amplitud, longitud de onda, período y energía. |
+| [Caída Libre y Tiro Parabólico](https://simulaciencia.es/simulaciones/caida-libre/) | Física | ESO, Bachillerato | Caída libre, tiro vertical, tiro horizontal y oblicuo, con y sin aire; estela, vectores, gráficas y retos. |
 | [Órbitas y Gravitación](https://simulaciencia.es/simulaciones/orbitas/) | Física | Bachillerato | Bala de cañón de Newton, Sistema Solar, leyes de Kepler y estrellas binarias. |
 
 ## Cómo usarlas en clase

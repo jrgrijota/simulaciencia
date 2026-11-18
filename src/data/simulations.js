@@ -483,6 +483,37 @@ export const simulations = [
     },
   },
   {
+    id: 'sim-caida-libre',
+    title: 'Caída Libre y Tiro Parabólico',
+    description:
+      'Caída libre, tiro vertical y parabólico con estela y vectores: comprueba que sin aire todo cae igual y que los dos movimientos del tiro son independientes.',
+    tags: ['Física', 'ESO', 'Bachillerato'],
+    url: 'https://jrgrijota.github.io/simulacion-caida-libre/',
+    responsive: true,
+    params: ['modo', 'h', 'v', 'angulo', 'objeto', 'lugar', 'aire', 'comparar', 'objeto2', 'soltar', 'conservar', 'vectores', 'proyecciones', 'estela', 'pausa', 'ocultar', 'graficas', 'velocidad', 'reto'],
+    courses: ['4ESO', '1BACH'],
+    en: {
+      title: 'Free Fall and Projectile Motion',
+      description:
+        'Free fall, vertical throws and projectiles with a trail and vectors: check that without air everything falls alike and that the two motions of a projectile are independent.',
+    },
+    ca: {
+      title: 'Caiguda Lliure i Tir Parabòlic',
+      description:
+        'Caiguda lliure, tir vertical i parabòlic amb estela i vectors: comprova que sense aire tot cau igual i que els dos moviments del tir són independents.',
+    },
+    eu: {
+      title: 'Erorketa askea eta jaurtiketa parabolikoa',
+      description:
+        'Erorketa askea, jaurtiketa bertikala eta parabolikoa, arrasto eta bektoreekin: egiaztatu airerik gabe dena berdin erortzen dela eta jaurtiketaren bi mugimenduak independenteak direla.',
+    },
+    gl: {
+      title: 'Caída Libre e Tiro Parabólico',
+      description:
+        'Caída libre, tiro vertical e parabólico con estela e vectores: comproba que sen aire todo cae igual e que os dous movementos do tiro son independentes.',
+    },
+  },
+  {
     id: 'sim-practica-densidad',
     kind: 'practica',
     title: 'Densidad de un sólido',

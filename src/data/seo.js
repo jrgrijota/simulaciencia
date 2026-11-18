@@ -226,6 +226,20 @@ export const SIM_SEO = {
       guideDescription: 'How to teach transverse and longitudinal waves, wavelength and period with a free simulation: lesson sequence and misconceptions. PDF and Word.',
     },
   },
+  'sim-caida-libre': {
+    es: {
+      title: 'Simulador de caída libre y tiro parabólico',
+      description: 'Simulador de caída libre, tiro vertical y tiro parabólico con estela, vectores, gráficas y botón para quitar el aire. Gratis, para 4.º ESO y 1.º Bach.',
+      guideTitle: 'Caída libre y tiro parabólico: guía didáctica para 4.º ESO y 1.º Bach.',
+      guideDescription: 'Cómo explicar la caída libre y el tiro parabólico con una simulación: secuencia de clase, retos e ideas previas del alumnado. En PDF y Word.',
+    },
+    en: {
+      title: 'Free Fall and Projectile Motion Simulation',
+      description: 'Free simulation of free fall, vertical throws and projectile motion with a strobe trail, vectors, graphs and an air on/off switch. For ages 15–17.',
+      guideTitle: 'Teaching Free Fall and Projectiles: Simulation Guide for Ages 15–17',
+      guideDescription: 'How to teach free fall and projectile motion with a free simulation: lesson sequence, challenges and common student misconceptions. PDF and Word.',
+    },
+  },
 };
 
 export const simSeo = (sim, lang) => SIM_SEO[sim?.id]?.[lang] || null;

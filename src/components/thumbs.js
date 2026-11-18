@@ -286,6 +286,25 @@ const THUMBS = {
     <path d="M250 90V52" stroke="#0f172a" stroke-width="1.4"/>
     <path d="M244 52H256M244 90H256" stroke="#0f172a" stroke-width="1.4"/>
     <text x="262" y="76" ${MONO} font-size="13" fill="#0f172a">A</text>`,
+  // Tiro parabólico con estela de puntos a intervalos iguales, velocidad tangente y g hacia abajo.
+  'sim-caida-libre': `
+    <line x1="16" y1="150" x2="304" y2="150" stroke="#0f172a" stroke-width="2"/>
+    <path d="M34 150Q160 -70 286 150" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 5"/>
+    <circle cx="34.0" cy="150.0" r="5" fill="#0369a1"/>
+    <circle cx="59.2" cy="110.4" r="4.2" fill="#0369a1"/>
+    <circle cx="84.4" cy="79.6" r="4.2" fill="#0369a1"/>
+    <circle cx="109.6" cy="57.6" r="4.2" fill="#0369a1"/>
+    <circle cx="134.8" cy="44.4" r="4.2" fill="#0369a1"/>
+    <circle cx="160.0" cy="40.0" r="4.2" fill="#0369a1"/>
+    <circle cx="185.2" cy="44.4" r="4.2" fill="#0369a1"/>
+    <circle cx="210.4" cy="57.6" r="4.2" fill="#0369a1"/>
+    <circle cx="235.6" cy="79.6" r="4.2" fill="#0369a1"/>
+    <circle cx="260.8" cy="110.4" r="4.2" fill="#0369a1"/>
+    <circle cx="286.0" cy="150.0" r="4.2" fill="#0369a1"/>
+    ${arrow(84.4, 79.6, 115.5, 47.1, '#0f172a')}
+    ${arrow(210.4, 57.6, 210.4, 97.6, '#c2410c')}
+    <text x="218.4" y="95.6" ${MONO} font-size="13" fill="#c2410c">g</text>
+    <text x="94" y="46" ${MONO} font-size="13" fill="#0f172a">v</text>`,
 };
 
 export function thumbMarkup(simId) {

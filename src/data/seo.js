@@ -198,6 +198,20 @@ export const SIM_SEO = {
       guideDescription: 'How to teach voltage, current and Ohm’s law with a free circuit simulation: lesson sequence and common student misconceptions. PDF and Word.',
     },
   },
+  'sim-cinematica': {
+    es: {
+      title: 'Simulador de MRU y MRUA con gráficas x‑t, v‑t y a‑t',
+      description: 'Simulador de gráficas del movimiento: MRU y MRUA con un coche en una pista, gráficas x‑t, v‑t y a‑t en vivo y 10 retos. Gratis, para 2.º, 3.º y 4.º ESO.',
+      guideTitle: 'Gráficas del movimiento: guía didáctica con simulación para ESO',
+      guideDescription: 'Cómo enseñar a leer gráficas x‑t y v‑t del MRU y del MRUA con una simulación: secuencia de clase e ideas previas del alumnado. En PDF y Word.',
+    },
+    en: {
+      title: 'Motion Graphs Simulation: Distance-Time and Velocity-Time',
+      description: 'Free motion graphs simulation: a car on a track with live position-time, velocity-time and acceleration-time graphs, plus 10 graph-matching challenges. Ages 13–16.',
+      guideTitle: 'Teaching Motion Graphs: Simulation Guide for Ages 13–16',
+      guideDescription: 'How to teach distance-time and velocity-time graphs, constant velocity and acceleration with a free simulation: lesson sequence and misconceptions. PDF and Word.',
+    },
+  },
   'sim-ondas': {
     es: {
       title: 'Simulador de ondas: transversales y longitudinales',

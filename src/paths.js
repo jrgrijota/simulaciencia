@@ -76,6 +76,7 @@ export const COURSE_SLUGS = {
   '2BACH': { es: '2-bachillerato', en: 'year-13', ca: '2n-batxillerat', eu: 'batxilergoa-2', gl: '2-bacharelato' },
 };
 export const TOPIC_SLUGS = {
+  movimiento: { es: 'movimiento', en: 'motion', ca: 'moviment', eu: 'mugimendua', gl: 'movemento' },
   fuerzas: { es: 'fuerzas-y-gravitacion', en: 'forces-and-gravity', ca: 'forces-i-gravitacio', eu: 'indarrak-eta-grabitazioa', gl: 'forzas-e-gravitacion' },
   energia: { es: 'energia-y-electricidad', en: 'energy-and-electricity', ca: 'energia-i-electricitat', eu: 'energia-eta-elektrizitatea', gl: 'enerxia-e-electricidade' },
   ondas: { es: 'ondas-y-luz', en: 'waves-and-light', ca: 'ones-i-llum', eu: 'uhinak-eta-argia', gl: 'ondas-e-luz' },

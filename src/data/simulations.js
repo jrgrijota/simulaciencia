@@ -452,6 +452,37 @@ export const simulations = [
     },
   },
   {
+    id: 'sim-cinematica',
+    title: 'Gráficas del Movimiento',
+    description:
+      'Un coche o una persona en una pista recta y sus gráficas x‑t, v‑t y a‑t en vivo: MRU y MRUA, 10 retos para reproducir gráficas y modo para moverlo con la mano.',
+    tags: ['Física', 'ESO'],
+    url: 'https://jrgrijota.github.io/simulacion-cinematica/',
+    responsive: true,
+    params: ['modo', 'tipo', 'ejemplo', 'x0', 'v', 'a', 'para', 'reto', 'tramos', 'seguir', 'movil', 'graficas', 'marcas', 'pendiente', 'area', 'anterior', 'pausar', 'velocidad'],
+    courses: ['2ESO', '3ESO', '4ESO'],
+    en: {
+      title: 'Motion Graphs',
+      description:
+        'A car or a person on a straight track with live x‑t, v‑t and a‑t graphs: constant velocity and constant acceleration, 10 graph-matching challenges and a hands-on mode.',
+    },
+    ca: {
+      title: 'Gràfiques del Moviment',
+      description:
+        'Un cotxe o una persona en una pista recta i les seves gràfiques x‑t, v‑t i a‑t en directe: MRU i MRUA, 10 reptes per reproduir gràfiques i un mode per moure’l amb la mà.',
+    },
+    eu: {
+      title: 'Mugimenduaren grafikoak',
+      description:
+        'Auto bat edo pertsona bat pista zuzen batean, eta haren x‑t, v‑t eta a‑t grafikoak zuzenean: MZU eta MZUA, grafikoak errepikatzeko 10 erronka eta eskuz mugitzeko modua.',
+    },
+    gl: {
+      title: 'Gráficas do movemento',
+      description:
+        'Un coche ou unha persoa nunha pista recta e as súas gráficas x‑t, v‑t e a‑t en directo: MRU e MRUA, 10 retos para reproducir gráficas e un modo para movelo coa man.',
+    },
+  },
+  {
     id: 'sim-practica-densidad',
     kind: 'practica',
     title: 'Densidad de un sólido',
@@ -553,6 +584,11 @@ export const simulations = [
 // Una simulación puede estar en más de un bloque. Al añadir una simulación, añádela
 // también a su bloque.
 export const TOPICS = [
+  {
+    id: 'movimiento',
+    label: { es: 'Movimiento', en: 'Motion', ca: 'Moviment', eu: 'Mugimendua', gl: 'Movemento' },
+    sims: ['sim-cinematica', 'sim-caida-libre'],
+  },
   {
     id: 'fuerzas',
     label: { es: 'Fuerzas y gravitación', en: 'Forces and gravity', ca: 'Forces i gravitació', eu: 'Indarrak eta grabitazioa', gl: 'Forzas e gravitación' },

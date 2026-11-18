@@ -11,6 +11,15 @@ import { coursePath, simPath, guionPath, guidePath, homePath } from '../paths.js
 
 export const NEWS = [
   {
+    date: '2026-11-18',
+    link: (lang) => simPath('sim-cinematica', lang),
+    es: { title: 'Nueva simulación: Gráficas del Movimiento', text: 'MRU y MRUA con las gráficas posición-tiempo, velocidad-tiempo y aceleración-tiempo dibujándose mientras el móvil avanza. Incluye 10 retos de interpretar gráficas y un modo para mover el móvil con el ratón o el dedo. Con guía docente y ficha de actividades para 2.º, 3.º y 4.º ESO.' },
+    en: { title: 'New simulation: Motion Graphs', text: 'Constant velocity and constant acceleration, with the position-time, velocity-time and acceleration-time graphs drawn live as the object moves. It includes 10 graph-reading challenges and a mode to move the object with your mouse or finger. With a teacher guide and a student activity sheet.' },
+    ca: { title: 'Nova simulació: Gràfiques del Moviment', text: "MRU i MRUA amb les gràfiques posició-temps, velocitat-temps i acceleració-temps dibuixant-se mentre el mòbil avança. Inclou 10 reptes d'interpretar gràfiques i un mode per moure el mòbil amb el ratolí o el dit. Amb guia docent adaptada al currículum de Catalunya i fitxa d'activitats." },
+    eu: { title: 'Simulazio berria: Mugimenduaren grafikoak', text: 'MZU eta MZUA, posizio-denbora, abiadura-denbora eta azelerazio-denbora grafikoak mugikorra aurrera doan bitartean marrazten direla. Grafikoak interpretatzeko 10 erronka eta mugikorra saguarekin edo hatzarekin mugitzeko modu bat ditu. Euskadiko curriculumera egokitutako irakaslearen gida eta jarduera-fitxa ditu.' },
+    gl: { title: 'Nova simulación: Gráficas do movemento', text: 'MRU e MRUA coas gráficas posición-tempo, velocidade-tempo e aceleración-tempo debuxándose mentres o móbil avanza. Inclúe 10 retos de interpretar gráficas e un modo para mover o móbil co rato ou co dedo. Con guía docente adaptada ao currículo de Galicia e ficha de actividades.' },
+  },
+  {
     date: '2026-11-17',
     link: (lang) => simPath('sim-caida-libre', lang),
     es: { title: 'Nueva simulación: Caída libre y tiro parabólico', text: 'Caída libre, tiro vertical y tiro parabólico con estela, vectores y gráficas. Se puede quitar el aire para ver que la pluma y la bola caen juntas, y un modo reto pide calcular antes de lanzar. Con su guía docente y su ficha de actividades.' },

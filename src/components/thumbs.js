@@ -259,6 +259,23 @@ const THUMBS = {
     <path d="M249 84L271 106M271 84L249 106" stroke="#0f172a" stroke-width="1.6"/>
     <text x="134" y="120" ${MONO} font-size="11" fill="#475569">+</text>`,
 
+  // Coche en una pista con las marcas de cada segundo y su gráfica x‑t (MRUA).
+  'sim-cinematica': `
+    <line x1="24" y1="44" x2="296" y2="44" stroke="#0f172a" stroke-width="2"/>
+    <circle cx="40" cy="44" r="3.2" fill="#0369a1"/><circle cx="50" cy="44" r="3.2" fill="#0369a1"/>
+    <circle cx="66" cy="44" r="3.2" fill="#0369a1"/><circle cx="90" cy="44" r="3.2" fill="#0369a1"/>
+    <circle cx="122" cy="44" r="3.2" fill="#0369a1"/>
+    <rect x="150" y="24" width="44" height="13" rx="4" fill="#0369a1"/>
+    <path d="M158 24l6 -8h16l6 8z" fill="#0369a1"/>
+    <circle cx="160" cy="38" r="4.5" fill="#0f172a"/><circle cx="184" cy="38" r="4.5" fill="#0f172a"/>
+    ${arrow(200, 30, 236, 30, '#047857', 2.2)}
+    <path d="M40 64V160H296" fill="none" stroke="#0f172a" stroke-width="1.6"/>
+    <path d="M40 158Q170 158 280 70" fill="none" stroke="#0369a1" stroke-width="2.8"/>
+    <line x1="172" y1="64" x2="172" y2="160" stroke="#c2410c" stroke-width="1.4" stroke-dasharray="4 4"/>
+    <circle cx="172" cy="133.4" r="4" fill="#c2410c"/>
+    <text x="28" y="74" ${MONO} font-size="13" fill="#0f172a">x</text>
+    <text x="286" y="176" ${MONO} font-size="13" fill="#0f172a">t</text>`,
+
   // Onda en una cuerda, con la amplitud y la longitud de onda.
   'sim-ondas': `
     <line x1="24" y1="90" x2="296" y2="90" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 5"/>

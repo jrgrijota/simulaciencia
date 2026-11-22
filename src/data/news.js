@@ -11,6 +11,15 @@ import { coursePath, simPath, guionPath, guidePath, homePath } from '../paths.js
 
 export const NEWS = [
   {
+    date: '2026-11-22',
+    link: (lang) => simPath('sim-gases', lang),
+    es: { title: 'Gases, renovada: un globo de verdad', text: 'La simulación de gases ahora es una escena con un globo de goma rodeado de aire y un recipiente rígido con émbolo. Las moléculas de fuera también chocan, la goma tira hacia dentro y el globo puede explotar. Una plumilla marca un punto en la gráfica cuando el gas se estabiliza. Guía docente y ficha de actividades nuevas, con 8 actividades.' },
+    en: { title: 'Gases, redesigned: a real balloon', text: 'The gases simulation is now a scene with a rubber balloon surrounded by air and a rigid container with a piston. The molecules outside collide too, the rubber pulls inwards and the balloon can burst. A pen marks a point on the graph once the gas settles. New teacher guide and activity worksheet, with 8 activities.' },
+    ca: { title: 'Gasos, renovada: un globus de debò', text: "La simulació de gasos ara és una escena amb un globus de goma envoltat d'aire i un recipient rígid amb èmbol. Les molècules de fora també xoquen, la goma estira cap endins i el globus pot esclatar. Una ploma marca un punt a la gràfica quan el gas s'estabilitza. Guia docent i fitxa d'activitats noves, amb 8 activitats." },
+    eu: { title: 'Gasak, berritua: benetako puxika bat', text: 'Gasen simulazioa eszena bat da orain: airez inguratutako gomazko puxika bat eta enbolodun ontzi zurrun bat. Kanpoko molekulek ere talka egiten dute, gomak barrurantz tira egiten du eta puxika lehertu daiteke. Luma batek puntu bat markatzen du grafikoan gasa egonkortzen denean. Irakaslearen gida eta jarduera-fitxa berriak, 8 jarduerarekin.' },
+    gl: { title: 'Gases, renovada: un globo de verdade', text: 'A simulación de gases agora é unha escena cun globo de goma rodeado de aire e un recipiente ríxido con émbolo. As moléculas de fóra tamén chocan, a goma tira cara a dentro e o globo pode estoupar. Unha pluma marca un punto na gráfica cando o gas se estabiliza. Guía docente e ficha de actividades novas, con 8 actividades.' },
+  },
+  {
     date: '2026-11-18',
     link: (lang) => simPath('sim-cinematica', lang),
     es: { title: 'Nueva simulación: Gráficas del Movimiento', text: 'MRU y MRUA con las gráficas posición-tiempo, velocidad-tiempo y aceleración-tiempo dibujándose mientras el móvil avanza. Incluye 10 retos de interpretar gráficas y un modo para mover el móvil con el ratón o el dedo. Con guía docente y ficha de actividades para 2.º, 3.º y 4.º ESO.' },

@@ -2,7 +2,7 @@
 
 ## Quick reference
 
-The gases simulation shows particles colliding with the walls of an elastic balloon or a rigid container, and turns those collisions into pressure and volume. Its main use is in ESO 3 (Year 10 in the UK, 9th grade in the US), with applications in ESO 2 and ESO 4 and a qualitative review in Bachillerato 1.
+The gases simulation shows a rubber balloon and a cylinder with a piston and, next to them, a model with the molecules hitting the wall. Those collisions are the pressure. Its main use is in ESO 3 (Year 10 in the UK, 9th grade in the US), with applications in ESO 2 and ESO 4 and a qualitative review in Bachillerato 1.
 
 | Item | Details |
 | --- | --- |
@@ -11,26 +11,59 @@ The gases simulation shows particles colliding with the walls of an elastic ball
 | Subject | Physics and Chemistry |
 | Suggested time | 15–20 minutes of explanation with the simulation projected |
 | Equipment | Projector or interactive whiteboard; runs in the browser, also on phones and tablets, with nothing to install |
-| Prior knowledge | The idea of a particle, temperature in K and °C, volume in litres; in ESO 4, pressure as force per unit area |
-| Accessibility | Dark theme only. Configurable particle and membrane colours and a “Full screen” option in “⚙ Display Settings” |
+| Prior knowledge | The idea of a molecule, temperature in K and °C, volume in litres; in ESO 4, pressure as force per unit area |
+| Accessibility | Four themes in “⚙” (SimulaCiencia, Dark, Light and High contrast), full screen, keyboard (space bar to pause, R to restart) and messages read out by screen readers |
 
 ## How the simulation works
 
-The screen has a left-hand control panel and a central canvas with the gas. The “Container behaviour” drop-down chooses between “Flexible Membrane (Balloon)”, the starting option, and “Rigid Wall (Fixed)”. Above the canvas are the “⏸ Pause” and “⚙ Display Settings” buttons; the latter opens a side drawer.
+The screen is a scene in three parts: on the left, the container with its instruments and the controls; in the middle, the molecule model; on the right, the panel that explains what is happening and what the instruments measure. Below there is a strip of paper with the graph. In the header, the “Container” selector chooses between “Balloon”, the starting option, and “Rigid container”.
 
-| Mode | What the teacher controls | What it shows |
+| Container | What the teacher controls | What it shows |
 | --- | --- | --- |
-| Flexible Membrane (Balloon) | “Number of particles”, from 1 to 500 (starting at 50, ±5 buttons). “Temperature”, from 0 to 500 K (starting at 273 K, ±10 buttons), or from −273 to 227 °C with the K/°C switch | A red balloon that deforms with every collision and a dashed green line showing its average radius. Pressure and volume change together |
-| Rigid Wall (Fixed) | The same controls plus the “Container volume” buttons, which change the radius in steps of 5 px (from 30 to 210 px) and show the volume in litres, from 0.09 to 4.56 L. The container starts at the average size the balloon had | A light blue circle that only changes size with those buttons: at a fixed radius the volume is constant and only the pressure changes |
-| Display Settings | “Particle size” (1–15 px, starting at 3 px), colours, “Colour by speed” (on), “Show P-V graph” (off), “Full screen” | Particles from blue (slow) to red (fast) and a P-V graph in the bottom left corner, with P in atm and V in L starting from 0 |
+| Balloon | “Temperature”, from 0 to 500 K (starting at 273 K), or from −273 to 227 °C with the K · °C selector. “Molecules”, from 0 to 500 (starting at 50). Both values can be typed in | A rubber balloon tied to a nozzle, with a thermometer (probe in the gas), a pressure gauge and a thermostat. The balloon grows or shrinks until inside and outside push equally: the pressure stays at 1 atm and what changes is the volume |
+| Rigid container | The same controls plus “Volume”, from 0.09 to 4.60 L. It starts with the volume the balloon had (1.20 L) | A glass cylinder with the piston held in place, marked in litres. The volume only changes with the control: what changes is the pressure |
+| ⚙ Settings | “Colour by speed” and “Show velocity (trails)”, on; “Average balloon size”, off; “Molecule size” (1–15, starting at 2); full screen and theme | Molecules from turquoise (slow) to pink (fast), with a trail showing where they are heading, and a dashed circle with the average size of the balloon |
 
-Three elements support the explanation:
+Four elements support the explanation:
 
-- **The “Physical Data” cards.** They show “Pressure (P)” in atm and “Volume (V)” in L, to two decimal places. At the start they are around 1.6 atm and 0.8 L; they vary a little from one load to the next because the initial speeds are random. The pressure fluctuates because it is recalculated every second.
-- **“System monitoring”.** This drop-down shows the “Collision frequency” in collisions/s and the “Total collisions”. The pressure adds up the impulse of each collision with the wall (2 · perpendicular velocity) over one second and divides it by the perimeter: it counts how many collisions there are and how hard they are. With 50 particles at 273 K there are about 50 collisions/s.
-- **Colour by speed.** At the same temperature, blue and red particles coexist. Collisions between particles share out the energy and widen the range of speeds.
+- **The molecule model.** It is an enlarged cross-section of the whole gas. Around the balloon you can also see the air outside, in grey: these are real molecules at 273 K that hit the rubber and push it inwards. Each collision with the wall leaves a short mark.
+- **The panel on the right.** A label says what is happening (“BALANCE”, “INFLATING”, “DEFLATING”, “THE RUBBER PULLS”, “AT THE LIMIT”, “VACUUM”, “ABSOLUTE ZERO”, “VERY COLD”, “PRESSURE RISING”…) and below it explains it in one or two sentences. “What the instruments measure” gives pressure, volume, temperature and molecules; next to each value “· 2”, “/ 2” or “same” appears when it is compared with the previous situation. At the bottom, the collisions with the wall per second and V / T (balloon) or P · V and P / T (rigid).
+- **The graph.** A selector chooses P–V, V–T or P–T. The pen marks a point when the gas has settled: it waits 5 s (rigid) or 7 s (balloon) after each change and records the average over the next 3 s. It keeps the last 35 points.
+- **The key moment.** If, keeping everything else the same, a control is taken to double or half and the gas obeys the law, a stamp appears (“BOYLE’S LAW”, “CHARLES’S LAW”, “GAY-LUSSAC’S LAW”, “AVOGADRO’S LAW”) and the panel explains the law with the model. At 0 K “ABSOLUTE ZERO” appears.
 
-The simulation has no help panel or key concepts panel: the explanation is up to the teacher.
+There is also a help panel (“?”) with the key ideas and the four laws, and some optional challenges (“★ Challenges”) with an album of five stamps. Progress is saved only in that browser.
+
+### The balloon, from start to finish
+
+The balloon is the richest container for teaching. With 50 molecules at 273 K it takes up about 1.2 L. The rubber wobbles a little because there are few molecules and the collisions do not always arrive evenly; the panel explains this, and a real balloon, with billions of billions of molecules, does not wobble.
+
+| Situation (273 K) | What happens | Pressure |
+| --- | --- | --- |
+| 0 molecules | “VACUUM”: the air outside squashes the balloon, which is left crumpled at the nozzle | 0 atm |
+| 10 to 200 molecules | “BALANCE”: the volume is proportional to the number of molecules (about 0.3 L with 10 and about 4.6 L with 200) | about 1.0 atm |
+| About 260 or more | “THE RUBBER PULLS”: the rubber, stretched tight, pulls inwards (arrows) and the balloon hardly grows. There is more pressure inside than outside | 1.3 atm with 300; 2.1 atm with 500 |
+| Above 2.8 atm | “AT THE LIMIT”: the rubber is about to tear | 2.8–3 atm |
+| More than 3 atm for 4 s | “IT HAS BURST!”: the rubber tears and the molecules escape into the air. “↺ New balloon” starts again | — |
+
+At 273 K the balloon does not burst even with 500 molecules. It bursts if it is also heated: with 500 molecules it holds at 400 K (about 2.9 atm, “AT THE LIMIT”) and bursts above about 450 K; at 500 K it bursts with about 450 molecules.
+
+### Reference values
+
+Averages over 30 s with 50 molecules of size 2. They vary by a few hundredths from one run to another (in the balloon, by a tenth or so).
+
+| Container | Situation | Volume | Pressure | Collisions/s |
+| --- | --- | --- | --- | --- |
+| Balloon | 100 K | 0.49 L | 1.07 atm | 43 |
+| Balloon | 200 K | 0.90 L | 1.05 atm | 41 |
+| Balloon | 273 K | 1.27 L | 1.08 atm | 40 |
+| Balloon | 400 K | 1.75 L | 1.04 atm | 38 |
+| Balloon | 500 K | 2.52 L | 1.00 atm | 37 |
+| Balloon | 25 / 100 / 200 molecules | 0.61 / 2.45 / 4.58 L | 1.04 atm | 28 / 56 / 79 |
+| Rigid | 136 / 200 / 273 / 400 / 500 K | 1.20 L | 0.49 / 0.75 / 1.03 / 1.61 / 1.85 atm | 38 / 46 / 55 / 67 / 72 |
+| Rigid | 0.30 / 0.60 / 2.40 / 4.60 L | — | 4.42 / 2.28 / 0.50 / 0.24 atm | 199 / 102 / 32 / 22 |
+| Rigid | 25 / 100 / 200 molecules | 1.20 L | 0.52 / 1.96 / 4.19 atm | 27 / 105 / 225 |
+
+In the balloon, V / T is around 0.0047 L/K. In the 1.20 L rigid container, P / T is around 0.0037 atm/K, and P · V stays between 1.1 and 1.4 atm·L from 4.6 to 0.3 L.
 
 ## Use in each year group
 
@@ -42,15 +75,15 @@ In ESO 2 the simulation is used to present the kinetic model and the temperature
 
 **Curriculum content.** Block A: “the laboratory and virtual environments”. Block B: “Applying the kinetic-molecular theory to observations of matter, explaining its properties” and “Introduction to the kinetic-molecular theory. States of matter”. Block E: “Temperature. Temperature scales” and “Effects of heat on matter: changes of state and expansion”.
 
-**Objectives.** Describe a gas as moving particles with empty space between them. Relate temperature to the speed of the particles. Convert between K and °C. Explain why a gas expands when heated.
+**Objectives.** Describe a gas as moving molecules with empty space between them. Relate temperature to the speed of the molecules. Convert between K and °C. Explain why a gas expands when heated.
 
 **Teaching sequence (15–20 min).**
 
-1. Starting set-up: balloon, 50 particles, 273 K. Ask what there is between the particles. Press “⏸ Pause” and point out the empty space. Carry on with “▶ Resume”.
-2. Turn on the K/°C switch: 273 K becomes 0 °C. Write T (K) = t (°C) + 273 on the board. The ends of the slider change to −273 °C and 227 °C.
-3. Lower the temperature to 0 K (−273 °C). The particles stop and the pressure reads 0.00 atm. Present absolute zero as the lower limit of the Kelvin scale.
-4. Raise it to 500 K. The particles move faster and more of them are red. The balloon grows and the volume goes from about 0.70 L at 0 K to about 0.90 L.
-5. Go back to 100 K: the balloon shrinks to about 0.75 L. Relate this to expansion: when heated, the particles do not get bigger; they move more and push harder on the wall.
+1. Starting set-up: balloon, 50 molecules, 273 K. Ask what there is between the molecules. Press “⏸ Pause”: the panel reminds you that there is nothing between them, not even air. Resume.
+2. Switch the selector to °C: 273 K is 0 °C. Write T (K) = t (°C) + 273 on the board. The ends of the control change to −273 °C and 227 °C.
+3. Go up to 500 K. The molecules move faster and change from turquoise to pink; the panel says “INFLATING” and the balloon grows to about 2.5 L. The molecules stay the same size: the key idea in the help panel.
+4. Go down to 100 K: “DEFLATING”, about 0.5 L. Link it to the expansion of gases.
+5. Go down to 0 K: the molecules stop, the pressure reads 0 atm and the air outside squashes the balloon against them. Present absolute zero as the lower limit of the Kelvin scale.
 
 ### ESO 3: the gas laws
 
@@ -58,15 +91,15 @@ In ESO 2 the simulation is used to present the kinetic model and the temperature
 
 **Curriculum content.** Block A: “Using a range of scientific learning environments and resources, such as the laboratory or virtual environments” and “Recording data and results using tables, graphs and mathematical expressions”. Block B: “Further study of the kinetic-molecular model of matter and its relationship with changes of state. The gas laws. Kinetic-molecular model of matter”.
 
-**Objectives.** Interpret pressure as the effect of the particles colliding with the walls. Predict how pressure and volume change when the temperature and the number of particles vary. Explain each gas law with the kinetic model.
+**Objectives.** Interpret pressure as the effect of the molecules hitting the walls. Predict how pressure and volume change when temperature, volume and number of molecules are varied. Explain each gas law with the kinetic model.
 
 **Teaching sequence (15–20 min).**
 
-1. In “⚙ Display Settings”, lower “Particle size” to 2 px: the gas gets closer to an ideal gas. Open “System monitoring” and relate the pressure to the collision frequency.
-2. With the balloon, go down to 100 K and then up to 500 K. The volume goes from about 0.74 L to about 0.86 L. Charles's law, qualitatively: the higher the temperature, the larger the volume (see simplification 4).
-3. Go back to 273 K, wait a few seconds and choose “Rigid Wall (Fixed)”. The volume stays fixed at around 0.8 L and the pressure is around 1.5 atm. Raise it to 500 K: the pressure rises to about 2.7 atm. Lower it to 125 K: about 0.7 atm. Gay-Lussac's law: P / T stays the same, about 0.0055 atm/K in all three cases.
-4. Go back to 273 K and change from 50 to 100 particles. The pressure doubles, from about 1.6 to about 3.4 atm. Ask why: twice as many particles give twice as many collisions per second.
-5. Finish with a table on the board: which variable is fixed, which one is changed and what happens. With 2 px the proportions also hold, with a few tenths of noise.
+1. Balloon at 273 K: explain the balance with the panel. Inside, the molecules push the rubber; outside, the air pushes just as hard (1 atm).
+2. Charles’s law: go from 200 K to 400 K and wait. The balloon goes from about 0.9 L to about 1.8 L and the “CHARLES’S LAW” stamp appears. Choose the V–T graph: the points lie on a straight line pointing at the origin.
+3. Avogadro’s law: go back to 273 K and go from 50 to 100 molecules. The volume doubles (from 1.2 to 2.4 L) and the pressure returns to 1 atm.
+4. Switch to “Rigid container”. Gay-Lussac’s law: from 200 K to 400 K the pressure goes from about 0.75 to about 1.6 atm, with P / T almost constant. Boyle’s law: from 1.20 to 0.60 L the pressure goes from 1 to about 2.3 atm; the panel shows “· 2” and draws where the piston was.
+5. Finish with a table on the board: which variable is fixed, which is changed and what happens, and with the common idea: more collisions, or harder collisions, means more pressure.
 
 ### ESO 4: pressure and the combined gas law
 
@@ -74,73 +107,76 @@ In ESO 2 the simulation is used to present the kinetic model and the temperature
 
 **Curriculum content.** Block B: “Material systems: solving problems and a variety of learning situations involving solutions and gases” and “Gases. The combined gas law”. Block D: “Forces and pressure in fluids: effects of forces and pressure on liquids and gases” and “The concept of pressure”.
 
-**Objectives.** Explain the pressure of a gas as the result of many collisions spread over the whole wall. Relate pressure, volume, temperature and amount of gas at the same time. Recognise Boyle's law in a larger container.
+**Objectives.** Explain the pressure of a gas as the result of many collisions spread over the whole wall. Relate pressure, volume, temperature and amount of gas at the same time. Tell the pressure of the gas apart from the force exerted by an elastic wall.
 
 **Teaching sequence (15–20 min).**
 
-1. Starting set-up with “Particle size” at 2 px. Show that the balloon is pushed out equally in all directions: pressure acts on the whole wall, not just downwards.
-2. Choose “Rigid Wall (Fixed)”. “Container volume” appears, at about 0.8 L (a radius of about 90 px) and P ≈ 1.6 atm. Calculate P · V ≈ 1.3 atm·L.
-3. Use the “+” button to go up to about 2.3 L (a radius of 150 px): the pressure drops to about 0.56 atm. P · V again comes out at about 1.3 atm·L.
-4. Use “−” to go down to about 0.37 L (60 px): P ≈ 3.8 atm, with P · V ≈ 1.4 atm·L. Boyle's law: at constant temperature P · V stays the same; the differences of a few tenths are measurement noise.
-5. Go back to about 2.3 L and raise the temperature to 500 K: the pressure goes up to ~1.0 atm. Then increase to 100 particles: it goes up again. Write P · V / T = constant and reason through each change with the model.
+1. Balloon with 50 molecules: the balloon is round because the collisions push equally in all directions. Turn on “Average balloon size” to see that the wobble is around a fixed size.
+2. Rigid container with the P–V graph: 0.6, 1.2, 2.4 and 4.6 L. The points trace a hyperbola and P · V stays around 1.2–1.4 atm·L (Boyle’s law).
+3. At 2.40 L, raise the temperature to 500 K and then the molecules to 100. Write P · V / T = constant and reason through each change with the model: harder collisions, more collisions.
+4. Go back to the balloon and raise it to 500 molecules. From about 260, “THE RUBBER PULLS”: the stretched rubber exerts an inward force, and that is why the pressure inside rises above 1 atm (about 2.1 atm with 500).
+5. Heat that balloon: at 400 K “AT THE LIMIT” and at about 450 K it bursts. Link it to why closed containers must not be heated.
 
 ### Bachillerato 1: qualitative review
 
 *Ages 16–17 · Year 12 in the UK · 11th grade in the US*
 
-The simulation can be used for review when dealing with “Ideal gas laws. Molar volume. Normal or standard conditions for a gas” (block B) and “Internal energy of a system” (block F). It helps to link temperature with the mean kinetic energy of the particles and pressure with collisions. With a rigid wall and 2 px, P · V stays the same and P is proportional to T, with a few tenths of noise. But it cannot be used for P · V = n · R · T with numbers: its units are scaled.
+The simulation can be used for review when dealing with “Ideal gas laws. Molar volume. Normal or standard conditions for a gas” (block B) and “Internal energy of a system” (block F). It helps to link temperature with the mean kinetic energy of the molecules and pressure with collisions, and to discuss fluctuations: with N molecules, the volume of the balloon fluctuates by around 1/√N (about 15 % with 50). But it is not suitable for P · V = n · R · T with numbers: its units are scaled.
 
 ## Misconceptions it helps to address
 
-The simulation mainly tackles the idea of a gas as continuous and static, and the confusion between properties of the gas and properties of its particles. Each row gives a common prior idea and how to break it down with the simulation.
+The simulation mainly tackles the idea of a gas as continuous and static, the confusion between properties of the gas and properties of its molecules, and the idea that a balloon inflates because the rubber pushes. Each row gives a common prior idea and how to break it down with the simulation.
 
-| Students' idea | Correct idea | How to show it |
+| Students’ idea | Correct idea | How to show it |
 | --- | --- | --- |
-| “There is air between the particles of a gas” | There is empty space between the particles | 10 particles at 273 K and “⏸ Pause”: almost all of the balloon is empty |
-| “When a gas is heated, its particles get bigger” | The particles do not change; they move faster and collide more | Balloon from 100 to 500 K: the balloon grows and the particles stay the same size |
-| “When a gas is compressed, the particles shrink” | The space between them is reduced, not their size | Rigid container at 2.3 L and then at 0.37 L (ESO 4 sequence): same particle size, more crowded together |
-| “A gas only pushes downwards, because of its weight” | Pressure is due to collisions in all directions | Balloon with 200 particles: the membrane bulges out equally all the way round |
-| “All the particles of a gas move at the same speed” | At a given temperature there is a distribution of speeds | 100 particles at 273 K with “Colour by speed”: blue and red ones coexist |
-| “Each particle has its own temperature” or “the particles get hot” | Temperature measures the mean kinetic energy of the whole collection | Pause at 273 K and point out particles of different colours in the same gas |
-| “When you heat a gas there is more gas” | The number of particles does not change when heated | Rigid container from 273 to 500 K: the counter stays at 50 and the pressure rises |
+| “There is air between the molecules of the gas” | There is empty space between the molecules | 10 molecules and “⏸ Pause”: almost all the balloon is empty, and the panel says so |
+| “When a gas is heated, its molecules get bigger” | The molecules do not change; they move faster and collide more | Balloon from 100 to 500 K: the balloon grows and the molecules stay the same size |
+| “When a gas is compressed, the molecules shrink” | The space between them is reduced, not their size | Rigid container from 2.40 to 0.30 L: same molecule size, more crowded and more collisions |
+| “A gas only pushes downwards, because of its weight” | Pressure comes from collisions in all directions | The balloon is round and the collision marks appear all around its edge |
+| “A balloon inflates because the rubber pushes outwards” | The rubber pulls inwards; what pushes outwards is the gas | Balloon with 500 molecules: the “THE RUBBER PULLS” arrows point towards the centre |
+| “Inside an inflated balloon the pressure is the same as outside” or “it is always higher” | While the rubber is slack, the pressure inside equals the pressure outside (1 atm); only when the rubber pulls is it higher | Balloon from 50 to 200 molecules: 1 atm; with 500, about 2.1 atm |
+| “An empty balloon is just full of nothing and stays the same” | With no gas inside, the air outside squashes it | Go down to 0 molecules: “VACUUM” |
+| “All the molecules of a gas move at the same speed” | At a given temperature there are slow and fast molecules | “Colour by speed”: turquoise and pink molecules side by side |
+| “Heating a gas makes more gas” | The number of molecules does not change when it is heated | Rigid container from 273 to 500 K: there are still 50 and the pressure rises |
 
 ## Simplifications worth knowing
 
-The simulation puts the relationship between collisions and pressure first, and to do so it simplifies the geometry, the units and the calculation. It is worth knowing about these liberties so as not to reinforce wrong ideas by accident.
+The simulation gives priority to the relationship between collisions and pressure, and to do this it simplifies the geometry, the units and the calculation. It is worth knowing these liberties so as not to reinforce wrong ideas by accident.
 
-1. **The gas is two-dimensional.** The particles move in a plane and the “volume” is the area of the circle, converted to litres in direct proportion (5 L for a radius of 220 px). The “pressure” is force per unit length of the boundary. Even so, P · V and P / T behave as they do in a real gas.
-2. **Pressure is measured every second.** The impulse of the collisions with the wall is added up over one second, so it fluctuates by a few tenths. With few particles it is best to read several values and take the mean.
-3. **The units are scaled.** The pressure factor and the conversion to litres are chosen to give reasonable figures. With 1.6 atm, 0.8 L and 273 K you would get about 0.06 mol, not 50 particles. The numbers are for comparison, not for applying P · V = n · R · T.
-4. **The balloon is a spring with no outside atmosphere.** The membrane is 60 nodes joined by springs, with a rest radius of 90 px. At 0 K the balloon does not empty: it stays at about 0.70 L. From 100 to 500 K the volume only grows from about 0.75 to 0.90 L, while the pressure inside almost quadruples: the membrane is very stiff. Charles's law can be seen in its direction, not in its proportion.
-5. **Temperature rescales the speeds.** Each particle starts with a random speed between 1.5 and 3.5 px per frame, multiplied by √(T/300). When T changes, every speed is multiplied by √(new T / previous T). That way the mean kinetic energy is proportional to T, as in the real model. The conversion uses 273, not 273.15.
-6. **Absolute zero is classical.** At 0 K the particles stop completely and the pressure is forced to 0.00 atm. That is enough for ESO. In Bachillerato you can add that it is an unreachable limit.
-7. **Collisions with the wall neither cool nor heat.** The particles bounce back without losing speed even when the membrane moves. There is no cooling on expansion: the temperature only changes with the control. Every process is isothermal unless the teacher moves the temperature.
-8. **The particles have a size.** The starting radius is 3 px and they collide with each other. That volume of their own makes the pressure grow a little more than the number of particles: with 3 px and many particles the factor is more than 2. With 1 or 2 px, going from 50 to 100 particles doubles it. For the gas laws it is best to use 2 px.
-9. **The P-V graph keeps little.** It adds a point every 3 s with the mean values and keeps the last 35. V goes from 0 to 5 L and P from 0 to the recent maximum, which readjusts itself. It is cleared when the mode changes.
+1. **The gas is two-dimensional.** The molecules move in a plane and the “volume” is the area of the drawing, converted to litres in direct proportion. The “pressure” is force per unit length of wall. Even so, P · V, V / T and P / T behave as in a real gas.
+2. **Pressure is an average.** The collisions with the wall over the last 3 s are added up. After a change you need to wait a few seconds for it to settle; the graph does this by itself.
+3. **Few molecules, lots of wobble.** With 50 molecules the balloon fluctuates by about ±15 %. That is why “INFLATING” and “DEFLATING” only appear after a control has been moved, and why the law stamps are checked with a longer average.
+4. **The air outside is real, but has few molecules.** Around it, the edge of the viewer acts as the rest of the atmosphere: molecules come in or go out so that outside there is always 1 atm and 273 K. The air does not warm up when the gas in the balloon is heated.
+5. **The rubber only pulls at the end.** Up to about 5.5 L the rubber exerts no force and the pressure inside is 1 atm; a real balloon already pulls a little from the start. From then on it pulls harder and harder, and it bursts at 3 atm sustained for 4 s.
+6. **The units are scaled.** The pressure factor and the conversion to litres are chosen to give reasonable figures: 1 atm, 1.2 L and 273 K would correspond to about 0.05 mol, not 50 molecules. The numbers are for comparing, not for applying P · V = n · R · T.
+7. **The thermostat keeps the temperature.** When it changes, the speed of every molecule is multiplied by √(new T / previous T). There is no cooling on expansion: all processes are isothermal unless the temperature is moved. The conversion uses 273, not 273.15.
+8. **Absolute zero is classical.** At 0 K the molecules stop completely and the pressure is 0 atm. Below 80 K the panel warns that a real gas would already be liquid: this model is an ideal gas.
+9. **The molecules have a size.** With the starting size (2) it hardly matters; with very small volumes or large molecules the pressure rises a little more than Boyle’s law says (P · V goes from 1.2 to 1.4 atm·L between 1.2 and 0.3 L). For measuring laws it is best not to increase the size.
 
 ## Student activity worksheet
 
 The [activity worksheet](https://simulaciencia.es/en/worksheets/gases/) follows a predict, observe and explain structure. Each activity links to the simulation already set up, so it works in the computer room, with tablets or as homework. It downloads in Word and LibreOffice formats so it can be adapted.
 
-
 | Year group | Activities | Suggested time |
 | --- | --- | --- |
 | ESO 3 (Year 10) | Before you start, activities 1 to 6, Apply what you have learnt, Review your ideas and Self-assessment | One 50–55 minute lesson, or two if the problems are done in class |
-| ESO 4 (Year 11) | Activities 2, 5 and 6, Apply what you have learnt and Going further | One lesson |
-| Bachillerato 1 (Year 12) | Activities 4 to 6 and Going further, as qualitative revision | 20–25 minutes |
+| ESO 4 (Year 11) | Activities 2, 5, 7 and 8, Apply what you have learnt and Going further | One lesson |
+| Bachillerato 1 (Year 12) | Activities 5, 7 and 8 and Going further, as qualitative revision | 20–25 minutes |
 
-The “Before you start” table collects five prior ideas about gases. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. The values in the simulation vary by a few tenths from one load to another and from one second to the next; the answers give approximate values.
+The “Before you start” table collects six prior ideas about gases. It is best not to correct it at the beginning: students come back to it in “Review your ideas”. The values in the simulation vary by a few hundredths (in the balloon, by a tenth or so) from one run to another; the answers give approximate values.
 
 ### Answers
 
 | Section | Answer |
 | --- | --- |
-| Before you start | All false. a) Between the particles there is empty space (activity 1). b) The particles do not change size; they move faster (activity 3). c) The space between them is reduced (activity 5). d) A gas pushes equally in all directions: the balloon bulges in every direction (activity 1). e) The particles never stop moving (activity 1) |
-| Activity 1 | The particles take up a very small part; almost everything is empty space. They move in straight lines, in all directions, until they collide. When they hit the wall they push it and bounce off. The balloon does not go down because the collisions push the wall from inside in all directions |
-| Activity 2 | 50 particles: about 45–50 collisions/s and about 1.5 atm. 100: about 100 collisions/s and about 3.4 atm. 200: about 200 collisions/s and about 6.8 atm. The pressure is proportional to the number of collisions per second (and to how hard they are) |
-| Activity 3 | The volume grows with temperature, from about 0.74 L at 100 K to about 0.86 L at 500 K; the particles change from blue to red. When heated, the particles move faster and push harder on the wall, which gives way. The particles do not change size |
-| Activity 4 | The volume does not change (about 0.8 L). P ≈ 0.7 atm at 125 K, ≈ 1.5 atm at 273 K and ≈ 2.7 atm at 500 K; P / T ≈ 0.0055 atm/K in all three cases (Gay-Lussac's law). The gas left in the can increases its pressure when heated and can make it burst |
-| Activity 5 | P ≈ 3.8 atm at 0.37 L, ≈ 1.5 atm at 0.8 L, ≈ 0.85 atm at 1.5 L and ≈ 0.56 atm at 2.3 L. P · V stays at about 1.3–1.4 atm·L: Boyle's law. The particles do not shrink: there is less space between them and they hit the wall more often |
-| Activity 6 | Start ≈ 0.56 atm. At 500 K it rises to ≈ 1.0 atm (harder and more frequent collisions). With 100 particles it rises to ≈ 2 atm (twice as many collisions). With half the volume it rises to ≈ 4 atm (the particles reach the wall sooner) |
-| Apply what you have learnt | 1) Boyle: P₂ = 1 atm · 4 L / 1 L = 4 atm. 2) Gay-Lussac: P₂ = 1 atm · 450 K / 300 K = 1.5 atm. 3) Charles: V₂ = 2 L · 360 K / 300 K = 2.4 L. 4) Friction warms the air in the tyres; its particles move faster and hit the walls more often and harder, while the volume hardly changes |
-| Going further | 1) A hyperbola: P falls as V increases. 2) P · V / T comes out roughly the same, with a few tenths of noise |
+| Before you start | All false. a) Between the molecules there is empty space (activity 1). b) The molecules do not change size; they move faster (activity 3). c) The space between them is reduced (activity 5). d) The gas pushes equally in all directions: the balloon is round (activity 1). e) The molecules never stop moving (activity 1). f) The rubber pulls inwards; it is the gas that pushes (activity 7) |
+| Activity 1 | The molecules take up a very small part; almost everything is empty space. They move in straight lines, in all directions, until they collide. When they hit the wall they push it and bounce back. The balloon does not go down because the collisions push the rubber from inside just as the air pushes it from outside |
+| Activity 2 | 50 molecules: about 55 collisions/s and 1.0 atm. 100: about 105 collisions/s and 2.0 atm. 200: about 225 collisions/s and 4.2 atm. The pressure is proportional to the number of collisions per second |
+| Activity 3 | The volume grows with temperature: about 0.5 L at 100 K, 0.9 L at 200 K, 1.8 L at 400 K. V / T ≈ 0.0045–0.005 L/K: Charles’s law. The molecules change from turquoise to pink: they move faster and push the rubber harder, and it gives way. They do not change size |
+| Activity 4 | The volume does not change (1.20 L). P ≈ 0.75 atm at 200 K, ≈ 1.0 atm at 273 K and ≈ 1.6 atm at 400 K; P / T ≈ 0.0037–0.004 atm/K (Gay-Lussac’s law). The gas left in the can increases its pressure when heated and can burst it |
+| Activity 5 | P ≈ 2.3 atm at 0.6 L, ≈ 1.0 atm at 1.2 L, ≈ 0.5 atm at 2.4 L and ≈ 0.24 atm at 4.6 L. P · V stays at about 1.1–1.4 atm·L: Boyle’s law. The molecules do not shrink: there is less space between them and they hit the wall more often |
+| Activity 6 | With 50 molecules, about 1.2 L; with 100, about 2.4 L; with 25, about 0.6 L. The pressure stays at 1 atm: the balloon grows until there are as many collisions per unit of wall as before (Avogadro’s law). With 0 molecules, the air outside squashes the balloon: “VACUUM” |
+| Activity 7 | Up to about 250 molecules, 1 atm. With 300, about 1.3 atm; with 500, about 2.1 atm. The arrows point inwards: the stretched rubber pulls towards the centre and, together with the air outside, holds a higher pressure inside |
+| Activity 8 | At 400 K, “AT THE LIMIT” (about 2.9 atm). Above about 450 K the balloon bursts. When heated, the molecules hit harder; the rubber can no longer stretch enough and the pressure rises until it tears (Gay-Lussac’s law in an almost rigid balloon) |
+| Apply what you have learnt | 1) Boyle: P₂ = 1 atm · 4 L / 1 L = 4 atm. 2) Gay-Lussac: P₂ = 1 atm · 450 K / 300 K = 1.5 atm. 3) Charles: V₂ = 2 L · 360 K / 300 K = 2.4 L. 4) Friction warms the air in the tyres; its molecules move faster and hit the walls more often and harder, and the walls hardly change in volume |
+| Going further | 1) A hyperbola: P falls as V increases. 2) P · V / T comes out approximately the same, with differences of a few hundredths |

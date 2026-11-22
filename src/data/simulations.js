@@ -118,7 +118,7 @@ export const simulations = [
     tags: ['Física', 'ESO', 'Bachillerato'],
     url: 'https://jrgrijota.github.io/simulacion-gases/',
     responsive: true,
-    params: ['particulas', 'temperatura', 'recipiente', 'volumen', 'grafica'],
+    params: ['moleculas', 'particulas', 'temperatura', 'recipiente', 'volumen', 'grafica', 'retos'],
     courses: ['2ESO', '3ESO', '4ESO'],
     en: {
       title: 'Kinetic Theory of Gases',

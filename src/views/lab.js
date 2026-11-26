@@ -9,6 +9,7 @@ import { copyText, flashCopied } from '../components/copy.js';
 import { langSwitchMarkup } from '../components/lang-switch.js';
 import { simTitle, simUrl, simDescription, isPractical, studentDoc, courseLabel, subjectTags, tagLabel, TOPICS, simulationsIn } from '../data/simulations.js';
 import { getLang, L } from '../i18n.js';
+import { contactCardMarkup } from '../components/contact.js';
 
 // Parámetros (sim.params) que se pasan de la dirección de la web a la simulación o
 // a la práctica, para abrirla ya preparada:
@@ -242,6 +243,7 @@ function aboutMarkup(sim, lang, guide) {
         )}</a>
       </p>
       ${relatedMarkup(sim, lang)}
+      ${contactCardMarkup(sim, 'sim')}
       <p class="mt-6 text-xs text-[#64748b]">${L(
         'Autor: Juan Ramón Grijota, profesor de Física y Química. Licencia',
         'Author: Juan Ramón Grijota, Physics and Chemistry teacher. Licence',

@@ -2,7 +2,7 @@ import { footerMarkup } from '../components/footer.js';
 import { siteHeaderMarkup } from '../components/site-header.js';
 
 const CONTACT = 'contacto@simulaciencia.es';
-const UPDATED = '8 de octubre de 2026';
+const UPDATED = '26 de noviembre de 2026';
 
 const H2 = 'mt-8 mb-2 text-lg font-semibold text-[#1e293b]';
 const P = 'mb-3 leading-relaxed';
@@ -97,9 +97,15 @@ export function renderLegal(root) {
         <li>El contador de visitas se descarga desde los servidores de GoatCounter, descritos en el párrafo anterior.</li>
       </ul>
       <p class="${P}">
-        Si escribes a la dirección de contacto, tu correo se usará solo para responderte y no se
-        cederá a terceros. Puedes pedir en cualquier momento que se borre escribiendo a esa misma
-        dirección.
+        El formulario «Escríbeme» se envía a través de Formspree (Formspree, Inc., Estados Unidos),
+        que reenvía el mensaje al correo del titular. Junto al mensaje se envían la página desde la
+        que escribes y su idioma; el correo electrónico es opcional y solo hace falta si quieres
+        respuesta. ${ext('https://formspree.io/legal/privacy-policy/', 'Política de privacidad de Formspree')}.
+      </p>
+      <p class="${P}">
+        Si escribes por el formulario o a la dirección de contacto, tus datos se usarán solo para
+        leer el mensaje y responderte, y no se cederán a terceros. Puedes pedir en cualquier momento
+        que se borren escribiendo a esa misma dirección.
       </p>
 
       <h2 class="${H2}">6. Legislación aplicable</h2>

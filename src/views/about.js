@@ -169,7 +169,11 @@ export function renderAbout(root) {
             <p>Agradecerei calquera crítica construtiva, idea de mellora ou proposta de novas simulacións. Se ves algo que se poida mellorar ou botas en falta algunha ferramenta para as túas clases, non dubides en escribirme (en galego ou en castelán).</p>`,
           )}</div>
           <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href="mailto:${CONTACT}" class="inline-flex min-h-11 items-center gap-2 rounded-lg bg-[#0369a1] px-5 py-2 font-bold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            <button type="button" data-contact="general" class="inline-flex min-h-12 items-center gap-2 rounded-lg bg-[#38bdf8] px-6 py-2 text-lg font-bold text-[#0f172a] transition-colors hover:bg-[#7dd3fc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+              <i data-lucide="send" class="h-5 w-5"></i>
+              ${L('Escríbeme', 'Write to me', 'Escriu-me', 'Idatzi iezadazu', 'Escríbeme')}
+            </button>
+            <a href="mailto:${CONTACT}" class="inline-flex min-h-11 items-center gap-2 rounded-lg border border-white/25 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
               <span translate="no">${CONTACT}</span>
             </a>

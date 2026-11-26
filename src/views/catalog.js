@@ -3,7 +3,7 @@
 // aula». El catálogo completo, con todas las tarjetas, sigue en la página: se
 // enseña al buscar o con «Ver las 15 juntas» (?todas en la dirección).
 import { simulationsIn, COURSES, TOPICS, courseLabel, simTitle, isPractical } from '../data/simulations.js';
-import { topicSims, courseSims, topicPath, coursePath, simPath } from '../paths.js';
+import { topicSims, courseSims, topicPath, coursePath, simPath, PAGE_PATHS } from '../paths.js';
 import { cardMarkup } from '../components/card.js';
 import { thumbMarkup } from '../components/thumbs.js';
 import { footerMarkup } from '../components/footer.js';
@@ -190,7 +190,7 @@ export function renderCatalog(root) {
       icon: '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',
       title: L('En el aula o en casa', 'In class or at home', "A l'aula o a casa", 'Ikasgelan edo etxean', 'Na aula ou na casa'),
       text: L(
-        'Sin instalar nada: en el ordenador, la pizarra digital o el móvil, con enlace directo para Classroom, Moodle o Teams.',
+        `Sin instalar nada: en el ordenador, la pizarra digital o el móvil. Compártelas con un enlace o <a href="${PAGE_PATHS.insertar}" data-route class="font-semibold text-[#7dd3fc] underline hover:text-white">insértalas en tu Moodle, Google Sites o web</a>.`,
         'Nothing to install: on a computer, an interactive whiteboard or a phone, with a direct link for Classroom, Moodle or Teams.',
         "Sense instal·lar res: a l'ordinador, la pissarra digital o el mòbil, amb enllaç directe per a Classroom, Moodle o Teams.",
         'Ezer instalatu gabe: ordenagailuan, arbel digitalean edo mugikorrean, Classroom, Moodle edo Teamserako esteka zuzenarekin.',

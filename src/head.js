@@ -52,6 +52,9 @@ const ABOUT_DESCRIPTION = {
   eu: 'Nork egiten du SimulaCiencia eta zergatik: Madrilgo Erkidegoko Fisika eta Kimikako irakasle bat, gelarako simulazio libre eta doakoak sortzen dituena.',
   gl: 'Quen fai SimulaCiencia e por que: un profesor de Física e Química da Comunidade de Madrid que crea simulacións libres e gratuítas para a aula.',
 };
+const EMBED_DESCRIPTION = {
+  es: 'Inserta gratis las simulaciones de Física y Química de SimulaCiencia en tu Moodle, Google Sites, web o blog, paso a paso. Y cómo compartirlas en Classroom y Teams.',
+};
 const NEWS_DESCRIPTION = {
   es: 'Novedades de SimulaCiencia: simulaciones y prácticas de laboratorio nuevas, guías y fichas para el aula y mejoras de las simulaciones de Física y Química.',
   en: 'What’s new in SimulaCiencia: new Physics and Chemistry simulations, classroom guides and worksheets, and improvements to the simulations.',
@@ -214,6 +217,7 @@ function withBreadcrumb(data, lang, trail) {
 const PAGES = {
   about: { es: `Quién hace SimulaCiencia y por qué · Sobre el proyecto`, en: `Who makes SimulaCiencia and why · About the project`, ca: `Sobre el projecte · ${SITE}`, eu: `Proiektuari buruz · ${SITE}`, gl: `Sobre o proxecto · ${SITE}` },
   legal: { es: `Aviso legal y privacidad · ${SITE}` },
+  insertar: { es: `Cómo insertar las simulaciones en Moodle, Google Sites o tu web · ${SITE}` },
   news: { es: `Novedades · ${SITE}`, en: `What’s new · ${SITE}`, ca: `Novetats · ${SITE}`, eu: `Berriak · ${SITE}`, gl: `Novidades · ${SITE}` },
 };
 
@@ -346,7 +350,7 @@ export function updateHead({ sim, guideSim, guionSim, courseId = null, topicId =
   }
   if (PAGES[page]) {
     const url = absoluteUrl(pagePath(page, lang));
-    return set(lang, PAGES[page][lang], (page === 'about' && ABOUT_DESCRIPTION[lang]) || (page === 'news' && NEWS_DESCRIPTION[lang]) || DEFAULT_DESCRIPTION[lang], url, { '@type': 'WebPage', url, inLanguage: lang });
+    return set(lang, PAGES[page][lang], (page === 'about' && ABOUT_DESCRIPTION[lang]) || (page === 'news' && NEWS_DESCRIPTION[lang]) || (page === 'insertar' && EMBED_DESCRIPTION[lang]) || DEFAULT_DESCRIPTION[lang], url, { '@type': 'WebPage', url, inLanguage: lang });
   }
   const home = absoluteUrl(homePath(lang));
   set(lang, DEFAULT_TITLE[lang], DEFAULT_DESCRIPTION[lang], home, {

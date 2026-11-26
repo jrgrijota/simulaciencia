@@ -31,6 +31,7 @@ export function footerMarkup() {
         <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.${lang}" target="_blank" rel="noopener license" class="${LINK}">CC BY-SA 4.0</a>
         · <a href="${pagePath('about', lang)}" data-route class="${LINK}">${L('Sobre el proyecto', 'About the project', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</a>
         · <a href="${pagePath('news', lang)}" data-route class="${LINK}">${L('Novedades', 'What’s new', 'Novetats', 'Berriak', 'Novidades')}</a>
+        · <a href="${PAGE_PATHS.insertar}" data-route${lang !== 'es' ? ' hreflang="es"' : ''} class="${LINK}">${L('Insértalas en tu aula virtual', 'Embed them in your virtual classroom (in Spanish)', 'Insereix-les a la teva aula virtual (en castellà)', 'Txertatu zure ikasgela birtualean (gaztelaniaz)', 'Insíreas na túa aula virtual (en castelán)')}</a>
         · <a href="https://github.com/jrgrijota/simulaciencia" target="_blank" rel="noopener" class="${LINK}">GitHub</a>
         · <a href="${PAGE_PATHS.legal}" data-route${lang !== 'es' ? ' hreflang="es"' : ''} class="${LINK}">${L('Aviso legal y privacidad', 'Legal notice and privacy (in Spanish)', 'Avís legal i privacitat (en castellà)', 'Lege-oharra eta pribatutasuna (gaztelaniaz)', 'Aviso legal e privacidade (en castelán)')}</a>
         <div class="mt-3 flex justify-center">${langSwitchMarkup({ up: true })}</div>

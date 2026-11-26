@@ -1,5 +1,6 @@
 import { navigateToCatalog, buildShareUrl } from '../router.js';
-import { guidePath, guionPath, simPath, absoluteUrl, coursePath, topicPath } from '../paths.js';
+import { guidePath, guionPath, simPath, absoluteUrl, coursePath, topicPath, PAGE_PATHS } from '../paths.js';
+import { PLATFORMS } from '../data/platforms.js';
 import { trackEvent } from '../analytics.js';
 import { guideLangFor, guideLabel, hasGuion, loadGuide } from '../data/guides.js';
 import { guideSummary, guideMisconceptions, inlineHtml } from '../guides/shared.js';
@@ -50,15 +51,101 @@ function buildEmbedCode(sim) {
         '<a href="{}">SimulaCiencia</a> webguneko simulazioa, irakaslearen gidarekin eta jarduera-fitxarekin.',
         'Simulación de <a href="{}">SimulaCiencia</a>, con guía docente e ficha de actividades.',
       ).replace('{}', page);
-  return `<iframe\n  src="${url}"\n  title="${simTitle(sim, lang)}"\n  width="100%"\n  height="600"\n  frameborder="0"\n  allowfullscreen\n></iframe>\n<p style="font-size:14px">${credit}</p>`;
+  // En español, una línea más que lleva a la página de ayuda: quien ve la simulación
+  // insertada en el aula virtual de otro docente descubre que puede hacer lo mismo.
+  const more = lang === 'es' ? ` <a href="${absoluteUrl(PAGE_PATHS.insertar)}">Insértala en tu aula virtual</a>.` : '';
+  return `<iframe\n  src="${url}"\n  title="${simTitle(sim, lang)}"\n  width="100%"\n  height="600"\n  frameborder="0"\n  allowfullscreen\n></iframe>\n<p style="font-size:14px">${credit}${more}</p>`;
 }
 
-function createShareModal(sim) {
+const COPY_BTN = 'copy-btn inline-flex h-9 min-w-[7.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md bg-[#0369a1] px-3 text-xs font-semibold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0369a1]';
+const FIELD = 'rounded-md border border-[#e2e8f0] bg-[#f8fafc] text-xs text-[#1e293b] focus:border-[#0369a1] focus:outline-none';
+
+function copyButton(sourceId, label, extra = '') {
+  return `<button data-copy="${sourceId}" type="button" class="${COPY_BTN} ${extra}">
+              <i data-lucide="copy" class="h-3.5 w-3.5"></i>
+              <span class="copy-label">${label}</span>
+            </button>`;
+}
+
+// Pestaña de una plataforma en el diálogo «Insertar»: pasos numerados, el código (o el
+// enlace, donde no se puede insertar) con su botón y, si hace falta, un aviso.
+function platformPanel(p, shareUrl, embedCode, selected) {
+  const isCode = p.kind === 'code';
+  const field = isCode
+    ? `<textarea id="embed-src-${p.id}" readonly rows="5" wrap="off" aria-label="${L('Código de inserción', 'Embed code', 'Codi d’inserció', 'Txertatzeko kodea', 'Código de inserción')}" class="${FIELD} min-w-0 flex-1 resize-none px-3 py-2 font-mono leading-relaxed">${embedCode}</textarea>`
+    : `<input id="embed-src-${p.id}" type="text" readonly value="${shareUrl}" aria-label="${L('Enlace', 'Link', 'Enllaç', 'Esteka', 'Ligazón')}" class="${FIELD} h-9 min-w-0 flex-1 px-3" />`;
+  return `<div id="embed-panel-${p.id}" role="tabpanel" aria-labelledby="embed-tab-${p.id}" class="flex flex-col gap-3 p-5"${selected ? '' : ' hidden'}>
+          ${p.lead ? `<p class="text-sm leading-relaxed text-[#334155]">${L(p.lead)}</p>` : ''}
+          <ol class="flex flex-col gap-2.5">
+            ${p.steps
+              .map(
+                (s, i) => `<li class="flex gap-2.5 text-sm leading-relaxed text-[#1e293b]">
+              <span aria-hidden="true" class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#e0f2fe] text-xs font-bold text-[#0369a1]">${i + 1}</span>
+              <span>${L(s)}</span>
+            </li>`,
+              )
+              .join('')}
+          </ol>
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-stretch">
+            ${field}
+            ${copyButton(`embed-src-${p.id}`, isCode ? L('Copiar código', 'Copy code', 'Copia el codi', 'Kopiatu kodea', 'Copiar código') : L('Copiar enlace', 'Copy link', 'Copia l’enllaç', 'Kopiatu esteka', 'Copiar ligazón'), 'self-end sm:self-auto')}
+          </div>
+          ${p.note ? `<p class="rounded-md border border-[#fde68a] bg-[#fffbeb] px-3 py-2 text-xs leading-relaxed text-[#78350f]">${L(p.note)}</p>` : ''}
+        </div>`;
+}
+
+// Diálogo de la simulación. view = 'share' (enlace directo) o 'embed' (insertar en el
+// aula virtual, con pestañas por plataforma). Desde «Compartir» se pasa a «Insertar».
+function createModal(sim, view) {
   const practical = isPractical(sim);
   // El enlace conserva los parámetros de la dirección (en una práctica, el nivel,
   // la muestra y la probeta; en una simulación, el modo y los valores de la ficha).
   const shareUrl = withSimParams(sim, buildShareUrl(sim.id));
   const embedCode = buildEmbedCode(sim);
+  const lang = getLang();
+  const helpPath = PAGE_PATHS.insertar;
+
+  const title =
+    view === 'embed'
+      ? L('Insértala en tu aula virtual', 'Embed it in your virtual classroom', 'Insereix-la a la teva aula virtual', 'Txertatu zure ikasgela birtualean', 'Insírea na túa aula virtual')
+      : practical
+        ? L('Compartir práctica', 'Share practical', 'Comparteix la pràctica', 'Partekatu praktika', 'Compartir práctica')
+        : L('Compartir simulación', 'Share simulation', 'Comparteix la simulació', 'Partekatu simulazioa', 'Compartir simulación');
+
+  const shareBody = `
+      <div class="flex flex-col gap-5 p-5">
+        <div>
+          <p class="text-sm font-semibold text-[#1e293b]">${L('Enlace directo', 'Direct link', 'Enllaç directe', 'Esteka zuzena', 'Ligazón directa')}</p>
+          <p class="mt-0.5 text-xs text-[#64748b]">${L('Pégalo en el chat de clase, en un correo o en tu plataforma (Moodle, Classroom, Teams…).', 'Paste it into your class chat, an email or your platform (Moodle, Classroom, Teams…).', 'Enganxa’l al xat de classe, en un correu o a la teva plataforma (Moodle, Classroom, Teams…).', 'Itsatsi klaseko txatean, mezu elektroniko batean edo zure plataforman (Moodle, Classroom, Teams…).', 'Pégaa no chat da clase, nun correo ou na túa plataforma (Moodle, Classroom, Teams…).')}</p>
+          <div class="mt-2 flex gap-2">
+            <input id="share-url" type="text" readonly value="${shareUrl}" class="${FIELD} h-9 min-w-0 flex-1 px-3" />
+            ${copyButton('share-url', L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar'))}
+          </div>
+        </div>
+        <div class="flex items-center gap-3 rounded-md border border-[#bae6fd] bg-[#f0f9ff] p-3">
+          <i data-lucide="code-xml" class="h-5 w-5 shrink-0 text-[#0369a1]"></i>
+          <p class="min-w-0 flex-1 text-xs leading-relaxed text-[#1e293b]">${L(
+            '¿Prefieres que se vea dentro de tu Moodle, tu Google Sites o tu web, sin salir de ella?',
+            'Would you rather it showed inside your Moodle, Google Site or website?',
+            'Prefereixes que es vegi dins del teu Moodle, el teu Google Sites o el teu web?',
+            'Nahiago duzu zure Moodlen, Google Sitesen edo webgunean bertan ikustea?',
+            'Prefires que se vexa dentro do teu Moodle, o teu Google Sites ou a túa web?',
+          )}</p>
+          <button id="share-to-embed" type="button" class="inline-flex shrink-0 items-center gap-1 rounded-md border border-[#0369a1] bg-white px-3 py-1.5 text-xs font-semibold text-[#0369a1] transition-colors hover:bg-[#0369a1] hover:text-white">${L('Insertar', 'Embed', 'Insereix', 'Txertatu', 'Inserir')}<i data-lucide="arrow-right" class="h-3.5 w-3.5"></i></button>
+        </div>
+      </div>`;
+
+  const embedBody = `
+      <div role="tablist" aria-label="${L('Plataforma', 'Platform', 'Plataforma', 'Plataforma', 'Plataforma')}" class="flex shrink-0 gap-1 overflow-x-auto border-b border-[#e2e8f0] px-3 pt-2">
+        ${PLATFORMS.map(
+          (p, i) => `<button id="embed-tab-${p.id}" role="tab" type="button" data-platform="${p.id}" aria-controls="embed-panel-${p.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" class="embed-tab -mb-px shrink-0 whitespace-nowrap rounded-t-md border border-transparent px-3 py-2 text-sm font-semibold text-[#475569] hover:text-[#0369a1] aria-selected:border-[#e2e8f0] aria-selected:border-b-white aria-selected:bg-white aria-selected:text-[#0369a1]">${L(p.name)}</button>`,
+        ).join('')}
+      </div>
+      ${PLATFORMS.map((p, i) => platformPanel(p, shareUrl, embedCode, i === 0)).join('')}
+      <div class="flex shrink-0 flex-wrap items-center justify-between gap-2 border-t border-[#e2e8f0] px-5 py-3 text-xs text-[#64748b]">
+        <span>${L('Funciona en el ordenador, la pizarra digital y el móvil, y se actualiza sola.', 'Works on computers, interactive whiteboards and phones, and updates itself.', 'Funciona a l’ordinador, la pissarra digital i el mòbil, i s’actualitza sola.', 'Ordenagailuan, arbel digitalean eta mugikorrean dabil, eta bere kabuz eguneratzen da.', 'Funciona no ordenador, no encerado dixital e no móbil, e actualízase soa.')}</span>
+        <a href="${helpPath}" data-route${lang !== 'es' ? ' hreflang="es"' : ''} class="font-semibold text-[#0369a1] underline hover:text-[#075985]">${L('Más ayuda paso a paso', 'Step-by-step help (in Spanish)', 'Més ajuda pas a pas (en castellà)', 'Laguntza gehiago (gaztelaniaz)', 'Máis axuda paso a paso (en castelán)')}</a>
+      </div>`;
 
   const el = document.createElement('div');
   el.id = 'share-modal';
@@ -68,63 +155,17 @@ function createShareModal(sim) {
   el.className = 'fixed inset-0 z-50 flex items-center justify-center p-4';
   el.innerHTML = `
     <div class="absolute inset-0 bg-[#1e293b]/60 backdrop-blur" id="share-backdrop"></div>
-    <div class="relative w-full max-w-lg rounded-lg border border-[#e2e8f0] bg-white shadow-xl">
-      <div class="flex items-center justify-between border-b border-[#e2e8f0] px-5 py-4">
-        <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">${practical ? L('Compartir práctica', 'Share practical', 'Comparteix la pràctica', 'Partekatu praktika', 'Compartir práctica') : L('Compartir simulación', 'Share simulation', 'Comparteix la simulació', 'Partekatu simulazioa', 'Compartir simulación')}</h2>
+    <div class="relative flex max-h-full w-full ${view === 'embed' ? 'max-w-xl' : 'max-w-lg'} flex-col overflow-y-auto rounded-lg border border-[#e2e8f0] bg-white shadow-xl">
+      <div class="flex shrink-0 items-start justify-between gap-3 border-b border-[#e2e8f0] px-5 py-4">
+        <div>
+          <h2 id="share-modal-title" class="font-semibold text-[#1e293b]">${title}</h2>
+          ${view === 'embed' ? `<p class="mt-0.5 text-xs text-[#64748b]">${simTitle(sim, lang)} · ${L('se ve y funciona igual que aquí', 'looks and works just like here', 'es veu i funciona igual que aquí', 'hemen bezala ikusten eta dabil', 'vese e funciona igual ca aquí')}</p>` : ''}
+        </div>
         <button id="share-close" aria-label="${L('Cerrar', 'Close', 'Tanca', 'Itxi', 'Pechar')}" class="rounded-md p-1 text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#1e293b]">
           <i data-lucide="x" class="h-5 w-5"></i>
         </button>
       </div>
-
-      <div class="flex flex-col gap-5 p-5">
-
-        <!-- Bloque 1: enlace directo -->
-        <div>
-          <p class="text-sm font-semibold text-[#1e293b]">${L('Enlace directo', 'Direct link', 'Enllaç directe', 'Esteka zuzena', 'Ligazón directa')}</p>
-          <p class="mt-0.5 text-xs text-[#64748b]">${L('Pégalo en el chat de clase, en un correo o en tu plataforma (Moodle, Classroom, Teams…).', 'Paste it into your class chat, an email or your platform (Moodle, Classroom, Teams…).', 'Enganxa’l al xat de classe, en un correu o a la teva plataforma (Moodle, Classroom, Teams…).', 'Itsatsi klaseko txatean, mezu elektroniko batean edo zure plataforman (Moodle, Classroom, Teams…).', 'Pégaa no chat da clase, nun correo ou na túa plataforma (Moodle, Classroom, Teams…).')}</p>
-          <div class="mt-2 flex gap-2">
-            <input
-              id="share-url"
-              type="text"
-              readonly
-              value="${shareUrl}"
-              class="h-9 min-w-0 flex-1 rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 text-xs text-[#1e293b] focus:border-[#0369a1] focus:outline-none"
-            />
-            <button
-              data-copy="share-url"
-              type="button"
-              class="copy-btn inline-flex h-9 min-w-[7.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md bg-[#0369a1] px-3 text-xs font-semibold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0369a1]"
-            >
-              <i data-lucide="copy" class="h-3.5 w-3.5"></i>
-              <span class="copy-label">${L('Copiar', 'Copy', 'Copia', 'Kopiatu', 'Copiar')}</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- Bloque 2: código embed -->
-        <div>
-          <p class="text-sm font-semibold text-[#1e293b]">${L('Insertar en tu web o en Moodle', 'Embed in your website or Moodle', 'Insereix-la al teu web o a Moodle', 'Txertatu zure webgunean edo Moodlen', 'Inserir na túa web ou en Moodle')}</p>
-          <p class="mt-0.5 text-xs text-[#64748b]">${L('Si tu plataforma permite añadir HTML, pega este código. La simulación aparecerá integrada en la página.', 'If your platform lets you add HTML, paste this code. The simulation will appear inside the page.', 'Si la teva plataforma permet afegir HTML, enganxa aquest codi. La simulació apareixerà integrada a la pàgina.', 'Zure plataformak HTMLa gehitzen uzten badu, itsatsi kode hau. Simulazioa orrian txertatuta agertuko da.', 'Se a túa plataforma permite engadir HTML, pega este código. A simulación aparecerá integrada na páxina.')}</p>
-          <div class="mt-2 flex flex-col gap-2">
-            <textarea
-              id="share-embed"
-              readonly
-              rows="6"
-              wrap="off"
-              class="w-full resize-none rounded-md border border-[#e2e8f0] bg-[#f8fafc] px-3 py-2 font-mono text-xs leading-relaxed text-[#1e293b] focus:border-[#0369a1] focus:outline-none"
-            >${embedCode}</textarea>
-            <button
-              data-copy="share-embed"
-              type="button"
-              class="copy-btn inline-flex h-9 min-w-[7.5rem] shrink-0 items-center justify-center gap-1.5 rounded-md bg-[#0369a1] px-3 text-xs font-semibold text-white transition-colors hover:bg-[#075985] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0369a1] self-end"
-            >
-              <i data-lucide="copy" class="h-3.5 w-3.5"></i>
-              <span class="copy-label">${L('Copiar código', 'Copy code', 'Copia el codi', 'Kopiatu kodea', 'Copiar código')}</span>
-            </button>
-          </div>
-        </div>
-
-      </div>
+      ${view === 'embed' ? embedBody : shareBody}
     </div>`;
   return el;
 }
@@ -271,32 +312,36 @@ export function renderLab(root, sim) {
   const guionButton = hasStudentDoc(sim, lang)
     ? `<a href="${guionPath(sim.id, lang)}" data-route class="ml-auto inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="clipboard-list" class="h-4 w-4"></i>
-        <span class="sr-only sm:not-sr-only">${studentDoc(sim, lang).short}</span>
+        <span class="sr-only lg:not-sr-only">${studentDoc(sim, lang).short}</span>
       </a>`
     : '';
   const guideButton = withGuide
     ? `${guionButton}<a href="${guidePath(sim.id, guide)}" data-route${guide !== lang ? ` hreflang="${guide}"` : ''} class="${guionButton ? '' : 'ml-auto '}inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="book-open" class="h-4 w-4"></i>
-        <span class="sr-only sm:not-sr-only">${guideLabel(guide, lang, true)}</span>
+        <span class="sr-only lg:not-sr-only">${guideLabel(guide, lang, true)}</span>
       </a>`
     : '';
   root.innerHTML = `
   <div class="flex h-screen flex-col overflow-hidden">
-    <header data-print-hide class="flex h-14 shrink-0 items-center gap-3 border-b border-[#e2e8f0] bg-white px-4">
+    <header data-print-hide class="flex h-14 shrink-0 items-center gap-2 sm:gap-3 border-b border-[#e2e8f0] bg-white px-4">
       <button id="lab-back" aria-label="${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}" class="inline-flex shrink-0 items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]">
         <i data-lucide="arrow-left" class="h-4 w-4"></i>
-        <span class="hidden sm:inline">${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}</span>
+        <span class="hidden lg:inline">${L('Volver al catálogo', 'Back to catalogue', 'Torna al catàleg', 'Itzuli katalogora', 'Volver ao catálogo')}</span>
       </button>
       <div class="hidden h-5 w-px bg-[#e2e8f0] sm:block"></div>
       <h1 class="sr-only truncate font-semibold text-[#1e293b] sm:not-sr-only">${title}</h1>
       ${guideButton}
       <button id="lab-fs" class="${withGuide ? '' : 'ml-auto '}inline-flex shrink-0 items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]">
         <i data-lucide="maximize" class="h-4 w-4"></i>
-        <span class="sr-only sm:not-sr-only">${L('Pantalla completa', 'Full screen', 'Pantalla completa', 'Pantaila osoa', 'Pantalla completa')}</span>
+        <span class="sr-only xl:not-sr-only">${L('Pantalla completa', 'Full screen', 'Pantalla completa', 'Pantaila osoa', 'Pantalla completa')}</span>
+      </button>
+      <button id="lab-embed" title="${L('Insertar en tu aula virtual', 'Embed in your virtual classroom', 'Insereix-la a la teva aula virtual', 'Txertatu zure ikasgela birtualean', 'Inserir na túa aula virtual')}" class="hidden shrink-0 sm:inline-flex items-center gap-1.5 rounded-md border border-[#0369a1] bg-white px-3 py-1.5 text-sm font-semibold text-[#0369a1] transition-colors hover:bg-[#f0f9ff]">
+        <i data-lucide="code-xml" class="h-4 w-4"></i>
+        <span class="sr-only lg:not-sr-only">${L('Insertar', 'Embed', 'Insereix', 'Txertatu', 'Inserir')}</span>
       </button>
       <button id="lab-share" class="inline-flex shrink-0 items-center gap-1.5 rounded-md bg-[#0369a1] px-3 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-[#075985]">
         <i data-lucide="share-2" class="h-4 w-4"></i>
-        <span class="sr-only sm:not-sr-only">${L('Compartir', 'Share', 'Comparteix', 'Partekatu', 'Compartir')}</span>
+        <span class="sr-only lg:not-sr-only">${L('Compartir', 'Share', 'Comparteix', 'Partekatu', 'Compartir')}</span>
       </button>
       ${langSwitchMarkup({ compact: true })}
     </header>
@@ -401,22 +446,51 @@ export function renderLab(root, sim) {
   document.addEventListener('fullscreenchange', onFullscreenChange);
   document.addEventListener('webkitfullscreenchange', onFullscreenChange);
 
-  // --- Modal de compartir ---
+  // --- Diálogos de compartir e insertar ---
   let modal = null;
+  let opener = null;
 
-  function openModal() {
-    trackEvent(`compartir/${simSlug(sim)}`, `Compartir: ${sim.title}`);
-    modal = createShareModal(sim);
+  function openModal(view, from = view === 'embed' ? '#lab-embed' : '#lab-share') {
+    if (modal) modal.remove();
+    opener = from;
+    trackEvent(`${view === 'embed' ? 'abrir-insertar' : 'compartir'}/${simSlug(sim)}`, `${view === 'embed' ? 'Abrir Insertar' : 'Compartir'}: ${sim.title}`);
+    modal = createModal(sim, view);
     document.body.appendChild(modal);
     if (window.lucide) window.lucide.createIcons({ nodes: modal.querySelectorAll('[data-lucide]') });
 
     modal.querySelector('#share-close').addEventListener('click', closeModal);
     modal.querySelector('#share-backdrop').addEventListener('click', closeModal);
+    modal.querySelector('#share-to-embed')?.addEventListener('click', () => openModal('embed', '#lab-share'));
+    // El enlace de ayuda lleva a otra página: el diálogo se cierra al salir.
+    modal.querySelector('a[data-route]')?.addEventListener('click', closeModal);
+
+    // Pestañas por plataforma (flechas para moverse entre ellas, como en un tablist).
+    const tabs = [...modal.querySelectorAll('.embed-tab')];
+    const select = (tab) => {
+      for (const t of tabs) {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        modal.querySelector(`#embed-panel-${t.dataset.platform}`).hidden = !on;
+      }
+    };
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (e) => {
+        const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+        if (!step) return;
+        e.preventDefault();
+        const next = tabs[(i + step + tabs.length) % tabs.length];
+        select(next);
+        next.focus();
+      });
+    });
+
     // Esc cierra; Tab y Mayús+Tab no salen de la ventana mientras está abierta.
     modal.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') return closeModal();
       if (e.key !== 'Tab') return;
-      const items = [...modal.querySelectorAll('button, input, textarea')];
+      const items = [...modal.querySelectorAll('button, input, textarea, a[href]')].filter((n) => n.getClientRects().length && n.tabIndex !== -1);
       const first = items[0];
       const last = items[items.length - 1];
       if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
@@ -429,7 +503,12 @@ export function renderLab(root, sim) {
         const source = modal.querySelector(`#${sourceId}`);
         await copyText(source.value);
         flashCopied(btn);
-        trackEvent(`${sourceId === 'share-embed' ? 'insertar' : 'copiar-enlace'}/${simSlug(sim)}`, `${sourceId === 'share-embed' ? 'Código de inserción' : 'Enlace copiado'}: ${sim.title}`);
+        const platform = sourceId.startsWith('embed-src-') ? sourceId.slice(10) : null;
+        const code = source.tagName === 'TEXTAREA';
+        trackEvent(
+          `${code ? 'insertar' : 'copiar-enlace'}/${simSlug(sim)}`,
+          `${code ? 'Código de inserción' : 'Enlace copiado'}${platform ? ` (${platform})` : ''}: ${sim.title}`,
+        );
       });
     });
 
@@ -441,10 +520,11 @@ export function renderLab(root, sim) {
     modal.remove();
     modal = null;
     // El foco vuelve al botón que abrió la ventana.
-    root.querySelector('#lab-share')?.focus();
+    root.querySelector(opener)?.focus();
   }
 
-  root.querySelector('#lab-share').addEventListener('click', openModal);
+  root.querySelector('#lab-share').addEventListener('click', () => openModal('share'));
+  root.querySelector('#lab-embed').addEventListener('click', () => openModal('embed'));
 
   // Ajuste inicial + en cada redimensionado de ventana (proyector, rotación…).
   fit();

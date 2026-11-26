@@ -82,7 +82,9 @@ export function contactCardMarkup(sim, from) {
 function teacherFields() {
   const radio = (name, value, label) =>
     `<label class="${CHOICE}"><input type="radio" name="${name}" value="${value}" class="accent-[#0369a1]" /> ${label}</label>`;
-  const courses = COURSES.map((c) => `<option value="${esc(courseLabel(c.id, 'es'))}">${esc(courseLabel(c.id, getLang()))}</option>`).join('');
+  const check = (value, label) =>
+    `<label class="${CHOICE}"><input type="checkbox" name="curso" value="${esc(value)}" class="accent-[#0369a1]" /> ${esc(label)}</label>`;
+  const courses = COURSES.map((c) => check(courseLabel(c.id, 'es'), courseLabel(c.id, getLang()))).join('');
   return `
           <fieldset>
             <legend class="${LABEL}">${L('¿Quién escribe?', 'Who is writing?', 'Qui escriu?', 'Nor ari da idazten?', 'Quen escribe?')} <span class="${HINT}">${L('(opcional)', '(optional)', '(opcional)', '(aukerakoa)', '(opcional)')}</span></legend>
@@ -100,11 +102,10 @@ function teacherFields() {
                 ${radio('usa_en_clase', 'Todavía no', L('Todavía no', 'Not yet', 'Encara no', 'Oraindik ez', 'Aínda non'))}
               </div>
             </fieldset>
-            <label class="${LABEL}">${L('¿En qué curso?', 'Which year group?', 'A quin curs?', 'Zein mailatan?', 'En que curso?')}
-              <select name="curso" class="${FIELD} mt-1 font-normal">
-                <option value="">—</option>${courses}<option value="Otro">${L('Otro', 'Other', 'Un altre', 'Beste bat', 'Outro')}</option>
-              </select>
-            </label>
+            <fieldset>
+              <legend class="${LABEL}">${L('¿En qué cursos?', 'Which year groups?', 'A quins cursos?', 'Zein mailatan?', 'En que cursos?')} <span class="${HINT}">${L('(puedes marcar varios)', '(you can tick several)', '(en pots marcar diversos)', '(bat baino gehiago hauta ditzakezu)', '(podes marcar varios)')}</span></legend>
+              <div class="mt-2 flex flex-wrap gap-2">${courses}${check('Otro', L('Otro', 'Other', 'Un altre', 'Beste bat', 'Outro'))}</div>
+            </fieldset>
           </div>`;
 }
 
@@ -227,10 +228,12 @@ export function openContact({ from = 'general', simId = null } = {}) {
   const slug = sim ? sim.id.replace(/^sim-/, '') : from;
   trackEvent(`contacto/abrir/${slug}`, `Contacto abierto: ${sim ? sim.title : from}`);
 
+  let errorText = null;
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const send = dialog.querySelector('[data-contact-send]');
     const error = dialog.querySelector('[data-contact-error]');
+    errorText ??= error.textContent.trim();
     error.hidden = true;
     send.disabled = true;
     const data = new FormData(form);
@@ -238,6 +241,9 @@ export function openContact({ from = 'general', simId = null } = {}) {
       data.delete('usa_en_clase');
       data.delete('curso');
     }
+    const cursos = data.getAll('curso');
+    data.delete('curso');
+    if (cursos.length) data.set('curso', cursos.join(', '));
     data.set('origen', from === 'sim' ? 'Simulación' : from === 'guide' ? 'Guía' : 'General');
     if (sim) data.set('simulacion', sim.title);
     data.set('pagina', location.href);
@@ -245,13 +251,27 @@ export function openContact({ from = 'general', simId = null } = {}) {
     data.set('_subject', `SimulaCiencia: ${sim ? sim.title : 'mensaje'}${from === 'guide' ? ' (guía)' : ''}`);
     try {
       const res = await fetch(ENDPOINT, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
-      if (!res.ok) throw new Error(String(res.status));
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        const badEmail = (body.errors || []).some((er) => er.field === 'email' || er.code === 'TYPE_EMAIL');
+        throw new Error(badEmail ? 'email' : (body.errors || []).map((er) => er.message).join(' ') || body.error || `HTTP ${res.status}`);
+      }
       dialog.querySelector('[data-contact-fields]').hidden = true;
       dialog.querySelector('[data-contact-actions]').hidden = true;
       dialog.querySelector('[data-contact-done]').hidden = false;
       dialog.querySelector('[data-contact-close]').focus();
       trackEvent(`contacto/enviado/${slug}`, `Contacto enviado: ${sim ? sim.title : from}`);
-    } catch {
+    } catch (err) {
+      error.textContent =
+        err.message === 'email'
+          ? L(
+              'Parece que el correo no es válido. Revísalo o deja ese campo vacío.',
+              'That email address doesn’t look valid. Check it or leave the field empty.',
+              'Sembla que el correu no és vàlid. Revisa’l o deixa el camp buit.',
+              'Badirudi helbidea ez dela zuzena. Berrikusi edo utzi eremua hutsik.',
+              'Parece que o correo non é válido. Revísao ou deixa ese campo baleiro.',
+            )
+          : `${errorText} (${err.message})`;
       error.hidden = false;
       send.disabled = false;
     }

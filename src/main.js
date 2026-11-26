@@ -32,6 +32,7 @@ import {
   GraduationCap,
   ArrowRight,
   Send,
+  CodeXml,
 } from 'lucide';
 
 import { getRoute, onRouteChange, navigateTo } from './router.js';
@@ -43,6 +44,7 @@ import { renderLab } from './views/lab.js';
 import { renderLegal } from './views/legal.js';
 import { renderAbout } from './views/about.js';
 import { renderNews } from './views/news.js';
+import { renderEmbedHelp } from './views/embed-help.js';
 import { renderCollection } from './views/collection.js';
 import { renderGuide } from './views/guide.js';
 import { hasGuide, hasGuion } from './data/guides.js';
@@ -52,7 +54,7 @@ import { installContact } from './components/contact.js';
 import { homePath, coursePath, topicPath } from './paths.js';
 
 const app = document.getElementById('app');
-const ICONS = { Newspaper, Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal, FlaskConical, ClipboardList, MonitorPlay, LayoutGrid, GraduationCap, ArrowRight, Send };
+const ICONS = { Newspaper, Search, SearchX, ArrowLeft, Copy, Check, Play, Maximize, Minimize, Share2, Mail, X, Info, Download, BookOpen, SlidersHorizontal, FlaskConical, ClipboardList, MonitorPlay, LayoutGrid, GraduationCap, ArrowRight, Send, CodeXml };
 
 // Expone createIcons globalmente para que el modal de lab.js pueda usarlo.
 window.lucide = { createIcons: (opts) => createIcons({ icons: ICONS, ...opts }) };
@@ -137,6 +139,7 @@ function render() {
   else if (page === 'about') cleanup = renderAbout(app);
   else if (page === 'legal') cleanup = renderLegal(app);
   else if (page === 'news') cleanup = renderNews(app);
+  else if (page === 'insertar') cleanup = renderEmbedHelp(app);
   else cleanup = renderCatalog(app);
 
   updateHead({ sim, guideSim, guionSim, courseId, topicId, page: sim || guideSim || guionSim ? null : page, lang: route.lang });

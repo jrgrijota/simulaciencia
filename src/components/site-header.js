@@ -1,11 +1,13 @@
 // Cabecera común de la portada, «Sobre el proyecto», las guías y el aviso legal:
-// logo (lleva a la portada), «Sobre el proyecto», un hueco para un botón propio de
+// logo (lleva a la portada), «Novedades», «Sobre el proyecto», el botón «Escríbeme», un hueco para un botón propio de
 // la página (la guía pone «Abrir la simulación») y el selector de idioma.
-// En móviles estrechos, si hay botón propio, solo queda el logo (sin el nombre).
+// En móviles estrechos solo queda el logo (sin el nombre); si hay botón propio, además
+// se oculta «Escríbeme» (la guía ya lo ofrece en su tarjeta del final).
 // El laboratorio tiene su propia barra de herramientas.
 import { pagePath, homePath } from '../paths.js';
 import { getLang, L } from '../i18n.js';
 import { langSwitchMarkup } from './lang-switch.js';
+import { contactHeaderButton } from './contact.js';
 
 const NAV_LINK =
   'inline-flex min-h-11 items-center gap-1.5 rounded-md px-3 text-sm font-bold text-[#334155] transition-colors hover:bg-[#f1f5f9] hover:text-[#0369a1]';
@@ -18,7 +20,7 @@ export function siteHeaderMarkup({ current = null, extra = '' } = {}) {
       <div class="mx-auto flex max-w-6xl items-center gap-2 px-4 py-2">
         <a href="${homePath(lang)}" data-route class="mr-auto flex min-h-11 items-center gap-2 rounded-md text-[#0f172a]">
           <img src="/logo.svg" alt="SimulaCiencia" width="32" height="32" class="h-8 w-8" />
-          <span aria-hidden="true" translate="no" class="${extra ? 'max-[420px]:hidden ' : ''}font-display text-xl font-bold tracking-tight">Simula<span class="text-[#0369a1]">Ciencia</span></span>
+          <span aria-hidden="true" translate="no" class="${extra ? 'max-[420px]:hidden' : 'max-[440px]:hidden'} font-display text-xl font-bold tracking-tight">Simula<span class="text-[#0369a1]">Ciencia</span></span>
         </a>
         <nav aria-label="${L('Principal', 'Main', 'Principal', 'Nagusia', 'Principal')}" class="flex items-center gap-1">
           <a href="${pagePath('news', lang)}" data-route${current === 'news' ? ' aria-current="page"' : ''} class="${NAV_LINK}${current === 'news' ? ' text-[#0369a1]' : ''}">
@@ -29,6 +31,7 @@ export function siteHeaderMarkup({ current = null, extra = '' } = {}) {
             <i data-lucide="info" class="h-4 w-4 sm:hidden"></i>
             <span class="sr-only sm:not-sr-only">${L('Sobre el proyecto', 'About', 'Sobre el projecte', 'Proiektuari buruz', 'Sobre o proxecto')}</span>
           </a>
+          ${contactHeaderButton({ hideOnMobile: !!extra })}
           ${extra}
         </nav>
         ${langSwitchMarkup({ compact: true })}

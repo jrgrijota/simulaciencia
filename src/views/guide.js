@@ -8,6 +8,7 @@ import { siteHeaderMarkup } from '../components/site-header.js';
 import { loadGuide, loadGuion, hasGuion, guideLangFor, guideLabel } from '../data/guides.js';
 import { trackEvent } from '../analytics.js';
 import { renderGuideHtml, guideToc, guideSummary, downloadBase } from '../guides/shared.js';
+import { contactCardMarkup } from '../components/contact.js';
 
 const BTN_SECONDARY =
   'inline-flex items-center gap-1.5 rounded-md border border-[#e2e8f0] bg-white px-3 py-1.5 text-sm font-medium text-[#1e293b] transition-colors hover:border-[#0369a1] hover:text-[#0369a1]';
@@ -127,6 +128,7 @@ export function renderGuide(root, sim, doc = 'guide') {
           )}</p>`) : ''}
       ${tocMarkup(guideToc(markdown), student)}
       ${html.slice(h1End)}
+      ${contactCardMarkup(sim, guion ? 'sim' : 'guide')}
       <p class="mt-10 border-t border-[#e2e8f0] pt-4 text-xs text-[#64748b]">
         Juan Ramón Grijota · ${guion ? student.license : L('Guía bajo licencia', 'Guide licensed under', 'Guia amb llicència', 'Gida lizentzia honekin', 'Guía baixo licenza')}
         <a href="${LICENSE_URL[lang]}" target="_blank" rel="noopener license">CC BY-SA 4.0</a>:

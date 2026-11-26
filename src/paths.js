@@ -8,6 +8,7 @@
 //   /fichas/<nombre>/          => Ficha de actividades del alumnado de una simulación
 //   /sobre-el-proyecto/        => Página "Sobre el proyecto"
 //   /aviso-legal/              => Aviso legal y privacidad
+//   /insertar-en-tu-aula/      => Cómo insertar las simulaciones en Moodle, Google Sites, una web… (por ahora, solo en español)
 //   /novedades/                => Novedades (selección de lo nuevo; canal RSS en /novedades.xml)
 //   /cursos/<curso>/           => Simulaciones y prácticas de un curso (2-eso, 1-bachillerato…)
 //   /temas/<tema>/             => Simulaciones y prácticas de un bloque temático
@@ -99,7 +100,7 @@ export const collectionPaths = (lang = 'es') =>
   [...COURSES.map((c) => coursePath(c.id, lang)), ...TOPICS.map((t) => topicPath(t.id, lang))].filter(Boolean);
 const bySlug = (slugs, lang, value) => Object.keys(slugs).find((id) => slugs[id][lang] === value) || null;
 
-export const PAGE_PATHS = { about: '/sobre-el-proyecto/', news: '/novedades/', legal: '/aviso-legal/' };
+export const PAGE_PATHS = { about: '/sobre-el-proyecto/', news: '/novedades/', legal: '/aviso-legal/', insertar: '/insertar-en-tu-aula/' };
 const PAGES = {
   es: PAGE_PATHS,
   en: { about: '/en/about/', news: '/en/news/' },

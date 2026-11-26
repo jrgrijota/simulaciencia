@@ -17,7 +17,7 @@ import { trackEvent } from '../analytics.js';
 import { copyText, flashCopied } from './copy.js';
 
 // Código del formulario en Formspree (https://formspree.io/f/<código>).
-const FORMSPREE_ID = 'PENDIENTE';
+const FORMSPREE_ID = 'xjywzege';
 const ENDPOINT = `https://formspree.io/f/${FORMSPREE_ID}`;
 export const CONTACT_EMAIL = 'contacto@simulaciencia.es';
 

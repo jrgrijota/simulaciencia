@@ -122,27 +122,27 @@ function dialogMarkup(from, sim) {
         `Sobre «${esc(simTitle(sim, 'gl'))}»: cóntao coas túas palabras, aínda que sexa unha frase. Lense todas as mensaxes.`,
       )
     : L(
-        'Soy Juanra, profesor de Física y Química y autor de SimulaCiencia. Me encantará saber cómo la usas, qué mejorarías o qué simulación te gustaría tener. Leo todos los mensajes y contesto yo.',
-        'I’m Juanra, a Physics and Chemistry teacher and the author of SimulaCiencia. I’d love to know how you use it, what you’d improve or which simulation you’d like to have. I read every message and reply myself (in English or Spanish).',
-        'Soc en Juanra, professor de Física i Química i autor de SimulaCiencia. M’encantarà saber com la fas servir, què milloraries o quina simulació t’agradaria tenir. Llegeixo tots els missatges i responc jo (en català o en castellà).',
-        'Juanra naiz, Fisika eta Kimikako irakaslea eta SimulaCienciaren egilea. Gustatuko litzaidake jakitea nola erabiltzen duzun, zer hobetuko zenukeen edo zer simulazio nahiko zenukeen. Mezu guztiak irakurtzen ditut eta neuk erantzuten dut (gaztelaniaz edo ingelesez).',
-        'Son Juanra, profesor de Física e Química e autor de SimulaCiencia. Encantarame saber como a usas, que mellorarías ou que simulación che gustaría ter. Leo todas as mensaxes e contesto eu (en galego ou en castelán).',
+        'Soy Juanra, profesor de Física y Química y creador de SimulaCiencia. Si has encontrado un fallo, ves algo que se pueda mejorar o echas en falta alguna simulación para tus clases, no dudes en escribirme. Estaré encantado de leer lo que consideres importante y responder si dejas tu correo. SimulaCiencia es un proyecto en crecimiento y se tiene que seguir construyendo con las aportaciones de todas las personas que utilizamos las simulaciones.',
+        'I’m Juanra, a Physics and Chemistry teacher and the creator of SimulaCiencia. If you have found a bug, see something that could be improved or miss a simulation for your lessons, please write to me (in English or Spanish). I’ll be glad to read whatever you think is important and to reply if you leave your email. SimulaCiencia is a growing project, and it has to keep being built with the contributions of all of us who use the simulations.',
+        'Soc en Juanra, professor de Física i Química i creador de SimulaCiencia. Si has trobat un error, veus alguna cosa que es pugui millorar o trobes a faltar alguna simulació per a les teves classes, no dubtis a escriure’m (en català o en castellà). Estaré encantat de llegir el que consideris important i de respondre’t si hi deixes el correu. SimulaCiencia és un projecte en creixement i s’ha de continuar construint amb les aportacions de totes les persones que fem servir les simulacions.',
+        'Juanra naiz, Fisika eta Kimikako irakaslea eta SimulaCienciaren sortzailea. Akatsen bat aurkitu baduzu, hobetu daitekeen zerbait ikusten baduzu edo zure klaseetarako simulazioren bat falta baduzu, ez izan zalantzarik idazteko (gaztelaniaz edo ingelesez). Pozik irakurriko dut garrantzitsutzat jotzen duzuna, eta erantzun egingo dizut helbidea uzten baduzu. SimulaCiencia hazten ari den proiektua da, eta simulazioak erabiltzen ditugun pertsona guztion ekarpenekin eraikitzen jarraitu behar du.',
+        'Son Juanra, profesor de Física e Química e creador de SimulaCiencia. Se atopaches un fallo, ves algo que se poida mellorar ou botas en falta algunha simulación para as túas clases, non dubides en escribirme (en galego ou en castelán). Estarei encantado de ler o que consideres importante e de responderche se deixas o teu correo. SimulaCiencia é un proxecto en crecemento e ten que seguir construíndose coas achegas de todas as persoas que usamos as simulacións.',
       );
   const placeholder = forSim
     ? L('Por ejemplo: no entiendo qué hace el botón…', 'For example: I don’t understand what the button…', 'Per exemple: no entenc què fa el botó…', 'Adibidez: ez dut ulertzen botoiak zer egiten duen…', 'Por exemplo: non entendo que fai o botón…')
     : L('Por ejemplo: la uso en 3.º ESO para…', 'For example: I use it with Year 10 to…', 'Per exemple: la faig servir a 3r d’ESO per…', 'Adibidez: DBH 3n erabiltzen dut…', 'Por exemplo: úsoa en 3.º ESO para…');
   return `
     <form method="dialog" data-contact-form class="flex max-h-[calc(100dvh-2rem)] flex-col">
-      <div class="flex items-start justify-between gap-3 border-b border-[#e2e8f0] px-5 py-4">
+      <div class="flex items-center justify-between gap-3 border-b border-[#e2e8f0] px-5 py-2">
         <div>
           <h2 id="contact-title" class="font-display text-xl font-bold text-[#0f172a]">${title}</h2>
-          <p class="mt-1 text-sm leading-relaxed text-[#475569]">${intro}</p>
         </div>
         <button type="button" data-contact-close aria-label="${t.close()}" class="-mr-1 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md text-[#64748b] transition-colors hover:bg-[#f1f5f9] hover:text-[#1e293b]">
           <i data-lucide="x" class="h-5 w-5"></i>
         </button>
       </div>
       <div data-contact-fields class="flex flex-col gap-4 overflow-y-auto px-5 py-4">
+        <p class="text-sm leading-relaxed text-[#475569]">${intro}</p>
         <label class="${LABEL}">${L('Tu mensaje', 'Your message', 'El teu missatge', 'Zure mezua', 'A túa mensaxe')}
           <textarea name="mensaje" required rows="${forSim ? 4 : 5}" maxlength="5000" placeholder="${placeholder}" class="${FIELD} mt-1 font-normal"></textarea>
         </label>
